@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS9K7M4HJ"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5TS9K7M4HJ');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ETF Market Barometer | Navimod</title>
@@ -109,6 +101,17 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 .cat.thematic{background:rgba(139,92,246,0.2);color:#a78bfa}
 .cat.comm{background:rgba(251,146,60,0.2);color:#fb923c}
 .cat.crypto{background:rgba(34,211,238,0.2);color:#22d3ee}
+.cat.technology{background:rgba(59,130,246,0.2);color:#60a5fa}
+.cat.healthcare{background:rgba(16,185,129,0.2);color:#34d399}
+.cat.financials{background:rgba(245,158,11,0.2);color:#fbbf24}
+.cat.consumerdisc{background:rgba(236,72,153,0.2);color:#f472b6}
+.cat.consumerstpl{background:rgba(139,92,246,0.2);color:#a78bfa}
+.cat.energy{background:rgba(251,146,60,0.2);color:#fb923c}
+.cat.industrials{background:rgba(124,58,237,0.2);color:#a78bfa}
+.cat.communication{background:rgba(34,211,238,0.2);color:#22d3ee}
+.cat.utilities{background:rgba(100,116,139,0.2);color:#94a3b8}
+.cat.materials{background:rgba(217,119,6,0.2);color:#fbbf24}
+.cat.realestate{background:rgba(168,85,247,0.2);color:#c084fc}
 .top-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;padding:16px}
 .top-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px}
 .top-card h3{font-size:0.9rem;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
@@ -223,9 +226,13 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="signals" id="signalsGrid"></div>
 <div class="tabs">
 <button class="tab active" onclick="showTab('metrics')"><i class="fas fa-table"></i> ETF Metrics</button>
-<button class="tab" onclick="showTab('top10')"><i class="fas fa-trophy"></i> Top 10</button>
+<button class="tab" onclick="showTab('stocks')"><i class="fas fa-chart-bar"></i> Stock Metrics</button>
+<button class="tab" onclick="showTab('top10')"><i class="fas fa-trophy"></i> Top 10 ETF</button>
+<button class="tab" onclick="showTab('top10stocks')"><i class="fas fa-medal"></i> Top 10 Stocks</button>
+<button class="tab" onclick="showTab('top10sectors')"><i class="fas fa-industry"></i> Top 10 Sectors</button>
 <button class="tab" onclick="showTab('ratios')"><i class="fas fa-balance-scale"></i> Ratios</button>
-<button class="tab" onclick="showTab('brief')"><i class="fas fa-newspaper"></i> Daily Brief</button>
+<button class="tab" onclick="showTab('brief')"><i class="fas fa-newspaper"></i> Daily Brief - ETFs</button>
+<button class="tab" onclick="showTab('briefstocks')"><i class="fas fa-file-alt"></i> Daily Brief - Stocks</button>
 </div>
 <div class="panel active" id="panel-metrics">
 <div class="controls">
@@ -249,11 +256,45 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 </tr></thead><tbody id="tableBody"><tr><td colspan="10" class="loading">Loading data...</td></tr></tbody></table>
 </div>
 </div>
+<div class="panel" id="panel-stocks">
+<div class="controls">
+<div class="search"><i class="fas fa-search"></i><input type="text" id="stockSearchInput" placeholder="Search stocks..." oninput="renderStockTable()"></div>
+<select id="stockCatFilter" onchange="renderStockTable()"><option value="all">All Sectors</option><option value="Technology">Technology</option><option value="Healthcare">Healthcare</option><option value="Financials">Financials</option><option value="Consumer Disc.">Consumer Disc.</option><option value="Consumer Stpl.">Consumer Staples</option><option value="Energy">Energy</option><option value="Industrials">Industrials</option><option value="Communication">Communication</option><option value="Utilities">Utilities</option><option value="Materials">Materials</option><option value="Real Estate">Real Estate</option></select>
+<select id="stockPeriodFilter" onchange="renderStockTable()">
+<option value="1W">1 Week</option><option value="2W">2 Weeks</option><option value="1M" selected>1 Month</option><option value="3M">3 Months</option><option value="6M">6 Months</option><option value="12M">12 Months</option>
+</select>
+</div>
+<div class="table-wrap">
+<table><thead><tr>
+<th class="sortable" data-sort="Symbol" onclick="sortByStock('Symbol', event)">Symbol <i class="fas fa-sort sort-icon"></i></th>
+<th>Name</th><th>Sector</th>
+<th class="sortable desc" data-sort="RETURN" onclick="sortByStock('RETURN', event)">Return% <i class="fas fa-sort-down sort-icon"></i></th>
+<th class="sortable" data-sort="TREND" onclick="sortByStock('TREND', event)">Trend <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="ACCELERATION" onclick="sortByStock('ACCELERATION', event)">Accel <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="QUALITY" onclick="sortByStock('QUALITY', event)">R² <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="SHARPE" onclick="sortByStock('SHARPE', event)">Sharpe <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="SORTINO" onclick="sortByStock('SORTINO', event)">Sortino <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="STABILITY" onclick="sortByStock('STABILITY', event)">Stability <i class="fas fa-sort sort-icon"></i></th>
+</tr></thead><tbody id="stockTableBody"><tr><td colspan="10" class="loading">Loading data...</td></tr></tbody></table>
+</div>
+</div>
 <div class="panel" id="panel-top10">
 <div class="controls"><div class="periods" id="top10Periods">
 <button onclick="setTop10P('1W')">1W</button><button onclick="setTop10P('2W')">2W</button><button class="active" onclick="setTop10P('1M')">1M</button><button onclick="setTop10P('3M')">3M</button><button onclick="setTop10P('6M')">6M</button><button onclick="setTop10P('12M')">12M</button>
 </div></div>
 <div class="top-grid" id="top10Grid"></div>
+</div>
+<div class="panel" id="panel-top10stocks">
+<div class="controls"><div class="periods" id="top10StockPeriods">
+<button onclick="setTop10StockP('1W')">1W</button><button onclick="setTop10StockP('2W')">2W</button><button class="active" onclick="setTop10StockP('1M')">1M</button><button onclick="setTop10StockP('3M')">3M</button><button onclick="setTop10StockP('6M')">6M</button><button onclick="setTop10StockP('12M')">12M</button>
+</div></div>
+<div class="top-grid" id="top10StockGrid"></div>
+</div>
+<div class="panel" id="panel-top10sectors">
+<div class="controls"><div class="periods" id="top10SectorPeriods">
+<button onclick="setTop10SectorP('1W')">1W</button><button onclick="setTop10SectorP('2W')">2W</button><button class="active" onclick="setTop10SectorP('1M')">1M</button><button onclick="setTop10SectorP('3M')">3M</button><button onclick="setTop10SectorP('6M')">6M</button><button onclick="setTop10SectorP('12M')">12M</button>
+</div></div>
+<div class="top-grid" id="top10SectorGrid"></div>
 </div>
 <div class="panel" id="panel-ratios">
 <div class="controls">
@@ -269,6 +310,14 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="brief-wrapper">
 <div class="brief-container" id="briefContainer">
 <div class="brief-loading"><i class="fas fa-spinner fa-spin"></i><br>Loading Daily Brief...</div>
+</div>
+</div>
+</div>
+
+<div class="panel" id="panel-briefstocks">
+<div class="brief-wrapper">
+<div class="brief-container" id="briefStockContainer">
+<div class="brief-loading"><i class="fas fa-spinner fa-spin"></i><br>Loading Stock Brief...</div>
 </div>
 </div>
 </div>
@@ -308,9 +357,11 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 // ========== GLOBAL STATE ==========
 var DATA = null;
 var BRIEF = null;
-var REGIME, RATIOS, ETFS;
-var top10P = '1M', ratioP = '1M';
+var BRIEF_STOCKS = null;
+var REGIME, RATIOS, ETFS, STOCKS;
+var top10P = '1M', top10StockP = '1M', top10SectorP = '1M', ratioP = '1M';
 var currentSort = {col: 'RETURN', dir: 'desc'};
+var currentStockSort = {col: 'RETURN', dir: 'desc'};
 
 var GLOSS = {
   "TREND": {"title": "Trend", "desc": "Direction of price movement. Annualized %.", "example": "+25% = Rising at 25% annual rate"},
@@ -355,24 +406,31 @@ var GLOSS = {
 // ========== DATA LOADING ==========
 async function loadData() {
   try {
-    const [dataRes, briefRes] = await Promise.all([
+    const [dataRes, briefRes, briefStockRes] = await Promise.all([
       fetch('etf_data.json'),
-      fetch('brief.json').catch(() => null)
+      fetch('brief.json').catch(() => null),
+      fetch('brief_stocks.json').catch(() => null)
     ]);
     
     DATA = await dataRes.json();
     REGIME = DATA.regime;
     RATIOS = DATA.ratios;
     ETFS = DATA.etfs;
+    STOCKS = DATA.stocks || [];
     
     if (briefRes && briefRes.ok) {
       BRIEF = await briefRes.json();
+    }
+    if (briefStockRes && briefStockRes.ok) {
+      BRIEF_STOCKS = await briefStockRes.json();
     }
     
     renderAll();
   } catch (err) {
     console.error('Error loading data:', err);
-    document.getElementById('tableBody').innerHTML = '<tr><td colspan="10">Error loading etf_data.json</td></tr>';
+    console.error('Error stack:', err.stack);
+    document.getElementById('tableBody').innerHTML = '<tr><td colspan="10">Error: ' + err.message + '</td></tr>';
+    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="10">Error: ' + err.message + '</td></tr>';
   }
 }
 
@@ -381,9 +439,13 @@ function renderAll() {
   renderRegime();
   renderSignals();
   renderTable();
+  renderStockTable();
   renderTop10();
+  renderTop10Stocks();
+  renderTop10Sectors();
   renderRatios();
   renderBrief();
+  renderBriefStocks();
 }
 
 // ========== MODAL ==========
@@ -494,6 +556,29 @@ function renderTable() {
 }
 function fmt(v) { if (v == null || isNaN(v)) return '-'; return (v > 0 ? '+' : '') + v.toFixed(2); }
 
+// ========== STOCK TABLE ==========
+function sortByStock(col, e) {
+  if (e && e.target.closest('.info-btn')) return;
+  if (currentStockSort.col === col) { currentStockSort.dir = currentStockSort.dir === 'desc' ? 'asc' : 'desc'; } else { currentStockSort.col = col; currentStockSort.dir = 'desc'; }
+  renderStockTable();
+}
+
+function renderStockTable() {
+  if (!STOCKS || STOCKS.length === 0) {
+    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="10">No stock data available</td></tr>';
+    return;
+  }
+  var p = document.getElementById('stockPeriodFilter').value, cat = document.getElementById('stockCatFilter').value, s = document.getElementById('stockSearchInput').value.toLowerCase(), d = [];
+  for (var i = 0; i < STOCKS.length; i++) { var e = STOCKS[i]; if ((cat === 'all' || e.Category === cat) && (e.Symbol.toLowerCase().indexOf(s) >= 0 || e.Name.toLowerCase().indexOf(s) >= 0)) d.push(e); }
+  d.sort(function(a, b) { if (currentStockSort.col === 'Symbol') return currentStockSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; var av = ap[currentStockSort.col] != null ? ap[currentStockSort.col] : -999, bv = bp[currentStockSort.col] != null ? bp[currentStockSort.col] : -999; return currentStockSort.dir === 'desc' ? bv - av : av - bv; });
+  var html = '';
+  for (var i = 0; i < d.length; i++) { var e = d[i], x = e[p] || e['2W'] || e['1M'] || {}, c = e.Category.toLowerCase().replace(/[^a-z]/g, '');
+    var ret = x.RETURN || 0, trnd = x.TREND || 0, acc = x.ACCELERATION || 0, qual = x.QUALITY || 0, shrp = x.SHARPE || 0, sort = x.SORTINO || 0, stab = x.STABILITY || 0;
+    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td></tr>';
+  }
+  document.getElementById('stockTableBody').innerHTML = html;
+}
+
 // ========== TOP 10 ==========
 function renderTop10() {
   var metrics = [{k:'TREND',t:'Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},{k:'RETURN',t:'Return',icon:'fa-chart-line',cls:'return',s:'%'},{k:'SHARPE',t:'Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},{k:'SORTINO',t:'Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},{k:'QUALITY',t:'Quality',icon:'fa-bullseye',cls:'quality',s:''},{k:'STABILITY',t:'Stability',icon:'fa-mountain',cls:'stability',s:''}];
@@ -507,6 +592,175 @@ function renderTop10() {
   document.getElementById('top10Grid').innerHTML = html;
 }
 function setTop10P(p) { top10P = p; document.querySelectorAll('#top10Periods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10(); }
+
+// ========== TOP 10 STOCKS ==========
+function renderTop10Stocks() {
+  if (!STOCKS || STOCKS.length === 0) {
+    document.getElementById('top10StockGrid').innerHTML = '<div class="brief-loading">No stock data available</div>';
+    return;
+  }
+  var metrics = [{k:'TREND',t:'Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},{k:'RETURN',t:'Return',icon:'fa-chart-line',cls:'return',s:'%'},{k:'SHARPE',t:'Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},{k:'SORTINO',t:'Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},{k:'QUALITY',t:'Quality',icon:'fa-bullseye',cls:'quality',s:''},{k:'STABILITY',t:'Stability',icon:'fa-mountain',cls:'stability',s:''}];
+  var html = '';
+  for (var m = 0; m < metrics.length; m++) { var x = metrics[m], sorted = STOCKS.slice().sort(function(a, b) { var ap = a[top10StockP] || a['2W'] || a['1M'] || {}, bp = b[top10StockP] || b['2W'] || b['1M'] || {}; var av = ap[x.k] != null ? ap[x.k] : -999, bv = bp[x.k] != null ? bp[x.k] : -999; return bv - av; }).slice(0, 10), listHtml = '';
+    for (var i = 0; i < sorted.length; i++) { var e = sorted[i], ep = e[top10StockP] || e['2W'] || e['1M'] || {}, v = ep[x.k] != null ? ep[x.k] : 0, rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
+    }
+    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10StockP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
+  }
+  document.getElementById('top10StockGrid').innerHTML = html;
+}
+function setTop10StockP(p) { top10StockP = p; document.querySelectorAll('#top10StockPeriods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10Stocks(); }
+
+// ========== TOP 10 SECTORS ==========
+function renderTop10Sectors() {
+  if (!STOCKS || STOCKS.length === 0) {
+    document.getElementById('top10SectorGrid').innerHTML = '<div class="brief-loading">No stock data available</div>';
+    return;
+  }
+  
+  // Sektör bazlı metrikleri hesapla
+  function calcSectorMetrics() {
+    var sectorData = {};
+    
+    STOCKS.forEach(function(stock) {
+      var sector = stock.Category;
+      var period = stock[top10SectorP] || stock['2W'] || stock['1M'] || {};
+      
+      if (!sectorData[sector]) {
+        sectorData[sector] = {
+          name: sector,
+          stocks: [],
+          RETURN: [],
+          TREND: [],
+          SHARPE: [],
+          SORTINO: [],
+          QUALITY: [],
+          STABILITY: []
+        };
+      }
+      
+      sectorData[sector].stocks.push(stock.Symbol);
+      if (period.RETURN != null) sectorData[sector].RETURN.push(period.RETURN);
+      if (period.TREND != null) sectorData[sector].TREND.push(period.TREND);
+      if (period.SHARPE != null) sectorData[sector].SHARPE.push(period.SHARPE);
+      if (period.SORTINO != null) sectorData[sector].SORTINO.push(period.SORTINO);
+      if (period.QUALITY != null) sectorData[sector].QUALITY.push(period.QUALITY);
+      if (period.STABILITY != null) sectorData[sector].STABILITY.push(period.STABILITY);
+    });
+    
+    // Ortalamaları hesapla
+    var sectors = [];
+    for (var sector in sectorData) {
+      var d = sectorData[sector];
+      var avg = function(arr) { return arr.length > 0 ? arr.reduce(function(a,b){return a+b;}, 0) / arr.length : 0; };
+      sectors.push({
+        name: d.name,
+        count: d.stocks.length,
+        RETURN: avg(d.RETURN),
+        TREND: avg(d.TREND),
+        SHARPE: avg(d.SHARPE),
+        SORTINO: avg(d.SORTINO),
+        QUALITY: avg(d.QUALITY),
+        STABILITY: avg(d.STABILITY)
+      });
+    }
+    return sectors;
+  }
+  
+  var sectors = calcSectorMetrics();
+  var metrics = [
+    {k:'RETURN',t:'Avg Return',icon:'fa-chart-line',cls:'return',s:'%'},
+    {k:'TREND',t:'Avg Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},
+    {k:'SHARPE',t:'Avg Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},
+    {k:'SORTINO',t:'Avg Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},
+    {k:'QUALITY',t:'Avg Quality',icon:'fa-bullseye',cls:'quality',s:''},
+    {k:'STABILITY',t:'Avg Stability',icon:'fa-mountain',cls:'stability',s:''}
+  ];
+  
+  var html = '';
+  for (var m = 0; m < metrics.length; m++) {
+    var x = metrics[m];
+    var sorted = sectors.slice().sort(function(a, b) {
+      return b[x.k] - a[x.k];
+    });
+    
+    var listHtml = '';
+    for (var i = 0; i < sorted.length; i++) {
+      var sec = sorted[i];
+      var v = sec[x.k] || 0;
+      var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.name + '</span><span class="top-name">' + sec.count + ' stocks</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
+    }
+    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10SectorP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
+  }
+  document.getElementById('top10SectorGrid').innerHTML = html;
+}
+function setTop10SectorP(p) { top10SectorP = p; document.querySelectorAll('#top10SectorPeriods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10Sectors(); }
+
+// ========== TOP 10 SECTORS ==========
+function renderTop10Sectors() {
+  if (!STOCKS || STOCKS.length === 0) {
+    document.getElementById('top10SectorGrid').innerHTML = '<div class="brief-loading">No stock data available</div>';
+    return;
+  }
+  
+  // Sektör bazında grupla ve ortalama hesapla
+  var sectorData = {};
+  for (var i = 0; i < STOCKS.length; i++) {
+    var stock = STOCKS[i];
+    var sector = stock.Category;
+    var period = stock[top10SectorP] || stock['2W'] || stock['1M'] || {};
+    
+    if (!sectorData[sector]) {
+      sectorData[sector] = { name: sector, stocks: [], RETURN: [], TREND: [], SHARPE: [], SORTINO: [], QUALITY: [], STABILITY: [] };
+    }
+    
+    sectorData[sector].stocks.push(stock.Symbol);
+    if (period.RETURN != null) sectorData[sector].RETURN.push(period.RETURN);
+    if (period.TREND != null) sectorData[sector].TREND.push(period.TREND);
+    if (period.SHARPE != null) sectorData[sector].SHARPE.push(period.SHARPE);
+    if (period.SORTINO != null) sectorData[sector].SORTINO.push(period.SORTINO);
+    if (period.QUALITY != null) sectorData[sector].QUALITY.push(period.QUALITY);
+    if (period.STABILITY != null) sectorData[sector].STABILITY.push(period.STABILITY);
+  }
+  
+  // Ortalama hesapla
+  var sectors = [];
+  for (var sec in sectorData) {
+    var d = sectorData[sec];
+    var avg = function(arr) { return arr.length > 0 ? arr.reduce(function(a,b){return a+b;}, 0) / arr.length : 0; };
+    sectors.push({
+      name: d.name,
+      count: d.stocks.length,
+      RETURN: avg(d.RETURN),
+      TREND: avg(d.TREND),
+      SHARPE: avg(d.SHARPE),
+      SORTINO: avg(d.SORTINO),
+      QUALITY: avg(d.QUALITY),
+      STABILITY: avg(d.STABILITY)
+    });
+  }
+  
+  var metrics = [{k:'TREND',t:'Avg Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},{k:'RETURN',t:'Avg Return',icon:'fa-chart-line',cls:'return',s:'%'},{k:'SHARPE',t:'Avg Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},{k:'SORTINO',t:'Avg Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},{k:'QUALITY',t:'Avg Quality',icon:'fa-bullseye',cls:'quality',s:''},{k:'STABILITY',t:'Avg Stability',icon:'fa-mountain',cls:'stability',s:''}];
+  var html = '';
+  
+  for (var m = 0; m < metrics.length; m++) {
+    var x = metrics[m];
+    var sorted = sectors.slice().sort(function(a, b) { return b[x.k] - a[x.k]; });
+    var listHtml = '';
+    
+    for (var i = 0; i < sorted.length; i++) {
+      var sec = sorted[i];
+      var v = sec[x.k];
+      var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.name + '</span><span class="top-name">(' + sec.count + ' stocks)</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
+    }
+    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10SectorP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
+  }
+  
+  document.getElementById('top10SectorGrid').innerHTML = html;
+}
+function setTop10SectorP(p) { top10SectorP = p; document.querySelectorAll('#top10SectorPeriods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10Sectors(); }
 
 // ========== RATIOS ==========
 var RATIO_REFS = {
@@ -568,6 +822,23 @@ function renderBrief() {
   // Parse sections from markdown
   var sections = parseBriefContent(content);
   
+  // ETF Brief soruları
+  var questions = {
+    1: "What is the prevailing Global Risk Regime?",
+    2: "What are the primary drivers of Market Risk?",
+    3: "What is the signal from Financial Conditions?",
+    4: "Which sectors are displaying relative strength?",
+    5: "How does US performance compare to Global Markets?",
+    6: "What is the level of Speculative appetite?",
+    7: "What is the dominant Commodities theme?",
+    8: "What is the trend in Energy markets?",
+    9: "Is there confirmation between Short-term and Medium-term trends?",
+    10: "What is the Portfolio Compass direction?",
+    11: "Sectors to Watch Next Week?",
+    12: "Commodities to Watch Next Week?",
+    13: "Key Levels & Triggers?"
+  };
+  
   var html = '<div class="brief-hero"><h1><i class="fas fa-globe"></i> Daily Global Market Brief</h1><div class="brief-meta"><span><i class="fas fa-calendar"></i> ' + date + '</span><span><i class="fas fa-database"></i> ETF Barometer </span><span><i class="fas fa-robot"></i> AI Generated</span></div></div>';
   
   // Render sections
@@ -582,9 +853,12 @@ function renderBrief() {
   sectionConfigs.forEach(function(cfg) {
     html += '<div class="brief-section"><div class="brief-section-header ' + cfg.key + '"><i class="fas ' + cfg.icon + '"></i><h3>' + cfg.title + '</h3></div>';
     cfg.questions.forEach(function(qNum) {
-      var qa = sections['q' + qNum];
-      if (qa) {
-        html += '<div class="brief-qa"><div class="brief-q"><div class="brief-q-num">' + qNum + '</div><div class="brief-q-text">' + qa.q + '</div></div><div class="brief-a">' + formatAnswer(qa.a) + '</div></div>';
+      var answer = sections[qNum];
+      var question = questions[qNum] || 'Question ' + qNum;
+      if (answer) {
+        html += '<div class="brief-qa"><div class="brief-q"><div class="brief-q-num">' + qNum + '</div><div class="brief-q-text">' + question + '</div></div><div class="brief-a">' + formatAnswer(answer) + '</div></div>';
+      } else {
+        html += '<div class="brief-qa"><div class="brief-q"><div class="brief-q-num">' + qNum + '</div><div class="brief-q-text">' + question + '</div></div><div class="brief-a">Analysis pending...</div></div>';
       }
     });
     html += '</div>';
@@ -630,32 +904,30 @@ function parseBriefContent(content) {
       answer = match1[1];
     }
     
-    // Format 2: 1. Question? Answer (plain text)
+    // Format 2: 1. Question?\nAnswer (plain text - stock brief format)
     if (!answer) {
-      var pattern2 = new RegExp(num + '\\.\\s*[^\\n]*\\?\\s*([\\s\\S]*?)(?=' + nextNum + '\\.\\s|\\d+\\.\\s|##|EXECUTIVE|$)', 'i');
+      var pattern2 = new RegExp(num + '\\.\\s*[^\\n]*\\?\\n([\\s\\S]*?)(?=' + nextNum + '\\.\\s[A-Z]|\\d+\\.\\s[A-Z]|[🌡📈🏭🧭🔮📝]|EXECUTIVE|$)', 'i');
       var match2 = content.match(pattern2);
       if (match2 && match2[1] && match2[1].trim().length > 10) {
         answer = match2[1];
       }
     }
     
-    // Format 3: Question keyword ile bul
+    // Format 3: Sadece numara ile (fallback)
     if (!answer) {
-      var keywords = ['Risk Regime', 'Risk Drivers', 'Financial Conditions', 'Sector.*strength', 'US.*Global', 'Speculative', 'Commodities theme', 'Energy', 'Confirmation', 'Portfolio', 'Sectors.*Watch', 'Commodities.*Watch', 'Key Levels'];
-      if (keywords[num-1]) {
-        var pattern3 = new RegExp(keywords[num-1] + '[^\\n]*\\n([\\s\\S]*?)(?=\\d+\\.|##|EXECUTIVE|$)', 'i');
-        var match3 = content.match(pattern3);
-        if (match3 && match3[1] && match3[1].trim().length > 10) {
-          answer = match3[1];
-        }
+      var pattern3 = new RegExp('^' + num + '\\.\\s*[^\\n]+\\n([\\s\\S]*?)(?=^' + nextNum + '\\.\\s|^\\d+\\.\\s|$)', 'im');
+      var match3 = content.match(pattern3);
+      if (match3 && match3[1] && match3[1].trim().length > 10) {
+        answer = match3[1];
       }
     }
     
     if (answer) {
-      sections['q' + num] = {
-        q: questions[num],
-        a: answer.trim().replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim()
-      };
+      // Emoji ve section header temizle
+      answer = answer.replace(/[🌡📈🏭🧭🔮📝️]+/g, '').trim();
+      answer = answer.replace(/^(MARKET OVERVIEW|STOCK PERFORMANCE|SECTOR OUTLOOK|PORTFOLIO STRATEGY|NEXT WEEK OUTLOOK)\s*/i, '');
+      
+      sections[num] = answer.trim().replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim();
     }
   }
   
@@ -734,8 +1006,26 @@ function formatAnswer(text) {
     // Crypto
     'IBIT','ETHA'
   ];
-  etfs.forEach(function(etf) {
-    text = text.replace(new RegExp('\\b' + etf + '\\b', 'g'), '<span class="etf clickable" onclick="showChart(\'' + etf + '\', \'' + etf + '\')">' + etf + '</span>');
+  
+  // SP100 Stocks
+  var stocks = [
+    'AAPL','MSFT','GOOGL','META','NVDA','AVGO','CSCO','ADBE','CRM','ORCL','ACN','IBM','INTC','AMD','QCOM','TXN','AMAT','NOW','INTU',
+    'JNJ','UNH','PFE','ABBV','MRK','LLY','TMO','ABT','DHR','BMY','AMGN','GILD','MDT','CVS','ISRG',
+    'JPM','BAC','WFC','GS','MS','BLK','SCHW','AXP','C','USB','PNC','TFC','COF','BK','CME','MA','V','PYPL','MET','AIG',
+    'AMZN','TSLA','HD','MCD','NKE','SBUX','LOW','TJX','TGT','F','GM','BKNG',
+    'PG','KO','PEP','COST','WMT','PM','MO','CL','KHC','MDLZ','EL',
+    'XOM','CVX','COP','SLB','EOG','OXY','PSX','VLO',
+    'HON','UNP','UPS','RTX','CAT','DE','BA','GE','LMT','MMM','FDX','EMR','GD',
+    'DIS','NFLX','CMCSA','T','VZ','TMUS','CHTR',
+    'NEE','DUK','SO','D','AEP','EXC',
+    'LIN','APD','ECL','DD','NEM','FCX','DOW',
+    'AMT','PLD','CCI','EQIX','PSA','SPG'
+  ];
+  
+  // ETF ve Stock sembollerini birleştir
+  var allSymbols = etfs.concat(stocks);
+  allSymbols.forEach(function(sym) {
+    text = text.replace(new RegExp('\\b' + sym + '\\b', 'g'), '<span class="etf clickable" onclick="showChart(\'' + sym + '\', \'' + sym + '\')">' + sym + '</span>');
   });
   
   // Önce cümle/paragraf başlarını büyük harf yap
@@ -767,6 +1057,72 @@ function formatAnswer(text) {
   });
   
   return text.trim();
+}
+
+// ========== STOCK BRIEF ==========
+function renderBriefStocks() {
+  var container = document.getElementById('briefStockContainer');
+  
+  if (!BRIEF_STOCKS || !BRIEF_STOCKS.content) {
+    container.innerHTML = '<div class="brief-loading"><i class="fas fa-exclamation-circle"></i><br>Stock Brief not available<br><small>Run: python generate_brief_stocks.py</small></div>';
+    return;
+  }
+  
+  var date = BRIEF_STOCKS.date || DATA.update_time;
+  var content = BRIEF_STOCKS.content;
+  
+  // Parse sections - aynı fonksiyonu kullan
+  var sections = parseBriefContent(content);
+  
+  // Stock brief soruları
+  var questions = {
+    1: "What is the prevailing Global Risk Regime?",
+    2: "Which sectors are leading?",
+    3: "Which sectors are lagging?",
+    4: "Top Performing Stocks?",
+    5: "Worst Performing Stocks?",
+    6: "Momentum Stocks?",
+    7: "Technology Outlook?",
+    8: "Financials Outlook?",
+    9: "Healthcare Outlook?",
+    10: "Portfolio Recommendation?",
+    11: "Stocks to Watch Next Week?",
+    12: "Sectors to Watch Next Week?",
+    13: "Key Levels & Triggers?"
+  };
+  
+  // Hero - ETF ile aynı format
+  var html = '<div class="brief-hero"><h1><i class="fas fa-chart-bar"></i> Stock Daily Brief</h1><div class="brief-meta"><span><i class="fas fa-calendar"></i> ' + date + '</span><span><i class="fas fa-database"></i> SP100 Stocks</span><span><i class="fas fa-robot"></i> AI Generated</span></div></div>';
+  
+  // Sections - ETF brief ile birebir aynı yapı
+  var sectionConfigs = [
+    {key: 'atmosphere', icon: 'fa-thermometer-half', title: 'PART 1: MARKET OVERVIEW', questions: [1,2,3]},
+    {key: 'equities', icon: 'fa-chart-line', title: 'PART 2: STOCK PERFORMANCE', questions: [4,5,6]},
+    {key: 'economy', icon: 'fa-industry', title: 'PART 3: SECTOR OUTLOOK', questions: [7,8,9]},
+    {key: 'strategy', icon: 'fa-compass', title: 'PART 4: PORTFOLIO STRATEGY', questions: [10]},
+    {key: 'outlook', icon: 'fa-crystal-ball', title: 'PART 5: NEXT WEEK OUTLOOK', questions: [11,12,13]}
+  ];
+  
+  sectionConfigs.forEach(function(cfg) {
+    html += '<div class="brief-section"><div class="brief-section-header ' + cfg.key + '"><i class="fas ' + cfg.icon + '"></i><h3>' + cfg.title + '</h3></div>';
+    cfg.questions.forEach(function(qNum) {
+      var answer = sections[qNum];
+      var question = questions[qNum] || 'Question ' + qNum;
+      if (answer) {
+        html += '<div class="brief-qa"><div class="brief-q"><div class="brief-q-num">' + qNum + '</div><div class="brief-q-text">' + question + '</div></div><div class="brief-a">' + formatAnswer(answer) + '</div></div>';
+      } else {
+        html += '<div class="brief-qa"><div class="brief-q"><div class="brief-q-num">' + qNum + '</div><div class="brief-q-text">' + question + '</div></div><div class="brief-a">Analysis pending...</div></div>';
+      }
+    });
+    html += '</div>';
+  });
+  
+  // Executive Summary - EN SONDA (ETF ile aynı)
+  if (sections.summary) {
+    html += '<div class="brief-summary"><div class="brief-summary-header"><i class="fas fa-file-alt"></i><h3>EXECUTIVE SUMMARY</h3></div><p>' + formatAnswer(sections.summary) + '</p></div>';
+  }
+  
+  container.innerHTML = html;
 }
 
 // ========== INIT ==========

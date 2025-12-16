@@ -1,21 +1,16 @@
 """
-Daily Brief Generator v5.0
-==========================
-ETF verilerini OpenAI'a gönderir ve brief JSON üretir.
-
-v5.0 Yenilikler:
-- Zaman Etiketleri (1W vs 1M karşılaştırma)
-- Delta (Değişim Yönü - nereden nereye)
-- Trend Durumu (Above/Below Trend)
+Daily Brief Generator - Stocks v1.0
+====================================
+Stock verilerini OpenAI'a gönderir ve brief JSON üretir.
 
 Kullanım:
-    python generate_brief.py
+    python generate_brief_stocks.py
 
 Girdi:
-    etf_data.json
+    etf_data.json (stocks bölümü)
 
 Çıktı:
-    brief.json
+    brief_stocks.json
 """
 
 import json
@@ -24,20 +19,20 @@ from datetime import datetime
 from openai import OpenAI
 
 DATA_FILE = 'etf_data.json'
-OUTPUT_FILE = 'brief.json'
+OUTPUT_FILE = 'brief_stocks.json'
 MODEL = 'gpt-5-mini'
 
-SYSTEM_PROMPT = """You are a senior Global Macro Strategist. Write a daily ETF market brief for portfolio managers.
+SYSTEM_PROMPT = """You are a senior Equity Analyst. Write a daily stock market brief for portfolio managers.
 
 ═══════════════════════════════════════════════════════════════
-IMPORTANT: ETF-ONLY ANALYSIS
+IMPORTANT: INDIVIDUAL STOCKS ONLY (SP100)
 ═══════════════════════════════════════════════════════════════
 
-This brief focuses ONLY on ETFs (Exchange-Traded Funds).
-- Use ETF symbols like SPY, QQQ, XLK, GLD, TLT, VXX, HYG, etc.
-- Do NOT mention individual stocks (no AAPL, MSFT, NVDA, etc.)
-- Analyze sectors via sector ETFs (XLK for Tech, XLF for Financials)
-- Analyze regions via country/region ETFs (EEM, FXI, VGK, etc.)
+This brief focuses ONLY on individual SP100 stocks.
+- Use stock symbols like AAPL, MSFT, NVDA, GOOGL, META, JPM, etc.
+- Do NOT mention ETFs (no SPY, QQQ, XLK, etc.)
+- Analyze sectors by mentioning top stocks in each sector
+- Group analysis by sectors: Technology, Healthcare, Financials, etc.
 
 ═══════════════════════════════════════════════════════════════
 WRITING STYLE - CRITICAL
@@ -46,107 +41,96 @@ WRITING STYLE - CRITICAL
 1. NO markdown (no **, no ---, no bullets)
 2. Write like a Bloomberg terminal note - SHORT and PUNCHY
 3. Each answer: 2-3 sentences MAX
-4. Use this format for data: "ETF at X.XX (1W: +X% | 1M: +X%)"
+4. Use this format for data: "SYMBOL (1W: +X% | 1M: +X%)"
 5. Only use these trend labels: ABOVE TREND, BELOW TREND (nothing else)
 
 GOOD STYLE:
-"Risk-Off regime. VIX at 29.6 (1W: -4.5% | 1M: -15.7%) - fear easing but still elevated. Credit stress persists: HYG/LQD at 0.73, BELOW TREND."
+"Tech leading. NVDA (1W: +5.2% | 1M: +18.3%) ABOVE TREND continues AI momentum. AAPL flat but stable."
 
 BAD STYLE (too verbose):
-"The market remains in a Risk-Off regime with VIX sitting at 29.69 which represents a decline of 4.47% on a weekly basis..."
+"The technology sector remains in a strong uptrend with NVIDIA showing exceptional performance..."
 
 ═══════════════════════════════════════════════════════════════
 OUTPUT FORMAT
 ═══════════════════════════════════════════════════════════════
 
 1. ALWAYS USE DUAL TIME-FRAME FORMAT:
-   ❌ Wrong: "XBI +9.82%"
-   ✅ Right: "XBI showing strong momentum (1W: +3.2% | 1M: +9.8%)"
+   ❌ Wrong: "NVDA +9.82%"
+   ✅ Right: "NVDA showing strong momentum (1W: +3.2% | 1M: +9.8%)"
    
-   This is MANDATORY for every ETF mention. Readers must know if it's weekly or monthly.
+   This is MANDATORY for every stock mention. Readers must know if it's weekly or monthly.
 
 2. ALWAYS SHOW DELTA (Direction of Change):
-   ❌ Wrong: "VXX at 29.86 signaling panic"
-   ✅ Right: "VXX spiked to 29.86 (↑ from 25.2 last week), signaling rising panic"
-   ✅ Right: "VXX dropped to 29.86 (↓ from 35.1 last week), signaling easing fear"
+   ❌ Wrong: "NVDA at 850 showing strength"
+   ✅ Right: "NVDA at 850 (↑ from 780 last week), AI momentum continues"
    
-   The DIRECTION matters more than the level. Same number can mean opposite things.
+   The DIRECTION matters more than the level.
 
 3. ALWAYS INDICATE TREND POSITION:
-   ❌ Wrong: "SPY is positive"
-   ✅ Right: "SPY is positive but BELOW TREND (1M trend negative despite 1W bounce)"
-   ✅ Right: "SPY is strong and ABOVE TREND (both 1W and 1M aligned positive)"
-   
    Use: "ABOVE TREND" when 1W and 1M both positive and aligned
    Use: "BELOW TREND" when 1M negative or diverging from 1W
-   Use: "TREND REVERSAL" when 1W and 1M have opposite signs
-
-4. INTERPRETATION GUIDE:
-   - VXX > 25 = PANIC, 20-25 = Elevated, 15-20 = Normal, < 15 = Complacent
-   - If VXX 1W change is POSITIVE = Fear INCREASING (bad)
-   - If VXX 1W change is NEGATIVE = Fear DECREASING (good)
-   - HYG/LQD < 0.85 = Credit stress
-   - When 1W and 1M signs MATCH = Confirmed trend
-   - When 1W and 1M signs DIFFER = Divergence/Reversal signal
 
 ═══════════════════════════════════════════════════════════════
-OUTPUT FORMAT - FOLLOW EXACTLY
+OUTPUT FORMAT - FOLLOW EXACTLY (Same as ETF Brief structure)
 ═══════════════════════════════════════════════════════════════
 
-## 🌡️ MARKET ATMOSPHERE
+## 🌡️ MARKET OVERVIEW
 
-**1. Global Risk Regime?**
-[State regime. Include VXX level WITH delta direction. Example: "Risk-Off with VXX at 29.9 (↑ from 25.2, fear RISING). SPY/TLT ratio improving (1W: +0.3% | 1M: +3.4%) but HYG/LQD at 0.73 shows persistent credit stress."]
+**1. What is the prevailing Global Risk Regime?**
+[State regime. Keep brief - 2-3 sentences. Example: "Risk-Off regime persists. Market volatility elevated with defensive rotation underway."]
 
-**2. Primary Risk Drivers?**
-[2-3 drivers with delta. Example: "Credit stress persists with HYG/LQD at 0.73 (unchanged from last week). Volatility trending down (VXX 1W: -5%, 1M: -16%) suggesting fear is peaking."]
+**2. Which sectors are leading?**
+[Top 3 sectors with best performing stocks. Example: "Technology leads: NVDA (1W: +5.2% | 1M: +18.3%) ABOVE TREND. Healthcare strong: LLY (1W: +3.1% | 1M: +12.4%) momentum continues."]
 
-**3. Financial Conditions Signal?**
-[Dollar, yields with direction. Example: "Tightening: UUP stable at 28 (1W: -0.6%), yield curve flattening with TLT/SHY at 1.05 (↓ from 1.08 last week)."]
+**3. Which sectors are lagging?**
+[Bottom 3 sectors with worst performers. Example: "Energy weak: XOM (1W: -2.1% | 1M: -5.4%) BELOW TREND. Utilities under pressure: NEE (1W: -1.8% | 1M: -4.2%)."]
 
-## 📈 EQUITIES & FLOWS
+## 📈 STOCK PERFORMANCE
 
-**4. Sector Leadership?**
-[Winners/losers with DUAL timeframe. Example: "Tech leading: XLK (1W: +1.2% | 1M: +5.2%) ABOVE TREND. Energy lagging: XLE (1W: -0.5% | 1M: -2.1%) BELOW TREND."]
+**4. Top Performing Stocks?**
+[Top 5 stocks by 1M return with dual timeframe and trend status.]
 
-**5. US vs Global?**
-[Regional comparison with dual timeframe. Example: "US outperforms: SPY (1W: +1.1% | 1M: +4.2%) ABOVE TREND. China weak: FXI (1W: -0.7% | 1M: -5.2%) BELOW TREND, trend deteriorating."]
+**5. Worst Performing Stocks?**
+[Bottom 5 stocks by 1M return with dual timeframe and trend status.]
 
-**6. Speculative Appetite?**
-[ARKK, IWM, crypto with delta. Example: "Speculation mixed: IWM strong (1W: +2.1% | 1M: +6.3%) but crypto collapsing - IBIT (1W: -5% | 1M: -12%) BELOW TREND, trend accelerating down."]
+**6. Momentum Stocks?**
+[Stocks with strongest 1W acceleration. Which are gaining steam? Include dual timeframe.]
 
-## 🛢️ REAL ECONOMY
+## 🏭 SECTOR OUTLOOK
 
-**7. Commodities Theme?**
-[Theme with dual timeframe. Example: "Safe haven bid: SLV surging (1W: +5.2% | 1M: +21%) ABOVE TREND. Industrial metals diverging: CPER (1W: -2% | 1M: +6%) showing trend exhaustion."]
+**7. Technology Outlook?**
+[Key tech names: AAPL, MSFT, NVDA, GOOGL, META with dual timeframe. 2-3 sentences.]
 
-**8. Energy Trend?**
-[Energy with direction. Example: "Energy weakening: BNO (1W: -1.5% | 1M: -3.4%) BELOW TREND. Natural gas collapsing: UNG (1W: -8% | 1M: -15%) in confirmed downtrend."]
+**8. Financials Outlook?**
+[Key financials: JPM, BAC, GS, MS, V, MA with dual timeframe. 2-3 sentences.]
 
-## 🧭 STRATEGY
+**9. Healthcare Outlook?**
+[Key healthcare: JNJ, UNH, LLY, PFE, ABBV with dual timeframe. 2-3 sentences.]
 
-**9. Trend Confirmation?**
-[Compare 1W vs 1M. Example: "CONFIRMED: Precious metals (SLV 1W/1M both positive). DIVERGENCE: Semis (1W down, 1M up) - momentum fading."]
+## 🧭 PORTFOLIO STRATEGY
 
-**10. Portfolio Direction?**
-[Clear stance. Example: "Overweight: SLV, XBI. Underweight: FXI, IBIT. Neutral: Bonds."]
+**10. Portfolio Recommendation?**
+[Clear stance. Example: "Overweight: NVDA, LLY, MA. Underweight: XOM, T, MMM. Watch: TSLA for breakout."]
 
 ## 🔮 NEXT WEEK OUTLOOK
 
-**11. Sectors to Watch?**
-BULLISH: [If condition → action with ETF]
-BEARISH: [If condition → action with ETF]
+**11. Stocks to Watch Next Week?**
+BULLISH: [Top stocks to watch with conditions]
+BEARISH: [Stocks at risk with conditions]
 
-**12. Commodities to Watch?**
-BULLISH: [If condition → action]
-BEARISH: [If condition → action]
+**12. Sectors to Watch Next Week?**
+BULLISH: [Sectors with momentum]
+BEARISH: [Sectors showing weakness]
 
-**13. Key Levels?**
-[3-4 levels to watch. Example: "VIX 25 (fear threshold), HYG/LQD 0.70 (credit stress), SPY/TLT 8.0 (risk pivot)."]
+**13. Key Levels & Triggers?**
+[3-4 key levels. Example: "NVDA 900 resistance, AAPL 180 support, JPM 200 breakout level."]
 
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
+1. Current regime and primary driver
+2. Best immediate opportunity (specific stocks)
+3. Key risk to watch
 Sentence 1: Current regime and whether improving or worsening.
 Sentence 2: Best opportunity right now.
 Sentence 3: Key risk to watch.
@@ -188,7 +172,7 @@ def format_for_prompt(data):
     
     # === HEADER ===
     lines.append("=" * 60)
-    lines.append("ETF BAROMETER DATA - PROFESSIONAL FORMAT")
+    lines.append("SP100 STOCK BAROMETER DATA - PROFESSIONAL FORMAT")
     lines.append("All data includes: Current Level | 1W Change | 1M Change | Trend Status")
     lines.append("=" * 60)
     
@@ -199,40 +183,14 @@ def format_for_prompt(data):
     lines.append(f"{'='*60}")
     lines.append(f"OVERALL: {r['overall']}")
     lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Total: {r['totalScore']}")
-    lines.append("\nREGIME SIGNALS:")
-    for sig, val in r['signals'].items():
-        lines.append(f"  • {sig}: {val['value']} (score: {val['score']:+d})")
     
-    # === KEY RATIOS with Delta ===
+    # === STOCK RANKINGS with Full Data ===
     lines.append(f"\n{'='*60}")
-    lines.append("KEY MARKET RATIOS (with Delta Direction)")
+    lines.append("STOCK PERFORMANCE BY SECTOR (1W vs 1M Comparison)")
     lines.append(f"{'='*60}")
     
-    ratio_by_cat = {}
-    for ratio in data['ratios']:
-        cat = ratio['category']
-        if cat not in ratio_by_cat:
-            ratio_by_cat[cat] = []
-        ratio_by_cat[cat].append(ratio)
-    
-    for cat, ratios in ratio_by_cat.items():
-        lines.append(f"\n📊 {cat}:")
-        for r in ratios:
-            val_1m = r['values'].get('1M') or 0
-            chg_1w = r['changes'].get('1W') or 0
-            chg_1m = r['changes'].get('1M') or 0
-            delta = get_delta_direction(chg_1w)
-            trend = get_trend_status(chg_1w, chg_1m)
-            lines.append(f"  • {r['name']}")
-            lines.append(f"    Level: {val_1m:.4f} | 1W: {chg_1w:+.2f}% | 1M: {chg_1m:+.2f}% | {delta} | {trend}")
-    
-    # === ETF RANKINGS with Full Data ===
-    lines.append(f"\n{'='*60}")
-    lines.append("ETF PERFORMANCE (1W vs 1M Comparison)")
-    lines.append(f"{'='*60}")
-    
-    etfs_full = []
-    for e in data['etfs']:
+    stocks_full = []
+    for e in data.get('stocks', []):
         w1 = e.get('1W', {})
         m1 = e.get('1M', {})
         ret_1w = w1.get('RETURN')
@@ -240,7 +198,7 @@ def format_for_prompt(data):
         trend_1m = m1.get('TREND', 0)
         
         if ret_1m is not None:
-            etfs_full.append({
+            stocks_full.append({
                 'sym': e['Symbol'],
                 'name': e['Name'],
                 'cat': e['Category'],
@@ -250,28 +208,29 @@ def format_for_prompt(data):
                 'status': get_trend_status(ret_1w, ret_1m)
             })
     
-    etfs_full.sort(key=lambda x: x['ret_1m'], reverse=True)
+    stocks_full.sort(key=lambda x: x['ret_1m'], reverse=True)
     
     lines.append("\n🏆 TOP 10 PERFORMERS:")
-    for i, e in enumerate(etfs_full[:10], 1):
-        lines.append(f"  {i}. {e['sym']:6} ({e['cat']:8})")
+    for i, e in enumerate(stocks_full[:10], 1):
+        lines.append(f"  {i}. {e['sym']:6} ({e['cat']:15})")
         lines.append(f"     1W: {e['ret_1w']:+6.2f}% | 1M: {e['ret_1m']:+6.2f}% | {e['status']}")
     
     lines.append("\n📉 BOTTOM 10 PERFORMERS:")
-    for i, e in enumerate(etfs_full[-10:], 1):
-        lines.append(f"  {i}. {e['sym']:6} ({e['cat']:8})")
+    for i, e in enumerate(stocks_full[-10:], 1):
+        lines.append(f"  {i}. {e['sym']:6} ({e['cat']:15})")
         lines.append(f"     1W: {e['ret_1w']:+6.2f}% | 1M: {e['ret_1m']:+6.2f}% | {e['status']}")
     
-    # === KEY ETFs Detail ===
+    # === KEY STOCKS Detail ===
     lines.append(f"\n{'='*60}")
-    lines.append("KEY ETFs DETAILED VIEW")
+    lines.append("KEY STOCKS DETAILED VIEW")
     lines.append(f"{'='*60}")
     
-    key_etfs = ['SPY', 'QQQ', 'IWM', 'TLT', 'VXX', 'GLD', 'SLV', 'XLK', 'XLE', 
-                'HYG', 'LQD', 'FXI', 'EEM', 'ARKK', 'IBIT', 'XBI', 'CPER', 'BNO', 'UNG']
+    key_stocks = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'META', 'AMZN', 'TSLA', 
+                  'JPM', 'V', 'MA', 'JNJ', 'UNH', 'LLY', 'PFE',
+                  'XOM', 'CVX', 'CAT', 'BA', 'HD', 'WMT']
     
-    for sym in key_etfs:
-        for e in data['etfs']:
+    for sym in key_stocks:
+        for e in data.get('stocks', []):
             if e['Symbol'] == sym:
                 w1 = e.get('1W', {}) or {}
                 m1 = e.get('1M', {}) or {}
@@ -288,21 +247,27 @@ def format_for_prompt(data):
                 lines.append(f"  Status: {status}")
                 break
     
-    # === DIVERGENCE ALERTS ===
+    # === SECTOR SUMMARY ===
     lines.append(f"\n{'='*60}")
-    lines.append("⚠️ DIVERGENCE ALERTS (1W vs 1M mismatch)")
+    lines.append("SECTOR SUMMARY")
     lines.append(f"{'='*60}")
     
-    divergences = []
-    for e in etfs_full:
-        if 'REVERSAL' in e['status'] or 'EXHAUSTION' in e['status']:
-            divergences.append(e)
+    sector_perf = {}
+    for e in stocks_full:
+        cat = e['cat']
+        if cat not in sector_perf:
+            sector_perf[cat] = []
+        sector_perf[cat].append(e['ret_1m'])
     
-    if divergences:
-        for e in divergences[:10]:
-            lines.append(f"  • {e['sym']}: 1W: {e['ret_1w']:+.2f}% vs 1M: {e['ret_1m']:+.2f}% → {e['status']}")
-    else:
-        lines.append("  No major divergences detected")
+    sector_avg = []
+    for cat, rets in sector_perf.items():
+        avg = sum(rets) / len(rets)
+        sector_avg.append((cat, avg, len(rets)))
+    
+    sector_avg.sort(key=lambda x: x[1], reverse=True)
+    
+    for cat, avg, count in sector_avg:
+        lines.append(f"  {cat:20}: {avg:+.2f}% avg ({count} stocks)")
     
     return "\n".join(lines)
 
@@ -329,12 +294,12 @@ def generate_brief(data):
 {prompt_data}
 
 IMPORTANT REMINDERS:
-1. Every ETF mention MUST have dual timeframe: (1W: X% | 1M: Y%)
-2. Every ratio/indicator MUST show direction (↑ rising / ↓ falling)
-3. Every asset MUST have trend status (ABOVE/BELOW TREND)
+1. Every stock mention MUST have dual timeframe: (1W: X% | 1M: Y%)
+2. Every stock MUST have trend status (ABOVE/BELOW TREND)
+3. Focus on sector leaders and laggards
 4. Compare 1W vs 1M to identify confirmations and divergences
 
-Generate the Daily Market Brief now."""}
+Generate the Stock Daily Brief now."""}
         ],
         max_completion_tokens=12000
     )
@@ -377,7 +342,7 @@ Generate the Daily Market Brief now."""}
 
 def main():
     print("=" * 60)
-    print("🤖 Daily Brief Generator v5.0")
+    print("🤖 Stock Brief Generator v1.0")
     print("   + Time-Frame Labels (1W vs 1M)")
     print("   + Delta Direction (↑↓→)")
     print("   + Trend Status (Above/Below)")
@@ -390,8 +355,13 @@ def main():
     
     try:
         data = load_data()
-        print(f"✅ Loaded: {data['etf_count']} ETFs, {data['ratio_count']} ratios")
+        stock_count = len(data.get('stocks', []))
+        print(f"✅ Loaded: {stock_count} Stocks")
         print(f"   Regime: {data['regime']['overall']}")
+        
+        if stock_count == 0:
+            print("❌ No stock data found in etf_data.json!")
+            return
         
         brief = generate_brief(data)
         

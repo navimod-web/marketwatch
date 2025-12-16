@@ -1,7 +1,7 @@
 """
-ETF Data Generator v3.0
-=======================
-Yahoo Finance'den veri çeker ve JSON dosyası üretir.
+Market Data Generator v4.0
+==========================
+Yahoo Finance'den ETF ve Stock verisi çeker ve JSON dosyası üretir.
 HTML dashboard bu JSON'u yükler.
 
 Kullanım:
@@ -90,6 +90,157 @@ ETF_UNIVERSE = {
     "SOYB": ("Comm.", "Agri", "Soybean"),
     "IBIT": ("Crypto", "Bitcoin", "Spot Bitcoin ETF"),
     "ETHA": ("Crypto", "Ethereum", "Spot Ethereum ETF"),
+}
+
+# =============================================================================
+# SP100 STOCKS (125 Stocks)
+# =============================================================================
+STOCK_UNIVERSE = {
+    # Technology
+    'AAPL': ('Technology', 'Hardware', 'Apple Inc.'),
+    'MSFT': ('Technology', 'Software', 'Microsoft Corp.'),
+    'GOOGL': ('Technology', 'Internet', 'Alphabet Inc.'),
+    'META': ('Technology', 'Social Media', 'Meta Platforms'),
+    'NVDA': ('Technology', 'Semiconductors', 'NVIDIA Corp.'),
+    'AVGO': ('Technology', 'Semiconductors', 'Broadcom Inc.'),
+    'CSCO': ('Technology', 'Networking', 'Cisco Systems'),
+    'ADBE': ('Technology', 'Software', 'Adobe Inc.'),
+    'CRM': ('Technology', 'Software', 'Salesforce Inc.'),
+    'ORCL': ('Technology', 'Software', 'Oracle Corp.'),
+    'ACN': ('Technology', 'Consulting', 'Accenture plc'),
+    'IBM': ('Technology', 'IT Services', 'IBM Corp.'),
+    'INTC': ('Technology', 'Semiconductors', 'Intel Corp.'),
+    'AMD': ('Technology', 'Semiconductors', 'AMD Inc.'),
+    'QCOM': ('Technology', 'Semiconductors', 'Qualcomm Inc.'),
+    'TXN': ('Technology', 'Semiconductors', 'Texas Instruments'),
+    'AMAT': ('Technology', 'Equipment', 'Applied Materials'),
+    'NOW': ('Technology', 'Software', 'ServiceNow Inc.'),
+    'INTU': ('Technology', 'Software', 'Intuit Inc.'),
+    
+    # Healthcare
+    'JNJ': ('Healthcare', 'Pharma', 'Johnson & Johnson'),
+    'UNH': ('Healthcare', 'Insurance', 'UnitedHealth Group'),
+    'PFE': ('Healthcare', 'Pharma', 'Pfizer Inc.'),
+    'ABBV': ('Healthcare', 'Pharma', 'AbbVie Inc.'),
+    'MRK': ('Healthcare', 'Pharma', 'Merck & Co.'),
+    'LLY': ('Healthcare', 'Pharma', 'Eli Lilly & Co.'),
+    'TMO': ('Healthcare', 'Equipment', 'Thermo Fisher'),
+    'ABT': ('Healthcare', 'Devices', 'Abbott Labs'),
+    'DHR': ('Healthcare', 'Equipment', 'Danaher Corp.'),
+    'BMY': ('Healthcare', 'Pharma', 'Bristol-Myers Squibb'),
+    'AMGN': ('Healthcare', 'Biotech', 'Amgen Inc.'),
+    'GILD': ('Healthcare', 'Biotech', 'Gilead Sciences'),
+    'MDT': ('Healthcare', 'Devices', 'Medtronic plc'),
+    'CVS': ('Healthcare', 'Retail', 'CVS Health'),
+    'ISRG': ('Healthcare', 'Devices', 'Intuitive Surgical'),
+    
+    # Financials
+    'JPM': ('Financials', 'Banks', 'JPMorgan Chase'),
+    'BAC': ('Financials', 'Banks', 'Bank of America'),
+    'WFC': ('Financials', 'Banks', 'Wells Fargo'),
+    'GS': ('Financials', 'Investment Banks', 'Goldman Sachs'),
+    'MS': ('Financials', 'Investment Banks', 'Morgan Stanley'),
+    'BLK': ('Financials', 'Asset Mgmt', 'BlackRock Inc.'),
+    'SCHW': ('Financials', 'Brokers', 'Charles Schwab'),
+    'AXP': ('Financials', 'Credit Cards', 'American Express'),
+    'C': ('Financials', 'Banks', 'Citigroup Inc.'),
+    'USB': ('Financials', 'Banks', 'U.S. Bancorp'),
+    'PNC': ('Financials', 'Banks', 'PNC Financial'),
+    'TFC': ('Financials', 'Banks', 'Truist Financial'),
+    'COF': ('Financials', 'Credit Cards', 'Capital One'),
+    'BK': ('Financials', 'Custody', 'Bank of NY Mellon'),
+    'CME': ('Financials', 'Exchanges', 'CME Group'),
+    'MA': ('Financials', 'Payments', 'Mastercard Inc.'),
+    'V': ('Financials', 'Payments', 'Visa Inc.'),
+    'PYPL': ('Financials', 'Payments', 'PayPal Holdings'),
+    'MET': ('Financials', 'Insurance', 'MetLife Inc.'),
+    'AIG': ('Financials', 'Insurance', 'AIG Inc.'),
+    
+    # Consumer Discretionary
+    'AMZN': ('Consumer Disc.', 'E-Commerce', 'Amazon.com'),
+    'TSLA': ('Consumer Disc.', 'Auto', 'Tesla Inc.'),
+    'HD': ('Consumer Disc.', 'Retail', 'Home Depot'),
+    'MCD': ('Consumer Disc.', 'Restaurants', 'McDonald\'s Corp.'),
+    'NKE': ('Consumer Disc.', 'Apparel', 'Nike Inc.'),
+    'SBUX': ('Consumer Disc.', 'Restaurants', 'Starbucks Corp.'),
+    'LOW': ('Consumer Disc.', 'Retail', 'Lowe\'s Cos.'),
+    'TJX': ('Consumer Disc.', 'Retail', 'TJX Companies'),
+    'TGT': ('Consumer Disc.', 'Retail', 'Target Corp.'),
+    'F': ('Consumer Disc.', 'Auto', 'Ford Motor'),
+    'GM': ('Consumer Disc.', 'Auto', 'General Motors'),
+    'BKNG': ('Consumer Disc.', 'Travel', 'Booking Holdings'),
+    
+    # Consumer Staples
+    'PG': ('Consumer Stpl.', 'Household', 'Procter & Gamble'),
+    'KO': ('Consumer Stpl.', 'Beverages', 'Coca-Cola Co.'),
+    'PEP': ('Consumer Stpl.', 'Beverages', 'PepsiCo Inc.'),
+    'COST': ('Consumer Stpl.', 'Retail', 'Costco Wholesale'),
+    'WMT': ('Consumer Stpl.', 'Retail', 'Walmart Inc.'),
+    'PM': ('Consumer Stpl.', 'Tobacco', 'Philip Morris'),
+    'MO': ('Consumer Stpl.', 'Tobacco', 'Altria Group'),
+    'CL': ('Consumer Stpl.', 'Household', 'Colgate-Palmolive'),
+    'KHC': ('Consumer Stpl.', 'Food', 'Kraft Heinz'),
+    'MDLZ': ('Consumer Stpl.', 'Food', 'Mondelez Intl'),
+    'EL': ('Consumer Stpl.', 'Personal', 'Estee Lauder'),
+    
+    # Energy
+    'XOM': ('Energy', 'Integrated', 'Exxon Mobil'),
+    'CVX': ('Energy', 'Integrated', 'Chevron Corp.'),
+    'COP': ('Energy', 'E&P', 'ConocoPhillips'),
+    'SLB': ('Energy', 'Services', 'Schlumberger'),
+    'EOG': ('Energy', 'E&P', 'EOG Resources'),
+    'OXY': ('Energy', 'E&P', 'Occidental Petro'),
+    'PSX': ('Energy', 'Refining', 'Phillips 66'),
+    'VLO': ('Energy', 'Refining', 'Valero Energy'),
+    
+    # Industrials
+    'HON': ('Industrials', 'Conglomerate', 'Honeywell Intl'),
+    'UNP': ('Industrials', 'Railroads', 'Union Pacific'),
+    'UPS': ('Industrials', 'Logistics', 'United Parcel'),
+    'RTX': ('Industrials', 'Aerospace', 'RTX Corp.'),
+    'CAT': ('Industrials', 'Machinery', 'Caterpillar Inc.'),
+    'DE': ('Industrials', 'Machinery', 'Deere & Co.'),
+    'BA': ('Industrials', 'Aerospace', 'Boeing Co.'),
+    'GE': ('Industrials', 'Conglomerate', 'GE Aerospace'),
+    'LMT': ('Industrials', 'Defense', 'Lockheed Martin'),
+    'MMM': ('Industrials', 'Conglomerate', '3M Company'),
+    'FDX': ('Industrials', 'Logistics', 'FedEx Corp.'),
+    'EMR': ('Industrials', 'Electrical', 'Emerson Electric'),
+    'GD': ('Industrials', 'Defense', 'General Dynamics'),
+    
+    # Communication Services
+    'DIS': ('Communication', 'Entertainment', 'Walt Disney'),
+    'NFLX': ('Communication', 'Streaming', 'Netflix Inc.'),
+    'CMCSA': ('Communication', 'Cable', 'Comcast Corp.'),
+    'T': ('Communication', 'Telecom', 'AT&T Inc.'),
+    'VZ': ('Communication', 'Telecom', 'Verizon Comm.'),
+    'TMUS': ('Communication', 'Telecom', 'T-Mobile US'),
+    'CHTR': ('Communication', 'Cable', 'Charter Comm.'),
+    
+    # Utilities
+    'NEE': ('Utilities', 'Electric', 'NextEra Energy'),
+    'DUK': ('Utilities', 'Electric', 'Duke Energy'),
+    'SO': ('Utilities', 'Electric', 'Southern Co.'),
+    'D': ('Utilities', 'Electric', 'Dominion Energy'),
+    'AEP': ('Utilities', 'Electric', 'American Electric'),
+    'EXC': ('Utilities', 'Electric', 'Exelon Corp.'),
+    
+    # Materials
+    'LIN': ('Materials', 'Chemicals', 'Linde plc'),
+    'APD': ('Materials', 'Chemicals', 'Air Products'),
+    'ECL': ('Materials', 'Chemicals', 'Ecolab Inc.'),
+    'DD': ('Materials', 'Chemicals', 'DuPont de Nemours'),
+    'NEM': ('Materials', 'Mining', 'Newmont Corp.'),
+    'FCX': ('Materials', 'Mining', 'Freeport-McMoRan'),
+    'DOW': ('Materials', 'Chemicals', 'Dow Inc.'),
+    
+    # Real Estate
+    'AMT': ('Real Estate', 'REITs', 'American Tower'),
+    'PLD': ('Real Estate', 'REITs', 'Prologis Inc.'),
+    'CCI': ('Real Estate', 'REITs', 'Crown Castle'),
+    'EQIX': ('Real Estate', 'REITs', 'Equinix Inc.'),
+    'PSA': ('Real Estate', 'REITs', 'Public Storage'),
+    'SPG': ('Real Estate', 'REITs', 'Simon Property'),
 }
 
 MARKET_RATIOS = {
@@ -188,14 +339,18 @@ def fetch_prices(symbols, days=400):
 
 def calc_metrics(prices, period_days):
     """Bir periyot için metrikler hesapla"""
-    min_required = max(3, period_days // 2)  # En az period'un yarısı veya 3 gün
     
-    if len(prices) < min_required:
+    # DÜZELTME: Önce o hisse için boş olan günleri at (Sadece işlem günleri kalsın)
+    clean_prices = prices.dropna()
+    
+    # Yeterli veri var mı kontrol et
+    min_required = max(3, period_days // 2)
+    if len(clean_prices) < min_required:
         return None
-    
-    # Mevcut veriyi kullan (period_days veya daha az)
-    actual_days = min(period_days, len(prices))
-    p = prices.tail(actual_days).dropna()
+        
+    # Temiz veri üzerinden son X günü al
+    actual_days = min(period_days, len(clean_prices))
+    p = clean_prices.tail(actual_days)
     
     if len(p) < 3:  # En az 3 gün veri olsun
         return None
@@ -205,19 +360,28 @@ def calc_metrics(prices, period_days):
     
     # Trend (annualized)
     x = np.arange(len(p))
-    slope, _, r, _, _ = stats.linregress(x, np.log(p.values + 0.0001))
+    try:
+        slope, _, r, _, _ = stats.linregress(x, np.log(p.values + 0.0001))
+    except Exception:
+        return None
     trend = (np.exp(slope * 252) - 1) * 100
     quality = r ** 2
     
-    # Acceleration
+    # Acceleration - minimum 4 gün gerekli (2+2)
     mid = len(p) // 2
-    slope1, _, _, _, _ = stats.linregress(np.arange(mid), np.log(p.iloc[:mid].values + 0.0001))
-    slope2, _, _, _, _ = stats.linregress(np.arange(len(p)-mid), np.log(p.iloc[mid:].values + 0.0001))
-    accel = (slope2 - slope1) * 252 * 100
+    if mid < 2:
+        accel = 0  # Yetersiz veri için 0
+    else:
+        try:
+            slope1, _, _, _, _ = stats.linregress(np.arange(mid), np.log(p.iloc[:mid].values + 0.0001))
+            slope2, _, _, _, _ = stats.linregress(np.arange(len(p)-mid), np.log(p.iloc[mid:].values + 0.0001))
+            accel = (slope2 - slope1) * 252 * 100
+        except Exception:
+            accel = 0
     
     # Risk metrics
     rets = p.pct_change().dropna()
-    if len(rets) < 5:
+    if len(rets) < 2:  # En az 2 return olsun
         return None
     
     ann_ret = rets.mean() * 252
@@ -327,9 +491,15 @@ def calc_regime(ratios):
 def generate_data():
     """Ana veri üretim fonksiyonu"""
     
+    # Tüm sembolleri birleştir
+    etf_symbols = list(ETF_UNIVERSE.keys())
+    stock_symbols = list(STOCK_UNIVERSE.keys())
+    all_symbols = etf_symbols + stock_symbols
+    
+    print(f"📡 Total symbols: {len(etf_symbols)} ETFs + {len(stock_symbols)} Stocks = {len(all_symbols)}")
+    
     # Fiyatları çek
-    symbols = list(ETF_UNIVERSE.keys())
-    prices = fetch_prices(symbols)
+    prices = fetch_prices(all_symbols)
     
     # ETF Metrikleri
     print("📊 Calculating ETF metrics...")
@@ -353,6 +523,29 @@ def generate_data():
         etfs.append(etf)
     
     print(f"✅ Calculated metrics for {len(etfs)} ETFs")
+    
+    # Stock Metrikleri
+    print("📊 Calculating Stock metrics...")
+    stocks = []
+    for symbol, (cat, subcat, name) in STOCK_UNIVERSE.items():
+        if symbol not in prices.columns:
+            continue
+        
+        stock = {
+            'Symbol': symbol,
+            'Name': name,
+            'Category': cat,
+            'SubCategory': subcat
+        }
+        
+        for period, days in PERIODS.items():
+            metrics = calc_metrics(prices[symbol], days)
+            if metrics:
+                stock[period] = metrics
+        
+        stocks.append(stock)
+    
+    print(f"✅ Calculated metrics for {len(stocks)} Stocks")
     
     # Ratio Hesapla
     print("📈 Calculating market ratios...")
@@ -409,15 +602,17 @@ def generate_data():
         'generated_at': datetime.now().isoformat(),
         'update_time': datetime.now().strftime('%Y-%m-%d %H:%M'),
         'etf_count': len(etfs),
+        'stock_count': len(stocks),
         'ratio_count': len(ratios),
         'regime': regime,
         'ratios': ratios,
-        'etfs': etfs
+        'etfs': etfs,
+        'stocks': stocks
     }
 
 def main():
     print("=" * 60)
-    print("📊 ETF Data Generator v3.0")
+    print("📊 Market Data Generator v4.0")
     print("=" * 60)
     
     try:
@@ -441,7 +636,7 @@ def main():
             json.dump(data, f, indent=2, ensure_ascii=False)
         
         print(f"\n✅ Data saved to: etf_data.json")
-        print(f"   {data['etf_count']} ETFs, {data['ratio_count']} Ratios")
+        print(f"   {data['etf_count']} ETFs, {data['stock_count']} Stocks, {data['ratio_count']} Ratios")
         print(f"   Regime: {data['regime']['overall']}")
         print("=" * 60)
         
