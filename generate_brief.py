@@ -40,54 +40,93 @@ This brief focuses ONLY on ETFs (Exchange-Traded Funds).
 - Analyze regions via country/region ETFs (EEM, FXI, VGK, etc.)
 
 ═══════════════════════════════════════════════════════════════
+LOGIC & INTERPRETATION RULES (MANDATORY)
+═══════════════════════════════════════════════════════════════
+
+1. REGIME CONFIRMATION MATRIX (CRITICAL):
+   RISK-OFF requires AT LEAST 3 of the following:
+   - VXX ↑ (1W positive)
+   - HYG/LQD ↓ (1W negative)
+   - SPY/TLT ↓ (1W negative)
+   - Defensives (XLU, XLP) outperforming Cyclicals (XLF, XLY, XLI)
+   - Sector breadth: ≤4 sectors positive
+   
+   RISK-ON requires AT LEAST 3 of the following:
+   - VXX ↓ (1W negative)
+   - HYG/LQD ↑ (1W positive)
+   - SPY/TLT ↑ (1W positive)
+   - Cyclicals outperforming Defensives
+   - Sector breadth: ≥7 sectors positive
+   
+   If conditions are MIXED → Label as "ROTATION" or "NEUTRAL", NOT Risk-On/Off
+
+2. REGIME DETECTION - BE PRECISE:
+   - If Tech (XLK) falls but Financials (XLF) or Discretionary (XLY) rise: This is "SECTOR ROTATION", NOT "Risk-Off"
+   - Do NOT hallucinate "Risk-Off" just because one sector is down. Check BREADTH.
+   - When in doubt, use "Rotation" or "Mixed" - restraint over false confidence
+
+3. RATIO DIRECTIONS - CRITICAL:
+   - Rising HYG/LQD (↑) = Credit Stress EASING (Bullish for risk)
+   - Falling HYG/LQD (↓) = Credit Stress RISING (Bearish for risk)
+   - Rising VXX (↑) = Fear INCREASING (Bearish)
+   - Falling VXX (↓) = Fear DECREASING (Bullish)
+   - Rising SPY/TLT (↑) = Risk-On (Stocks beating Bonds)
+   - Falling SPY/TLT (↓) = Risk-Off (Bonds beating Stocks)
+
+4. TREND LABELS - USE THESE 4 STRICTLY:
+   - "ABOVE TREND" = Both 1W and 1M are POSITIVE (e.g., +2% | +10%)
+   - "BELOW TREND" = Both 1W and 1M are NEGATIVE (e.g., -2% | -5%)
+   - "RECOVERY" = 1M is NEGATIVE but 1W is POSITIVE (e.g., +3% | -8%) - Short-term bounce
+   - "CORRECTION" = 1M is POSITIVE but 1W is NEGATIVE (e.g., -2% | +12%) - Short-term pullback
+
+5. BREADTH ANALYSIS (MANDATORY IN EVERY REGIME STATEMENT):
+   - ALWAYS include "Breadth: X/11 sectors positive" in regime assessment
+   - ≥7 sectors positive = "Broad strength"
+   - 5-6 sectors positive = "Mixed/Rotation"
+   - ≤4 sectors positive = "Narrow/Weak"
+   - A regime statement WITHOUT breadth context is INVALID
+
+6. STYLE CALL WITH GUARDRAIL:
+   - XLK/XLF rising = Growth/Momentum leading
+   - XLK/XLF falling = Value/Cyclicals leading
+   - Style call ONLY if XLK/XLF direction is confirmed by sector breadth
+   - Otherwise → "Style mixed / no clear leadership"
+
+7. DIVERGENCE SEVERITY LEVELS:
+   - MINOR Divergence: 1W ≠ 1M in 1-2 ETFs → Note but don't overweight
+   - MAJOR Divergence: 1W ≠ 1M across ≥3 core ETFs (SPY, XLK, XLF, TLT)
+   - If MAJOR Divergence → Suppress strong regime calls, use "Transitional" or "Mixed"
+
+8. EXECUTIVE SUMMARY LOGIC:
+   - If XLF/XLY are green and XLK is red: "Rotation from Tech to Cyclicals"
+   - If Defensives (XLU/XLP) leading: "Defensive posturing, reduce risk"
+   - If broad strength with ≥7 sectors: "Risk-On confirmed, stay long"
+   - If mixed signals: "Transitional market, stay selective"
+
+═══════════════════════════════════════════════════════════════
+FINAL GUARDRAIL (READ THIS LAST)
+═══════════════════════════════════════════════════════════════
+
+You must ALWAYS justify regime labels with at least TWO independent confirmations.
+If confirmations are mixed, explicitly state "Rotation" or "Neutral" instead of forcing Risk-On or Risk-Off.
+Clarity and restraint are preferred over strong but weakly supported conclusions.
+Every regime statement MUST include breadth context: "Breadth: X/11 sectors positive."
+
+═══════════════════════════════════════════════════════════════
 WRITING STYLE - CRITICAL
 ═══════════════════════════════════════════════════════════════
 
 1. NO markdown (no **, no ---, no bullets)
 2. Write like a Bloomberg terminal note - SHORT and PUNCHY
 3. Each answer: 2-3 sentences MAX
-4. Use this format for data: "ETF at X.XX (1W: +X% | 1M: +X%)"
-5. Only use these trend labels: ABOVE TREND, BELOW TREND (nothing else)
+4. Use this format for data: "ETF (1W: +X% | 1M: +X%)"
+5. Use ONLY these 4 trend labels: ABOVE TREND, BELOW TREND, RECOVERY, CORRECTION
 
 GOOD STYLE:
-"Risk-Off regime. VIX at 29.6 (1W: -4.5% | 1M: -15.7%) - fear easing but still elevated. Credit stress persists: HYG/LQD at 0.73, BELOW TREND."
+"Sector Rotation, not Risk-Off. Breadth: 8/11 sectors positive. Tech (XLK) in CORRECTION (1W: -1.5% | 1M: +5.2%) while Financials (XLF) ABOVE TREND (1W: +2.1% | 1M: +8.3%). Style: Value over Growth."
 
-BAD STYLE (too verbose):
-"The market remains in a Risk-Off regime with VIX sitting at 29.69 which represents a decline of 4.47% on a weekly basis..."
-
-═══════════════════════════════════════════════════════════════
-OUTPUT FORMAT
-═══════════════════════════════════════════════════════════════
-
-1. ALWAYS USE DUAL TIME-FRAME FORMAT:
-   ❌ Wrong: "XBI +9.82%"
-   ✅ Right: "XBI showing strong momentum (1W: +3.2% | 1M: +9.8%)"
-   
-   This is MANDATORY for every ETF mention. Readers must know if it's weekly or monthly.
-
-2. ALWAYS SHOW DELTA (Direction of Change):
-   ❌ Wrong: "VXX at 29.86 signaling panic"
-   ✅ Right: "VXX spiked to 29.86 (↑ from 25.2 last week), signaling rising panic"
-   ✅ Right: "VXX dropped to 29.86 (↓ from 35.1 last week), signaling easing fear"
-   
-   The DIRECTION matters more than the level. Same number can mean opposite things.
-
-3. ALWAYS INDICATE TREND POSITION:
-   ❌ Wrong: "SPY is positive"
-   ✅ Right: "SPY is positive but BELOW TREND (1M trend negative despite 1W bounce)"
-   ✅ Right: "SPY is strong and ABOVE TREND (both 1W and 1M aligned positive)"
-   
-   Use: "ABOVE TREND" when 1W and 1M both positive and aligned
-   Use: "BELOW TREND" when 1M negative or diverging from 1W
-   Use: "TREND REVERSAL" when 1W and 1M have opposite signs
-
-4. INTERPRETATION GUIDE:
-   - VXX > 25 = PANIC, 20-25 = Elevated, 15-20 = Normal, < 15 = Complacent
-   - If VXX 1W change is POSITIVE = Fear INCREASING (bad)
-   - If VXX 1W change is NEGATIVE = Fear DECREASING (good)
-   - HYG/LQD < 0.85 = Credit stress
-   - When 1W and 1M signs MATCH = Confirmed trend
-   - When 1W and 1M signs DIFFER = Divergence/Reversal signal
+BAD STYLE (wrong interpretation):
+"Risk-Off regime. Tech selling off with XLK down..." (This ignores breadth and other sectors rising)
 
 ═══════════════════════════════════════════════════════════════
 OUTPUT FORMAT - FOLLOW EXACTLY
@@ -96,40 +135,40 @@ OUTPUT FORMAT - FOLLOW EXACTLY
 ## 🌡️ MARKET ATMOSPHERE
 
 **1. Global Risk Regime?**
-[State regime. Include VXX level WITH delta direction. Example: "Risk-Off with VXX at 29.9 (↑ from 25.2, fear RISING). SPY/TLT ratio improving (1W: +0.3% | 1M: +3.4%) but HYG/LQD at 0.73 shows persistent credit stress."]
+[State regime with BREADTH. Example: "Sector Rotation, not Risk-Off. 8/11 sectors positive. XLK in CORRECTION (1W: -1.5% | 1M: +5.2%) but XLF ABOVE TREND (1W: +2.1% | 1M: +8.3%). VXX falling (1W: -3% | 1M: -15%) confirms fear easing."]
 
 **2. Primary Risk Drivers?**
-[2-3 drivers with delta. Example: "Credit stress persists with HYG/LQD at 0.73 (unchanged from last week). Volatility trending down (VXX 1W: -5%, 1M: -16%) suggesting fear is peaking."]
+[2-3 drivers with correct ratio interpretation. Example: "Credit stress EASING: HYG/LQD rising to 0.75 (1W: +0.5%). Fear DECREASING: VXX (1W: -3% | 1M: -15%) BELOW TREND."]
 
 **3. Financial Conditions Signal?**
-[Dollar, yields with direction. Example: "Tightening: UUP stable at 28 (1W: -0.6%), yield curve flattening with TLT/SHY at 1.05 (↓ from 1.08 last week)."]
+[Dollar, yields with direction. Example: "Neutral: UUP stable (1W: -0.6% | 1M: -1.1%) BELOW TREND. Yield curve steepening slightly."]
 
 ## 📈 EQUITIES & FLOWS
 
 **4. Sector Leadership?**
-[Winners/losers with DUAL timeframe. Example: "Tech leading: XLK (1W: +1.2% | 1M: +5.2%) ABOVE TREND. Energy lagging: XLE (1W: -0.5% | 1M: -2.1%) BELOW TREND."]
+[Winners/losers with correct labels. Example: "Cyclicals leading: XLF ABOVE TREND (1W: +2.1% | 1M: +8.3%), XLY ABOVE TREND (1W: +1.5% | 1M: +6.2%). Tech lagging: XLK in CORRECTION (1W: -1.5% | 1M: +5.2%). Style: Value over Growth."]
 
 **5. US vs Global?**
-[Regional comparison with dual timeframe. Example: "US outperforms: SPY (1W: +1.1% | 1M: +4.2%) ABOVE TREND. China weak: FXI (1W: -0.7% | 1M: -5.2%) BELOW TREND, trend deteriorating."]
+[Regional comparison. Example: "US outperforms: SPY ABOVE TREND (1W: +1.1% | 1M: +4.2%). Europe RECOVERY: VGK (1W: +2.1% | 1M: -1.2%). China still BELOW TREND: FXI (1W: -0.7% | 1M: -5.2%)."]
 
 **6. Speculative Appetite?**
-[ARKK, IWM, crypto with delta. Example: "Speculation mixed: IWM strong (1W: +2.1% | 1M: +6.3%) but crypto collapsing - IBIT (1W: -5% | 1M: -12%) BELOW TREND, trend accelerating down."]
+[ARKK, IWM, crypto. Example: "Speculation healthy: IWM ABOVE TREND (1W: +2.1% | 1M: +6.3%). Crypto mixed: IBIT in CORRECTION (1W: -5% | 1M: +12%)."]
 
 ## 🛢️ REAL ECONOMY
 
 **7. Commodities Theme?**
-[Theme with dual timeframe. Example: "Safe haven bid: SLV surging (1W: +5.2% | 1M: +21%) ABOVE TREND. Industrial metals diverging: CPER (1W: -2% | 1M: +6%) showing trend exhaustion."]
+[Theme with labels. Example: "Industrial strength: CPER ABOVE TREND (1W: +1.2% | 1M: +6.5%). Gold in CORRECTION (1W: -2% | 1M: +8%) - profit taking."]
 
 **8. Energy Trend?**
-[Energy with direction. Example: "Energy weakening: BNO (1W: -1.5% | 1M: -3.4%) BELOW TREND. Natural gas collapsing: UNG (1W: -8% | 1M: -15%) in confirmed downtrend."]
+[Energy direction. Example: "Energy mixed: XLE in RECOVERY (1W: +1.5% | 1M: -3.4%). Natural gas collapsing: UNG BELOW TREND (1W: -8% | 1M: -15%)."]
 
 ## 🧭 STRATEGY
 
 **9. Trend Confirmation?**
-[Compare 1W vs 1M. Example: "CONFIRMED: Precious metals (SLV 1W/1M both positive). DIVERGENCE: Semis (1W down, 1M up) - momentum fading."]
+[Confirmations and divergences. Example: "CONFIRMED: Financials (XLF both timeframes positive). DIVERGENCE: Tech (XLK 1W negative, 1M positive) - momentum fading, watch for breakdown."]
 
 **10. Portfolio Direction?**
-[Clear stance. Example: "Overweight: SLV, XBI. Underweight: FXI, IBIT. Neutral: Bonds."]
+[Clear stance with style. Example: "Rotate to Value: Favor XLF, XLI. Reduce exposure to XLK, QQQ. Neutral: Bonds."]
 
 ## 🔮 NEXT WEEK OUTLOOK
 
@@ -142,14 +181,26 @@ BULLISH: [If condition → action]
 BEARISH: [If condition → action]
 
 **13. Key Levels?**
-[3-4 levels to watch. Example: "VIX 25 (fear threshold), HYG/LQD 0.70 (credit stress), SPY/TLT 8.0 (risk pivot)."]
+[3-4 levels. Example: "VXX 20 (complacency), HYG/LQD 0.80 (credit health), XLK/XLF 2.0 (growth vs value pivot)."]
 
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
-Sentence 1: Current regime and whether improving or worsening.
-Sentence 2: Best opportunity right now.
-Sentence 3: Key risk to watch.
+Sentence 1: Current regime (Rotation/Risk-On/Risk-Off) with breadth context.
+Sentence 2: Areas showing relative strength (sector + style).
+Sentence 3: Key risk or divergence to monitor.
+
+═══════════════════════════════════════════════════════════════
+LANGUAGE RESTRICTIONS (COMPLIANCE)
+═══════════════════════════════════════════════════════════════
+
+NEVER use: "buy", "sell", "overweight", "underweight", "recommend", "should invest"
+INSTEAD use: "favor", "reduce exposure to", "monitor", "watch", "showing strength", "showing weakness"
+
+This is ANALYSIS ONLY, not investment advice. Use observational language:
+❌ "Buy XLF" → ✅ "XLF showing relative strength"
+❌ "Sell tech" → ✅ "Tech showing weakness, reduce exposure"
+❌ "Overweight bonds" → ✅ "Bonds favored in current environment"
 """
 
 def load_data():

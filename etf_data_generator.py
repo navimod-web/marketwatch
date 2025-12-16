@@ -407,27 +407,57 @@ def calc_metrics(prices, period_days):
         'STABILITY': round(stability, 2)
     }
 
-def calc_regime(ratios):
-    """Risk ve Cycle skorları hesapla"""
+def calc_regime(ratios, etfs=None):
+    """Risk ve Cycle skorları hesapla - Akıllı Rejim Algoritması"""
     risk_score = 0
     cycle_score = 0
     signals = {}
     
-    # VXX Level
-    vxx = ratios.get('VXX_LEVEL', {}).get('1M', 0)
-    if vxx > 25: 
-        signals['VXX'] = {'value': 'PANIC', 'score': -2}
-        risk_score -= 2
-    elif vxx > 20: 
-        signals['VXX'] = {'value': 'ELEVATED', 'score': -1}
-        risk_score -= 1
-    elif vxx < 15: 
+    # === SECTOR BREADTH (Yeni) ===
+    sector_etfs = ['XLF', 'XLK', 'XLY', 'XLP', 'XLU', 'XLI', 'XLE', 'XLB', 'XLV', 'XLRE', 'XLC']
+    breadth_positive = 0
+    breadth_total = 0
+    
+    if etfs:
+        for etf in etfs:
+            if etf.get('Symbol') in sector_etfs:
+                breadth_total += 1
+                w1_ret = etf.get('1W', {}).get('RETURN', 0)
+                if w1_ret and w1_ret > 0:
+                    breadth_positive += 1
+    
+    breadth_ratio = breadth_positive / breadth_total if breadth_total > 0 else 0.5
+    signals['BREADTH'] = {
+        'value': f'{breadth_positive}/{breadth_total} POSITIVE',
+        'score': breadth_positive - (breadth_total - breadth_positive),  # net positive count
+        'positive': breadth_positive,
+        'total': breadth_total
+    }
+    
+    # === VXX Level + Direction ===
+    vxx_level = ratios.get('VXX_LEVEL', {}).get('1M', 0)
+    vxx_1w_chg = ratios.get('VXX_LEVEL', {}).get('1W_chg', 0)
+    
+    if vxx_level > 25:
+        if vxx_1w_chg > 0:  # Rising panic = worse
+            signals['VXX'] = {'value': 'PANIC ↑', 'score': -2}
+            risk_score -= 2
+        else:  # Falling panic = easing
+            signals['VXX'] = {'value': 'PANIC ↓', 'score': -1}
+            risk_score -= 1
+    elif vxx_level > 20:
+        if vxx_1w_chg > 0:
+            signals['VXX'] = {'value': 'ELEVATED ↑', 'score': -1}
+            risk_score -= 1
+        else:
+            signals['VXX'] = {'value': 'ELEVATED ↓', 'score': 0}
+    elif vxx_level < 15:
         signals['VXX'] = {'value': 'COMPLACENT', 'score': 1}
         risk_score += 1
     else:
         signals['VXX'] = {'value': 'NEUTRAL', 'score': 0}
     
-    # SPY/TLT
+    # === SPY/TLT ===
     spy_tlt_chg = ratios.get('SPY_TLT', {}).get('1M_chg', 0)
     if spy_tlt_chg > 3:
         signals['SPY_TLT'] = {'value': 'RISK-ON', 'score': 1}
@@ -438,18 +468,29 @@ def calc_regime(ratios):
     else:
         signals['SPY_TLT'] = {'value': 'NEUTRAL', 'score': 0}
     
-    # HYG/LQD
-    hyg_lqd = ratios.get('HYG_LQD', {}).get('1M', 0)
-    if hyg_lqd < 0.85:
-        signals['HYG_LQD'] = {'value': 'CREDIT STRESS', 'score': -2}
-        risk_score -= 2
-    elif hyg_lqd > 0.90:
+    # === HYG/LQD - Level + Direction (Düzeltildi) ===
+    hyg_lqd_level = ratios.get('HYG_LQD', {}).get('1M', 0)
+    hyg_lqd_1w_chg = ratios.get('HYG_LQD', {}).get('1W_chg', 0)
+    
+    if hyg_lqd_level < 0.85:
+        if hyg_lqd_1w_chg < 0:  # Stress zone AND worsening
+            signals['HYG_LQD'] = {'value': 'CREDIT STRESS ↓', 'score': -2}
+            risk_score -= 2
+        else:  # Stress zone BUT improving
+            signals['HYG_LQD'] = {'value': 'CREDIT STRESS ↑', 'score': -1}
+            risk_score -= 1
+    elif hyg_lqd_level > 0.90:
         signals['HYG_LQD'] = {'value': 'CREDIT OK', 'score': 1}
         risk_score += 1
     else:
-        signals['HYG_LQD'] = {'value': 'NEUTRAL', 'score': 0}
+        if hyg_lqd_1w_chg > 0:
+            signals['HYG_LQD'] = {'value': 'NEUTRAL ↑', 'score': 0}
+        elif hyg_lqd_1w_chg < 0:
+            signals['HYG_LQD'] = {'value': 'NEUTRAL ↓', 'score': 0}
+        else:
+            signals['HYG_LQD'] = {'value': 'NEUTRAL', 'score': 0}
     
-    # XLY/XLP
+    # === XLY/XLP (Cycle) ===
     xly_xlp_chg = ratios.get('XLY_XLP', {}).get('1M_chg', 0)
     if xly_xlp_chg > 2:
         signals['XLY_XLP'] = {'value': 'EXPANSION', 'score': 1}
@@ -460,7 +501,7 @@ def calc_regime(ratios):
     else:
         signals['XLY_XLP'] = {'value': 'NEUTRAL', 'score': 0}
     
-    # CPER/GLD
+    # === CPER/GLD (Cycle) ===
     cper_gld_chg = ratios.get('CPER_GLD', {}).get('1M_chg', 0)
     if cper_gld_chg > 3:
         signals['CPER_GLD'] = {'value': 'REFLATION', 'score': 1}
@@ -471,21 +512,52 @@ def calc_regime(ratios):
     else:
         signals['CPER_GLD'] = {'value': 'NEUTRAL', 'score': 0}
     
-    # Overall
+    # === SMART REGIME ALGORITHM ===
     total = risk_score + cycle_score
-    if total >= 2:
+    
+    # Conflict Check: Risk negatif ama Cycle pozitif = Mixed/Rotation
+    has_risk_stress = risk_score <= -2
+    has_cycle_expansion = cycle_score >= 1
+    has_good_breadth = breadth_positive >= 7
+    has_weak_breadth = breadth_positive <= 4
+    
+    # Determine regime with conflict awareness
+    if has_risk_stress and has_cycle_expansion:
+        # Conflict: Risk signals bad but cycle good
+        overall = 'ROTATION'
+        regime_note = 'Risk stress with expansion signals - sector rotation likely'
+    elif has_risk_stress and has_good_breadth:
+        # Conflict: Risk signals bad but breadth healthy
+        overall = 'CAUTION'
+        regime_note = 'Risk indicators negative but breadth healthy - selective caution'
+    elif total >= 3 and has_good_breadth:
         overall = 'RISK-ON'
-    elif total <= -2:
+        regime_note = 'Broad risk appetite confirmed'
+    elif total >= 2:
+        overall = 'RISK-ON'
+        regime_note = 'Risk appetite positive'
+    elif total <= -3 and has_weak_breadth:
         overall = 'RISK-OFF'
+        regime_note = 'Confirmed defensive mode - weak breadth'
+    elif total <= -2:
+        if has_weak_breadth:
+            overall = 'RISK-OFF'
+            regime_note = 'Defensive mode'
+        else:
+            overall = 'CAUTION'
+            regime_note = 'Risk signals negative but breadth mixed'
     else:
         overall = 'NEUTRAL'
+        regime_note = 'Mixed signals - no clear direction'
     
     return {
         'overall': overall,
         'riskScore': risk_score,
         'cycleScore': cycle_score,
         'totalScore': total,
-        'signals': signals
+        'signals': signals,
+        'breadth': {'positive': breadth_positive, 'total': breadth_total},
+        'note': regime_note
     }
 
 def generate_data():
@@ -594,9 +666,10 @@ def generate_data():
     
     print(f"✅ Calculated {len(ratios)} ratios")
     
-    # Regime hesapla
-    regime = calc_regime(ratio_dict)
-    print(f"✅ Regime: {regime['overall']} (Risk: {regime['riskScore']}, Cycle: {regime['cycleScore']})")
+    # Regime hesapla (breadth için etfs gerekli)
+    regime = calc_regime(ratio_dict, etfs)
+    print(f"✅ Regime: {regime['overall']} (Risk: {regime['riskScore']}, Cycle: {regime['cycleScore']}, Breadth: {regime['breadth']['positive']}/{regime['breadth']['total']})")
+    print(f"   Note: {regime.get('note', '')}")
     
     return {
         'generated_at': datetime.now().isoformat(),

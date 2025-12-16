@@ -27,6 +27,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .regime-icon.on{background:rgba(16,185,129,0.2);color:var(--green);box-shadow:0 0 20px rgba(16,185,129,0.3)}
 .regime-icon.off{background:rgba(244,63,94,0.2);color:var(--rose);box-shadow:0 0 20px rgba(244,63,94,0.3)}
 .regime-icon.neutral{background:rgba(245,158,11,0.2);color:var(--amber)}
+.regime-icon.rotation{background:rgba(59,130,246,0.2);color:var(--blue);box-shadow:0 0 20px rgba(59,130,246,0.3)}
+.regime-icon.caution{background:rgba(251,191,36,0.2);color:#fbbf24;box-shadow:0 0 20px rgba(251,191,36,0.3)}
 .regime-text h2{font-size:1.2rem;margin-bottom:2px}
 .regime-text>span{font-size:0.8rem;color:var(--muted)}
 .scores{display:flex;gap:20px}
@@ -44,11 +46,44 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .signal-tag.bull{background:rgba(16,185,129,0.15);color:var(--green)}
 .signal-tag.bear{background:rgba(244,63,94,0.15);color:var(--rose)}
 .info-btn{width:18px;height:18px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);border-radius:50%;color:var(--cyan);font-size:0.55rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.regime-info-btn{margin-left:12px;margin-right:8px;vertical-align:middle}
 .info-btn:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9998;display:none;align-items:center;justify-content:center}
 .modal-overlay.active{display:flex}
 .modal-content{background:var(--bg);border:1px solid var(--cyan);border-radius:16px;padding:20px 24px;width:380px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,0.6);animation:modalIn 0.2s ease}
 .chart-modal-content{background:var(--bg);border:1px solid var(--cyan);border-radius:16px;padding:20px 24px;width:800px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,0.6);animation:modalIn 0.2s ease}
+.how-modal-content{background:var(--bg);border:1px solid var(--cyan);border-radius:16px;padding:24px 28px;width:700px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.6);animation:modalIn 0.2s ease}
+.how-body{color:var(--text)}
+.how-section{margin-bottom:24px}
+.how-section h3{font-size:1rem;color:var(--cyan);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.how-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.how-card h4{font-size:0.9rem;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.how-card p{font-size:0.8rem;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.how-card ul{font-size:0.8rem;color:var(--muted);margin:0;padding-left:18px;line-height:1.7}
+.how-card li{margin-bottom:4px}
+.how-card strong{color:var(--text)}
+.how-note{font-size:0.75rem;color:var(--amber);font-style:italic;margin-top:8px;margin-bottom:0}
+.score-range{font-size:0.7rem;padding:2px 8px;border-radius:4px;background:var(--bg);color:var(--muted)}
+.score-range.pos{color:var(--green)}
+.score-range.neg{color:var(--rose)}
+.regime-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.regime-card{background:var(--bg2);border-radius:10px;padding:12px 14px;border-left:3px solid var(--muted)}
+.regime-card.on{border-left-color:var(--green)}
+.regime-card.off{border-left-color:var(--rose)}
+.regime-card.rotation{border-left-color:var(--blue)}
+.regime-card.caution{border-left-color:#fbbf24}
+.regime-card.neutral{border-left-color:var(--amber)}
+.regime-label{font-size:0.85rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.regime-card.on .regime-label{color:var(--green)}
+.regime-card.off .regime-label{color:var(--rose)}
+.regime-card.rotation .regime-label{color:var(--blue)}
+.regime-card.caution .regime-label{color:#fbbf24}
+.regime-card.neutral .regime-label{color:var(--amber)}
+.regime-card p{font-size:0.75rem;color:var(--muted);margin:0;line-height:1.5}
+.disclaimer{font-size:0.8rem;color:var(--muted);background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.3);border-radius:8px;padding:12px 14px;line-height:1.6}
+.header-actions{display:flex;align-items:center;gap:12px}
+.how-btn{padding:8px 14px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);border-radius:8px;color:var(--cyan);font-size:0.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s}
+.how-btn:hover{background:var(--cyan);color:var(--bg)}
 #tradingview-widget{height:450px;border-radius:8px;overflow:hidden}
 @keyframes modalIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
@@ -209,14 +244,17 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
 <div class="logo-text">
 <h1>Market Barometer <span class="live-badge"><span class="live-dot"></span>Live</span></h1>
-<span>ETF Trend & Signal Dashboard</span>
+<span>ETF & Stock Market Dashboard</span>
 </div>
 </div>
+<div class="header-actions">
+<button class="how-btn" onclick="showHowItWorks()"><i class="fas fa-question-circle"></i> How it works</button>
 <div class="update-badge" id="updateTime"><i class="fas fa-clock"></i> Loading...</div>
+</div>
 </header>
 <div class="regime-bar">
 <div class="regime-main"><div class="regime-icon neutral" id="regimeIcon"><i class="fas fa-spinner fa-spin"></i></div>
-<div class="regime-text"><h2 id="regimeLbl">Loading...</h2><span id="regimeDesc">Fetching data...</span></div></div>
+<div class="regime-text"><h2 id="regimeLbl">Loading...</h2><button class="info-btn regime-info-btn" id="regimeInfoBtn"><i class="fas fa-info"></i></button><span id="regimeDesc">Fetching data...</span></div></div>
 <div class="scores">
 <div class="score"><div class="score-val" id="riskScore">-</div><div class="score-lbl">Risk <button class="info-btn" data-key="RISK_SCORE"><i class="fas fa-info"></i></button></div></div>
 <div class="score"><div class="score-val" id="cycleScore">-</div><div class="score-lbl">Cycle <button class="info-btn" data-key="CYCLE_SCORE"><i class="fas fa-info"></i></button></div></div>
@@ -353,6 +391,69 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 </div>
 </div>
 
+<div class="modal-overlay" id="howModalOverlay">
+<div class="how-modal-content">
+<div class="modal-header">
+<div class="modal-title"><i class="fas fa-chart-line"></i> How the Market Barometer Works</div>
+<button class="modal-close" onclick="closeHowModal()"><i class="fas fa-times"></i></button>
+</div>
+<div class="how-body">
+
+<div class="how-section">
+<h3><i class="fas fa-calculator"></i> Scoring System</h3>
+
+<div class="how-card">
+<h4>RISK SCORE <span class="score-range neg">-5 to +5</span></h4>
+<p>Measures market fear and financial stress:</p>
+<ul>
+<li><strong>VXX (Volatility):</strong> >25 = Panic (-2), 20-25 = Elevated (-1), <15 = Calm (+1)</li>
+<li><strong>HYG/LQD (Credit):</strong> <0.85 = Stress (-2), >0.90 = Healthy (+1)</li>
+<li><strong>SPY/TLT (Stocks vs Bonds):</strong> Rising = Risk-On (+1), Falling = Risk-Off (-1)</li>
+</ul>
+<p class="how-note">↑ Arrow = worsening, ↓ Arrow = improving</p>
+</div>
+
+<div class="how-card">
+<h4>CYCLE SCORE <span class="score-range pos">-3 to +3</span></h4>
+<p>Measures economic expansion or contraction:</p>
+<ul>
+<li><strong>XLY/XLP (Consumer):</strong> Rising = Discretionary spending (expansion)</li>
+<li><strong>CPER/GLD (Copper/Gold):</strong> Rising = Industrial demand (growth)</li>
+</ul>
+</div>
+
+<div class="how-card">
+<h4>BREADTH <span class="score-range">0-11 sectors</span></h4>
+<p>Measures market participation width:</p>
+<ul>
+<li><strong>≥7 positive:</strong> Healthy, broad participation</li>
+<li><strong>5-6 positive:</strong> Mixed, selective</li>
+<li><strong>≤4 positive:</strong> Weak, narrow leadership</li>
+</ul>
+<p class="how-note">Breadth acts as "referee" - it can override the score when signals conflict.</p>
+</div>
+</div>
+
+<div class="how-section">
+<h3><i class="fas fa-flag"></i> Regime Logic</h3>
+<div class="regime-grid">
+<div class="regime-card on"><div class="regime-label"><i class="fas fa-rocket"></i> RISK-ON</div><p>Total ≥2, breadth healthy. Favor equities and cyclicals.</p></div>
+<div class="regime-card off"><div class="regime-label"><i class="fas fa-shield-alt"></i> RISK-OFF</div><p>Total ≤-2 AND weak breadth (≤4). Favor bonds and safe havens.</p></div>
+<div class="regime-card rotation"><div class="regime-label"><i class="fas fa-sync-alt"></i> ROTATION</div><p>Risk negative BUT cycle positive. Money rotating, not fleeing. Be selective.</p></div>
+<div class="regime-card caution"><div class="regime-label"><i class="fas fa-exclamation-triangle"></i> CAUTION</div><p>Risk negative BUT breadth healthy. Some stress but market holding. Reduce risk gradually.</p></div>
+<div class="regime-card neutral"><div class="regime-label"><i class="fas fa-balance-scale"></i> NEUTRAL</div><p>Mixed signals, no clear direction. Balanced allocation recommended.</p></div>
+</div>
+</div>
+
+<div class="how-section">
+<h3><i class="fas fa-exclamation-circle"></i> Important</h3>
+<p class="disclaimer">This dashboard provides market analysis and signals for informational purposes only. It is NOT investment advice. Always do your own research and consult a qualified financial advisor before making investment decisions.</p>
+</div>
+
+</div>
+</div>
+</div>
+
 <script>
 // ========== GLOBAL STATE ==========
 var DATA = null;
@@ -371,14 +472,21 @@ var GLOSS = {
   "SHARPE": {"title": "Sharpe Ratio", "desc": "Risk-adjusted return.", "example": "2.0 = Good risk/reward"},
   "SORTINO": {"title": "Sortino Ratio", "desc": "Downside risk-adjusted return.", "example": "Higher = Better"},
   "STABILITY": {"title": "Stability (Calmar)", "desc": "Return vs max drawdown.", "example": "3.0 = 3x return vs drawdown"},
-  "RISK_SCORE": {"title": "Risk Score", "desc": "Risk appetite -5 to +5.", "example": "-3 = Fear"},
-  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle -3 to +3.", "example": "+2 = Expansion"},
-  "TOTAL_SCORE": {"title": "Total Score", "desc": "Risk + Cycle.", "example": "Determines regime"},
-  "VXX": {"title": "VXX (Volatility)", "desc": "Fear gauge. VXX > 25 = Panic, 20-25 = Elevated, < 20 = Calm.", "formula": "VXX level from ETF price", "example": "VXX at 30 = High fear, risk-off signal"},
+  "RISK_SCORE": {"title": "Risk Score", "desc": "Risk appetite -5 to +5. Measures VXX (fear), SPY/TLT (stocks vs bonds), HYG/LQD (credit stress).", "example": "-3 = High fear, credit stress"},
+  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle -3 to +3. Measures XLY/XLP (consumer spending), CPER/GLD (industrial demand).", "example": "+2 = Economic expansion"},
+  "TOTAL_SCORE": {"title": "Total Score", "desc": "Risk + Cycle combined. Determines overall regime.", "example": "≥2 = Risk-On, ≤-2 = Risk-Off or Caution"},
+  "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on risk and cycle signals.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds"},
+  "REGIME_RISK_ON": {"title": "RISK-ON Regime", "desc": "Broad risk appetite confirmed. VXX low/falling, credit healthy, breadth strong (≥7/11 sectors positive). Favor equities and cyclicals.", "example": "Total Score ≥2 with healthy breadth"},
+  "REGIME_RISK_OFF": {"title": "RISK-OFF Regime", "desc": "Confirmed defensive mode. VXX elevated/rising, credit stress, weak breadth (≤4/11 sectors positive). Favor bonds and safe havens.", "example": "Total Score ≤-2 with weak breadth"},
+  "REGIME_ROTATION": {"title": "ROTATION Regime", "desc": "Mixed signals: Risk indicators negative BUT cycle indicators positive. This is NOT full Risk-Off - money is rotating between sectors, not fleeing to safety. Be selective.", "example": "VXX high + Credit stress BUT XLY/XLP positive (expansion)"},
+  "REGIME_CAUTION": {"title": "CAUTION Regime", "desc": "Risk indicators negative BUT breadth still healthy. Not full Risk-Off - some stress but market holding up. Reduce risk but don't panic.", "example": "Risk Score negative BUT ≥5/11 sectors positive"},
+  "REGIME_NEUTRAL": {"title": "NEUTRAL Regime", "desc": "No clear direction. Risk and cycle signals mixed, breadth moderate. Balanced allocation recommended.", "example": "Total Score between -1 and +1"},
+  "BREADTH": {"title": "Sector Breadth", "desc": "How many of 11 sector ETFs have positive 1W returns. Measures market participation width.", "example": "8/11 positive = Healthy breadth, 4/11 = Narrow/weak"},
+  "VXX": {"title": "VXX (Volatility)", "desc": "Fear gauge. VXX > 25 = Panic, 20-25 = Elevated, < 20 = Calm. Arrow shows direction: ↑ = worsening, ↓ = improving.", "formula": "VXX level from ETF price", "example": "VXX at 30↓ = High fear but easing"},
   "SPY_TLT": {"title": "SPY/TLT (Stocks vs Bonds)", "desc": "Risk appetite ratio. Rising = risk-on, Falling = risk-off.", "formula": "SPY price / TLT price", "example": "Ratio rising = Favor equities over bonds"},
-  "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. < 0.85 = Stress, < 0.70 = Crisis.", "formula": "HYG (junk bonds) / LQD (investment grade)", "example": "0.73 = Credit stress, risk-off"},
-  "XLY_XLP": {"title": "XLY/XLP (Consumer Cycle)", "desc": "Economic cycle indicator. Rising = expansion, Falling = contraction.", "formula": "XLY (discretionary) / XLP (staples)", "example": "Rising = Consumers spending freely"},
-  "CPER_GLD": {"title": "CPER/GLD (Copper/Gold)", "desc": "Growth vs safety ratio. Rising = growth optimism, Falling = fear.", "formula": "CPER (copper) / GLD (gold)", "example": "Falling = Flight to safety"},
+  "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. < 0.85 = Stress, < 0.70 = Crisis. Arrow shows direction: ↑ = easing, ↓ = worsening.", "formula": "HYG (junk bonds) / LQD (investment grade)", "example": "0.73↑ = Credit stress but improving"},
+  "XLY_XLP": {"title": "XLY/XLP (Consumer Cycle)", "desc": "Economic cycle indicator. Rising = expansion (consumers spending on discretionary), Falling = contraction (consumers buying only staples).", "formula": "XLY (discretionary) / XLP (staples)", "example": "Rising = Economic expansion signal"},
+  "CPER_GLD": {"title": "CPER/GLD (Copper/Gold)", "desc": "Growth vs safety ratio. Rising = industrial demand (growth optimism), Falling = flight to gold (fear).", "formula": "CPER (copper) / GLD (gold)", "example": "Falling = Flight to safety"},
   "VXX_LEVEL": {"title": "VXX Level", "desc": "Absolute volatility level. > 25 = Panic, 20-25 = Elevated, < 20 = Calm.", "example": "30 = High fear"},
   "GLD_SPY": {"title": "GLD/SPY (Gold vs Stocks)", "desc": "Safe haven demand. Rising = fear, Falling = risk appetite.", "example": "Rising = Flight to gold"},
   "IWM_SPY": {"title": "IWM/SPY (Small vs Large)", "desc": "Risk appetite for small caps. Rising = risk-on, Falling = flight to quality.", "example": "Rising = Small caps outperforming"},
@@ -504,13 +612,61 @@ function closeChartModal() {
 }
 document.getElementById('chartModalOverlay').addEventListener('click', function(e) { if (e.target === this) closeChartModal(); });
 
+// ========== HOW IT WORKS MODAL ==========
+function showHowItWorks() {
+  document.getElementById('howModalOverlay').classList.add('active');
+}
+function closeHowModal() {
+  document.getElementById('howModalOverlay').classList.remove('active');
+}
+document.getElementById('howModalOverlay').addEventListener('click', function(e) { if (e.target === this) closeHowModal(); });
+
 // ========== REGIME ==========
 function renderRegime() {
   var i = document.getElementById('regimeIcon'), l = document.getElementById('regimeLbl'), d = document.getElementById('regimeDesc');
-  l.textContent = REGIME.overall;
-  if (REGIME.overall.indexOf('RISK-ON') >= 0) { i.className = 'regime-icon on'; i.innerHTML = '<i class="fas fa-rocket"></i>'; d.textContent = 'Risk appetite elevated - favor equities'; }
-  else if (REGIME.overall.indexOf('RISK-OFF') >= 0) { i.className = 'regime-icon off'; i.innerHTML = '<i class="fas fa-shield-alt"></i>'; d.textContent = 'Defensive mode - favor bonds & safe havens'; }
-  else { i.className = 'regime-icon neutral'; i.innerHTML = '<i class="fas fa-balance-scale"></i>'; d.textContent = 'Mixed signals - balanced allocation'; }
+  var infoBtn = document.getElementById('regimeInfoBtn');
+  var regime = REGIME.overall;
+  var note = REGIME.note || '';
+  var breadth = REGIME.breadth || {positive: 0, total: 0};
+  
+  l.textContent = regime;
+  
+  // Set info button to show correct regime explanation
+  var regimeKey = 'REGIME_' + regime.replace('-', '_');
+  infoBtn.setAttribute('data-key', regimeKey);
+  infoBtn.onclick = function() { showModal(regimeKey); };
+  
+  if (regime === 'RISK-ON') { 
+    i.className = 'regime-icon on'; 
+    i.innerHTML = '<i class="fas fa-rocket"></i>'; 
+    d.textContent = note || 'Risk appetite elevated - favor equities'; 
+  }
+  else if (regime === 'RISK-OFF') { 
+    i.className = 'regime-icon off'; 
+    i.innerHTML = '<i class="fas fa-shield-alt"></i>'; 
+    d.textContent = note || 'Defensive mode - favor bonds & safe havens'; 
+  }
+  else if (regime === 'ROTATION') { 
+    i.className = 'regime-icon rotation'; 
+    i.innerHTML = '<i class="fas fa-sync-alt"></i>'; 
+    d.textContent = note || 'Sector rotation underway - be selective'; 
+  }
+  else if (regime === 'CAUTION') { 
+    i.className = 'regime-icon caution'; 
+    i.innerHTML = '<i class="fas fa-exclamation-triangle"></i>'; 
+    d.textContent = note || 'Mixed signals - proceed with caution'; 
+  }
+  else { 
+    i.className = 'regime-icon neutral'; 
+    i.innerHTML = '<i class="fas fa-balance-scale"></i>'; 
+    d.textContent = note || 'Mixed signals - balanced allocation'; 
+  }
+  
+  // Add breadth info to description
+  if (breadth.total > 0) {
+    d.textContent += ' | Breadth: ' + breadth.positive + '/' + breadth.total + ' sectors';
+  }
+  
   ['riskScore','cycleScore','totalScore'].forEach(function(id) {
     var el = document.getElementById(id), v = REGIME[id];
     el.textContent = (v > 0 ? '+' : '') + v; el.className = 'score-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '');

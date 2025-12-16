@@ -35,6 +35,85 @@ This brief focuses ONLY on individual SP100 stocks.
 - Group analysis by sectors: Technology, Healthcare, Financials, etc.
 
 ═══════════════════════════════════════════════════════════════
+LOGIC & INTERPRETATION RULES (MANDATORY)
+═══════════════════════════════════════════════════════════════
+
+1. BIG TECH ≠ MARKET RULE (CRITICAL):
+   Big Tech weakness ≠ Risk-Off IF:
+   - Financials OR Industrials have ≥60% stocks ABOVE TREND
+   - Defensive stocks (JNJ, PG, KO) are NOT leading
+   
+   If Big Tech is down but Cyclicals are strong → "SECTOR ROTATION"
+   If Big Tech is down AND Defensives lead → "RISK-OFF"
+   When in doubt → "ROTATION" or "MIXED", NOT "Risk-Off"
+
+2. REGIME CONFIRMATION (REQUIRE 2+ SIGNALS):
+   RISK-OFF requires at least 2 of:
+   - Defensives (JNJ, PG, KO, utilities) outperforming
+   - Sector breadth: ≤4/11 sectors positive
+   - Financials AND Industrials both negative
+   
+   RISK-ON requires at least 2 of:
+   - Cyclicals (JPM, CAT, GM) leading
+   - Sector breadth: ≥7/11 sectors positive
+   - Growth AND Value both positive
+   
+   If signals MIXED → Use "Rotation" or "Transitional"
+
+3. TREND LABELS - USE THESE 4 STRICTLY:
+   - "ABOVE TREND" = Both 1W and 1M are POSITIVE (e.g., +2% | +10%)
+   - "BELOW TREND" = Both 1W and 1M are NEGATIVE (e.g., -2% | -5%)
+   - "RECOVERY" = 1M is NEGATIVE but 1W is POSITIVE (e.g., +3% | -8%) - Short-term bounce
+   - "CORRECTION" = 1M is POSITIVE but 1W is NEGATIVE (e.g., -2% | +12%) - Short-term pullback
+
+4. LABEL EXAMPLES - FOLLOW EXACTLY:
+   - TMUS (1W: +1.6% | 1M: -7.5%) → Label: "RECOVERY" (NOT "Rising Below Trend")
+   - MSFT (1W: -1.1% | 1M: -6.6%) → Label: "BELOW TREND"
+   - NVDA (1W: +3.2% | 1M: +15.4%) → Label: "ABOVE TREND"
+   - AAPL (1W: -2.0% | 1M: +5.5%) → Label: "CORRECTION"
+
+5. SECTOR BREADTH THRESHOLDS (MANDATORY IN REGIME STATEMENT):
+   - ≥70% positive → "Sector Strength"
+   - ≤30% positive → "Sector Weakness"
+   - 31-69% → "Internal Rotation"
+   - ALWAYS include breadth: "Tech: 12/19 positive" format
+   - A regime statement WITHOUT breadth context is INVALID
+
+6. LEADERSHIP CONCENTRATION RULE (MANDATORY):
+   - NARROW Leadership: Top 5 performers from ≤2 sectors → Caution flag
+   - BROAD Leadership: Top 5 performers spread across ≥4 sectors → Healthy
+   - ALWAYS mention in Top Performers section: "Leadership: Narrow (3/5 Financials)" or "Leadership: Broad (5 sectors)"
+
+7. STYLE CALL WITH GUARDRAIL:
+   - If NVDA, META, GOOGL lead = "Growth/Momentum style"
+   - If JPM, BAC, CAT, XOM lead = "Value/Cyclical style"
+   - Style call ONLY if confirmed by sector breadth
+   - Otherwise → "Style mixed / no clear leadership"
+
+8. DIVERGENCE SEVERITY & ACTION:
+   - MINOR Divergence: 1-2 stocks with 1W ≠ 1M → Note only
+   - MAJOR Divergence: ≥3 major stocks (AAPL, MSFT, NVDA, JPM, etc.) with 1W ≠ 1M
+   - MAJOR Divergence implies:
+     → Suppress strong regime calls
+     → "Watch for trend break" or "Tactical opportunity, not core position"
+
+9. EXECUTIVE SUMMARY LOGIC:
+   - If Financials/Industrials green and Tech red: "Rotation from Growth to Value"
+   - If Defensives (JNJ, PG, KO) leading: "Defensive rotation, reduce beta"
+   - If Tech + Financials both strong: "Broad Risk-On, stay fully invested"
+   - If breadth is narrow: "Narrow leadership - be selective"
+   - If major divergence: "Transitional market - wait for confirmation"
+
+═══════════════════════════════════════════════════════════════
+FINAL GUARDRAIL (READ THIS LAST)
+═══════════════════════════════════════════════════════════════
+
+You must ALWAYS justify regime labels with at least TWO independent confirmations.
+If confirmations are mixed, explicitly state "Rotation" or "Transitional" instead of forcing Risk-On or Risk-Off.
+Clarity and restraint are preferred over strong but weakly supported conclusions.
+Every regime statement MUST include: "Breadth: X/11 sectors positive" and leadership concentration.
+
+═══════════════════════════════════════════════════════════════
 WRITING STYLE - CRITICAL
 ═══════════════════════════════════════════════════════════════
 
@@ -42,98 +121,88 @@ WRITING STYLE - CRITICAL
 2. Write like a Bloomberg terminal note - SHORT and PUNCHY
 3. Each answer: 2-3 sentences MAX
 4. Use this format for data: "SYMBOL (1W: +X% | 1M: +X%)"
-5. Only use these trend labels: ABOVE TREND, BELOW TREND (nothing else)
+5. Use ONLY these 4 trend labels: ABOVE TREND, BELOW TREND, RECOVERY, CORRECTION
 
 GOOD STYLE:
-"Tech leading. NVDA (1W: +5.2% | 1M: +18.3%) ABOVE TREND continues AI momentum. AAPL flat but stable."
+"Sector Rotation, not Risk-Off. Breadth: 8/11 sectors positive. Leadership: Broad (4 sectors in Top 5). Tech in CORRECTION: NVDA (1W: -2.1% | 1M: +12.3%). Financials ABOVE TREND: JPM (1W: +3.2% | 1M: +8.5%). Style: Value over Growth."
 
-BAD STYLE (too verbose):
-"The technology sector remains in a strong uptrend with NVIDIA showing exceptional performance..."
-
-═══════════════════════════════════════════════════════════════
-OUTPUT FORMAT
-═══════════════════════════════════════════════════════════════
-
-1. ALWAYS USE DUAL TIME-FRAME FORMAT:
-   ❌ Wrong: "NVDA +9.82%"
-   ✅ Right: "NVDA showing strong momentum (1W: +3.2% | 1M: +9.8%)"
-   
-   This is MANDATORY for every stock mention. Readers must know if it's weekly or monthly.
-
-2. ALWAYS SHOW DELTA (Direction of Change):
-   ❌ Wrong: "NVDA at 850 showing strength"
-   ✅ Right: "NVDA at 850 (↑ from 780 last week), AI momentum continues"
-   
-   The DIRECTION matters more than the level.
-
-3. ALWAYS INDICATE TREND POSITION:
-   Use: "ABOVE TREND" when 1W and 1M both positive and aligned
-   Use: "BELOW TREND" when 1M negative or diverging from 1W
+BAD STYLE (wrong interpretation):
+"Risk-Off regime. Tech selling off heavily..." (This ignores Financials strength)
 
 ═══════════════════════════════════════════════════════════════
-OUTPUT FORMAT - FOLLOW EXACTLY (Same as ETF Brief structure)
+OUTPUT FORMAT - FOLLOW EXACTLY
 ═══════════════════════════════════════════════════════════════
 
 ## 🌡️ MARKET OVERVIEW
 
 **1. What is the prevailing Global Risk Regime?**
-[State regime. Keep brief - 2-3 sentences. Example: "Risk-Off regime persists. Market volatility elevated with defensive rotation underway."]
+[State regime with BREADTH context. Example: "Sector Rotation, not Risk-Off. 7/11 sectors positive. Tech in CORRECTION but Financials and Industrials ABOVE TREND. Value style outperforming Growth."]
 
 **2. Which sectors are leading?**
-[Top 3 sectors with best performing stocks. Example: "Technology leads: NVDA (1W: +5.2% | 1M: +18.3%) ABOVE TREND. Healthcare strong: LLY (1W: +3.1% | 1M: +12.4%) momentum continues."]
+[Top 3 sectors with best performers and correct labels. Example: "Financials lead: JPM ABOVE TREND (1W: +3.2% | 1M: +8.5%), GS ABOVE TREND (1W: +2.8% | 1M: +10.1%). Industrials strong: CAT ABOVE TREND (1W: +2.1% | 1M: +7.3%)."]
 
 **3. Which sectors are lagging?**
-[Bottom 3 sectors with worst performers. Example: "Energy weak: XOM (1W: -2.1% | 1M: -5.4%) BELOW TREND. Utilities under pressure: NEE (1W: -1.8% | 1M: -4.2%)."]
+[Bottom 3 sectors with correct labels. Example: "Tech lagging: NVDA in CORRECTION (1W: -2.1% | 1M: +12.3%), MSFT in CORRECTION (1W: -1.5% | 1M: +5.2%). Communication weak: NFLX BELOW TREND (1W: -3.2% | 1M: -8.5%)."]
 
 ## 📈 STOCK PERFORMANCE
 
 **4. Top Performing Stocks?**
-[Top 5 stocks by 1M return with dual timeframe and trend status.]
+[Top 5 stocks with correct labels. Note sector concentration. Example: "Top 5: FCX ABOVE TREND (1W: +5.2% | 1M: +21.3%), GM ABOVE TREND (1W: +4.1% | 1M: +18.5%)... Leadership from Materials and Autos - cyclical strength."]
 
 **5. Worst Performing Stocks?**
-[Bottom 5 stocks by 1M return with dual timeframe and trend status.]
+[Bottom 5 stocks with correct labels. Example: "Bottom 5: ORCL BELOW TREND (1W: -3.2% | 1M: -14.5%), NFLX BELOW TREND (1W: -2.8% | 1M: -12.3%)... Weakness concentrated in high-multiple names."]
 
 **6. Momentum Stocks?**
-[Stocks with strongest 1W acceleration. Which are gaining steam? Include dual timeframe.]
+[Stocks with strongest 1W moves. Flag divergences. Example: "Best 1W momentum: FCX (1W: +5.2%), COF (1W: +4.5%). Watch TMUS in RECOVERY (1W: +1.6% | 1M: -7.5%) - potential trend change."]
 
 ## 🏭 SECTOR OUTLOOK
 
 **7. Technology Outlook?**
-[Key tech names: AAPL, MSFT, NVDA, GOOGL, META with dual timeframe. 2-3 sentences.]
+[Key tech with correct labels. Example: "Mixed with CORRECTION pattern. AAPL in CORRECTION (1W: -1.2% | 1M: +3.5%), NVDA in CORRECTION (1W: -2.1% | 1M: +12.3%). Only META ABOVE TREND (1W: +1.5% | 1M: +8.2%). Sector breadth: 8/19 positive."]
 
 **8. Financials Outlook?**
-[Key financials: JPM, BAC, GS, MS, V, MA with dual timeframe. 2-3 sentences.]
+[Key financials with labels. Example: "Strong, ABOVE TREND across the board. JPM (1W: +3.2% | 1M: +8.5%), GS (1W: +2.8% | 1M: +10.1%), V (1W: +1.5% | 1M: +6.2%) all ABOVE TREND. Sector breadth: 15/20 positive."]
 
 **9. Healthcare Outlook?**
-[Key healthcare: JNJ, UNH, LLY, PFE, ABBV with dual timeframe. 2-3 sentences.]
+[Key healthcare with labels. Example: "Defensive bid present. JNJ ABOVE TREND (1W: +1.2% | 1M: +4.5%), UNH ABOVE TREND (1W: +0.8% | 1M: +3.2%). LLY in CORRECTION (1W: -1.5% | 1M: +8.5%). Sector breadth: 10/15 positive."]
 
 ## 🧭 PORTFOLIO STRATEGY
 
 **10. Portfolio Recommendation?**
-[Clear stance. Example: "Overweight: NVDA, LLY, MA. Underweight: XOM, T, MMM. Watch: TSLA for breakout."]
+[Clear stance with style call. Example: "Rotate to Value: Favor JPM, CAT, FCX. Reduce exposure to NVDA, NFLX, ORCL. Style: Value over Growth. Monitor AAPL - CORRECTION may offer entry."]
 
 ## 🔮 NEXT WEEK OUTLOOK
 
 **11. Stocks to Watch Next Week?**
-BULLISH: [Top stocks to watch with conditions]
+BULLISH: [Stocks with positive setup and conditions]
 BEARISH: [Stocks at risk with conditions]
 
 **12. Sectors to Watch Next Week?**
-BULLISH: [Sectors with momentum]
-BEARISH: [Sectors showing weakness]
+BULLISH: [Sectors with momentum, note breadth]
+BEARISH: [Sectors showing weakness, note breadth]
 
 **13. Key Levels & Triggers?**
-[3-4 key levels. Example: "NVDA 900 resistance, AAPL 180 support, JPM 200 breakout level."]
+[3-4 key stock levels. Example: "NVDA 900 resistance (CORRECTION test), AAPL 180 support (CORRECTION base), JPM 200 breakout (ABOVE TREND continuation)."]
 
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
-1. Current regime and primary driver
-2. Best immediate opportunity (specific stocks)
-3. Key risk to watch
-Sentence 1: Current regime and whether improving or worsening.
-Sentence 2: Best opportunity right now.
-Sentence 3: Key risk to watch.
+Sentence 1: Current regime (Rotation/Risk-On/Risk-Off) with style call (Growth vs Value).
+Sentence 2: Stocks showing relative strength (specific names with labels).
+Sentence 3: Key risk or divergence to monitor.
+
+═══════════════════════════════════════════════════════════════
+LANGUAGE RESTRICTIONS (COMPLIANCE)
+═══════════════════════════════════════════════════════════════
+
+NEVER use: "buy", "sell", "overweight", "underweight", "recommend", "should invest", "bullish on", "bearish on"
+INSTEAD use: "favor", "reduce exposure to", "monitor", "watch", "showing strength", "showing weakness", "at risk"
+
+This is ANALYSIS ONLY, not investment advice. Use observational language:
+❌ "Buy NVDA" → ✅ "NVDA showing relative strength"
+❌ "Sell ORCL" → ✅ "ORCL showing weakness, reduce exposure"
+❌ "Overweight Financials" → ✅ "Financials favored in current rotation"
+❌ "This is a buying opportunity" → ✅ "This may offer entry for those already positioned"
 """
 
 def load_data():
