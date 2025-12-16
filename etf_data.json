@@ -1,0 +1,3950 @@
+{
+  "generated_at": "2025-12-16T10:31:25.443776",
+  "update_time": "2025-12-16 10:31",
+  "etf_count": 66,
+  "ratio_count": 26,
+  "regime": {
+    "overall": "RISK-OFF",
+    "riskScore": -4,
+    "cycleScore": 1,
+    "totalScore": -3,
+    "signals": {
+      "VXX": {
+        "value": "PANIC",
+        "score": -2
+      },
+      "SPY_TLT": {
+        "value": "NEUTRAL",
+        "score": 0
+      },
+      "HYG_LQD": {
+        "value": "CREDIT STRESS",
+        "score": -2
+      },
+      "XLY_XLP": {
+        "value": "EXPANSION",
+        "score": 1
+      },
+      "CPER_GLD": {
+        "value": "NEUTRAL",
+        "score": 0
+      }
+    }
+  },
+  "ratios": [
+    {
+      "id": "VXX_LEVEL",
+      "name": "Fear Index (VIX)",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 29.56,
+        "2W": 29.56,
+        "1M": 29.56,
+        "3M": 29.56,
+        "6M": 29.56,
+        "12M": 29.56
+      },
+      "changes": {
+        "1W": -5.38,
+        "2W": -6.75,
+        "1M": -14.49,
+        "3M": -11.28,
+        "6M": -45.48,
+        "12M": -30.4
+      }
+    },
+    {
+      "id": "SPY_TLT",
+      "name": "Stocks vs Bonds",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 7.7887,
+        "2W": 7.7887,
+        "1M": 7.7887,
+        "3M": 7.7887,
+        "6M": 7.7887,
+        "12M": 7.7887
+      },
+      "changes": {
+        "1W": 0.31,
+        "2W": 1.49,
+        "1M": 2.65,
+        "3M": 5.65,
+        "6M": 10.93,
+        "12M": 13.75
+      }
+    },
+    {
+      "id": "HYG_LQD",
+      "name": "Credit Spread",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 0.7308,
+        "2W": 0.7308,
+        "1M": 0.7308,
+        "3M": 0.7308,
+        "6M": 0.7308,
+        "12M": 0.7308
+      },
+      "changes": {
+        "1W": 0.36,
+        "2W": 0.55,
+        "1M": 0.54,
+        "3M": 1.39,
+        "6M": 0.01,
+        "12M": 1.67
+      }
+    },
+    {
+      "id": "GLD_SPY",
+      "name": "Gold vs Stocks",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 0.5814,
+        "2W": 0.5814,
+        "1M": 0.5814,
+        "3M": 0.5814,
+        "6M": 0.5814,
+        "12M": 0.5814
+      },
+      "changes": {
+        "1W": 2.51,
+        "2W": 2.33,
+        "1M": 3.92,
+        "3M": 13.43,
+        "6M": 10.74,
+        "12M": 40.39
+      }
+    },
+    {
+      "id": "IWM_SPY",
+      "name": "Small vs Large Cap",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 0.3701,
+        "2W": 0.3701,
+        "1M": 0.3701,
+        "3M": 0.3701,
+        "6M": 0.3701,
+        "12M": 0.3701
+      },
+      "changes": {
+        "1W": 0.55,
+        "2W": 2.88,
+        "1M": 4.71,
+        "3M": 1.84,
+        "6M": 5.73,
+        "12M": -4.82
+      }
+    },
+    {
+      "id": "ARKK_SPY",
+      "name": "Speculation Index",
+      "category": "Risk-On/Off",
+      "values": {
+        "1W": 0.1164,
+        "2W": 0.1164,
+        "1M": 0.1164,
+        "3M": 0.1164,
+        "6M": 0.1164,
+        "12M": 0.1164
+      },
+      "changes": {
+        "1W": -3.7,
+        "2W": 1.38,
+        "1M": 1.65,
+        "3M": -5.18,
+        "6M": 8.17,
+        "12M": 14.04
+      }
+    },
+    {
+      "id": "XLY_XLP",
+      "name": "Consumer Cycle",
+      "category": "Economic Cycle",
+      "values": {
+        "1W": 1.5285,
+        "2W": 1.5285,
+        "1M": 1.5285,
+        "3M": 1.5285,
+        "6M": 1.5285,
+        "12M": 1.5285
+      },
+      "changes": {
+        "1W": 1.04,
+        "2W": 1.84,
+        "1M": 2.29,
+        "3M": 1.03,
+        "6M": 15.9,
+        "12M": 5.28
+      }
+    },
+    {
+      "id": "CPER_GLD",
+      "name": "Copper/Gold Ratio",
+      "category": "Economic Cycle",
+      "values": {
+        "1W": 0.0838,
+        "2W": 0.0838,
+        "1M": 0.0838,
+        "3M": 0.0838,
+        "6M": 0.0838,
+        "12M": 0.0838
+      },
+      "changes": {
+        "1W": -0.62,
+        "2W": 0.91,
+        "1M": 0.54,
+        "3M": -0.69,
+        "6M": -12.8,
+        "12M": -21.61
+      }
+    },
+    {
+      "id": "XLI_SPY",
+      "name": "Industrial Strength",
+      "category": "Economic Cycle",
+      "values": {
+        "1W": 0.2306,
+        "2W": 0.2306,
+        "1M": 0.2306,
+        "3M": 0.2306,
+        "6M": 0.2306,
+        "12M": 0.2306
+      },
+      "changes": {
+        "1W": 2.78,
+        "2W": 2.89,
+        "1M": 1.94,
+        "3M": 0.72,
+        "6M": -3.19,
+        "12M": 1.47
+      }
+    },
+    {
+      "id": "XRT_SPY",
+      "name": "Retail Strength",
+      "category": "Economic Cycle",
+      "values": {
+        "1W": 0.1288,
+        "2W": 0.1288,
+        "1M": 0.1288,
+        "3M": 0.1288,
+        "6M": 0.1288,
+        "12M": 0.1288
+      },
+      "changes": {
+        "1W": 1.47,
+        "2W": 4.2,
+        "1M": 8.18,
+        "3M": -3.27,
+        "6M": 0.79,
+        "12M": -6.53
+      }
+    },
+    {
+      "id": "SOXX_SPY",
+      "name": "Semis Leadership",
+      "category": "Economic Cycle",
+      "values": {
+        "1W": 0.4378,
+        "2W": 0.4378,
+        "1M": 0.4378,
+        "3M": 0.4378,
+        "6M": 0.4378,
+        "12M": 0.4378
+      },
+      "changes": {
+        "1W": -4.22,
+        "2W": -1.48,
+        "1M": 1.95,
+        "3M": 11.31,
+        "6M": 15.51,
+        "12M": 21.18
+      }
+    },
+    {
+      "id": "XLE_SPY",
+      "name": "Energy vs Market",
+      "category": "Inflation",
+      "values": {
+        "1W": 0.0664,
+        "2W": 0.0664,
+        "1M": 0.0664,
+        "3M": 0.0664,
+        "6M": 0.0664,
+        "12M": 0.0664
+      },
+      "changes": {
+        "1W": -0.78,
+        "2W": 0.38,
+        "1M": -3.05,
+        "3M": -2.19,
+        "6M": -9.54,
+        "12M": -8.65
+      }
+    },
+    {
+      "id": "TIP_IEF",
+      "name": "Breakeven Inflation",
+      "category": "Inflation",
+      "values": {
+        "1W": 1.1442,
+        "2W": 1.1442,
+        "1M": 1.1442,
+        "3M": 1.1442,
+        "6M": 1.1442,
+        "12M": 1.1442
+      },
+      "changes": {
+        "1W": -0.09,
+        "2W": 0.17,
+        "1M": -0.37,
+        "3M": -0.87,
+        "6M": -0.97,
+        "12M": -0.86
+      }
+    },
+    {
+      "id": "DBA_SPY",
+      "name": "Agri vs Market",
+      "category": "Inflation",
+      "values": {
+        "1W": 0.0387,
+        "2W": 0.0387,
+        "1M": 0.0387,
+        "3M": 0.0387,
+        "6M": 0.0387,
+        "12M": 0.0387
+      },
+      "changes": {
+        "1W": 0.11,
+        "2W": -0.15,
+        "1M": -0.35,
+        "3M": -6.42,
+        "6M": -14.51,
+        "12M": -12.43
+      }
+    },
+    {
+      "id": "TLT_SHY",
+      "name": "Yield Curve",
+      "category": "Fed/Rates",
+      "values": {
+        "1W": 1.054,
+        "2W": 1.054,
+        "1M": 1.054,
+        "3M": 1.054,
+        "6M": 1.054,
+        "12M": 1.054
+      },
+      "changes": {
+        "1W": -0.9,
+        "2W": -1.72,
+        "1M": -1.71,
+        "3M": -2.84,
+        "6M": 0.77,
+        "12M": -4.47
+      }
+    },
+    {
+      "id": "TLT_IEF",
+      "name": "Duration Preference",
+      "category": "Fed/Rates",
+      "values": {
+        "1W": 0.9079,
+        "2W": 0.9079,
+        "1M": 0.9079,
+        "3M": 0.9079,
+        "6M": 0.9079,
+        "12M": 0.9079
+      },
+      "changes": {
+        "1W": -0.79,
+        "2W": -1.08,
+        "1M": -1.42,
+        "3M": -2.15,
+        "6M": -0.53,
+        "12M": -5.65
+      }
+    },
+    {
+      "id": "UUP_LEVEL",
+      "name": "Dollar Strength",
+      "category": "Fed/Rates",
+      "values": {
+        "1W": 27.93,
+        "2W": 27.93,
+        "1M": 27.93,
+        "3M": 27.93,
+        "6M": 27.93,
+        "12M": 27.93
+      },
+      "changes": {
+        "1W": -0.82,
+        "2W": -0.92,
+        "1M": -0.64,
+        "3M": 2.61,
+        "6M": 2.01,
+        "12M": -3.5
+      }
+    },
+    {
+      "id": "EEM_SPY",
+      "name": "EM vs US",
+      "category": "Global",
+      "values": {
+        "1W": 0.0794,
+        "2W": 0.0794,
+        "1M": 0.0794,
+        "3M": 0.0794,
+        "6M": 0.0794,
+        "12M": 0.0794
+      },
+      "changes": {
+        "1W": -0.49,
+        "2W": -0.29,
+        "1M": -2.87,
+        "3M": -1.95,
+        "6M": 1.26,
+        "12M": 10.71
+      }
+    },
+    {
+      "id": "FXI_SPY",
+      "name": "China vs US",
+      "category": "Global",
+      "values": {
+        "1W": 0.0569,
+        "2W": 0.0569,
+        "1M": 0.0569,
+        "3M": 0.0569,
+        "6M": 0.0569,
+        "12M": 0.0569
+      },
+      "changes": {
+        "1W": 0.13,
+        "2W": -1.78,
+        "1M": -4.69,
+        "3M": -10.12,
+        "6M": -6.7,
+        "12M": 11.03
+      }
+    },
+    {
+      "id": "KWEB_QQQ",
+      "name": "China Tech vs US Tech",
+      "category": "Global",
+      "values": {
+        "1W": 0.0594,
+        "2W": 0.0594,
+        "1M": 0.0594,
+        "3M": 0.0594,
+        "6M": 0.0594,
+        "12M": 0.0594
+      },
+      "changes": {
+        "1W": 0.17,
+        "2W": -1.75,
+        "1M": -5.44,
+        "3M": -17.82,
+        "6M": -8.81,
+        "12M": -0.0
+      }
+    },
+    {
+      "id": "INDA_EEM",
+      "name": "India vs EM",
+      "category": "Global",
+      "values": {
+        "1W": 0.9819,
+        "2W": 0.9819,
+        "1M": 0.9819,
+        "3M": 0.9819,
+        "6M": 0.9819,
+        "12M": 0.9819
+      },
+      "changes": {
+        "1W": 0.51,
+        "2W": -1.05,
+        "1M": -1.2,
+        "3M": -3.19,
+        "6M": -14.98,
+        "12M": -23.38
+      }
+    },
+    {
+      "id": "VGK_SPY",
+      "name": "Europe vs US",
+      "category": "Global",
+      "values": {
+        "1W": 0.1223,
+        "2W": 0.1223,
+        "1M": 0.1223,
+        "3M": 0.1223,
+        "6M": 0.1223,
+        "12M": 0.1223
+      },
+      "changes": {
+        "1W": 2.33,
+        "2W": 2.26,
+        "1M": 1.35,
+        "3M": 1.5,
+        "6M": -3.26,
+        "12M": 13.73
+      }
+    },
+    {
+      "id": "EWJ_SPY",
+      "name": "Japan vs US",
+      "category": "Global",
+      "values": {
+        "1W": 0.1247,
+        "2W": 0.1247,
+        "1M": 0.1247,
+        "3M": 0.1247,
+        "6M": 0.1247,
+        "12M": 0.1247
+      },
+      "changes": {
+        "1W": 2.22,
+        "2W": 3.03,
+        "1M": -0.25,
+        "3M": 0.97,
+        "6M": 2.48,
+        "12M": 8.31
+      }
+    },
+    {
+      "id": "XLK_XLF",
+      "name": "Tech vs Financials",
+      "category": "Sector Rotation",
+      "values": {
+        "1W": 2.5877,
+        "2W": 2.5877,
+        "1M": 2.5877,
+        "3M": 2.5877,
+        "6M": 2.5877,
+        "12M": 2.5877
+      },
+      "changes": {
+        "1W": -6.85,
+        "2W": -5.47,
+        "1M": -5.79,
+        "3M": 2.91,
+        "6M": 7.34,
+        "12M": 6.92
+      }
+    },
+    {
+      "id": "XLY_XLV",
+      "name": "Cyclical vs Defensive",
+      "category": "Sector Rotation",
+      "values": {
+        "1W": 0.7798,
+        "2W": 0.7798,
+        "1M": 0.7798,
+        "3M": 0.7798,
+        "6M": 0.7798,
+        "12M": 0.7798
+      },
+      "changes": {
+        "1W": -0.88,
+        "2W": 1.82,
+        "1M": 2.56,
+        "3M": -11.67,
+        "6M": -1.57,
+        "12M": -7.1
+      }
+    },
+    {
+      "id": "XLB_XLP",
+      "name": "Materials vs Staples",
+      "category": "Sector Rotation",
+      "values": {
+        "1W": 0.5665,
+        "2W": 0.5665,
+        "1M": 0.5665,
+        "3M": 0.5665,
+        "6M": 0.5665,
+        "12M": 0.5665
+      },
+      "changes": {
+        "1W": 1.83,
+        "2W": 1.0,
+        "1M": 0.89,
+        "3M": -0.16,
+        "6M": 4.17,
+        "12M": 2.86
+      }
+    }
+  ],
+  "etfs": [
+    {
+      "Symbol": "UUP",
+      "Name": "US Dollar Index",
+      "Category": "Macro",
+      "SubCategory": "Currency",
+      "2W": {
+        "RETURN": -0.92,
+        "TREND": -20.49,
+        "ACCELERATION": -36.9,
+        "QUALITY": 0.6199,
+        "SHARPE": -5.56,
+        "SORTINO": -7.57,
+        "STABILITY": -29.1
+      },
+      "1M": {
+        "RETURN": -0.64,
+        "TREND": -15.02,
+        "ACCELERATION": -32.65,
+        "QUALITY": 0.5517,
+        "SHARPE": -1.85,
+        "SORTINO": -2.7,
+        "STABILITY": -4.55
+      },
+      "3M": {
+        "RETURN": 2.61,
+        "TREND": 12.65,
+        "ACCELERATION": -25.87,
+        "QUALITY": 0.6279,
+        "SHARPE": 2.1,
+        "SORTINO": 4.07,
+        "STABILITY": 6.02
+      },
+      "6M": {
+        "RETURN": 2.01,
+        "TREND": 9.07,
+        "ACCELERATION": 6.74,
+        "QUALITY": 0.7525,
+        "SHARPE": 0.69,
+        "SORTINO": 1.14,
+        "STABILITY": 1.52
+      },
+      "12M": {
+        "RETURN": -3.5,
+        "TREND": -5.44,
+        "ACCELERATION": 27.68,
+        "QUALITY": 0.3422,
+        "SHARPE": -0.43,
+        "SORTINO": -0.6,
+        "STABILITY": -0.33
+      }
+    },
+    {
+      "Symbol": "VXX",
+      "Name": "Short-Term VIX Futures",
+      "Category": "Macro",
+      "SubCategory": "Volatility",
+      "2W": {
+        "RETURN": -6.75,
+        "TREND": -88.09,
+        "ACCELERATION": -163.74,
+        "QUALITY": 0.8289,
+        "SHARPE": -8.03,
+        "SORTINO": -9.73,
+        "STABILITY": -31.15
+      },
+      "1M": {
+        "RETURN": -14.49,
+        "TREND": -96.15,
+        "ACCELERATION": 116.25,
+        "QUALITY": 0.8169,
+        "SHARPE": -3.53,
+        "SORTINO": -5.98,
+        "STABILITY": -7.25
+      },
+      "3M": {
+        "RETURN": -11.28,
+        "TREND": -24.49,
+        "ACCELERATION": -150.43,
+        "QUALITY": 0.1051,
+        "SHARPE": -0.53,
+        "SORTINO": -0.84,
+        "STABILITY": -1.19
+      },
+      "6M": {
+        "RETURN": -45.48,
+        "TREND": -59.47,
+        "ACCELERATION": 147.85,
+        "QUALITY": 0.7713,
+        "SHARPE": -2.18,
+        "SORTINO": -3.2,
+        "STABILITY": -2.44
+      },
+      "12M": {
+        "RETURN": -30.4,
+        "TREND": -39.12,
+        "ACCELERATION": -160.44,
+        "QUALITY": 0.408,
+        "SHARPE": -0.1,
+        "SORTINO": -0.15,
+        "STABILITY": -0.11
+      }
+    },
+    {
+      "Symbol": "BIL",
+      "Name": "1-3 Month T-Bill",
+      "Category": "Bonds",
+      "SubCategory": "Cash",
+      "2W": {
+        "RETURN": 0.13,
+        "TREND": 3.84,
+        "ACCELERATION": 0.55,
+        "QUALITY": 0.9698,
+        "SHARPE": 17.29,
+        "SORTINO": 17.29,
+        "STABILITY": 0.37
+      },
+      "1M": {
+        "RETURN": 0.31,
+        "TREND": 4.22,
+        "ACCELERATION": 0.35,
+        "QUALITY": 0.9911,
+        "SHARPE": 19.55,
+        "SORTINO": 19.55,
+        "STABILITY": 0.39
+      },
+      "3M": {
+        "RETURN": 0.95,
+        "TREND": 3.85,
+        "ACCELERATION": 0.28,
+        "QUALITY": 0.9983,
+        "SHARPE": 18.8,
+        "SORTINO": 0,
+        "STABILITY": 351.38
+      },
+      "6M": {
+        "RETURN": 2.03,
+        "TREND": 4.09,
+        "ACCELERATION": -0.47,
+        "QUALITY": 0.9988,
+        "SHARPE": 19.95,
+        "SORTINO": 0,
+        "STABILITY": 371.14
+      },
+      "12M": {
+        "RETURN": 4.21,
+        "TREND": 4.23,
+        "ACCELERATION": -0.17,
+        "QUALITY": 0.9996,
+        "SHARPE": 20.12,
+        "SORTINO": 0,
+        "STABILITY": 379.27
+      }
+    },
+    {
+      "Symbol": "SHY",
+      "Name": "1-3 Year Treasury",
+      "Category": "Bonds",
+      "SubCategory": "Treasury",
+      "2W": {
+        "RETURN": 0.13,
+        "TREND": 2.92,
+        "ACCELERATION": 19.78,
+        "QUALITY": 0.2013,
+        "SHARPE": 3.17,
+        "SORTINO": 11.39,
+        "STABILITY": 20.57
+      },
+      "1M": {
+        "RETURN": 0.41,
+        "TREND": 3.82,
+        "ACCELERATION": -7.71,
+        "QUALITY": 0.5724,
+        "SHARPE": 5.07,
+        "SORTINO": 11.3,
+        "STABILITY": 28.48
+      },
+      "3M": {
+        "RETURN": 0.88,
+        "TREND": 3.62,
+        "ACCELERATION": -1.21,
+        "QUALITY": 0.8596,
+        "SHARPE": 3.25,
+        "SORTINO": 5.88,
+        "STABILITY": 16.52
+      },
+      "6M": {
+        "RETURN": 2.5,
+        "TREND": 4.97,
+        "ACCELERATION": -2.52,
+        "QUALITY": 0.9546,
+        "SHARPE": 3.79,
+        "SORTINO": 8.65,
+        "STABILITY": 19.04
+      },
+      "12M": {
+        "RETURN": 4.92,
+        "TREND": 5.14,
+        "ACCELERATION": -0.7,
+        "QUALITY": 0.9808,
+        "SHARPE": 3.34,
+        "SORTINO": 6.1,
+        "STABILITY": 6.66
+      }
+    },
+    {
+      "Symbol": "IEF",
+      "Name": "7-10 Year Treasury",
+      "Category": "Bonds",
+      "SubCategory": "Treasury",
+      "2W": {
+        "RETURN": -0.52,
+        "TREND": -17.27,
+        "ACCELERATION": 39.66,
+        "QUALITY": 0.5536,
+        "SHARPE": -4.57,
+        "SORTINO": -16.95,
+        "STABILITY": -18.77
+      },
+      "1M": {
+        "RETURN": 0.12,
+        "TREND": -2.2,
+        "ACCELERATION": -54.68,
+        "QUALITY": 0.0172,
+        "SHARPE": 0.44,
+        "SORTINO": 0.74,
+        "STABILITY": 1.28
+      },
+      "3M": {
+        "RETURN": 0.17,
+        "TREND": 4.37,
+        "ACCELERATION": -10.21,
+        "QUALITY": 0.3367,
+        "SHARPE": 0.2,
+        "SORTINO": 0.33,
+        "STABILITY": 0.61
+      },
+      "6M": {
+        "RETURN": 3.83,
+        "TREND": 9.95,
+        "ACCELERATION": -8.98,
+        "QUALITY": 0.8347,
+        "SHARPE": 1.72,
+        "SORTINO": 3.65,
+        "STABILITY": 4.75
+      },
+      "12M": {
+        "RETURN": 6.23,
+        "TREND": 9.03,
+        "ACCELERATION": 0.93,
+        "QUALITY": 0.9056,
+        "SHARPE": 1.09,
+        "SORTINO": 1.89,
+        "STABILITY": 1.95
+      }
+    },
+    {
+      "Symbol": "TLT",
+      "Name": "20+ Year Treasury",
+      "Category": "Bonds",
+      "SubCategory": "Treasury",
+      "2W": {
+        "RETURN": -1.59,
+        "TREND": -36.45,
+        "ACCELERATION": 17.77,
+        "QUALITY": 0.7423,
+        "SHARPE": -6.43,
+        "SORTINO": -9.12,
+        "STABILITY": -23.07
+      },
+      "1M": {
+        "RETURN": -1.3,
+        "TREND": -18.86,
+        "ACCELERATION": -97.09,
+        "QUALITY": 0.3365,
+        "SHARPE": -2.12,
+        "SORTINO": -2.6,
+        "STABILITY": -4.93
+      },
+      "3M": {
+        "RETURN": -1.98,
+        "TREND": -1.03,
+        "ACCELERATION": -48.59,
+        "QUALITY": 0.0042,
+        "SHARPE": -0.91,
+        "SORTINO": -1.39,
+        "STABILITY": -1.75
+      },
+      "6M": {
+        "RETURN": 3.29,
+        "TREND": 14.36,
+        "ACCELERATION": -14.94,
+        "QUALITY": 0.6365,
+        "SHARPE": 0.72,
+        "SORTINO": 1.35,
+        "STABILITY": 1.57
+      },
+      "12M": {
+        "RETURN": 0.23,
+        "TREND": 5.28,
+        "ACCELERATION": 14.52,
+        "QUALITY": 0.3284,
+        "SHARPE": 0.08,
+        "SORTINO": 0.12,
+        "STABILITY": 0.1
+      }
+    },
+    {
+      "Symbol": "TIP",
+      "Name": "TIPS",
+      "Category": "Bonds",
+      "SubCategory": "Inflation",
+      "2W": {
+        "RETURN": -0.34,
+        "TREND": -11.16,
+        "ACCELERATION": 18.94,
+        "QUALITY": 0.51,
+        "SHARPE": -3.25,
+        "SORTINO": -11.39,
+        "STABILITY": -15.42
+      },
+      "1M": {
+        "RETURN": -0.25,
+        "TREND": -3.83,
+        "ACCELERATION": -28.15,
+        "QUALITY": 0.1496,
+        "SHARPE": -1.07,
+        "SORTINO": -2.05,
+        "STABILITY": -3.19
+      },
+      "3M": {
+        "RETURN": -0.7,
+        "TREND": -0.4,
+        "ACCELERATION": -9.33,
+        "QUALITY": 0.0089,
+        "SHARPE": -0.9,
+        "SORTINO": -1.56,
+        "STABILITY": -2.2
+      },
+      "6M": {
+        "RETURN": 2.83,
+        "TREND": 6.82,
+        "ACCELERATION": -13.01,
+        "QUALITY": 0.7392,
+        "SHARPE": 1.66,
+        "SORTINO": 3.4,
+        "STABILITY": 4.45
+      },
+      "12M": {
+        "RETURN": 5.31,
+        "TREND": 7.66,
+        "ACCELERATION": -0.8,
+        "QUALITY": 0.9079,
+        "SHARPE": 1.2,
+        "SORTINO": 1.68,
+        "STABILITY": 1.93
+      }
+    },
+    {
+      "Symbol": "GOVT",
+      "Name": "US Treasury All Maturities",
+      "Category": "Bonds",
+      "SubCategory": "Treasury",
+      "2W": {
+        "RETURN": -0.35,
+        "TREND": -10.93,
+        "ACCELERATION": 29.48,
+        "QUALITY": 0.5017,
+        "SHARPE": -3.45,
+        "SORTINO": -8.91,
+        "STABILITY": -15.99
+      },
+      "1M": {
+        "RETURN": 0.08,
+        "TREND": -2.56,
+        "ACCELERATION": -37.52,
+        "QUALITY": 0.05,
+        "SHARPE": 0.35,
+        "SORTINO": 0.56,
+        "STABILITY": 1.04
+      },
+      "3M": {
+        "RETURN": 0.24,
+        "TREND": 3.08,
+        "ACCELERATION": -11.95,
+        "QUALITY": 0.272,
+        "SHARPE": 0.33,
+        "SORTINO": 0.61,
+        "STABILITY": 0.99
+      },
+      "6M": {
+        "RETURN": 3.14,
+        "TREND": 8.0,
+        "ACCELERATION": -6.96,
+        "QUALITY": 0.8412,
+        "SHARPE": 1.79,
+        "SORTINO": 4.21,
+        "STABILITY": 5.26
+      },
+      "12M": {
+        "RETURN": 4.9,
+        "TREND": 6.67,
+        "ACCELERATION": 1.84,
+        "QUALITY": 0.8904,
+        "SHARPE": 0.92,
+        "SORTINO": 1.27,
+        "STABILITY": 1.56
+      }
+    },
+    {
+      "Symbol": "AGG",
+      "Name": "Core US Aggregate Bond",
+      "Category": "Bonds",
+      "SubCategory": "Aggregate",
+      "2W": {
+        "RETURN": -0.28,
+        "TREND": -9.43,
+        "ACCELERATION": 24.18,
+        "QUALITY": 0.3938,
+        "SHARPE": -2.38,
+        "SORTINO": -5.35,
+        "STABILITY": -13.03
+      },
+      "1M": {
+        "RETURN": 0.23,
+        "TREND": 1.3,
+        "ACCELERATION": -37.36,
+        "QUALITY": 0.0127,
+        "SHARPE": 0.96,
+        "SORTINO": 1.52,
+        "STABILITY": 3.53
+      },
+      "3M": {
+        "RETURN": 0.32,
+        "TREND": 3.16,
+        "ACCELERATION": -10.68,
+        "QUALITY": 0.2802,
+        "SHARPE": 0.43,
+        "SORTINO": 0.72,
+        "STABILITY": 1.25
+      },
+      "6M": {
+        "RETURN": 3.9,
+        "TREND": 9.52,
+        "ACCELERATION": -9.17,
+        "QUALITY": 0.8529,
+        "SHARPE": 2.16,
+        "SORTINO": 4.4,
+        "STABILITY": 6.81
+      },
+      "12M": {
+        "RETURN": 5.7,
+        "TREND": 7.99,
+        "ACCELERATION": 3.43,
+        "QUALITY": 0.9123,
+        "SHARPE": 1.22,
+        "SORTINO": 1.91,
+        "STABILITY": 2.33
+      }
+    },
+    {
+      "Symbol": "BND",
+      "Name": "Total Bond Market",
+      "Category": "Bonds",
+      "SubCategory": "Aggregate",
+      "2W": {
+        "RETURN": -0.27,
+        "TREND": -9.07,
+        "ACCELERATION": 21.05,
+        "QUALITY": 0.4159,
+        "SHARPE": -2.48,
+        "SORTINO": -5.19,
+        "STABILITY": -13.96
+      },
+      "1M": {
+        "RETURN": 0.27,
+        "TREND": 1.16,
+        "ACCELERATION": -38.01,
+        "QUALITY": 0.0101,
+        "SHARPE": 1.14,
+        "SORTINO": 1.81,
+        "STABILITY": 4.02
+      },
+      "3M": {
+        "RETURN": 0.34,
+        "TREND": 3.15,
+        "ACCELERATION": -10.18,
+        "QUALITY": 0.2915,
+        "SHARPE": 0.46,
+        "SORTINO": 0.78,
+        "STABILITY": 1.36
+      },
+      "6M": {
+        "RETURN": 3.83,
+        "TREND": 9.29,
+        "ACCELERATION": -8.93,
+        "QUALITY": 0.856,
+        "SHARPE": 2.15,
+        "SORTINO": 4.59,
+        "STABILITY": 6.8
+      },
+      "12M": {
+        "RETURN": 5.6,
+        "TREND": 7.85,
+        "ACCELERATION": 3.3,
+        "QUALITY": 0.9131,
+        "SHARPE": 1.22,
+        "SORTINO": 1.91,
+        "STABILITY": 2.29
+      }
+    },
+    {
+      "Symbol": "HYG",
+      "Name": "High Yield Bond",
+      "Category": "Bonds",
+      "SubCategory": "Credit",
+      "2W": {
+        "RETURN": -0.01,
+        "TREND": -2.3,
+        "ACCELERATION": 6.89,
+        "QUALITY": 0.0523,
+        "SHARPE": -0.12,
+        "SORTINO": -0.2,
+        "STABILITY": -0.88
+      },
+      "1M": {
+        "RETURN": 0.95,
+        "TREND": 17.75,
+        "ACCELERATION": -34.04,
+        "QUALITY": 0.6975,
+        "SHARPE": 4.21,
+        "SORTINO": 9.4,
+        "STABILITY": 33.41
+      },
+      "3M": {
+        "RETURN": 0.9,
+        "TREND": 3.31,
+        "ACCELERATION": 8.67,
+        "QUALITY": 0.3148,
+        "SHARPE": 1.07,
+        "SORTINO": 1.78,
+        "STABILITY": 2.98
+      },
+      "6M": {
+        "RETURN": 4.46,
+        "TREND": 7.41,
+        "ACCELERATION": -7.76,
+        "QUALITY": 0.8615,
+        "SHARPE": 2.68,
+        "SORTINO": 4.91,
+        "STABILITY": 7.1
+      },
+      "12M": {
+        "RETURN": 7.26,
+        "TREND": 9.15,
+        "ACCELERATION": 2.53,
+        "QUALITY": 0.8845,
+        "SHARPE": 1.28,
+        "SORTINO": 1.67,
+        "STABILITY": 1.58
+      }
+    },
+    {
+      "Symbol": "LQD",
+      "Name": "Inv. Grade Corp Bond",
+      "Category": "Bonds",
+      "SubCategory": "Credit",
+      "2W": {
+        "RETURN": -0.56,
+        "TREND": -13.36,
+        "ACCELERATION": 1.54,
+        "QUALITY": 0.3967,
+        "SHARPE": -3.83,
+        "SORTINO": -7.77,
+        "STABILITY": -22.44
+      },
+      "1M": {
+        "RETURN": 0.42,
+        "TREND": 9.43,
+        "ACCELERATION": -61.17,
+        "QUALITY": 0.196,
+        "SHARPE": 1.25,
+        "SORTINO": 2.09,
+        "STABILITY": 4.68
+      },
+      "3M": {
+        "RETURN": -0.49,
+        "TREND": 0.51,
+        "ACCELERATION": -8.72,
+        "QUALITY": 0.0045,
+        "SHARPE": -0.43,
+        "SORTINO": -0.8,
+        "STABILITY": -0.95
+      },
+      "6M": {
+        "RETURN": 4.45,
+        "TREND": 11.16,
+        "ACCELERATION": -15.52,
+        "QUALITY": 0.7732,
+        "SHARPE": 1.8,
+        "SORTINO": 3.76,
+        "STABILITY": 4.47
+      },
+      "12M": {
+        "RETURN": 5.5,
+        "TREND": 9.77,
+        "ACCELERATION": 6.63,
+        "QUALITY": 0.8661,
+        "SHARPE": 0.83,
+        "SORTINO": 1.16,
+        "STABILITY": 1.58
+      }
+    },
+    {
+      "Symbol": "SPY",
+      "Name": "S&P 500",
+      "Category": "Equity",
+      "SubCategory": "Core",
+      "2W": {
+        "RETURN": -0.12,
+        "TREND": 1.5,
+        "ACCELERATION": -60.59,
+        "QUALITY": 0.0021,
+        "SHARPE": -0.39,
+        "SORTINO": -0.42,
+        "STABILITY": -2.46
+      },
+      "1M": {
+        "RETURN": 1.31,
+        "TREND": 66.47,
+        "ACCELERATION": -60.71,
+        "QUALITY": 0.6285,
+        "SHARPE": 1.42,
+        "SORTINO": 2.13,
+        "STABILITY": 8.66
+      },
+      "3M": {
+        "RETURN": 3.56,
+        "TREND": 12.89,
+        "ACCELERATION": -11.15,
+        "QUALITY": 0.3735,
+        "SHARPE": 1.21,
+        "SORTINO": 1.46,
+        "STABILITY": 2.95
+      },
+      "6M": {
+        "RETURN": 14.58,
+        "TREND": 28.13,
+        "ACCELERATION": -19.91,
+        "QUALITY": 0.8895,
+        "SHARPE": 2.59,
+        "SORTINO": 3.33,
+        "STABILITY": 5.53
+      },
+      "12M": {
+        "RETURN": 14.01,
+        "TREND": 22.99,
+        "ACCELERATION": 34.08,
+        "QUALITY": 0.6342,
+        "SHARPE": 0.76,
+        "SORTINO": 0.97,
+        "STABILITY": 0.8
+      }
+    },
+    {
+      "Symbol": "QQQ",
+      "Name": "Nasdaq-100",
+      "Category": "Equity",
+      "SubCategory": "Core",
+      "2W": {
+        "RETURN": -1.84,
+        "TREND": -31.41,
+        "ACCELERATION": -201.54,
+        "QUALITY": 0.2564,
+        "SHARPE": -4.53,
+        "SORTINO": -4.34,
+        "STABILITY": -18.91
+      },
+      "1M": {
+        "RETURN": 0.28,
+        "TREND": 79.16,
+        "ACCELERATION": -82.26,
+        "QUALITY": 0.4986,
+        "SHARPE": 0.28,
+        "SORTINO": 0.38,
+        "STABILITY": 1.64
+      },
+      "3M": {
+        "RETURN": 3.6,
+        "TREND": 15.78,
+        "ACCELERATION": -37.08,
+        "QUALITY": 0.2776,
+        "SHARPE": 0.91,
+        "SORTINO": 1.15,
+        "STABILITY": 2.02
+      },
+      "6M": {
+        "RETURN": 15.66,
+        "TREND": 35.18,
+        "ACCELERATION": -18.02,
+        "QUALITY": 0.8695,
+        "SHARPE": 2.08,
+        "SORTINO": 2.62,
+        "STABILITY": 3.86
+      },
+      "12M": {
+        "RETURN": 16.59,
+        "TREND": 30.15,
+        "ACCELERATION": 40.69,
+        "QUALITY": 0.6295,
+        "SHARPE": 0.76,
+        "SORTINO": 1.0,
+        "STABILITY": 0.8
+      }
+    },
+    {
+      "Symbol": "IWM",
+      "Name": "Russell 2000",
+      "Category": "Equity",
+      "SubCategory": "Core",
+      "2W": {
+        "RETURN": 2.76,
+        "TREND": 124.5,
+        "ACCELERATION": -126.01,
+        "QUALITY": 0.5371,
+        "SHARPE": 4.47,
+        "SORTINO": 8.55,
+        "STABILITY": 34.09
+      },
+      "1M": {
+        "RETURN": 6.08,
+        "TREND": 259.64,
+        "ACCELERATION": -93.48,
+        "QUALITY": 0.8243,
+        "SHARPE": 3.57,
+        "SORTINO": 6.33,
+        "STABILITY": 33.7
+      },
+      "3M": {
+        "RETURN": 5.46,
+        "TREND": 7.69,
+        "ACCELERATION": 19.15,
+        "QUALITY": 0.0578,
+        "SHARPE": 1.15,
+        "SORTINO": 1.89,
+        "STABILITY": 2.8
+      },
+      "6M": {
+        "RETURN": 21.14,
+        "TREND": 38.52,
+        "ACCELERATION": -38.67,
+        "QUALITY": 0.7925,
+        "SHARPE": 2.1,
+        "SORTINO": 3.64,
+        "STABILITY": 4.78
+      },
+      "12M": {
+        "RETURN": 8.52,
+        "TREND": 19.51,
+        "ACCELERATION": 61.62,
+        "QUALITY": 0.3817,
+        "SHARPE": 0.47,
+        "SORTINO": 0.68,
+        "STABILITY": 0.44
+      }
+    },
+    {
+      "Symbol": "OEF",
+      "Name": "S&P 100",
+      "Category": "Equity",
+      "SubCategory": "Core",
+      "2W": {
+        "RETURN": -0.73,
+        "TREND": -7.56,
+        "ACCELERATION": -73.64,
+        "QUALITY": 0.0476,
+        "SHARPE": -2.77,
+        "SORTINO": -2.27,
+        "STABILITY": -17.96
+      },
+      "1M": {
+        "RETURN": 0.68,
+        "TREND": 63.61,
+        "ACCELERATION": -64.35,
+        "QUALITY": 0.5868,
+        "SHARPE": 0.78,
+        "SORTINO": 1.2,
+        "STABILITY": 4.95
+      },
+      "3M": {
+        "RETURN": 3.7,
+        "TREND": 17.44,
+        "ACCELERATION": -22.17,
+        "QUALITY": 0.4553,
+        "SHARPE": 1.17,
+        "SORTINO": 1.49,
+        "STABILITY": 2.9
+      },
+      "6M": {
+        "RETURN": 16.89,
+        "TREND": 35.97,
+        "ACCELERATION": -22.13,
+        "QUALITY": 0.9095,
+        "SHARPE": 2.77,
+        "SORTINO": 3.47,
+        "STABILITY": 5.92
+      },
+      "12M": {
+        "RETURN": 16.41,
+        "TREND": 27.18,
+        "ACCELERATION": 43.34,
+        "QUALITY": 0.6377,
+        "SHARPE": 0.86,
+        "SORTINO": 1.1,
+        "STABILITY": 0.88
+      }
+    },
+    {
+      "Symbol": "FEZ",
+      "Name": "Euro Stoxx 50",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": 1.97,
+        "TREND": 78.86,
+        "ACCELERATION": 84.3,
+        "QUALITY": 0.6528,
+        "SHARPE": 6.82,
+        "SORTINO": 27.72,
+        "STABILITY": 151.98
+      },
+      "1M": {
+        "RETURN": 2.4,
+        "TREND": 106.86,
+        "ACCELERATION": 53.79,
+        "QUALITY": 0.6592,
+        "SHARPE": 2.27,
+        "SORTINO": 3.36,
+        "STABILITY": 11.56
+      },
+      "3M": {
+        "RETURN": 6.93,
+        "TREND": 12.97,
+        "ACCELERATION": -6.06,
+        "QUALITY": 0.2643,
+        "SHARPE": 2.18,
+        "SORTINO": 3.74,
+        "STABILITY": 4.88
+      },
+      "6M": {
+        "RETURN": 12.25,
+        "TREND": 19.32,
+        "ACCELERATION": 3.06,
+        "QUALITY": 0.7233,
+        "SHARPE": 1.77,
+        "SORTINO": 3.02,
+        "STABILITY": 3.66
+      },
+      "12M": {
+        "RETURN": 33.91,
+        "TREND": 32.77,
+        "ACCELERATION": -24.56,
+        "QUALITY": 0.8678,
+        "SHARPE": 1.62,
+        "SORTINO": 2.38,
+        "STABILITY": 1.97
+      }
+    },
+    {
+      "Symbol": "VGK",
+      "Name": "FTSE Europe",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": 2.14,
+        "TREND": 67.89,
+        "ACCELERATION": 81.14,
+        "QUALITY": 0.664,
+        "SHARPE": 6.14,
+        "SORTINO": 15.15,
+        "STABILITY": 91.93
+      },
+      "1M": {
+        "RETURN": 2.68,
+        "TREND": 89.38,
+        "ACCELERATION": 23.83,
+        "QUALITY": 0.6966,
+        "SHARPE": 2.45,
+        "SORTINO": 4.79,
+        "STABILITY": 12.63
+      },
+      "3M": {
+        "RETURN": 5.11,
+        "TREND": 11.8,
+        "ACCELERATION": 1.95,
+        "QUALITY": 0.2956,
+        "SHARPE": 1.8,
+        "SORTINO": 3.66,
+        "STABILITY": 3.94
+      },
+      "6M": {
+        "RETURN": 10.85,
+        "TREND": 15.64,
+        "ACCELERATION": -3.99,
+        "QUALITY": 0.7369,
+        "SHARPE": 1.8,
+        "SORTINO": 3.14,
+        "STABILITY": 3.97
+      },
+      "12M": {
+        "RETURN": 29.67,
+        "TREND": 31.75,
+        "ACCELERATION": -25.02,
+        "QUALITY": 0.881,
+        "SHARPE": 1.63,
+        "SORTINO": 2.19,
+        "STABILITY": 1.92
+      }
+    },
+    {
+      "Symbol": "EWJ",
+      "Name": "MSCI Japan",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": 2.91,
+        "TREND": 108.46,
+        "ACCELERATION": -14.4,
+        "QUALITY": 0.7772,
+        "SHARPE": 10.36,
+        "SORTINO": 0,
+        "STABILITY": 149.12
+      },
+      "1M": {
+        "RETURN": 1.06,
+        "TREND": 60.16,
+        "ACCELERATION": 56.03,
+        "QUALITY": 0.4493,
+        "SHARPE": 0.9,
+        "SORTINO": 1.24,
+        "STABILITY": 4.25
+      },
+      "3M": {
+        "RETURN": 4.56,
+        "TREND": 15.17,
+        "ACCELERATION": -20.12,
+        "QUALITY": 0.338,
+        "SHARPE": 1.19,
+        "SORTINO": 1.42,
+        "STABILITY": 3.36
+      },
+      "6M": {
+        "RETURN": 17.42,
+        "TREND": 36.7,
+        "ACCELERATION": -36.49,
+        "QUALITY": 0.8166,
+        "SHARPE": 1.94,
+        "SORTINO": 2.98,
+        "STABILITY": 5.8
+      },
+      "12M": {
+        "RETURN": 23.48,
+        "TREND": 31.1,
+        "ACCELERATION": 12.42,
+        "QUALITY": 0.887,
+        "SHARPE": 1.16,
+        "SORTINO": 1.63,
+        "STABILITY": 1.61
+      }
+    },
+    {
+      "Symbol": "VXUS",
+      "Name": "Total Intl ex-US",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": 1.47,
+        "TREND": 49.1,
+        "ACCELERATION": -1.2,
+        "QUALITY": 0.6891,
+        "SHARPE": 5.34,
+        "SORTINO": 8.73,
+        "STABILITY": 60.3
+      },
+      "1M": {
+        "RETURN": 1.25,
+        "TREND": 60.67,
+        "ACCELERATION": 25.15,
+        "QUALITY": 0.6302,
+        "SHARPE": 1.45,
+        "SORTINO": 2.19,
+        "STABILITY": 6.67
+      },
+      "3M": {
+        "RETURN": 3.49,
+        "TREND": 10.55,
+        "ACCELERATION": -11.02,
+        "QUALITY": 0.3102,
+        "SHARPE": 1.28,
+        "SORTINO": 1.71,
+        "STABILITY": 3.05
+      },
+      "6M": {
+        "RETURN": 13.68,
+        "TREND": 26.56,
+        "ACCELERATION": -19.56,
+        "QUALITY": 0.8743,
+        "SHARPE": 2.42,
+        "SORTINO": 3.68,
+        "STABILITY": 5.53
+      },
+      "12M": {
+        "RETURN": 26.66,
+        "TREND": 34.13,
+        "ACCELERATION": -3.0,
+        "QUALITY": 0.9288,
+        "SHARPE": 1.59,
+        "SORTINO": 2.04,
+        "STABILITY": 1.84
+      }
+    },
+    {
+      "Symbol": "EEM",
+      "Name": "Emerging Markets",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": -0.41,
+        "TREND": 3.28,
+        "ACCELERATION": -131.33,
+        "QUALITY": 0.0042,
+        "SHARPE": -1.03,
+        "SORTINO": -1.67,
+        "STABILITY": -5.65
+      },
+      "1M": {
+        "RETURN": -1.6,
+        "TREND": 18.75,
+        "ACCELERATION": 29.27,
+        "QUALITY": 0.1894,
+        "SHARPE": -1.82,
+        "SORTINO": -2.57,
+        "STABILITY": -8.87
+      },
+      "3M": {
+        "RETURN": 1.54,
+        "TREND": 10.07,
+        "ACCELERATION": -49.73,
+        "QUALITY": 0.1886,
+        "SHARPE": 0.48,
+        "SORTINO": 0.63,
+        "STABILITY": 1.42
+      },
+      "6M": {
+        "RETURN": 16.03,
+        "TREND": 40.24,
+        "ACCELERATION": -24.04,
+        "QUALITY": 0.8696,
+        "SHARPE": 2.27,
+        "SORTINO": 3.26,
+        "STABILITY": 5.95
+      },
+      "12M": {
+        "RETURN": 26.22,
+        "TREND": 39.16,
+        "ACCELERATION": 15.23,
+        "QUALITY": 0.9069,
+        "SHARPE": 1.41,
+        "SORTINO": 1.9,
+        "STABILITY": 1.66
+      }
+    },
+    {
+      "Symbol": "VWO",
+      "Name": "EM Low Cost",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": -0.65,
+        "TREND": -6.34,
+        "ACCELERATION": -81.94,
+        "QUALITY": 0.0327,
+        "SHARPE": -2.24,
+        "SORTINO": -3.86,
+        "STABILITY": -12.5
+      },
+      "1M": {
+        "RETURN": -1.95,
+        "TREND": 5.65,
+        "ACCELERATION": 15.56,
+        "QUALITY": 0.0328,
+        "SHARPE": -2.61,
+        "SORTINO": -4.01,
+        "STABILITY": -11.5
+      },
+      "3M": {
+        "RETURN": -0.85,
+        "TREND": -0.29,
+        "ACCELERATION": -35.26,
+        "QUALITY": 0.0003,
+        "SHARPE": -0.19,
+        "SORTINO": -0.24,
+        "STABILITY": -0.52
+      },
+      "6M": {
+        "RETURN": 12.29,
+        "TREND": 30.88,
+        "ACCELERATION": -34.98,
+        "QUALITY": 0.8126,
+        "SHARPE": 1.97,
+        "SORTINO": 2.77,
+        "STABILITY": 4.98
+      },
+      "12M": {
+        "RETURN": 19.71,
+        "TREND": 32.58,
+        "ACCELERATION": 11.45,
+        "QUALITY": 0.8849,
+        "SHARPE": 1.17,
+        "SORTINO": 1.52,
+        "STABILITY": 1.34
+      }
+    },
+    {
+      "Symbol": "FXI",
+      "Name": "FTSE China 50",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": -1.9,
+        "TREND": -35.64,
+        "ACCELERATION": -51.82,
+        "QUALITY": 0.3819,
+        "SHARPE": -3.41,
+        "SORTINO": -6.62,
+        "STABILITY": -18.24
+      },
+      "1M": {
+        "RETURN": -3.44,
+        "TREND": -12.19,
+        "ACCELERATION": -21.64,
+        "QUALITY": 0.1027,
+        "SHARPE": -3.0,
+        "SORTINO": -6.28,
+        "STABILITY": -14.94
+      },
+      "3M": {
+        "RETURN": -6.92,
+        "TREND": -17.66,
+        "ACCELERATION": -7.62,
+        "QUALITY": 0.472,
+        "SHARPE": -1.39,
+        "SORTINO": -1.85,
+        "STABILITY": -3.32
+      },
+      "6M": {
+        "RETURN": 6.9,
+        "TREND": 20.45,
+        "ACCELERATION": -59.22,
+        "QUALITY": 0.49,
+        "SHARPE": 0.79,
+        "SORTINO": 1.23,
+        "STABILITY": 1.87
+      },
+      "12M": {
+        "RETURN": 26.59,
+        "TREND": 35.69,
+        "ACCELERATION": -18.31,
+        "QUALITY": 0.7846,
+        "SHARPE": 1.05,
+        "SORTINO": 1.43,
+        "STABILITY": 1.16
+      }
+    },
+    {
+      "Symbol": "KWEB",
+      "Name": "China Internet",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": -3.56,
+        "TREND": -48.44,
+        "ACCELERATION": -152.7,
+        "QUALITY": 0.5423,
+        "SHARPE": -6.91,
+        "SORTINO": -9.73,
+        "STABILITY": -28.39
+      },
+      "1M": {
+        "RETURN": -5.18,
+        "TREND": -21.99,
+        "ACCELERATION": -40.81,
+        "QUALITY": 0.174,
+        "SHARPE": -3.28,
+        "SORTINO": -5.23,
+        "STABILITY": -14.28
+      },
+      "3M": {
+        "RETURN": -14.86,
+        "TREND": -45.12,
+        "ACCELERATION": -26.67,
+        "QUALITY": 0.8044,
+        "SHARPE": -2.36,
+        "SORTINO": -3.22,
+        "STABILITY": -3.96
+      },
+      "6M": {
+        "RETURN": 5.47,
+        "TREND": 30.5,
+        "ACCELERATION": -130.47,
+        "QUALITY": 0.3305,
+        "SHARPE": 0.55,
+        "SORTINO": 0.84,
+        "STABILITY": 0.89
+      },
+      "12M": {
+        "RETURN": 16.58,
+        "TREND": 33.81,
+        "ACCELERATION": -0.99,
+        "QUALITY": 0.6431,
+        "SHARPE": 0.64,
+        "SORTINO": 0.9,
+        "STABILITY": 0.79
+      }
+    },
+    {
+      "Symbol": "INDA",
+      "Name": "MSCI India",
+      "Category": "Equity",
+      "SubCategory": "Global",
+      "2W": {
+        "RETURN": -1.45,
+        "TREND": -27.98,
+        "ACCELERATION": 22.59,
+        "QUALITY": 0.4162,
+        "SHARPE": -3.26,
+        "SORTINO": -3.93,
+        "STABILITY": -24.33
+      },
+      "1M": {
+        "RETURN": -2.78,
+        "TREND": -33.67,
+        "ACCELERATION": -34.73,
+        "QUALITY": 0.7867,
+        "SHARPE": -3.54,
+        "SORTINO": -4.37,
+        "STABILITY": -10.99
+      },
+      "3M": {
+        "RETURN": -1.7,
+        "TREND": 9.34,
+        "ACCELERATION": -44.77,
+        "QUALITY": 0.1733,
+        "SHARPE": -0.62,
+        "SORTINO": -1.13,
+        "STABILITY": -1.61
+      },
+      "6M": {
+        "RETURN": -1.36,
+        "TREND": -1.53,
+        "ACCELERATION": 30.91,
+        "QUALITY": 0.0137,
+        "SHARPE": -0.22,
+        "SORTINO": -0.38,
+        "STABILITY": -0.32
+      },
+      "12M": {
+        "RETURN": -3.28,
+        "TREND": 6.58,
+        "ACCELERATION": -11.6,
+        "QUALITY": 0.265,
+        "SHARPE": -0.16,
+        "SORTINO": -0.25,
+        "STABILITY": -0.18
+      }
+    },
+    {
+      "Symbol": "VTV",
+      "Name": "Value",
+      "Category": "Equity",
+      "SubCategory": "Factor",
+      "2W": {
+        "RETURN": 2.32,
+        "TREND": 73.11,
+        "ACCELERATION": 113.08,
+        "QUALITY": 0.5913,
+        "SHARPE": 6.22,
+        "SORTINO": 21.97,
+        "STABILITY": 74.35
+      },
+      "1M": {
+        "RETURN": 3.25,
+        "TREND": 76.28,
+        "ACCELERATION": -12.3,
+        "QUALITY": 0.7704,
+        "SHARPE": 3.38,
+        "SORTINO": 7.02,
+        "STABILITY": 34.98
+      },
+      "3M": {
+        "RETURN": 4.88,
+        "TREND": 11.6,
+        "ACCELERATION": 20.47,
+        "QUALITY": 0.4018,
+        "SHARPE": 1.98,
+        "SORTINO": 3.1,
+        "STABILITY": 5.76
+      },
+      "6M": {
+        "RETURN": 13.02,
+        "TREND": 19.97,
+        "ACCELERATION": -10.75,
+        "QUALITY": 0.8684,
+        "SHARPE": 2.63,
+        "SORTINO": 4.31,
+        "STABILITY": 7.28
+      },
+      "12M": {
+        "RETURN": 13.08,
+        "TREND": 14.44,
+        "ACCELERATION": 22.47,
+        "QUALITY": 0.6503,
+        "SHARPE": 0.88,
+        "SORTINO": 1.13,
+        "STABILITY": 0.98
+      }
+    },
+    {
+      "Symbol": "MTUM",
+      "Name": "Momentum",
+      "Category": "Equity",
+      "SubCategory": "Factor",
+      "2W": {
+        "RETURN": -0.19,
+        "TREND": 16.27,
+        "ACCELERATION": -289.79,
+        "QUALITY": 0.0262,
+        "SHARPE": -0.24,
+        "SORTINO": -0.17,
+        "STABILITY": -1.35
+      },
+      "1M": {
+        "RETURN": 0.92,
+        "TREND": 98.45,
+        "ACCELERATION": -16.4,
+        "QUALITY": 0.6109,
+        "SHARPE": 0.75,
+        "SORTINO": 0.92,
+        "STABILITY": 4.32
+      },
+      "3M": {
+        "RETURN": -1.89,
+        "TREND": -13.37,
+        "ACCELERATION": 6.23,
+        "QUALITY": 0.2944,
+        "SHARPE": -0.43,
+        "SORTINO": -0.52,
+        "STABILITY": -0.84
+      },
+      "6M": {
+        "RETURN": 8.25,
+        "TREND": 15.64,
+        "ACCELERATION": -41.82,
+        "QUALITY": 0.4927,
+        "SHARPE": 1.22,
+        "SORTINO": 1.69,
+        "STABILITY": 2.16
+      },
+      "12M": {
+        "RETURN": 18.49,
+        "TREND": 28.73,
+        "ACCELERATION": 4.71,
+        "QUALITY": 0.6955,
+        "SHARPE": 0.85,
+        "SORTINO": 1.06,
+        "STABILITY": 0.94
+      }
+    },
+    {
+      "Symbol": "LCTU",
+      "Name": "Quality Low Vol",
+      "Category": "Equity",
+      "SubCategory": "Factor",
+      "2W": {
+        "RETURN": 0.26,
+        "TREND": 12.43,
+        "ACCELERATION": -41.05,
+        "QUALITY": 0.1259,
+        "SHARPE": 0.96,
+        "SORTINO": 1.1,
+        "STABILITY": 6.96
+      },
+      "1M": {
+        "RETURN": 1.32,
+        "TREND": 64.87,
+        "ACCELERATION": -43.13,
+        "QUALITY": 0.6269,
+        "SHARPE": 1.39,
+        "SORTINO": 1.98,
+        "STABILITY": 7.72
+      },
+      "3M": {
+        "RETURN": 3.55,
+        "TREND": 11.21,
+        "ACCELERATION": -15.45,
+        "QUALITY": 0.2969,
+        "SHARPE": 1.18,
+        "SORTINO": 1.53,
+        "STABILITY": 2.72
+      },
+      "6M": {
+        "RETURN": 14.75,
+        "TREND": 28.17,
+        "ACCELERATION": -22.95,
+        "QUALITY": 0.876,
+        "SHARPE": 2.56,
+        "SORTINO": 3.47,
+        "STABILITY": 5.16
+      },
+      "12M": {
+        "RETURN": 13.22,
+        "TREND": 22.55,
+        "ACCELERATION": 36.12,
+        "QUALITY": 0.6011,
+        "SHARPE": 0.74,
+        "SORTINO": 0.94,
+        "STABILITY": 0.72
+      }
+    },
+    {
+      "Symbol": "XLF",
+      "Name": "Financials",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 4.07,
+        "TREND": 173.62,
+        "ACCELERATION": 141.51,
+        "QUALITY": 0.7482,
+        "SHARPE": 9.0,
+        "SORTINO": 7200.07,
+        "STABILITY": 151.12
+      },
+      "1M": {
+        "RETURN": 4.84,
+        "TREND": 129.31,
+        "ACCELERATION": 22.08,
+        "QUALITY": 0.8411,
+        "SHARPE": 4.31,
+        "SORTINO": 6.08,
+        "STABILITY": 65.95
+      },
+      "3M": {
+        "RETURN": 2.02,
+        "TREND": -3.18,
+        "ACCELERATION": 56.79,
+        "QUALITY": 0.0211,
+        "SHARPE": 0.66,
+        "SORTINO": 0.82,
+        "STABILITY": 1.62
+      },
+      "6M": {
+        "RETURN": 10.19,
+        "TREND": 5.71,
+        "ACCELERATION": -20.77,
+        "QUALITY": 0.1983,
+        "SHARPE": 1.54,
+        "SORTINO": 2.08,
+        "STABILITY": 3.66
+      },
+      "12M": {
+        "RETURN": 12.54,
+        "TREND": 12.29,
+        "ACCELERATION": 2.76,
+        "QUALITY": 0.5506,
+        "SHARPE": 0.71,
+        "SORTINO": 0.84,
+        "STABILITY": 0.88
+      }
+    },
+    {
+      "Symbol": "XLK",
+      "Name": "Technology",
+      "Category": "Sector",
+      "SubCategory": "Growth",
+      "2W": {
+        "RETURN": -1.62,
+        "TREND": -11.75,
+        "ACCELERATION": -416.02,
+        "QUALITY": 0.0106,
+        "SHARPE": -2.4,
+        "SORTINO": -2.21,
+        "STABILITY": -10.24
+      },
+      "1M": {
+        "RETURN": -1.23,
+        "TREND": 99.53,
+        "ACCELERATION": 19.27,
+        "QUALITY": 0.4541,
+        "SHARPE": -0.61,
+        "SORTINO": -0.81,
+        "STABILITY": -3.09
+      },
+      "3M": {
+        "RETURN": 4.99,
+        "TREND": 13.82,
+        "ACCELERATION": -71.13,
+        "QUALITY": 0.1267,
+        "SHARPE": 1.03,
+        "SORTINO": 1.29,
+        "STABILITY": 2.1
+      },
+      "6M": {
+        "RETURN": 18.28,
+        "TREND": 43.36,
+        "ACCELERATION": -20.06,
+        "QUALITY": 0.8195,
+        "SHARPE": 1.98,
+        "SORTINO": 2.45,
+        "STABILITY": 3.37
+      },
+      "12M": {
+        "RETURN": 20.32,
+        "TREND": 39.75,
+        "ACCELERATION": 49.22,
+        "QUALITY": 0.6426,
+        "SHARPE": 0.81,
+        "SORTINO": 1.05,
+        "STABILITY": 0.87
+      }
+    },
+    {
+      "Symbol": "XLE",
+      "Name": "Energy",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 0.27,
+        "TREND": -4.67,
+        "ACCELERATION": -132.65,
+        "QUALITY": 0.0046,
+        "SHARPE": 0.53,
+        "SORTINO": 1.81,
+        "STABILITY": 4.01
+      },
+      "1M": {
+        "RETURN": -1.78,
+        "TREND": 25.42,
+        "ACCELERATION": 57.09,
+        "QUALITY": 0.1886,
+        "SHARPE": -1.29,
+        "SORTINO": -2.88,
+        "STABILITY": -7.93
+      },
+      "3M": {
+        "RETURN": 1.29,
+        "TREND": 14.24,
+        "ACCELERATION": 57.83,
+        "QUALITY": 0.2259,
+        "SHARPE": 0.39,
+        "SORTINO": 0.67,
+        "STABILITY": 0.9
+      },
+      "6M": {
+        "RETURN": 3.65,
+        "TREND": 13.74,
+        "ACCELERATION": 3.86,
+        "QUALITY": 0.5192,
+        "SHARPE": 0.51,
+        "SORTINO": 0.87,
+        "STABILITY": 1.17
+      },
+      "12M": {
+        "RETURN": 4.14,
+        "TREND": 5.21,
+        "ACCELERATION": 27.43,
+        "QUALITY": 0.1146,
+        "SHARPE": 0.29,
+        "SORTINO": 0.33,
+        "STABILITY": 0.38
+      }
+    },
+    {
+      "Symbol": "XLY",
+      "Name": "Consumer Discretionary",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 2.97,
+        "TREND": 78.5,
+        "ACCELERATION": 183.32,
+        "QUALITY": 0.4666,
+        "SHARPE": 6.05,
+        "SORTINO": 6.92,
+        "STABILITY": 56.71
+      },
+      "1M": {
+        "RETURN": 5.44,
+        "TREND": 159.08,
+        "ACCELERATION": -47.7,
+        "QUALITY": 0.7414,
+        "SHARPE": 3.91,
+        "SORTINO": 5.78,
+        "STABILITY": 20.67
+      },
+      "3M": {
+        "RETURN": 0.96,
+        "TREND": -6.19,
+        "ACCELERATION": 19.02,
+        "QUALITY": 0.0536,
+        "SHARPE": 0.3,
+        "SORTINO": 0.46,
+        "STABILITY": 0.65
+      },
+      "6M": {
+        "RETURN": 16.2,
+        "TREND": 22.56,
+        "ACCELERATION": -50.47,
+        "QUALITY": 0.5904,
+        "SHARPE": 1.84,
+        "SORTINO": 2.79,
+        "STABILITY": 3.66
+      },
+      "12M": {
+        "RETURN": 4.68,
+        "TREND": 13.17,
+        "ACCELERATION": 48.18,
+        "QUALITY": 0.2432,
+        "SHARPE": 0.31,
+        "SORTINO": 0.46,
+        "STABILITY": 0.29
+      }
+    },
+    {
+      "Symbol": "XLP",
+      "Name": "Consumer Staples",
+      "Category": "Sector",
+      "SubCategory": "Defensive",
+      "2W": {
+        "RETURN": 1.1,
+        "TREND": 28.94,
+        "ACCELERATION": 217.54,
+        "QUALITY": 0.171,
+        "SHARPE": 3.76,
+        "SORTINO": 7.99,
+        "STABILITY": 24.02
+      },
+      "1M": {
+        "RETURN": 3.08,
+        "TREND": 42.62,
+        "ACCELERATION": -70.87,
+        "QUALITY": 0.5216,
+        "SHARPE": 3.39,
+        "SORTINO": 7.56,
+        "STABILITY": 19.78
+      },
+      "3M": {
+        "RETURN": -0.07,
+        "TREND": -2.03,
+        "ACCELERATION": 30.46,
+        "QUALITY": 0.0113,
+        "SHARPE": 0.03,
+        "SORTINO": 0.06,
+        "STABILITY": 0.08
+      },
+      "6M": {
+        "RETURN": 0.26,
+        "TREND": -9.31,
+        "ACCELERATION": -1.66,
+        "QUALITY": 0.492,
+        "SHARPE": 0.1,
+        "SORTINO": 0.16,
+        "STABILITY": 0.13
+      },
+      "12M": {
+        "RETURN": -0.57,
+        "TREND": 0.44,
+        "ACCELERATION": -19.73,
+        "QUALITY": 0.0035,
+        "SHARPE": 0.03,
+        "SORTINO": 0.04,
+        "STABILITY": 0.05
+      }
+    },
+    {
+      "Symbol": "XLI",
+      "Name": "Industrials",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 2.77,
+        "TREND": 104.36,
+        "ACCELERATION": 72.62,
+        "QUALITY": 0.6533,
+        "SHARPE": 5.7,
+        "SORTINO": 16.98,
+        "STABILITY": 68.57
+      },
+      "1M": {
+        "RETURN": 3.28,
+        "TREND": 87.68,
+        "ACCELERATION": 39.0,
+        "QUALITY": 0.7655,
+        "SHARPE": 2.78,
+        "SORTINO": 4.76,
+        "STABILITY": 23.34
+      },
+      "3M": {
+        "RETURN": 4.3,
+        "TREND": 2.56,
+        "ACCELERATION": -0.42,
+        "QUALITY": 0.0214,
+        "SHARPE": 1.34,
+        "SORTINO": 2.05,
+        "STABILITY": 3.52
+      },
+      "6M": {
+        "RETURN": 10.92,
+        "TREND": 10.18,
+        "ACCELERATION": -15.34,
+        "QUALITY": 0.4766,
+        "SHARPE": 1.75,
+        "SORTINO": 2.87,
+        "STABILITY": 4.24
+      },
+      "12M": {
+        "RETURN": 15.68,
+        "TREND": 23.05,
+        "ACCELERATION": 3.11,
+        "QUALITY": 0.7049,
+        "SHARPE": 0.86,
+        "SORTINO": 1.16,
+        "STABILITY": 0.93
+      }
+    },
+    {
+      "Symbol": "XLB",
+      "Name": "Materials",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 2.12,
+        "TREND": 83.63,
+        "ACCELERATION": 352.46,
+        "QUALITY": 0.2586,
+        "SHARPE": 3.36,
+        "SORTINO": 7.25,
+        "STABILITY": 24.21
+      },
+      "1M": {
+        "RETURN": 4.0,
+        "TREND": 81.77,
+        "ACCELERATION": -71.64,
+        "QUALITY": 0.5607,
+        "SHARPE": 2.83,
+        "SORTINO": 5.43,
+        "STABILITY": 17.4
+      },
+      "3M": {
+        "RETURN": -0.22,
+        "TREND": -8.92,
+        "ACCELERATION": 55.76,
+        "QUALITY": 0.128,
+        "SHARPE": 0.02,
+        "SORTINO": 0.03,
+        "STABILITY": 0.05
+      },
+      "6M": {
+        "RETURN": 4.44,
+        "TREND": -4.43,
+        "ACCELERATION": -23.42,
+        "QUALITY": 0.0941,
+        "SHARPE": 0.64,
+        "SORTINO": 1.14,
+        "STABILITY": 1.19
+      },
+      "12M": {
+        "RETURN": 2.27,
+        "TREND": 6.1,
+        "ACCELERATION": -1.2,
+        "QUALITY": 0.2171,
+        "SHARPE": 0.21,
+        "SORTINO": 0.31,
+        "STABILITY": 0.24
+      }
+    },
+    {
+      "Symbol": "XLV",
+      "Name": "Healthcare",
+      "Category": "Sector",
+      "SubCategory": "Defensive",
+      "2W": {
+        "RETURN": 1.13,
+        "TREND": 1.93,
+        "ACCELERATION": 360.19,
+        "QUALITY": 0.0004,
+        "SHARPE": 2.04,
+        "SORTINO": 6.19,
+        "STABILITY": 9.85
+      },
+      "1M": {
+        "RETURN": 2.81,
+        "TREND": 2.93,
+        "ACCELERATION": -153.04,
+        "QUALITY": 0.0021,
+        "SHARPE": 2.17,
+        "SORTINO": 5.18,
+        "STABILITY": 6.54
+      },
+      "3M": {
+        "RETURN": 14.3,
+        "TREND": 74.67,
+        "ACCELERATION": -9.08,
+        "QUALITY": 0.8476,
+        "SHARPE": 3.71,
+        "SORTINO": 7.21,
+        "STABILITY": 9.99
+      },
+      "6M": {
+        "RETURN": 18.05,
+        "TREND": 42.06,
+        "ACCELERATION": 43.02,
+        "QUALITY": 0.8338,
+        "SHARPE": 2.31,
+        "SORTINO": 3.91,
+        "STABILITY": 6.14
+      },
+      "12M": {
+        "RETURN": 12.68,
+        "TREND": 4.47,
+        "ACCELERATION": 48.92,
+        "QUALITY": 0.0685,
+        "SHARPE": 0.78,
+        "SORTINO": 1.06,
+        "STABILITY": 0.99
+      }
+    },
+    {
+      "Symbol": "XLC",
+      "Name": "Communication Services",
+      "Category": "Sector",
+      "SubCategory": "Cyclical",
+      "2W": {
+        "RETURN": 1.16,
+        "TREND": 42.8,
+        "ACCELERATION": -91.68,
+        "QUALITY": 0.4985,
+        "SHARPE": 3.67,
+        "SORTINO": 7.11,
+        "STABILITY": 44.09
+      },
+      "1M": {
+        "RETURN": 4.71,
+        "TREND": 113.61,
+        "ACCELERATION": -66.23,
+        "QUALITY": 0.8523,
+        "SHARPE": 5.14,
+        "SORTINO": 10.6,
+        "STABILITY": 35.63
+      },
+      "3M": {
+        "RETURN": -1.56,
+        "TREND": -10.93,
+        "ACCELERATION": 53.75,
+        "QUALITY": 0.199,
+        "SHARPE": -0.45,
+        "SORTINO": -0.75,
+        "STABILITY": -0.74
+      },
+      "6M": {
+        "RETURN": 13.38,
+        "TREND": 23.44,
+        "ACCELERATION": -52.38,
+        "QUALITY": 0.5915,
+        "SHARPE": 2.09,
+        "SORTINO": 4.03,
+        "STABILITY": 3.44
+      },
+      "12M": {
+        "RETURN": 15.42,
+        "TREND": 25.44,
+        "ACCELERATION": 21.38,
+        "QUALITY": 0.6978,
+        "SHARPE": 0.86,
+        "SORTINO": 1.15,
+        "STABILITY": 0.9
+      }
+    },
+    {
+      "Symbol": "XLU",
+      "Name": "Utilities",
+      "Category": "Sector",
+      "SubCategory": "Defensive",
+      "2W": {
+        "RETURN": -1.64,
+        "TREND": -47.49,
+        "ACCELERATION": 231.85,
+        "QUALITY": 0.5066,
+        "SHARPE": -4.0,
+        "SORTINO": -5.86,
+        "STABILITY": -18.51
+      },
+      "1M": {
+        "RETURN": -2.61,
+        "TREND": -44.02,
+        "ACCELERATION": -109.9,
+        "QUALITY": 0.6258,
+        "SHARPE": -2.24,
+        "SORTINO": -3.27,
+        "STABILITY": -5.65
+      },
+      "3M": {
+        "RETURN": 3.17,
+        "TREND": 0.03,
+        "ACCELERATION": -107.34,
+        "QUALITY": 0.0,
+        "SHARPE": 1.05,
+        "SORTINO": 1.57,
+        "STABILITY": 1.68
+      },
+      "6M": {
+        "RETURN": 9.06,
+        "TREND": 23.7,
+        "ACCELERATION": -22.51,
+        "QUALITY": 0.6247,
+        "SHARPE": 1.45,
+        "SORTINO": 2.33,
+        "STABILITY": 2.28
+      },
+      "12M": {
+        "RETURN": 14.68,
+        "TREND": 22.88,
+        "ACCELERATION": 7.55,
+        "QUALITY": 0.8712,
+        "SHARPE": 0.93,
+        "SORTINO": 1.26,
+        "STABILITY": 1.81
+      }
+    },
+    {
+      "Symbol": "XLRE",
+      "Name": "Real Estate",
+      "Category": "Sector",
+      "SubCategory": "Interest",
+      "2W": {
+        "RETURN": -0.2,
+        "TREND": -18.36,
+        "ACCELERATION": 97.05,
+        "QUALITY": 0.269,
+        "SHARPE": -0.83,
+        "SORTINO": -1.21,
+        "STABILITY": -3.81
+      },
+      "1M": {
+        "RETURN": -0.1,
+        "TREND": -1.38,
+        "ACCELERATION": -82.55,
+        "QUALITY": 0.002,
+        "SHARPE": -0.08,
+        "SORTINO": -0.12,
+        "STABILITY": -0.27
+      },
+      "3M": {
+        "RETURN": -1.92,
+        "TREND": -11.06,
+        "ACCELERATION": -10.01,
+        "QUALITY": 0.3436,
+        "SHARPE": -0.57,
+        "SORTINO": -0.72,
+        "STABILITY": -1.28
+      },
+      "6M": {
+        "RETURN": -0.39,
+        "TREND": -1.62,
+        "ACCELERATION": -15.71,
+        "QUALITY": 0.0326,
+        "SHARPE": 0.01,
+        "SORTINO": 0.01,
+        "STABILITY": 0.01
+      },
+      "12M": {
+        "RETURN": -1.62,
+        "TREND": 3.67,
+        "ACCELERATION": -4.44,
+        "QUALITY": 0.1988,
+        "SHARPE": -0.01,
+        "SORTINO": -0.01,
+        "STABILITY": -0.01
+      }
+    },
+    {
+      "Symbol": "SOXX",
+      "Name": "Semiconductors",
+      "Category": "Industry",
+      "SubCategory": "Tech",
+      "2W": {
+        "RETURN": -1.59,
+        "TREND": -23.4,
+        "ACCELERATION": -534.84,
+        "QUALITY": 0.0243,
+        "SHARPE": -1.25,
+        "SORTINO": -1.33,
+        "STABILITY": -6.96
+      },
+      "1M": {
+        "RETURN": 3.29,
+        "TREND": 415.5,
+        "ACCELERATION": -66.85,
+        "QUALITY": 0.642,
+        "SHARPE": 1.29,
+        "SORTINO": 1.6,
+        "STABILITY": 8.16
+      },
+      "3M": {
+        "RETURN": 15.27,
+        "TREND": 61.15,
+        "ACCELERATION": -89.66,
+        "QUALITY": 0.4679,
+        "SHARPE": 1.78,
+        "SORTINO": 2.42,
+        "STABILITY": 4.79
+      },
+      "6M": {
+        "RETURN": 32.35,
+        "TREND": 84.59,
+        "ACCELERATION": 18.24,
+        "QUALITY": 0.8595,
+        "SHARPE": 2.1,
+        "SORTINO": 2.74,
+        "STABILITY": 4.53
+      },
+      "12M": {
+        "RETURN": 38.16,
+        "TREND": 54.53,
+        "ACCELERATION": 87.48,
+        "QUALITY": 0.6056,
+        "SHARPE": 1.01,
+        "SORTINO": 1.36,
+        "STABILITY": 1.18
+      }
+    },
+    {
+      "Symbol": "IGV",
+      "Name": "Software/SaaS",
+      "Category": "Industry",
+      "SubCategory": "Tech",
+      "2W": {
+        "RETURN": 0.16,
+        "TREND": 36.7,
+        "ACCELERATION": -523.43,
+        "QUALITY": 0.047,
+        "SHARPE": 0.31,
+        "SORTINO": 0.37,
+        "STABILITY": 1.53
+      },
+      "1M": {
+        "RETURN": -1.91,
+        "TREND": 108.0,
+        "ACCELERATION": 153.31,
+        "QUALITY": 0.406,
+        "SHARPE": -1.07,
+        "SORTINO": -1.32,
+        "STABILITY": -4.99
+      },
+      "3M": {
+        "RETURN": -6.92,
+        "TREND": -36.44,
+        "ACCELERATION": -36.5,
+        "QUALITY": 0.5933,
+        "SHARPE": -1.3,
+        "SORTINO": -1.8,
+        "STABILITY": -1.87
+      },
+      "6M": {
+        "RETURN": -1.18,
+        "TREND": -0.41,
+        "ACCELERATION": -48.73,
+        "QUALITY": 0.0003,
+        "SHARPE": -0.03,
+        "SORTINO": -0.04,
+        "STABILITY": -0.04
+      },
+      "12M": {
+        "RETURN": -1.37,
+        "TREND": 17.59,
+        "ACCELERATION": 5.77,
+        "QUALITY": 0.3498,
+        "SHARPE": 0.08,
+        "SORTINO": 0.12,
+        "STABILITY": 0.09
+      }
+    },
+    {
+      "Symbol": "CIBR",
+      "Name": "Cybersecurity",
+      "Category": "Industry",
+      "SubCategory": "Tech",
+      "2W": {
+        "RETURN": -0.74,
+        "TREND": 6.22,
+        "ACCELERATION": -423.17,
+        "QUALITY": 0.0024,
+        "SHARPE": -1.0,
+        "SORTINO": -1.3,
+        "STABILITY": -4.3
+      },
+      "1M": {
+        "RETURN": -2.7,
+        "TREND": 42.9,
+        "ACCELERATION": 67.26,
+        "QUALITY": 0.2494,
+        "SHARPE": -1.71,
+        "SORTINO": -2.76,
+        "STABILITY": -7.37
+      },
+      "3M": {
+        "RETURN": -3.35,
+        "TREND": -16.02,
+        "ACCELERATION": -32.04,
+        "QUALITY": 0.3467,
+        "SHARPE": -0.62,
+        "SORTINO": -0.88,
+        "STABILITY": -1.4
+      },
+      "6M": {
+        "RETURN": -0.6,
+        "TREND": 5.49,
+        "ACCELERATION": -12.42,
+        "QUALITY": 0.1017,
+        "SHARPE": 0.03,
+        "SORTINO": 0.04,
+        "STABILITY": 0.05
+      },
+      "12M": {
+        "RETURN": 12.49,
+        "TREND": 21.57,
+        "ACCELERATION": -10.4,
+        "QUALITY": 0.6425,
+        "SHARPE": 0.61,
+        "SORTINO": 0.86,
+        "STABILITY": 0.73
+      }
+    },
+    {
+      "Symbol": "SKYY",
+      "Name": "Cloud Computing",
+      "Category": "Industry",
+      "SubCategory": "Tech",
+      "2W": {
+        "RETURN": -1.37,
+        "TREND": 18.78,
+        "ACCELERATION": -388.14,
+        "QUALITY": 0.0196,
+        "SHARPE": -2.05,
+        "SORTINO": -2.76,
+        "STABILITY": -8.22
+      },
+      "1M": {
+        "RETURN": -1.92,
+        "TREND": 96.03,
+        "ACCELERATION": 82.96,
+        "QUALITY": 0.439,
+        "SHARPE": -1.02,
+        "SORTINO": -1.55,
+        "STABILITY": -4.89
+      },
+      "3M": {
+        "RETURN": -3.95,
+        "TREND": -17.87,
+        "ACCELERATION": -65.54,
+        "QUALITY": 0.2038,
+        "SHARPE": -0.63,
+        "SORTINO": -0.88,
+        "STABILITY": -1.01
+      },
+      "6M": {
+        "RETURN": 10.97,
+        "TREND": 32.79,
+        "ACCELERATION": -57.75,
+        "QUALITY": 0.5374,
+        "SHARPE": 1.06,
+        "SORTINO": 1.64,
+        "STABILITY": 1.69
+      },
+      "12M": {
+        "RETURN": 1.98,
+        "TREND": 18.78,
+        "ACCELERATION": 60.72,
+        "QUALITY": 0.2619,
+        "SHARPE": 0.21,
+        "SORTINO": 0.3,
+        "STABILITY": 0.2
+      }
+    },
+    {
+      "Symbol": "ITA",
+      "Name": "Aerospace & Defense",
+      "Category": "Industry",
+      "SubCategory": "Defense",
+      "2W": {
+        "RETURN": 4.14,
+        "TREND": 209.12,
+        "ACCELERATION": 146.54,
+        "QUALITY": 0.7795,
+        "SHARPE": 7.28,
+        "SORTINO": 38.99,
+        "STABILITY": 104.05
+      },
+      "1M": {
+        "RETURN": 1.8,
+        "TREND": 37.69,
+        "ACCELERATION": 129.97,
+        "QUALITY": 0.2643,
+        "SHARPE": 1.26,
+        "SORTINO": 1.65,
+        "STABILITY": 8.48
+      },
+      "3M": {
+        "RETURN": 4.55,
+        "TREND": -7.54,
+        "ACCELERATION": -85.46,
+        "QUALITY": 0.0543,
+        "SHARPE": 1.07,
+        "SORTINO": 1.59,
+        "STABILITY": 2.09
+      },
+      "6M": {
+        "RETURN": 16.91,
+        "TREND": 29.01,
+        "ACCELERATION": -44.13,
+        "QUALITY": 0.6408,
+        "SHARPE": 2.0,
+        "SORTINO": 3.16,
+        "STABILITY": 3.48
+      },
+      "12M": {
+        "RETURN": 43.41,
+        "TREND": 57.68,
+        "ACCELERATION": -8.71,
+        "QUALITY": 0.8875,
+        "SHARPE": 1.78,
+        "SORTINO": 2.3,
+        "STABILITY": 2.54
+      }
+    },
+    {
+      "Symbol": "XAR",
+      "Name": "Aerospace Alt",
+      "Category": "Industry",
+      "SubCategory": "Defense",
+      "2W": {
+        "RETURN": 3.75,
+        "TREND": 211.8,
+        "ACCELERATION": -91.5,
+        "QUALITY": 0.649,
+        "SHARPE": 4.47,
+        "SORTINO": 44.82,
+        "STABILITY": 51.29
+      },
+      "1M": {
+        "RETURN": 2.76,
+        "TREND": 118.35,
+        "ACCELERATION": 76.44,
+        "QUALITY": 0.6598,
+        "SHARPE": 1.57,
+        "SORTINO": 2.98,
+        "STABILITY": 14.14
+      },
+      "3M": {
+        "RETURN": 5.38,
+        "TREND": -10.37,
+        "ACCELERATION": -117.51,
+        "QUALITY": 0.0458,
+        "SHARPE": 0.98,
+        "SORTINO": 1.71,
+        "STABILITY": 1.88
+      },
+      "6M": {
+        "RETURN": 18.88,
+        "TREND": 36.3,
+        "ACCELERATION": -40.93,
+        "QUALITY": 0.5843,
+        "SHARPE": 1.74,
+        "SORTINO": 2.93,
+        "STABILITY": 2.87
+      },
+      "12M": {
+        "RETURN": 41.71,
+        "TREND": 60.75,
+        "ACCELERATION": 7.79,
+        "QUALITY": 0.8391,
+        "SHARPE": 1.5,
+        "SORTINO": 2.23,
+        "STABILITY": 1.94
+      }
+    },
+    {
+      "Symbol": "XRT",
+      "Name": "Retail",
+      "Category": "Industry",
+      "SubCategory": "Consumer",
+      "2W": {
+        "RETURN": 4.08,
+        "TREND": 255.71,
+        "ACCELERATION": -59.86,
+        "QUALITY": 0.8328,
+        "SHARPE": 7.64,
+        "SORTINO": 21.12,
+        "STABILITY": 95.73
+      },
+      "1M": {
+        "RETURN": 9.6,
+        "TREND": 439.3,
+        "ACCELERATION": -80.8,
+        "QUALITY": 0.8764,
+        "SHARPE": 4.88,
+        "SORTINO": 14.3,
+        "STABILITY": 65.67
+      },
+      "3M": {
+        "RETURN": 0.17,
+        "TREND": -12.85,
+        "ACCELERATION": 117.58,
+        "QUALITY": 0.0787,
+        "SHARPE": 0.14,
+        "SORTINO": 0.23,
+        "STABILITY": 0.26
+      },
+      "6M": {
+        "RETURN": 15.49,
+        "TREND": 13.85,
+        "ACCELERATION": -65.89,
+        "QUALITY": 0.2124,
+        "SHARPE": 1.48,
+        "SORTINO": 2.58,
+        "STABILITY": 2.49
+      },
+      "12M": {
+        "RETURN": 6.56,
+        "TREND": 16.9,
+        "ACCELERATION": 36.28,
+        "QUALITY": 0.3119,
+        "SHARPE": 0.38,
+        "SORTINO": 0.58,
+        "STABILITY": 0.38
+      }
+    },
+    {
+      "Symbol": "XBI",
+      "Name": "Biotech",
+      "Category": "Industry",
+      "SubCategory": "Biotech",
+      "2W": {
+        "RETURN": 3.7,
+        "TREND": 67.65,
+        "ACCELERATION": -158.64,
+        "QUALITY": 0.2339,
+        "SHARPE": 5.09,
+        "SORTINO": 5.24,
+        "STABILITY": 51.92
+      },
+      "1M": {
+        "RETURN": 7.74,
+        "TREND": 178.73,
+        "ACCELERATION": -180.19,
+        "QUALITY": 0.6928,
+        "SHARPE": 4.31,
+        "SORTINO": 6.39,
+        "STABILITY": 25.3
+      },
+      "3M": {
+        "RETURN": 31.04,
+        "TREND": 180.72,
+        "ACCELERATION": -25.53,
+        "QUALITY": 0.9398,
+        "SHARPE": 4.95,
+        "SORTINO": 8.73,
+        "STABILITY": 27.19
+      },
+      "6M": {
+        "RETURN": 49.68,
+        "TREND": 138.73,
+        "ACCELERATION": 51.56,
+        "QUALITY": 0.9546,
+        "SHARPE": 3.8,
+        "SORTINO": 7.1,
+        "STABILITY": 20.23
+      },
+      "12M": {
+        "RETURN": 30.46,
+        "TREND": 31.89,
+        "ACCELERATION": 125.42,
+        "QUALITY": 0.3966,
+        "SHARPE": 1.11,
+        "SORTINO": 1.58,
+        "STABILITY": 1.16
+      }
+    },
+    {
+      "Symbol": "MOO",
+      "Name": "Agribusiness",
+      "Category": "Industry",
+      "SubCategory": "Agri",
+      "2W": {
+        "RETURN": 1.58,
+        "TREND": 54.34,
+        "ACCELERATION": 256.32,
+        "QUALITY": 0.273,
+        "SHARPE": 3.94,
+        "SORTINO": 13.12,
+        "STABILITY": 27.08
+      },
+      "1M": {
+        "RETURN": 3.31,
+        "TREND": 91.91,
+        "ACCELERATION": -46.07,
+        "QUALITY": 0.6529,
+        "SHARPE": 2.64,
+        "SORTINO": 4.18,
+        "STABILITY": 19.84
+      },
+      "3M": {
+        "RETURN": 0.7,
+        "TREND": -5.35,
+        "ACCELERATION": 44.86,
+        "QUALITY": 0.0542,
+        "SHARPE": 0.28,
+        "SORTINO": 0.46,
+        "STABILITY": 0.57
+      },
+      "6M": {
+        "RETURN": -0.35,
+        "TREND": -5.64,
+        "ACCELERATION": -8.23,
+        "QUALITY": 0.2325,
+        "SHARPE": 0.01,
+        "SORTINO": 0.02,
+        "STABILITY": 0.01
+      },
+      "12M": {
+        "RETURN": 8.91,
+        "TREND": 13.08,
+        "ACCELERATION": -23.75,
+        "QUALITY": 0.5523,
+        "SHARPE": 0.59,
+        "SORTINO": 0.87,
+        "STABILITY": 0.71
+      }
+    },
+    {
+      "Symbol": "TAN",
+      "Name": "Solar",
+      "Category": "Industry",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -0.13,
+        "TREND": 45.36,
+        "ACCELERATION": -50.63,
+        "QUALITY": 0.126,
+        "SHARPE": -0.03,
+        "SORTINO": -0.05,
+        "STABILITY": -0.22
+      },
+      "1M": {
+        "RETURN": -3.92,
+        "TREND": 10.0,
+        "ACCELERATION": 99.18,
+        "QUALITY": 0.013,
+        "SHARPE": -1.67,
+        "SORTINO": -2.33,
+        "STABILITY": -7.33
+      },
+      "3M": {
+        "RETURN": 10.99,
+        "TREND": 54.05,
+        "ACCELERATION": -149.15,
+        "QUALITY": 0.4186,
+        "SHARPE": 1.33,
+        "SORTINO": 2.27,
+        "STABILITY": 3.61
+      },
+      "6M": {
+        "RETURN": 48.01,
+        "TREND": 119.39,
+        "ACCELERATION": -48.06,
+        "QUALITY": 0.8618,
+        "SHARPE": 2.35,
+        "SORTINO": 4.59,
+        "STABILITY": 6.29
+      },
+      "12M": {
+        "RETURN": 37.06,
+        "TREND": 61.5,
+        "ACCELERATION": 97.92,
+        "QUALITY": 0.6753,
+        "SHARPE": 1.01,
+        "SORTINO": 1.62,
+        "STABILITY": 1.35
+      }
+    },
+    {
+      "Symbol": "ARKK",
+      "Name": "Disruptive Innovation",
+      "Category": "Thematic",
+      "SubCategory": "Innovation",
+      "2W": {
+        "RETURN": 1.27,
+        "TREND": 16.23,
+        "ACCELERATION": -563.65,
+        "QUALITY": 0.0083,
+        "SHARPE": 1.36,
+        "SORTINO": 5.19,
+        "STABILITY": 8.17
+      },
+      "1M": {
+        "RETURN": 2.98,
+        "TREND": 302.5,
+        "ACCELERATION": -65.9,
+        "QUALITY": 0.6474,
+        "SHARPE": 1.27,
+        "SORTINO": 2.79,
+        "STABILITY": 8.51
+      },
+      "3M": {
+        "RETURN": -1.81,
+        "TREND": -37.69,
+        "ACCELERATION": -95.81,
+        "QUALITY": 0.3274,
+        "SHARPE": 0.01,
+        "SORTINO": 0.02,
+        "STABILITY": 0.02
+      },
+      "6M": {
+        "RETURN": 23.94,
+        "TREND": 42.69,
+        "ACCELERATION": -94.0,
+        "QUALITY": 0.4183,
+        "SHARPE": 1.41,
+        "SORTINO": 2.1,
+        "STABILITY": 2.2
+      },
+      "12M": {
+        "RETURN": 30.02,
+        "TREND": 71.15,
+        "ACCELERATION": 62.96,
+        "QUALITY": 0.5931,
+        "SHARPE": 0.81,
+        "SORTINO": 1.23,
+        "STABILITY": 0.92
+      }
+    },
+    {
+      "Symbol": "DRIV",
+      "Name": "Autonomous & EV",
+      "Category": "Thematic",
+      "SubCategory": "Auto",
+      "2W": {
+        "RETURN": 1.17,
+        "TREND": 60.89,
+        "ACCELERATION": -296.46,
+        "QUALITY": 0.2048,
+        "SHARPE": 2.01,
+        "SORTINO": 2.75,
+        "STABILITY": 11.63
+      },
+      "1M": {
+        "RETURN": 1.59,
+        "TREND": 167.27,
+        "ACCELERATION": 59.84,
+        "QUALITY": 0.6396,
+        "SHARPE": 1.02,
+        "SORTINO": 1.45,
+        "STABILITY": 5.32
+      },
+      "3M": {
+        "RETURN": 8.35,
+        "TREND": 25.15,
+        "ACCELERATION": -63.19,
+        "QUALITY": 0.284,
+        "SHARPE": 1.4,
+        "SORTINO": 1.88,
+        "STABILITY": 3.54
+      },
+      "6M": {
+        "RETURN": 33.85,
+        "TREND": 82.37,
+        "ACCELERATION": -39.21,
+        "QUALITY": 0.8862,
+        "SHARPE": 2.72,
+        "SORTINO": 3.98,
+        "STABILITY": 6.07
+      },
+      "12M": {
+        "RETURN": 26.37,
+        "TREND": 40.66,
+        "ACCELERATION": 81.58,
+        "QUALITY": 0.6133,
+        "SHARPE": 0.99,
+        "SORTINO": 1.51,
+        "STABILITY": 1.02
+      }
+    },
+    {
+      "Symbol": "BOTZ",
+      "Name": "Robotics & AI",
+      "Category": "Thematic",
+      "SubCategory": "Tech",
+      "2W": {
+        "RETURN": 2.82,
+        "TREND": 97.94,
+        "ACCELERATION": -478.16,
+        "QUALITY": 0.2023,
+        "SHARPE": 3.37,
+        "SORTINO": 8.85,
+        "STABILITY": 33.45
+      },
+      "1M": {
+        "RETURN": 2.82,
+        "TREND": 251.13,
+        "ACCELERATION": 47.79,
+        "QUALITY": 0.7111,
+        "SHARPE": 1.61,
+        "SORTINO": 2.55,
+        "STABILITY": 10.4
+      },
+      "3M": {
+        "RETURN": 5.15,
+        "TREND": -2.64,
+        "ACCELERATION": -82.82,
+        "QUALITY": 0.0032,
+        "SHARPE": 0.96,
+        "SORTINO": 1.42,
+        "STABILITY": 1.73
+      },
+      "6M": {
+        "RETURN": 17.66,
+        "TREND": 33.48,
+        "ACCELERATION": -34.61,
+        "QUALITY": 0.6179,
+        "SHARPE": 1.58,
+        "SORTINO": 2.67,
+        "STABILITY": 2.61
+      },
+      "12M": {
+        "RETURN": 8.6,
+        "TREND": 18.63,
+        "ACCELERATION": 56.32,
+        "QUALITY": 0.3269,
+        "SHARPE": 0.43,
+        "SORTINO": 0.65,
+        "STABILITY": 0.42
+      }
+    },
+    {
+      "Symbol": "GLD",
+      "Name": "Gold",
+      "Category": "Comm.",
+      "SubCategory": "Precious",
+      "2W": {
+        "RETURN": 2.21,
+        "TREND": 99.92,
+        "ACCELERATION": 175.78,
+        "QUALITY": 0.6948,
+        "SHARPE": 8.93,
+        "SORTINO": 45.32,
+        "STABILITY": 139.24
+      },
+      "1M": {
+        "RETURN": 5.28,
+        "TREND": 105.93,
+        "ACCELERATION": -42.23,
+        "QUALITY": 0.8626,
+        "SHARPE": 6.37,
+        "SORTINO": 10.6,
+        "STABILITY": 58.85
+      },
+      "3M": {
+        "RETURN": 17.46,
+        "TREND": 58.59,
+        "ACCELERATION": -49.73,
+        "QUALITY": 0.5919,
+        "SHARPE": 2.94,
+        "SORTINO": 3.08,
+        "STABILITY": 6.73
+      },
+      "6M": {
+        "RETURN": 26.88,
+        "TREND": 84.75,
+        "ACCELERATION": 16.11,
+        "QUALITY": 0.8831,
+        "SHARPE": 2.63,
+        "SORTINO": 3.07,
+        "STABILITY": 4.92
+      },
+      "12M": {
+        "RETURN": 60.06,
+        "TREND": 58.6,
+        "ACCELERATION": 3.82,
+        "QUALITY": 0.9335,
+        "SHARPE": 2.54,
+        "SORTINO": 3.54,
+        "STABILITY": 4.85
+      }
+    },
+    {
+      "Symbol": "SLV",
+      "Name": "Silver",
+      "Category": "Comm.",
+      "SubCategory": "Precious",
+      "2W": {
+        "RETURN": 9.37,
+        "TREND": 1861.19,
+        "ACCELERATION": 308.72,
+        "QUALITY": 0.7715,
+        "SHARPE": 6.3,
+        "SORTINO": 12.39,
+        "STABILITY": 98.42
+      },
+      "1M": {
+        "RETURN": 26.44,
+        "TREND": 2768.26,
+        "ACCELERATION": 43.31,
+        "QUALITY": 0.9153,
+        "SHARPE": 8.13,
+        "SORTINO": 20.14,
+        "STABILITY": 115.18
+      },
+      "3M": {
+        "RETURN": 53.77,
+        "TREND": 216.45,
+        "ACCELERATION": 106.46,
+        "QUALITY": 0.705,
+        "SHARPE": 4.76,
+        "SORTINO": 6.2,
+        "STABILITY": 13.28
+      },
+      "6M": {
+        "RETURN": 72.23,
+        "TREND": 182.87,
+        "ACCELERATION": 63.92,
+        "QUALITY": 0.8975,
+        "SHARPE": 3.67,
+        "SORTINO": 5.05,
+        "STABILITY": 8.33
+      },
+      "12M": {
+        "RETURN": 106.06,
+        "TREND": 88.1,
+        "ACCELERATION": 75.06,
+        "QUALITY": 0.8736,
+        "SHARPE": 2.67,
+        "SORTINO": 3.7,
+        "STABILITY": 5.58
+      }
+    },
+    {
+      "Symbol": "BNO",
+      "Name": "Brent Oil",
+      "Category": "Comm.",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -3.23,
+        "TREND": -64.47,
+        "ACCELERATION": -230.71,
+        "QUALITY": 0.6043,
+        "SHARPE": -4.84,
+        "SORTINO": -8.61,
+        "STABILITY": -17.33
+      },
+      "1M": {
+        "RETURN": -5.1,
+        "TREND": -30.47,
+        "ACCELERATION": -31.27,
+        "QUALITY": 0.3561,
+        "SHARPE": -3.29,
+        "SORTINO": -6.4,
+        "STABILITY": -10.47
+      },
+      "3M": {
+        "RETURN": -8.67,
+        "TREND": -18.19,
+        "ACCELERATION": 36.79,
+        "QUALITY": 0.2884,
+        "SHARPE": -1.47,
+        "SORTINO": -2.2,
+        "STABILITY": -3.05
+      },
+      "6M": {
+        "RETURN": -14.84,
+        "TREND": -13.15,
+        "ACCELERATION": -11.96,
+        "QUALITY": 0.3882,
+        "SHARPE": -1.13,
+        "SORTINO": -1.47,
+        "STABILITY": -1.79
+      },
+      "12M": {
+        "RETURN": -5.36,
+        "TREND": -2.49,
+        "ACCELERATION": 13.24,
+        "QUALITY": 0.0211,
+        "SHARPE": -0.05,
+        "SORTINO": -0.08,
+        "STABILITY": -0.06
+      }
+    },
+    {
+      "Symbol": "CPER",
+      "Name": "Copper",
+      "Category": "Comm.",
+      "SubCategory": "Industrial",
+      "2W": {
+        "RETURN": 3.14,
+        "TREND": 60.22,
+        "ACCELERATION": -135.66,
+        "QUALITY": 0.2084,
+        "SHARPE": 3.33,
+        "SORTINO": 5.95,
+        "STABILITY": 38.79
+      },
+      "1M": {
+        "RETURN": 5.84,
+        "TREND": 207.07,
+        "ACCELERATION": -23.87,
+        "QUALITY": 0.8323,
+        "SHARPE": 3.45,
+        "SORTINO": 6.32,
+        "STABILITY": 31.81
+      },
+      "3M": {
+        "RETURN": 16.64,
+        "TREND": 55.13,
+        "ACCELERATION": -26.52,
+        "QUALITY": 0.6615,
+        "SHARPE": 2.66,
+        "SORTINO": 4.08,
+        "STABILITY": 12.66
+      },
+      "6M": {
+        "RETURN": 10.65,
+        "TREND": 4.54,
+        "ACCELERATION": 123.36,
+        "QUALITY": 0.0076,
+        "SHARPE": 0.75,
+        "SORTINO": 0.65,
+        "STABILITY": 1.12
+      },
+      "12M": {
+        "RETURN": 25.47,
+        "TREND": 15.35,
+        "ACCELERATION": -25.75,
+        "QUALITY": 0.2901,
+        "SHARPE": 0.85,
+        "SORTINO": 0.85,
+        "STABILITY": 1.16
+      }
+    },
+    {
+      "Symbol": "UGA",
+      "Name": "Gasoline",
+      "Category": "Comm.",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -5.41,
+        "TREND": -79.53,
+        "ACCELERATION": -157.31,
+        "QUALITY": 0.8899,
+        "SHARPE": -12.22,
+        "SORTINO": -13.06,
+        "STABILITY": -27.06
+      },
+      "1M": {
+        "RETURN": -10.16,
+        "TREND": -60.84,
+        "ACCELERATION": -7.21,
+        "QUALITY": 0.6979,
+        "SHARPE": -6.43,
+        "SORTINO": -9.72,
+        "STABILITY": -13.45
+      },
+      "3M": {
+        "RETURN": -4.89,
+        "TREND": 19.03,
+        "ACCELERATION": -11.4,
+        "QUALITY": 0.1405,
+        "SHARPE": -0.75,
+        "SORTINO": -1.21,
+        "STABILITY": -1.71
+      },
+      "6M": {
+        "RETURN": -4.81,
+        "TREND": 12.88,
+        "ACCELERATION": 4.42,
+        "QUALITY": 0.2835,
+        "SHARPE": -0.28,
+        "SORTINO": -0.41,
+        "STABILITY": -0.64
+      },
+      "12M": {
+        "RETURN": -0.57,
+        "TREND": 5.66,
+        "ACCELERATION": 29.93,
+        "QUALITY": 0.1273,
+        "SHARPE": 0.1,
+        "SORTINO": 0.14,
+        "STABILITY": 0.14
+      }
+    },
+    {
+      "Symbol": "URA",
+      "Name": "Uranium",
+      "Category": "Comm.",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -1.39,
+        "TREND": -30.73,
+        "ACCELERATION": -814.26,
+        "QUALITY": 0.0181,
+        "SHARPE": -0.44,
+        "SORTINO": -0.7,
+        "STABILITY": -2.7
+      },
+      "1M": {
+        "RETURN": -0.27,
+        "TREND": 277.79,
+        "ACCELERATION": 23.79,
+        "QUALITY": 0.4697,
+        "SHARPE": 0.18,
+        "SORTINO": 0.26,
+        "STABILITY": 1.0
+      },
+      "3M": {
+        "RETURN": 0.18,
+        "TREND": -37.85,
+        "ACCELERATION": -189.67,
+        "QUALITY": 0.1957,
+        "SHARPE": 0.28,
+        "SORTINO": 0.46,
+        "STABILITY": 0.52
+      },
+      "6M": {
+        "RETURN": 18.82,
+        "TREND": 86.09,
+        "ACCELERATION": -89.55,
+        "QUALITY": 0.5334,
+        "SHARPE": 0.98,
+        "SORTINO": 1.65,
+        "STABILITY": 1.6
+      },
+      "12M": {
+        "RETURN": 52.29,
+        "TREND": 129.51,
+        "ACCELERATION": 50.54,
+        "QUALITY": 0.7567,
+        "SHARPE": 1.16,
+        "SORTINO": 1.84,
+        "STABILITY": 1.52
+      }
+    },
+    {
+      "Symbol": "USO",
+      "Name": "WTI Oil",
+      "Category": "Comm.",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -3.29,
+        "TREND": -65.99,
+        "ACCELERATION": -272.06,
+        "QUALITY": 0.5688,
+        "SHARPE": -4.71,
+        "SORTINO": -9.94,
+        "STABILITY": -16.39
+      },
+      "1M": {
+        "RETURN": -4.89,
+        "TREND": -27.45,
+        "ACCELERATION": -31.69,
+        "QUALITY": 0.2577,
+        "SHARPE": -2.93,
+        "SORTINO": -5.51,
+        "STABILITY": -9.6
+      },
+      "3M": {
+        "RETURN": -9.44,
+        "TREND": -21.32,
+        "ACCELERATION": 36.12,
+        "QUALITY": 0.3339,
+        "SHARPE": -1.48,
+        "SORTINO": -2.13,
+        "STABILITY": -3.11
+      },
+      "6M": {
+        "RETURN": -17.51,
+        "TREND": -18.68,
+        "ACCELERATION": -5.75,
+        "QUALITY": 0.5597,
+        "SHARPE": -1.28,
+        "SORTINO": -1.65,
+        "STABILITY": -1.9
+      },
+      "12M": {
+        "RETURN": -7.27,
+        "TREND": -4.78,
+        "ACCELERATION": 9.29,
+        "QUALITY": 0.0644,
+        "SHARPE": -0.1,
+        "SORTINO": -0.14,
+        "STABILITY": -0.12
+      }
+    },
+    {
+      "Symbol": "UNG",
+      "Name": "Natural Gas",
+      "Category": "Comm.",
+      "SubCategory": "Energy",
+      "2W": {
+        "RETURN": -16.71,
+        "TREND": -99.88,
+        "ACCELERATION": -1088.63,
+        "QUALITY": 0.7492,
+        "SHARPE": -6.26,
+        "SORTINO": -10.38,
+        "STABILITY": -20.1
+      },
+      "1M": {
+        "RETURN": -14.42,
+        "TREND": -52.92,
+        "ACCELERATION": -566.6,
+        "QUALITY": 0.0813,
+        "SHARPE": -2.85,
+        "SORTINO": -4.26,
+        "STABILITY": -7.4
+      },
+      "3M": {
+        "RETURN": -4.89,
+        "TREND": 104.82,
+        "ACCELERATION": 40.22,
+        "QUALITY": 0.444,
+        "SHARPE": -0.14,
+        "SORTINO": -0.23,
+        "STABILITY": -0.3
+      },
+      "6M": {
+        "RETURN": -29.12,
+        "TREND": -15.61,
+        "ACCELERATION": 201.6,
+        "QUALITY": 0.0667,
+        "SHARPE": -1.2,
+        "SORTINO": -1.79,
+        "STABILITY": -1.61
+      },
+      "12M": {
+        "RETURN": -17.15,
+        "TREND": -36.04,
+        "ACCELERATION": -15.65,
+        "QUALITY": 0.5155,
+        "SHARPE": -0.03,
+        "SORTINO": -0.06,
+        "STABILITY": -0.04
+      }
+    },
+    {
+      "Symbol": "DBA",
+      "Name": "Agriculture Fund",
+      "Category": "Comm.",
+      "SubCategory": "Agri",
+      "2W": {
+        "RETURN": -0.27,
+        "TREND": 6.9,
+        "ACCELERATION": -20.04,
+        "QUALITY": 0.0572,
+        "SHARPE": -1.07,
+        "SORTINO": -1.95,
+        "STABILITY": -6.42
+      },
+      "1M": {
+        "RETURN": 0.96,
+        "TREND": 26.87,
+        "ACCELERATION": 30.82,
+        "QUALITY": 0.3478,
+        "SHARPE": 1.17,
+        "SORTINO": 2.45,
+        "STABILITY": 4.43
+      },
+      "3M": {
+        "RETURN": -3.09,
+        "TREND": -10.02,
+        "ACCELERATION": 16.08,
+        "QUALITY": 0.4187,
+        "SHARPE": -1.11,
+        "SORTINO": -2.13,
+        "STABILITY": -2.35
+      },
+      "6M": {
+        "RETURN": -2.05,
+        "TREND": 1.77,
+        "ACCELERATION": -37.8,
+        "QUALITY": 0.0159,
+        "SHARPE": -0.29,
+        "SORTINO": -0.51,
+        "STABILITY": -0.43
+      },
+      "12M": {
+        "RETURN": -0.16,
+        "TREND": -1.67,
+        "ACCELERATION": 0.51,
+        "QUALITY": 0.0503,
+        "SHARPE": 0.05,
+        "SORTINO": 0.09,
+        "STABILITY": 0.07
+      }
+    },
+    {
+      "Symbol": "WEAT",
+      "Name": "Wheat",
+      "Category": "Comm.",
+      "SubCategory": "Agri",
+      "2W": {
+        "RETURN": -3.16,
+        "TREND": -51.53,
+        "ACCELERATION": -22.19,
+        "QUALITY": 0.8203,
+        "SHARPE": -9.11,
+        "SORTINO": -12.58,
+        "STABILITY": -30.03
+      },
+      "1M": {
+        "RETURN": -3.8,
+        "TREND": -42.32,
+        "ACCELERATION": 27.9,
+        "QUALITY": 0.7164,
+        "SHARPE": -3.0,
+        "SORTINO": -5.69,
+        "STABILITY": -7.36
+      },
+      "3M": {
+        "RETURN": -4.71,
+        "TREND": 3.74,
+        "ACCELERATION": -22.48,
+        "QUALITY": 0.0167,
+        "SHARPE": -1.04,
+        "SORTINO": -1.7,
+        "STABILITY": -2.47
+      },
+      "6M": {
+        "RETURN": -13.09,
+        "TREND": -17.85,
+        "ACCELERATION": 52.26,
+        "QUALITY": 0.5378,
+        "SHARPE": -1.48,
+        "SORTINO": -2.58,
+        "STABILITY": -1.59
+      },
+      "12M": {
+        "RETURN": -16.67,
+        "TREND": -18.87,
+        "ACCELERATION": -2.17,
+        "QUALITY": 0.7985,
+        "SHARPE": -0.84,
+        "SORTINO": -1.65,
+        "STABILITY": -0.67
+      }
+    },
+    {
+      "Symbol": "CORN",
+      "Name": "Corn",
+      "Category": "Comm.",
+      "SubCategory": "Agri",
+      "2W": {
+        "RETURN": -1.94,
+        "TREND": -25.67,
+        "ACCELERATION": -28.69,
+        "QUALITY": 0.4142,
+        "SHARPE": -5.27,
+        "SORTINO": -7.21,
+        "STABILITY": -38.98
+      },
+      "1M": {
+        "RETURN": -1.12,
+        "TREND": 0.21,
+        "ACCELERATION": -5.85,
+        "QUALITY": 0.0,
+        "SHARPE": -1.12,
+        "SORTINO": -1.66,
+        "STABILITY": -5.64
+      },
+      "3M": {
+        "RETURN": -1.01,
+        "TREND": 8.47,
+        "ACCELERATION": -1.5,
+        "QUALITY": 0.2456,
+        "SHARPE": -0.3,
+        "SORTINO": -0.47,
+        "STABILITY": -0.93
+      },
+      "6M": {
+        "RETURN": -2.91,
+        "TREND": 4.61,
+        "ACCELERATION": 18.27,
+        "QUALITY": 0.1208,
+        "SHARPE": -0.35,
+        "SORTINO": -0.51,
+        "STABILITY": -0.54
+      },
+      "12M": {
+        "RETURN": -3.7,
+        "TREND": -11.27,
+        "ACCELERATION": 14.55,
+        "QUALITY": 0.5364,
+        "SHARPE": -0.18,
+        "SORTINO": -0.28,
+        "STABILITY": -0.14
+      }
+    },
+    {
+      "Symbol": "SOYB",
+      "Name": "Soybean",
+      "Category": "Comm.",
+      "SubCategory": "Agri",
+      "2W": {
+        "RETURN": -4.05,
+        "TREND": -68.09,
+        "ACCELERATION": 64.46,
+        "QUALITY": 0.9226,
+        "SHARPE": -12.8,
+        "SORTINO": -17.65,
+        "STABILITY": -32.75
+      },
+      "1M": {
+        "RETURN": -3.77,
+        "TREND": -43.65,
+        "ACCELERATION": -96.85,
+        "QUALITY": 0.7451,
+        "SHARPE": -4.16,
+        "SORTINO": -7.76,
+        "STABILITY": -8.6
+      },
+      "3M": {
+        "RETURN": 1.03,
+        "TREND": 42.67,
+        "ACCELERATION": -39.93,
+        "QUALITY": 0.6053,
+        "SHARPE": 0.39,
+        "SORTINO": 0.61,
+        "STABILITY": 0.9
+      },
+      "6M": {
+        "RETURN": -0.35,
+        "TREND": 16.01,
+        "ACCELERATION": 29.05,
+        "QUALITY": 0.4842,
+        "SHARPE": 0.01,
+        "SORTINO": 0.02,
+        "STABILITY": 0.02
+      },
+      "12M": {
+        "RETURN": 5.69,
+        "TREND": 6.36,
+        "ACCELERATION": 11.6,
+        "QUALITY": 0.3503,
+        "SHARPE": 0.44,
+        "SORTINO": 0.74,
+        "STABILITY": 0.71
+      }
+    },
+    {
+      "Symbol": "IBIT",
+      "Name": "Spot Bitcoin ETF",
+      "Category": "Crypto",
+      "SubCategory": "Bitcoin",
+      "2W": {
+        "RETURN": -5.83,
+        "TREND": -63.32,
+        "ACCELERATION": -364.45,
+        "QUALITY": 0.2349,
+        "SHARPE": -4.01,
+        "SORTINO": -5.52,
+        "STABILITY": -20.22
+      },
+      "1M": {
+        "RETURN": -9.0,
+        "TREND": 3.99,
+        "ACCELERATION": 119.87,
+        "QUALITY": 0.0009,
+        "SHARPE": -2.0,
+        "SORTINO": -3.86,
+        "STABILITY": -11.84
+      },
+      "3M": {
+        "RETURN": -25.9,
+        "TREND": -75.14,
+        "ACCELERATION": -120.99,
+        "QUALITY": 0.7908,
+        "SHARPE": -2.41,
+        "SORTINO": -4.93,
+        "STABILITY": -3.4
+      },
+      "6M": {
+        "RETURN": -18.22,
+        "TREND": -33.84,
+        "ACCELERATION": -161.07,
+        "QUALITY": 0.385,
+        "SHARPE": -0.83,
+        "SORTINO": -1.42,
+        "STABILITY": -1.0
+      },
+      "12M": {
+        "RETURN": -14.51,
+        "TREND": 16.63,
+        "ACCELERATION": -48.47,
+        "QUALITY": 0.1491,
+        "SHARPE": -0.15,
+        "SORTINO": -0.24,
+        "STABILITY": -0.19
+      }
+    },
+    {
+      "Symbol": "ETHA",
+      "Name": "Spot Ethereum ETF",
+      "Category": "Crypto",
+      "SubCategory": "Ethereum",
+      "2W": {
+        "RETURN": -1.73,
+        "TREND": 38.0,
+        "ACCELERATION": -1040.46,
+        "QUALITY": 0.0074,
+        "SHARPE": -0.38,
+        "SORTINO": -3.38,
+        "STABILITY": -2.09
+      },
+      "1M": {
+        "RETURN": -6.63,
+        "TREND": 142.93,
+        "ACCELERATION": 258.13,
+        "QUALITY": 0.1651,
+        "SHARPE": -0.68,
+        "SORTINO": -1.68,
+        "STABILITY": -4.3
+      },
+      "3M": {
+        "RETURN": -35.28,
+        "TREND": -85.27,
+        "ACCELERATION": -32.18,
+        "QUALITY": 0.8005,
+        "SHARPE": -1.99,
+        "SORTINO": -3.94,
+        "STABILITY": -3.53
+      },
+      "6M": {
+        "RETURN": 15.57,
+        "TREND": 19.57,
+        "ACCELERATION": -487.06,
+        "QUALITY": 0.0173,
+        "SHARPE": 0.76,
+        "SORTINO": 1.45,
+        "STABILITY": 1.27
+      },
+      "12M": {
+        "RETURN": -24.94,
+        "TREND": 59.89,
+        "ACCELERATION": 123.02,
+        "QUALITY": 0.2033,
+        "SHARPE": -0.0,
+        "SORTINO": -0.0,
+        "STABILITY": -0.0
+      }
+    }
+  ]
+}
