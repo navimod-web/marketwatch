@@ -27,19 +27,24 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: 1. Adım - Verileri Çek
+    - name: 1. Adım - Verileri Çek (ETF + Stocks)
       run: python etf_data_generator.py
 
-    - name: 2. Adım - AI Raporu Hazırla
+    - name: 2. Adım - ETF Raporu Hazırla
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: python generate_brief.py
+
+    - name: 3. Adım - Hisse (Stock) Raporu Hazırla
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: python generate_brief_stocks.py
 
     - name: Sonuçları Kaydet (Commit & Push)
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
-        git add etf_data.json brief.json
-        # Değişiklik varsa commit at, yoksa hata verme
-        git commit -m "Günlük Rapor: $(date +'%Y-%m-%d')" || echo "Değişiklik yok"
+        # 3 dosya da ekleniyor: Veri, ETF Raporu, Hisse Raporu
+        git add etf_data.json brief.json brief_stocks.json
+        git commit -m "Günlük Güncelleme: $(date +'%Y-%m-%d')" || echo "Değişiklik yok"
         git push
