@@ -391,11 +391,15 @@ def calc_metrics(prices, period_days):
     neg_rets = rets[rets < 0]
     down_vol = neg_rets.std() * np.sqrt(252) if len(neg_rets) > 0 else ann_vol
     sortino = ann_ret / down_vol if down_vol > 0 else 0
+    sortino = max(-10, min(10, sortino))  # -10 ile +10 arası sınırla
     
     # Max drawdown
     cum = (1 + rets).cumprod()
     dd = (cum / cum.cummax() - 1).min()
-    stability = ann_ret / abs(dd) if dd < 0 else ann_ret * 10
+    # Calmar: minimum %0.5 drawdown varsay, max 10 ile sınırla
+    min_dd = min(dd, -0.005)  # En az %0.5 drawdown
+    stability = ann_ret / abs(min_dd)
+    stability = max(-10, min(10, stability))  # -10 ile +10 arası sınırla
     
     return {
         'RETURN': round(ret, 2),
@@ -560,6 +564,225 @@ def calc_regime(ratios, etfs=None):
         'note': regime_note
     }
 
+def normalize_metric(value, min_val, max_val):
+    """Metriği 0-100 arasına normalize et"""
+    if value is None:
+        return 50  # Default orta değer
+    if max_val == min_val:
+        return 50
+    normalized = (value - min_val) / (max_val - min_val) * 100
+    return max(0, min(100, normalized))
+
+def calc_overbought_penalty(prices, lookback=14):
+    """
+    14 günlük Bollinger Band bazlı overbought cezası hesapla
+    
+    Fiyat > 2σ → -5 puan (Overbought)
+    Fiyat > 3σ → -10 puan (Aşırı Overbought)
+    """
+    if prices is None or len(prices) < lookback:
+        return 0
+    
+    recent = prices.tail(lookback)
+    if len(recent) < lookback:
+        return 0
+    
+    current_price = recent.iloc[-1]
+    mean = recent.mean()
+    std = recent.std()
+    
+    if std == 0 or std is None:
+        return 0
+    
+    # Z-score hesapla
+    z_score = (current_price - mean) / std
+    
+    # Ceza uygula
+    if z_score > 3:
+        return 10  # Aşırı overbought
+    elif z_score > 2:
+        return 5   # Overbought
+    else:
+        return 0
+
+def calc_max_drawdown_penalty(prices, period_days):
+    """
+    Belirli periyot için max drawdown cezası hesapla
+    
+    1M (22 gün) dd > %10 → -10 puan
+    3M (66 gün) dd > %15 → -10 puan
+    6M (126 gün) dd > %20 → -10 puan
+    """
+    if prices is None or len(prices) < period_days:
+        return 0
+    
+    recent = prices.tail(period_days).dropna()
+    if len(recent) < 5:
+        return 0
+    
+    # Max drawdown hesapla
+    cum_max = recent.cummax()
+    drawdown = (recent - cum_max) / cum_max
+    max_dd = drawdown.min()  # Negatif değer
+    
+    return abs(max_dd) * 100  # Yüzde olarak döndür
+
+def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stock=False, overbought_penalty=0, spy_6m_return=None, dd_1m=0, dd_3m=0, dd_6m=0):
+    """
+    Quant Score hesapla
+    
+    Period Weights: 6M=20%, 3M=20%, 1M=20%, 2W=20%, 1W=20% (eşit)
+    Metric Weights: Return=35%, Acceleration=25%, Sortino=20%, Calmar=10%, Trend=10%
+    Penalties:
+      - Her negatif return periyodu için -10 puan
+      - Overbought: 2σ üstü -5, 3σ üstü -10 puan (14 gün)
+      - Düşük return: 1M < %2 → -10, 3M < %5 → -10
+      - SPY altı: 6M return < SPY 6M return → -10 puan
+      - Max Drawdown: 1M > %10 → -10, 3M > %15 → -10, 6M > %20 → -10
+    Filters:
+      - 1M Return < %1 → Listeye girmesin (None döndür)
+    Stock Bonus: Sektör 1M ve 2W return pozitifse +5 puan
+    """
+    
+    # === MINIMUM RETURN FİLTRESİ ===
+    ret_1m = item.get('1M', {}).get('RETURN', 0) or 0
+    if ret_1m < 1:  # 1M return < %1 → diskalifiye
+        return None
+    
+    PERIODS = ['1W', '2W', '1M', '3M', '6M']
+    PERIOD_WEIGHT = 0.20  # Her biri %20
+    
+    METRIC_WEIGHTS = {
+        'RETURN': 0.35,
+        'ACCELERATION': 0.25,
+        'SORTINO': 0.20,
+        'STABILITY': 0.10,
+        'TREND': 0.10
+    }
+    
+    # Normalize bounds (tipik değer aralıkları)
+    BOUNDS = {
+        'RETURN': (-30, 30),
+        'ACCELERATION': (-50, 50),
+        'SORTINO': (-3, 3),
+        'STABILITY': (-3, 3),
+        'TREND': (-100, 100)
+    }
+    
+    period_scores = {}
+    negative_count = 0  # Negatif return sayacı
+    
+    for period in PERIODS:
+        if period not in item:
+            continue
+            
+        metrics = item[period]
+        metric_score = 0
+        
+        # Return negatif mi kontrol et
+        period_return = metrics.get('RETURN', 0)
+        if period_return is not None and period_return < 0:
+            negative_count += 1
+        
+        for metric, metric_weight in METRIC_WEIGHTS.items():
+            value = metrics.get(metric)
+            min_val, max_val = BOUNDS[metric]
+            # Değeri sınırlar içine al
+            if value is not None:
+                value = max(min_val, min(max_val, value))
+            normalized = normalize_metric(value, min_val, max_val)
+            metric_score += normalized * metric_weight
+        
+        period_scores[period] = metric_score
+    
+    # Ağırlıklı ortalama
+    if not period_scores:
+        return None
+    
+    total_weight = 0
+    weighted_sum = 0
+    
+    for period, score in period_scores.items():
+        weighted_sum += score * PERIOD_WEIGHT
+        total_weight += PERIOD_WEIGHT
+    
+    base_score = weighted_sum / total_weight if total_weight > 0 else 0
+    
+    # Negatif cezası: Her negatif periyot için -10 puan
+    penalty = negative_count * 10
+    final_score = base_score - penalty
+    
+    # Overbought cezası
+    final_score -= overbought_penalty
+    
+    # === DÜŞÜK RETURN CEZASI ===
+    ret_3m = item.get('3M', {}).get('RETURN', 0) or 0
+    ret_6m = item.get('6M', {}).get('RETURN', 0) or 0
+    if ret_1m < 2:  # 1M return < %2 → -10 puan
+        final_score -= 10
+    if ret_3m < 5:  # 3M return < %5 → -10 puan
+        final_score -= 10
+    
+    # === SPY BENCHMARK FİLTRESİ ===
+    if spy_6m_return is not None and ret_6m < spy_6m_return:
+        return None  # SPY'ın altındaysa direkt diskalifiye
+    
+    # === MAX DRAWDOWN CEZASI ===
+    if dd_1m > 5:  # 1M drawdown > %5 → -10 puan
+        final_score -= 10
+    if dd_3m > 10:  # 3M drawdown > %10 → -10 puan
+        final_score -= 10
+    if dd_6m > 15:  # 6M drawdown > %15 → -10 puan
+        final_score -= 10
+    
+    # === R² (QUALITY) CEZASI - Choppy hareket filtresi ===
+    r2_1m = item.get('1M', {}).get('QUALITY', 1) or 1
+    r2_3m = item.get('3M', {}).get('QUALITY', 1) or 1
+    r2_6m = item.get('6M', {}).get('QUALITY', 1) or 1
+    if r2_1m < 0.2:  # 1M R² < 0.2 → -20 puan (çok choppy)
+        final_score -= 20
+    if r2_3m < 0.3:  # 3M R² < 0.3 → -20 puan (trend güvenilmez)
+        final_score -= 20
+    if r2_6m < 0.4:  # 6M R² < 0.4 → -20 puan (uzun vadeli trend zayıf)
+        final_score -= 20
+    
+    # Stock bonus: Sektör 1M ve 2W return pozitifse +5 puan
+    if is_stock and sector_1m_return is not None and sector_2w_return is not None:
+        if sector_1m_return > 0 and sector_2w_return > 0:
+            final_score += 5
+    
+    # 0-100 arası sınırla
+    final_score = max(0, min(100, final_score))
+    
+    return round(final_score, 1)
+
+def calc_sector_returns(stocks):
+    """Her sektörün 1M ve 2W ortalama return'ünü hesapla"""
+    sector_returns = {}
+    
+    for stock in stocks:
+        category = stock.get('Category', 'Other')
+        
+        if category not in sector_returns:
+            sector_returns[category] = {'1M': [], '2W': []}
+        
+        # 1M return
+        if '1M' in stock and stock['1M'].get('RETURN') is not None:
+            sector_returns[category]['1M'].append(stock['1M']['RETURN'])
+        
+        # 2W return
+        if '2W' in stock and stock['2W'].get('RETURN') is not None:
+            sector_returns[category]['2W'].append(stock['2W']['RETURN'])
+    
+    # Ortalamaları hesapla
+    sector_avg = {}
+    for category, data in sector_returns.items():
+        avg_1m = sum(data['1M']) / len(data['1M']) if data['1M'] else 0
+        avg_2w = sum(data['2W']) / len(data['2W']) if data['2W'] else 0
+        sector_avg[category] = {'1M': avg_1m, '2W': avg_2w}
+    
+    return sector_avg
+
 def generate_data():
     """Ana veri üretim fonksiyonu"""
     
@@ -671,6 +894,76 @@ def generate_data():
     print(f"✅ Regime: {regime['overall']} (Risk: {regime['riskScore']}, Cycle: {regime['cycleScore']}, Breadth: {regime['breadth']['positive']}/{regime['breadth']['total']})")
     print(f"   Note: {regime.get('note', '')}")
     
+    # === QUANT RANKINGS ===
+    print("🏆 Calculating Quant Rankings...")
+    
+    # SPY 6M return'ü al (benchmark)
+    spy_6m_return = None
+    spy_etf = next((e for e in etfs if e['Symbol'] == 'SPY'), None)
+    if spy_etf and '6M' in spy_etf:
+        spy_6m_return = spy_etf['6M'].get('RETURN', 0)
+        print(f"📊 SPY 6M Return (benchmark): {spy_6m_return:.2f}%")
+    
+    # ETF Quant Scores (overbought penalty + SPY benchmark + drawdown ile)
+    for etf in etfs:
+        symbol = etf['Symbol']
+        ob_penalty = 0
+        dd_1m, dd_3m, dd_6m = 0, 0, 0
+        if symbol in prices.columns:
+            ob_penalty = calc_overbought_penalty(prices[symbol])
+            dd_1m = calc_max_drawdown_penalty(prices[symbol], 22)   # 1M
+            dd_3m = calc_max_drawdown_penalty(prices[symbol], 66)   # 3M
+            dd_6m = calc_max_drawdown_penalty(prices[symbol], 126)  # 6M
+        etf['QuantScore'] = calc_quant_score(
+            etf, 
+            is_stock=False, 
+            overbought_penalty=ob_penalty, 
+            spy_6m_return=spy_6m_return,
+            dd_1m=dd_1m,
+            dd_3m=dd_3m,
+            dd_6m=dd_6m
+        )
+    
+    # Stock Quant Scores (sektör bonusu, overbought penalty + SPY benchmark + drawdown ile)
+    sector_avg = calc_sector_returns(stocks)
+    for stock in stocks:
+        symbol = stock['Symbol']
+        category = stock.get('Category', 'Other')
+        sect_data = sector_avg.get(category, {'1M': 0, '2W': 0})
+        ob_penalty = 0
+        dd_1m, dd_3m, dd_6m = 0, 0, 0
+        if symbol in prices.columns:
+            ob_penalty = calc_overbought_penalty(prices[symbol])
+            dd_1m = calc_max_drawdown_penalty(prices[symbol], 22)   # 1M
+            dd_3m = calc_max_drawdown_penalty(prices[symbol], 66)   # 3M
+            dd_6m = calc_max_drawdown_penalty(prices[symbol], 126)  # 6M
+        stock['QuantScore'] = calc_quant_score(
+            stock, 
+            sector_1m_return=sect_data['1M'],
+            sector_2w_return=sect_data['2W'],
+            is_stock=True,
+            overbought_penalty=ob_penalty,
+            spy_6m_return=spy_6m_return,
+            dd_1m=dd_1m,
+            dd_3m=dd_3m,
+            dd_6m=dd_6m
+        )
+    
+    # Top 10 ETFs ve Stocks
+    etfs_with_score = [e for e in etfs if e.get('QuantScore') is not None]
+    stocks_with_score = [s for s in stocks if s.get('QuantScore') is not None]
+    
+    top10_etfs = sorted(etfs_with_score, key=lambda x: x['QuantScore'], reverse=True)[:10]
+    top10_stocks = sorted(stocks_with_score, key=lambda x: x['QuantScore'], reverse=True)[:10]
+    
+    quant_rankings = {
+        'top10_etfs': [{'Symbol': e['Symbol'], 'Name': e['Name'], 'Category': e['Category'], 'QuantScore': e['QuantScore']} for e in top10_etfs],
+        'top10_stocks': [{'Symbol': s['Symbol'], 'Name': s['Name'], 'Category': s['Category'], 'QuantScore': s['QuantScore']} for s in top10_stocks]
+    }
+    
+    print(f"✅ Top 10 ETFs: {[e['Symbol'] for e in top10_etfs]}")
+    print(f"✅ Top 10 Stocks: {[s['Symbol'] for s in top10_stocks]}")
+    
     return {
         'generated_at': datetime.now().isoformat(),
         'update_time': datetime.now().strftime('%Y-%m-%d %H:%M'),
@@ -680,7 +973,8 @@ def generate_data():
         'regime': regime,
         'ratios': ratios,
         'etfs': etfs,
-        'stocks': stocks
+        'stocks': stocks,
+        'quant_rankings': quant_rankings
     }
 
 def main():

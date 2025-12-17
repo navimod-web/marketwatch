@@ -148,6 +148,16 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 .cat.materials{background:rgba(217,119,6,0.2);color:#fbbf24}
 .cat.realestate{background:rgba(168,85,247,0.2);color:#c084fc}
 .top-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;padding:16px}
+.quant-methodology{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 16px 16px 16px;max-width:854px}
+.quant-methodology h4{font-size:0.8rem;color:var(--cyan);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.methodology-grid{display:grid;grid-template-columns:1fr 2fr;gap:20px}
+.methodology-col h5{font-size:0.7rem;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.weight-item{display:flex;justify-content:space-between;padding:3px 0;font-size:0.75rem;color:var(--text);border-bottom:1px solid var(--border)}
+.weight-item:last-child{border-bottom:none}
+.weight-item span:last-child{color:var(--cyan);font-weight:600}
+.quant-disclaimer{margin-top:12px;padding:10px 12px;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.2);border-radius:8px;font-size:0.7rem;color:var(--muted);line-height:1.4;display:flex;align-items:flex-start;gap:8px}
+.quant-disclaimer i{color:var(--rose);margin-top:2px}
+@media(max-width:768px){.methodology-grid{grid-template-columns:1fr}}
 .top-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px}
 .top-card h3{font-size:0.9rem;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .top-card h3 .tw{display:flex;align-items:center;gap:8px}
@@ -271,6 +281,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <button class="tab" onclick="showTab('ratios')"><i class="fas fa-balance-scale"></i> Ratios</button>
 <button class="tab" onclick="showTab('brief')"><i class="fas fa-newspaper"></i> Daily Brief - ETFs</button>
 <button class="tab" onclick="showTab('briefstocks')"><i class="fas fa-file-alt"></i> Daily Brief - Stocks</button>
+<button class="tab" onclick="showTab('quantrankings')"><i class="fas fa-crown"></i> Quant Rankings</button>
 </div>
 <div class="panel active" id="panel-metrics">
 <div class="controls">
@@ -360,12 +371,58 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 </div>
 </div>
 
+<div class="panel" id="panel-quantrankings">
+<div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 420px)); justify-content: start;">
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:white"><i class="fas fa-chart-line"></i></span>Top 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantEtfList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-building"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantStockList"></ul>
+</div>
+</div>
+<div class="quant-methodology">
+<h4><i class="fas fa-info-circle"></i> SCORING METHODOLOGY</h4>
+<div class="methodology-grid">
+<div class="methodology-col">
+<h5>Period Weights</h5>
+<div class="weight-item"><span>6M</span><span>20%</span></div>
+<div class="weight-item"><span>3M</span><span>20%</span></div>
+<div class="weight-item"><span>1M</span><span>20%</span></div>
+<div class="weight-item"><span>2W</span><span>20%</span></div>
+<div class="weight-item"><span>1W</span><span>20%</span></div>
+</div>
+<div class="methodology-col">
+<h5>Metric Weights</h5>
+<div class="weight-item"><span>Return</span><span>35%</span></div>
+<div class="weight-item"><span>Acceleration</span><span>25%</span></div>
+<div class="weight-item"><span>Sortino</span><span>20%</span></div>
+<div class="weight-item"><span>Calmar</span><span>10%</span></div>
+<div class="weight-item"><span>Trend</span><span>10%</span></div>
+</div>
+</div>
+<p style="font-size:0.7rem;color:#f59e0b;margin-top:10px;"><i class="fas fa-minus-circle"></i> Penalty: -10 pts for each period with negative return</p>
+<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-exclamation-circle"></i> Overbought: -5 pts (>2σ) or -10 pts (>3σ) based on 14-day</p>
+<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-snail"></i> Low Return: -10 pts if 1M &lt; 2%, -10 pts if 3M &lt; 5%</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 6M return &lt; SPY 6M return</p>
+<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-arrow-trend-down"></i> Max Drawdown: -10 pts if 1M DD &gt;5%, 3M DD &gt;10%, 6M DD &gt;15%</p>
+<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-wave-square"></i> Choppy: -20 pts each if 1M R²&lt;0.2, 3M R²&lt;0.3, 6M R²&lt;0.4</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 1M return &lt; 1%</p>
+<p style="font-size:0.7rem;color:#22c55e;margin-top:4px;"><i class="fas fa-plus-circle"></i> Stock Bonus: +5 pts if sector 1M & 2W returns are positive</p>
+<div class="quant-disclaimer">
+<i class="fas fa-exclamation-triangle"></i>
+This is a statistical ranking based on quantitative metrics only. Not financial advice. Past performance does not guarantee future results. Always do your own research.
+</div>
+</div>
+</div>
+
 <footer class="footer">
-<div class="footer-main"><a href="https://navimod.com/" target="_blank">Navimod Financial Analytics</a></div>
 <div class="disclaimer">
 <div>⚠️ AI-Generated Content. This report is for informational purposes only and does not constitute investment advice.</div>
 <div class="disclaimer-advice">Past performance is not indicative of future results. Always consult a qualified financial advisor before making investment decisions.</div>
 </div>
+<div class="footer-main" style="margin-top:24px;"><a href="https://navimod.com/" target="_blank">Navimod Financial Analytics</a></div>
 </footer>
 </div>
 
@@ -548,6 +605,7 @@ function renderAll() {
   renderSignals();
   renderTable();
   renderStockTable();
+  renderQuantRankings();
   renderTop10();
   renderTop10Stocks();
   renderTop10Sectors();
@@ -735,8 +793,44 @@ function renderStockTable() {
   document.getElementById('stockTableBody').innerHTML = html;
 }
 
-// ========== TOP 10 ==========
+// ========== QUANT RANKINGS ==========
+function renderQuantRankings() {
+  var rankings = DATA.quant_rankings;
+  if (!rankings) {
+    document.getElementById('quantEtfList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
+    document.getElementById('quantStockList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
+    return;
+  }
+  
+  // Top 10 ETFs - Top 10 tarzı liste
+  var etfHtml = '';
+  var top10Etfs = rankings.top10_etfs || [];
+  for (var i = 0; i < top10Etfs.length; i++) {
+    var e = top10Etfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = e.QuantScore != null ? e.QuantScore.toFixed(1) : '-';
+    etfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('quantEtfList').innerHTML = etfHtml;
+  
+  // Top 10 Stocks - Top 10 tarzı liste
+  var stockHtml = '';
+  var top10Stocks = rankings.top10_stocks || [];
+  for (var i = 0; i < top10Stocks.length; i++) {
+    var s = top10Stocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = s.QuantScore != null ? s.QuantScore.toFixed(1) : '-';
+    stockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('quantStockList').innerHTML = stockHtml;
+}
+
+// ========== TOP 10 ETFs ==========
 function renderTop10() {
+  if (!ETFS || ETFS.length === 0) {
+    document.getElementById('top10Grid').innerHTML = '<div class="brief-loading">No ETF data available</div>';
+    return;
+  }
   var metrics = [{k:'TREND',t:'Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},{k:'RETURN',t:'Return',icon:'fa-chart-line',cls:'return',s:'%'},{k:'SHARPE',t:'Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},{k:'SORTINO',t:'Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},{k:'QUALITY',t:'Quality',icon:'fa-bullseye',cls:'quality',s:''},{k:'STABILITY',t:'Stability',icon:'fa-mountain',cls:'stability',s:''}];
   var html = '';
   for (var m = 0; m < metrics.length; m++) { var x = metrics[m], sorted = ETFS.slice().sort(function(a, b) { var ap = a[top10P] || a['2W'] || a['1M'] || {}, bp = b[top10P] || b['2W'] || b['1M'] || {}; var av = ap[x.k] != null ? ap[x.k] : -999, bv = bp[x.k] != null ? bp[x.k] : -999; return bv - av; }).slice(0, 10), listHtml = '';
@@ -761,97 +855,11 @@ function renderTop10Stocks() {
     for (var i = 0; i < sorted.length; i++) { var e = sorted[i], ep = e[top10StockP] || e['2W'] || e['1M'] || {}, v = ep[x.k] != null ? ep[x.k] : 0, rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
       listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
     }
-    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10StockP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
+    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '<button class="info-btn" data-key="' + x.k + '"><i class="fas fa-info"></i></button></span><span class="p">' + top10StockP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
   }
   document.getElementById('top10StockGrid').innerHTML = html;
 }
 function setTop10StockP(p) { top10StockP = p; document.querySelectorAll('#top10StockPeriods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10Stocks(); }
-
-// ========== TOP 10 SECTORS ==========
-function renderTop10Sectors() {
-  if (!STOCKS || STOCKS.length === 0) {
-    document.getElementById('top10SectorGrid').innerHTML = '<div class="brief-loading">No stock data available</div>';
-    return;
-  }
-  
-  // Sektör bazlı metrikleri hesapla
-  function calcSectorMetrics() {
-    var sectorData = {};
-    
-    STOCKS.forEach(function(stock) {
-      var sector = stock.Category;
-      var period = stock[top10SectorP] || stock['2W'] || stock['1M'] || {};
-      
-      if (!sectorData[sector]) {
-        sectorData[sector] = {
-          name: sector,
-          stocks: [],
-          RETURN: [],
-          TREND: [],
-          SHARPE: [],
-          SORTINO: [],
-          QUALITY: [],
-          STABILITY: []
-        };
-      }
-      
-      sectorData[sector].stocks.push(stock.Symbol);
-      if (period.RETURN != null) sectorData[sector].RETURN.push(period.RETURN);
-      if (period.TREND != null) sectorData[sector].TREND.push(period.TREND);
-      if (period.SHARPE != null) sectorData[sector].SHARPE.push(period.SHARPE);
-      if (period.SORTINO != null) sectorData[sector].SORTINO.push(period.SORTINO);
-      if (period.QUALITY != null) sectorData[sector].QUALITY.push(period.QUALITY);
-      if (period.STABILITY != null) sectorData[sector].STABILITY.push(period.STABILITY);
-    });
-    
-    // Ortalamaları hesapla
-    var sectors = [];
-    for (var sector in sectorData) {
-      var d = sectorData[sector];
-      var avg = function(arr) { return arr.length > 0 ? arr.reduce(function(a,b){return a+b;}, 0) / arr.length : 0; };
-      sectors.push({
-        name: d.name,
-        count: d.stocks.length,
-        RETURN: avg(d.RETURN),
-        TREND: avg(d.TREND),
-        SHARPE: avg(d.SHARPE),
-        SORTINO: avg(d.SORTINO),
-        QUALITY: avg(d.QUALITY),
-        STABILITY: avg(d.STABILITY)
-      });
-    }
-    return sectors;
-  }
-  
-  var sectors = calcSectorMetrics();
-  var metrics = [
-    {k:'RETURN',t:'Avg Return',icon:'fa-chart-line',cls:'return',s:'%'},
-    {k:'TREND',t:'Avg Trend',icon:'fa-arrow-trend-up',cls:'trend',s:'%'},
-    {k:'SHARPE',t:'Avg Sharpe',icon:'fa-bolt',cls:'sharpe',s:''},
-    {k:'SORTINO',t:'Avg Sortino',icon:'fa-shield-halved',cls:'sortino',s:''},
-    {k:'QUALITY',t:'Avg Quality',icon:'fa-bullseye',cls:'quality',s:''},
-    {k:'STABILITY',t:'Avg Stability',icon:'fa-mountain',cls:'stability',s:''}
-  ];
-  
-  var html = '';
-  for (var m = 0; m < metrics.length; m++) {
-    var x = metrics[m];
-    var sorted = sectors.slice().sort(function(a, b) {
-      return b[x.k] - a[x.k];
-    });
-    
-    var listHtml = '';
-    for (var i = 0; i < sorted.length; i++) {
-      var sec = sorted[i];
-      var v = sec[x.k] || 0;
-      var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-      listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.name + '</span><span class="top-name">' + sec.count + ' stocks</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
-    }
-    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10SectorP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
-  }
-  document.getElementById('top10SectorGrid').innerHTML = html;
-}
-function setTop10SectorP(p) { top10SectorP = p; document.querySelectorAll('#top10SectorPeriods button').forEach(function(b) { b.classList.toggle('active', b.textContent === p); }); renderTop10Sectors(); }
 
 // ========== TOP 10 SECTORS ==========
 function renderTop10Sectors() {
@@ -911,7 +919,7 @@ function renderTop10Sectors() {
       var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
       listHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.name + '</span><span class="top-name">(' + sec.count + ' stocks)</span><span class="top-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '') + '">' + fmt(v) + x.s + '</span></li>';
     }
-    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '</span><span class="p">' + top10SectorP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
+    html += '<div class="top-card"><h3><span class="tw"><span class="metric-icon ' + x.cls + '"><i class="fas ' + x.icon + '"></i></span>' + x.t + '<button class="info-btn" data-key="' + x.k + '"><i class="fas fa-info"></i></button></span><span class="p">' + top10SectorP + '</span></h3><ul class="top-list">' + listHtml + '</ul></div>';
   }
   
   document.getElementById('top10SectorGrid').innerHTML = html;
