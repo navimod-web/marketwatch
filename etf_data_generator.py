@@ -442,9 +442,11 @@ def calc_regime(ratios, etfs=None, stocks=None):
                     breadth_positive += 1
     
     breadth_ratio = breadth_positive / breadth_total if breadth_total > 0 else 0.5
+    # Breadth score: ≥7 = +1 (strong), 5-6 = 0 (mixed), ≤4 = -1 (weak)
+    breadth_score = 1 if breadth_positive >= 7 else (-1 if breadth_positive <= 4 else 0)
     signals['BREADTH'] = {
         'value': f'{breadth_positive}/{breadth_total} POSITIVE',
-        'score': breadth_positive - (breadth_total - breadth_positive),  # net positive count
+        'score': breadth_score,
         'positive': breadth_positive,
         'total': breadth_total
     }
@@ -530,56 +532,66 @@ def calc_regime(ratios, etfs=None, stocks=None):
     else:
         signals['CPER_GLD'] = {'value': 'NEUTRAL', 'score': 0, 'level': cper_gld_level, 'change': cper_gld_chg}
     
-    # === SMART REGIME ALGORITHM ===
+    # === SMART REGIME ALGORITHM (27 Kombinasyon Matrisi) ===
     
-    # Breadth Score (doğrudan toplama dahil)
-    if breadth_positive >= 7:
-        breadth_score = 1   # Geniş katılım
-    elif breadth_positive <= 4:
-        breadth_score = -1  # Dar katılım
-    else:
-        breadth_score = 0   # Orta (5-6)
+    # Kategorileri belirle
+    # Risk: Negatif (≤-1) | Nötr (0) | Pozitif (≥+1)
+    # Cycle: Negatif (≤-1) | Nötr (0) | Pozitif (≥+1)
+    # Breadth: Weak (≤4) | Mixed (5-6) | Strong (≥7)
     
-    # BREADTH signal'ine score ekle
-    signals['BREADTH']['score'] = breadth_score
+    risk_cat = 'negative' if risk_score <= -1 else ('positive' if risk_score >= 1 else 'neutral')
+    cycle_cat = 'negative' if cycle_score <= -1 else ('positive' if cycle_score >= 1 else 'neutral')
+    breadth_cat = 'weak' if breadth_positive <= 4 else ('strong' if breadth_positive >= 7 else 'mixed')
     
-    total = risk_score + cycle_score + breadth_score
+    # 27 Kombinasyon Matrisi
+    # Ana prensip:
+    # - Weak breadth (≤4): Asla RISK-ON vermez, en iyi CAUTION
+    # - Strong breadth (≥7): Asla RISK-OFF vermez, en kötü CAUTION
     
-    # Conflict Check
-    has_risk_stress = risk_score <= -2
-    has_cycle_expansion = cycle_score >= 1
-    has_weak_breadth = breadth_positive <= 4
+    regime_matrix = {
+        # Risk Negatif
+        ('negative', 'negative', 'weak'):   ('RISK-OFF', 'Full defensive mode - risk stress and contraction'),
+        ('negative', 'negative', 'mixed'):  ('RISK-OFF', 'Defensive mode - risk stress and contraction'),
+        ('negative', 'negative', 'strong'): ('CAUTION', 'Risk stress but market holding - reduce risk gradually'),
+        ('negative', 'neutral', 'weak'):    ('RISK-OFF', 'Defensive mode - risk stress with weak participation'),
+        ('negative', 'neutral', 'mixed'):   ('CAUTION', 'Risk stress but mixed signals - be selective'),
+        ('negative', 'neutral', 'strong'):  ('CAUTION', 'Risk stress but broad participation - watch closely'),
+        ('negative', 'positive', 'weak'):   ('CAUTION', 'Rotation attempt but narrow - be very selective'),
+        ('negative', 'positive', 'mixed'):  ('ROTATION', 'Sector rotation - money moving not fleeing'),
+        ('negative', 'positive', 'strong'): ('ROTATION', 'Healthy rotation - broad participation despite risk signals'),
+        
+        # Risk Nötr
+        ('neutral', 'negative', 'weak'):    ('RISK-OFF', 'Cycle weakness with narrow breadth'),
+        ('neutral', 'negative', 'mixed'):   ('NEUTRAL', 'Mixed signals - no clear direction'),
+        ('neutral', 'negative', 'strong'):  ('NEUTRAL', 'Cycle weak but market holding'),
+        ('neutral', 'neutral', 'weak'):     ('NEUTRAL', 'No signals - narrow participation'),
+        ('neutral', 'neutral', 'mixed'):    ('NEUTRAL', 'No clear signals'),
+        ('neutral', 'neutral', 'strong'):   ('NEUTRAL', 'No signals but broad participation'),
+        ('neutral', 'positive', 'weak'):    ('NEUTRAL', 'Cycle positive but narrow - wait for confirmation'),
+        ('neutral', 'positive', 'mixed'):   ('RISK-ON', 'Moderate expansion signals'),
+        ('neutral', 'positive', 'strong'):  ('RISK-ON', 'Broad expansion - favorable conditions'),
+        
+        # Risk Pozitif
+        ('positive', 'negative', 'weak'):   ('NEUTRAL', 'Conflicting signals - risk calm but cycle weak'),
+        ('positive', 'negative', 'mixed'):  ('NEUTRAL', 'Conflicting signals'),
+        ('positive', 'negative', 'strong'): ('NEUTRAL', 'Conflicting signals with broad participation'),
+        ('positive', 'neutral', 'weak'):    ('NEUTRAL', 'Risk positive but narrow participation'),
+        ('positive', 'neutral', 'mixed'):   ('RISK-ON', 'Risk appetite with moderate breadth'),
+        ('positive', 'neutral', 'strong'):  ('RISK-ON', 'Risk appetite with broad participation'),
+        ('positive', 'positive', 'weak'):   ('CAUTION', 'Strong signals but narrow rally - be careful'),
+        ('positive', 'positive', 'mixed'):  ('RISK-ON', 'Risk appetite confirmed'),
+        ('positive', 'positive', 'strong'): ('RISK-ON', 'Strong bull market - full risk appetite'),
+    }
     
-    # Determine regime
-    if has_risk_stress and has_cycle_expansion:
-        if has_weak_breadth:
-            overall = 'CAUTION'
-            regime_note = 'Risk stress + expansion but narrow breadth - be selective'
-        else:
-            overall = 'ROTATION'
-            regime_note = 'Risk stress with expansion signals - sector rotation likely'
-    elif total >= 3:
-        overall = 'RISK-ON'
-        regime_note = 'Strong risk appetite confirmed'
-    elif total >= 1:
-        overall = 'RISK-ON'
-        regime_note = 'Moderate risk appetite'
-    elif total <= -3:
-        overall = 'RISK-OFF'
-        regime_note = 'Strong defensive mode'
-    elif total <= -1:
-        overall = 'RISK-OFF'
-        regime_note = 'Moderate defensive mode'
-    else:
-        overall = 'NEUTRAL'
-        regime_note = 'Mixed signals - no clear direction'
+    overall, regime_note = regime_matrix.get(
+        (risk_cat, cycle_cat, breadth_cat), 
+        ('NEUTRAL', 'Unable to determine regime')
+    )
     
     return {
         'overall': overall,
         'riskScore': risk_score,
         'cycleScore': cycle_score,
-        'breadthScore': breadth_score,
-        'totalScore': total,
         'signals': signals,
         'breadth': {'positive': breadth_positive, 'total': breadth_total},
         'note': regime_note

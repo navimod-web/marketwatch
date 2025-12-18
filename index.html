@@ -270,10 +270,9 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="regime-main"><div class="regime-icon neutral" id="regimeIcon"><i class="fas fa-spinner fa-spin"></i></div>
 <div class="regime-text"><h2 id="regimeLbl">Loading...</h2><button class="info-btn regime-info-btn" id="regimeInfoBtn"><i class="fas fa-info"></i></button><span id="regimeDesc">Fetching data...</span></div></div>
 <div class="scores">
-<div class="score"><div class="score-val" id="breadthScore">-</div><div class="score-lbl">Breadth <button class="info-btn" data-key="BREADTH_SCORE"><i class="fas fa-info"></i></button></div></div>
 <div class="score"><div class="score-val" id="riskScore">-</div><div class="score-lbl">Risk <button class="info-btn" data-key="RISK_SCORE"><i class="fas fa-info"></i></button></div></div>
 <div class="score"><div class="score-val" id="cycleScore">-</div><div class="score-lbl">Cycle <button class="info-btn" data-key="CYCLE_SCORE"><i class="fas fa-info"></i></button></div></div>
-<div class="score total-score"><div class="score-val" id="totalScore">-</div><div class="score-lbl">Total <button class="info-btn" data-key="TOTAL_SCORE"><i class="fas fa-info"></i></button></div></div>
+<div class="score"><div class="score-val" id="breadthDisplay">-</div><div class="score-lbl">Breadth <button class="info-btn" data-key="BREADTH"><i class="fas fa-info"></i></button></div></div>
 </div>
 </div>
 <div class="signals" id="signalsGrid"></div>
@@ -465,45 +464,45 @@ This is a statistical ranking based on quantitative metrics only. Not financial 
 <h3><i class="fas fa-calculator"></i> Scoring System</h3>
 
 <div class="how-card">
-<h4>RISK SCORE <span class="score-range neg">-5 to +5</span></h4>
+<h4>RISK SCORE <span class="score-range neg">-5 to +3</span></h4>
 <p>Measures market fear and financial stress:</p>
 <ul>
-<li><strong>VXX (Volatility):</strong> >25 = Panic (-2), 20-25 = Elevated (-1), <15 = Calm (+1)</li>
-<li><strong>HYG/LQD (Credit):</strong> <0.85 = Stress (-2), >0.90 = Healthy (+1)</li>
-<li><strong>SPY/TLT (Stocks vs Bonds):</strong> Rising = Risk-On (+1), Falling = Risk-Off (-1)</li>
+<li><strong>VXX (Volatility):</strong> >25 = Panic (-2/-1), 20-25 = Elevated (-1/0), <15 = Calm (+1)</li>
+<li><strong>HYG/LQD (Credit):</strong> <0.85 = Stress (-2/-1), >0.90 = Healthy (+1)</li>
+<li><strong>SPY/TLT (Stocks vs Bonds):</strong> 1W >+2% = Risk-On (+1), 1W <-2% = Risk-Off (-1)</li>
 </ul>
 <p class="how-note">↑ Arrow = worsening, ↓ Arrow = improving</p>
 </div>
 
 <div class="how-card">
-<h4>CYCLE SCORE <span class="score-range pos">-3 to +3</span></h4>
+<h4>CYCLE SCORE <span class="score-range pos">-2 to +2</span></h4>
 <p>Measures economic expansion or contraction:</p>
 <ul>
-<li><strong>XLY/XLP (Consumer):</strong> Rising = Discretionary spending (expansion)</li>
-<li><strong>CPER/GLD (Copper/Gold):</strong> Rising = Industrial demand (growth)</li>
+<li><strong>XLY/XLP (Consumer):</strong> 1W >+1% = Expansion (+1), 1W <-1% = Contraction (-1)</li>
+<li><strong>CPER/GLD (Copper/Gold):</strong> 1W >+2% = Reflation (+1), 1W <-2% = Deflation (-1)</li>
 </ul>
 </div>
 
 <div class="how-card">
-<h4>BREADTH <span class="score-range">0-11 sectors</span></h4>
-<p>Measures market participation width:</p>
+<h4>BREADTH <span class="score-range">-1 to +1</span></h4>
+<p>Market participation width - KEY regime modifier:</p>
 <ul>
-<li><strong>≥7 positive:</strong> Healthy, broad participation</li>
-<li><strong>5-6 positive:</strong> Mixed, selective</li>
-<li><strong>≤4 positive:</strong> Weak, narrow leadership</li>
+<li><strong>≥7/11 positive (Strong):</strong> Score +1 - Broad participation, never gives RISK-OFF</li>
+<li><strong>5-6/11 positive (Mixed):</strong> Score 0 - Moderate participation, Risk/Cycle decides</li>
+<li><strong>≤4/11 positive (Weak):</strong> Score -1 - Narrow leadership, never gives RISK-ON</li>
 </ul>
-<p class="how-note">Breadth acts as "referee" - it can override the score when signals conflict.</p>
+<p class="how-note">Breadth has VETO power: Weak breadth blocks RISK-ON, Strong breadth blocks RISK-OFF.</p>
 </div>
 </div>
 
 <div class="how-section">
 <h3><i class="fas fa-flag"></i> Regime Logic</h3>
 <div class="regime-grid">
-<div class="regime-card on"><div class="regime-label"><i class="fas fa-rocket"></i> RISK-ON</div><p>Total ≥2, breadth healthy. Favor equities and cyclicals.</p></div>
-<div class="regime-card off"><div class="regime-label"><i class="fas fa-shield-alt"></i> RISK-OFF</div><p>Total ≤-2 AND weak breadth (≤4). Favor bonds and safe havens.</p></div>
-<div class="regime-card rotation"><div class="regime-label"><i class="fas fa-sync-alt"></i> ROTATION</div><p>Risk negative BUT cycle positive. Money rotating, not fleeing. Be selective.</p></div>
-<div class="regime-card caution"><div class="regime-label"><i class="fas fa-exclamation-triangle"></i> CAUTION</div><p>Risk negative BUT breadth healthy. Some stress but market holding. Reduce risk gradually.</p></div>
-<div class="regime-card neutral"><div class="regime-label"><i class="fas fa-balance-scale"></i> NEUTRAL</div><p>Mixed signals, no clear direction. Balanced allocation recommended.</p></div>
+<div class="regime-card on"><div class="regime-label"><i class="fas fa-rocket"></i> RISK-ON</div><p>Risk/Cycle positive or neutral + Breadth mixed/strong (≥5/11). Favor equities and cyclicals.</p></div>
+<div class="regime-card off"><div class="regime-label"><i class="fas fa-shield-alt"></i> RISK-OFF</div><p>Risk/Cycle negative + Breadth weak/mixed (≤6/11). Favor bonds and safe havens.</p></div>
+<div class="regime-card rotation"><div class="regime-label"><i class="fas fa-sync-alt"></i> ROTATION</div><p>Risk negative + Cycle positive + Breadth mixed/strong (≥5/11). Money rotating, not fleeing.</p></div>
+<div class="regime-card caution"><div class="regime-label"><i class="fas fa-exclamation-triangle"></i> CAUTION</div><p>Conflicting signals: Either positive signals with weak breadth, OR negative risk with strong breadth.</p></div>
+<div class="regime-card neutral"><div class="regime-label"><i class="fas fa-balance-scale"></i> NEUTRAL</div><p>Mixed or all-neutral signals. No clear direction. Balanced allocation recommended.</p></div>
 </div>
 </div>
 
@@ -534,17 +533,15 @@ var GLOSS = {
   "SHARPE": {"title": "Sharpe Ratio", "desc": "Risk-adjusted return.", "example": "2.0 = Good risk/reward"},
   "SORTINO": {"title": "Sortino Ratio", "desc": "Downside risk-adjusted return.", "example": "Higher = Better"},
   "STABILITY": {"title": "Stability (Calmar)", "desc": "Return vs max drawdown.", "example": "3.0 = 3x return vs drawdown"},
-  "RISK_SCORE": {"title": "Risk Score", "desc": "Risk appetite. Measures VXX (fear), SPY/TLT (stocks vs bonds), HYG/LQD (credit stress).", "formula": "VXX + SPY/TLT + HYG/LQD scores combined", "example": "-3 = High fear, credit stress"},
-  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle. Measures XLY/XLP (consumer spending), CPER/GLD (industrial demand).", "formula": "XLY/XLP + CPER/GLD scores combined", "example": "+2 = Economic expansion"},
-  "BREADTH_SCORE": {"title": "Breadth Score", "desc": "Market participation width based on stock sector averages with positive 1W returns.", "formula": "≥7/11 sectors positive: +1 | 5-6/11: 0 | ≤4/11: -1", "example": "8/11 positive = +1 (broad participation)"},
-  "TOTAL_SCORE": {"title": "Total Score", "desc": "Risk + Cycle + Breadth combined. Determines overall regime.", "formula": "Risk + Cycle + Breadth", "example": "≥3 Strong Risk-On | ≥1 Risk-On | ≤-1 Risk-Off | ≤-3 Strong Risk-Off"},
-  "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on risk and cycle signals.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds"},
-  "REGIME_RISK_ON": {"title": "RISK-ON Regime", "desc": "Risk appetite positive. Favor equities and cyclicals.", "formula": "Total Score ≥1 (Risk + Cycle + Breadth)", "example": "Total +2 = Moderate Risk-On, Total +4 = Strong Risk-On"},
-  "REGIME_RISK_OFF": {"title": "RISK-OFF Regime", "desc": "Defensive mode. Favor bonds and safe havens.", "formula": "Total Score ≤-1 (Risk + Cycle + Breadth)", "example": "Total -2 = Moderate Risk-Off, Total -4 = Strong Risk-Off"},
-  "REGIME_ROTATION": {"title": "ROTATION Regime", "desc": "Mixed signals: Risk indicators negative BUT cycle indicators positive. Money is rotating between sectors, not fleeing to safety. Be selective.", "formula": "Risk Score ≤-2 AND Cycle Score ≥1", "example": "Risk -3, Cycle +1, Breadth 0 = Rotation"},
-  "REGIME_CAUTION": {"title": "CAUTION Regime", "desc": "Risk indicators negative BUT breadth still healthy. Not full Risk-Off - some stress but market holding up. Reduce risk but don't panic.", "example": "Risk Score negative BUT ≥5/11 sectors positive"},
-  "REGIME_NEUTRAL": {"title": "NEUTRAL Regime", "desc": "No clear direction. Risk and cycle signals mixed, breadth moderate. Balanced allocation recommended.", "example": "Total Score between -1 and +1"},
-  "BREADTH": {"title": "Sector Breadth", "desc": "How many of 11 stock sectors have positive average 1W returns. Measures market participation width.", "example": "8/11 positive = Healthy breadth, 4/11 = Narrow/weak"},
+  "RISK_SCORE": {"title": "Risk Score", "desc": "Market fear and financial stress indicator. Range: -5 to +3.", "formula": "VXX (fear): -2 to +1 | SPY/TLT (stocks vs bonds): -1 to +1 | HYG/LQD (credit): -2 to +1", "example": "Negative = Risk stress, Positive = Risk appetite"},
+  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle indicator. Range: -2 to +2.", "formula": "XLY/XLP (consumer): -1 to +1 | CPER/GLD (industrial): -1 to +1", "example": "Positive = Expansion, Negative = Contraction"},
+  "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on Risk Score, Cycle Score, and Breadth combination.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds, ROTATION = Be selective"},
+  "REGIME_RISK_ON": {"title": "RISK-ON Regime", "desc": "Risk appetite positive. Favor equities and cyclicals.", "formula": "Risk ≥0 + Cycle ≥0 + Breadth mixed/strong (≥5/11). Weak breadth blocks RISK-ON.", "example": "Risk 0, Cycle +1, Breadth 6/11 = RISK-ON"},
+  "REGIME_RISK_OFF": {"title": "RISK-OFF Regime", "desc": "Defensive mode. Favor bonds and safe havens.", "formula": "Risk negative + Cycle negative/neutral + Breadth weak/mixed (≤6/11). Strong breadth blocks RISK-OFF.", "example": "Risk -2, Cycle -1, Breadth 4/11 = RISK-OFF"},
+  "REGIME_ROTATION": {"title": "ROTATION Regime", "desc": "Risk negative BUT cycle positive. Money rotating between sectors, not fleeing to safety.", "formula": "Risk negative + Cycle positive + Breadth mixed/strong (≥5/11)", "example": "Risk -2, Cycle +1, Breadth 6/11 = ROTATION"},
+  "REGIME_CAUTION": {"title": "CAUTION Regime", "desc": "Conflicting signals requiring caution. Reduce risk gradually.", "formula": "Either: (1) Positive signals + weak breadth (≤4/11), OR (2) Negative risk + strong breadth (≥7/11)", "example": "Risk +1, Cycle +1, Breadth 3/11 = CAUTION (narrow rally)"},
+  "REGIME_NEUTRAL": {"title": "NEUTRAL Regime", "desc": "No clear direction. Mixed or all-neutral signals.", "formula": "Risk/Cycle conflicting (one positive, one negative), OR all signals neutral", "example": "Risk +1, Cycle -1, Breadth 5/11 = NEUTRAL (conflicting)"},
+  "BREADTH": {"title": "Sector Breadth", "desc": "Market participation indicator. Score: +1 (strong), 0 (mixed), -1 (weak).", "formula": "≥7/11 positive = +1 (Strong, blocks RISK-OFF) | 5-6/11 = 0 (Mixed) | ≤4/11 = -1 (Weak, blocks RISK-ON)", "example": "8/11 = +1, 5/11 = 0, 3/11 = -1"},
   "VXX": {"title": "VXX (Volatility Index)", "desc": "Fear gauge based on VXX ETF price level and weekly direction.", "formula": "Level >25: PANIC (↑ score -2, ↓ score -1) | Level 20-25: ELEVATED (↑ score -1, ↓ score 0) | Level 15-20: NEUTRAL (score 0) | Level <15: COMPLACENT (score +1)", "example": "High VXX = fear in market. Falling VXX = fear easing (positive)."},
   "SPY_TLT": {"title": "SPY/TLT (Stocks vs Bonds)", "desc": "Risk appetite ratio. Rising = money flowing to stocks, Falling = money flowing to bonds.", "formula": "1W Change >+2%: RISK-ON ↑ (score +1) | 1W Change <-2%: RISK-OFF ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Rising ratio = risk appetite increasing = bullish signal."},
   "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. Low ratio = investors avoiding junk bonds = stress.", "formula": "Level <0.85: CREDIT STRESS (↓ score -2, ↑ score -1) | Level >0.90: CREDIT OK (score +1) | Level 0.85-0.90: NEUTRAL (score 0)", "example": "Low ratio with falling trend = credit stress worsening."},
@@ -631,11 +628,16 @@ function showModal(key, level, change) {
   // Mevcut değerler + Örnek senaryo
   var exampleHtml = '';
   
-  // Mevcut değerler varsa göster
-  if (level !== undefined && level !== '' && !isNaN(level)) {
-    var changeStr = (change !== undefined && change !== '' && !isNaN(change)) ? 
-      ' | 1W: ' + (parseFloat(change) >= 0 ? '+' : '') + parseFloat(change).toFixed(2) + '%' : '';
-    exampleHtml = '<div style="margin-bottom:8px;padding:8px;background:rgba(16,185,129,0.1);border-radius:6px;border-left:3px solid var(--green);"><i class="fas fa-chart-bar"></i> <strong>Current:</strong> Level: ' + parseFloat(level).toFixed(4) + changeStr + '</div>';
+  // Regime açıklamalarında Current gösterme (REGIME_, BREADTH, RISK_SCORE, CYCLE_SCORE)
+  var isRegimeKey = key.startsWith('REGIME_') || key === 'BREADTH' || key === 'RISK_SCORE' || key === 'CYCLE_SCORE';
+  
+  // Mevcut değerler varsa göster (sadece sinyal kutuları için)
+  var levelNum = parseFloat(level);
+  var changeNum = parseFloat(change);
+  if (!isRegimeKey && level && !isNaN(levelNum) && isFinite(levelNum)) {
+    var changeStr = (change && !isNaN(changeNum) && isFinite(changeNum)) ? 
+      ' | 1W: ' + (changeNum >= 0 ? '+' : '') + changeNum.toFixed(2) + '%' : '';
+    exampleHtml = '<div style="margin-bottom:8px;padding:8px;background:rgba(16,185,129,0.1);border-radius:6px;border-left:3px solid var(--green);"><i class="fas fa-chart-bar"></i> <strong>Current:</strong> ' + levelNum.toFixed(4) + changeStr + '</div>';
   }
   
   // Örnek senaryoyu da göster
@@ -747,10 +749,22 @@ function renderRegime() {
     d.textContent += ' | Breadth: ' + breadth.positive + '/' + breadth.total + ' sectors';
   }
   
-  ['riskScore','cycleScore','breadthScore','totalScore'].forEach(function(id) {
+  // Update Risk and Cycle scores
+  ['riskScore','cycleScore'].forEach(function(id) {
     var el = document.getElementById(id), v = REGIME[id];
-    el.textContent = (v > 0 ? '+' : '') + v; el.className = 'score-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
+    if (el && v !== undefined) {
+      el.textContent = (v > 0 ? '+' : '') + v; 
+      el.className = 'score-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
+    }
   });
+  
+  // Update Breadth display (+1, 0, -1)
+  var breadthEl = document.getElementById('breadthDisplay');
+  if (breadthEl && breadth.total > 0) {
+    var breadthScore = breadth.positive >= 7 ? 1 : (breadth.positive <= 4 ? -1 : 0);
+    breadthEl.textContent = (breadthScore > 0 ? '+' : '') + breadthScore;
+    breadthEl.className = 'score-val ' + (breadthScore > 0 ? 'pos' : (breadthScore < 0 ? 'neg' : ''));
+  }
 }
 
 function renderSignals() {
