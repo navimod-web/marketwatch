@@ -316,27 +316,36 @@ def format_for_prompt(data):
                 lines.append(f"  Status: {status}")
                 break
     
-    # === SECTOR SUMMARY ===
+    # === SECTOR SUMMARY (1W bazlı - ETF breadth ile tutarlı) ===
     lines.append(f"\n{'='*60}")
-    lines.append("SECTOR SUMMARY")
+    lines.append("SECTOR SUMMARY (1W Based)")
     lines.append(f"{'='*60}")
     
     sector_perf = {}
     for e in stocks_full:
         cat = e['cat']
         if cat not in sector_perf:
-            sector_perf[cat] = []
-        sector_perf[cat].append(e['ret_1m'])
+            sector_perf[cat] = {'ret_1w': [], 'ret_1m': []}
+        sector_perf[cat]['ret_1w'].append(e['ret_1w'])
+        sector_perf[cat]['ret_1m'].append(e['ret_1m'])
     
     sector_avg = []
-    for cat, rets in sector_perf.items():
-        avg = sum(rets) / len(rets)
-        sector_avg.append((cat, avg, len(rets)))
+    breadth_positive = 0
+    for cat, data_dict in sector_perf.items():
+        avg_1w = sum(data_dict['ret_1w']) / len(data_dict['ret_1w']) if data_dict['ret_1w'] else 0
+        avg_1m = sum(data_dict['ret_1m']) / len(data_dict['ret_1m']) if data_dict['ret_1m'] else 0
+        sector_avg.append((cat, avg_1w, avg_1m, len(data_dict['ret_1w'])))
+        if avg_1w > 0:
+            breadth_positive += 1
     
-    sector_avg.sort(key=lambda x: x[1], reverse=True)
+    sector_avg.sort(key=lambda x: x[1], reverse=True)  # 1W bazlı sırala
     
-    for cat, avg, count in sector_avg:
-        lines.append(f"  {cat:20}: {avg:+.2f}% avg ({count} stocks)")
+    lines.append(f"\n  📊 SECTOR BREADTH: {breadth_positive}/{len(sector_avg)} sectors positive (1W)")
+    lines.append("")
+    
+    for cat, avg_1w, avg_1m, count in sector_avg:
+        status = "✅" if avg_1w > 0 else "❌"
+        lines.append(f"  {status} {cat:20}: 1W: {avg_1w:+.2f}% | 1M: {avg_1m:+.2f}% ({count} stocks)")
     
     return "\n".join(lines)
 

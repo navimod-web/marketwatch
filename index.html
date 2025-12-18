@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS9K7M4HJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5TS9K7M4HJ');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ETF & Stock Market Barometer | Navimod</title>
+<title>ETF Market Barometer | Navimod</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -53,6 +45,10 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .signal-tag{font-size:0.7rem;padding:2px 6px;border-radius:4px;display:inline-block}
 .signal-tag.bull{background:rgba(16,185,129,0.15);color:var(--green)}
 .signal-tag.bear{background:rgba(244,63,94,0.15);color:var(--rose)}
+.signal-tag.neutral{background:rgba(251,191,36,0.15);color:var(--amber)}
+.signal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.signal-cat{font-size:0.55rem;padding:2px 6px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.total-score{border-left:2px solid var(--cyan);padding-left:12px;margin-left:8px}
 .info-btn{width:18px;height:18px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);border-radius:50%;color:var(--cyan);font-size:0.55rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
 .regime-info-btn{margin-left:12px;margin-right:8px;vertical-align:middle}
 .info-btn:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
@@ -274,9 +270,10 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="regime-main"><div class="regime-icon neutral" id="regimeIcon"><i class="fas fa-spinner fa-spin"></i></div>
 <div class="regime-text"><h2 id="regimeLbl">Loading...</h2><button class="info-btn regime-info-btn" id="regimeInfoBtn"><i class="fas fa-info"></i></button><span id="regimeDesc">Fetching data...</span></div></div>
 <div class="scores">
+<div class="score"><div class="score-val" id="breadthScore">-</div><div class="score-lbl">Breadth <button class="info-btn" data-key="BREADTH_SCORE"><i class="fas fa-info"></i></button></div></div>
 <div class="score"><div class="score-val" id="riskScore">-</div><div class="score-lbl">Risk <button class="info-btn" data-key="RISK_SCORE"><i class="fas fa-info"></i></button></div></div>
 <div class="score"><div class="score-val" id="cycleScore">-</div><div class="score-lbl">Cycle <button class="info-btn" data-key="CYCLE_SCORE"><i class="fas fa-info"></i></button></div></div>
-<div class="score"><div class="score-val" id="totalScore">-</div><div class="score-lbl">Total <button class="info-btn" data-key="TOTAL_SCORE"><i class="fas fa-info"></i></button></div></div>
+<div class="score total-score"><div class="score-val" id="totalScore">-</div><div class="score-lbl">Total <button class="info-btn" data-key="TOTAL_SCORE"><i class="fas fa-info"></i></button></div></div>
 </div>
 </div>
 <div class="signals" id="signalsGrid"></div>
@@ -537,21 +534,22 @@ var GLOSS = {
   "SHARPE": {"title": "Sharpe Ratio", "desc": "Risk-adjusted return.", "example": "2.0 = Good risk/reward"},
   "SORTINO": {"title": "Sortino Ratio", "desc": "Downside risk-adjusted return.", "example": "Higher = Better"},
   "STABILITY": {"title": "Stability (Calmar)", "desc": "Return vs max drawdown.", "example": "3.0 = 3x return vs drawdown"},
-  "RISK_SCORE": {"title": "Risk Score", "desc": "Risk appetite -5 to +5. Measures VXX (fear), SPY/TLT (stocks vs bonds), HYG/LQD (credit stress).", "example": "-3 = High fear, credit stress"},
-  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle -3 to +3. Measures XLY/XLP (consumer spending), CPER/GLD (industrial demand).", "example": "+2 = Economic expansion"},
-  "TOTAL_SCORE": {"title": "Total Score", "desc": "Risk + Cycle combined. Determines overall regime.", "example": "≥2 = Risk-On, ≤-2 = Risk-Off or Caution"},
+  "RISK_SCORE": {"title": "Risk Score", "desc": "Risk appetite. Measures VXX (fear), SPY/TLT (stocks vs bonds), HYG/LQD (credit stress).", "formula": "VXX + SPY/TLT + HYG/LQD scores combined", "example": "-3 = High fear, credit stress"},
+  "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle. Measures XLY/XLP (consumer spending), CPER/GLD (industrial demand).", "formula": "XLY/XLP + CPER/GLD scores combined", "example": "+2 = Economic expansion"},
+  "BREADTH_SCORE": {"title": "Breadth Score", "desc": "Market participation width based on stock sector averages with positive 1W returns.", "formula": "≥7/11 sectors positive: +1 | 5-6/11: 0 | ≤4/11: -1", "example": "8/11 positive = +1 (broad participation)"},
+  "TOTAL_SCORE": {"title": "Total Score", "desc": "Risk + Cycle + Breadth combined. Determines overall regime.", "formula": "Risk + Cycle + Breadth", "example": "≥3 Strong Risk-On | ≥1 Risk-On | ≤-1 Risk-Off | ≤-3 Strong Risk-Off"},
   "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on risk and cycle signals.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds"},
-  "REGIME_RISK_ON": {"title": "RISK-ON Regime", "desc": "Broad risk appetite confirmed. VXX low/falling, credit healthy, breadth strong (≥7/11 sectors positive). Favor equities and cyclicals.", "example": "Total Score ≥2 with healthy breadth"},
-  "REGIME_RISK_OFF": {"title": "RISK-OFF Regime", "desc": "Confirmed defensive mode. VXX elevated/rising, credit stress, weak breadth (≤4/11 sectors positive). Favor bonds and safe havens.", "example": "Total Score ≤-2 with weak breadth"},
-  "REGIME_ROTATION": {"title": "ROTATION Regime", "desc": "Mixed signals: Risk indicators negative BUT cycle indicators positive. This is NOT full Risk-Off - money is rotating between sectors, not fleeing to safety. Be selective.", "example": "VXX high + Credit stress BUT XLY/XLP positive (expansion)"},
+  "REGIME_RISK_ON": {"title": "RISK-ON Regime", "desc": "Risk appetite positive. Favor equities and cyclicals.", "formula": "Total Score ≥1 (Risk + Cycle + Breadth)", "example": "Total +2 = Moderate Risk-On, Total +4 = Strong Risk-On"},
+  "REGIME_RISK_OFF": {"title": "RISK-OFF Regime", "desc": "Defensive mode. Favor bonds and safe havens.", "formula": "Total Score ≤-1 (Risk + Cycle + Breadth)", "example": "Total -2 = Moderate Risk-Off, Total -4 = Strong Risk-Off"},
+  "REGIME_ROTATION": {"title": "ROTATION Regime", "desc": "Mixed signals: Risk indicators negative BUT cycle indicators positive. Money is rotating between sectors, not fleeing to safety. Be selective.", "formula": "Risk Score ≤-2 AND Cycle Score ≥1", "example": "Risk -3, Cycle +1, Breadth 0 = Rotation"},
   "REGIME_CAUTION": {"title": "CAUTION Regime", "desc": "Risk indicators negative BUT breadth still healthy. Not full Risk-Off - some stress but market holding up. Reduce risk but don't panic.", "example": "Risk Score negative BUT ≥5/11 sectors positive"},
   "REGIME_NEUTRAL": {"title": "NEUTRAL Regime", "desc": "No clear direction. Risk and cycle signals mixed, breadth moderate. Balanced allocation recommended.", "example": "Total Score between -1 and +1"},
-  "BREADTH": {"title": "Sector Breadth", "desc": "How many of 11 sector ETFs have positive 1W returns. Measures market participation width.", "example": "8/11 positive = Healthy breadth, 4/11 = Narrow/weak"},
-  "VXX": {"title": "VXX (Volatility)", "desc": "Fear gauge. VXX > 25 = Panic, 20-25 = Elevated, < 20 = Calm. Arrow shows direction: ↑ = worsening, ↓ = improving.", "formula": "VXX level from ETF price", "example": "VXX at 30↓ = High fear but easing"},
-  "SPY_TLT": {"title": "SPY/TLT (Stocks vs Bonds)", "desc": "Risk appetite ratio. Rising = risk-on, Falling = risk-off.", "formula": "SPY price / TLT price", "example": "Ratio rising = Favor equities over bonds"},
-  "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. < 0.85 = Stress, < 0.70 = Crisis. Arrow shows direction: ↑ = easing, ↓ = worsening.", "formula": "HYG (junk bonds) / LQD (investment grade)", "example": "0.73↑ = Credit stress but improving"},
-  "XLY_XLP": {"title": "XLY/XLP (Consumer Cycle)", "desc": "Economic cycle indicator. Rising = expansion (consumers spending on discretionary), Falling = contraction (consumers buying only staples).", "formula": "XLY (discretionary) / XLP (staples)", "example": "Rising = Economic expansion signal"},
-  "CPER_GLD": {"title": "CPER/GLD (Copper/Gold)", "desc": "Growth vs safety ratio. Rising = industrial demand (growth optimism), Falling = flight to gold (fear).", "formula": "CPER (copper) / GLD (gold)", "example": "Falling = Flight to safety"},
+  "BREADTH": {"title": "Sector Breadth", "desc": "How many of 11 stock sectors have positive average 1W returns. Measures market participation width.", "example": "8/11 positive = Healthy breadth, 4/11 = Narrow/weak"},
+  "VXX": {"title": "VXX (Volatility Index)", "desc": "Fear gauge based on VXX ETF price level and weekly direction.", "formula": "Level >25: PANIC (↑ score -2, ↓ score -1) | Level 20-25: ELEVATED (↑ score -1, ↓ score 0) | Level 15-20: NEUTRAL (score 0) | Level <15: COMPLACENT (score +1)", "example": "High VXX = fear in market. Falling VXX = fear easing (positive)."},
+  "SPY_TLT": {"title": "SPY/TLT (Stocks vs Bonds)", "desc": "Risk appetite ratio. Rising = money flowing to stocks, Falling = money flowing to bonds.", "formula": "1W Change >+2%: RISK-ON ↑ (score +1) | 1W Change <-2%: RISK-OFF ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Rising ratio = risk appetite increasing = bullish signal."},
+  "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. Low ratio = investors avoiding junk bonds = stress.", "formula": "Level <0.85: CREDIT STRESS (↓ score -2, ↑ score -1) | Level >0.90: CREDIT OK (score +1) | Level 0.85-0.90: NEUTRAL (score 0)", "example": "Low ratio with falling trend = credit stress worsening."},
+  "XLY_XLP": {"title": "XLY/XLP (Consumer Cycle)", "desc": "Economic cycle indicator. Rising = consumers spending on discretionary items = expansion.", "formula": "1W Change >+1%: EXPANSION ↑ (score +1) | 1W Change <-1%: CONTRACTION ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Rising ratio = economic expansion signal."},
+  "CPER_GLD": {"title": "CPER/GLD (Copper/Gold)", "desc": "Growth vs safety ratio. Rising = industrial demand (growth), Falling = flight to gold (fear).", "formula": "1W Change >+2%: REFLATION ↑ (score +1) | 1W Change <-2%: DEFLATION ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Falling ratio = investors preferring gold over copper = defensive."},
   "VXX_LEVEL": {"title": "VXX Level", "desc": "Absolute volatility level. > 25 = Panic, 20-25 = Elevated, < 20 = Calm.", "example": "30 = High fear"},
   "GLD_SPY": {"title": "GLD/SPY (Gold vs Stocks)", "desc": "Safe haven demand. Rising = fear, Falling = risk appetite.", "example": "Rising = Flight to gold"},
   "IWM_SPY": {"title": "IWM/SPY (Small vs Large)", "desc": "Risk appetite for small caps. Rising = risk-on, Falling = flight to quality.", "example": "Rising = Small caps outperforming"},
@@ -623,19 +621,35 @@ function renderAll() {
 }
 
 // ========== MODAL ==========
-function showModal(key) {
+function showModal(key, level, change) {
   var d = GLOSS[key]; if (!d) return;
   document.getElementById('modalTitle').textContent = d.title;
   document.getElementById('modalDesc').textContent = d.desc;
   var f = document.getElementById('modalFormula');
   if (d.formula) { f.innerHTML = '<i class="fas fa-calculator"></i> ' + d.formula; f.style.display = 'block'; } else { f.style.display = 'none'; }
-  document.getElementById('modalExample').innerHTML = '<i class="fas fa-lightbulb"></i> ' + d.example;
+  
+  // Mevcut değerler + Örnek senaryo
+  var exampleHtml = '';
+  
+  // Mevcut değerler varsa göster
+  if (level !== undefined && level !== '' && !isNaN(level)) {
+    var changeStr = (change !== undefined && change !== '' && !isNaN(change)) ? 
+      ' | 1W: ' + (parseFloat(change) >= 0 ? '+' : '') + parseFloat(change).toFixed(2) + '%' : '';
+    exampleHtml = '<div style="margin-bottom:8px;padding:8px;background:rgba(16,185,129,0.1);border-radius:6px;border-left:3px solid var(--green);"><i class="fas fa-chart-bar"></i> <strong>Current:</strong> Level: ' + parseFloat(level).toFixed(4) + changeStr + '</div>';
+  }
+  
+  // Örnek senaryoyu da göster
+  if (d.example) {
+    exampleHtml += '<div><i class="fas fa-lightbulb"></i> ' + d.example + '</div>';
+  }
+  
+  document.getElementById('modalExample').innerHTML = exampleHtml;
   document.getElementById('modalOverlay').classList.add('active');
 }
 function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
 document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeChartModal(); } });
-document.addEventListener('click', function(e) { var btn = e.target.closest('.info-btn'); if (btn) { e.preventDefault(); e.stopPropagation(); var key = btn.getAttribute('data-key'); if (key) showModal(key); } });
+document.addEventListener('click', function(e) { var btn = e.target.closest('.info-btn'); if (btn) { e.preventDefault(); e.stopPropagation(); var key = btn.getAttribute('data-key'); var level = btn.getAttribute('data-level'); var change = btn.getAttribute('data-change'); if (key) showModal(key, level, change); } });
 
 // ========== CHART MODAL ==========
 function showChart(symbol, name) {
@@ -733,7 +747,7 @@ function renderRegime() {
     d.textContent += ' | Breadth: ' + breadth.positive + '/' + breadth.total + ' sectors';
   }
   
-  ['riskScore','cycleScore','totalScore'].forEach(function(id) {
+  ['riskScore','cycleScore','breadthScore','totalScore'].forEach(function(id) {
     var el = document.getElementById(id), v = REGIME[id];
     el.textContent = (v > 0 ? '+' : '') + v; el.className = 'score-val ' + (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
   });
@@ -741,8 +755,43 @@ function renderRegime() {
 
 function renderSignals() {
   var html = '';
-  for (var k in REGIME.signals) { var s = REGIME.signals[k];
-    html += '<div class="signal"><div class="signal-header"><div class="signal-name">' + k.replace('_', '/') + '</div><button class="info-btn" data-key="' + k + '"><i class="fas fa-info"></i></button></div><div class="signal-val">' + s.value + '</div><span class="signal-tag ' + (s.score > 0 ? 'bull' : 'bear') + '">' + (s.score > 0 ? '+' : '') + s.score + '</span></div>';
+  
+  // Kategori tanımları
+  var categories = {
+    'BREADTH': {cat: 'BREADTH', color: '#8b5cf6'},
+    'VXX': {cat: 'RISK', color: '#f43f5e'},
+    'SPY_TLT': {cat: 'RISK', color: '#f43f5e'},
+    'HYG_LQD': {cat: 'RISK', color: '#f43f5e'},
+    'XLY_XLP': {cat: 'CYCLE', color: '#00d4ff'},
+    'CPER_GLD': {cat: 'CYCLE', color: '#00d4ff'}
+  };
+  
+  // İsim override'ları
+  var nameOverrides = {
+    'BREADTH': 'MARKET BREADTH'
+  };
+  
+  // Sıralama: BREADTH, RISK (VXX, SPY_TLT, HYG_LQD), CYCLE (XLY_XLP, CPER_GLD)
+  var order = ['BREADTH', 'VXX', 'SPY_TLT', 'HYG_LQD', 'XLY_XLP', 'CPER_GLD'];
+  
+  for (var i = 0; i < order.length; i++) {
+    var k = order[i];
+    var s = REGIME.signals[k];
+    if (!s) continue;
+    
+    var catInfo = categories[k] || {cat: '', color: '#64748b'};
+    var displayName = nameOverrides[k] || k.replace('_', '/');
+    
+    // Sadece score'a göre renk: pozitif=yeşil, negatif=kırmızı, 0=neutral
+    var colorClass = s.score > 0 ? 'bull' : (s.score < 0 ? 'bear' : 'neutral');
+    
+    // Kutuda durum göster
+    var displayVal = s.value;
+    
+    // Kategori tag'i - sağ alt köşe
+    var catTag = '<span class="signal-cat" style="background:' + catInfo.color + '22;color:' + catInfo.color + ';border:1px solid ' + catInfo.color + '44">' + catInfo.cat + '</span>';
+    
+    html += '<div class="signal"><div class="signal-header"><div class="signal-name">' + displayName + '</div><button class="info-btn" data-key="' + k + '" data-level="' + (s.level || '') + '" data-change="' + (s.change || '') + '"><i class="fas fa-info"></i></button></div><div class="signal-val">' + displayVal + '</div><div class="signal-footer"><span class="signal-tag ' + colorClass + '">' + (s.score > 0 ? '+' : '') + s.score + '</span>' + catTag + '</div></div>';
   }
   document.getElementById('signalsGrid').innerHTML = html;
 }

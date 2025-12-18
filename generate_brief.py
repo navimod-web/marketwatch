@@ -212,13 +212,13 @@ def get_trend_status(w1, m1):
     if w1 is None or m1 is None:
         return "N/A"
     if w1 > 0 and m1 > 0:
-        return "ABOVE TREND (confirmed)"
+        return "ABOVE TREND"
     elif w1 < 0 and m1 < 0:
-        return "BELOW TREND (confirmed)"
+        return "BELOW TREND"
     elif w1 > 0 and m1 < 0:
-        return "POTENTIAL REVERSAL (1W up, 1M down)"
+        return "RECOVERY"
     elif w1 < 0 and m1 > 0:
-        return "TREND EXHAUSTION (1W down, 1M up)"
+        return "CORRECTION"
     else:
         return "NEUTRAL"
 
@@ -346,7 +346,7 @@ def format_for_prompt(data):
     
     divergences = []
     for e in etfs_full:
-        if 'REVERSAL' in e['status'] or 'EXHAUSTION' in e['status']:
+        if e['status'] in ['RECOVERY', 'CORRECTION']:
             divergences.append(e)
     
     if divergences:
@@ -354,6 +354,42 @@ def format_for_prompt(data):
             lines.append(f"  • {e['sym']}: 1W: {e['ret_1w']:+.2f}% vs 1M: {e['ret_1m']:+.2f}% → {e['status']}")
     else:
         lines.append("  No major divergences detected")
+    
+    # === SECTOR BREADTH (Stock bazlı - tutarlılık için) ===
+    lines.append(f"\n{'='*60}")
+    lines.append("SECTOR BREADTH (Stock-Based for Consistency)")
+    lines.append(f"{'='*60}")
+    
+    # Stock sektörlerinden breadth hesapla (ETF brief ve Stock brief tutarlı olsun)
+    sector_perf = {}
+    for s in data.get('stocks', []):
+        sector = s.get('Category', 'Unknown')
+        w1 = s.get('1W', {}) or {}
+        m1 = s.get('1M', {}) or {}
+        ret_1w = w1.get('RETURN') or 0
+        ret_1m = m1.get('RETURN') or 0
+        if sector not in sector_perf:
+            sector_perf[sector] = {'ret_1w': [], 'ret_1m': []}
+        sector_perf[sector]['ret_1w'].append(ret_1w)
+        sector_perf[sector]['ret_1m'].append(ret_1m)
+    
+    sector_avg = []
+    breadth_positive = 0
+    for sector, perf_data in sector_perf.items():
+        avg_1w = sum(perf_data['ret_1w']) / len(perf_data['ret_1w']) if perf_data['ret_1w'] else 0
+        avg_1m = sum(perf_data['ret_1m']) / len(perf_data['ret_1m']) if perf_data['ret_1m'] else 0
+        sector_avg.append((sector, avg_1w, avg_1m, len(perf_data['ret_1w'])))
+        if avg_1w > 0:
+            breadth_positive += 1
+    
+    sector_avg.sort(key=lambda x: x[1], reverse=True)  # 1W bazlı sırala
+    
+    lines.append(f"\n  📊 SECTOR BREADTH: {breadth_positive}/{len(sector_avg)} sectors positive (1W)")
+    lines.append("")
+    
+    for sector, avg_1w, avg_1m, count in sector_avg:
+        status = "✅" if avg_1w > 0 else "❌"
+        lines.append(f"  {status} {sector:20}: 1W: {avg_1w:+.2f}% | 1M: {avg_1m:+.2f}% ({count} stocks)")
     
     return "\n".join(lines)
 
