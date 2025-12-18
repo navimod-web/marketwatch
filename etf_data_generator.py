@@ -653,11 +653,11 @@ def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stoc
     PERIOD_WEIGHT = 0.20  # Her biri %20
     
     METRIC_WEIGHTS = {
-        'RETURN': 0.35,
-        'ACCELERATION': 0.25,
+        'RETURN': 0.40,
         'SORTINO': 0.20,
-        'STABILITY': 0.10,
-        'TREND': 0.10
+        'STABILITY': 0.20,      # Calmar
+        'TREND': 0.10,
+        'ACCELERATION': 0.10
     }
     
     # Normalize bounds (tipik değer aralıkları)
