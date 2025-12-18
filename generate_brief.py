@@ -43,6 +43,22 @@ This brief focuses ONLY on ETFs (Exchange-Traded Funds).
 LOGIC & INTERPRETATION RULES (MANDATORY)
 ═══════════════════════════════════════════════════════════════
 
+0. REGIME FROM DATA (CRITICAL - DO NOT OVERRIDE):
+   The data provides a pre-calculated "OVERALL" regime value.
+   YOU MUST USE THIS EXACT REGIME LABEL in your analysis.
+   Do NOT recalculate or override the regime. The 5 valid regimes are:
+   
+   - RISK-ON: Positive risk/cycle signals + adequate breadth (≥5/11)
+   - RISK-OFF: Negative risk/cycle signals + weak/mixed breadth (≤6/11)
+   - ROTATION: Risk negative + Cycle positive + breadth ≥5/11 (money rotating, not fleeing)
+   - CAUTION: Conflicting signals - either positive signals with weak breadth (≤4), 
+              OR negative risk with strong breadth (≥7). Reduce risk gradually.
+   - NEUTRAL: Mixed or all-neutral signals, no clear direction
+   
+   BREADTH VETO RULES (already applied in data):
+   - Weak breadth (≤4/11) NEVER gives RISK-ON → becomes CAUTION or NEUTRAL
+   - Strong breadth (≥7/11) NEVER gives RISK-OFF → becomes CAUTION or NEUTRAL
+
 1. REGIME CONFIRMATION MATRIX (CRITICAL):
    RISK-OFF requires AT LEAST 3 of the following:
    - VXX ↑ (1W positive)
@@ -186,7 +202,7 @@ BEARISH: [If condition → action]
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
-Sentence 1: Current regime (Rotation/Risk-On/Risk-Off) with breadth context.
+Sentence 1: Use the EXACT regime from data (RISK-ON/RISK-OFF/ROTATION/CAUTION/NEUTRAL) with breadth context.
 Sentence 2: Areas showing relative strength (sector + style).
 Sentence 3: Key risk or divergence to monitor.
 
@@ -249,7 +265,8 @@ def format_for_prompt(data):
     lines.append("MARKET REGIME")
     lines.append(f"{'='*60}")
     lines.append(f"OVERALL: {r['overall']}")
-    lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Total: {r['totalScore']}")
+    breadth = r.get('breadth', {})
+    lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Breadth: {breadth.get('positive', 0)}/{breadth.get('total', 11)}")
     lines.append("\nREGIME SIGNALS:")
     for sig, val in r['signals'].items():
         lines.append(f"  • {sig}: {val['value']} (score: {val['score']:+d})")

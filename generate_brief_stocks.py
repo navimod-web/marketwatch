@@ -38,6 +38,22 @@ This brief focuses ONLY on individual SP100 stocks.
 LOGIC & INTERPRETATION RULES (MANDATORY)
 ═══════════════════════════════════════════════════════════════
 
+0. REGIME FROM DATA (CRITICAL - DO NOT OVERRIDE):
+   The data provides a pre-calculated "OVERALL" regime value.
+   YOU MUST USE THIS EXACT REGIME LABEL in your analysis.
+   Do NOT recalculate or override the regime. The 5 valid regimes are:
+   
+   - RISK-ON: Positive risk/cycle signals + adequate breadth (≥5/11)
+   - RISK-OFF: Negative risk/cycle signals + weak/mixed breadth (≤6/11)
+   - ROTATION: Risk negative + Cycle positive + breadth ≥5/11 (money rotating, not fleeing)
+   - CAUTION: Conflicting signals - either positive signals with weak breadth (≤4), 
+              OR negative risk with strong breadth (≥7). Reduce risk gradually.
+   - NEUTRAL: Mixed or all-neutral signals, no clear direction
+   
+   BREADTH VETO RULES (already applied in data):
+   - Weak breadth (≤4/11) NEVER gives RISK-ON → becomes CAUTION or NEUTRAL
+   - Strong breadth (≥7/11) NEVER gives RISK-OFF → becomes CAUTION or NEUTRAL
+
 1. BIG TECH ≠ MARKET RULE (CRITICAL):
    Big Tech weakness ≠ Risk-Off IF:
    - Financials OR Industrials have ≥60% stocks ABOVE TREND
@@ -187,7 +203,7 @@ BEARISH: [Sectors showing weakness, note breadth]
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
-Sentence 1: Current regime (Rotation/Risk-On/Risk-Off) with style call (Growth vs Value).
+Sentence 1: Use the EXACT regime from data (RISK-ON/RISK-OFF/ROTATION/CAUTION/NEUTRAL) with style call (Growth vs Value).
 Sentence 2: Stocks showing relative strength (specific names with labels).
 Sentence 3: Key risk or divergence to monitor.
 
@@ -251,7 +267,8 @@ def format_for_prompt(data):
     lines.append("MARKET REGIME")
     lines.append(f"{'='*60}")
     lines.append(f"OVERALL: {r['overall']}")
-    lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Total: {r['totalScore']}")
+    breadth = r.get('breadth', {})
+    lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Breadth: {breadth.get('positive', 0)}/{breadth.get('total', 11)}")
     
     # === STOCK RANKINGS with Full Data ===
     lines.append(f"\n{'='*60}")
