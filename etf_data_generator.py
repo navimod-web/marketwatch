@@ -660,7 +660,7 @@ def calc_max_drawdown_penalty(prices, period_days):
     
     return abs(max_dd) * 100  # Yüzde olarak döndür
 
-def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stock=False, overbought_penalty=0, spy_6m_return=None, dd_1m=0, dd_3m=0, dd_6m=0):
+def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stock=False, overbought_penalty=0, spy_3m_return=None, dd_1m=0, dd_3m=0, dd_6m=0):
     """
     Quant Score hesapla
     
@@ -670,7 +670,7 @@ def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stoc
       - Her negatif return periyodu için -10 puan
       - Overbought: 2σ üstü -5, 3σ üstü -10 puan (14 gün)
       - Düşük return: 1M < %2 → -10, 3M < %5 → -10
-      - SPY altı: 6M return < SPY 6M return → -10 puan
+      - SPY altı: 3M return < SPY 3M return → diskalifiye
       - Max Drawdown: 1M > %10 → -10, 3M > %15 → -10, 6M > %20 → -10
     Filters:
       - 1M Return < %1 → Listeye girmesin (None döndür)
@@ -757,7 +757,7 @@ def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stoc
         final_score -= 10
     
     # === SPY BENCHMARK FİLTRESİ ===
-    if spy_6m_return is not None and ret_6m < spy_6m_return:
+    if spy_3m_return is not None and ret_3m < spy_3m_return:
         return None  # SPY'ın altındaysa direkt diskalifiye
     
     # === MAX DRAWDOWN CEZASI ===
@@ -931,12 +931,12 @@ def generate_data():
     # === QUANT RANKINGS ===
     print("🏆 Calculating Quant Rankings...")
     
-    # SPY 6M return'ü al (benchmark)
-    spy_6m_return = None
+    # SPY 3M return'ü al (benchmark)
+    spy_3m_return = None
     spy_etf = next((e for e in etfs if e['Symbol'] == 'SPY'), None)
-    if spy_etf and '6M' in spy_etf:
-        spy_6m_return = spy_etf['6M'].get('RETURN', 0)
-        print(f"📊 SPY 6M Return (benchmark): {spy_6m_return:.2f}%")
+    if spy_etf and '3M' in spy_etf:
+        spy_3m_return = spy_etf['3M'].get('RETURN', 0)
+        print(f"📊 SPY 3M Return (benchmark): {spy_3m_return:.2f}%")
     
     # ETF Quant Scores (overbought penalty + SPY benchmark + drawdown ile)
     for etf in etfs:
@@ -952,7 +952,7 @@ def generate_data():
             etf, 
             is_stock=False, 
             overbought_penalty=ob_penalty, 
-            spy_6m_return=spy_6m_return,
+            spy_3m_return=spy_3m_return,
             dd_1m=dd_1m,
             dd_3m=dd_3m,
             dd_6m=dd_6m
@@ -977,7 +977,7 @@ def generate_data():
             sector_2w_return=sect_data['2W'],
             is_stock=True,
             overbought_penalty=ob_penalty,
-            spy_6m_return=spy_6m_return,
+            spy_3m_return=spy_3m_return,
             dd_1m=dd_1m,
             dd_3m=dd_3m,
             dd_6m=dd_6m
@@ -990,13 +990,136 @@ def generate_data():
     top10_etfs = sorted(etfs_with_score, key=lambda x: x['QuantScore'], reverse=True)[:10]
     top10_stocks = sorted(stocks_with_score, key=lambda x: x['QuantScore'], reverse=True)[:10]
     
+    # Top 10 Sectors - Sektör bazında ortalama metrikler ve QuantScore hesapla
+    # Önce her sektörün ortalama metriklerini hesapla
+    sector_metrics = {}
+    for stock in stocks:
+        sector = stock.get('Category', 'Other')
+        if sector not in sector_metrics:
+            sector_metrics[sector] = {
+                'stocks': [],
+                'RETURN_1M': [], 'RETURN_3M': [], 'RETURN_6M': [],
+                'TREND_1M': [], 'TREND_3M': [], 'TREND_6M': [],
+                'SORTINO_1M': [], 'SORTINO_3M': [], 'SORTINO_6M': [],
+                'STABILITY_1M': [], 'STABILITY_3M': [], 'STABILITY_6M': [],
+                'ACCELERATION_1M': [], 'ACCELERATION_3M': [], 'ACCELERATION_6M': [],
+                'QUALITY_1M': [], 'QUALITY_3M': [], 'QUALITY_6M': []
+            }
+        
+        sector_metrics[sector]['stocks'].append(stock['Symbol'])
+        
+        # Her periyot için metrikleri topla
+        for period in ['1M', '3M', '6M']:
+            if period in stock:
+                for metric in ['RETURN', 'TREND', 'SORTINO', 'STABILITY', 'ACCELERATION', 'QUALITY']:
+                    val = stock[period].get(metric)
+                    if val is not None:
+                        sector_metrics[sector][f'{metric}_{period}'].append(val)
+    
+    # Sektör ortalamaları ve QuantScore hesapla
+    def avg(arr):
+        return sum(arr) / len(arr) if arr else 0
+    
+    sector_rankings = []
+    for sector, data in sector_metrics.items():
+        stock_count = len(data['stocks'])
+        
+        # Sektör ortalama metrikleri
+        avg_1m_return = avg(data['RETURN_1M'])
+        avg_3m_return = avg(data['RETURN_3M'])
+        avg_6m_return = avg(data['RETURN_6M'])
+        
+        # === SEKTÖR BAZINDA FİLTRELER ===
+        disqualified = False
+        disqualify_reason = None
+        
+        # 1M Return < %1 → diskalifiye (Sector için tek filtre)
+        if avg_1m_return < 1:
+            disqualified = True
+            disqualify_reason = f"1M Ret {avg_1m_return:.1f}%"
+        
+        if disqualified:
+            sector_rankings.append({
+                'Sector': sector,
+                'QuantScore': None,
+                'StockCount': stock_count,
+                'Disqualified': True,
+                'Reason': disqualify_reason
+            })
+            continue
+        
+        # Sektör QuantScore hesapla (basitleştirilmiş versiyon)
+        # Period Weights: 6M=20%, 3M=20%, 1M=20%, 2W=20%, 1W=20% → sadece 1M, 3M, 6M kullan
+        # Metric Weights: Return=40%, Sortino=20%, Stability=20%, Trend=10%, Acceleration=10%
+        
+        score = 0
+        periods_data = [
+            ('1M', avg(data['RETURN_1M']), avg(data['SORTINO_1M']), avg(data['STABILITY_1M']), avg(data['TREND_1M']), avg(data['ACCELERATION_1M']), avg(data['QUALITY_1M'])),
+            ('3M', avg(data['RETURN_3M']), avg(data['SORTINO_3M']), avg(data['STABILITY_3M']), avg(data['TREND_3M']), avg(data['ACCELERATION_3M']), avg(data['QUALITY_3M'])),
+            ('6M', avg(data['RETURN_6M']), avg(data['SORTINO_6M']), avg(data['STABILITY_6M']), avg(data['TREND_6M']), avg(data['ACCELERATION_6M']), avg(data['QUALITY_6M']))
+        ]
+        
+        period_weight = 1/3  # Her periyot eşit ağırlık
+        
+        for period, ret, sortino, stability, trend, accel, quality in periods_data:
+            # Normalize et (0-100 arası)
+            ret_norm = max(0, min(100, (ret + 30) / 60 * 100))
+            sortino_norm = max(0, min(100, (sortino + 3) / 6 * 100))
+            stability_norm = max(0, min(100, (stability + 3) / 6 * 100))
+            trend_norm = max(0, min(100, (trend + 50) / 100 * 100))
+            accel_norm = max(0, min(100, (accel + 50) / 100 * 100))
+            
+            period_score = (ret_norm * 0.40 + sortino_norm * 0.20 + stability_norm * 0.20 + 
+                          trend_norm * 0.10 + accel_norm * 0.10)
+            
+            # Negatif return cezası
+            if ret < 0:
+                period_score -= 10
+            
+            score += period_score * period_weight
+        
+        # Düşük return cezaları
+        if avg_1m_return < 2:
+            score -= 10
+        if avg_3m_return < 5:
+            score -= 10
+        
+        # R² (Quality) cezaları
+        if avg(data['QUALITY_1M']) < 0.2:
+            score -= 20
+        if avg(data['QUALITY_3M']) < 0.3:
+            score -= 20
+        if avg(data['QUALITY_6M']) < 0.4:
+            score -= 20
+        
+        score = max(0, min(100, score))
+        
+        sector_rankings.append({
+            'Sector': sector,
+            'QuantScore': round(score, 1),
+            'StockCount': stock_count,
+            'Disqualified': False,
+            'Reason': None
+        })
+    
+    # Önce qualified olanları score'a göre, sonra disqualified olanları alfabetik sırala
+    qualified = sorted([s for s in sector_rankings if not s['Disqualified']], key=lambda x: x['QuantScore'], reverse=True)
+    disqualified_sectors = sorted([s for s in sector_rankings if s['Disqualified']], key=lambda x: x['Sector'])
+    top10_sectors = qualified + disqualified_sectors
+    
     quant_rankings = {
         'top10_etfs': [{'Symbol': e['Symbol'], 'Name': e['Name'], 'Category': e['Category'], 'QuantScore': e['QuantScore']} for e in top10_etfs],
-        'top10_stocks': [{'Symbol': s['Symbol'], 'Name': s['Name'], 'Category': s['Category'], 'QuantScore': s['QuantScore']} for s in top10_stocks]
+        'top10_stocks': [{'Symbol': s['Symbol'], 'Name': s['Name'], 'Category': s['Category'], 'QuantScore': s['QuantScore']} for s in top10_stocks],
+        'top10_sectors': top10_sectors
     }
     
     print(f"✅ Top 10 ETFs: {[e['Symbol'] for e in top10_etfs]}")
     print(f"✅ Top 10 Stocks: {[s['Symbol'] for s in top10_stocks]}")
+    qualified_sectors = [s['Sector'] for s in top10_sectors if not s['Disqualified']]
+    disqualified_sectors_list = [s['Sector'] for s in top10_sectors if s['Disqualified']]
+    print(f"✅ Sectors: {len(qualified_sectors)} qualified, {len(disqualified_sectors_list)} disqualified")
+    if disqualified_sectors_list:
+        print(f"   Disqualified: {disqualified_sectors_list}")
     
     return {
         'generated_at': datetime.now().isoformat(),

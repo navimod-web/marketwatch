@@ -385,6 +385,10 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-building"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="quantStockList"></ul>
 </div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-industry"></i></span>All Sectors</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantSectorList"></ul>
+</div>
 </div>
 <div class="quant-methodology">
 <h4><i class="fas fa-info-circle"></i> SCORING METHODOLOGY</h4>
@@ -409,7 +413,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <p style="font-size:0.7rem;color:#f59e0b;margin-top:10px;"><i class="fas fa-minus-circle"></i> Penalty: -10 pts for each period with negative return</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-exclamation-circle"></i> Overbought: -5 pts (>2σ) or -10 pts (>3σ) based on 14-day</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-snail"></i> Low Return: -10 pts if 1M &lt; 2%, -10 pts if 3M &lt; 5%</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 6M return &lt; SPY 6M return</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 3M return &lt; SPY 3M return</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-arrow-trend-down"></i> Max Drawdown: -10 pts if 1M DD &gt;5%, 3M DD &gt;10%, 6M DD &gt;15%</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-wave-square"></i> Choppy: -20 pts each if 1M R²&lt;0.2, 3M R²&lt;0.3, 6M R²&lt;0.4</p>
 <p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 1M return &lt; 1%</p>
@@ -870,6 +874,7 @@ function renderQuantRankings() {
   if (!rankings) {
     document.getElementById('quantEtfList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
     document.getElementById('quantStockList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
+    document.getElementById('quantSectorList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
     return;
   }
   
@@ -894,6 +899,28 @@ function renderQuantRankings() {
     stockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="top-val pos">' + score + '</span></li>';
   }
   document.getElementById('quantStockList').innerHTML = stockHtml;
+  
+  // Top 10 Sectors - Top 10 tarzı liste
+  var sectorHtml = '';
+  var top10Sectors = rankings.top10_sectors || [];
+  for (var i = 0; i < top10Sectors.length; i++) {
+    var sec = top10Sectors[i];
+    var rc = '';
+    var scoreText = '';
+    var nameClass = 'top-sym';
+    
+    if (sec.Disqualified) {
+      scoreText = '<span class="top-val neg" style="font-size:0.7rem;">DQ: ' + sec.Reason + '</span>';
+      nameClass = 'top-sym" style="opacity:0.5;text-decoration:line-through';
+    } else {
+      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      var score = sec.QuantScore != null ? sec.QuantScore.toFixed(1) : '-';
+      scoreText = '<span class="top-val pos">' + score + '</span>';
+    }
+    
+    sectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">(' + sec.StockCount + ' stocks)</span>' + scoreText + '</li>';
+  }
+  document.getElementById('quantSectorList').innerHTML = sectorHtml;
 }
 
 // ========== TOP 10 ETFs ==========
