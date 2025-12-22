@@ -416,6 +416,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 3M return &lt; SPY 3M return</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-arrow-trend-down"></i> Max Drawdown: -10 pts if 1M DD &gt;5%, 3M DD &gt;10%, 6M DD &gt;15%</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-wave-square"></i> Choppy: -20 pts each if 1M R²&lt;0.2, 3M R²&lt;0.3, 6M R²&lt;0.4</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 2W return &lt;= 0%</p>
 <p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 1M return &lt; 1%</p>
 <p style="font-size:0.7rem;color:#22c55e;margin-top:4px;"><i class="fas fa-plus-circle"></i> Stock Bonus: +5 pts if sector 1M & 2W returns are positive</p>
 <div class="quant-disclaimer">
@@ -896,7 +897,8 @@ function renderQuantRankings() {
     var s = top10Stocks[i];
     var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
     var score = s.QuantScore != null ? s.QuantScore.toFixed(1) : '-';
-    stockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    stockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val pos">' + score + '</span></li>';
   }
   document.getElementById('quantStockList').innerHTML = stockHtml;
   

@@ -674,8 +674,14 @@ def calc_quant_score(item, sector_1m_return=None, sector_2w_return=None, is_stoc
       - Max Drawdown: 1M > %10 → -10, 3M > %15 → -10, 6M > %20 → -10
     Filters:
       - 1M Return < %1 → Listeye girmesin (None döndür)
+      - 2W Return <= 0 → Listeye girmesin (None döndür)
     Stock Bonus: Sektör 1M ve 2W return pozitifse +5 puan
     """
+    
+    # === 2W RETURN FİLTRESİ ===
+    ret_2w = item.get('2W', {}).get('RETURN', 0) or 0
+    if ret_2w <= 0:  # 2W return <= 0 → diskalifiye
+        return None
     
     # === MINIMUM RETURN FİLTRESİ ===
     ret_1m = item.get('1M', {}).get('RETURN', 0) or 0
@@ -998,6 +1004,7 @@ def generate_data():
         if sector not in sector_metrics:
             sector_metrics[sector] = {
                 'stocks': [],
+                'RETURN_2W': [],
                 'RETURN_1M': [], 'RETURN_3M': [], 'RETURN_6M': [],
                 'TREND_1M': [], 'TREND_3M': [], 'TREND_6M': [],
                 'SORTINO_1M': [], 'SORTINO_3M': [], 'SORTINO_6M': [],
@@ -1007,6 +1014,10 @@ def generate_data():
             }
         
         sector_metrics[sector]['stocks'].append(stock['Symbol'])
+        
+        # 2W return topla
+        if '2W' in stock and stock['2W'].get('RETURN') is not None:
+            sector_metrics[sector]['RETURN_2W'].append(stock['2W']['RETURN'])
         
         # Her periyot için metrikleri topla
         for period in ['1M', '3M', '6M']:
@@ -1025,6 +1036,7 @@ def generate_data():
         stock_count = len(data['stocks'])
         
         # Sektör ortalama metrikleri
+        avg_2w_return = avg(data['RETURN_2W'])
         avg_1m_return = avg(data['RETURN_1M'])
         avg_3m_return = avg(data['RETURN_3M'])
         avg_6m_return = avg(data['RETURN_6M'])
@@ -1033,10 +1045,10 @@ def generate_data():
         disqualified = False
         disqualify_reason = None
         
-        # 1M Return < %1 → diskalifiye (Sector için tek filtre)
-        if avg_1m_return < 1:
+        # 2W Return < 0 → diskalifiye (Sector için tek filtre)
+        if avg_2w_return < 0:
             disqualified = True
-            disqualify_reason = f"1M Ret {avg_1m_return:.1f}%"
+            disqualify_reason = f"2W Ret {avg_2w_return:.1f}%"
         
         if disqualified:
             sector_rankings.append({
