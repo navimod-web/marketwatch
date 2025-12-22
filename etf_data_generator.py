@@ -348,8 +348,8 @@ def calc_metrics(prices, period_days):
     if len(clean_prices) < min_required:
         return None
         
-    # Temiz veri üzerinden son X günü al
-    actual_days = min(period_days, len(clean_prices))
+    # Temiz veri üzerinden son X+1 günü al (X günlük getiri için X+1 fiyat noktası gerekli)
+    actual_days = min(period_days + 1, len(clean_prices))
     p = clean_prices.tail(actual_days)
     
     if len(p) < 3:  # En az 3 gün veri olsun
