@@ -78,8 +78,11 @@ ETF_UNIVERSE = {
     "BOTZ": ("Thematic", "Tech", "Robotics & AI"),
     "GLD": ("Comm.", "Precious", "Gold"),
     "SLV": ("Comm.", "Precious", "Silver"),
+    "PPLT": ("Comm.", "Precious", "Platinum"),
+    "PALL": ("Comm.", "Precious", "Palladium"),
     "BNO": ("Comm.", "Energy", "Brent Oil"),
     "CPER": ("Comm.", "Industrial", "Copper"),
+    "DBB": ("Comm.", "Industrial", "Base Metals"),
     "UGA": ("Comm.", "Energy", "Gasoline"),
     "URA": ("Comm.", "Energy", "Uranium"),
     "USO": ("Comm.", "Energy", "WTI Oil"),
@@ -88,6 +91,8 @@ ETF_UNIVERSE = {
     "WEAT": ("Comm.", "Agri", "Wheat"),
     "CORN": ("Comm.", "Agri", "Corn"),
     "SOYB": ("Comm.", "Agri", "Soybean"),
+    "CANE": ("Comm.", "Agri", "Sugar"),
+    "PDBC": ("Comm.", "Broad", "Diversified Commodity"),
     "IBIT": ("Crypto", "Bitcoin", "Spot Bitcoin ETF"),
     "ETHA": ("Crypto", "Ethereum", "Spot Ethereum ETF"),
 }
@@ -1119,14 +1124,20 @@ def generate_data():
     disqualified_sectors = sorted([s for s in sector_rankings if s['Disqualified']], key=lambda x: x['Sector'])
     top10_sectors = qualified + disqualified_sectors
     
+    # Top 10 Commodities - Category = "Comm." olan ETF'ler
+    commodities_with_score = [e for e in etfs_with_score if e.get('Category') == 'Comm.']
+    top10_commodities = sorted(commodities_with_score, key=lambda x: x['QuantScore'], reverse=True)[:10]
+    
     quant_rankings = {
         'top10_etfs': [{'Symbol': e['Symbol'], 'Name': e['Name'], 'Category': e['Category'], 'QuantScore': e['QuantScore']} for e in top10_etfs],
         'top10_stocks': [{'Symbol': s['Symbol'], 'Name': s['Name'], 'Category': s['Category'], 'QuantScore': s['QuantScore']} for s in top10_stocks],
-        'top10_sectors': top10_sectors
+        'top10_sectors': top10_sectors,
+        'top10_commodities': [{'Symbol': c['Symbol'], 'Name': c['Name'], 'SubCategory': c.get('SubCategory', ''), 'QuantScore': c['QuantScore']} for c in top10_commodities]
     }
     
     print(f"✅ Top 10 ETFs: {[e['Symbol'] for e in top10_etfs]}")
     print(f"✅ Top 10 Stocks: {[s['Symbol'] for s in top10_stocks]}")
+    print(f"✅ Top 10 Commodities: {[c['Symbol'] for c in top10_commodities]}")
     qualified_sectors = [s['Sector'] for s in top10_sectors if not s['Disqualified']]
     disqualified_sectors_list = [s['Sector'] for s in top10_sectors if s['Disqualified']]
     print(f"✅ Sectors: {len(qualified_sectors)} qualified, {len(disqualified_sectors_list)} disqualified")
