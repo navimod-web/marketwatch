@@ -306,8 +306,8 @@ def fetch_news_for_stock(symbol, retries=2):
             if not news_items:
                 return []
             processed = []
-            # Her hisseden max 3 haber
-            for item in news_items[:3]:
+            # Her hisseden max 5 haber
+            for item in news_items[:5]:
                 # None veya geçersiz item kontrolü
                 if item is None:
                     continue
