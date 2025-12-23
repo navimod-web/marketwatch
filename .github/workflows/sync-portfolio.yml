@@ -1,47 +1,39 @@
-name: Portfolio Review Reposuna Veri Aktar
+name: Sonucu Portfolio Reposuna Gönder
 
 on:
   push:
     paths:
-      # Sadece bu iki dosya değişince çalışsın
-      - 'etf_data.json'
-      - 'news_data.json'
+      # SADECE üretilen sonuç dosyası değişince çalış
+      - 'portfolio_review.json'
     branches:
-      - main  # Veya master, ana dalınız neyse
+      - main
 
 jobs:
-  update-portfolio:
+  transfer-file:
     runs-on: ubuntu-latest
     steps:
-      # 1. Marketwatch (Kaynak) reposunu indir
-      - name: Marketwatch Verilerini Çek
+      - name: Kaynak (Marketwatch) Çek
         uses: actions/checkout@v3
 
-      # 2. Portfolioreview (Hedef) reposunu indir
-      - name: Portfolioreview Reposunu Çek
+      - name: Hedef (PortfolioReview) Çek
         uses: actions/checkout@v3
         with:
-          repository: 'navimod-web/portfolioreview' # BURAYI KENDİ KULLANICI ADINIZLA DEĞİŞTİRİN
+          repository: 'navimod-web/portfolioreview' # Kendi kullanıcı adınızı yazın
           token: ${{ secrets.ACTION_TOKEN }}
-          path: 'hedef-repo' # Geçici bir klasöre indiriyoruz
+          path: 'hedef-repo'
+          ref: 'master' # Hedef reponun branch adı (main veya master)
 
-      # 3. Dosyaları Hedefin Ana Dizinine Kopyala
-      - name: JSON Dosyalarını Aktar
+      - name: Dosyayı Kopyala
         run: |
-          # Dosyalar marketwatch'ta ana dizindeyse direkt kopyalıyoruz
-          cp etf_data.json hedef-repo/
-          cp news_data.json hedef-repo/
+          # Sadece sonuç dosyasını hedefin ana dizinine atıyoruz
+          cp portfolio_review.json hedef-repo/
 
-      # 4. Değişiklikleri Kaydet ve Gönder
-      - name: Pushla
+      - name: Karşıya Yükle
         run: |
           cd hedef-repo
-          git config user.name "Marketwatch Bot"
-          git config user.email "bot@marketwatch.com"
+          git config user.name "Transfer Botu"
+          git config user.email "bot@transfer.com"
           
-          # Sadece bu iki dosyayı ekle
-          git add etf_data.json news_data.json
-          
-          # Commit at ve gönder
-          git commit -m "Marketwatch: Güncel veri paketi (etf & news)" || echo "Değişiklik yok"
+          git add portfolio_review.json
+          git commit -m "Yeni portfolio verisi geldi" || echo "Degisiklik yok"
           git push
