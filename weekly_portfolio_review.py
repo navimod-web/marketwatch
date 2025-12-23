@@ -1377,6 +1377,8 @@ def validate_and_fix_weights(result, etf_data=None):
     if abs(total - 100.0) < 0.1:
         result['total_new_weight'] = 100.0
         print(f"   ✅ Weight OK: {total:.1f}%")
+        # Sync removals even when weight is OK
+        result = sync_removals_with_decisions(result)
         return result
     
     # Need to fix
@@ -1466,6 +1468,71 @@ def validate_and_fix_weights(result, etf_data=None):
     if abs(result['total_new_weight'] - 100.0) > 0.5:
         print(f"   ❌ WARNING: Still not 100%! Manual review needed.")
     
+    # Sync removals with REMOVE decisions
+    result = sync_removals_with_decisions(result)
+    
+    return result
+
+def sync_removals_with_decisions(result):
+    """
+    Ensure all REMOVE decisions appear in removals list.
+    GPT sometimes forgets to add all removals.
+    """
+    assets = result.get('assets', [])
+    removals = result.get('removals', [])
+    new_positions = result.get('new_positions', [])
+    
+    # Get existing removal symbols
+    existing_removals = set(r.get('remove', '') for r in removals)
+    
+    # Find all REMOVE decisions
+    remove_assets = [a for a in assets if a.get('decision', '').upper() == 'REMOVE']
+    
+    # Get new position symbols for replacement matching
+    new_pos_symbols = [np.get('symbol', '') for np in new_positions]
+    
+    # Add missing removals
+    for asset in remove_assets:
+        symbol = asset.get('symbol', '')
+        if symbol and symbol not in existing_removals:
+            # Determine replacement
+            replacement = asset.get('replacement')
+            replace_with = None
+            
+            if replacement:
+                replace_with = replacement.get('symbol', 'REDISTRIBUTED')
+            elif new_pos_symbols:
+                replace_with = new_pos_symbols[0]  # Use first new position
+            else:
+                replace_with = 'REDISTRIBUTED'
+            
+            # Create removal entry
+            new_removal = {
+                'remove': symbol,
+                'replace_with': replace_with,
+                'weight_redistributed_to': [],
+                'reason': asset.get('reasoning', 'See analysis above')
+            }
+            
+            # Find where weight was redistributed (INCREASE decisions)
+            increases = [a for a in assets if a.get('decision', '').upper() == 'INCREASE']
+            for inc in increases:
+                weight_change = inc.get('weight_change', 0)
+                if weight_change > 0:
+                    new_removal['weight_redistributed_to'].append(
+                        f"{inc.get('symbol')} +{weight_change:.1f}%"
+                    )
+            
+            # Add new positions to redistribution
+            for np in new_positions:
+                new_removal['weight_redistributed_to'].append(
+                    f"{np.get('symbol')} +{np.get('new_weight', 0):.1f}% (NEW)"
+                )
+            
+            removals.append(new_removal)
+            print(f"   📝 Added missing removal: {symbol} → {replace_with}")
+    
+    result['removals'] = removals
     return result
 
 def analyze_portfolio(prompt_data, client, retries=3):
