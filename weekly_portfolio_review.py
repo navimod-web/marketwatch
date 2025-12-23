@@ -1,0 +1,1425 @@
+# -*- coding: utf-8 -*-
+"""
+Weekly Portfolio Review v1.1
+============================
+Haftalık portföy analizi - JSON çıktı
+
+Kullanım:
+    python weekly_portfolio_review.py
+
+Girdi:
+    - etf_data.json
+    - news_data.json
+
+Çıktı:
+    - portfolio_review.json (HTML bu dosyayı okur)
+"""
+
+import json
+import os
+from datetime import datetime
+from openai import OpenAI
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+PORTFOLIO_FILE = "portfolio.txt"
+
+def load_portfolio(filepath=PORTFOLIO_FILE):
+    """
+    Portföyü txt dosyasından yükle.
+    Format: SYMBOL,WEIGHT (her satırda bir hisse)
+    # ile başlayan satırlar yorum
+    
+    Örnek portfolio.txt:
+    # Weekly Portfolio - 2024
+    BMY,18.0
+    C,17.3
+    CAT,11.0
+    """
+    portfolio = {}
+    
+    if not os.path.exists(filepath):
+        print(f"⚠️ {filepath} bulunamadı! Örnek dosya oluşturuluyor...")
+        create_sample_portfolio(filepath)
+    
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                
+                # Boş satır veya yorum
+                if not line or line.startswith('#'):
+                    continue
+                
+                # Parse: SYMBOL,WEIGHT
+                parts = line.split(',')
+                if len(parts) != 2:
+                    print(f"⚠️ Line {line_num}: Geçersiz format '{line}' - Beklenen: SYMBOL,WEIGHT")
+                    continue
+                
+                symbol = parts[0].strip().upper()
+                try:
+                    weight = float(parts[1].strip())
+                except ValueError:
+                    print(f"⚠️ Line {line_num}: Geçersiz ağırlık '{parts[1]}' - {symbol} atlandı")
+                    continue
+                
+                if weight <= 0:
+                    print(f"⚠️ Line {line_num}: Ağırlık 0 veya negatif - {symbol} atlandı")
+                    continue
+                
+                portfolio[symbol] = weight
+        
+        # Validasyon
+        total = sum(portfolio.values())
+        if abs(total - 100) > 0.5:
+            print(f"⚠️ Toplam ağırlık: {total:.1f}% (100% olmalı)")
+        
+        return portfolio
+        
+    except Exception as e:
+        print(f"❌ Portföy yükleme hatası: {e}")
+        return {}
+
+def create_sample_portfolio(filepath):
+    """Örnek portfolio.txt oluştur"""
+    sample = """# Weekly Portfolio
+# Format: SYMBOL,WEIGHT
+# Toplam ağırlık 100% olmalı
+# Her satırda bir hisse
+
+# Healthcare
+BMY,18.0
+
+# Financials
+C,17.3
+GS,11.0
+COF,7.0
+USB,7.0
+PNC,0.7
+
+# Industrials
+CAT,11.0
+FDX,11.0
+GM,7.0
+
+# ETFs
+SPY,7.5
+SKYY,2.5
+"""
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(sample)
+    print(f"✅ Örnek portföy dosyası oluşturuldu: {filepath}")
+
+# ============================================================
+# DATA LOADERS
+# ============================================================
+def load_json(filepath):
+    if not os.path.exists(filepath):
+        print(f"⚠️ {filepath} bulunamadı")
+        return None
+    with open(filepath, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def get_stock_data(symbol, etf_data):
+    """Belirli bir hisse/ETF için veri çek"""
+    for stock in etf_data.get('stocks', []):
+        if stock.get('Symbol') == symbol:
+            return {'type': 'stock', 'data': stock}
+    for etf in etf_data.get('etfs', []):
+        if etf.get('Symbol') == symbol:
+            return {'type': 'etf', 'data': etf}
+    return None
+
+def get_sentiment_data(symbol, news_data):
+    """Belirli bir hisse için sentiment verisi"""
+    if not news_data or not news_data.get('news'):
+        return None
+    
+    news_items = [n for n in news_data['news'] if n.get('symbol') == symbol]
+    if not news_items:
+        return None
+    
+    total = sum(n.get('sentiment', 0) for n in news_items)
+    headlines = [{"title": n.get('title', '')[:100], "sentiment": n.get('sentiment', 0)} for n in news_items[:3]]
+    
+    return {
+        'count': len(news_items),
+        'total': total,
+        'headlines': headlines
+    }
+
+# ============================================================
+# MARKET REGIME & RISK ANALYSIS
+# ============================================================
+def analyze_market_regime(etf_data):
+    """
+    Piyasa rejimini analiz eder ve HARD RULES oluşturur.
+    LLM'in kurallara uymasını zorlar.
+    """
+    regime = etf_data.get('regime', {})
+    overall = regime.get('overall', 'NEUTRAL')
+    risk = regime.get('risk', 'NEUTRAL')
+    
+    # VXX ve Credit sinyallerini kontrol et
+    signals = regime.get('signals', {})
+    vxx_signal = ''
+    credit_signal = ''
+    if isinstance(signals, dict):
+        vxx_data = signals.get('VXX', {})
+        credit_data = signals.get('HYG_LQD', {})
+        vxx_signal = vxx_data.get('value', '') if isinstance(vxx_data, dict) else ''
+        credit_signal = credit_data.get('value', '') if isinstance(credit_data, dict) else ''
+    
+    # Default
+    risk_level = "NORMAL"
+    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör sağlığına odaklan."
+    hard_rules = []
+    
+    # PANIC / BEAR Market
+    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
+        risk_level = "HIGH_ALERT"
+        instruction = (
+            "⚠️ ACİL DURUM: Piyasa PANIC/BEAR modunda. "
+            "Sermayeyi koru. Spekülatif pozisyonları kapat."
+        )
+        hard_rules = [
+            "MUST REDUCE: Tüm pozisyonları minimum %30 azalt",
+            "MUST REMOVE: Weak momentum (2W<0, 1M<0) olan tüm hisseleri sat",
+            "FAVOR: Defansif sektörler (Healthcare, Consumer Staples)",
+            "AVOID: Spekülatif ve yüksek beta hisseler"
+        ]
+    
+    # ROTATION Market
+    elif overall == "ROTATION":
+        risk_level = "ROTATION"
+        instruction = (
+            "🔄 ROTASYON MODU: Para sektörler arası hareket ediyor. "
+            "Sadece güçlü momentum sektörlerinde kal."
+        )
+        hard_rules = [
+            "MUST REMOVE: Disqualified sektörlerdeki tüm hisseler",
+            "MUST REMOVE: Sector Health ≤ 2 olan sektörlerdeki hisseler",
+            "FAVOR: Sector Quant Score ≥ 70 olan sektörler",
+            "REDUCE: Sector Quant Score < 50 olan sektörlerdeki pozisyonlar"
+        ]
+    
+    # RISK-OFF / CAUTION
+    elif risk == "RISK-OFF" or overall == "CAUTION":
+        risk_level = "CAUTION"
+        instruction = (
+            "⚠️ DİKKATLİ MOD: Risk iştahı düşük. "
+            "Defansif pozisyonları koru, agresif alımlardan kaçın."
+        )
+        hard_rules = [
+            "REDUCE: Weakening momentum hisseleri (2W<0)",
+            "FAVOR: Güçlü sektör desteği olan hisseler",
+            "AVOID: Yeni spekülatif pozisyonlar"
+        ]
+    
+    # RISK-ON / BULL
+    elif risk == "RISK-ON" or overall == "BULL":
+        risk_level = "RISK_ON"
+        instruction = (
+            "🚀 RİSK AÇIK: Piyasa güçlü. "
+            "Momentum hisselerine yüklen, fırsatları değerlendir."
+        )
+        hard_rules = [
+            "INCREASE: Top 10 Quant hisseleri",
+            "FAVOR: STRONG momentum + STRONG sector kombinasyonu",
+            "OK TO: Agresif pozisyonlar kabul edilebilir"
+        ]
+    
+    return {
+        'risk_level': risk_level,
+        'instruction': instruction,
+        'hard_rules': hard_rules,
+        'regime': overall
+    }
+
+def get_critical_news(news_data, portfolio_tickers, threshold=-40):
+    """
+    Portföydeki hisseler için KRİTİK negatif haberleri filtreler.
+    Bu haberler VETO yetkisine sahip - teknik ne derse desin satış önerilir.
+    """
+    alerts = []
+    if not news_data or not news_data.get('news'):
+        return alerts
+    
+    for news in news_data.get('news', []):
+        sym = news.get('symbol')
+        sentiment = news.get('sentiment', 0)
+        if sym in portfolio_tickers and sentiment <= threshold:
+            alerts.append({
+                'symbol': sym,
+                'title': news.get('title', '')[:100],
+                'sentiment': sentiment,
+                'severity': 'CRITICAL' if sentiment <= -60 else 'WARNING'
+            })
+    
+    return alerts
+
+# ============================================================
+# SECTOR ANALYSIS
+# ============================================================
+def get_sector_quant_data(etf_data):
+    """Quant rankings'den sektör skorlarını al"""
+    rankings = etf_data.get('quant_rankings', {})
+    sectors = rankings.get('top10_sectors', [])
+    
+    sector_quant = {}
+    for s in sectors:
+        name = s.get('Sector')
+        if name:
+            sector_quant[name] = {
+                'quant_score': s.get('QuantScore') or 0,
+                'stock_count': s.get('StockCount') or 0,
+                'disqualified': s.get('Disqualified', False),
+                'reason': s.get('Reason') or ''
+            }
+    return sector_quant
+
+# ============================================================
+# MARKET ANALYSIS FUNCTIONS (Pre-LLM Decision Support)
+# ============================================================
+
+def analyze_market_regime(etf_data):
+    """
+    Piyasa rejimini analiz eder ve LLM için katı talimatlar oluşturur.
+    Returns: (risk_level, instruction, regime_details)
+    """
+    regime = etf_data.get('regime', {})
+    overall = regime.get('overall', 'NEUTRAL')
+    risk = regime.get('risk', 'N/A')
+    cycle = regime.get('cycle', 'N/A')
+    breadth = regime.get('breadth', 'N/A')
+    
+    # Sinyalleri kontrol et
+    signals = regime.get('signals', {})
+    vxx_signal = signals.get('VXX', {}).get('value', '') if isinstance(signals.get('VXX'), dict) else ''
+    credit_signal = signals.get('HYG_LQD', {}).get('value', '') if isinstance(signals.get('HYG_LQD'), dict) else ''
+    
+    # Risk seviyesi ve talimat belirleme
+    risk_level = "NORMAL"
+    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör sağlığına odaklan."
+    
+    # PANIC / BEAR durumu
+    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
+        risk_level = "HIGH_ALERT"
+        instruction = (
+            "⚠️ ACİL DURUM (HARD RULE): Piyasa PANIC/BEAR modunda. "
+            "1) Tüm spekülatif pozisyonları REMOVE et. "
+            "2) Zayıf sektörlerdeki varlıkları REDUCE et. "
+            "3) Sadece defensif sektörleri (Healthcare, Consumer Staples) tut. "
+            "4) SPY/Cash pozisyonunu artırmayı öner."
+        )
+    # ROTATION durumu
+    elif overall == "ROTATION" or "ROTATION" in str(overall).upper():
+        risk_level = "ROTATION"
+        instruction = (
+            "🔄 ROTASYON MODU: Para sektör değiştiriyor. "
+            "1) Sadece STRONG momentum sektörlerindeki hisseleri tut. "
+            "2) WEAK/WEAKENING sektörleri portföyden çıkar. "
+            "3) Disqualified sektörleri kesinlikle SAT. "
+            "4) Top 10 Quant hisselerine rotasyon yap."
+        )
+    # RISK-OFF durumu
+    elif "RISK-OFF" in str(overall).upper() or "OFF" in str(risk).upper():
+        risk_level = "CAUTION"
+        instruction = (
+            "⚠️ RISK-OFF MODU: Piyasa defansif. "
+            "1) Agresif pozisyonları REDUCE et. "
+            "2) Volatil hisseleri azalt. "
+            "3) Defensif sektörlere ağırlık ver."
+        )
+    # RISK-ON durumu
+    elif "RISK-ON" in str(overall).upper() or "ON" in str(risk).upper():
+        risk_level = "OPPORTUNITY"
+        instruction = (
+            "✅ RISK-ON MODU: Piyasa agresif. "
+            "1) Strong momentum hisselerini INCREASE et. "
+            "2) Top 10 Quant hisselerine ağırlık ver. "
+            "3) Zayıf performans gösterenleri yine de değerlendir."
+        )
+    
+    regime_details = {
+        'overall': overall,
+        'risk': risk,
+        'cycle': cycle,
+        'breadth': breadth,
+        'vxx_signal': vxx_signal,
+        'credit_signal': credit_signal
+    }
+    
+    return risk_level, instruction, regime_details
+
+def get_blacklisted_sectors(etf_data):
+    """
+    Diskalifiye olmuş sektörleri listeler - bu sektörlerdeki hisseler REMOVE edilmeli.
+    """
+    blacklist = []
+    rankings = etf_data.get('quant_rankings', {})
+    sectors = rankings.get('top10_sectors', [])
+    
+    for s in sectors:
+        if s.get('Disqualified') is True:
+            blacklist.append({
+                'sector': s.get('Sector', 'Unknown'),
+                'reason': s.get('Reason', 'Poor performance'),
+                'quant_score': s.get('QuantScore', 0)
+            })
+    return blacklist
+
+def get_critical_news_alerts(news_data, portfolio_tickers):
+    """
+    Portföydeki hisseler için KRİTİK haberleri filtreler.
+    Sentiment < -50 → VETO (Ciddi olumsuz haber)
+    Sentiment < -30 → WARNING (Dikkat gerektiren haber)
+    """
+    alerts = []
+    warnings = []
+    
+    if not news_data or not news_data.get('news'):
+        return alerts, warnings
+    
+    for news in news_data.get('news', []):
+        sym = news.get('symbol')
+        sentiment = news.get('sentiment', 0)
+        title = news.get('title', '')[:80]
+        
+        if sym in portfolio_tickers:
+            if sentiment <= -50:
+                alerts.append({
+                    'symbol': sym,
+                    'title': title,
+                    'sentiment': sentiment,
+                    'action': 'VETO - Consider immediate REMOVE'
+                })
+            elif sentiment <= -30:
+                warnings.append({
+                    'symbol': sym,
+                    'title': title,
+                    'sentiment': sentiment,
+                    'action': 'WARNING - Monitor closely'
+                })
+    
+    return alerts, warnings
+
+# ============================================================
+# MARKET ANALYSIS FUNCTIONS (Rule-Based Pre-Processing)
+# ============================================================
+
+def analyze_market_regime(etf_data):
+    """
+    Piyasa rejimini analiz eder ve LLM için HARD RULES oluşturur.
+    Returns: dict with risk_level, instruction, hard_rules, details
+    """
+    regime = etf_data.get('regime', {})
+    overall = regime.get('overall', 'NEUTRAL')
+    risk = regime.get('risk', 'NORMAL')
+    breadth = regime.get('breadth', 'NEUTRAL')
+    
+    # Signals kontrolü
+    signals = regime.get('signals', {})
+    vxx_signal = signals.get('VXX', {}).get('value', '') if isinstance(signals.get('VXX'), dict) else ''
+    credit_signal = signals.get('HYG_LQD', {}).get('value', '') if isinstance(signals.get('HYG_LQD'), dict) else ''
+    
+    # Default
+    risk_level = "NORMAL"
+    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör rotasyonuna odaklan."
+    hard_rules = []
+    
+    # PANIC / BEAR durumu
+    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
+        risk_level = "HIGH_ALERT"
+        instruction = (
+            "⚠️ HIGH ALERT: Piyasa PANIC/BEAR modunda. "
+            "Riskli varlıkları AZALT veya SAT. Defensive sektörlere yönel."
+        )
+        hard_rules = [
+            "WEAK momentum (2W<0, 1M<0) olan hisseler REMOVE edilmeli",
+            "Blacklisted sektör hisseleri REMOVE edilmeli",
+            "ETF ağırlığı artırılmalı, bireysel hisse riski azaltılmalı",
+            "INCREASE kararı yalnızca defensive sektörler için verilebilir"
+        ]
+    # RISK-OFF durumu
+    elif risk == "RISK-OFF" or overall == "RISK-OFF":
+        risk_level = "CAUTIOUS"
+        instruction = (
+            "🛡️ RISK-OFF MODE: Savunmaya geç. "
+            "Zayıf momentum hisselerini SAT, sadece Top 10 ve güçlü sektörleri tut."
+        )
+        hard_rules = [
+            "WEAK sektör hisseleri REDUCE veya REMOVE edilmeli",
+            "Top 10 dışı ve Score<70 olan hisseler değerlendirilmeli",
+            "INCREASE kararı çok seçici verilmeli"
+        ]
+    # ROTATION durumu
+    elif overall == "ROTATION":
+        risk_level = "ACTIVE"
+        instruction = (
+            "🔄 ROTATION MODE: Sektör rotasyonu aktif. "
+            "Zayıf/Blacklisted sektörleri SAT, güçlü momentum sektörlerine taşı."
+        )
+        hard_rules = [
+            "Blacklisted sektör hisseleri REMOVE edilmeli",
+            "WEAK trend sektörleri REDUCE edilmeli",
+            "STRONG sektör + Top 10 hisseler KEEP veya INCREASE"
+        ]
+    # RISK-ON durumu
+    elif risk == "RISK-ON" or overall == "RISK-ON":
+        risk_level = "AGGRESSIVE"
+        instruction = (
+            "🚀 RISK-ON MODE: Agresif pozisyon al. "
+            "Momentum güçlü hisseleri ARTIR, Top 10'a girenleri ekle."
+        )
+        hard_rules = [
+            "STRONG momentum hisseler KEEP veya INCREASE",
+            "Top 10 hisseler öncelikli",
+            "Defensive sektörler REDUCE edilebilir"
+        ]
+    else:
+        hard_rules = [
+            "Standart analiz kriterleri uygula",
+            "Sektör ve momentum dengesini koru"
+        ]
+    
+    return {
+        'risk_level': risk_level,
+        'instruction': instruction,
+        'hard_rules': hard_rules,
+        'overall': overall,
+        'risk': risk,
+        'breadth': breadth,
+        'vxx': vxx_signal,
+        'credit': credit_signal
+    }
+
+def get_blacklisted_sectors(etf_data):
+    """
+    Diskalifiye (MUST SELL) sektörleri listeler.
+    """
+    blacklist = []
+    rankings = etf_data.get('quant_rankings', {})
+    sectors = rankings.get('top10_sectors', [])
+    
+    for s in sectors:
+        if s.get('Disqualified') is True:
+            blacklist.append({
+                'sector': s.get('Sector'),
+                'reason': s.get('Reason', 'Poor performance'),
+                'quant_score': s.get('QuantScore', 0)
+            })
+    return blacklist
+
+def get_critical_news_alerts(news_data, portfolio_tickers):
+    """
+    Portföydeki hisseler için KRİTİK negatif haberleri filtreler.
+    Sentiment < -50: CRITICAL (VETO candidate)
+    Sentiment < -30: WARNING
+    """
+    alerts = []
+    warnings = []
+    
+    if not news_data or not news_data.get('news'):
+        return alerts, warnings
+    
+    for news in news_data.get('news', []):
+        sym = news.get('symbol')
+        sentiment = news.get('sentiment', 0)
+        title = news.get('title', '')[:80]
+        
+        if sym in portfolio_tickers:
+            if sentiment <= -50:
+                alerts.append({
+                    'symbol': sym,
+                    'sentiment': sentiment,
+                    'title': title,
+                    'level': 'CRITICAL'
+                })
+            elif sentiment <= -30:
+                warnings.append({
+                    'symbol': sym,
+                    'sentiment': sentiment,
+                    'title': title,
+                    'level': 'WARNING'
+                })
+    
+    return alerts, warnings
+
+def get_critical_news(news_data, portfolio_tickers):
+    """
+    Kritik haberleri birleşik liste olarak döndürür (prompt için).
+    """
+    alerts, warnings = get_critical_news_alerts(news_data, portfolio_tickers)
+    combined = []
+    for a in alerts:
+        combined.append({
+            'symbol': a['symbol'],
+            'sentiment': a['sentiment'],
+            'title': a['title'],
+            'severity': 'CRITICAL'
+        })
+    for w in warnings:
+        combined.append({
+            'symbol': w['symbol'],
+            'sentiment': w['sentiment'],
+            'title': w['title'],
+            'severity': 'WARNING'
+        })
+    return combined
+
+def get_concentration_risk(portfolio, etf_data):
+    """
+    Konsantrasyon riskini hesaplar.
+    HARD RULES:
+    - Tek sektör > 30% = MUST REDUCE
+    - Toplam ETF > 10% = MUST REDUCE
+    """
+    sector_weights = {}
+    etf_total = 0
+    etf_list = []
+    
+    for symbol, weight in portfolio.items():
+        asset = get_stock_data(symbol, etf_data)
+        if asset:
+            asset_type = asset['type']
+            sector = asset['data'].get('Category', 'Other')
+            
+            if asset_type == 'etf':
+                etf_total += weight
+                etf_list.append(f"{symbol}: {weight}%")
+                sector = 'ETF'
+        else:
+            # Symbol bulunamadı - muhtemelen ETF
+            etf_total += weight
+            etf_list.append(f"{symbol}: {weight}%")
+            sector = 'ETF'
+        
+        if sector != 'ETF':
+            sector_weights[sector] = sector_weights.get(sector, 0) + weight
+    
+    risks = []
+    hard_rule_violations = []
+    
+    # Sektör konsantrasyon kontrolü (HARD RULE: max 30%)
+    for sector, weight in sector_weights.items():
+        if weight > 30:
+            risks.append(f"🔴 HARD RULE VIOLATION: {sector} = {weight:.1f}% (MAX 30% - MUST REDUCE)")
+            hard_rule_violations.append({
+                'type': 'SECTOR_CONCENTRATION',
+                'sector': sector,
+                'current': weight,
+                'max': 30,
+                'action': f"REDUCE {sector} exposure by {weight - 30:.1f}%"
+            })
+        elif weight > 25:
+            risks.append(f"🟠 WARNING: {sector} = {weight:.1f}% (approaching 30% limit)")
+    
+    # ETF konsantrasyon kontrolü (HARD RULE: max 10%)
+    if etf_total > 10:
+        risks.append(f"🔴 HARD RULE VIOLATION: Total ETF = {etf_total:.1f}% (MAX 10% - MUST REDUCE)")
+        risks.append(f"   ETFs: {', '.join(etf_list)}")
+        hard_rule_violations.append({
+            'type': 'ETF_CONCENTRATION',
+            'current': etf_total,
+            'max': 10,
+            'etfs': etf_list,
+            'action': f"REDUCE total ETF exposure by {etf_total - 10:.1f}%"
+        })
+    elif etf_total > 8:
+        risks.append(f"🟠 WARNING: Total ETF = {etf_total:.1f}% (approaching 10% limit)")
+    
+    return sector_weights, risks, hard_rule_violations, etf_total
+
+def calculate_portfolio_risk_score(portfolio, etf_data, sector_health):
+    """
+    Portföy risk skorunu hesaplar (0-100, düşük = daha az riskli)
+    """
+    total_weight = 0
+    risk_weighted = 0
+    
+    for symbol, weight in portfolio.items():
+        asset = get_stock_data(symbol, etf_data)
+        if asset:
+            data = asset['data']
+            sector = data.get('Category', 'Other')
+            score = data.get('SCORE', 50) or 50
+            
+            # Sector risk
+            sec_health = sector_health.get(sector, {})
+            sec_risk = 100 - (sec_health.get('health', 2) * 20)  # 0-100
+            
+            # Asset risk (inverse of quant score)
+            asset_risk = 100 - score
+            
+            # Combined risk
+            combined = (sec_risk * 0.4) + (asset_risk * 0.6)
+            risk_weighted += combined * weight
+            total_weight += weight
+    
+    return round(risk_weighted / total_weight, 1) if total_weight > 0 else 50
+
+def get_sector_performance(sector, etf_data, sector_quant=None):
+    """Sektör performansını hesapla - 2W, 1M, 3M + Quant Score"""
+    stocks = [s for s in etf_data.get('stocks', []) if s.get('Category') == sector]
+    if not stocks:
+        return None
+    
+    ret_2w = [s.get('2W', {}).get('RETURN', 0) or 0 for s in stocks]
+    ret_1m = [s.get('1M', {}).get('RETURN', 0) or 0 for s in stocks]
+    ret_3m = [s.get('3M', {}).get('RETURN', 0) or 0 for s in stocks]
+    
+    avg_2w = sum(ret_2w) / len(ret_2w) if ret_2w else 0
+    avg_1m = sum(ret_1m) / len(ret_1m) if ret_1m else 0
+    avg_3m = sum(ret_3m) / len(ret_3m) if ret_3m else 0
+    
+    positive_2w = len([r for r in ret_2w if r > 0])
+    positive_1m = len([r for r in ret_1m if r > 0])
+    
+    # Trend belirleme (2W ve 1M bazlı)
+    if avg_2w > 0 and avg_1m > 0:
+        trend = "STRONG"
+    elif avg_2w > 0 and avg_1m < 0:
+        trend = "RECOVERING"
+    elif avg_2w < 0 and avg_1m > 0:
+        trend = "WEAKENING"
+    else:
+        trend = "WEAK"
+    
+    # Quant data from rankings
+    quant_score = 0
+    disqualified = False
+    disq_reason = ''
+    if sector_quant and sector in sector_quant:
+        sq = sector_quant[sector]
+        quant_score = sq.get('quant_score', 0)
+        disqualified = sq.get('disqualified', False)
+        disq_reason = sq.get('reason', '')
+    
+    # Sektör sağlık skoru (0-5) - quant score dahil
+    health = 0
+    if avg_2w > 0: health += 1
+    if avg_1m > 0: health += 1
+    if avg_3m > 0: health += 1
+    if positive_2w >= len(stocks) / 2: health += 1
+    if quant_score >= 70: health += 1  # Quant score bonus
+    
+    # Disqualified sektörler için health düşür
+    if disqualified:
+        health = max(0, health - 2)
+    
+    return {
+        'avg_2w': round(avg_2w, 2),
+        'avg_1m': round(avg_1m, 2),
+        'avg_3m': round(avg_3m, 2),
+        'breadth_2w': f"{positive_2w}/{len(stocks)}",
+        'breadth_1m': f"{positive_1m}/{len(stocks)}",
+        'trend': trend,
+        'health': health,  # 0-5 arası (quant bonus ile)
+        'quant_score': round(quant_score, 1),
+        'disqualified': disqualified,
+        'disq_reason': disq_reason,
+        'stock_count': len(stocks)
+    }
+
+# ============================================================
+# PROMPT BUILDER
+# ============================================================
+def build_analysis_prompt(portfolio, etf_data, news_data):
+    lines = []
+    
+    # ============================================================
+    # 1. ROLE & OBJECTIVE
+    # ============================================================
+    lines.append("=" * 70)
+    lines.append("ROLE: Senior Risk Manager for Weekly Swing Trading Portfolio")
+    lines.append("OBJECTIVE: Preserve capital first, generate alpha second. Be DECISIVE.")
+    lines.append("=" * 70)
+    
+    # ============================================================
+    # 2. MARKET REGIME & HARD RULES (ZORUNLU KURALLAR)
+    # ============================================================
+    regime_analysis = analyze_market_regime(etf_data)
+    regime = etf_data.get('regime', {})
+    
+    lines.append(f"\n{'=' * 70}")
+    lines.append("🚨 MARKET REGIME & HARD RULES (MUST FOLLOW)")
+    lines.append(f"{'=' * 70}")
+    lines.append(f"\nRISK LEVEL: {regime_analysis['risk_level']}")
+    lines.append(f"REGIME: {regime.get('overall', 'N/A')} | Risk: {regime.get('risk', 'N/A')} | Breadth: {regime.get('breadth', 'N/A')}")
+    lines.append(f"\n⚡ INSTRUCTION: {regime_analysis['instruction']}")
+    
+    if regime_analysis['hard_rules']:
+        lines.append("\n📋 HARD RULES (Violation = Error):")
+        for rule in regime_analysis['hard_rules']:
+            lines.append(f"   • {rule}")
+    
+    # ============================================================
+    # 3. CRITICAL NEWS ALERTS (VETO POWER)
+    # ============================================================
+    critical_news = get_critical_news(news_data, portfolio.keys())
+    if critical_news:
+        lines.append(f"\n{'=' * 70}")
+        lines.append("🔴 CRITICAL NEWS ALERTS (VETO POWER)")
+        lines.append(f"{'=' * 70}")
+        lines.append("RULE: Any stock with CRITICAL news MUST be evaluated for immediate REMOVAL.")
+        for alert in critical_news:
+            severity_icon = "🔴" if alert['severity'] == 'CRITICAL' else "🟠"
+            lines.append(f"\n   {severity_icon} {alert['symbol']} [{alert['sentiment']:+d}]: {alert['title']}")
+    
+    # ============================================================
+    # 4. CONCENTRATION RISK (HARD RULES)
+    # ============================================================
+    sector_weights, concentration_risks, hard_rule_violations, etf_total = get_concentration_risk(portfolio, etf_data)
+    
+    if concentration_risks or hard_rule_violations:
+        lines.append(f"\n{'=' * 70}")
+        lines.append("🚨 CONCENTRATION RISK (HARD RULES)")
+        lines.append(f"{'=' * 70}")
+        lines.append("\n   HARD RULES:")
+        lines.append("   • MAX 30% per sector - exceeding = MUST REDUCE")
+        lines.append("   • MAX 10% total ETF weight - exceeding = MUST REDUCE")
+        lines.append(f"\n   Current ETF Total: {etf_total:.1f}% {'⚠️ EXCEEDS LIMIT!' if etf_total > 10 else '✅'}")
+        
+        if concentration_risks:
+            lines.append("\n   ALERTS:")
+            for risk in concentration_risks:
+                lines.append(f"   {risk}")
+        
+        if hard_rule_violations:
+            lines.append("\n   ⛔ REQUIRED ACTIONS:")
+            for violation in hard_rule_violations:
+                lines.append(f"   • {violation['action']}")
+    
+    # ============================================================
+    # 5. SECTOR PERFORMANCE (Blacklist & Whitelist)
+    # ============================================================
+    sector_quant = get_sector_quant_data(etf_data)
+    
+    lines.append(f"\n{'=' * 70}")
+    lines.append("🏭 SECTOR STATUS (2W / 1M / 3M + Quant Score)")
+    lines.append(f"{'=' * 70}")
+    
+    all_sectors = set()
+    for stock in etf_data.get('stocks', []):
+        sec = stock.get('Category')
+        if sec:
+            all_sectors.add(sec)
+    
+    sector_health = {}
+    weak_sectors = []
+    strong_sectors = []
+    disqualified_sectors = []
+    
+    for sector in sorted(all_sectors):
+        perf = get_sector_performance(sector, etf_data, sector_quant)
+        if perf:
+            sector_health[sector] = perf
+            
+            if perf['disqualified']:
+                status = "🚫 BLACKLISTED"
+                disqualified_sectors.append(sector)
+            elif perf['trend'] == "STRONG":
+                status = "🟢 STRONG"
+            elif perf['trend'] == "RECOVERING":
+                status = "🟡 RECOVERING"
+            elif perf['trend'] == "WEAKENING":
+                status = "🟠 WEAKENING"
+            else:
+                status = "🔴 WEAK"
+            
+            lines.append(f"\n   {status} {sector}")
+            lines.append(f"      Returns: 2W: {perf['avg_2w']:+.2f}% | 1M: {perf['avg_1m']:+.2f}% | 3M: {perf['avg_3m']:+.2f}%")
+            lines.append(f"      Quant Score: {perf['quant_score']:.1f} | Health: {perf['health']}/5")
+            
+            if perf['disqualified']:
+                lines.append(f"      ⛔ BLACKLISTED: {perf['disq_reason']}")
+                weak_sectors.append(sector)
+            elif perf['trend'] in ["WEAK", "WEAKENING"] or perf['health'] <= 2 or perf['quant_score'] < 50:
+                weak_sectors.append(sector)
+            if perf['trend'] == "STRONG" and perf['health'] >= 4 and perf['quant_score'] >= 70:
+                strong_sectors.append(sector)
+    
+    # Sector Summary
+    lines.append(f"\n   {'─' * 50}")
+    lines.append(f"   ⛔ BLACKLIST (MUST SELL): {', '.join(disqualified_sectors) if disqualified_sectors else 'None'}")
+    lines.append(f"   🔴 WEAK (Consider Exit): {', '.join([s for s in weak_sectors if s not in disqualified_sectors]) if weak_sectors else 'None'}")
+    lines.append(f"   🟢 STRONG (Favor): {', '.join(strong_sectors) if strong_sectors else 'None'}")
+    
+    # Top 10 Quant Stocks
+    rankings = etf_data.get('quant_rankings', {})
+    top_stocks = rankings.get('top10_stocks', [])[:10]
+    top_symbols = [s.get('symbol') for s in top_stocks if s.get('symbol')]
+    
+    if top_stocks:
+        lines.append(f"\n🏆 TOP 10 QUANT STOCKS:")
+        for i, s in enumerate(top_stocks, 1):
+            sym = s.get('symbol') or 'N/A'
+            scr = s.get('score') or 0
+            sec = s.get('sector') or ''
+            lines.append(f"   {i}. {sym:6} | Score: {scr:.1f} | {sec}")
+    
+    # Portfolio Detail
+    lines.append(f"\n{'=' * 70}")
+    lines.append("PORTFOLIO ASSETS (Weekly Trade Analysis - 2W/1M/3M)")
+    lines.append(f"{'=' * 70}")
+    
+    for symbol, weight in sorted(portfolio.items(), key=lambda x: -x[1]):
+        lines.append(f"\n{'─' * 50}")
+        lines.append(f"📌 {symbol} (Weight: {weight}%)")
+        
+        asset = get_stock_data(symbol, etf_data)
+        if asset:
+            data = asset['data']
+            name = data.get('Name', symbol)
+            sector = data.get('Category', 'N/A')
+            
+            w2 = data.get('2W', {}) or {}
+            m1 = data.get('1M', {}) or {}
+            m3 = data.get('3M', {}) or {}
+            m6 = data.get('6M', {}) or {}
+            
+            ret_2w = w2.get('RETURN', 0) or 0
+            ret_1m = m1.get('RETURN', 0) or 0
+            ret_3m = m3.get('RETURN', 0) or 0
+            ret_6m = m6.get('RETURN', 0) or 0
+            score = data.get('SCORE', 0) or 0
+            
+            # Short-term Trend (2W vs 1M)
+            if ret_2w > 0 and ret_1m > 0:
+                short_trend = "STRONG MOMENTUM ✅"
+            elif ret_2w > 0 and ret_1m < 0:
+                short_trend = "RECOVERING 🔄"
+            elif ret_2w < 0 and ret_1m > 0:
+                short_trend = "LOSING MOMENTUM ⚠️"
+            else:
+                short_trend = "WEAK ❌"
+            
+            # Medium-term Trend (1M vs 3M)
+            if ret_1m > 0 and ret_3m > 0:
+                med_trend = "UPTREND"
+            elif ret_1m < 0 and ret_3m < 0:
+                med_trend = "DOWNTREND"
+            else:
+                med_trend = "MIXED"
+            
+            in_top10 = symbol in top_symbols
+            in_weak_sector = sector in weak_sectors
+            in_strong_sector = sector in strong_sectors
+            
+            # ETF-specific check for disqualified sector exposure
+            is_etf = asset['type'] == 'etf'
+            etf_disq_warning = ""
+            if is_etf:
+                subcat = data.get('SubCategory', '')
+                # Check if ETF category or subcategory matches disqualified/weak sectors
+                if sector in disqualified_sectors or subcat in disqualified_sectors:
+                    etf_disq_warning = f"🚫 ETF EXPOSED TO DISQUALIFIED SECTOR ({sector}/{subcat}) - MUST REPLACE OR REMOVE!"
+                elif sector in weak_sectors or subcat in weak_sectors:
+                    etf_disq_warning = f"⚠️ ETF exposed to WEAK sector ({sector}/{subcat}) - consider replacement"
+            
+            lines.append(f"   Name: {name} | Sector: {sector} {'| Type: ETF 📊' if is_etf else ''}")
+            lines.append(f"   SHORT-TERM: 2W: {ret_2w:+.2f}% | 1M: {ret_1m:+.2f}% → {short_trend}")
+            lines.append(f"   MEDIUM-TERM: 3M: {ret_3m:+.2f}% | 6M: {ret_6m:+.2f}% → {med_trend}")
+            lines.append(f"   Quant Score: {score:.1f} | In Top 10: {'YES ✅' if in_top10 else 'NO'}")
+            
+            # ETF disqualified sector warning (priority)
+            if etf_disq_warning:
+                lines.append(f"   {etf_disq_warning}")
+            # Sector warning
+            elif in_weak_sector:
+                lines.append(f"   ⚠️ WARNING: {sector} sector is WEAK - consider reducing exposure!")
+            elif in_strong_sector:
+                lines.append(f"   ✅ TAILWIND: {sector} sector is STRONG")
+            
+            # Sector perf
+            sec_perf = sector_health.get(sector)
+            if sec_perf:
+                disq_warn = " ⚠️ DISQUALIFIED!" if sec_perf.get('disqualified') else ""
+                lines.append(f"   Sector: Quant {sec_perf['quant_score']:.1f} | 2W: {sec_perf['avg_2w']:+.2f}% | 1M: {sec_perf['avg_1m']:+.2f}% | Health: {sec_perf['health']}/5{disq_warn}")
+        
+        # Sentiment
+        sent = get_sentiment_data(symbol, news_data)
+        if sent:
+            lines.append(f"   Sentiment: {sent['total']:+d} ({sent['count']} news)")
+            for h in sent['headlines'][:2]:
+                lines.append(f"      [{h['sentiment']:+d}] {h['title'][:60]}...")
+        else:
+            lines.append(f"   Sentiment: No news")
+    
+    # Current sector allocation for replacement guidance
+    lines.append(f"\n{'=' * 70}")
+    lines.append("📊 CURRENT SECTOR ALLOCATION (for replacement guidance)")
+    lines.append(f"{'=' * 70}")
+    lines.append("   RULE: Max 30% per sector | Replacement should diversify to underweight sectors")
+    
+    for sec, weight in sorted(sector_weights.items(), key=lambda x: -x[1]):
+        if sec != 'ETF':
+            status = "🔴 OVERWEIGHT" if weight > 30 else "🟠 HIGH" if weight > 20 else "🟢 OK" if weight > 10 else "⚪ UNDERWEIGHT"
+            lines.append(f"   {sec:20} {weight:5.1f}% {status}")
+    
+    lines.append(f"   {'─' * 40}")
+    lines.append(f"   Total ETF:          {etf_total:5.1f}% {'🔴 EXCEEDS 10%' if etf_total > 10 else '✅'}")
+    
+    # Alternatives with detailed info
+    lines.append(f"\n{'=' * 70}")
+    lines.append("🎯 ALTERNATIVE CANDIDATES (for replacements)")
+    lines.append(f"{'=' * 70}")
+    lines.append("   Selection Criteria: Score ≥75, Sector Health ≥3, STRONG/RECOVERING momentum")
+    lines.append("   Priority: Underweight sectors > Neutral sectors > Never from overweight")
+    
+    overweight_sectors = [s for s, w in sector_weights.items() if w > 30 and s != 'ETF']
+    underweight_sectors = [s for s, w in sector_weights.items() if w < 15 and s != 'ETF']
+    
+    for s in top_stocks:
+        sym = s.get('symbol') or 'N/A'
+        if sym not in portfolio and sym != 'N/A':
+            scr = s.get('score') or 0
+            sec = s.get('sector') or ''
+            
+            # Get stock data for momentum
+            stock_data = get_stock_data(sym, etf_data)
+            momentum_str = ""
+            if stock_data:
+                data = stock_data['data']
+                w2 = data.get('2W', {}) or {}
+                m1 = data.get('1M', {}) or {}
+                ret_2w = w2.get('RETURN', 0) or 0
+                ret_1m = m1.get('RETURN', 0) or 0
+                
+                if ret_2w > 0 and ret_1m > 0:
+                    momentum_str = "STRONG ✅"
+                elif ret_2w > 0:
+                    momentum_str = "RECOVERING 🔄"
+                elif ret_2w < 0 and ret_1m < 0:
+                    momentum_str = "WEAK ❌"
+                else:
+                    momentum_str = "MIXED"
+                
+                momentum_str += f" (2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}%)"
+            
+            # Sector health
+            sec_perf = sector_health.get(sec, {})
+            sec_health_score = sec_perf.get('health', 0) if sec_perf else 0
+            
+            # Diversification tag
+            if sec in overweight_sectors:
+                div_tag = "⛔ SAME OVERWEIGHT"
+            elif sec in underweight_sectors:
+                div_tag = "✅ DIVERSIFIES"
+            elif sec in weak_sectors:
+                div_tag = "⚠️ WEAK SECTOR"
+            elif sec in strong_sectors:
+                div_tag = "🟢 STRONG SECTOR"
+            else:
+                div_tag = ""
+            
+            sent = get_sentiment_data(sym, news_data)
+            sent_str = f"Sent:{sent['total']:+d}" if sent else ""
+            
+            lines.append(f"\n   {sym:6} | Score: {scr:.1f} | {sec}")
+            lines.append(f"          Momentum: {momentum_str}")
+            lines.append(f"          Sector Health: {sec_health_score}/5 | {sent_str} {div_tag}")
+    
+    # ETF Alternatives (for ETF replacement)
+    lines.append(f"\n{'=' * 70}")
+    lines.append("📈 ETF ALTERNATIVES (for ETF replacement if needed)")
+    lines.append(f"{'=' * 70}")
+    lines.append("   Criteria: Category NOT disqualified, 2W>0, 1M>0, 3M>0, QuantScore≥70")
+    
+    etfs = etf_data.get('etfs', [])
+    qualified_etfs = []
+    
+    for etf in etfs:
+        sym = etf.get('Symbol', '')
+        if sym in portfolio:  # Skip if already in portfolio
+            continue
+        
+        cat = etf.get('Category', '')
+        subcat = etf.get('SubCategory', '')
+        qscore = etf.get('QuantScore', 0) or 0
+        
+        # Skip if category matches weak/disqualified sectors
+        if cat in weak_sectors or cat in disqualified_sectors:
+            continue
+        if subcat in weak_sectors or subcat in disqualified_sectors:
+            continue
+        
+        # Get returns
+        w2 = etf.get('2W', {}) or {}
+        m1 = etf.get('1M', {}) or {}
+        m3 = etf.get('3M', {}) or {}
+        
+        ret_2w = w2.get('RETURN', 0) or 0
+        ret_1m = m1.get('RETURN', 0) or 0
+        ret_3m = m3.get('RETURN', 0) or 0
+        
+        # Must have strong momentum (all positive) and good score
+        if ret_2w > 0 and ret_1m > 0 and ret_3m > 0 and qscore >= 70:
+            qualified_etfs.append({
+                'symbol': sym,
+                'name': etf.get('Name', ''),
+                'category': cat,
+                'subcategory': subcat,
+                'score': qscore,
+                'ret_2w': ret_2w,
+                'ret_1m': ret_1m,
+                'ret_3m': ret_3m
+            })
+    
+    # Sort by score
+    qualified_etfs.sort(key=lambda x: -x['score'])
+    
+    if qualified_etfs:
+        for etf in qualified_etfs[:5]:  # Top 5
+            lines.append(f"\n   {etf['symbol']:6} | Score: {etf['score']:.1f} | {etf['category']}/{etf['subcategory']}")
+            lines.append(f"          {etf['name']}")
+            lines.append(f"          Momentum: 2W:{etf['ret_2w']:+.1f}%, 1M:{etf['ret_1m']:+.1f}%, 3M:{etf['ret_3m']:+.1f}% ✅ ALL POSITIVE")
+    else:
+        lines.append("\n   ⚠️ No qualified ETF alternatives found - redistribute to stocks if ETF removal needed")
+    
+    return "\n".join(lines)
+
+# ============================================================
+# GPT ANALYSIS
+# ============================================================
+SYSTEM_PROMPT = """ROLE: Senior Risk Manager for Weekly Swing Trading Portfolio
+OBJECTIVE: Preserve capital FIRST, generate alpha SECOND. Be DECISIVE.
+
+🚫 ABSOLUTE CONSTRAINTS:
+- NO CASH: Never recommend holding cash. Portfolio must be FULLY INVESTED.
+- TOTAL = 100%: Sum of all new_weight values MUST equal exactly 100%.
+- If you REMOVE a position, its weight MUST be redistributed to other positions.
+- If you REDUCE a position, the reduced amount MUST be added to other positions.
+
+⚠️ HARD RULES (MUST FOLLOW - No Exceptions):
+
+1. BLACKLISTED SECTORS:
+   - If sector is marked "BLACKLISTED" or "DISQUALIFIED" → decision MUST be "REMOVE"
+   - No exceptions. Do not argue. Just REMOVE.
+
+2. CRITICAL NEWS VETO:
+   - If stock has CRITICAL news (sentiment < -40) → Strongly consider "REMOVE"
+   - Bad news overrides good technicals in short-term
+
+3. MARKET REGIME COMPLIANCE:
+   - If RISK_LEVEL = "HIGH_ALERT" → Follow defensive instructions strictly
+   - If RISK_LEVEL = "ROTATION" → Exit weak sectors aggressively
+
+4. SECTOR HEALTH THRESHOLD:
+   - Sector Health ≤ 2 → REDUCE or REMOVE (no KEEP)
+   - Sector Quant < 50 → REDUCE or REMOVE
+
+5. SECTOR CONCENTRATION (MAX 30%):
+   - If any single sector weight > 30% → MUST REDUCE stocks in that sector
+   - Distribute to underweight sectors or strong alternatives
+   - In "reasoning", cite: "Sector concentration X% exceeds 30% limit"
+
+6. ETF CONCENTRATION (MAX 10%):
+   - If total ETF weight > 10% → MUST REDUCE ETF positions
+   - Prioritize reducing lowest-performing ETFs first
+   - In "reasoning", cite: "Total ETF weight X% exceeds 10% limit"
+
+7. ETF SECTOR QUALITY:
+   - If ETF's Category/SubCategory matches a DISQUALIFIED or WEAK sector → MUST REMOVE or REPLACE
+   - Replacement ETF criteria (ALL must be met):
+     * Category NOT in disqualified/weak sectors
+     * STRONG momentum: 2W > 0 AND 1M > 0 AND 3M > 0
+     * QuantScore ≥ 70
+   - If no qualified ETF replacement available → REMOVE and redistribute to stocks
+   - In "reasoning", cite: "ETF [X] exposed to disqualified [Sector] - replaced with [Y] or redistributed"
+
+ANALYSIS FRAMEWORK:
+
+1. SHORT-TERM MOMENTUM (2W vs 1M):
+   - STRONG: Both 2W and 1M positive → OK to KEEP/INCREASE
+   - RECOVERING: 2W positive, 1M negative → Cautious KEEP
+   - WEAKENING: 2W negative, 1M positive → Consider REDUCE
+   - WEAK: Both negative → MUST REMOVE
+
+2. MEDIUM-TERM TREND (1M vs 3M):
+   - UPTREND: Both positive → Supportive
+   - DOWNTREND: Both negative → Negative bias
+   - MIXED: Conflicting → Neutral
+
+3. SECTOR HEALTH (0-5 scale):
+   - Health 4-5: Strong tailwind
+   - Health 2-3: Neutral
+   - Health 0-1: Strong headwind → AVOID
+
+4. QUANT SCORE:
+   - Top 10: Strong buy signal
+   - >80: Good
+   - 70-80: Acceptable
+   - <70: Weak
+
+DECISION MATRIX:
+- KEEP: Strong/Recovering momentum AND Sector Health ≥ 3 AND Score ≥ 70
+- INCREASE: Top 10 AND Strong momentum AND Strong sector (Health ≥ 4)
+- REDUCE: Weakening momentum OR Sector Health = 2 OR mixed signals
+- REMOVE: BLACKLISTED sector OR Weak momentum OR Sector Health ≤ 1 OR Critical news
+
+CRITICAL: In "reasoning" field, you MUST cite specific numbers:
+- "2W: +X.X%, 1M: +Y.Y% → STRONG momentum"
+- "Sector Health: 2/5, Quant: 45 → WEAK sector, MUST REDUCE"
+- "BLACKLISTED sector → MUST REMOVE per HARD RULE"
+
+OUTPUT FORMAT (JSON only, no markdown):
+{
+  "review_date": "YYYY-MM-DD",
+  "risk_level": "NORMAL/CAUTION/ROTATION/HIGH_ALERT/RISK_ON",
+  "market_regime": "ROTATION/RISK-ON/RISK-OFF/CAUTION/BULL/BEAR",
+  "regime_analysis": "1-2 sentence explaining how market regime affects decisions",
+  "hard_rules_applied": ["BLACKLISTED sector removal", "Critical news veto"],
+  "critical_alerts": ["BMY: Critical negative news", "Sector X blacklisted"],
+  "disqualified_sectors": ["Sector1"],
+  "weak_sectors": ["Sector2", "Sector3"],
+  "strong_sectors": ["Sector4", "Sector5"],
+  "portfolio_score": 75,
+  "assets": [
+    {
+      "symbol": "XXX",
+      "name": "Full Name",
+      "sector": "Sector",
+      "current_weight": 18.0,
+      "decision": "KEEP/REMOVE/REDUCE/INCREASE",
+      "new_weight": 18.0,
+      "score": 85.5,
+      "return_2w": 2.5,
+      "return_1m": 4.1,
+      "return_3m": 8.2,
+      "short_term_trend": "STRONG/RECOVERING/WEAKENING/WEAK",
+      "medium_term_trend": "UPTREND/DOWNTREND/MIXED",
+      "sentiment": 45,
+      "sector_health": 4,
+      "sector_quant_score": 79.4,
+      "sector_disqualified": false,
+      "sector_trend": "STRONG/WEAK/WEAKENING/RECOVERING",
+      "in_top10": true,
+      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM",
+      "reasoning": "MUST cite numbers: '2W: +X.X%, 1M: +Y.Y%, Sector Health: Z/5'",
+      "replacement": null or {"symbol": "YYY", "score": 90.1, "reason": "Better momentum + stronger sector"}
+    }
+  ],
+  "removals": [
+    {
+      "remove": "OLD",
+      "replace_with": "NEW", 
+      "reason": "Cite HARD RULE if applicable"
+    }
+  ],
+  "sector_allocation": {"Financials": 52.3, "Industrials": 22.0},
+  "summary": "3-4 sentence executive summary. Start with regime impact, then key actions."
+}
+
+REPLACEMENT SELECTION CRITERIA (Priority Order):
+
+1. SECTOR DIVERSIFICATION (Highest Priority):
+   - If removing from overweight sector (>30%), replacement MUST be from underweight sector
+   - NEVER suggest replacement from same overweight sector
+   - Prefer sectors with <15% current weight
+
+2. QUANT SCORE:
+   - Replacement must have Score ≥ 75 (prefer Top 10)
+   - Replacement score should be HIGHER than removed stock's score
+
+3. SECTOR HEALTH:
+   - Replacement sector Health must be ≥ 3/5
+   - NEVER suggest replacement from WEAK or BLACKLISTED sector
+   - Prefer STRONG sectors (Health ≥ 4)
+
+4. MOMENTUM ALIGNMENT:
+   - Replacement should have STRONG or RECOVERING momentum (2W > 0)
+   - Avoid WEAK momentum replacements (2W < 0 AND 1M < 0)
+
+5. SENTIMENT:
+   - Prefer positive or neutral sentiment
+   - Avoid stocks with negative sentiment (< -20)
+
+6. ETF vs STOCK:
+   - If ETF total > 10%, do NOT suggest ETF as replacement
+   - Prefer individual stocks for better alpha potential
+
+REPLACEMENT REASONING FORMAT:
+"Replace [OLD] (Score: X, [Sector] at Y%) with [NEW] (Score: Z, [Sector] at W%) - diversifies from overweight [Sector], stronger momentum (2W: +A%, 1M: +B%), sector health 4/5"
+
+CRITICAL REMINDERS:
+- 🚫 NO CASH: Never recommend cash. Portfolio must be 100% invested in stocks/ETFs.
+- 📊 TOTAL = 100%: Sum of all new_weight MUST equal exactly 100%. Double-check before outputting!
+- BLACKLISTED sector = MUST REMOVE (no exceptions)
+- Sector Health ≤ 2 = REDUCE or REMOVE
+- In "reasoning", cite specific numbers (2W, 1M, 3M, Sector Health, Quant Score)
+- If HARD RULE triggered, state it explicitly
+- Replacement MUST improve diversification - never same overweight sector
+- When REMOVING: Redistribute weight to KEEP/INCREASE positions or add new replacement
+- Be DECISIVE - no "maybe" or "consider"
+"""
+
+def analyze_portfolio(prompt_data, client, retries=3):
+    print(f"   📝 Prompt size: {len(prompt_data)} chars")
+    
+    for attempt in range(retries):
+        try:
+            print(f"   🔄 Attempt {attempt + 1}/{retries}...")
+            
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": f"{prompt_data}\n\nReturn ONLY valid JSON, no markdown."}
+                ],
+                max_completion_tokens=16000
+            )
+            
+            # Debug: Full response info
+            print(f"   📊 Response object: choices={len(response.choices)}")
+            if response.choices:
+                choice = response.choices[0]
+                print(f"   📊 Finish reason: {choice.finish_reason}")
+                print(f"   📊 Message role: {choice.message.role if choice.message else 'None'}")
+            
+            if response.usage:
+                print(f"   📊 Usage: prompt={response.usage.prompt_tokens}, completion={response.usage.completion_tokens}")
+            
+            content = response.choices[0].message.content
+            
+            # Debug: Yanıtı göster
+            print(f"   📥 Response length: {len(content) if content else 0}")
+            
+            if not content:
+                print("   ❌ Empty response from GPT!")
+                print(f"   📊 Full message: {response.choices[0].message}")
+                if attempt < retries - 1:
+                    import time
+                    time.sleep(3)
+                    continue
+                raise ValueError("GPT returned empty response")
+            
+            content = content.strip()
+            
+            # Debug: İlk 200 karakter
+            print(f"   📄 Response preview: {content[:200]}...")
+            
+            # Markdown temizle
+            if content.startswith("```"):
+                lines = content.split("\n")
+                lines = [l for l in lines if not l.strip().startswith("```")]
+                content = "\n".join(lines).strip()
+            
+            # JSON başlangıcını bul
+            json_start = content.find('{')
+            json_end = content.rfind('}')
+            
+            if json_start == -1 or json_end == -1:
+                print(f"   ❌ No JSON found in response!")
+                if attempt < retries - 1:
+                    import time
+                    time.sleep(2)
+                    continue
+                raise ValueError("No valid JSON in response")
+            
+            content = content[json_start:json_end+1]
+            
+            return json.loads(content)
+            
+        except json.JSONDecodeError as e:
+            print(f"   ❌ JSON parse error: {e}")
+            if attempt < retries - 1:
+                import time
+                time.sleep(2)
+                continue
+            raise
+        except Exception as e:
+            print(f"   ❌ Error: {e}")
+            if attempt < retries - 1:
+                import time
+                time.sleep(2)
+                continue
+            raise
+    
+    raise ValueError("All retries failed")
+
+# ============================================================
+# MAIN
+# ============================================================
+def main():
+    print("=" * 60)
+    print("📊 Weekly Portfolio Review v1.2")
+    print(f"   Model: {MODEL}")
+    print("=" * 60)
+    
+    # Load portfolio from txt
+    print(f"\n📂 Loading portfolio from {PORTFOLIO_FILE}...")
+    portfolio = load_portfolio()
+    
+    if not portfolio:
+        print("❌ Portfolio boş veya yüklenemedi!")
+        return
+    
+    print(f"✅ {PORTFOLIO_FILE} | {len(portfolio)} assets | Total: {sum(portfolio.values()):.1f}%")
+    for sym, wgt in sorted(portfolio.items(), key=lambda x: -x[1]):
+        print(f"   {sym:6} {wgt:5.1f}%")
+    
+    # Load data
+    etf_data = load_json('etf_data.json')
+    news_data = load_json('news_data.json')
+    
+    if not etf_data:
+        print("❌ etf_data.json required!")
+        return
+    
+    print(f"\n✅ etf_data.json | Regime: {etf_data.get('regime', {}).get('overall', 'N/A')}")
+    if news_data:
+        print(f"✅ news_data.json | {news_data.get('news_count', 0)} news")
+    
+    # API check
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        print("❌ OPENAI_API_KEY not set!")
+        return
+    
+    client = OpenAI(api_key=api_key)
+    print(f"✅ OpenAI connected")
+    
+    # Build & Analyze
+    print(f"\n🤖 Analyzing...")
+    prompt = build_analysis_prompt(portfolio, etf_data, news_data)
+    
+    try:
+        analysis = analyze_portfolio(prompt, client)
+        
+        # Add metadata
+        analysis['generated_at'] = datetime.now().isoformat()
+        analysis['model'] = MODEL
+        analysis['portfolio_input'] = portfolio
+        
+        # Save
+        with open('portfolio_review.json', 'w', encoding='utf-8') as f:
+            json.dump(analysis, f, indent=2, ensure_ascii=False)
+        
+        print(f"✅ Saved: portfolio_review.json")
+        
+        # Summary
+        print(f"\n{'=' * 60}")
+        decisions = {}
+        for a in analysis.get('assets', []):
+            d = a.get('decision', 'KEEP')
+            decisions[d] = decisions.get(d, 0) + 1
+        
+        for d, c in decisions.items():
+            icon = "✅" if d == "KEEP" else "❌" if d == "REMOVE" else "⚠️"
+            print(f"   {icon} {d}: {c}")
+        
+        print(f"\n{analysis.get('summary', '')}")
+        print("=" * 60)
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()
