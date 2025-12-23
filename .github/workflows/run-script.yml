@@ -1,60 +1,49 @@
-name: Veri Analiz ve JSON Üretici
+name: Initial Portfolio JSON Producer
 
 on:
   schedule:
-    # UTC 05:00 (TR 08:00) ve UTC 13:00 (TR 16:00)
+    # TR saatiyle 08:00 ve 16:00 (UTC 05:00 ve 13:00)
     - cron: '0 5,13 * * *'
-  workflow_dispatch: # Manuel tetikleme butonu
+  workflow_dispatch: # Manuel test butonu
 
 jobs:
   generate-json:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Git push için yazma izni
+      contents: write # Yazma izni şart
       
     steps:
-      # 1. Repoyu İndir (Token ile indiriyoruz ki pushlayınca diğer action tetiklensin)
+      # 1. Token ile Repoyu İndir (Diğer action'ı tetiklemek için)
       - name: Repoyu Çek
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.ACTION_TOKEN }}
 
-      # 2. Hata Ayıklama: Dosyalar nerede?
-      # Eğer "file not found" hatası alırsanız loglarda buraya bakın.
-      - name: Dosya Yapısını Listele
-        run: ls -R
-
-      # 3. Python Kurulumu
+      # 2. Python Ortamını Kur
       - name: Python Kur
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
-      # 4. Kütüphaneleri Yükle
+      # 3. Kütüphaneleri Yükle
       - name: Kütüphaneleri Yükle
         run: |
-          if [ -f requirements.txt ]; then 
-            pip install -r requirements.txt
-          else
-            # Dosya yoksa standart kütüphaneleri yükle
-            pip install pandas requests
-          fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install pandas requests; fi
 
-      # 5. Scripti Çalıştır
-      # weekly_portfolio_review.py; etf_data.json, news_data.json ve portfolio.txt'yi okur.
-      - name: Python Scriptini Çalıştır
+      # 4. Scripti Çalıştır (Dosyayı sıfırdan yaratır)
+      - name: Scripti Çalıştır
         run: python weekly_portfolio_review.py
 
-      # 6. Sonucu Kaydet ve Pushla
-      - name: Değişiklikleri Gönder
+      # 5. Kaydet ve Gönder
+      - name: Değişiklikleri Pushla
         run: |
+          # Bu 2 satır ZORUNLU (Yoksa "Kimsin sen?" hatası verir)
           git config user.name "Marketwatch Bot"
-          git config user.email "bot@marketwatch.com"
+          git config user.email "action@github.com"
           
-          # Scriptin ürettiği çıktı dosyasını ekle
-          # (Önceki konuşmamıza istinaden çıktının adı portfolio_review.json varsayılmıştır)
+          # Yeni yaratılan dosyayı sahneye al
           git add portfolio_review.json
           
-          # Değişiklik varsa commit at, yoksa hata vermeden devam et
-          git commit -m "Otomatik veri guncellemesi" || echo "Degisiklik yok"
+          # Değişiklik varsa kaydet ve gönder, yoksa hata verme
+          git commit -m "Guncel veri: portfolio_review.json" || echo "Degisiklik yok"
           git push
