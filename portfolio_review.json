@@ -1,16 +1,17 @@
 {
-  "review_date": "2023-10-20",
+  "review_date": "2023-10-06",
   "risk_level": "HIGH_ALERT",
   "market_regime": "ROTATION",
-  "regime_analysis": "The market is in a rotation phase requiring a reduction of risk in individual stocks. Defensive sector allocation is prioritized.",
+  "regime_analysis": "Current market conditions indicate a high level of risk requiring a reduction in volatile assets and an increase in defensive sector exposure.",
   "hard_rules_applied": [
-    "BLACKLISTED sector removal",
-    "Sector concentration fix"
+    "HARD RULE: WEAK_MOMENTUM triggered → REMOVE stocks",
+    "HARD RULE: BLACKLISTED sector removal → REMOVE stocks",
+    "HARD RULE: SECTOR_CONCENTRATION triggered → MUST REDUCE Financials"
   ],
   "critical_alerts": [
     "ETF: SKYY exposed to blacklisted Technology sector",
-    "STOCK: CAT critical news (sentiment -60)",
-    "ETF: SPY exposed to blacklisted Technology sector"
+    "ETF: SKYY critical news (sentiment -60)",
+    "STOCK: CAT critical news (sentiment -55)"
   ],
   "disqualified_sectors": [
     "Energy",
@@ -33,8 +34,8 @@
   "total_new_weight": 100.0,
   "weight_changes": {
     "reduced": 13.0,
-    "increased": 0.0,
-    "new_positions": 13.0
+    "increased": 0,
+    "new_positions": 0
   },
   "assets": [
     {
@@ -45,8 +46,8 @@
       "is_etf": false,
       "current_weight": 18.0,
       "decision": "INCREASE",
-      "new_weight": 30.9,
-      "weight_change": 12.9,
+      "new_weight": 39.6,
+      "weight_change": 21.6,
       "score": 68.0,
       "asset_score": 68.0,
       "return_2w": 5.79,
@@ -61,7 +62,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +5.79%, 1M: +18.98%, 3M: +23.38%) and excellent sector health (5/5, Quant: 84.3) justify KEEP position."
+      "reasoning": "Strong momentum (2W: +5.79%, 1M: +18.98%, 3M: +23.38%), excellent sector health (5/5, Quant: 84). KEEP position."
     },
     {
       "symbol": "C",
@@ -71,8 +72,8 @@
       "is_etf": false,
       "current_weight": 17.3,
       "decision": "REDUCE",
-      "new_weight": 12.0,
-      "weight_change": -5.3,
+      "new_weight": 4.3,
+      "weight_change": -13.0,
       "score": 82.5,
       "asset_score": 82.5,
       "return_2w": 8.42,
@@ -87,7 +88,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +8.42%, 1M: +20.96%) but MUST REDUCE due to Financials sector being overweight (43%)."
+      "reasoning": "Strong momentum (2W: +8.42%, 1M: +20.96%, 3M: +15.33%) with a solid sector health (5/5). REDUCE by 13%. Total weight redistribution required."
     },
     {
       "symbol": "GS",
@@ -112,8 +113,8 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": "WEAK_MOMENTUM",
-      "reasoning": "WEAK momentum for sector exposure combined with exceeding Financials limit. REMOVE and redistribute."
+      "hard_rule_triggered": "HARD RULE: WEAK_MOMENTUM triggered",
+      "reasoning": "WEAK momentum (2W: -2.36%, 1M: +6.64%) with critical news (sentiment -55). REMOVE and redistribute weight."
     },
     {
       "symbol": "CAT",
@@ -138,8 +139,8 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": "WEAK_MOMENTUM",
-      "reasoning": "Loser with recent critical news (2W: -2.36%). REMOVE for negative momentum."
+      "hard_rule_triggered": "HARD RULE: WEAK_MOMENTUM triggered",
+      "reasoning": "Losing momentum (2W: -2.36%, 1M: +6.64%) with critical news (sentiment -60). REMOVE and redistribute weight."
     },
     {
       "symbol": "FDX",
@@ -149,8 +150,8 @@
       "is_etf": false,
       "current_weight": 11.0,
       "decision": "INCREASE",
-      "new_weight": 18.9,
-      "weight_change": 7.9,
+      "new_weight": 24.2,
+      "weight_change": 13.2,
       "score": 91.2,
       "asset_score": 91.2,
       "return_2w": 6.38,
@@ -165,18 +166,18 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +6.38%, 1M: +11.85%) in healthy sector (5/5). KEEP position."
+      "reasoning": "Strong momentum and solid performance (2W: +6.38%, 1M: +11.85%) in the strong Industrials sector. KEEP position."
     },
     {
       "symbol": "SPY",
-      "name": "SPDR S&P 500 ETF Trust",
-      "sector": "Equity",
+      "name": "Core S&P 500 ETF",
+      "sector": "",
       "sub_category": "Core",
       "is_etf": true,
       "current_weight": 7.5,
-      "decision": "REMOVE",
-      "new_weight": 0.0,
-      "weight_change": -7.5,
+      "decision": "INCREASE",
+      "new_weight": 16.5,
+      "weight_change": 9.0,
       "score": 62.5,
       "asset_score": 62.5,
       "return_2w": 0.47,
@@ -185,13 +186,13 @@
       "short_term_trend": "STRONG",
       "medium_term_trend": "UPTREND",
       "sentiment": 0,
-      "sector_health": 0,
-      "sector_quant_score": 0,
+      "sector_health": null,
+      "sector_quant_score": null,
       "sector_disqualified": false,
-      "sector_trend": "WEAK",
+      "sector_trend": null,
       "in_top10": false,
-      "hard_rule_triggered": "ETF_DISQUALIFIED_SECTOR",
-      "reasoning": "REMOVE due to exposure to blacklisted Technology sector."
+      "hard_rule_triggered": null,
+      "reasoning": "Maintaining a conservative exposure to the S&P 500 through ETF. Momentum is still positive. KEEP position."
     },
     {
       "symbol": "COF",
@@ -200,9 +201,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 7.0,
-      "decision": "INCREASE",
-      "new_weight": 12.0,
-      "weight_change": 5.0,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -7.0,
       "score": 53.7,
       "asset_score": 53.7,
       "return_2w": 7.02,
@@ -216,8 +217,8 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +7.02%, 1M: +22.03%) and healthy Financials sector (5/5). KEEP position."
+      "hard_rule_triggered": "HARD RULE: WEAK_MOMENTUM triggered",
+      "reasoning": "WEAK momentum due to recent performance dip. REMOVE and redistribute weight."
     },
     {
       "symbol": "USB",
@@ -242,8 +243,8 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": "WEAK_MOMENTUM",
-      "reasoning": "Weaker sentiment (-1) prompts removal while Financials sector remains strong. REMOVE from portfolio."
+      "hard_rule_triggered": "HARD RULE: WEAK_MOMENTUM triggered",
+      "reasoning": "Despite strong fundamentals, recent negative sentiment impacts confidence. REMOVE and redistribute weight."
     },
     {
       "symbol": "GM",
@@ -253,8 +254,8 @@
       "is_etf": false,
       "current_weight": 7.0,
       "decision": "INCREASE",
-      "new_weight": 12.0,
-      "weight_change": 5.0,
+      "new_weight": 15.4,
+      "weight_change": 8.4,
       "score": 92.6,
       "asset_score": 92.6,
       "return_2w": 9.67,
@@ -269,12 +270,12 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +9.67%, 1M: +22.27%) in Consumer Disc. (5/5). KEEP position."
+      "reasoning": "Strong momentum and excellent performance (2W: +9.67%, 1M: +22.27%). KEEP position."
     },
     {
       "symbol": "SKYY",
-      "name": "Skyworks Solutions",
-      "sector": "Technology",
+      "name": "SKYY",
+      "sector": "",
       "sub_category": "Tech",
       "is_etf": true,
       "current_weight": 2.5,
@@ -289,13 +290,13 @@
       "short_term_trend": "LOSING",
       "medium_term_trend": "MIXED",
       "sentiment": 0,
-      "sector_health": 0,
-      "sector_quant_score": 0.0,
+      "sector_health": null,
+      "sector_quant_score": null,
       "sector_disqualified": true,
-      "sector_trend": "WEAK",
+      "sector_trend": null,
       "in_top10": false,
-      "hard_rule_triggered": "BLACKLISTED_SECTOR",
-      "reasoning": "REMOVE due to exposure to blacklisted Technology sector."
+      "hard_rule_triggered": "HARD RULE: BLACKLISTED_SECTOR triggered",
+      "reasoning": "ETF exposure to blacklisted sector. REMOVE and redistribute weight."
     },
     {
       "symbol": "PNC",
@@ -304,9 +305,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 0.7,
-      "decision": "KEEP",
-      "new_weight": 1.2,
-      "weight_change": 0.5,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -0.7,
       "score": 32.2,
       "asset_score": 32.2,
       "return_2w": 7.72,
@@ -320,74 +321,73 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": null,
-      "reasoning": "Strong short-term momentum (2W: +7.72%) in Financials, deserving KEEP."
+      "hard_rule_triggered": "HARD RULE: WEAK_MOMENTUM triggered",
+      "reasoning": "While showing some positive returns, overall score remains low. REMOVE and redistribute weight."
     }
   ],
-  "new_positions": [
-    {
-      "symbol": "SLV",
-      "name": "iShares Silver Trust",
-      "sector": "Comm./Precious",
-      "is_etf": true,
-      "new_weight": 13.0,
-      "score": 81.5,
-      "return_2w": 18.5,
-      "return_1m": 36.5,
-      "return_3m": 56.3,
-      "short_term_trend": "STRONG",
-      "medium_term_trend": "UPTREND",
-      "sector_health": 4,
-      "sector_quant_score": 81.0,
-      "sentiment": 0,
-      "reason": "Diversification into underweight Precious sector and replacing removed Financials. Strong momentum signals."
-    }
-  ],
+  "new_positions": [],
   "removals": [
     {
       "remove": "GS",
-      "replace_with": "SLV",
+      "replace_with": "RE-DISTRIBUTED",
       "weight_redistributed_to": [
-        "C +5.3%"
+        "C +4.3%",
+        "FDX +4.7%",
+        "BMY +4.0%"
       ],
-      "reason": "REMOVE due to weight concentration in Financials and switch to more secure ETF option."
+      "reason": "HARD RULE: WEAK_MOMENTUM triggered"
     },
     {
       "remove": "CAT",
-      "replace_with": "SLV",
-      "weight_redistributed_to": [],
-      "reason": "REMOVE due to losing momentum and sector exposure to Industrials."
+      "replace_with": "RE-DISTRIBUTED",
+      "weight_redistributed_to": [
+        "FDX +5.0%"
+      ],
+      "reason": "HARD RULE: WEAK_MOMENTUM triggered"
     },
     {
-      "remove": "SPY",
-      "replace_with": "SLV",
-      "weight_redistributed_to": [],
-      "reason": "REMOVE due to exposure to blacklisted Technology sector."
+      "remove": "COF",
+      "replace_with": "RE-DISTRIBUTED",
+      "weight_redistributed_to": [
+        "FDX +3.0%"
+      ],
+      "reason": "HARD RULE: WEAK_MOMENTUM triggered"
     },
     {
       "remove": "USB",
-      "replace_with": "SLV",
-      "weight_redistributed_to": [],
-      "reason": "REMOVE for weak sentiment despite strong Financials sector."
+      "replace_with": "RE-DISTRIBUTED",
+      "weight_redistributed_to": [
+        "FDX +3.0%"
+      ],
+      "reason": "HARD RULE: WEAK_MOMENTUM triggered"
+    },
+    {
+      "remove": "PNC",
+      "replace_with": "RE-DISTRIBUTED",
+      "weight_redistributed_to": [
+        "FDX +0.7%"
+      ],
+      "reason": "HARD RULE: WEAK_MOMENTUM triggered"
     },
     {
       "remove": "SKYY",
-      "replace_with": "SLV",
-      "weight_redistributed_to": [],
-      "reason": "REMOVE due to blacklisted Technology sector."
+      "replace_with": "RE-DISTRIBUTED",
+      "weight_redistributed_to": [
+        "FDX +2.5%"
+      ],
+      "reason": "HARD RULE: BLACKLISTED_SECTOR triggered"
     }
   ],
   "sector_allocation": {
     "Financials": 30.0,
-    "Industrials": 11.0,
+    "Industrials": 28.0,
     "Healthcare": 18.0,
-    "Consumer Disc.": 7.0,
-    "Precious": 13.0
+    "Consumer Disc.": 7.0
   },
-  "summary": "High alert regime calls for reducing risky assets and enhancing defensive positions. Major moves include full removal from Financials and Technology, reallocating to the Precious sector. Total: 100.0%",
+  "summary": "In a high alert market regime, we are prioritizing capital preservation by removing positions with weak momentum and exposure to blacklisted sectors. Financials were reduced to align with concentration limits. Total: 100.0%",
   "weight_adjusted": true,
-  "adjustment_note": "Auto-adjusted +31.3% to reach 100%",
-  "generated_at": "2025-12-23T21:16:36.142514",
+  "adjustment_note": "Auto-adjusted +52.2% to reach 100%",
+  "generated_at": "2025-12-23T21:27:22.569501",
   "model": "gpt-4o-mini",
   "portfolio_input": {
     "BMY": 18.0,
