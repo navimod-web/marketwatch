@@ -1427,31 +1427,80 @@ def validate_and_fix_weights(result, portfolio_input=None, etf_data=None):
     if not assets:
         return result
     
+    # STEP 0: Validate WEAK_MOMENTUM claims against actual data
+    print(f"   🔍 Validating momentum claims...")
+    for asset in assets:
+        symbol = asset.get('symbol', '')
+        ret_2w = asset.get('return_2w', 0) or 0
+        ret_1m = asset.get('return_1m', 0) or 0
+        ret_3m = asset.get('return_3m', 0) or 0
+        decision = asset.get('decision', '').upper()
+        hard_rule = asset.get('hard_rule_triggered', '')
+        
+        # Check if WEAK_MOMENTUM is correctly applied
+        is_actually_weak = (ret_2w < 0) and (ret_1m < 0 or ret_3m < 0)
+        
+        if hard_rule == 'WEAK_MOMENTUM' and not is_actually_weak:
+            print(f"      ❌ {symbol}: WEAK_MOMENTUM claim is FALSE! 2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}%")
+            # Correct the decision - should not be REMOVE for fake weak momentum
+            if decision == 'REMOVE' and ret_2w > 0 and ret_1m > 0:
+                asset['hard_rule_triggered'] = None
+                asset['decision'] = 'KEEP'
+                asset['new_weight'] = asset.get('current_weight', 0)
+                asset['weight_change'] = 0
+                asset['reasoning'] = f"CORRECTED: Original WEAK_MOMENTUM claim was invalid (2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}% are positive). KEEP position."
+                print(f"      ✅ {symbol}: Corrected to KEEP")
+    
     # STEP 1: Enforce max position size (25%) and max change (10%)
     print(f"   🔒 Checking position limits...")
+    excess_weight = 0  # Track weight that needs redistribution
+    
     for asset in assets:
         symbol = asset.get('symbol', '')
         current = asset.get('current_weight', 0) or 0
         new = asset.get('new_weight', 0) if isinstance(asset.get('new_weight'), (int, float)) else current
+        decision = asset.get('decision', '').upper()
+        
+        # Skip REMOVE positions
+        if decision == 'REMOVE':
+            continue
+        
+        original_new = new
         
         # Max position size: 25%
         if new > 25:
             print(f"      ⚠️ {symbol}: {new:.1f}% exceeds 25% max → capping to 25%")
+            excess_weight += new - 25.0
+            new = 25.0
             asset['new_weight'] = 25.0
             asset['weight_change'] = 25.0 - current
-            new = 25.0
         
         # Max change: ±10%
         change = new - current
         if change > 10:
-            print(f"      ⚠️ {symbol}: +{change:.1f}% exceeds +10% max change → capping")
+            print(f"      ⚠️ {symbol}: +{change:.1f}% exceeds +10% max change → capping to +10%")
+            excess_weight += change - 10.0
             asset['new_weight'] = round(current + 10, 1)
             asset['weight_change'] = 10.0
-        elif change < -10 and asset.get('decision', '').upper() != 'REMOVE':
-            # Allow REMOVE to go to 0, but REDUCE should not exceed -10%
-            print(f"      ⚠️ {symbol}: {change:.1f}% exceeds -10% max change → adjusting")
-            asset['new_weight'] = round(current - 10, 1)
-            asset['weight_change'] = -10.0
+    
+    # Redistribute excess weight if any
+    if excess_weight > 0.5:
+        print(f"   📊 Redistributing {excess_weight:.1f}% excess weight...")
+        # Find eligible positions (KEEP with room to grow, under 25%)
+        eligible = [a for a in assets 
+                    if a.get('decision', '').upper() in ['KEEP', 'INCREASE']
+                    and (a.get('new_weight', 0) or 0) < 25
+                    and (a.get('new_weight', 0) or 0) > 0]
+        
+        if eligible:
+            share_each = excess_weight / len(eligible)
+            for a in eligible:
+                current_new = a.get('new_weight', 0) or 0
+                add = min(share_each, 25 - current_new, 10 - (current_new - a.get('current_weight', 0)))
+                if add > 0:
+                    a['new_weight'] = round(current_new + add, 1)
+                    a['weight_change'] = round(a['new_weight'] - a.get('current_weight', 0), 1)
+                    print(f"      {a['symbol']}: +{add:.1f}% redistributed")
     
     # Calculate total new_weight from assets
     total = sum(a.get('new_weight', 0) or 0 for a in assets)
