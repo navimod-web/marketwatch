@@ -1,12 +1,13 @@
 name: Sonucu Portfolio Reposuna Gönder
-
 on:
   push:
     paths:
-      # SADECE üretilen sonuç dosyası değişince çalış
       - 'portfolio_review.json'
     branches:
       - main
+      
+  # Manuel tetikleme opsiyonu
+  workflow_dispatch:
 
 jobs:
   transfer-file:
@@ -14,20 +15,28 @@ jobs:
     steps:
       - name: Kaynak (Marketwatch) Çek
         uses: actions/checkout@v3
-
+        
+      - name: Dosya Varlığını Kontrol Et
+        run: |
+          if [ ! -f portfolio_review.json ]; then
+            echo "❌ portfolio_review.json bulunamadı!"
+            exit 1
+          fi
+          echo "✅ portfolio_review.json mevcut"
+          
       - name: Hedef (PortfolioReview) Çek
         uses: actions/checkout@v3
         with:
-          repository: 'navimod-web/portfolioreview' # Kendi kullanıcı adınızı yazın
+          repository: 'navimod-web/portfolioreview'
           token: ${{ secrets.ACTION_TOKEN }}
           path: 'hedef-repo'
-          ref: 'master' # Hedef reponun branch adı (main veya master)
-
+          ref: 'master'
+          
       - name: Dosyayı Kopyala
         run: |
-          # Sadece sonuç dosyasını hedefin ana dizinine atıyoruz
           cp portfolio_review.json hedef-repo/
-
+          echo "✅ Dosya kopyalandı"
+          
       - name: Karşıya Yükle
         run: |
           cd hedef-repo
@@ -35,5 +44,6 @@ jobs:
           git config user.email "bot@transfer.com"
           
           git add portfolio_review.json
-          git commit -m "Yeni portfolio verisi geldi" || echo "Degisiklik yok"
+          git commit -m "📊 Portfolio Review $(date +'%Y-%m-%d %H:%M')" || echo "Değişiklik yok"
           git push
+          echo "✅ Push tamamlandı"
