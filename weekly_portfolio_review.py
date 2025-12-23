@@ -1217,6 +1217,8 @@ OUTPUT (must still = 100%):
 9. WEAK MOMENTUM = REMOVE TRIGGER:
    - ONLY remove stocks where: 2W < 0 AND (1M < 0 OR 3M < 0)
    - If 2W < 0 but 1M > 0 and 3M > 0 → REDUCE, not REMOVE (temporary dip)
+   - ⚠️ IMPORTANT: Do NOT mark a stock as WEAK_MOMENTUM if its actual data shows positive 2W and 1M returns!
+   - Always verify the actual return data before setting hard_rule_triggered
 
 ANALYSIS FRAMEWORK:
 
@@ -1400,13 +1402,20 @@ REPLACEMENT REASONING FORMAT:
    - REDUCE for: Sector concentration, mild weakness
    - For concentration: REDUCE proportionally, don't eliminate positions
 
-5. VALIDATION BEFORE OUTPUT:
+5. DATA CONSISTENCY (VERY IMPORTANT):
+   - The return_2w, return_1m, return_3m values in your output MUST match the input data
+   - Do NOT invent or change momentum numbers in your reasoning
+   - If input shows 2W: +6.7%, your output must show 2W: +6.7%, not different values
+   - hard_rule_triggered MUST match the actual data (e.g., don't say WEAK_MOMENTUM if 2W is positive)
+
+6. VALIDATION BEFORE OUTPUT:
    - Check: No position > 25%
    - Check: No change > ±10%
    - Check: Total = 100%
+   - Check: All portfolio assets included (don't skip small positions like 0.7%)
 """
 
-def validate_and_fix_weights(result, etf_data=None):
+def validate_and_fix_weights(result, portfolio_input=None, etf_data=None):
     """
     Post-process GPT output to ensure:
     1. Total weight = 100%
@@ -1457,6 +1466,9 @@ def validate_and_fix_weights(result, etf_data=None):
     if abs(total - 100.0) < 0.1:
         result['total_new_weight'] = 100.0
         print(f"   ✅ Weight OK: {total:.1f}%")
+        # Sync missing assets first
+        if portfolio_input:
+            result = sync_missing_assets(result, portfolio_input, etf_data)
         # Sync removals even when weight is OK
         result = sync_removals_with_decisions(result)
         return result
@@ -1548,6 +1560,10 @@ def validate_and_fix_weights(result, etf_data=None):
     if abs(result['total_new_weight'] - 100.0) > 0.5:
         print(f"   ❌ WARNING: Still not 100%! Manual review needed.")
     
+    # Sync missing assets first (GPT might forget small positions)
+    if portfolio_input:
+        result = sync_missing_assets(result, portfolio_input, etf_data)
+    
     # Sync removals with REMOVE decisions
     result = sync_removals_with_decisions(result)
     
@@ -1615,7 +1631,114 @@ def sync_removals_with_decisions(result):
     result['removals'] = removals
     return result
 
-def analyze_portfolio(prompt_data, client, retries=3):
+def sync_missing_assets(result, portfolio_input, etf_data=None):
+    """
+    Ensure all portfolio assets appear in the result.
+    GPT sometimes forgets small positions like PNC (0.7%).
+    """
+    if not portfolio_input:
+        return result
+    
+    assets = result.get('assets', [])
+    existing_symbols = set(a.get('symbol', '') for a in assets)
+    
+    # Check for missing assets
+    missing = []
+    for symbol, weight in portfolio_input.items():
+        if symbol not in existing_symbols:
+            missing.append((symbol, weight))
+    
+    if not missing:
+        return result
+    
+    print(f"   ⚠️ Found {len(missing)} missing assets: {[m[0] for m in missing]}")
+    
+    # Add missing assets with data from etf_data if available
+    for symbol, weight in missing:
+        # Try to get real data
+        data = {}
+        sector = 'Unknown'
+        name = symbol
+        score = 0
+        return_2w = 0
+        return_1m = 0
+        return_3m = 0
+        short_trend = 'N/A'
+        med_trend = 'N/A'
+        sector_health = 0
+        sector_quant = 0
+        
+        if etf_data:
+            # Check stocks
+            for sec, stocks in etf_data.get('sectors', {}).items():
+                for stock in stocks:
+                    if stock.get('Symbol') == symbol:
+                        data = stock
+                        sector = sec
+                        name = stock.get('Name', symbol)
+                        score = stock.get('SCORE', 0) or 0
+                        
+                        w2 = stock.get('2W', {}) or {}
+                        m1 = stock.get('1M', {}) or {}
+                        m3 = stock.get('3M', {}) or {}
+                        
+                        return_2w = w2.get('RETURN', 0) or 0
+                        return_1m = m1.get('RETURN', 0) or 0
+                        return_3m = m3.get('RETURN', 0) or 0
+                        
+                        # Trends
+                        if return_2w > 0 and return_1m > 0:
+                            short_trend = 'STRONG'
+                        elif return_2w > 0 and return_1m < 0:
+                            short_trend = 'RECOVERING'
+                        elif return_2w < 0 and return_1m > 0:
+                            short_trend = 'LOSING'
+                        else:
+                            short_trend = 'WEAK'
+                        
+                        if return_1m > 0 and return_3m > 0:
+                            med_trend = 'UPTREND'
+                        elif return_1m < 0 and return_3m < 0:
+                            med_trend = 'DOWNTREND'
+                        else:
+                            med_trend = 'MIXED'
+                        
+                        # Sector health
+                        sector_health_data = etf_data.get('sector_health', {}).get(sec, {})
+                        sector_health = sector_health_data.get('health', 0)
+                        sector_quant = sector_health_data.get('quant_score', 0)
+                        break
+        
+        missing_asset = {
+            'symbol': symbol,
+            'name': name,
+            'sector': sector,
+            'current_weight': weight,
+            'decision': 'KEEP',
+            'new_weight': weight,
+            'weight_change': 0,
+            'score': score,
+            'asset_score': score,
+            'return_2w': return_2w,
+            'return_1m': return_1m,
+            'return_3m': return_3m,
+            'short_term_trend': short_trend,
+            'medium_term_trend': med_trend,
+            'sentiment': 0,
+            'sector_health': sector_health,
+            'sector_quant_score': sector_quant,
+            'sector_disqualified': False,
+            'in_top10': False,
+            'hard_rule_triggered': None,
+            'reasoning': f'Small position ({weight}%) maintained as KEEP. Auto-added - GPT skipped this asset.'
+        }
+        assets.append(missing_asset)
+        print(f"   📝 Added missing asset: {symbol} ({weight}%) as KEEP")
+    
+    result['assets'] = assets
+    return result
+
+def analyze_portfolio(prompt_data, client, portfolio_input=None, etf_data=None, retries=3):
     print(f"   📝 Prompt size: {len(prompt_data)} chars")
     
     for attempt in range(retries):
@@ -1683,7 +1806,7 @@ def analyze_portfolio(prompt_data, client, retries=3):
             result = json.loads(content)
             
             # POST-PROCESSING: Validate and fix total weight
-            result = validate_and_fix_weights(result)
+            result = validate_and_fix_weights(result, portfolio_input=portfolio_input, etf_data=etf_data)
             
             return result
             
@@ -1751,7 +1874,7 @@ def main():
     prompt = build_analysis_prompt(portfolio, etf_data, news_data)
     
     try:
-        analysis = analyze_portfolio(prompt, client)
+        analysis = analyze_portfolio(prompt, client, portfolio_input=portfolio, etf_data=etf_data)
         
         # Add metadata
         analysis['generated_at'] = datetime.now().isoformat()
