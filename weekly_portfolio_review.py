@@ -1176,30 +1176,37 @@ OUTPUT (must still = 100%):
    - If sector is marked "BLACKLISTED" or "DISQUALIFIED" → decision MUST be "REMOVE"
    - No exceptions. Do not argue. Just REMOVE.
 
-2. CRITICAL NEWS VETO:
-   - If stock has CRITICAL news (sentiment < -40) → Strongly consider "REMOVE"
+2. CRITICAL NEWS VETO (Only for REAL news, not sector issues):
+   - ONLY applies when: A stock has actual negative NEWS with sentiment < -40
+   - In critical_alerts, format as: "STOCK: [symbol] critical news (sentiment -XX)"
+   - Do NOT use "critical news" for ETF sector exposure or blacklisted sectors
    - Bad news overrides good technicals in short-term
 
-3. MARKET REGIME COMPLIANCE:
+3. ETF BLACKLISTED SECTOR EXPOSURE:
+   - If ETF's sector/category is BLACKLISTED → MUST REMOVE
+   - In critical_alerts, format as: "ETF: [symbol] exposed to blacklisted [sector] sector"
+   - This is NOT "critical news" - it's sector exposure issue
+
+4. MARKET REGIME COMPLIANCE:
    - If RISK_LEVEL = "HIGH_ALERT" → Be more conservative, prefer defensive sectors
    - If RISK_LEVEL = "ROTATION" → Reduce weak sector exposure
 
-4. SECTOR HEALTH THRESHOLD:
+5. SECTOR HEALTH THRESHOLD:
    - Sector Health ≤ 2 → REDUCE or REMOVE (no KEEP)
    - Sector Quant < 50 → REDUCE exposure
 
-5. SECTOR CONCENTRATION (MAX 30%):
+6. SECTOR CONCENTRATION (MAX 30%):
    - If any single sector weight > 30% → MUST REDUCE (not REMOVE!) stocks in that sector
    - Target: Bring sector to ~28-30%, not eliminate entirely
    - REDUCE proportionally from multiple stocks in the sector
    - In "reasoning", cite: "Sector concentration X% exceeds 30% limit → REDUCE by Y%"
 
-6. ETF CONCENTRATION (MAX 10%):
+7. ETF CONCENTRATION (MAX 10%):
    - If total ETF weight > 10% → MUST REDUCE ETF positions
    - Prioritize reducing lowest-performing ETFs first
    - In "reasoning", cite: "Total ETF weight X% exceeds 10% limit"
 
-7. ETF SECTOR QUALITY:
+8. ETF SECTOR QUALITY:
    - If ETF's Category/SubCategory matches a DISQUALIFIED or WEAK sector → MUST REMOVE or REPLACE
    - Replacement ETF criteria (ALL must be met):
      * Category NOT in disqualified/weak sectors
@@ -1207,10 +1214,9 @@ OUTPUT (must still = 100%):
      * QuantScore ≥ 70
    - If no qualified ETF replacement available → REMOVE and redistribute to stocks
 
-8. WEAK MOMENTUM = REMOVE TRIGGER:
+9. WEAK MOMENTUM = REMOVE TRIGGER:
    - ONLY remove stocks where: 2W < 0 AND (1M < 0 OR 3M < 0)
    - If 2W < 0 but 1M > 0 and 3M > 0 → REDUCE, not REMOVE (temporary dip)
-   - In "reasoning", cite: "ETF [X] exposed to disqualified [Sector] - replaced with [Y] or redistributed"
 
 ANALYSIS FRAMEWORK:
 
@@ -1261,7 +1267,11 @@ OUTPUT FORMAT (JSON only, no markdown):
   "market_regime": "ROTATION/RISK-ON/RISK-OFF/CAUTION/BULL/BEAR",
   "regime_analysis": "1-2 sentence explaining how market regime affects decisions",
   "hard_rules_applied": ["BLACKLISTED sector removal", "Sector concentration fix"],
-  "critical_alerts": ["BMY: Critical negative news", "Sector X blacklisted"],
+  "critical_alerts": [
+    "STOCK: Critical news (sentiment -60)",
+    "SECTOR: Technology blacklisted", 
+    "ETF: SKYY exposed to blacklisted Technology sector"
+  ],
   "disqualified_sectors": ["Sector1"],
   "weak_sectors": ["Sector2", "Sector3"],
   "strong_sectors": ["Sector4", "Sector5"],
@@ -1296,7 +1306,7 @@ OUTPUT FORMAT (JSON only, no markdown):
       "sector_disqualified": false,
       "sector_trend": "STRONG/WEAK/WEAKENING/RECOVERING",
       "in_top10": true,
-      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION/ETF_CONCENTRATION",
+      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION/ETF_CONCENTRATION/ETF_BLACKLISTED_SECTOR",
       "reasoning": "DETAILED reasoning with ALL numbers cited. See examples above.",
       "replacement": null or {"symbol": "YYY", "score": 90.1, "reason": "Better momentum + stronger sector"}
     }
