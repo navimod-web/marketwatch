@@ -1,0 +1,47 @@
+name: Portfolio Review Reposuna Veri Aktar
+
+on:
+  push:
+    paths:
+      # Sadece bu iki dosya değişince çalışsın
+      - 'etf_data.json'
+      - 'news_data.json'
+    branches:
+      - main  # Veya master, ana dalınız neyse
+
+jobs:
+  update-portfolio:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Marketwatch (Kaynak) reposunu indir
+      - name: Marketwatch Verilerini Çek
+        uses: actions/checkout@v3
+
+      # 2. Portfolioreview (Hedef) reposunu indir
+      - name: Portfolioreview Reposunu Çek
+        uses: actions/checkout@v3
+        with:
+          repository: 'navimod-web/portfolioreview' # BURAYI KENDİ KULLANICI ADINIZLA DEĞİŞTİRİN
+          token: ${{ secrets.ACTION_TOKEN }}
+          path: 'hedef-repo' # Geçici bir klasöre indiriyoruz
+
+      # 3. Dosyaları Hedefin Ana Dizinine Kopyala
+      - name: JSON Dosyalarını Aktar
+        run: |
+          # Dosyalar marketwatch'ta ana dizindeyse direkt kopyalıyoruz
+          cp etf_data.json hedef-repo/
+          cp news_data.json hedef-repo/
+
+      # 4. Değişiklikleri Kaydet ve Gönder
+      - name: Pushla
+        run: |
+          cd hedef-repo
+          git config user.name "Marketwatch Bot"
+          git config user.email "bot@marketwatch.com"
+          
+          # Sadece bu iki dosyayı ekle
+          git add etf_data.json news_data.json
+          
+          # Commit at ve gönder
+          git commit -m "Marketwatch: Güncel veri paketi (etf & news)" || echo "Değişiklik yok"
+          git push
