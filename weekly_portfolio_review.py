@@ -1089,11 +1089,51 @@ def build_analysis_prompt(portfolio, etf_data, news_data):
 SYSTEM_PROMPT = """ROLE: Senior Risk Manager for Weekly Swing Trading Portfolio
 OBJECTIVE: Preserve capital FIRST, generate alpha SECOND. Be DECISIVE.
 
-🚫 ABSOLUTE CONSTRAINTS:
-- NO CASH: Never recommend holding cash. Portfolio must be FULLY INVESTED.
-- TOTAL = 100%: Sum of all new_weight values MUST equal exactly 100%.
-- If you REMOVE a position, its weight MUST be redistributed to other positions.
-- If you REDUCE a position, the reduced amount MUST be added to other positions.
+🚫 ABSOLUTE CONSTRAINTS (MATHEMATICAL REQUIREMENT):
+
+1. TOTAL WEIGHT = 100%:
+   - Sum of ALL new_weight values MUST equal EXACTLY 100.0%
+   - This is NON-NEGOTIABLE. Double-check your math before responding.
+   - If you REDUCE a position by X%, you MUST add X% to other positions.
+   - If you REMOVE a position (new_weight=0), its ENTIRE weight MUST go elsewhere.
+
+2. NO CASH / NO MISSING WEIGHT:
+   - Portfolio must be FULLY INVESTED at all times.
+   - Every percentage point must be allocated to a stock or ETF.
+   - "Cash" is NOT a valid allocation.
+
+3. WEIGHT REDISTRIBUTION RULES:
+   - When REDUCING: Add the reduced amount to KEEP or INCREASE positions
+   - When REMOVING: Either add a REPLACEMENT stock OR distribute weight to existing positions
+   - Prefer adding to: Top 10 stocks > Strong sector stocks > Existing KEEP positions
+
+4. REPLACEMENT REQUIREMENT:
+   - If decision = "REMOVE", you MUST either:
+     a) Provide a "replacement" with symbol from ALTERNATIVE CANDIDATES, OR
+     b) Explicitly redistribute weight to other positions (increase their new_weight)
+   - replacement = null is ONLY allowed if weight is redistributed to other assets
+
+5. VALIDATION CHECK (Do this before outputting):
+   - Add up all new_weight values: SUM = ?
+   - If SUM ≠ 100.0, STOP and fix it before outputting
+
+📝 EXAMPLE - How to handle REDUCE and REMOVE:
+
+INPUT Portfolio (100%):
+  BMY: 18%, C: 17%, SKYY: 5%, Others: 60% = 100%
+
+DECISIONS:
+  - C: REDUCE from 17% → 12% (freed: 5%)
+  - SKYY: REMOVE 5% → 0% (freed: 5%)
+  - Total freed: 10%
+
+OUTPUT (must still = 100%):
+  BMY: 18% → 23% (INCREASE, +5%)
+  C: 17% → 12% (REDUCE, -5%)
+  SKYY: 5% → 0% (REMOVE, -5%)
+  NEW_STOCK: 0% → 5% (NEW from alternatives)
+  Others: 60% → 60% (KEEP)
+  TOTAL: 23 + 12 + 0 + 5 + 60 = 100% ✅
 
 ⚠️ HARD RULES (MUST FOLLOW - No Exceptions):
 
@@ -1173,12 +1213,18 @@ OUTPUT FORMAT (JSON only, no markdown):
   "risk_level": "NORMAL/CAUTION/ROTATION/HIGH_ALERT/RISK_ON",
   "market_regime": "ROTATION/RISK-ON/RISK-OFF/CAUTION/BULL/BEAR",
   "regime_analysis": "1-2 sentence explaining how market regime affects decisions",
-  "hard_rules_applied": ["BLACKLISTED sector removal", "Critical news veto"],
+  "hard_rules_applied": ["BLACKLISTED sector removal", "Sector concentration fix"],
   "critical_alerts": ["BMY: Critical negative news", "Sector X blacklisted"],
   "disqualified_sectors": ["Sector1"],
   "weak_sectors": ["Sector2", "Sector3"],
   "strong_sectors": ["Sector4", "Sector5"],
   "portfolio_score": 75,
+  "total_new_weight": 100.0,
+  "weight_changes": {
+    "reduced": 12.5,
+    "increased": 10.0,
+    "new_positions": 2.5
+  },
   "assets": [
     {
       "symbol": "XXX",
@@ -1187,6 +1233,7 @@ OUTPUT FORMAT (JSON only, no markdown):
       "current_weight": 18.0,
       "decision": "KEEP/REMOVE/REDUCE/INCREASE",
       "new_weight": 18.0,
+      "weight_change": 0.0,
       "score": 85.5,
       "return_2w": 2.5,
       "return_1m": 4.1,
@@ -1199,21 +1246,36 @@ OUTPUT FORMAT (JSON only, no markdown):
       "sector_disqualified": false,
       "sector_trend": "STRONG/WEAK/WEAKENING/RECOVERING",
       "in_top10": true,
-      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM",
+      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION",
       "reasoning": "MUST cite numbers: '2W: +X.X%, 1M: +Y.Y%, Sector Health: Z/5'",
       "replacement": null or {"symbol": "YYY", "score": 90.1, "reason": "Better momentum + stronger sector"}
+    }
+  ],
+  "new_positions": [
+    {
+      "symbol": "NEW_STOCK",
+      "name": "New Stock Name",
+      "sector": "Sector",
+      "new_weight": 5.0,
+      "score": 88.5,
+      "reason": "Replacement for REMOVED stock, diversifies to underweight sector"
     }
   ],
   "removals": [
     {
       "remove": "OLD",
-      "replace_with": "NEW", 
+      "replace_with": "NEW or REDISTRIBUTED",
+      "weight_redistributed_to": ["BMY +2%", "FDX +3%"],
       "reason": "Cite HARD RULE if applicable"
     }
   ],
-  "sector_allocation": {"Financials": 52.3, "Industrials": 22.0},
-  "summary": "3-4 sentence executive summary. Start with regime impact, then key actions."
+  "sector_allocation": {"Financials": 28.0, "Industrials": 22.0, "Healthcare": 20.0},
+  "summary": "3-4 sentence executive summary. Start with regime impact, then key actions. END with: Total: 100.0%"
 }
+
+⚠️ CRITICAL VALIDATION:
+Before outputting, verify: sum of all new_weight = 100.0
+If not 100.0, ADJUST positions until it equals exactly 100.0!
 
 REPLACEMENT SELECTION CRITERIA (Priority Order):
 
@@ -1246,17 +1308,147 @@ REPLACEMENT SELECTION CRITERIA (Priority Order):
 REPLACEMENT REASONING FORMAT:
 "Replace [OLD] (Score: X, [Sector] at Y%) with [NEW] (Score: Z, [Sector] at W%) - diversifies from overweight [Sector], stronger momentum (2W: +A%, 1M: +B%), sector health 4/5"
 
-CRITICAL REMINDERS:
-- 🚫 NO CASH: Never recommend cash. Portfolio must be 100% invested in stocks/ETFs.
-- 📊 TOTAL = 100%: Sum of all new_weight MUST equal exactly 100%. Double-check before outputting!
-- BLACKLISTED sector = MUST REMOVE (no exceptions)
-- Sector Health ≤ 2 = REDUCE or REMOVE
-- In "reasoning", cite specific numbers (2W, 1M, 3M, Sector Health, Quant Score)
-- If HARD RULE triggered, state it explicitly
-- Replacement MUST improve diversification - never same overweight sector
-- When REMOVING: Redistribute weight to KEEP/INCREASE positions or add new replacement
-- Be DECISIVE - no "maybe" or "consider"
+⚠️ CRITICAL REMINDERS - READ CAREFULLY:
+
+1. WEIGHT MATH (MOST IMPORTANT):
+   - Calculate: sum of all new_weight values
+   - If sum ≠ 100.0, FIX IT before responding
+   - Example: If you REDUCE C from 17.3% to 12.3%, that's -5.0% that MUST go somewhere else
+   - Example: If you REMOVE SKYY (2.5%), that 2.5% MUST go to other positions or new stock
+
+2. REDISTRIBUTION:
+   - REDUCE weight → Add to strongest KEEP positions
+   - REMOVE weight → Add replacement stock OR distribute to existing positions
+   - List where weight goes in "weight_redistributed_to" field
+
+3. VALIDATION BEFORE OUTPUT:
+   - Add: BMY new_weight + C new_weight + GS new_weight + ... = ?
+   - If ≠ 100.0, adjust largest position to fix
+
+4. OTHER RULES:
+   - BLACKLISTED sector = MUST REMOVE (no exceptions)
+   - Sector Health ≤ 2 = REDUCE or REMOVE
+   - In "reasoning", cite specific numbers
+   - Replacement from underweight sectors preferred
+   - Be DECISIVE - no "maybe" or "consider"
+
+5. FINAL CHECK:
+   - "total_new_weight" field MUST be 100.0
+   - If you can't make it 100.0, you have an error - recalculate
 """
+
+def validate_and_fix_weights(result, etf_data=None):
+    """
+    Post-process GPT output to ensure total weight = 100%
+    Distributes missing weight proportionally to KEEP/INCREASE positions.
+    """
+    assets = result.get('assets', [])
+    if not assets:
+        return result
+    
+    # Calculate total new_weight from assets
+    total = sum(a.get('new_weight', 0) or 0 for a in assets)
+    
+    # Add new_positions if present
+    new_positions = result.get('new_positions', [])
+    for np in new_positions:
+        total += np.get('new_weight', 0) or 0
+    
+    print(f"   📊 Weight validation: Total = {total:.1f}%")
+    
+    if abs(total - 100.0) < 0.1:
+        result['total_new_weight'] = 100.0
+        print(f"   ✅ Weight OK: {total:.1f}%")
+        return result
+    
+    # Need to fix
+    diff = 100.0 - total
+    print(f"   ⚠️ Weight mismatch! Missing: {diff:+.1f}%")
+    
+    if diff > 0:
+        # Under 100% - distribute to KEEP/INCREASE positions proportionally
+        eligible = [a for a in assets 
+                    if a.get('decision') in ['KEEP', 'INCREASE'] 
+                    and (a.get('new_weight', 0) or 0) > 0]
+        
+        if not eligible:
+            # Fallback: use any position with weight > 0
+            eligible = [a for a in assets if (a.get('new_weight', 0) or 0) > 0]
+        
+        if eligible:
+            # Calculate total eligible weight
+            eligible_total = sum(a.get('new_weight', 0) or 0 for a in eligible)
+            
+            print(f"   📊 Distributing {diff:.1f}% to {len(eligible)} positions")
+            
+            distributed = 0
+            for i, a in enumerate(eligible):
+                current = a.get('new_weight', 0) or 0
+                # Proportional share
+                share = (current / eligible_total) * diff if eligible_total > 0 else diff / len(eligible)
+                
+                # Last one gets remainder to ensure exactly 100%
+                if i == len(eligible) - 1:
+                    share = diff - distributed
+                
+                new_weight = round(current + share, 1)
+                
+                # Update in assets list
+                for asset in assets:
+                    if asset.get('symbol') == a.get('symbol'):
+                        old_decision = asset.get('decision', 'KEEP')
+                        asset['new_weight'] = new_weight
+                        asset['weight_change'] = round(new_weight - asset.get('current_weight', 0), 1)
+                        
+                        # Update decision if significantly increased
+                        if asset['weight_change'] > 2:
+                            asset['decision'] = 'INCREASE'
+                        
+                        print(f"      {a['symbol']}: {current:.1f}% → {new_weight:.1f}% (+{share:.1f}%)")
+                        distributed += share
+                        break
+    else:
+        # Over 100% - reduce proportionally from largest positions
+        diff = abs(diff)
+        sorted_assets = sorted(assets, key=lambda x: -(x.get('new_weight', 0) or 0))
+        
+        distributed = 0
+        for i, a in enumerate(sorted_assets[:3]):  # Top 3 positions
+            current = a.get('new_weight', 0) or 0
+            share = min(current * 0.1, diff - distributed)  # Max 10% reduction each
+            
+            if i == 2 or distributed + share >= diff:
+                share = diff - distributed
+            
+            new_weight = round(current - share, 1)
+            
+            for asset in assets:
+                if asset.get('symbol') == a.get('symbol'):
+                    asset['new_weight'] = new_weight
+                    asset['weight_change'] = round(new_weight - asset.get('current_weight', 0), 1)
+                    print(f"      {a['symbol']}: {current:.1f}% → {new_weight:.1f}% (-{share:.1f}%)")
+                    distributed += share
+                    break
+            
+            if distributed >= diff:
+                break
+    
+    # Recalculate final total
+    new_total = sum(a.get('new_weight', 0) or 0 for a in assets)
+    for np in new_positions:
+        new_total += np.get('new_weight', 0) or 0
+    
+    result['total_new_weight'] = round(new_total, 1)
+    result['weight_adjusted'] = True
+    result['adjustment_note'] = f"Auto-adjusted {diff:+.1f}% to reach 100%"
+    
+    print(f"   ✅ Adjusted total: {result['total_new_weight']}%")
+    
+    # Final validation
+    if abs(result['total_new_weight'] - 100.0) > 0.5:
+        print(f"   ❌ WARNING: Still not 100%! Manual review needed.")
+    
+    return result
 
 def analyze_portfolio(prompt_data, client, retries=3):
     print(f"   📝 Prompt size: {len(prompt_data)} chars")
@@ -1323,7 +1515,12 @@ def analyze_portfolio(prompt_data, client, retries=3):
             
             content = content[json_start:json_end+1]
             
-            return json.loads(content)
+            result = json.loads(content)
+            
+            # POST-PROCESSING: Validate and fix total weight
+            result = validate_and_fix_weights(result)
+            
+            return result
             
         except json.JSONDecodeError as e:
             print(f"   ❌ JSON parse error: {e}")
