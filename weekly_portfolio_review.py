@@ -1143,6 +1143,33 @@ OUTPUT (must still = 100%):
   Others: 60% → 60% (KEEP)
   TOTAL: 23 + 12 + 0 + 5 + 60 = 100% ✅
 
+🛡️ CONSERVATIVE CHANGE RULES (VERY IMPORTANT):
+
+1. MAXIMUM POSITION SIZE: 25%
+   - NO single stock can exceed 25% of portfolio
+   - If redistribution would push a stock above 25%, spread to multiple stocks instead
+
+2. MAXIMUM WEIGHT CHANGE PER STOCK: ±10%
+   - Do NOT increase any stock by more than 10% in a single review
+   - Example: If BMY is 18%, max new_weight is 28% (not 40%!)
+   - Spread large redistributions across multiple KEEP/INCREASE positions
+
+3. SECTOR CONCENTRATION FIX = REDUCE, NOT REMOVE:
+   - If Financials at 43%, goal is to bring it to ~30%
+   - REDUCE multiple positions proportionally, do NOT remove all
+   - Example: C 17%→12%, GS 11%→8%, USB 7%→5% = total reduction 10%
+   - NEVER remove a stock with STRONG momentum just for concentration
+
+4. PREFER REDUCE OVER REMOVE:
+   - REMOVE only for: Blacklisted sector, Critical news (< -40), WEAK momentum (2W<0 AND 1M<0)
+   - For concentration issues: use REDUCE
+   - KEEP as many diversified positions as possible
+
+5. PROPORTIONAL REDISTRIBUTION:
+   - When reducing/removing X%, distribute proportionally to multiple stocks
+   - Prefer: Underweight sectors > Strong momentum > Top 10 candidates
+   - Example: If freeing 15%, distribute as: +5% to 3 different stocks, not +15% to 1 stock
+
 ⚠️ HARD RULES (MUST FOLLOW - No Exceptions):
 
 1. BLACKLISTED SECTORS:
@@ -1154,17 +1181,18 @@ OUTPUT (must still = 100%):
    - Bad news overrides good technicals in short-term
 
 3. MARKET REGIME COMPLIANCE:
-   - If RISK_LEVEL = "HIGH_ALERT" → Follow defensive instructions strictly
-   - If RISK_LEVEL = "ROTATION" → Exit weak sectors aggressively
+   - If RISK_LEVEL = "HIGH_ALERT" → Be more conservative, prefer defensive sectors
+   - If RISK_LEVEL = "ROTATION" → Reduce weak sector exposure
 
 4. SECTOR HEALTH THRESHOLD:
    - Sector Health ≤ 2 → REDUCE or REMOVE (no KEEP)
-   - Sector Quant < 50 → REDUCE or REMOVE
+   - Sector Quant < 50 → REDUCE exposure
 
 5. SECTOR CONCENTRATION (MAX 30%):
-   - If any single sector weight > 30% → MUST REDUCE stocks in that sector
-   - Distribute to underweight sectors or strong alternatives
-   - In "reasoning", cite: "Sector concentration X% exceeds 30% limit"
+   - If any single sector weight > 30% → MUST REDUCE (not REMOVE!) stocks in that sector
+   - Target: Bring sector to ~28-30%, not eliminate entirely
+   - REDUCE proportionally from multiple stocks in the sector
+   - In "reasoning", cite: "Sector concentration X% exceeds 30% limit → REDUCE by Y%"
 
 6. ETF CONCENTRATION (MAX 10%):
    - If total ETF weight > 10% → MUST REDUCE ETF positions
@@ -1178,6 +1206,10 @@ OUTPUT (must still = 100%):
      * STRONG momentum: 2W > 0 AND 1M > 0 AND 3M > 0
      * QuantScore ≥ 70
    - If no qualified ETF replacement available → REMOVE and redistribute to stocks
+
+8. WEAK MOMENTUM = REMOVE TRIGGER:
+   - ONLY remove stocks where: 2W < 0 AND (1M < 0 OR 3M < 0)
+   - If 2W < 0 but 1M > 0 and 3M > 0 → REDUCE, not REMOVE (temporary dip)
    - In "reasoning", cite: "ETF [X] exposed to disqualified [Sector] - replaced with [Y] or redistributed"
 
 ANALYSIS FRAMEWORK:
@@ -1272,11 +1304,20 @@ OUTPUT FORMAT (JSON only, no markdown):
   "new_positions": [
     {
       "symbol": "NEW_STOCK",
-      "name": "New Stock Name",
-      "sector": "Sector",
+      "name": "New Stock Full Name",
+      "sector": "Sector Name",
+      "is_etf": false,
       "new_weight": 5.0,
       "score": 88.5,
-      "reason": "Replacement for REMOVED stock, diversifies to underweight sector"
+      "return_2w": 2.5,
+      "return_1m": 5.0,
+      "return_3m": 8.0,
+      "short_term_trend": "STRONG",
+      "medium_term_trend": "UPTREND",
+      "sector_health": 4,
+      "sector_quant_score": 79.0,
+      "sentiment": 0,
+      "reason": "Replacement for REMOVED stock. Momentum: 2W +2.5%, 1M +5.0%. Diversifies to underweight Consumer Staples sector."
     }
   ],
   "removals": [
@@ -1328,41 +1369,70 @@ REPLACEMENT REASONING FORMAT:
 
 ⚠️ CRITICAL REMINDERS - READ CAREFULLY:
 
-1. WEIGHT MATH (MOST IMPORTANT):
+1. CONSERVATIVE LIMITS (ENFORCED BY POST-PROCESSING):
+   - MAX position: 25% (no stock can exceed this)
+   - MAX change: ±10% per stock per review
+   - MAX sector: 30%
+   - System will auto-cap violations, so follow these to avoid unexpected adjustments
+
+2. WEIGHT MATH:
    - Calculate: sum of all new_weight values
    - If sum ≠ 100.0, FIX IT before responding
    - Example: If you REDUCE C from 17.3% to 12.3%, that's -5.0% that MUST go somewhere else
-   - Example: If you REMOVE SKYY (2.5%), that 2.5% MUST go to other positions or new stock
 
-2. REDISTRIBUTION:
-   - REDUCE weight → Add to strongest KEEP positions
-   - REMOVE weight → Add replacement stock OR distribute to existing positions
-   - List where weight goes in "weight_redistributed_to" field
+3. REDISTRIBUTION:
+   - Spread freed weight across MULTIPLE positions (not all to one)
+   - Example: If freeing 15%, do +5% to 3 stocks, NOT +15% to 1 stock
+   - Prefer underweight sectors for redistribution
 
-3. VALIDATION BEFORE OUTPUT:
-   - Add: BMY new_weight + C new_weight + GS new_weight + ... = ?
-   - If ≠ 100.0, adjust largest position to fix
+4. REMOVE vs REDUCE:
+   - REMOVE only: Blacklisted sector, Critical news, WEAK momentum (2W<0 AND 1M<0)
+   - REDUCE for: Sector concentration, mild weakness
+   - For concentration: REDUCE proportionally, don't eliminate positions
 
-4. OTHER RULES:
-   - BLACKLISTED sector = MUST REMOVE (no exceptions)
-   - Sector Health ≤ 2 = REDUCE or REMOVE
-   - In "reasoning", cite specific numbers
-   - Replacement from underweight sectors preferred
-   - Be DECISIVE - no "maybe" or "consider"
-
-5. FINAL CHECK:
-   - "total_new_weight" field MUST be 100.0
-   - If you can't make it 100.0, you have an error - recalculate
+5. VALIDATION BEFORE OUTPUT:
+   - Check: No position > 25%
+   - Check: No change > ±10%
+   - Check: Total = 100%
 """
 
 def validate_and_fix_weights(result, etf_data=None):
     """
-    Post-process GPT output to ensure total weight = 100%
-    Distributes missing weight proportionally to KEEP/INCREASE positions.
+    Post-process GPT output to ensure:
+    1. Total weight = 100%
+    2. No single position > 25%
+    3. No single change > 10%
+    4. No sector > 30%
     """
     assets = result.get('assets', [])
     if not assets:
         return result
+    
+    # STEP 1: Enforce max position size (25%) and max change (10%)
+    print(f"   🔒 Checking position limits...")
+    for asset in assets:
+        symbol = asset.get('symbol', '')
+        current = asset.get('current_weight', 0) or 0
+        new = asset.get('new_weight', 0) if isinstance(asset.get('new_weight'), (int, float)) else current
+        
+        # Max position size: 25%
+        if new > 25:
+            print(f"      ⚠️ {symbol}: {new:.1f}% exceeds 25% max → capping to 25%")
+            asset['new_weight'] = 25.0
+            asset['weight_change'] = 25.0 - current
+            new = 25.0
+        
+        # Max change: ±10%
+        change = new - current
+        if change > 10:
+            print(f"      ⚠️ {symbol}: +{change:.1f}% exceeds +10% max change → capping")
+            asset['new_weight'] = round(current + 10, 1)
+            asset['weight_change'] = 10.0
+        elif change < -10 and asset.get('decision', '').upper() != 'REMOVE':
+            # Allow REMOVE to go to 0, but REDUCE should not exceed -10%
+            print(f"      ⚠️ {symbol}: {change:.1f}% exceeds -10% max change → adjusting")
+            asset['new_weight'] = round(current - 10, 1)
+            asset['weight_change'] = -10.0
     
     # Calculate total new_weight from assets
     total = sum(a.get('new_weight', 0) or 0 for a in assets)
