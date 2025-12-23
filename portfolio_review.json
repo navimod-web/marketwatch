@@ -1,10 +1,10 @@
 {
-  "review_date": "2023-10-30",
+  "review_date": "2023-10-04",
   "risk_level": "HIGH_ALERT",
   "market_regime": "ROTATION",
-  "regime_analysis": "Under high alert due to market panic, we are required to reduce risky assets and shift into more defensive positions. This mandates a conservative approach to portfolio adjustments.",
+  "regime_analysis": "In a high-alert market regime, the focus is on reducing exposure to risky assets and reallocating towards stronger sectors.",
   "hard_rules_applied": [
-    "SECTOR_CONCENTRATION fix"
+    "SECTOR_CONCENTRATION"
   ],
   "critical_alerts": [],
   "disqualified_sectors": [
@@ -25,10 +25,10 @@
     "Materials"
   ],
   "portfolio_score": 75,
-  "total_new_weight": 100.1,
+  "total_new_weight": 100.0,
   "weight_changes": {
     "reduced": 13.0,
-    "increased": 13.0,
+    "increased": 0.0,
     "new_positions": 0.0
   },
   "assets": [
@@ -40,8 +40,8 @@
       "is_etf": false,
       "current_weight": 18.0,
       "decision": "INCREASE",
-      "new_weight": 27.7,
-      "weight_change": 9.7,
+      "new_weight": 41.4,
+      "weight_change": 23.4,
       "score": 68.0,
       "asset_score": 68.0,
       "return_2w": 5.79,
@@ -56,7 +56,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +5.79%, 1M: +18.98%), excellent sector health (5/5, Quant: 84.3) → KEEP position.",
+      "reasoning": "Strong momentum with short-term returns of +5.79% (2W) and +18.98% (1M). Healthcare sector health rated at 5/5. KEEP position.",
       "replacement": null
     },
     {
@@ -66,9 +66,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 17.3,
-      "decision": "REDUCE",
-      "new_weight": 14.3,
-      "weight_change": -3.0,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -17.3,
       "score": 82.5,
       "asset_score": 82.5,
       "return_2w": 8.42,
@@ -83,7 +83,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": "SECTOR_CONCENTRATION",
-      "reasoning": "Strong momentum (2W: +8.42%, 1M: +20.96%), but sector concentration (Financials at 43%) exceeds 30% limit → REDUCE by 3%.",
+      "reasoning": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Citigroup entirely.",
       "replacement": null
     },
     {
@@ -93,9 +93,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 11.0,
-      "decision": "REDUCE",
-      "new_weight": 8.0,
-      "weight_change": -3.0,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -11.0,
       "score": 87.0,
       "asset_score": 87.0,
       "return_2w": 3.73,
@@ -110,7 +110,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": "SECTOR_CONCENTRATION",
-      "reasoning": "Strong momentum (2W: +3.73%, 1M: +16.77%), but sector concentration (Financials at 43%) exceeds 30% limit → REDUCE by 3%.",
+      "reasoning": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Goldman Sachs entirely.",
       "replacement": null
     },
     {
@@ -128,7 +128,7 @@
       "return_2w": -2.36,
       "return_1m": 6.64,
       "return_3m": 23.94,
-      "short_term_trend": "WEAK",
+      "short_term_trend": "LOSING",
       "medium_term_trend": "UPTREND",
       "sentiment": 11,
       "sector_health": 5,
@@ -137,7 +137,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": "WEAK_MOMENTUM",
-      "reasoning": "WEAK momentum (2W: -2.36%) with deteriorating trend. MUST REMOVE.",
+      "reasoning": "Losing momentum with 2W returns of -2.36%. MUST REMOVE Caterpillar.",
       "replacement": null
     },
     {
@@ -148,8 +148,8 @@
       "is_etf": false,
       "current_weight": 11.0,
       "decision": "INCREASE",
-      "new_weight": 21.6,
-      "weight_change": 10.6,
+      "new_weight": 25.3,
+      "weight_change": 14.3,
       "score": 91.2,
       "asset_score": 91.2,
       "return_2w": 6.38,
@@ -164,19 +164,19 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +6.38%, 1M: +11.85%), excellent sector health (5/5, Quant: 91.2) → INCREASE by 3%.",
+      "reasoning": "Strong momentum with returns of +6.38% (2W) and +11.85% (1M). KEEP position in a strong sector.",
       "replacement": null
     },
     {
       "symbol": "SPY",
       "name": "SPDR S&P 500 ETF",
-      "sector": "",
+      "sector": "Equity",
       "sub_category": "Core",
       "is_etf": true,
       "current_weight": 7.5,
       "decision": "INCREASE",
-      "new_weight": 11.6,
-      "weight_change": 4.1,
+      "new_weight": 17.2,
+      "weight_change": 9.7,
       "score": 62.5,
       "asset_score": 62.5,
       "return_2w": 0.47,
@@ -185,13 +185,13 @@
       "short_term_trend": "STRONG",
       "medium_term_trend": "UPTREND",
       "sentiment": 0,
-      "sector_health": null,
-      "sector_quant_score": null,
+      "sector_health": 0,
+      "sector_quant_score": 0.0,
       "sector_disqualified": false,
-      "sector_trend": "STRONG",
+      "sector_trend": "",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +0.47%, 1M: +5.26%), reasonable sector support. KEEP position.",
+      "reasoning": "Maintaining a strong momentum with 2W returns of +0.47%. KEEP position as ETF allocation is at the limit.",
       "replacement": null
     },
     {
@@ -201,9 +201,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 7.0,
-      "decision": "REDUCE",
-      "new_weight": 5.0,
-      "weight_change": -2.0,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -7.0,
       "score": 53.7,
       "asset_score": 53.7,
       "return_2w": 7.02,
@@ -218,7 +218,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": "SECTOR_CONCENTRATION",
-      "reasoning": "Strong momentum (2W: +7.02%, 1M: +22.03%), but sector concentration (Financials at 43%) exceeds 30% limit → REDUCE by 2%.",
+      "reasoning": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Capital One entirely.",
       "replacement": null
     },
     {
@@ -245,7 +245,7 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": "SECTOR_CONCENTRATION",
-      "reasoning": "Strong momentum (2W: +6.73%, 1M: +18.03%), but sector concentration (Financials at 43%) exceeds 30% limit → REMOVE.",
+      "reasoning": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing U.S. Bancorp entirely.",
       "replacement": null
     },
     {
@@ -256,8 +256,8 @@
       "is_etf": false,
       "current_weight": 7.0,
       "decision": "INCREASE",
-      "new_weight": 10.8,
-      "weight_change": 3.8,
+      "new_weight": 16.1,
+      "weight_change": 9.1,
       "score": 92.6,
       "asset_score": 92.6,
       "return_2w": 9.67,
@@ -272,14 +272,14 @@
       "sector_trend": "STRONG",
       "in_top10": false,
       "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +9.67%, 1M: +22.27%) with excellent sector support (5/5, Quant: 92.6) → KEEP position.",
+      "reasoning": "Strong momentum with returns of +9.67% (2W) and +22.27% (1M). KEEP position in a strong sector.",
       "replacement": null
     },
     {
       "symbol": "SKYY",
-      "name": "Sky ETF",
-      "sector": "Technology",
-      "sub_category": "",
+      "name": "SKYY",
+      "sector": "Tech",
+      "sub_category": "Industry",
       "is_etf": true,
       "current_weight": 2.5,
       "decision": "REMOVE",
@@ -296,10 +296,10 @@
       "sector_health": 0,
       "sector_quant_score": 0.0,
       "sector_disqualified": true,
-      "sector_trend": "WEAK",
+      "sector_trend": "",
       "in_top10": false,
       "hard_rule_triggered": "BLACKLISTED_SECTOR",
-      "reasoning": "ETF exposed to blacklisted sector (Technology) and has WEAK momentum. MUST REMOVE.",
+      "reasoning": "BLACKLISTED sector (Technology) and losing momentum. MUST REMOVE SKYY.",
       "replacement": null
     },
     {
@@ -309,9 +309,9 @@
       "sub_category": "",
       "is_etf": false,
       "current_weight": 0.7,
-      "decision": "KEEP",
-      "new_weight": 1.1,
-      "weight_change": 0.4,
+      "decision": "REMOVE",
+      "new_weight": 0.0,
+      "weight_change": -0.7,
       "score": 32.2,
       "asset_score": 32.2,
       "return_2w": 7.72,
@@ -325,34 +325,101 @@
       "sector_disqualified": false,
       "sector_trend": "STRONG",
       "in_top10": false,
-      "hard_rule_triggered": null,
-      "reasoning": "Strong momentum (2W: +7.72%) in the strong Financials sector (5/5) → KEEP position.",
+      "hard_rule_triggered": "SECTOR_CONCENTRATION",
+      "reasoning": "Sector concentration exceeds 30% (Financials at 43%). REMOVE PNC entirely.",
       "replacement": null
     }
   ],
   "new_positions": [],
   "removals": [
     {
-      "remove": "CAT",
-      "replace_with": "RE DISTRIBUTION",
+      "remove": "C",
+      "replace_with": "REDISTRIBUTED",
       "weight_redistributed_to": [
-        "FDX +3%",
-        "C +3%",
-        "GS +4%"
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
       ],
-      "reason": "WEAK momentum and strong market alert."
+      "reason": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Citigroup entirely."
+    },
+    {
+      "remove": "GS",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Goldman Sachs entirely."
+    },
+    {
+      "remove": "CAT",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "Losing momentum with 2W returns of -2.36%. MUST REMOVE Caterpillar."
+    },
+    {
+      "remove": "COF",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing Capital One entirely."
+    },
+    {
+      "remove": "USB",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "Sector concentration exceeds 30% (Financials at 43%). REDUCE position by removing U.S. Bancorp entirely."
+    },
+    {
+      "remove": "SKYY",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "BLACKLISTED sector (Technology) and losing momentum. MUST REMOVE SKYY."
+    },
+    {
+      "remove": "PNC",
+      "replace_with": "REDISTRIBUTED",
+      "weight_redistributed_to": [
+        "BMY +23.4%",
+        "FDX +14.3%",
+        "SPY +9.7%",
+        "GM +9.1%"
+      ],
+      "reason": "Sector concentration exceeds 30% (Financials at 43%). REMOVE PNC entirely."
     }
   ],
   "sector_allocation": {
     "Financials": 30.0,
-    "Industrials": 25.0,
+    "Industrials": 22.0,
     "Healthcare": 18.0,
     "Consumer Disc.": 7.0
   },
-  "summary": "In a high alert market environment, we focus on reducing Financials sector exposure due to its overweight status, while also removing positions in blacklisted sectors. Key reductions were made to Citigroup, Goldman Sachs, and USD Bancorp, redistributing weights primarily to FedEx and maintaining strong healthcare exposure. Total: 100.0%",
+  "summary": "In a high-alert market regime, the focus is on reducing high-risk financial assets and reallocating towards stronger sectors. Citigroup, Goldman Sachs, Capital One, U.S. Bancorp, and Caterpillar were removed due to exceeding financial sector concentration, while the Technology and Energy sectors were blacklisted leading to SKYY's removal. Total: 100.0%",
   "weight_adjusted": true,
-  "adjustment_note": "Auto-adjusted +25.5% to reach 100%",
-  "generated_at": "2025-12-23T19:36:57.544732",
+  "adjustment_note": "Auto-adjusted +56.5% to reach 100%",
+  "generated_at": "2025-12-23T19:52:18.942064",
   "model": "gpt-4o-mini",
   "portfolio_input": {
     "BMY": 18.0,
