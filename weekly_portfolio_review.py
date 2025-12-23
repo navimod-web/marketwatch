@@ -886,7 +886,9 @@ def build_analysis_prompt(portfolio, etf_data, news_data):
             ret_1m = m1.get('RETURN', 0) or 0
             ret_3m = m3.get('RETURN', 0) or 0
             ret_6m = m6.get('RETURN', 0) or 0
-            score = data.get('SCORE', 0) or 0
+            
+            # Asset Quant Score - stocks için SCORE, ETF'ler için QuantScore
+            score = data.get('SCORE', 0) or data.get('QuantScore', 0) or 0
             
             # Short-term Trend (2W vs 1M)
             if ret_2w > 0 and ret_1m > 0:
@@ -912,19 +914,25 @@ def build_analysis_prompt(portfolio, etf_data, news_data):
             
             # ETF-specific check for disqualified sector exposure
             is_etf = asset['type'] == 'etf'
+            subcat = data.get('SubCategory', '')
             etf_disq_warning = ""
             if is_etf:
-                subcat = data.get('SubCategory', '')
                 # Check if ETF category or subcategory matches disqualified/weak sectors
                 if sector in disqualified_sectors or subcat in disqualified_sectors:
                     etf_disq_warning = f"🚫 ETF EXPOSED TO DISQUALIFIED SECTOR ({sector}/{subcat}) - MUST REPLACE OR REMOVE!"
                 elif sector in weak_sectors or subcat in weak_sectors:
                     etf_disq_warning = f"⚠️ ETF exposed to WEAK sector ({sector}/{subcat}) - consider replacement"
             
-            lines.append(f"   Name: {name} | Sector: {sector} {'| Type: ETF 📊' if is_etf else ''}")
+            # Display asset info
+            if is_etf:
+                lines.append(f"   📊 ETF | Category: {sector} | SubCategory: {subcat}")
+                lines.append(f"   ETF Quant Score: {score:.1f}")
+            else:
+                lines.append(f"   Name: {name} | Sector: {sector}")
+                lines.append(f"   Asset Quant Score: {score:.1f} | In Top 10: {'YES ✅' if in_top10 else 'NO'}")
+            
             lines.append(f"   SHORT-TERM: 2W: {ret_2w:+.2f}% | 1M: {ret_1m:+.2f}% → {short_trend}")
             lines.append(f"   MEDIUM-TERM: 3M: {ret_3m:+.2f}% | 6M: {ret_6m:+.2f}% → {med_trend}")
-            lines.append(f"   Quant Score: {score:.1f} | In Top 10: {'YES ✅' if in_top10 else 'NO'}")
             
             # ETF disqualified sector warning (priority)
             if etf_disq_warning:
@@ -1202,10 +1210,17 @@ DECISION MATRIX:
 - REDUCE: Weakening momentum OR Sector Health = 2 OR mixed signals
 - REMOVE: BLACKLISTED sector OR Weak momentum OR Sector Health ≤ 1 OR Critical news
 
-CRITICAL: In "reasoning" field, you MUST cite specific numbers:
-- "2W: +X.X%, 1M: +Y.Y% → STRONG momentum"
-- "Sector Health: 2/5, Quant: 45 → WEAK sector, MUST REDUCE"
-- "BLACKLISTED sector → MUST REMOVE per HARD RULE"
+CRITICAL: In "reasoning" field, you MUST cite ALL relevant numbers for a convincing analysis:
+- Momentum: "2W: +X.X%, 1M: +Y.Y%, 3M: +Z.Z% → [STRONG/WEAK/RECOVERING] momentum"
+- Sector: "Sector Health: X/5, Sector Quant: YY → [STRONG/WEAK] sector support"
+- Asset Score: "Quant Score: XX → [above/below] threshold"
+- Hard Rule: "HARD RULE: [rule name] triggered → MUST [action]"
+- Concentration: "Sector at XX% (>30% limit) → MUST REDUCE"
+
+REASONING EXAMPLES:
+- KEEP: "Strong momentum (2W: +5.8%, 1M: +19.0%, 3M: +23.4%), excellent sector health (5/5, Quant: 84), asset score 85 in Top 10. KEEP position."
+- REMOVE: "WEAK momentum (2W: -0.3%, 1M: +7.8%, 3M: -2.3%) with deteriorating trend. ETF exposed to weak sector. HARD RULE: WEAK_MOMENTUM triggered. REMOVE and redistribute."
+- REDUCE: "Strong momentum but Financials sector at 43% exceeds 30% limit. HARD RULE: SECTOR_CONCENTRATION. REDUCE by 5% to diversify."
 
 OUTPUT FORMAT (JSON only, no markdown):
 {
@@ -1230,15 +1245,18 @@ OUTPUT FORMAT (JSON only, no markdown):
       "symbol": "XXX",
       "name": "Full Name",
       "sector": "Sector",
+      "sub_category": "SubCategory (for ETFs)",
+      "is_etf": false,
       "current_weight": 18.0,
       "decision": "KEEP/REMOVE/REDUCE/INCREASE",
       "new_weight": 18.0,
       "weight_change": 0.0,
       "score": 85.5,
+      "asset_score": 85.5,
       "return_2w": 2.5,
       "return_1m": 4.1,
       "return_3m": 8.2,
-      "short_term_trend": "STRONG/RECOVERING/WEAKENING/WEAK",
+      "short_term_trend": "STRONG/RECOVERING/WEAKENING/WEAK/LOSING",
       "medium_term_trend": "UPTREND/DOWNTREND/MIXED",
       "sentiment": 45,
       "sector_health": 4,
@@ -1246,8 +1264,8 @@ OUTPUT FORMAT (JSON only, no markdown):
       "sector_disqualified": false,
       "sector_trend": "STRONG/WEAK/WEAKENING/RECOVERING",
       "in_top10": true,
-      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION",
-      "reasoning": "MUST cite numbers: '2W: +X.X%, 1M: +Y.Y%, Sector Health: Z/5'",
+      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION/ETF_CONCENTRATION",
+      "reasoning": "DETAILED reasoning with ALL numbers cited. See examples above.",
       "replacement": null or {"symbol": "YYY", "score": 90.1, "reason": "Better momentum + stronger sector"}
     }
   ],
