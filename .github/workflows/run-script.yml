@@ -1,0 +1,41 @@
+name: Veriyi İşle ve Üret
+
+on:
+  schedule:
+    # TR Saatiyle 08:00 ve 16:00 (UTC 05:00 ve 13:00)
+    - cron: '0 5,13 * * *'
+  workflow_dispatch: # Manuel test için
+
+jobs:
+  generate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Çek
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ACTION_TOKEN }} # Pushlayınca kopyalama başlasın diye
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Kütüphaneleri Yükle
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Scripti Çalıştır (JSON Üret)
+        # Bu script etf_data.json ve news_data.json'ı okuyup
+        # "portfolio_review.json" adında bir çıktı vermeli.
+        run: python main.py 
+
+      - name: Sonucu Kaydet (Commit)
+        run: |
+          git config user.name "Marketwatch Bot"
+          git config user.email "bot@marketwatch.com"
+          
+          # Sadece üretilen YENİ dosyayı ekle
+          git add portfolio_review.json
+          
+          git commit -m "Guncel portfolio_review.json uretildi" || echo "Degisiklik yok"
+          git push
