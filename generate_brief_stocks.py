@@ -1,13 +1,14 @@
 """
-Daily Brief Generator - Stocks v1.0
+Daily Brief Generator - Stocks v1.1
 ====================================
-Stock verilerini OpenAI'a gönderir ve brief JSON üretir.
+Stock verilerini + News Sentiment'ı OpenAI'a gönderir ve brief JSON üretir.
 
 Kullanım:
     python generate_brief_stocks.py
 
 Girdi:
     etf_data.json (stocks bölümü)
+    news_data.json (sentiment verileri)
 
 Çıktı:
     brief_stocks.json
@@ -19,6 +20,7 @@ from datetime import datetime
 from openai import OpenAI
 
 DATA_FILE = 'etf_data.json'
+NEWS_FILE = 'news_data.json'
 OUTPUT_FILE = 'brief_stocks.json'
 MODEL = 'gpt-5-mini'
 
@@ -121,6 +123,23 @@ LOGIC & INTERPRETATION RULES (MANDATORY)
    - If major divergence: "Transitional market - wait for confirmation"
 
 ═══════════════════════════════════════════════════════════════
+NEWS SENTIMENT ANALYSIS (NEW SECTION)
+═══════════════════════════════════════════════════════════════
+
+You will receive NEWS SENTIMENT data with scores from -100 to +100:
+- +70 to +100: VERY BULLISH (M&A target, earnings beat + raised guidance, FDA approval)
+- +30 to +69: BULLISH (analyst upgrade, strong earnings, contract win)
+- -9 to +9: NEUTRAL (routine updates, macro news)
+- -30 to -69: BEARISH (earnings miss, downgrade, layoffs)
+- -70 to -100: VERY BEARISH (fraud, SEC probe, bankruptcy risk)
+
+When analyzing sentiment:
+- Cross-reference with price action (sentiment vs actual performance)
+- Note divergences: Bullish news but stock falling = distribution
+- Note confirmations: Bullish news + rising price = accumulation
+- Focus on ACTIONABLE catalysts, not generic news
+
+═══════════════════════════════════════════════════════════════
 FINAL GUARDRAIL (READ THIS LAST)
 ═══════════════════════════════════════════════════════════════
 
@@ -200,12 +219,20 @@ BEARISH: [Sectors showing weakness, note breadth]
 **13. Key Levels & Triggers?**
 [3-4 key stock levels. Example: "NVDA 900 resistance (CORRECTION test), AAPL 180 support (CORRECTION base), JPM 200 breakout (ABOVE TREND continuation)."]
 
+## 📰 NEWS SENTIMENT MOVERS
+
+**14. Bullish Sentiment Stocks?**
+[Top 3-5 stocks with positive news sentiment. Format: "SYMBOL (+score): Brief reason from headline. Cross-ref with price: confirming/diverging." Example: "LLY (+85): FDA approval for new drug. Price ABOVE TREND - sentiment confirmed. AMT (+80): Analyst upgrade to Buy. Price in RECOVERY - watch for follow-through."]
+
+**15. Bearish Sentiment Stocks?**
+[Top 3-5 stocks with negative news sentiment. Format: "SYMBOL (score): Brief reason from headline. Cross-ref with price: confirming/diverging." Example: "BA (-65): Production delays announced. Price BELOW TREND - sentiment confirmed. INTC (-55): Analyst downgrade. Price in RECOVERY - potential divergence, monitor closely."]
+
 ## 📝 EXECUTIVE SUMMARY
 
 [Write exactly 3 short sentences - this comes LAST, after all analysis:]
 Sentence 1: Use the EXACT regime from data (RISK-ON/RISK-OFF/ROTATION/CAUTION/NEUTRAL) with style call (Growth vs Value).
 Sentence 2: Stocks showing relative strength (specific names with labels).
-Sentence 3: Key risk or divergence to monitor.
+Sentence 3: Key risk or divergence to monitor (include sentiment if notable).
 
 ═══════════════════════════════════════════════════════════════
 LANGUAGE RESTRICTIONS (COMPLIANCE)
@@ -224,6 +251,34 @@ This is ANALYSIS ONLY, not investment advice. Use observational language:
 def load_data():
     with open(DATA_FILE, 'r') as f:
         return json.load(f)
+
+def load_news_data():
+    """Load news sentiment data if available"""
+    print(f"\n📰 Looking for news file: {NEWS_FILE}")
+    
+    if not os.path.exists(NEWS_FILE):
+        print(f"   ❌ File not found: {NEWS_FILE}")
+        print(f"   Current directory: {os.getcwd()}")
+        print(f"   Files in directory: {os.listdir('.')[:10]}...")
+        return None
+    
+    try:
+        with open(NEWS_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        news_count = len(data.get('news', []))
+        print(f"   ✅ Loaded {news_count} news items")
+        
+        # Debug: ilk birkaç haberi göster
+        if news_count > 0:
+            print(f"   Sample news:")
+            for n in data.get('news', [])[:3]:
+                print(f"      {n.get('symbol')}: {n.get('sentiment')} - {n.get('title', '')[:50]}...")
+        
+        return data
+    except Exception as e:
+        print(f"   ❌ Error loading news: {e}")
+        return None
 
 def get_trend_status(w1, m1):
     """1W ve 1M değişime göre trend durumu"""
@@ -251,52 +306,152 @@ def get_delta_direction(w1):
     else:
         return "→ flat"
 
-def format_for_prompt(data):
-    """Zenginleştirilmiş veri formatı - Delta, Timeframe, Trend Status"""
+def format_sentiment_data(news_data):
+    """Format news sentiment for prompt"""
+    if not news_data:
+        print("   ⚠️ format_sentiment_data: news_data is None")
+        return "\n📰 NEWS SENTIMENT: Not available\n"
+    
+    if not news_data.get('news'):
+        print("   ⚠️ format_sentiment_data: news_data has no 'news' key")
+        return "\n📰 NEWS SENTIMENT: Not available\n"
+    
     lines = []
-    
-    # === HEADER ===
-    lines.append("=" * 60)
-    lines.append("SP100 STOCK BAROMETER DATA - PROFESSIONAL FORMAT")
-    lines.append("All data includes: Current Level | 1W Change | 1M Change | Trend Status")
-    lines.append("=" * 60)
-    
-    # === REGIME ===
-    r = data['regime']
     lines.append(f"\n{'='*60}")
-    lines.append("MARKET REGIME")
-    lines.append(f"{'='*60}")
-    lines.append(f"OVERALL: {r['overall']}")
-    breadth = r.get('breadth', {})
-    lines.append(f"Risk Score: {r['riskScore']} | Cycle Score: {r['cycleScore']} | Breadth: {breadth.get('positive', 0)}/{breadth.get('total', 11)}")
-    
-    # === STOCK RANKINGS with Full Data ===
-    lines.append(f"\n{'='*60}")
-    lines.append("STOCK PERFORMANCE BY SECTOR (1W vs 1M Comparison)")
+    lines.append("NEWS SENTIMENT DATA (Last 5 Days)")
     lines.append(f"{'='*60}")
     
-    stocks_full = []
-    for e in data.get('stocks', []):
-        w1 = e.get('1W', {})
-        m1 = e.get('1M', {})
-        ret_1w = w1.get('RETURN')
-        ret_1m = m1.get('RETURN')
-        trend_1m = m1.get('TREND', 0)
+    news = news_data.get('news', [])
+    print(f"   📊 Processing {len(news)} news items for prompt")
+    
+    # Aggregate by stock
+    stock_sentiment = {}
+    for n in news:
+        sym = n.get('symbol', '')
+        if not sym:
+            continue
+        if sym not in stock_sentiment:
+            stock_sentiment[sym] = {
+                'name': n.get('name', sym),
+                'sector': n.get('sector', ''),
+                'news': []
+            }
+        stock_sentiment[sym]['news'].append({
+            'title': n.get('title', ''),
+            'sentiment': n.get('sentiment', 0),
+            'time_ago': n.get('time_ago', '')
+        })
+    
+    # Get top bullish (max sentiment per stock)
+    bullish = []
+    bearish = []
+    
+    for sym, data in stock_sentiment.items():
+        max_sent = max([n['sentiment'] for n in data['news']])
+        min_sent = min([n['sentiment'] for n in data['news']])
         
-        if ret_1m is not None:
-            stocks_full.append({
-                'sym': e['Symbol'],
-                'name': e['Name'],
-                'cat': e['Category'],
-                'ret_1w': ret_1w or 0,
-                'ret_1m': ret_1m,
-                'trend': trend_1m,
-                'status': get_trend_status(ret_1w, ret_1m)
+        # Get the headline for max/min sentiment
+        max_headline = next((n['title'] for n in data['news'] if n['sentiment'] == max_sent), '')
+        min_headline = next((n['title'] for n in data['news'] if n['sentiment'] == min_sent), '')
+        
+        if max_sent > 0:
+            bullish.append({
+                'symbol': sym,
+                'name': data['name'],
+                'sector': data['sector'],
+                'sentiment': max_sent,
+                'headline': max_headline[:100]
+            })
+        
+        if min_sent < 0:
+            bearish.append({
+                'symbol': sym,
+                'name': data['name'],
+                'sector': data['sector'],
+                'sentiment': min_sent,
+                'headline': min_headline[:100]
             })
     
-    stocks_full.sort(key=lambda x: x['ret_1m'], reverse=True)
+    # Sort
+    bullish.sort(key=lambda x: -x['sentiment'])
+    bearish.sort(key=lambda x: x['sentiment'])
     
-    lines.append("\n🏆 TOP 10 PERFORMERS:")
+    print(f"   🟢 Bullish stocks: {len(bullish)}")
+    print(f"   🔴 Bearish stocks: {len(bearish)}")
+    
+    # Top 10 Bullish
+    lines.append("\n🟢 TOP BULLISH SENTIMENT:")
+    for item in bullish[:10]:
+        lines.append(f"  {item['symbol']:6} (+{item['sentiment']:3d}) | {item['sector']}")
+        lines.append(f"         Headline: {item['headline']}")
+    
+    if not bullish:
+        lines.append("  No bullish news")
+    
+    # Top 10 Bearish
+    lines.append("\n🔴 TOP BEARISH SENTIMENT:")
+    for item in bearish[:10]:
+        lines.append(f"  {item['symbol']:6} ({item['sentiment']:4d}) | {item['sector']}")
+        lines.append(f"         Headline: {item['headline']}")
+    
+    if not bearish:
+        lines.append("  No bearish news")
+    
+    # Summary stats
+    lines.append(f"\n📊 SENTIMENT SUMMARY:")
+    lines.append(f"  Total news: {len(news)}")
+    lines.append(f"  Bullish stocks: {len(bullish)}")
+    lines.append(f"  Bearish stocks: {len(bearish)}")
+    
+    result = "\n".join(lines)
+    print(f"   📝 Sentiment data formatted: {len(result)} chars")
+    
+    return result
+
+def format_for_prompt(data, news_data=None):
+    """ETF datasını prompt için formatla"""
+    lines = []
+    
+    # === REGIME ===
+    regime = data.get('regime', {})
+    lines.append(f"{'='*60}")
+    lines.append("MARKET REGIME (USE THIS - DO NOT OVERRIDE)")
+    lines.append(f"{'='*60}")
+    lines.append(f"OVERALL: {regime.get('overall', 'N/A')}")
+    lines.append(f"RISK Signal: {regime.get('risk', 'N/A')}")
+    lines.append(f"CYCLE Signal: {regime.get('cycle', 'N/A')}")
+    lines.append(f"BREADTH: {regime.get('breadth', 'N/A')}")
+    
+    # === STOCKS ===
+    lines.append(f"\n{'='*60}")
+    lines.append("STOCK DATA")
+    lines.append(f"{'='*60}")
+    
+    stocks = data.get('stocks', [])
+    
+    # 1W return bazlı sırala
+    stocks_full = []
+    for e in stocks:
+        w1 = e.get('1W', {}) or {}
+        m1 = e.get('1M', {}) or {}
+        ret_1w = w1.get('RETURN') or 0
+        ret_1m = m1.get('RETURN') or 0
+        status = get_trend_status(ret_1w, ret_1m)
+        
+        stocks_full.append({
+            'sym': e['Symbol'],
+            'name': e['Name'],
+            'cat': e.get('Category', 'Unknown'),
+            'ret_1w': ret_1w,
+            'ret_1m': ret_1m,
+            'status': status
+        })
+    
+    stocks_full.sort(key=lambda x: x['ret_1w'], reverse=True)
+    
+    lines.append(f"\nTotal: {len(stocks_full)} stocks")
+    
+    lines.append("\n📈 TOP 10 PERFORMERS:")
     for i, e in enumerate(stocks_full[:10], 1):
         lines.append(f"  {i}. {e['sym']:6} ({e['cat']:15})")
         lines.append(f"     1W: {e['ret_1w']:+6.2f}% | 1M: {e['ret_1m']:+6.2f}% | {e['status']}")
@@ -364,9 +519,13 @@ def format_for_prompt(data):
         status = "✅" if avg_1w > 0 else "❌"
         lines.append(f"  {status} {cat:20}: 1W: {avg_1w:+.2f}% | 1M: {avg_1m:+.2f}% ({count} stocks)")
     
+    # === NEWS SENTIMENT ===
+    if news_data:
+        lines.append(format_sentiment_data(news_data))
+    
     return "\n".join(lines)
 
-def generate_brief(data):
+def generate_brief(data, news_data=None):
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise ValueError("OPENAI_API_KEY not set!")
@@ -374,7 +533,7 @@ def generate_brief(data):
     client = OpenAI(api_key=api_key)
     
     today = datetime.now().strftime('%B %d, %Y')
-    prompt_data = format_for_prompt(data)
+    prompt_data = format_for_prompt(data, news_data)
     
     print("🤖 Calling OpenAI API...")
     print(f"   Model: {MODEL}")
@@ -393,6 +552,7 @@ IMPORTANT REMINDERS:
 2. Every stock MUST have trend status (ABOVE/BELOW TREND)
 3. Focus on sector leaders and laggards
 4. Compare 1W vs 1M to identify confirmations and divergences
+5. For Questions 14-15: Use NEWS SENTIMENT data to identify stocks with notable catalysts
 
 Generate the Stock Daily Brief now."""}
         ],
@@ -432,15 +592,17 @@ Generate the Stock Daily Brief now."""}
         'date': today,
         'generated_at': datetime.now().isoformat(),
         'model': MODEL,
+        'has_sentiment': news_data is not None,
         'content': content
     }
 
 def main():
     print("=" * 60)
-    print("🤖 Stock Brief Generator v1.0")
+    print("🤖 Stock Brief Generator v1.1")
     print("   + Time-Frame Labels (1W vs 1M)")
     print("   + Delta Direction (↑↓→)")
     print("   + Trend Status (Above/Below)")
+    print("   + News Sentiment Integration")
     print("=" * 60)
     
     if not os.path.exists(DATA_FILE):
@@ -450,15 +612,23 @@ def main():
     
     try:
         data = load_data()
+        news_data = load_news_data()
+        
         stock_count = len(data.get('stocks', []))
         print(f"✅ Loaded: {stock_count} Stocks")
         print(f"   Regime: {data['regime']['overall']}")
+        
+        if news_data:
+            print(f"✅ Loaded: {news_data.get('news_count', 0)} News items")
+            print(f"   Bullish: {news_data.get('bullish_count', 0)} | Bearish: {news_data.get('bearish_count', 0)}")
+        else:
+            print("⚠️ News data not available (run generate_news.py first)")
         
         if stock_count == 0:
             print("❌ No stock data found in etf_data.json!")
             return
         
-        brief = generate_brief(data)
+        brief = generate_brief(data, news_data)
         
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
             json.dump(brief, f, indent=2, ensure_ascii=False)

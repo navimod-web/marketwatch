@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS9K7M4HJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5TS9K7M4HJ');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ETF Market Barometer | Navimod</title>
@@ -223,7 +215,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 .brief-section-header.economy i{color:#eab308}
 .brief-section-header.strategy i{color:#8b5cf6}
 .brief-section-header.outlook i{color:#06b6d4}
-.brief-section-header.outlook i{color:#06b6d4}
+.brief-section-header.sentiment i{color:#ec4899}
 .brief-section-header h3{font-size:1rem;font-weight:600;color:var(--text)}
 .brief-qa{margin-bottom:20px}
 .brief-qa:last-child{margin-bottom:0}
@@ -247,6 +239,54 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 .brief-summary p{font-size:0.95rem;line-height:1.9;color:var(--text)}
 .brief-loading{text-align:center;padding:60px;color:var(--muted)}
 .brief-loading i{font-size:2rem;margin-bottom:16px}
+
+/* Company News Styles */
+.news-table-wrapper{padding:16px;overflow-x:auto}
+.news-table{width:100%;border-collapse:separate;border-spacing:0;font-size:0.85rem}
+.news-table thead th{background:var(--bg2);padding:12px 16px;text-align:left;font-weight:600;color:var(--muted);text-transform:uppercase;font-size:0.7rem;letter-spacing:0.5px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.news-table thead th:first-child{border-radius:8px 0 0 0}
+.news-table thead th:last-child{border-radius:0 8px 0 0}
+.news-table thead th.sortable{cursor:pointer;user-select:none;transition:all 0.15s}
+.news-table thead th.sortable:hover{color:var(--cyan);background:rgba(0,212,255,0.1)}
+.news-table thead th .sort-icon{margin-left:6px;font-size:0.6rem;opacity:0.4}
+.news-table thead th.asc .sort-icon,.news-table thead th.desc .sort-icon{opacity:1;color:var(--cyan)}
+.news-table tbody tr{transition:all 0.15s ease}
+.news-table tbody tr:hover{background:rgba(0,212,255,0.05)}
+.news-table tbody td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.news-ticker{display:inline-flex;align-items:center;gap:8px}
+.news-ticker-symbol{background:linear-gradient(135deg,var(--cyan),var(--purple));color:white;padding:4px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:700;cursor:pointer;transition:transform 0.15s}
+.news-ticker-symbol:hover{transform:scale(1.05)}
+.news-sector-badge{font-size:0.6rem;color:var(--muted);background:var(--bg2);padding:2px 6px;border-radius:4px}
+.news-headline{max-width:400px}
+.news-headline a{color:var(--text);text-decoration:none;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color 0.15s}
+.news-headline a:hover{color:var(--cyan)}
+.news-publisher{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--bg2);border-radius:6px;font-size:0.75rem;color:var(--text2);border:1px solid var(--border)}
+.news-publisher i{color:var(--cyan);font-size:0.65rem}
+.news-time{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);white-space:nowrap}
+.news-time.recent{color:var(--green)}
+.news-filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.news-filter-btn{padding:6px 12px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.15s}
+.news-filter-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.news-filter-btn.active{background:linear-gradient(135deg,var(--cyan),var(--purple));border-color:transparent;color:white}
+.news-stats{display:flex;gap:16px;font-size:0.75rem;color:var(--muted)}
+.news-stat{display:flex;align-items:center;gap:6px}
+.news-stat i{color:var(--cyan)}
+.news-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.news-empty i{font-size:2.5rem;margin-bottom:16px;color:var(--border)}
+.news-scroll-container{max-height:600px;overflow-y:auto}
+.news-scroll-container::-webkit-scrollbar{width:6px}
+.news-scroll-container::-webkit-scrollbar-track{background:var(--bg2);border-radius:3px}
+.news-scroll-container::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.news-scroll-container::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
+/* Sentiment Styles */
+.news-sentiment{font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:700;padding:4px 10px;border-radius:6px;text-align:center;min-width:55px;display:inline-block}
+.news-sentiment.very-bullish{background:rgba(16,185,129,0.25);color:#34d399;border:1px solid rgba(16,185,129,0.4)}
+.news-sentiment.bullish{background:rgba(16,185,129,0.15);color:#6ee7b7;border:1px solid rgba(16,185,129,0.25)}
+.news-sentiment.slightly-bullish{background:rgba(16,185,129,0.08);color:#a7f3d0;border:1px solid rgba(16,185,129,0.15)}
+.news-sentiment.neutral{background:rgba(100,116,139,0.15);color:#94a3b8;border:1px solid rgba(100,116,139,0.25)}
+.news-sentiment.slightly-bearish{background:rgba(244,63,94,0.08);color:#fda4af;border:1px solid rgba(244,63,94,0.15)}
+.news-sentiment.bearish{background:rgba(244,63,94,0.15);color:#fb7185;border:1px solid rgba(244,63,94,0.25)}
+.news-sentiment.very-bearish{background:rgba(244,63,94,0.25);color:#f43f5e;border:1px solid rgba(244,63,94,0.4)}
 
 .footer{text-align:center;padding:20px;color:var(--muted);font-size:0.75rem}
 .footer-main{margin-bottom:12px;font-size:0.8rem}
@@ -293,6 +333,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <button class="tab" onclick="showTab('ratios')"><i class="fas fa-balance-scale"></i> Ratios</button>
 <button class="tab" onclick="showTab('brief')"><i class="fas fa-newspaper"></i> Daily Brief - ETFs</button>
 <button class="tab" onclick="showTab('briefstocks')"><i class="fas fa-file-alt"></i> Daily Brief - Stocks</button>
+<button class="tab" onclick="showTab('news')"><i class="fas fa-rss"></i> Company News</button>
 <button class="tab" onclick="showTab('quantrankings')"><i class="fas fa-crown"></i> Quant Rankings</button>
 </div>
 <div class="panel active" id="panel-metrics">
@@ -383,6 +424,50 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 </div>
 </div>
 
+<div class="panel" id="panel-news">
+<div class="controls">
+<div class="search" style="flex:1;"><i class="fas fa-search"></i><input type="text" id="newsSearch" placeholder="Search headlines, tickers, or companies..." oninput="filterNews()"></div>
+<div class="news-filters">
+<button class="news-filter-btn active" onclick="filterNewsSector('all')">All</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Technology')">Tech</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Healthcare')">Health</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Financials')">Finance</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Consumer')">Consumer</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Energy')">Energy</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Industrials')">Industrial</button>
+<button class="news-filter-btn" onclick="filterNewsSector('Communication')">Comm</button>
+</div>
+<div class="news-filters" style="margin-left:auto;">
+<button class="news-filter-btn sentiment-filter active" onclick="filterNewsSentiment('all')" style="background:var(--bg2);">All</button>
+<button class="news-filter-btn sentiment-filter" onclick="filterNewsSentiment('bullish')" style="border-color:var(--green);color:var(--green);">🟢 Bullish</button>
+<button class="news-filter-btn sentiment-filter" onclick="filterNewsSentiment('bearish')" style="border-color:var(--rose);color:var(--rose);">🔴 Bearish</button>
+<button class="news-filter-btn sentiment-filter" onclick="filterNewsSentiment('movers')" style="border-color:var(--purple);color:var(--purple);">⚡ Movers</button>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:16px;padding:12px 16px 8px;flex-wrap:wrap;">
+<div class="news-stats">
+<span class="news-stat"><i class="fas fa-newspaper"></i> <span id="newsCount">0</span> news</span>
+<span class="news-stat" style="color:var(--green)"><i class="fas fa-arrow-up"></i> <span id="newsBullCount">0</span></span>
+<span class="news-stat" style="color:var(--rose)"><i class="fas fa-arrow-down"></i> <span id="newsBearCount">0</span></span>
+<span class="news-stat" style="color:var(--muted)"><i class="fas fa-minus"></i> <span id="newsNeutralCount">0</span></span>
+</div>
+</div>
+<div class="news-table-wrapper">
+<div class="news-scroll-container">
+<table class="news-table">
+<thead><tr>
+<th class="sortable" style="width:110px;" onclick="sortNews('symbol')">Stock <i class="fas fa-sort sort-icon"></i></th>
+<th>Headline</th>
+<th class="sortable" style="width:90px;" onclick="sortNews('sentiment')">Sentiment <i class="fas fa-sort sort-icon"></i></th>
+<th style="width:120px;">Source</th>
+<th class="sortable desc" style="width:75px;" onclick="sortNews('time')">Time <i class="fas fa-sort-down sort-icon"></i></th>
+</tr></thead>
+<tbody id="newsTableBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+
 <div class="panel" id="panel-quantrankings">
 <div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 420px)); justify-content: start;">
 <div class="top-card">
@@ -392,6 +477,14 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="top-card">
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-building"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="quantStockList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-newspaper"></i></span>Bullish Sentiment</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantBullishList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-newspaper"></i></span>Bearish Sentiment</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantBearishList"></ul>
 </div>
 <div class="top-card">
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:white"><i class="fas fa-chart-line"></i></span>Top 10 ETFs</span><span class="p">SCORE</span></h3>
@@ -434,6 +527,44 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <div class="quant-disclaimer">
 <i class="fas fa-exclamation-triangle"></i>
 This is a statistical ranking based on quantitative metrics only. Not financial advice. Past performance does not guarantee future results. Always do your own research.
+</div>
+</div>
+
+<div class="quant-methodology" style="margin-top:16px;">
+<h4><i class="fas fa-newspaper"></i> SENTIMENT SCORING METHODOLOGY</h4>
+<div class="methodology-grid">
+<div class="methodology-col">
+<h5>Sentiment Scale</h5>
+<div class="weight-item"><span style="color:#22c55e">+70 to +100</span><span>Very Bullish</span></div>
+<div class="weight-item"><span style="color:#22c55e">+30 to +69</span><span>Bullish</span></div>
+<div class="weight-item"><span style="color:#6b7280">-9 to +9</span><span>Neutral</span></div>
+<div class="weight-item"><span style="color:#ef4444">-30 to -69</span><span>Bearish</span></div>
+<div class="weight-item"><span style="color:#ef4444">-70 to -100</span><span>Very Bearish</span></div>
+</div>
+<div class="methodology-col">
+<h5>Bullish Catalysts</h5>
+<div class="weight-item"><span>M&A Target</span><span>+80</span></div>
+<div class="weight-item"><span>Earnings Beat + Guidance Up</span><span>+70</span></div>
+<div class="weight-item"><span>FDA Approval / Regulatory Win</span><span>+65</span></div>
+<div class="weight-item"><span>Analyst Upgrade</span><span>+50</span></div>
+<div class="weight-item"><span>Contract Win / Partnership</span><span>+40</span></div>
+</div>
+<div class="methodology-col">
+<h5>Bearish Catalysts</h5>
+<div class="weight-item"><span>Fraud / SEC Probe</span><span>-85</span></div>
+<div class="weight-item"><span>Bankruptcy Risk</span><span>-80</span></div>
+<div class="weight-item"><span>Earnings Miss + Guidance Cut</span><span>-65</span></div>
+<div class="weight-item"><span>Analyst Downgrade</span><span>-50</span></div>
+<div class="weight-item"><span>Product Delay / Layoffs</span><span>-40</span></div>
+</div>
+</div>
+<p style="font-size:0.7rem;color:#06b6d4;margin-top:10px;"><i class="fas fa-robot"></i> AI Model: GPT-5-mini analyzes news headlines for short-term price impact</p>
+<p style="font-size:0.7rem;color:#8b5cf6;margin-top:4px;"><i class="fas fa-calculator"></i> Aggregation: Total sentiment score = Sum of all news scores per stock (last 5 days, max 3 news/stock)</p>
+<p style="font-size:0.7rem;color:#f59e0b;margin-top:4px;"><i class="fas fa-filter"></i> M&A Rule: Target company = Bullish (+70-100), Acquirer = Neutral/Bearish (cash outlay)</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Noise Filter: "Stock up 5%" without catalyst = 0 (focus on reason, not movement)</p>
+<div class="quant-disclaimer">
+<i class="fas fa-exclamation-triangle"></i>
+Sentiment scores are AI-generated from news headlines and may not reflect actual market impact. Use as supplementary signal only. Always verify with fundamental analysis.
 </div>
 </div>
 </div>
@@ -537,6 +668,8 @@ This is a statistical ranking based on quantitative metrics only. Not financial 
 var DATA = null;
 var BRIEF = null;
 var BRIEF_STOCKS = null;
+var NEWS_DATA = null;
+var currentNewsSector = 'all';
 var REGIME, RATIOS, ETFS, STOCKS;
 var top10P = '1M', top10StockP = '1M', top10SectorP = '1M', ratioP = '1M';
 var currentSort = {col: 'RETURN', dir: 'desc'};
@@ -591,10 +724,11 @@ var GLOSS = {
 // ========== DATA LOADING ==========
 async function loadData() {
   try {
-    const [dataRes, briefRes, briefStockRes] = await Promise.all([
+    const [dataRes, briefRes, briefStockRes, newsRes] = await Promise.all([
       fetch('etf_data.json'),
       fetch('brief.json').catch(() => null),
-      fetch('brief_stocks.json').catch(() => null)
+      fetch('brief_stocks.json').catch(() => null),
+      fetch('news_data.json').catch(() => null)
     ]);
     
     DATA = await dataRes.json();
@@ -608,6 +742,9 @@ async function loadData() {
     }
     if (briefStockRes && briefStockRes.ok) {
       BRIEF_STOCKS = await briefStockRes.json();
+    }
+    if (newsRes && newsRes.ok) {
+      NEWS_DATA = await newsRes.json();
     }
     
     renderAll();
@@ -632,6 +769,7 @@ function renderAll() {
   renderRatios();
   renderBrief();
   renderBriefStocks();
+  renderNews();
 }
 
 // ========== MODAL ==========
@@ -889,8 +1027,87 @@ function renderQuantRankings() {
     document.getElementById('quantStockList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
     document.getElementById('quantCommodityList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
     document.getElementById('quantSectorList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
-    return;
   }
+  
+  // ========== SENTIMENT RANKINGS (from NEWS_DATA) ==========
+  var bullishList = document.getElementById('quantBullishList');
+  var bearishList = document.getElementById('quantBearishList');
+  
+  if (NEWS_DATA && NEWS_DATA.news && NEWS_DATA.news.length > 0) {
+    // Aggregate sentiment by stock (sum all news sentiment for each stock)
+    var stockSentiment = {};
+    NEWS_DATA.news.forEach(function(n) {
+      var sym = n.symbol;
+      if (!stockSentiment[sym]) {
+        stockSentiment[sym] = {
+          symbol: sym,
+          name: n.name || sym,
+          industry: n.industry || '',
+          sector: n.sector || '',
+          totalSentiment: 0,
+          newsCount: 0,
+          maxSentiment: -999,
+          minSentiment: 999,
+          maxLink: '',
+          minLink: ''
+        };
+      }
+      stockSentiment[sym].totalSentiment += n.sentiment;
+      stockSentiment[sym].newsCount++;
+      if (n.sentiment > stockSentiment[sym].maxSentiment) {
+        stockSentiment[sym].maxSentiment = n.sentiment;
+        stockSentiment[sym].maxLink = n.link || '';
+      }
+      if (n.sentiment < stockSentiment[sym].minSentiment) {
+        stockSentiment[sym].minSentiment = n.sentiment;
+        stockSentiment[sym].minLink = n.link || '';
+      }
+    });
+    
+    // Convert to array
+    var stockArray = Object.values(stockSentiment);
+    
+    // Top 10 Bullish (by total sentiment, positive only)
+    var bullish = stockArray.filter(function(s) { return s.totalSentiment > 0; })
+      .sort(function(a, b) { return b.totalSentiment - a.totalSentiment; })
+      .slice(0, 10);
+    
+    var bullHtml = '';
+    for (var i = 0; i < bullish.length; i++) {
+      var s = bullish[i];
+      var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      var scoreDisplay = '+' + s.totalSentiment;
+      var nameClick = s.maxLink ? 'onclick="window.open(\'' + s.maxLink.replace(/'/g, "\\'") + '\', \'_blank\')"' : '';
+      var nameStyle = s.maxLink ? 'style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;"' : '';
+      var sectorClass = s.sector ? s.sector.toLowerCase().replace(/[^a-z]/g, '') : '';
+      var sectorBadge = s.sector ? '<span class="cat ' + sectorClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.sector + '</span>' : '';
+      bullHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.symbol + '\', \'' + s.name.replace(/'/g, "\\'") + '\')">' + s.symbol + '</span><span class="top-name" ' + nameStyle + ' ' + nameClick + '>' + s.name + '</span>' + sectorBadge + '<span class="top-val pos">' + scoreDisplay + '</span></li>';
+    }
+    bullishList.innerHTML = bullHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No bullish news</div>';
+    
+    // Top 10 Bearish (by total sentiment, negative only)
+    var bearish = stockArray.filter(function(s) { return s.totalSentiment < 0; })
+      .sort(function(a, b) { return a.totalSentiment - b.totalSentiment; })
+      .slice(0, 10);
+    
+    var bearHtml = '';
+    for (var i = 0; i < bearish.length; i++) {
+      var s = bearish[i];
+      var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      var scoreDisplay = s.totalSentiment;
+      var nameClick = s.minLink ? 'onclick="window.open(\'' + s.minLink.replace(/'/g, "\\'") + '\', \'_blank\')"' : '';
+      var nameStyle = s.minLink ? 'style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;"' : '';
+      var sectorClass = s.sector ? s.sector.toLowerCase().replace(/[^a-z]/g, '') : '';
+      var sectorBadge = s.sector ? '<span class="cat ' + sectorClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.sector + '</span>' : '';
+      bearHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.symbol + '\', \'' + s.name.replace(/'/g, "\\'") + '\')">' + s.symbol + '</span><span class="top-name" ' + nameStyle + ' ' + nameClick + '>' + s.name + '</span>' + sectorBadge + '<span class="top-val neg">' + scoreDisplay + '</span></li>';
+    }
+    bearishList.innerHTML = bearHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No bearish news</div>';
+  } else {
+    bullishList.innerHTML = '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
+    bearishList.innerHTML = '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
+  }
+  
+  if (!rankings) return;
   
   // Top 10 ETFs - Top 10 tarzı liste
   var etfHtml = '';
@@ -1178,11 +1395,13 @@ function parseBriefContent(content) {
     10: "What is the Portfolio Compass direction?",
     11: "Sectors to Watch Next Week?",
     12: "Commodities to Watch Next Week?",
-    13: "Key Levels & Triggers?"
+    13: "Key Levels & Triggers?",
+    14: "Bullish Sentiment Stocks?",
+    15: "Bearish Sentiment Stocks?"
   };
   
-  // Birden fazla format dene
-  for (var num = 1; num <= 13; num++) {
+  // Birden fazla format dene (1-15 arası)
+  for (var num = 1; num <= 15; num++) {
     var answer = null;
     var nextNum = num + 1;
     
@@ -1195,7 +1414,7 @@ function parseBriefContent(content) {
     
     // Format 2: 1. Question?\nAnswer (plain text - stock brief format)
     if (!answer) {
-      var pattern2 = new RegExp(num + '\\.\\s*[^\\n]*\\?\\n([\\s\\S]*?)(?=' + nextNum + '\\.\\s[A-Z]|\\d+\\.\\s[A-Z]|[🌡📈🏭🧭🔮📝]|EXECUTIVE|$)', 'i');
+      var pattern2 = new RegExp(num + '\\.\\s*[^\\n]*\\?\\n([\\s\\S]*?)(?=' + nextNum + '\\.\\s[A-Z]|\\d+\\.\\s[A-Z]|[🌡📈🏭🧭🔮📝📰]|EXECUTIVE|$)', 'i');
       var match2 = content.match(pattern2);
       if (match2 && match2[1] && match2[1].trim().length > 10) {
         answer = match2[1];
@@ -1213,8 +1432,8 @@ function parseBriefContent(content) {
     
     if (answer) {
       // Emoji ve section header temizle
-      answer = answer.replace(/[🌡📈🏭🧭🔮📝️]+/g, '').trim();
-      answer = answer.replace(/^(MARKET OVERVIEW|STOCK PERFORMANCE|SECTOR OUTLOOK|PORTFOLIO STRATEGY|NEXT WEEK OUTLOOK)\s*/i, '');
+      answer = answer.replace(/[🌡📈🏭🧭🔮📝📰️]+/g, '').trim();
+      answer = answer.replace(/^(MARKET OVERVIEW|STOCK PERFORMANCE|SECTOR OUTLOOK|PORTFOLIO STRATEGY|NEXT WEEK OUTLOOK|NEWS SENTIMENT MOVERS)\s*/i, '');
       
       sections[num] = answer.trim().replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim();
     }
@@ -1348,6 +1567,183 @@ function formatAnswer(text) {
   return text.trim();
 }
 
+// ========== COMPANY NEWS ==========
+var currentNewsSort = {col: 'time', dir: 'desc'};
+var currentNewsSentimentFilter = 'all'; // all, bullish, bearish, movers
+
+function getSentimentClass(score) {
+  if (score >= 70) return 'very-bullish';
+  if (score >= 30) return 'bullish';
+  if (score >= 10) return 'slightly-bullish';
+  if (score > -10) return 'neutral';
+  if (score > -30) return 'slightly-bearish';
+  if (score > -70) return 'bearish';
+  return 'very-bearish';
+}
+
+function renderNews() {
+  var tbody = document.getElementById('newsTableBody');
+  var countEl = document.getElementById('newsCount');
+  var bullCountEl = document.getElementById('newsBullCount');
+  var bearCountEl = document.getElementById('newsBearCount');
+  var neutralCountEl = document.getElementById('newsNeutralCount');
+  
+  if (!NEWS_DATA || !NEWS_DATA.news || NEWS_DATA.news.length === 0) {
+    renderNewsEmpty();
+    return;
+  }
+  
+  var news = NEWS_DATA.news.slice(); // Copy array for sorting
+  var searchTerm = (document.getElementById('newsSearch').value || '').toLowerCase();
+  
+  // Filter by sentiment
+  if (currentNewsSentimentFilter === 'bullish') {
+    news = news.filter(function(item) { return item.sentiment > 0; });
+  } else if (currentNewsSentimentFilter === 'bearish') {
+    news = news.filter(function(item) { return item.sentiment < 0; });
+  } else if (currentNewsSentimentFilter === 'movers') {
+    news = news.filter(function(item) { return item.sentiment !== 0; });
+  }
+  
+  // Filter by sector - Consumer matches both Consumer Disc. and Consumer Stpl.
+  if (currentNewsSector !== 'all') {
+    news = news.filter(function(item) {
+      if (currentNewsSector === 'Consumer') {
+        return item.sector && item.sector.startsWith('Consumer');
+      }
+      return item.sector === currentNewsSector;
+    });
+  }
+  
+  // Filter by search - include name field
+  if (searchTerm) {
+    news = news.filter(function(item) {
+      return item.title.toLowerCase().includes(searchTerm) ||
+             item.symbol.toLowerCase().includes(searchTerm) ||
+             (item.name && item.name.toLowerCase().includes(searchTerm)) ||
+             item.publisher.toLowerCase().includes(searchTerm);
+    });
+  }
+  
+  // Sort
+  news.sort(function(a, b) {
+    var aVal, bVal;
+    if (currentNewsSort.col === 'time') {
+      aVal = a.publish_time || '';
+      bVal = b.publish_time || '';
+    } else if (currentNewsSort.col === 'symbol') {
+      aVal = a.symbol;
+      bVal = b.symbol;
+    } else if (currentNewsSort.col === 'sentiment') {
+      aVal = a.sentiment || 0;
+      bVal = b.sentiment || 0;
+    }
+    
+    if (currentNewsSort.dir === 'desc') {
+      return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+    } else {
+      return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+    }
+  });
+  
+  // Update stats
+  countEl.textContent = news.length;
+  var bullish = news.filter(function(n) { return n.sentiment > 0; }).length;
+  var bearish = news.filter(function(n) { return n.sentiment < 0; }).length;
+  var neutral = news.filter(function(n) { return n.sentiment === 0; }).length;
+  bullCountEl.textContent = bullish;
+  bearCountEl.textContent = bearish;
+  if (neutralCountEl) neutralCountEl.textContent = neutral;
+  
+  if (news.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted);">No news found</td></tr>';
+    return;
+  }
+  
+  var html = '';
+  news.forEach(function(item) {
+    var timeClass = (item.time_ago.includes('h') || item.time_ago.includes('m')) ? 'recent' : '';
+    var sentiment = item.sentiment || 0;
+    var sentClass = getSentimentClass(sentiment);
+    var sentDisplay = (sentiment > 0 ? '+' : '') + sentiment;
+    var industryBadge = item.industry ? '<span class="news-sector-badge">' + item.industry + '</span>' : '';
+    
+    html += '<tr>';
+    html += '<td><div class="news-ticker"><span class="news-ticker-symbol" onclick="showChart(\'' + item.symbol + '\', \'' + (item.name || item.symbol) + '\')">' + item.symbol + '</span>' + industryBadge + '</div></td>';
+    html += '<td class="news-headline"><a href="' + item.link + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + '</a></td>';
+    html += '<td><span class="news-sentiment ' + sentClass + '">' + sentDisplay + '</span></td>';
+    html += '<td><span class="news-publisher"><i class="fas fa-rss"></i> ' + escapeHtml(item.publisher) + '</span></td>';
+    html += '<td><span class="news-time ' + timeClass + '">' + item.time_ago + '</span></td>';
+    html += '</tr>';
+  });
+  tbody.innerHTML = html;
+  
+  // Update sort icons
+  updateNewsSortIcons();
+}
+
+function updateNewsSortIcons() {
+  document.querySelectorAll('.news-table thead th').forEach(function(th) {
+    th.classList.remove('asc', 'desc');
+  });
+  var activeCol = currentNewsSort.col;
+  var selector = '.news-table thead th[onclick*="' + activeCol + '"]';
+  var activeTh = document.querySelector(selector);
+  if (activeTh) {
+    activeTh.classList.add(currentNewsSort.dir);
+  }
+}
+
+function sortNews(col) {
+  if (currentNewsSort.col === col) {
+    currentNewsSort.dir = currentNewsSort.dir === 'desc' ? 'asc' : 'desc';
+  } else {
+    currentNewsSort.col = col;
+    currentNewsSort.dir = col === 'sentiment' ? 'desc' : (col === 'time' ? 'desc' : 'asc');
+  }
+  renderNews();
+}
+
+function renderNewsEmpty() {
+  var tbody = document.getElementById('newsTableBody');
+  if(tbody) tbody.innerHTML = '<tr><td colspan="5"><div class="news-empty"><i class="fas fa-newspaper"></i><p>Company News not available</p><small>Run: python generate_news.py</small></div></td></tr>';
+}
+
+function filterNews() { renderNews(); }
+
+function filterNewsSector(sector) {
+  currentNewsSector = sector;
+  // Sadece sector butonlarını güncelle (sentiment-filter class'ı olmayanlar)
+  document.querySelectorAll('.news-filter-btn:not(.sentiment-filter)').forEach(function(btn) {
+    btn.classList.remove('active');
+    var onclick = btn.getAttribute('onclick') || '';
+    if (onclick.includes("filterNewsSector('" + sector + "')")) {
+      btn.classList.add('active');
+    }
+  });
+  renderNews();
+}
+
+function filterNewsSentiment(sentiment) {
+  currentNewsSentimentFilter = sentiment;
+  // Sadece sentiment butonlarını güncelle
+  document.querySelectorAll('.news-filter-btn.sentiment-filter').forEach(function(btn) {
+    btn.classList.remove('active');
+    var onclick = btn.getAttribute('onclick') || '';
+    if (onclick.includes("filterNewsSentiment('" + sentiment + "')")) {
+      btn.classList.add('active');
+    }
+  });
+  renderNews();
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 // ========== STOCK BRIEF ==========
 function renderBriefStocks() {
   var container = document.getElementById('briefStockContainer');
@@ -1377,7 +1773,9 @@ function renderBriefStocks() {
     10: "Portfolio Recommendation?",
     11: "Stocks to Watch Next Week?",
     12: "Sectors to Watch Next Week?",
-    13: "Key Levels & Triggers?"
+    13: "Key Levels & Triggers?",
+    14: "Bullish Sentiment Stocks?",
+    15: "Bearish Sentiment Stocks?"
   };
   
   // Hero - ETF ile aynı format
@@ -1389,7 +1787,8 @@ function renderBriefStocks() {
     {key: 'equities', icon: 'fa-chart-line', title: 'PART 2: STOCK PERFORMANCE', questions: [4,5,6]},
     {key: 'economy', icon: 'fa-industry', title: 'PART 3: SECTOR OUTLOOK', questions: [7,8,9]},
     {key: 'strategy', icon: 'fa-compass', title: 'PART 4: PORTFOLIO STRATEGY', questions: [10]},
-    {key: 'outlook', icon: 'fa-crystal-ball', title: 'PART 5: NEXT WEEK OUTLOOK', questions: [11,12,13]}
+    {key: 'outlook', icon: 'fa-crystal-ball', title: 'PART 5: NEXT WEEK OUTLOOK', questions: [11,12,13]},
+    {key: 'sentiment', icon: 'fa-newspaper', title: 'PART 6: NEWS SENTIMENT MOVERS', questions: [14,15]}
   ];
   
   sectionConfigs.forEach(function(cfg) {
