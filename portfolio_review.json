@@ -1,12 +1,12 @@
 {
   "review_date": "2025-12-24",
-  "generated_at": "2025-12-24T01:21:08.914020",
+  "generated_at": "2025-12-24T01:24:01.383121",
   "model": "gpt-5-mini",
   "engine": "Python-Driven v2.0",
   "market_regime": "ROTATION",
   "risk_level": "CAUTION",
-  "regime_analysis": "Five strong sectors sit alongside four disqualified and two weak sectors, indicating selective leadership rather than broad market advance. The picture supports rotation into high-conviction cyclicals while guarding against idiosyncratic weakness.",
-  "executive_summary": "Rotate capital into high-conviction names (increases to GM, FDX), reflecting 5 strong vs 4 disqualified sectors; trims cut Financials crowding and lower downside-skew risk.",
+  "regime_analysis": "Five robust sectors coexist with four disqualified and two weak pockets, signaling active rotation rather than a uniform trend. That breadth supports stock selection but raises asymmetric risk from disqualified-sector shocks.",
+  "executive_summary": "Rebalanced to cut Financials concentration and rotate into cyclical leaders; 5 strong vs 4 disqualified sectors justify pro-cyclical tilt, but crowding risks correlation spikes.",
   "portfolio_score": 75,
   "disqualified_sectors": [
     "Energy",
@@ -28,8 +28,8 @@
   ],
   "hard_rules_applied": [
     "ETF_POSITION_LIMIT",
-    "LOSING_MOMENTUM",
-    "SECTOR_CONCENTRATION"
+    "SECTOR_CONCENTRATION",
+    "LOSING_MOMENTUM"
   ],
   "critical_alerts": [],
   "total_new_weight": 100.0,
@@ -46,25 +46,25 @@
     "new": 0
   },
   "sector_allocation": {
-    "Industrials": {
-      "before": 22.0,
-      "after": 25.6
-    },
-    "Consumer Disc.": {
-      "before": 7.0,
-      "after": 17.0
+    "Financials": {
+      "before": 43.0,
+      "after": 32.4
     },
     "Healthcare": {
       "before": 18.0,
       "after": 18.0
     },
-    "Financials": {
-      "before": 43.0,
-      "after": 32.4
-    },
     "ETF": {
       "before": 10.0,
       "after": 7.0
+    },
+    "Consumer Disc.": {
+      "before": 7.0,
+      "after": 17.0
+    },
+    "Industrials": {
+      "before": 22.0,
+      "after": 25.6
     }
   },
   "assets": [
@@ -90,7 +90,7 @@
       "sector_health": 4,
       "sector_quant_score": 84.3,
       "in_top10": false,
-      "reasoning": "18.0% -> 18.0% KEEP: Healthcare strength justifies anchor holding; strong momentum keeps marginal buyers, avoids costly rotation and preserves upside optionality."
+      "reasoning": "Sector health: keep 18.0% -> 18.0%. Healthcare leadership keeps marginal buyers engaged; selling risks losing low-volatility anchor exposure."
     },
     {
       "symbol": "C",
@@ -114,7 +114,7 @@
       "sector_health": 4,
       "sector_quant_score": 79.4,
       "in_top10": true,
-      "reasoning": "17.3% -> 11.0% REDUCE: Trimmed to manage Financials concentration; reduces crowding, frees capital into other strong sectors and lowers downside skew."
+      "reasoning": "Risk control: trimmed 17.3% -> 11.0% to reduce Financials crowding; strong momentum persists but frees capital to rotate."
     },
     {
       "symbol": "GS",
@@ -138,7 +138,7 @@
       "sector_health": 4,
       "sector_quant_score": 79.4,
       "in_top10": true,
-      "reasoning": "11.0% -> 8.6% REDUCE: Cut to rein in Financials exposure; sector healthy but trimming limits correlation spike and concentration risk for marginal sellers."
+      "reasoning": "Risk control: trimmed 11.0% -> 8.6% to limit Financials concentration; momentum remains strong, lowering single-name tail risk."
     },
     {
       "symbol": "COF",
@@ -162,7 +162,7 @@
       "sector_health": 4,
       "sector_quant_score": 79.4,
       "in_top10": false,
-      "reasoning": "7.0% -> 5.9% REDUCE: Lowered to reduce Financials crowding despite strong momentum; bullish flow (+28) supports reallocation, avoids idiosyncratic concentration risk."
+      "reasoning": "Risk control: trimmed 7.0% -> 5.9% to curb Financials concentration; bullish news flow (+28) supports residual exposure."
     },
     {
       "symbol": "USB",
@@ -186,7 +186,7 @@
       "sector_health": 4,
       "sector_quant_score": 79.4,
       "in_top10": true,
-      "reasoning": "7.0% -> 6.2% REDUCE: Trimmed to control Financials concentration; momentum intact but reduction reduces tail risk from sector-wide correlation spikes."
+      "reasoning": "Risk control: trimmed 7.0% -> 6.2% to reduce Financials concentration; maintains exposure to steady regional bank flows."
     },
     {
       "symbol": "PNC",
@@ -210,7 +210,7 @@
       "sector_health": 4,
       "sector_quant_score": 79.4,
       "in_top10": false,
-      "reasoning": "0.7% -> 0.7% KEEP: Small exposure retained for Financials upside; momentum participation without adding concentration, preserves optionality in rotation."
+      "reasoning": "Sector health: keep 0.7% -> 0.7%. Small position preserves Financials exposure without adding concentration; steady flows expected."
     },
     {
       "symbol": "CAT",
@@ -234,7 +234,7 @@
       "sector_health": 4,
       "sector_quant_score": 77.9,
       "in_top10": false,
-      "reasoning": "11.0% -> 8.8% REDUCE: Momentum deterioration drives trim — profit-taking as trend weakens; avoids owning into potential industrial downside and adverse skew."
+      "reasoning": "Momentum: trimmed 11.0% -> 8.8% as trend deteriorated; profit taken to avoid asymmetric downside from mean-reversion in Industrials."
     },
     {
       "symbol": "FDX",
@@ -258,7 +258,7 @@
       "sector_health": 4,
       "sector_quant_score": 77.9,
       "in_top10": true,
-      "reasoning": "11.0% -> 16.8% INCREASE: Increased on strong momentum and Industrials tail; bullish flow (+25) captures marginal buyers, amplifies exposure to cyclical rotation upside."
+      "reasoning": "Sector health: increased 11.0% -> 16.8% into Industrials leadership; strong momentum and bullish flow (+25) justify rotation away from crowded Financials."
     },
     {
       "symbol": "GM",
@@ -282,7 +282,7 @@
       "sector_health": 4,
       "sector_quant_score": 76.6,
       "in_top10": true,
-      "reasoning": "7.0% -> 17.0% INCREASE: Large reweight into Consumer Discretionary winner; momentum strong, captures flow and creates asymmetric upside versus lower-conviction alternatives."
+      "reasoning": "Sector health: increased 7.0% -> 17.0% into Consumer Discretionary momentum; reallocates capital to higher-conviction cyclical winners, raising active share."
     },
     {
       "symbol": "SPY",
@@ -306,7 +306,7 @@
       "sector_health": 3,
       "sector_quant_score": 50,
       "in_top10": false,
-      "reasoning": "7.5% -> 5.0% REDUCE: Capped to 5.0% ETF allocation; reduces passive beta, frees capital for higher-conviction ideas, lowers systemic crowding."
+      "reasoning": "Risk control: trimmed 7.5% -> 5.0% to cap ETF exposure; frees capital for higher-conviction names and mitigates beta crowding."
     },
     {
       "symbol": "SKYY",
@@ -330,7 +330,7 @@
       "sector_health": 3,
       "sector_quant_score": 50,
       "in_top10": false,
-      "reasoning": "2.5% -> 2.0% REDUCE: Momentum weakening drives trim; losing trend increases downside asymmetry in cloud exposure, so we cut to limit tail risk."
+      "reasoning": "Momentum: trimmed 2.5% -> 2.0% as cloud theme lost momentum; profit taken to avoid crowded ETF correlation spikes."
     }
   ],
   "new_positions": [],
