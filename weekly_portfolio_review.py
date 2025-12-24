@@ -1,1959 +1,1764 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 """
-Weekly Portfolio Review v1.1
-============================
-Haftalık portföy analizi - JSON çıktı
+WEEKLY PORTFOLIO REVIEW v2.0
+Python-Driven Decision Engine
 
-Kullanım:
-    python weekly_portfolio_review.py
+Tüm kararlar Python tarafından alınır.
+GPT sadece yorum/reasoning için kullanılır.
 
-Girdi:
-    - etf_data.json
-    - news_data.json
-
-Çıktı:
-    - portfolio_review.json (HTML bu dosyayı okur)
+Author: Navimod
+Date: 2024
 """
 
 import json
 import os
 from datetime import datetime
-from openai import OpenAI
+from collections import Counter
+from statistics import mean
 
-# ============================================================
+# =============================================================================
 # CONFIGURATION
-# ============================================================
-MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")
-PORTFOLIO_FILE = "portfolio.txt"
+# =============================================================================
 
-def load_portfolio(filepath=PORTFOLIO_FILE):
+CONFIG = {
+    # Position Limits
+    'MAX_POSITION': 25.0,        # Tek varlık max ağırlık %
+    'MAX_CHANGE': 10.0,          # Tek seferde max değişim %
+    'MIN_POSITION': 0.5,         # Min pozisyon %
+    
+    # Sector Limits
+    'MAX_SECTOR': 30.0,          # Tek sektör max ağırlık %
+    
+    # ETF Limits
+    'MAX_ETF_TOTAL': 10.0,       # Toplam ETF max ağırlık %
+    'MAX_ETF_SINGLE': 5.0,       # Tek ETF max ağırlık %
+    
+    # New Position
+    'MIN_NEW_POSITION': 2.0,     # Yeni pozisyon min ağırlık %
+    'MAX_NEW_POSITIONS': 10,     # Max yeni pozisyon sayısı
+    
+    # Candidate Criteria
+    'MIN_SCORE': 70,             # Aday için min skor
+    'MIN_SECTOR_HEALTH': 3,      # Aday sektör için min health
+    
+    # Momentum Thresholds
+    'CRITICAL_SENTIMENT': -50,   # Bu altında REMOVE
+    
+    # Reduce Percentages
+    'LOSING_MOMENTUM_REDUCE': 0.20,  # Losing momentum'da %20 azalt
+}
+
+# Known ETF symbols
+ETF_SYMBOLS = {
+    'SPY', 'QQQ', 'IWM', 'DIA', 'VOO', 'VTI', 'VEA', 'VWO',
+    'XLK', 'XLF', 'XLE', 'XLV', 'XLI', 'XLP', 'XLY', 'XLB', 'XLU', 'XLRE', 'XLC',
+    'SKYY', 'XBI', 'IBB', 'ARKK', 'ARKG',
+    'GLD', 'SLV', 'USO', 'UNG',
+    'TLT', 'IEF', 'SHY', 'BND', 'AGG',
+    'VNQ', 'IYR'
+}
+
+# Model for GPT commentary
+MODEL = "gpt-5-mini"
+
+
+# =============================================================================
+# UTILITY FUNCTIONS
+# =============================================================================
+
+def classify_momentum(ret_2w, ret_1m, ret_3m=0):
     """
-    Portföyü txt dosyasından yükle.
-    Format: SYMBOL,WEIGHT (her satırda bir hisse)
-    # ile başlayan satırlar yorum
+    Momentum sınıflandırması.
     
-    Örnek portfolio.txt:
-    # Weekly Portfolio - 2024
-    BMY,18.0
-    C,17.3
-    CAT,11.0
+    Returns:
+        STRONG: 2W > 0 AND 1M > 0
+        RECOVERING: 2W > 0 AND 1M < 0
+        LOSING: 2W < 0 AND 1M > 0
+        WEAK: 2W < 0 AND 1M < 0
     """
-    portfolio = {}
+    if ret_2w > 0 and ret_1m > 0:
+        return 'STRONG'
+    elif ret_2w > 0 and ret_1m < 0:
+        return 'RECOVERING'
+    elif ret_2w < 0 and ret_1m > 0:
+        return 'LOSING'
+    else:
+        return 'WEAK'
+
+
+def calculate_sector_health_from_rankings(sector_data, avg_2w_ret=0, avg_1m_ret=0, avg_2w_trend=0, avg_1m_trend=0):
+    """
+    Sector health hesaplama - quant_rankings.top10_sectors verisinden.
     
-    if not os.path.exists(filepath):
-        print(f"⚠️ {filepath} bulunamadı! Örnek dosya oluşturuluyor...")
-        create_sample_portfolio(filepath)
+    Kurallar:
+    1. Disqualified = true → Health 0
+    2. Score < 50  → Weak (2)
+    3. Score 50-75 → Neutral (3)
+    4. Score > 75  → Strong (4)
+    5. Momentum koşulu (hepsi > 0 olmalı):
+       - 2W Return > 0, 1M Return > 0, 2W Trend > 0, 1M Trend > 0
+       - Sağlanmıyorsa → bir alt gruba düşer
+    """
+    # Disqualified kontrolü
+    if sector_data.get('Disqualified', False):
+        return 0
     
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            for line_num, line in enumerate(f, 1):
-                line = line.strip()
-                
-                # Boş satır veya yorum
-                if not line or line.startswith('#'):
-                    continue
-                
-                # Parse: SYMBOL,WEIGHT
-                parts = line.split(',')
-                if len(parts) != 2:
-                    print(f"⚠️ Line {line_num}: Geçersiz format '{line}' - Beklenen: SYMBOL,WEIGHT")
-                    continue
-                
-                symbol = parts[0].strip().upper()
-                try:
-                    weight = float(parts[1].strip())
-                except ValueError:
-                    print(f"⚠️ Line {line_num}: Geçersiz ağırlık '{parts[1]}' - {symbol} atlandı")
-                    continue
-                
-                if weight <= 0:
-                    print(f"⚠️ Line {line_num}: Ağırlık 0 veya negatif - {symbol} atlandı")
-                    continue
-                
-                portfolio[symbol] = weight
-        
-        # Validasyon
-        total = sum(portfolio.values())
-        if abs(total - 100) > 0.5:
-            print(f"⚠️ Toplam ağırlık: {total:.1f}% (100% olmalı)")
-        
-        return portfolio
-        
-    except Exception as e:
-        print(f"❌ Portföy yükleme hatası: {e}")
-        return {}
+    score = sector_data.get('QuantScore') or 0
+    
+    # Momentum check: 2W/1M Return ve Trend hepsi > 0 olmalı
+    has_momentum = (
+        avg_2w_ret > 0 and 
+        avg_1m_ret > 0 and 
+        avg_2w_trend > 0 and 
+        avg_1m_trend > 0
+    )
+    
+    # Base kategori + momentum penalty
+    if score > 75:
+        return 4 if has_momentum else 3  # Strong → Neutral
+    elif score >= 50:
+        return 3 if has_momentum else 2  # Neutral → Weak
+    else:
+        return 2  # Weak (zaten en düşük)
 
-def create_sample_portfolio(filepath):
-    """Örnek portfolio.txt oluştur"""
-    sample = """# Weekly Portfolio
-# Format: SYMBOL,WEIGHT
-# Toplam ağırlık 100% olmalı
-# Her satırda bir hisse
 
-# Healthcare
-BMY,18.0
+def get_sentiment(symbol, news_data):
+    """
+    Haber sentiment skorunu al.
+    """
+    if not news_data:
+        return 0
+    
+    # Handle dict format with 'news' key
+    if isinstance(news_data, dict):
+        news_items = news_data.get('news', [])
+    elif isinstance(news_data, list):
+        news_items = news_data
+    else:
+        return 0
+    
+    # Find sentiment for this symbol
+    sentiments = []
+    for item in news_items:
+        if isinstance(item, dict) and item.get('symbol') == symbol:
+            sent = item.get('sentiment', 0)
+            if sent is not None:
+                sentiments.append(sent)
+    
+    if sentiments:
+        return round(sum(sentiments) / len(sentiments), 0)
+    
+    return 0
 
-# Financials
-C,17.3
-GS,11.0
-COF,7.0
-USB,7.0
-PNC,0.7
 
-# Industrials
-CAT,11.0
-FDX,11.0
-GM,7.0
-
-# ETFs
-SPY,7.5
-SKYY,2.5
-"""
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(sample)
-    print(f"✅ Örnek portföy dosyası oluşturuldu: {filepath}")
-
-# ============================================================
-# DATA LOADERS
-# ============================================================
-def load_json(filepath):
-    if not os.path.exists(filepath):
-        print(f"⚠️ {filepath} bulunamadı")
-        return None
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-def get_stock_data(symbol, etf_data):
-    """Belirli bir hisse/ETF için veri çek"""
+def find_asset_in_etf_data(symbol, etf_data):
+    """
+    ETF data içinde varlık bul.
+    """
+    # Check stocks list
     for stock in etf_data.get('stocks', []):
         if stock.get('Symbol') == symbol:
-            return {'type': 'stock', 'data': stock}
+            return {
+                **stock, 
+                'Sector': stock.get('Category', 'Unknown'),
+                'Type': 'Stock',
+                'SCORE': stock.get('QuantScore') or stock.get('SCORE') or 0
+            }
+    
+    # Check ETFs list
     for etf in etf_data.get('etfs', []):
         if etf.get('Symbol') == symbol:
-            return {'type': 'etf', 'data': etf}
+            return {
+                **etf, 
+                'Sector': etf.get('Category', 'ETF'),
+                'Type': 'ETF',
+                'SCORE': etf.get('QuantScore') or etf.get('SCORE') or 0
+            }
+    
+    # Check grouped sectors (created in phase1)
+    for sector, stocks in etf_data.get('sectors', {}).items():
+        if isinstance(stocks, list):
+            for stock in stocks:
+                if stock.get('Symbol') == symbol:
+                    return {
+                        **stock, 
+                        'Sector': sector,
+                        'Type': 'Stock',
+                        'SCORE': stock.get('QuantScore') or stock.get('SCORE') or 0
+                    }
+    
     return None
 
-def get_sentiment_data(symbol, news_data):
-    """Belirli bir hisse için sentiment verisi"""
-    if not news_data or not news_data.get('news'):
-        return None
-    
-    news_items = [n for n in news_data['news'] if n.get('symbol') == symbol]
-    if not news_items:
-        return None
-    
-    total = sum(n.get('sentiment', 0) for n in news_items)
-    headlines = [{"title": n.get('title', '')[:100], "sentiment": n.get('sentiment', 0)} for n in news_items[:3]]
-    
-    return {
-        'count': len(news_items),
-        'total': total,
-        'headlines': headlines
-    }
 
-# ============================================================
-# MARKET REGIME & RISK ANALYSIS
-# ============================================================
-def analyze_market_regime(etf_data):
-    """
-    Piyasa rejimini analiz eder ve HARD RULES oluşturur.
-    LLM'in kurallara uymasını zorlar.
-    """
-    regime = etf_data.get('regime', {})
-    overall = regime.get('overall', 'NEUTRAL')
-    risk = regime.get('risk', 'NEUTRAL')
-    
-    # VXX ve Credit sinyallerini kontrol et
-    signals = regime.get('signals', {})
-    vxx_signal = ''
-    credit_signal = ''
-    if isinstance(signals, dict):
-        vxx_data = signals.get('VXX', {})
-        credit_data = signals.get('HYG_LQD', {})
-        vxx_signal = vxx_data.get('value', '') if isinstance(vxx_data, dict) else ''
-        credit_signal = credit_data.get('value', '') if isinstance(credit_data, dict) else ''
-    
-    # Default
-    risk_level = "NORMAL"
-    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör sağlığına odaklan."
-    hard_rules = []
-    
-    # PANIC / BEAR Market
-    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
-        risk_level = "HIGH_ALERT"
-        instruction = (
-            "⚠️ ACİL DURUM: Piyasa PANIC/BEAR modunda. "
-            "Sermayeyi koru. Spekülatif pozisyonları kapat."
-        )
-        hard_rules = [
-            "MUST REDUCE: Tüm pozisyonları minimum %30 azalt",
-            "MUST REMOVE: Weak momentum (2W<0, 1M<0) olan tüm hisseleri sat",
-            "FAVOR: Defansif sektörler (Healthcare, Consumer Staples)",
-            "AVOID: Spekülatif ve yüksek beta hisseler"
-        ]
-    
-    # ROTATION Market
-    elif overall == "ROTATION":
-        risk_level = "ROTATION"
-        instruction = (
-            "🔄 ROTASYON MODU: Para sektörler arası hareket ediyor. "
-            "Sadece güçlü momentum sektörlerinde kal."
-        )
-        hard_rules = [
-            "MUST REMOVE: Disqualified sektörlerdeki tüm hisseler",
-            "MUST REMOVE: Sector Health ≤ 2 olan sektörlerdeki hisseler",
-            "FAVOR: Sector Quant Score ≥ 70 olan sektörler",
-            "REDUCE: Sector Quant Score < 50 olan sektörlerdeki pozisyonlar"
-        ]
-    
-    # RISK-OFF / CAUTION
-    elif risk == "RISK-OFF" or overall == "CAUTION":
-        risk_level = "CAUTION"
-        instruction = (
-            "⚠️ DİKKATLİ MOD: Risk iştahı düşük. "
-            "Defansif pozisyonları koru, agresif alımlardan kaçın."
-        )
-        hard_rules = [
-            "REDUCE: Weakening momentum hisseleri (2W<0)",
-            "FAVOR: Güçlü sektör desteği olan hisseler",
-            "AVOID: Yeni spekülatif pozisyonlar"
-        ]
-    
-    # RISK-ON / BULL
-    elif risk == "RISK-ON" or overall == "BULL":
-        risk_level = "RISK_ON"
-        instruction = (
-            "🚀 RİSK AÇIK: Piyasa güçlü. "
-            "Momentum hisselerine yüklen, fırsatları değerlendir."
-        )
-        hard_rules = [
-            "INCREASE: Top 10 Quant hisseleri",
-            "FAVOR: STRONG momentum + STRONG sector kombinasyonu",
-            "OK TO: Agresif pozisyonlar kabul edilebilir"
-        ]
-    
-    return {
-        'risk_level': risk_level,
-        'instruction': instruction,
-        'hard_rules': hard_rules,
-        'regime': overall
-    }
+# =============================================================================
+# PHASE 1: DATA PREPARATION
+# =============================================================================
 
-def get_critical_news(news_data, portfolio_tickers, threshold=-40):
+def phase1_prepare_data(portfolio, etf_data, news_data):
     """
-    Portföydeki hisseler için KRİTİK negatif haberleri filtreler.
-    Bu haberler VETO yetkisine sahip - teknik ne derse desin satış önerilir.
+    Tüm verileri hazırla ve zenginleştir.
+    
+    Returns:
+        dict: Enriched data with assets, sector health, candidates
     """
-    alerts = []
-    if not news_data or not news_data.get('news'):
-        return alerts
+    print("\n" + "=" * 60)
+    print("📊 PHASE 1: Data Preparation")
+    print("=" * 60)
     
-    for news in news_data.get('news', []):
-        sym = news.get('symbol')
-        sentiment = news.get('sentiment', 0)
-        if sym in portfolio_tickers and sentiment <= threshold:
-            alerts.append({
-                'symbol': sym,
-                'title': news.get('title', '')[:100],
-                'sentiment': sentiment,
-                'severity': 'CRITICAL' if sentiment <= -60 else 'WARNING'
-            })
+    # ─────────────────────────────────────────────────────────────
+    # 1.1 Group stocks by sector and Calculate Sector Health
+    # ─────────────────────────────────────────────────────────────
+    print("\n   📈 Grouping stocks by sector and calculating health...")
     
-    return alerts
-
-# ============================================================
-# SECTOR ANALYSIS
-# ============================================================
-def get_sector_quant_data(etf_data):
-    """Quant rankings'den sektör skorlarını al"""
-    rankings = etf_data.get('quant_rankings', {})
-    sectors = rankings.get('top10_sectors', [])
+    # Group stocks by Category (sector)
+    stocks_by_sector = {}
+    all_stocks = etf_data.get('stocks', [])
     
-    sector_quant = {}
-    for s in sectors:
-        name = s.get('Sector')
-        if name:
-            sector_quant[name] = {
-                'quant_score': s.get('QuantScore') or 0,
-                'stock_count': s.get('StockCount') or 0,
-                'disqualified': s.get('Disqualified', False),
-                'reason': s.get('Reason') or ''
-            }
-    return sector_quant
-
-# ============================================================
-# MARKET ANALYSIS FUNCTIONS (Pre-LLM Decision Support)
-# ============================================================
-
-def analyze_market_regime(etf_data):
-    """
-    Piyasa rejimini analiz eder ve LLM için katı talimatlar oluşturur.
-    Returns: (risk_level, instruction, regime_details)
-    """
-    regime = etf_data.get('regime', {})
-    overall = regime.get('overall', 'NEUTRAL')
-    risk = regime.get('risk', 'N/A')
-    cycle = regime.get('cycle', 'N/A')
-    breadth = regime.get('breadth', 'N/A')
+    for stock in all_stocks:
+        sector = stock.get('Category', 'Unknown')
+        if sector not in stocks_by_sector:
+            stocks_by_sector[sector] = []
+        stocks_by_sector[sector].append(stock)
     
-    # Sinyalleri kontrol et
-    signals = regime.get('signals', {})
-    vxx_signal = signals.get('VXX', {}).get('value', '') if isinstance(signals.get('VXX'), dict) else ''
-    credit_signal = signals.get('HYG_LQD', {}).get('value', '') if isinstance(signals.get('HYG_LQD'), dict) else ''
+    # Store for later use
+    etf_data['sectors'] = stocks_by_sector
     
-    # Risk seviyesi ve talimat belirleme
-    risk_level = "NORMAL"
-    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör sağlığına odaklan."
+    # ─────────────────────────────────────────────────────────────
+    # 1.1b Use quant_rankings.top10_sectors for Sector Health
+    # ─────────────────────────────────────────────────────────────
+    print("\n   📈 Loading sector scores from quant_rankings...")
     
-    # PANIC / BEAR durumu
-    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
-        risk_level = "HIGH_ALERT"
-        instruction = (
-            "⚠️ ACİL DURUM (HARD RULE): Piyasa PANIC/BEAR modunda. "
-            "1) Tüm spekülatif pozisyonları REMOVE et. "
-            "2) Zayıf sektörlerdeki varlıkları REDUCE et. "
-            "3) Sadece defensif sektörleri (Healthcare, Consumer Staples) tut. "
-            "4) SPY/Cash pozisyonunu artırmayı öner."
-        )
-    # ROTATION durumu
-    elif overall == "ROTATION" or "ROTATION" in str(overall).upper():
-        risk_level = "ROTATION"
-        instruction = (
-            "🔄 ROTASYON MODU: Para sektör değiştiriyor. "
-            "1) Sadece STRONG momentum sektörlerindeki hisseleri tut. "
-            "2) WEAK/WEAKENING sektörleri portföyden çıkar. "
-            "3) Disqualified sektörleri kesinlikle SAT. "
-            "4) Top 10 Quant hisselerine rotasyon yap."
-        )
-    # RISK-OFF durumu
-    elif "RISK-OFF" in str(overall).upper() or "OFF" in str(risk).upper():
-        risk_level = "CAUTION"
-        instruction = (
-            "⚠️ RISK-OFF MODU: Piyasa defansif. "
-            "1) Agresif pozisyonları REDUCE et. "
-            "2) Volatil hisseleri azalt. "
-            "3) Defensif sektörlere ağırlık ver."
-        )
-    # RISK-ON durumu
-    elif "RISK-ON" in str(overall).upper() or "ON" in str(risk).upper():
-        risk_level = "OPPORTUNITY"
-        instruction = (
-            "✅ RISK-ON MODU: Piyasa agresif. "
-            "1) Strong momentum hisselerini INCREASE et. "
-            "2) Top 10 Quant hisselerine ağırlık ver. "
-            "3) Zayıf performans gösterenleri yine de değerlendir."
-        )
-    
-    regime_details = {
-        'overall': overall,
-        'risk': risk,
-        'cycle': cycle,
-        'breadth': breadth,
-        'vxx_signal': vxx_signal,
-        'credit_signal': credit_signal
-    }
-    
-    return risk_level, instruction, regime_details
-
-def get_blacklisted_sectors(etf_data):
-    """
-    Diskalifiye olmuş sektörleri listeler - bu sektörlerdeki hisseler REMOVE edilmeli.
-    """
-    blacklist = []
-    rankings = etf_data.get('quant_rankings', {})
-    sectors = rankings.get('top10_sectors', [])
-    
-    for s in sectors:
-        if s.get('Disqualified') is True:
-            blacklist.append({
-                'sector': s.get('Sector', 'Unknown'),
-                'reason': s.get('Reason', 'Poor performance'),
-                'quant_score': s.get('QuantScore', 0)
-            })
-    return blacklist
-
-def get_critical_news_alerts(news_data, portfolio_tickers):
-    """
-    Portföydeki hisseler için KRİTİK haberleri filtreler.
-    Sentiment < -50 → VETO (Ciddi olumsuz haber)
-    Sentiment < -30 → WARNING (Dikkat gerektiren haber)
-    """
-    alerts = []
-    warnings = []
-    
-    if not news_data or not news_data.get('news'):
-        return alerts, warnings
-    
-    for news in news_data.get('news', []):
-        sym = news.get('symbol')
-        sentiment = news.get('sentiment', 0)
-        title = news.get('title', '')[:80]
-        
-        if sym in portfolio_tickers:
-            if sentiment <= -50:
-                alerts.append({
-                    'symbol': sym,
-                    'title': title,
-                    'sentiment': sentiment,
-                    'action': 'VETO - Consider immediate REMOVE'
-                })
-            elif sentiment <= -30:
-                warnings.append({
-                    'symbol': sym,
-                    'title': title,
-                    'sentiment': sentiment,
-                    'action': 'WARNING - Monitor closely'
-                })
-    
-    return alerts, warnings
-
-# ============================================================
-# MARKET ANALYSIS FUNCTIONS (Rule-Based Pre-Processing)
-# ============================================================
-
-def analyze_market_regime(etf_data):
-    """
-    Piyasa rejimini analiz eder ve LLM için HARD RULES oluşturur.
-    Returns: dict with risk_level, instruction, hard_rules, details
-    """
-    regime = etf_data.get('regime', {})
-    overall = regime.get('overall', 'NEUTRAL')
-    risk = regime.get('risk', 'NORMAL')
-    breadth = regime.get('breadth', 'NEUTRAL')
-    
-    # Signals kontrolü
-    signals = regime.get('signals', {})
-    vxx_signal = signals.get('VXX', {}).get('value', '') if isinstance(signals.get('VXX'), dict) else ''
-    credit_signal = signals.get('HYG_LQD', {}).get('value', '') if isinstance(signals.get('HYG_LQD'), dict) else ''
-    
-    # Default
-    risk_level = "NORMAL"
-    instruction = "MAINTAIN: Mevcut stratejiyi koru. Momentum ve sektör rotasyonuna odaklan."
-    hard_rules = []
-    
-    # PANIC / BEAR durumu
-    if "PANIC" in str(vxx_signal).upper() or "STRESS" in str(credit_signal).upper() or overall == "BEAR":
-        risk_level = "HIGH_ALERT"
-        instruction = (
-            "⚠️ HIGH ALERT: Piyasa PANIC/BEAR modunda. "
-            "Riskli varlıkları AZALT veya SAT. Defensive sektörlere yönel."
-        )
-        hard_rules = [
-            "WEAK momentum (2W<0, 1M<0) olan hisseler REMOVE edilmeli",
-            "Blacklisted sektör hisseleri REMOVE edilmeli",
-            "ETF ağırlığı artırılmalı, bireysel hisse riski azaltılmalı",
-            "INCREASE kararı yalnızca defensive sektörler için verilebilir"
-        ]
-    # RISK-OFF durumu
-    elif risk == "RISK-OFF" or overall == "RISK-OFF":
-        risk_level = "CAUTIOUS"
-        instruction = (
-            "🛡️ RISK-OFF MODE: Savunmaya geç. "
-            "Zayıf momentum hisselerini SAT, sadece Top 10 ve güçlü sektörleri tut."
-        )
-        hard_rules = [
-            "WEAK sektör hisseleri REDUCE veya REMOVE edilmeli",
-            "Top 10 dışı ve Score<70 olan hisseler değerlendirilmeli",
-            "INCREASE kararı çok seçici verilmeli"
-        ]
-    # ROTATION durumu
-    elif overall == "ROTATION":
-        risk_level = "ACTIVE"
-        instruction = (
-            "🔄 ROTATION MODE: Sektör rotasyonu aktif. "
-            "Zayıf/Blacklisted sektörleri SAT, güçlü momentum sektörlerine taşı."
-        )
-        hard_rules = [
-            "Blacklisted sektör hisseleri REMOVE edilmeli",
-            "WEAK trend sektörleri REDUCE edilmeli",
-            "STRONG sektör + Top 10 hisseler KEEP veya INCREASE"
-        ]
-    # RISK-ON durumu
-    elif risk == "RISK-ON" or overall == "RISK-ON":
-        risk_level = "AGGRESSIVE"
-        instruction = (
-            "🚀 RISK-ON MODE: Agresif pozisyon al. "
-            "Momentum güçlü hisseleri ARTIR, Top 10'a girenleri ekle."
-        )
-        hard_rules = [
-            "STRONG momentum hisseler KEEP veya INCREASE",
-            "Top 10 hisseler öncelikli",
-            "Defensive sektörler REDUCE edilebilir"
-        ]
-    else:
-        hard_rules = [
-            "Standart analiz kriterleri uygula",
-            "Sektör ve momentum dengesini koru"
-        ]
-    
-    return {
-        'risk_level': risk_level,
-        'instruction': instruction,
-        'hard_rules': hard_rules,
-        'overall': overall,
-        'risk': risk,
-        'breadth': breadth,
-        'vxx': vxx_signal,
-        'credit': credit_signal
-    }
-
-def get_blacklisted_sectors(etf_data):
-    """
-    Diskalifiye (MUST SELL) sektörleri listeler.
-    """
-    blacklist = []
-    rankings = etf_data.get('quant_rankings', {})
-    sectors = rankings.get('top10_sectors', [])
-    
-    for s in sectors:
-        if s.get('Disqualified') is True:
-            blacklist.append({
-                'sector': s.get('Sector'),
-                'reason': s.get('Reason', 'Poor performance'),
-                'quant_score': s.get('QuantScore', 0)
-            })
-    return blacklist
-
-def get_critical_news_alerts(news_data, portfolio_tickers):
-    """
-    Portföydeki hisseler için KRİTİK negatif haberleri filtreler.
-    Sentiment < -50: CRITICAL (VETO candidate)
-    Sentiment < -30: WARNING
-    """
-    alerts = []
-    warnings = []
-    
-    if not news_data or not news_data.get('news'):
-        return alerts, warnings
-    
-    for news in news_data.get('news', []):
-        sym = news.get('symbol')
-        sentiment = news.get('sentiment', 0)
-        title = news.get('title', '')[:80]
-        
-        if sym in portfolio_tickers:
-            if sentiment <= -50:
-                alerts.append({
-                    'symbol': sym,
-                    'sentiment': sentiment,
-                    'title': title,
-                    'level': 'CRITICAL'
-                })
-            elif sentiment <= -30:
-                warnings.append({
-                    'symbol': sym,
-                    'sentiment': sentiment,
-                    'title': title,
-                    'level': 'WARNING'
-                })
-    
-    return alerts, warnings
-
-def get_critical_news(news_data, portfolio_tickers):
-    """
-    Kritik haberleri birleşik liste olarak döndürür (prompt için).
-    """
-    alerts, warnings = get_critical_news_alerts(news_data, portfolio_tickers)
-    combined = []
-    for a in alerts:
-        combined.append({
-            'symbol': a['symbol'],
-            'sentiment': a['sentiment'],
-            'title': a['title'],
-            'severity': 'CRITICAL'
-        })
-    for w in warnings:
-        combined.append({
-            'symbol': w['symbol'],
-            'sentiment': w['sentiment'],
-            'title': w['title'],
-            'severity': 'WARNING'
-        })
-    return combined
-
-def get_concentration_risk(portfolio, etf_data):
-    """
-    Konsantrasyon riskini hesaplar.
-    HARD RULES:
-    - Tek sektör > 30% = MUST REDUCE
-    - Toplam ETF > 10% = MUST REDUCE
-    """
-    sector_weights = {}
-    etf_total = 0
-    etf_list = []
-    
-    for symbol, weight in portfolio.items():
-        asset = get_stock_data(symbol, etf_data)
-        if asset:
-            asset_type = asset['type']
-            sector = asset['data'].get('Category', 'Other')
-            
-            if asset_type == 'etf':
-                etf_total += weight
-                etf_list.append(f"{symbol}: {weight}%")
-                sector = 'ETF'
-        else:
-            # Symbol bulunamadı - muhtemelen ETF
-            etf_total += weight
-            etf_list.append(f"{symbol}: {weight}%")
-            sector = 'ETF'
-        
-        if sector != 'ETF':
-            sector_weights[sector] = sector_weights.get(sector, 0) + weight
-    
-    risks = []
-    hard_rule_violations = []
-    
-    # Sektör konsantrasyon kontrolü (HARD RULE: max 30%)
-    for sector, weight in sector_weights.items():
-        if weight > 30:
-            risks.append(f"🔴 HARD RULE VIOLATION: {sector} = {weight:.1f}% (MAX 30% - MUST REDUCE)")
-            hard_rule_violations.append({
-                'type': 'SECTOR_CONCENTRATION',
-                'sector': sector,
-                'current': weight,
-                'max': 30,
-                'action': f"REDUCE {sector} exposure by {weight - 30:.1f}%"
-            })
-        elif weight > 25:
-            risks.append(f"🟠 WARNING: {sector} = {weight:.1f}% (approaching 30% limit)")
-    
-    # ETF konsantrasyon kontrolü (HARD RULE: max 10%)
-    if etf_total > 10:
-        risks.append(f"🔴 HARD RULE VIOLATION: Total ETF = {etf_total:.1f}% (MAX 10% - MUST REDUCE)")
-        risks.append(f"   ETFs: {', '.join(etf_list)}")
-        hard_rule_violations.append({
-            'type': 'ETF_CONCENTRATION',
-            'current': etf_total,
-            'max': 10,
-            'etfs': etf_list,
-            'action': f"REDUCE total ETF exposure by {etf_total - 10:.1f}%"
-        })
-    elif etf_total > 8:
-        risks.append(f"🟠 WARNING: Total ETF = {etf_total:.1f}% (approaching 10% limit)")
-    
-    return sector_weights, risks, hard_rule_violations, etf_total
-
-def calculate_portfolio_risk_score(portfolio, etf_data, sector_health):
-    """
-    Portföy risk skorunu hesaplar (0-100, düşük = daha az riskli)
-    """
-    total_weight = 0
-    risk_weighted = 0
-    
-    for symbol, weight in portfolio.items():
-        asset = get_stock_data(symbol, etf_data)
-        if asset:
-            data = asset['data']
-            sector = data.get('Category', 'Other')
-            score = data.get('SCORE', 50) or 50
-            
-            # Sector risk
-            sec_health = sector_health.get(sector, {})
-            sec_risk = 100 - (sec_health.get('health', 2) * 20)  # 0-100
-            
-            # Asset risk (inverse of quant score)
-            asset_risk = 100 - score
-            
-            # Combined risk
-            combined = (sec_risk * 0.4) + (asset_risk * 0.6)
-            risk_weighted += combined * weight
-            total_weight += weight
-    
-    return round(risk_weighted / total_weight, 1) if total_weight > 0 else 50
-
-def get_sector_performance(sector, etf_data, sector_quant=None):
-    """Sektör performansını hesapla - 2W, 1M, 3M + Quant Score"""
-    stocks = [s for s in etf_data.get('stocks', []) if s.get('Category') == sector]
-    if not stocks:
-        return None
-    
-    ret_2w = [s.get('2W', {}).get('RETURN', 0) or 0 for s in stocks]
-    ret_1m = [s.get('1M', {}).get('RETURN', 0) or 0 for s in stocks]
-    ret_3m = [s.get('3M', {}).get('RETURN', 0) or 0 for s in stocks]
-    
-    avg_2w = sum(ret_2w) / len(ret_2w) if ret_2w else 0
-    avg_1m = sum(ret_1m) / len(ret_1m) if ret_1m else 0
-    avg_3m = sum(ret_3m) / len(ret_3m) if ret_3m else 0
-    
-    positive_2w = len([r for r in ret_2w if r > 0])
-    positive_1m = len([r for r in ret_1m if r > 0])
-    
-    # Trend belirleme (2W ve 1M bazlı)
-    if avg_2w > 0 and avg_1m > 0:
-        trend = "STRONG"
-    elif avg_2w > 0 and avg_1m < 0:
-        trend = "RECOVERING"
-    elif avg_2w < 0 and avg_1m > 0:
-        trend = "WEAKENING"
-    else:
-        trend = "WEAK"
-    
-    # Quant data from rankings
-    quant_score = 0
-    disqualified = False
-    disq_reason = ''
-    if sector_quant and sector in sector_quant:
-        sq = sector_quant[sector]
-        quant_score = sq.get('quant_score', 0)
-        disqualified = sq.get('disqualified', False)
-        disq_reason = sq.get('reason', '')
-    
-    # Sektör sağlık skoru (0-5) - quant score dahil
-    health = 0
-    if avg_2w > 0: health += 1
-    if avg_1m > 0: health += 1
-    if avg_3m > 0: health += 1
-    if positive_2w >= len(stocks) / 2: health += 1
-    if quant_score >= 70: health += 1  # Quant score bonus
-    
-    # Disqualified sektörler için health düşür
-    if disqualified:
-        health = max(0, health - 2)
-    
-    return {
-        'avg_2w': round(avg_2w, 2),
-        'avg_1m': round(avg_1m, 2),
-        'avg_3m': round(avg_3m, 2),
-        'breadth_2w': f"{positive_2w}/{len(stocks)}",
-        'breadth_1m': f"{positive_1m}/{len(stocks)}",
-        'trend': trend,
-        'health': health,  # 0-5 arası (quant bonus ile)
-        'quant_score': round(quant_score, 1),
-        'disqualified': disqualified,
-        'disq_reason': disq_reason,
-        'stock_count': len(stocks)
-    }
-
-# ============================================================
-# PROMPT BUILDER
-# ============================================================
-def build_analysis_prompt(portfolio, etf_data, news_data):
-    lines = []
-    
-    # ============================================================
-    # 1. ROLE & OBJECTIVE
-    # ============================================================
-    lines.append("=" * 70)
-    lines.append("ROLE: Senior Risk Manager for Weekly Swing Trading Portfolio")
-    lines.append("OBJECTIVE: Preserve capital first, generate alpha second. Be DECISIVE.")
-    lines.append("=" * 70)
-    
-    # ============================================================
-    # 2. MARKET REGIME & HARD RULES (ZORUNLU KURALLAR)
-    # ============================================================
-    regime_analysis = analyze_market_regime(etf_data)
-    regime = etf_data.get('regime', {})
-    
-    lines.append(f"\n{'=' * 70}")
-    lines.append("🚨 MARKET REGIME & HARD RULES (MUST FOLLOW)")
-    lines.append(f"{'=' * 70}")
-    lines.append(f"\nRISK LEVEL: {regime_analysis['risk_level']}")
-    lines.append(f"REGIME: {regime.get('overall', 'N/A')} | Risk: {regime.get('risk', 'N/A')} | Breadth: {regime.get('breadth', 'N/A')}")
-    lines.append(f"\n⚡ INSTRUCTION: {regime_analysis['instruction']}")
-    
-    if regime_analysis['hard_rules']:
-        lines.append("\n📋 HARD RULES (Violation = Error):")
-        for rule in regime_analysis['hard_rules']:
-            lines.append(f"   • {rule}")
-    
-    # ============================================================
-    # 3. CRITICAL NEWS ALERTS (VETO POWER)
-    # ============================================================
-    critical_news = get_critical_news(news_data, portfolio.keys())
-    if critical_news:
-        lines.append(f"\n{'=' * 70}")
-        lines.append("🔴 CRITICAL NEWS ALERTS (VETO POWER)")
-        lines.append(f"{'=' * 70}")
-        lines.append("RULE: Any stock with CRITICAL news MUST be evaluated for immediate REMOVAL.")
-        for alert in critical_news:
-            severity_icon = "🔴" if alert['severity'] == 'CRITICAL' else "🟠"
-            lines.append(f"\n   {severity_icon} {alert['symbol']} [{alert['sentiment']:+d}]: {alert['title']}")
-    
-    # ============================================================
-    # 4. CONCENTRATION RISK (HARD RULES)
-    # ============================================================
-    sector_weights, concentration_risks, hard_rule_violations, etf_total = get_concentration_risk(portfolio, etf_data)
-    
-    if concentration_risks or hard_rule_violations:
-        lines.append(f"\n{'=' * 70}")
-        lines.append("🚨 CONCENTRATION RISK (HARD RULES)")
-        lines.append(f"{'=' * 70}")
-        lines.append("\n   HARD RULES:")
-        lines.append("   • MAX 30% per sector - exceeding = MUST REDUCE")
-        lines.append("   • MAX 10% total ETF weight - exceeding = MUST REDUCE")
-        lines.append(f"\n   Current ETF Total: {etf_total:.1f}% {'⚠️ EXCEEDS LIMIT!' if etf_total > 10 else '✅'}")
-        
-        if concentration_risks:
-            lines.append("\n   ALERTS:")
-            for risk in concentration_risks:
-                lines.append(f"   {risk}")
-        
-        if hard_rule_violations:
-            lines.append("\n   ⛔ REQUIRED ACTIONS:")
-            for violation in hard_rule_violations:
-                lines.append(f"   • {violation['action']}")
-    
-    # ============================================================
-    # 5. SECTOR PERFORMANCE (Blacklist & Whitelist)
-    # ============================================================
-    sector_quant = get_sector_quant_data(etf_data)
-    
-    lines.append(f"\n{'=' * 70}")
-    lines.append("🏭 SECTOR STATUS (2W / 1M / 3M + Quant Score)")
-    lines.append(f"{'=' * 70}")
-    
-    all_sectors = set()
-    for stock in etf_data.get('stocks', []):
-        sec = stock.get('Category')
-        if sec:
-            all_sectors.add(sec)
-    
+    sector_rankings = etf_data.get('quant_rankings', {}).get('top10_sectors', [])
     sector_health = {}
-    weak_sectors = []
-    strong_sectors = []
-    disqualified_sectors = []
     
-    for sector in sorted(all_sectors):
-        perf = get_sector_performance(sector, etf_data, sector_quant)
-        if perf:
-            sector_health[sector] = perf
-            
-            if perf['disqualified']:
-                status = "🚫 BLACKLISTED"
-                disqualified_sectors.append(sector)
-            elif perf['trend'] == "STRONG":
-                status = "🟢 STRONG"
-            elif perf['trend'] == "RECOVERING":
-                status = "🟡 RECOVERING"
-            elif perf['trend'] == "WEAKENING":
-                status = "🟠 WEAKENING"
-            else:
-                status = "🔴 WEAK"
-            
-            lines.append(f"\n   {status} {sector}")
-            lines.append(f"      Returns: 2W: {perf['avg_2w']:+.2f}% | 1M: {perf['avg_1m']:+.2f}% | 3M: {perf['avg_3m']:+.2f}%")
-            lines.append(f"      Quant Score: {perf['quant_score']:.1f} | Health: {perf['health']}/5")
-            
-            if perf['disqualified']:
-                lines.append(f"      ⛔ BLACKLISTED: {perf['disq_reason']}")
-                weak_sectors.append(sector)
-            elif perf['trend'] in ["WEAK", "WEAKENING"] or perf['health'] <= 2 or perf['quant_score'] < 50:
-                weak_sectors.append(sector)
-            if perf['trend'] == "STRONG" and perf['health'] >= 4 and perf['quant_score'] >= 70:
-                strong_sectors.append(sector)
-    
-    # Sector Summary
-    lines.append(f"\n   {'─' * 50}")
-    lines.append(f"   ⛔ BLACKLIST (MUST SELL): {', '.join(disqualified_sectors) if disqualified_sectors else 'None'}")
-    lines.append(f"   🔴 WEAK (Consider Exit): {', '.join([s for s in weak_sectors if s not in disqualified_sectors]) if weak_sectors else 'None'}")
-    lines.append(f"   🟢 STRONG (Favor): {', '.join(strong_sectors) if strong_sectors else 'None'}")
-    
-    # Top 10 Quant Stocks
-    rankings = etf_data.get('quant_rankings', {})
-    top_stocks = rankings.get('top10_stocks', [])[:10]
-    top_symbols = [s.get('symbol') for s in top_stocks if s.get('symbol')]
-    
-    if top_stocks:
-        lines.append(f"\n🏆 TOP 10 QUANT STOCKS:")
-        for i, s in enumerate(top_stocks, 1):
-            sym = s.get('symbol') or 'N/A'
-            scr = s.get('score') or 0
-            sec = s.get('sector') or ''
-            lines.append(f"   {i}. {sym:6} | Score: {scr:.1f} | {sec}")
-    
-    # Portfolio Detail
-    lines.append(f"\n{'=' * 70}")
-    lines.append("PORTFOLIO ASSETS (Weekly Trade Analysis - 2W/1M/3M)")
-    lines.append(f"{'=' * 70}")
-    
-    for symbol, weight in sorted(portfolio.items(), key=lambda x: -x[1]):
-        lines.append(f"\n{'─' * 50}")
-        lines.append(f"📌 {symbol} (Weight: {weight}%)")
+    for sector_data in sector_rankings:
+        sector_name = sector_data.get('Sector', 'Unknown')
+        quant_score = sector_data.get('QuantScore') or 0
+        is_disqualified = sector_data.get('Disqualified', False)
+        reason = sector_data.get('Reason', '')
         
-        asset = get_stock_data(symbol, etf_data)
-        if asset:
-            data = asset['data']
-            name = data.get('Name', symbol)
-            sector = data.get('Category', 'N/A')
-            
-            w2 = data.get('2W', {}) or {}
-            m1 = data.get('1M', {}) or {}
-            m3 = data.get('3M', {}) or {}
-            m6 = data.get('6M', {}) or {}
-            
-            ret_2w = w2.get('RETURN', 0) or 0
-            ret_1m = m1.get('RETURN', 0) or 0
-            ret_3m = m3.get('RETURN', 0) or 0
-            ret_6m = m6.get('RETURN', 0) or 0
-            
-            # Asset Quant Score - stocks için SCORE, ETF'ler için QuantScore
-            score = data.get('SCORE', 0) or data.get('QuantScore', 0) or 0
-            
-            # Short-term Trend (2W vs 1M)
-            if ret_2w > 0 and ret_1m > 0:
-                short_trend = "STRONG MOMENTUM ✅"
-            elif ret_2w > 0 and ret_1m < 0:
-                short_trend = "RECOVERING 🔄"
-            elif ret_2w < 0 and ret_1m > 0:
-                short_trend = "LOSING MOMENTUM ⚠️"
-            else:
-                short_trend = "WEAK ❌"
-            
-            # Medium-term Trend (1M vs 3M)
-            if ret_1m > 0 and ret_3m > 0:
-                med_trend = "UPTREND"
-            elif ret_1m < 0 and ret_3m < 0:
-                med_trend = "DOWNTREND"
-            else:
-                med_trend = "MIXED"
-            
-            in_top10 = symbol in top_symbols
-            in_weak_sector = sector in weak_sectors
-            in_strong_sector = sector in strong_sectors
-            
-            # ETF-specific check for disqualified sector exposure
-            is_etf = asset['type'] == 'etf'
-            subcat = data.get('SubCategory', '')
-            etf_disq_warning = ""
-            if is_etf:
-                # Check if ETF category or subcategory matches disqualified/weak sectors
-                if sector in disqualified_sectors or subcat in disqualified_sectors:
-                    etf_disq_warning = f"🚫 ETF EXPOSED TO DISQUALIFIED SECTOR ({sector}/{subcat}) - MUST REPLACE OR REMOVE!"
-                elif sector in weak_sectors or subcat in weak_sectors:
-                    etf_disq_warning = f"⚠️ ETF exposed to WEAK sector ({sector}/{subcat}) - consider replacement"
-            
-            # Display asset info
-            if is_etf:
-                lines.append(f"   📊 ETF | Category: {sector} | SubCategory: {subcat}")
-                lines.append(f"   ETF Quant Score: {score:.1f}")
-            else:
-                lines.append(f"   Name: {name} | Sector: {sector}")
-                lines.append(f"   Asset Quant Score: {score:.1f} | In Top 10: {'YES ✅' if in_top10 else 'NO'}")
-            
-            lines.append(f"   SHORT-TERM: 2W: {ret_2w:+.2f}% | 1M: {ret_1m:+.2f}% → {short_trend}")
-            lines.append(f"   MEDIUM-TERM: 3M: {ret_3m:+.2f}% | 6M: {ret_6m:+.2f}% → {med_trend}")
-            
-            # ETF disqualified sector warning (priority)
-            if etf_disq_warning:
-                lines.append(f"   {etf_disq_warning}")
-            # Sector warning
-            elif in_weak_sector:
-                lines.append(f"   ⚠️ WARNING: {sector} sector is WEAK - consider reducing exposure!")
-            elif in_strong_sector:
-                lines.append(f"   ✅ TAILWIND: {sector} sector is STRONG")
-            
-            # Sector perf
-            sec_perf = sector_health.get(sector)
-            if sec_perf:
-                disq_warn = " ⚠️ DISQUALIFIED!" if sec_perf.get('disqualified') else ""
-                lines.append(f"   Sector: Quant {sec_perf['quant_score']:.1f} | 2W: {sec_perf['avg_2w']:+.2f}% | 1M: {sec_perf['avg_1m']:+.2f}% | Health: {sec_perf['health']}/5{disq_warn}")
-        
-        # Sentiment
-        sent = get_sentiment_data(symbol, news_data)
-        if sent:
-            lines.append(f"   Sentiment: {sent['total']:+d} ({sent['count']} news)")
-            for h in sent['headlines'][:2]:
-                lines.append(f"      [{h['sentiment']:+d}] {h['title'][:60]}...")
+        # Get return and trend data from stocks_by_sector
+        sector_stocks = stocks_by_sector.get(sector_name, [])
+        if sector_stocks:
+            returns_2w = [s.get('2W', {}).get('RETURN', 0) or 0 for s in sector_stocks]
+            returns_1m = [s.get('1M', {}).get('RETURN', 0) or 0 for s in sector_stocks]
+            trends_2w = [s.get('2W', {}).get('TREND', 0) or 0 for s in sector_stocks]
+            trends_1m = [s.get('1M', {}).get('TREND', 0) or 0 for s in sector_stocks]
+            avg_2w_ret = mean(returns_2w) if returns_2w else 0
+            avg_1m_ret = mean(returns_1m) if returns_1m else 0
+            avg_2w_trend = mean(trends_2w) if trends_2w else 0
+            avg_1m_trend = mean(trends_1m) if trends_1m else 0
         else:
-            lines.append(f"   Sentiment: No news")
-    
-    # Current sector allocation for replacement guidance
-    lines.append(f"\n{'=' * 70}")
-    lines.append("📊 CURRENT SECTOR ALLOCATION (for replacement guidance)")
-    lines.append(f"{'=' * 70}")
-    lines.append("   RULE: Max 30% per sector | Replacement should diversify to underweight sectors")
-    
-    for sec, weight in sorted(sector_weights.items(), key=lambda x: -x[1]):
-        if sec != 'ETF':
-            status = "🔴 OVERWEIGHT" if weight > 30 else "🟠 HIGH" if weight > 20 else "🟢 OK" if weight > 10 else "⚪ UNDERWEIGHT"
-            lines.append(f"   {sec:20} {weight:5.1f}% {status}")
-    
-    lines.append(f"   {'─' * 40}")
-    lines.append(f"   Total ETF:          {etf_total:5.1f}% {'🔴 EXCEEDS 10%' if etf_total > 10 else '✅'}")
-    
-    # Alternatives with detailed info
-    lines.append(f"\n{'=' * 70}")
-    lines.append("🎯 ALTERNATIVE CANDIDATES (for replacements)")
-    lines.append(f"{'=' * 70}")
-    lines.append("   Selection Criteria: Score ≥75, Sector Health ≥3, STRONG/RECOVERING momentum")
-    lines.append("   Priority: Underweight sectors > Neutral sectors > Never from overweight")
-    
-    overweight_sectors = [s for s, w in sector_weights.items() if w > 30 and s != 'ETF']
-    underweight_sectors = [s for s, w in sector_weights.items() if w < 15 and s != 'ETF']
-    
-    for s in top_stocks:
-        sym = s.get('symbol') or 'N/A'
-        if sym not in portfolio and sym != 'N/A':
-            scr = s.get('score') or 0
-            sec = s.get('sector') or ''
-            
-            # Get stock data for momentum
-            stock_data = get_stock_data(sym, etf_data)
-            momentum_str = ""
-            if stock_data:
-                data = stock_data['data']
-                w2 = data.get('2W', {}) or {}
-                m1 = data.get('1M', {}) or {}
-                ret_2w = w2.get('RETURN', 0) or 0
-                ret_1m = m1.get('RETURN', 0) or 0
-                
-                if ret_2w > 0 and ret_1m > 0:
-                    momentum_str = "STRONG ✅"
-                elif ret_2w > 0:
-                    momentum_str = "RECOVERING 🔄"
-                elif ret_2w < 0 and ret_1m < 0:
-                    momentum_str = "WEAK ❌"
-                else:
-                    momentum_str = "MIXED"
-                
-                momentum_str += f" (2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}%)"
-            
-            # Sector health
-            sec_perf = sector_health.get(sec, {})
-            sec_health_score = sec_perf.get('health', 0) if sec_perf else 0
-            
-            # Diversification tag
-            if sec in overweight_sectors:
-                div_tag = "⛔ SAME OVERWEIGHT"
-            elif sec in underweight_sectors:
-                div_tag = "✅ DIVERSIFIES"
-            elif sec in weak_sectors:
-                div_tag = "⚠️ WEAK SECTOR"
-            elif sec in strong_sectors:
-                div_tag = "🟢 STRONG SECTOR"
-            else:
-                div_tag = ""
-            
-            sent = get_sentiment_data(sym, news_data)
-            sent_str = f"Sent:{sent['total']:+d}" if sent else ""
-            
-            lines.append(f"\n   {sym:6} | Score: {scr:.1f} | {sec}")
-            lines.append(f"          Momentum: {momentum_str}")
-            lines.append(f"          Sector Health: {sec_health_score}/5 | {sent_str} {div_tag}")
-    
-    # ETF Alternatives (for ETF replacement)
-    lines.append(f"\n{'=' * 70}")
-    lines.append("📈 ETF ALTERNATIVES (for ETF replacement if needed)")
-    lines.append(f"{'=' * 70}")
-    lines.append("   Criteria: Category NOT disqualified, 2W>0, 1M>0, 3M>0, QuantScore≥70")
-    
-    etfs = etf_data.get('etfs', [])
-    qualified_etfs = []
-    
-    for etf in etfs:
-        sym = etf.get('Symbol', '')
-        if sym in portfolio:  # Skip if already in portfolio
-            continue
+            avg_2w_ret = 0
+            avg_1m_ret = 0
+            avg_2w_trend = 0
+            avg_1m_trend = 0
         
-        cat = etf.get('Category', '')
-        subcat = etf.get('SubCategory', '')
-        qscore = etf.get('QuantScore', 0) or 0
+        # Calculate health with momentum check
+        health = calculate_sector_health_from_rankings(
+            sector_data, avg_2w_ret, avg_1m_ret, avg_2w_trend, avg_1m_trend
+        )
         
-        # Skip if category matches weak/disqualified sectors
-        if cat in weak_sectors or cat in disqualified_sectors:
-            continue
-        if subcat in weak_sectors or subcat in disqualified_sectors:
-            continue
+        # Momentum check for display
+        has_momentum = (avg_2w_ret > 0 and avg_1m_ret > 0 and avg_2w_trend > 0 and avg_1m_trend > 0)
+        
+        sector_health[sector_name] = {
+            'health': health,
+            'quant_score': quant_score,
+            'avg_2w': round(avg_2w_ret, 2),
+            'avg_1m': round(avg_1m_ret, 2),
+            'avg_2w_trend': round(avg_2w_trend, 2),
+            'avg_1m_trend': round(avg_1m_trend, 2),
+            'has_momentum': has_momentum,
+            'stock_count': sector_data.get('StockCount', 0),
+            'disqualified': is_disqualified,
+            'reason': reason
+        }
+        
+        status = f"DQ: {reason}" if is_disqualified else f"Score: {quant_score}"
+        mom_status = "✓" if has_momentum else "✗"
+        print(f"      {sector_name:20} Health: {health}/5, {status}, Mom:{mom_status}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # 1.2 Classify Sectors
+    # ─────────────────────────────────────────────────────────────
+    disqualified_sectors = [s for s, h in sector_health.items() if h['health'] <= 1]
+    weak_sectors = [s for s, h in sector_health.items() if h['health'] == 2]
+    neutral_sectors = [s for s, h in sector_health.items() if h['health'] == 3]
+    strong_sectors = [s for s, h in sector_health.items() if h['health'] >= 4]
+    eligible_sectors = [s for s, h in sector_health.items() if h['health'] >= CONFIG['MIN_SECTOR_HEALTH']]
+    
+    print(f"\n   🚫 Disqualified (Health ≤1): {disqualified_sectors}")
+    print(f"   ⚠️  Weak (Health = 2): {weak_sectors}")
+    print(f"   ⚖️  Neutral (Health = 3): {neutral_sectors}")
+    print(f"   ✅ Strong (Health ≥4): {strong_sectors}")
+    print(f"   📋 Eligible for new positions: {eligible_sectors}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # 1.3 Enrich Portfolio Assets
+    # ─────────────────────────────────────────────────────────────
+    print("\n   📦 Enriching portfolio assets...")
+    enriched_assets = []
+    current_etf_weight = 0
+    sector_weights = {}
+    
+    for symbol, weight in portfolio.items():
+        asset_data = find_asset_in_etf_data(symbol, etf_data)
+        
+        if not asset_data:
+            print(f"      ⚠️ {symbol}: Not found in ETF data, using defaults")
+            asset_data = {
+                'Symbol': symbol,
+                'Name': symbol,
+                'Sector': 'Unknown',
+                'Type': 'Stock',
+                '2W': {'RETURN': 0},
+                '1M': {'RETURN': 0},
+                '3M': {'RETURN': 0},
+                'SCORE': 0
+            }
+        
+        # Determine if ETF
+        is_etf = asset_data.get('Type') == 'ETF' or symbol in ETF_SYMBOLS
         
         # Get returns
-        w2 = etf.get('2W', {}) or {}
-        m1 = etf.get('1M', {}) or {}
-        m3 = etf.get('3M', {}) or {}
+        ret_2w = asset_data.get('2W', {}).get('RETURN', 0) or 0
+        ret_1m = asset_data.get('1M', {}).get('RETURN', 0) or 0
+        ret_3m = asset_data.get('3M', {}).get('RETURN', 0) or 0
         
-        ret_2w = w2.get('RETURN', 0) or 0
-        ret_1m = m1.get('RETURN', 0) or 0
-        ret_3m = m3.get('RETURN', 0) or 0
+        # Get sector
+        if is_etf:
+            sector = asset_data.get('Category', asset_data.get('Sector', 'ETF'))
+            sub_category = asset_data.get('SubCategory', '')
+        else:
+            sector = asset_data.get('Sector', 'Unknown')
+            sub_category = ''
         
-        # Must have strong momentum (all positive) and good score
-        if ret_2w > 0 and ret_1m > 0 and ret_3m > 0 and qscore >= 70:
-            qualified_etfs.append({
-                'symbol': sym,
-                'name': etf.get('Name', ''),
-                'category': cat,
-                'subcategory': subcat,
-                'score': qscore,
-                'ret_2w': ret_2w,
-                'ret_1m': ret_1m,
-                'ret_3m': ret_3m
+        # Track weights
+        if is_etf:
+            current_etf_weight += weight
+        
+        sector_key = 'ETF' if is_etf else sector
+        sector_weights[sector_key] = sector_weights.get(sector_key, 0) + weight
+        
+        # Momentum classification
+        momentum = classify_momentum(ret_2w, ret_1m, ret_3m)
+        
+        # Sentiment
+        sentiment = get_sentiment(symbol, news_data)
+        
+        # Sector health for this asset
+        asset_sector_health = sector_health.get(sector, {'health': 3, 'quant_score': 50})
+        
+        enriched = {
+            'symbol': symbol,
+            'name': asset_data.get('Name', symbol),
+            'sector': sector,
+            'sub_category': sub_category,
+            'is_etf': is_etf,
+            'current_weight': weight,
+            'return_2w': round(ret_2w, 2),
+            'return_1m': round(ret_1m, 2),
+            'return_3m': round(ret_3m, 2),
+            'momentum': momentum,
+            'score': asset_data.get('SCORE', 0) or asset_data.get('QuantScore', 0) or 0,
+            'sentiment': sentiment,
+            'sector_health': asset_sector_health.get('health', 3),
+            'sector_quant_score': asset_sector_health.get('quant_score', 50),
+            'in_disqualified_sector': sector in disqualified_sectors,
+            'in_weak_sector': sector in weak_sectors,
+            'in_strong_sector': sector in strong_sectors
+        }
+        
+        enriched_assets.append(enriched)
+        
+        status = "🔴" if enriched['in_disqualified_sector'] else "🟡" if enriched['in_weak_sector'] else "🟢"
+        print(f"      {status} {symbol:6} {weight:5.1f}% | {momentum:10} | {sector}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # 1.4 Build STOCK Candidate Pool
+    # ─────────────────────────────────────────────────────────────
+    print("\n   🎯 Building stock candidate pool...")
+    stock_candidates = []
+    portfolio_symbols = set(portfolio.keys())
+    
+    for sector in eligible_sectors:
+        for stock in etf_data.get('sectors', {}).get(sector, []):
+            symbol = stock.get('Symbol', '')
+            
+            # Skip if already in portfolio
+            if symbol in portfolio_symbols:
+                continue
+            
+            ret_2w = stock.get('2W', {}).get('RETURN', 0) or 0
+            ret_1m = stock.get('1M', {}).get('RETURN', 0) or 0
+            ret_3m = stock.get('3M', {}).get('RETURN', 0) or 0
+            
+            # Get score - use QuantScore if available
+            score = stock.get('QuantScore') or stock.get('SCORE') or 0
+            if score == 0 or score is None:
+                # Estimate score from momentum
+                score = 50 + min(max(ret_2w + ret_1m, -30), 30)
+            
+            # Must be STRONG momentum and good score
+            if ret_2w > 0 and ret_1m > 0 and score >= CONFIG['MIN_SCORE']:
+                stock_candidates.append({
+                    'symbol': symbol,
+                    'name': stock.get('Name', symbol),
+                    'sector': sector,
+                    'is_etf': False,
+                    'score': score,
+                    'return_2w': round(ret_2w, 2),
+                    'return_1m': round(ret_1m, 2),
+                    'return_3m': round(ret_3m, 2),
+                    'momentum': 'STRONG',
+                    'sector_health': sector_health[sector]['health'],
+                    'sector_quant_score': sector_health[sector]['quant_score']
+                })
+    
+    # Sort by: 1) sector_health (en güçlü sektör önce), 2) score
+    stock_candidates.sort(key=lambda x: (x['sector_health'], x['score']), reverse=True)
+    stock_candidates = stock_candidates[:20]  # Top 20
+    
+    print(f"      Found {len(stock_candidates)} eligible stock candidates")
+    for c in stock_candidates[:5]:
+        print(f"         {c['symbol']:6} Score: {c['score']:3.0f} | {c['sector']}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # 1.5 Build ETF Candidate Pool
+    # ─────────────────────────────────────────────────────────────
+    print("\n   🎯 Building ETF candidate pool...")
+    etf_candidates = []
+    
+    for etf in etf_data.get('etfs', []):
+        symbol = etf.get('Symbol', '')
+        
+        # Skip if already in portfolio
+        if symbol in portfolio_symbols:
+            continue
+        
+        category = etf.get('Category', '')
+        sub_category = etf.get('SubCategory', '')
+        
+        # Skip ETFs exposed to disqualified/weak sectors
+        if category in disqualified_sectors or sub_category in disqualified_sectors:
+            continue
+        if category in weak_sectors or sub_category in weak_sectors:
+            continue
+        
+        ret_2w = etf.get('2W', {}).get('RETURN', 0) or 0
+        ret_1m = etf.get('1M', {}).get('RETURN', 0) or 0
+        ret_3m = etf.get('3M', {}).get('RETURN', 0) or 0
+        
+        # Get score - handle None
+        quant_score = etf.get('QuantScore') or etf.get('SCORE') or 0
+        if quant_score == 0 or quant_score is None:
+            # Estimate score from momentum
+            quant_score = 50 + min(max(ret_2w + ret_1m, -30), 30)
+        
+        # Must be STRONG momentum and good score
+        if ret_2w > 0 and ret_1m > 0 and quant_score >= CONFIG['MIN_SCORE']:
+            etf_candidates.append({
+                'symbol': symbol,
+                'name': etf.get('Name', symbol),
+                'sector': category,
+                'sub_category': sub_category,
+                'is_etf': True,
+                'score': quant_score,
+                'return_2w': round(ret_2w, 2),
+                'return_1m': round(ret_1m, 2),
+                'return_3m': round(ret_3m, 2),
+                'momentum': 'STRONG'
             })
     
     # Sort by score
-    qualified_etfs.sort(key=lambda x: -x['score'])
+    etf_candidates.sort(key=lambda x: x['score'], reverse=True)
+    etf_candidates = etf_candidates[:10]  # Top 10
     
-    if qualified_etfs:
-        for etf in qualified_etfs[:5]:  # Top 5
-            lines.append(f"\n   {etf['symbol']:6} | Score: {etf['score']:.1f} | {etf['category']}/{etf['subcategory']}")
-            lines.append(f"          {etf['name']}")
-            lines.append(f"          Momentum: 2W:{etf['ret_2w']:+.1f}%, 1M:{etf['ret_1m']:+.1f}%, 3M:{etf['ret_3m']:+.1f}% ✅ ALL POSITIVE")
+    print(f"      Found {len(etf_candidates)} eligible ETF candidates")
+    for c in etf_candidates[:3]:
+        print(f"         {c['symbol']:6} Score: {c['score']:3.0f} | {c['sector']}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # 1.6 Summary
+    # ─────────────────────────────────────────────────────────────
+    print(f"\n   📊 Current Sector Weights:")
+    for sec, w in sorted(sector_weights.items(), key=lambda x: -x[1]):
+        status = "🔴 OVER" if w > CONFIG['MAX_SECTOR'] else "✅"
+        print(f"      {sec:20} {w:5.1f}% {status}")
+    
+    print(f"\n   📊 Current ETF Weight: {current_etf_weight:.1f}%", end="")
+    if current_etf_weight > CONFIG['MAX_ETF_TOTAL']:
+        print(f" 🔴 OVER {CONFIG['MAX_ETF_TOTAL']}% limit!")
     else:
-        lines.append("\n   ⚠️ No qualified ETF alternatives found - redistribute to stocks if ETF removal needed")
+        print(" ✅")
     
-    return "\n".join(lines)
-
-# ============================================================
-# GPT ANALYSIS
-# ============================================================
-SYSTEM_PROMPT = """ROLE: Senior Risk Manager for Weekly Swing Trading Portfolio
-OBJECTIVE: Preserve capital FIRST, generate alpha SECOND. Be DECISIVE.
-
-🚫 ABSOLUTE CONSTRAINTS (MATHEMATICAL REQUIREMENT):
-
-1. TOTAL WEIGHT = 100%:
-   - Sum of ALL new_weight values MUST equal EXACTLY 100.0%
-   - This is NON-NEGOTIABLE. Double-check your math before responding.
-   - If you REDUCE a position by X%, you MUST add X% to other positions.
-   - If you REMOVE a position (new_weight=0), its ENTIRE weight MUST go elsewhere.
-
-2. NO CASH / NO MISSING WEIGHT:
-   - Portfolio must be FULLY INVESTED at all times.
-   - Every percentage point must be allocated to a stock or ETF.
-   - "Cash" is NOT a valid allocation.
-
-3. WEIGHT REDISTRIBUTION RULES:
-   - When REDUCING: Add the reduced amount to KEEP or INCREASE positions
-   - When REMOVING: Either add a REPLACEMENT stock OR distribute weight to existing positions
-   - Prefer adding to: Top 10 stocks > Strong sector stocks > Existing KEEP positions
-
-4. REPLACEMENT REQUIREMENT:
-   - If decision = "REMOVE", you MUST either:
-     a) Provide a "replacement" with symbol from ALTERNATIVE CANDIDATES, OR
-     b) Explicitly redistribute weight to other positions (increase their new_weight)
-   - replacement = null is ONLY allowed if weight is redistributed to other assets
-
-5. VALIDATION CHECK (Do this before outputting):
-   - Add up all new_weight values: SUM = ?
-   - If SUM ≠ 100.0, STOP and fix it before outputting
-
-📝 EXAMPLE - How to handle REDUCE and REMOVE:
-
-INPUT Portfolio (100%):
-  BMY: 18%, C: 17%, SKYY: 5%, Others: 60% = 100%
-
-DECISIONS:
-  - C: REDUCE from 17% → 12% (freed: 5%)
-  - SKYY: REMOVE 5% → 0% (freed: 5%)
-  - Total freed: 10%
-
-OUTPUT (must still = 100%):
-  BMY: 18% → 23% (INCREASE, +5%)
-  C: 17% → 12% (REDUCE, -5%)
-  SKYY: 5% → 0% (REMOVE, -5%)
-  NEW_STOCK: 0% → 5% (NEW from alternatives)
-  Others: 60% → 60% (KEEP)
-  TOTAL: 23 + 12 + 0 + 5 + 60 = 100% ✅
-
-🛡️ CONSERVATIVE CHANGE RULES (VERY IMPORTANT):
-
-1. MAXIMUM POSITION SIZE: 25%
-   - NO single stock can exceed 25% of portfolio
-   - If redistribution would push a stock above 25%, spread to multiple stocks instead
-
-2. MAXIMUM WEIGHT CHANGE PER STOCK: ±10%
-   - Do NOT increase any stock by more than 10% in a single review
-   - Example: If BMY is 18%, max new_weight is 28% (not 40%!)
-   - Spread large redistributions across multiple KEEP/INCREASE positions
-
-3. SECTOR CONCENTRATION FIX = REDUCE, NOT REMOVE:
-   - If Financials at 43%, goal is to bring it to ~30%
-   - REDUCE multiple positions proportionally, do NOT remove all
-   - Example: C 17%→12%, GS 11%→8%, USB 7%→5% = total reduction 10%
-   - NEVER remove a stock with STRONG momentum just for concentration
-
-4. PREFER REDUCE OVER REMOVE:
-   - REMOVE only for: Blacklisted sector, Critical news (< -40), WEAK momentum (2W<0 AND 1M<0)
-   - For concentration issues: use REDUCE
-   - KEEP as many diversified positions as possible
-
-5. PROPORTIONAL REDISTRIBUTION:
-   - When reducing/removing X%, distribute proportionally to multiple stocks
-   - Prefer: Underweight sectors > Strong momentum > Top 10 candidates
-   - Example: If freeing 15%, distribute as: +5% to 3 different stocks, not +15% to 1 stock
-
-⚠️ HARD RULES (MUST FOLLOW - No Exceptions):
-
-1. BLACKLISTED SECTORS:
-   - If sector is marked "BLACKLISTED" or "DISQUALIFIED" → decision MUST be "REMOVE"
-   - No exceptions. Do not argue. Just REMOVE.
-
-2. CRITICAL NEWS VETO (Only for REAL news, not sector issues):
-   - ONLY applies when: A stock has actual negative NEWS with sentiment < -40
-   - In critical_alerts, format as: "STOCK: [symbol] critical news (sentiment -XX)"
-   - Do NOT use "critical news" for ETF sector exposure or blacklisted sectors
-   - Bad news overrides good technicals in short-term
-
-3. ETF BLACKLISTED SECTOR EXPOSURE:
-   - If ETF's sector/category is BLACKLISTED → MUST REMOVE
-   - In critical_alerts, format as: "ETF: [symbol] exposed to blacklisted [sector] sector"
-   - This is NOT "critical news" - it's sector exposure issue
-
-4. MARKET REGIME COMPLIANCE:
-   - If RISK_LEVEL = "HIGH_ALERT" → Be more conservative, prefer defensive sectors
-   - If RISK_LEVEL = "ROTATION" → Reduce weak sector exposure
-
-5. SECTOR HEALTH THRESHOLD:
-   - Sector Health ≤ 2 → REDUCE or REMOVE (no KEEP)
-   - Sector Quant < 50 → REDUCE exposure
-
-6. SECTOR CONCENTRATION (MAX 30%):
-   - If any single sector weight > 30% → MUST REDUCE (not REMOVE!) stocks in that sector
-   - Target: Bring sector to ~28-30%, not eliminate entirely
-   - REDUCE proportionally from multiple stocks in the sector
-   - In "reasoning", cite: "Sector concentration X% exceeds 30% limit → REDUCE by Y%"
-
-7. ETF CONCENTRATION (MAX 10%):
-   - If total ETF weight > 10% → MUST REDUCE ETF positions
-   - Prioritize reducing lowest-performing ETFs first
-   - In "reasoning", cite: "Total ETF weight X% exceeds 10% limit"
-
-8. ETF SECTOR QUALITY:
-   - If ETF's Category/SubCategory matches a DISQUALIFIED or WEAK sector → MUST REMOVE or REPLACE
-   - Replacement ETF criteria (ALL must be met):
-     * Category NOT in disqualified/weak sectors
-     * STRONG momentum: 2W > 0 AND 1M > 0 AND 3M > 0
-     * QuantScore ≥ 70
-   - If no qualified ETF replacement available → REMOVE and redistribute to stocks
-
-9. WEAK MOMENTUM = REMOVE TRIGGER:
-   - ONLY remove stocks where: 2W < 0 AND (1M < 0 OR 3M < 0)
-   - If 2W < 0 but 1M > 0 and 3M > 0 → REDUCE, not REMOVE (temporary dip)
-   - ⚠️ IMPORTANT: Do NOT mark a stock as WEAK_MOMENTUM if its actual data shows positive 2W and 1M returns!
-   - Always verify the actual return data before setting hard_rule_triggered
-
-ANALYSIS FRAMEWORK:
-
-1. SHORT-TERM MOMENTUM (2W vs 1M):
-   - STRONG: Both 2W and 1M positive → OK to KEEP/INCREASE
-   - RECOVERING: 2W positive, 1M negative → Cautious KEEP
-   - WEAKENING: 2W negative, 1M positive → Consider REDUCE
-   - WEAK: Both negative → MUST REMOVE
-
-2. MEDIUM-TERM TREND (1M vs 3M):
-   - UPTREND: Both positive → Supportive
-   - DOWNTREND: Both negative → Negative bias
-   - MIXED: Conflicting → Neutral
-
-3. SECTOR HEALTH (0-5 scale):
-   - Health 4-5: Strong tailwind
-   - Health 2-3: Neutral
-   - Health 0-1: Strong headwind → AVOID
-
-4. QUANT SCORE:
-   - Top 10: Strong buy signal
-   - >80: Good
-   - 70-80: Acceptable
-   - <70: Weak
-
-DECISION MATRIX:
-- KEEP: Strong/Recovering momentum AND Sector Health ≥ 3 AND Score ≥ 70
-- INCREASE: Top 10 AND Strong momentum AND Strong sector (Health ≥ 4)
-- REDUCE: Weakening momentum OR Sector Health = 2 OR mixed signals
-- REMOVE: BLACKLISTED sector OR Weak momentum OR Sector Health ≤ 1 OR Critical news
-
-CRITICAL: In "reasoning" field, you MUST cite ALL relevant numbers for a convincing analysis:
-- Momentum: "2W: +X.X%, 1M: +Y.Y%, 3M: +Z.Z% → [STRONG/WEAK/RECOVERING] momentum"
-- Sector: "Sector Health: X/5, Sector Quant: YY → [STRONG/WEAK] sector support"
-- Asset Score: "Quant Score: XX → [above/below] threshold"
-- Hard Rule: "HARD RULE: [rule name] triggered → MUST [action]"
-- Concentration: "Sector at XX% (>30% limit) → MUST REDUCE"
-
-REASONING EXAMPLES:
-- KEEP: "Strong momentum (2W: +5.8%, 1M: +19.0%, 3M: +23.4%), excellent sector health (5/5, Quant: 84), asset score 85 in Top 10. KEEP position."
-- REMOVE: "WEAK momentum (2W: -0.3%, 1M: +7.8%, 3M: -2.3%) with deteriorating trend. ETF exposed to weak sector. HARD RULE: WEAK_MOMENTUM triggered. REMOVE and redistribute."
-- REDUCE: "Strong momentum but Financials sector at 43% exceeds 30% limit. HARD RULE: SECTOR_CONCENTRATION. REDUCE by 5% to diversify."
-
-OUTPUT FORMAT (JSON only, no markdown):
-{
-  "review_date": "YYYY-MM-DD",
-  "risk_level": "NORMAL/CAUTION/ROTATION/HIGH_ALERT/RISK_ON",
-  "market_regime": "ROTATION/RISK-ON/RISK-OFF/CAUTION/BULL/BEAR",
-  "regime_analysis": "1-2 sentence explaining how market regime affects decisions",
-  "hard_rules_applied": ["BLACKLISTED sector removal", "Sector concentration fix"],
-  "critical_alerts": [
-    "STOCK: Critical news (sentiment -60)",
-    "SECTOR: Technology blacklisted", 
-    "ETF: SKYY exposed to blacklisted Technology sector"
-  ],
-  "disqualified_sectors": ["Sector1"],
-  "weak_sectors": ["Sector2", "Sector3"],
-  "strong_sectors": ["Sector4", "Sector5"],
-  "portfolio_score": 75,
-  "total_new_weight": 100.0,
-  "weight_changes": {
-    "reduced": 12.5,
-    "increased": 10.0,
-    "new_positions": 2.5
-  },
-  "assets": [
-    {
-      "symbol": "XXX",
-      "name": "Full Name",
-      "sector": "Sector",
-      "sub_category": "SubCategory (for ETFs)",
-      "is_etf": false,
-      "current_weight": 18.0,
-      "decision": "KEEP/REMOVE/REDUCE/INCREASE",
-      "new_weight": 18.0,
-      "weight_change": 0.0,
-      "score": 85.5,
-      "asset_score": 85.5,
-      "return_2w": 2.5,
-      "return_1m": 4.1,
-      "return_3m": 8.2,
-      "short_term_trend": "STRONG/RECOVERING/WEAKENING/WEAK/LOSING",
-      "medium_term_trend": "UPTREND/DOWNTREND/MIXED",
-      "sentiment": 45,
-      "sector_health": 4,
-      "sector_quant_score": 79.4,
-      "sector_disqualified": false,
-      "sector_trend": "STRONG/WEAK/WEAKENING/RECOVERING",
-      "in_top10": true,
-      "hard_rule_triggered": null or "BLACKLISTED_SECTOR/CRITICAL_NEWS/WEAK_MOMENTUM/SECTOR_CONCENTRATION/ETF_CONCENTRATION/ETF_BLACKLISTED_SECTOR",
-      "reasoning": "DETAILED reasoning with ALL numbers cited. See examples above.",
-      "replacement": null or {"symbol": "YYY", "score": 90.1, "reason": "Better momentum + stronger sector"}
+    return {
+        'assets': enriched_assets,
+        'sector_health': sector_health,
+        'sector_weights': sector_weights,
+        'current_etf_weight': current_etf_weight,
+        'disqualified_sectors': disqualified_sectors,
+        'weak_sectors': weak_sectors,
+        'neutral_sectors': neutral_sectors,
+        'strong_sectors': strong_sectors,
+        'eligible_sectors': eligible_sectors,
+        'stock_candidates': stock_candidates,
+        'etf_candidates': etf_candidates
     }
-  ],
-  "new_positions": [
-    {
-      "symbol": "NEW_STOCK",
-      "name": "New Stock Full Name",
-      "sector": "Sector Name",
-      "is_etf": false,
-      "new_weight": 5.0,
-      "score": 88.5,
-      "return_2w": 2.5,
-      "return_1m": 5.0,
-      "return_3m": 8.0,
-      "short_term_trend": "STRONG",
-      "medium_term_trend": "UPTREND",
-      "sector_health": 4,
-      "sector_quant_score": 79.0,
-      "sentiment": 0,
-      "reason": "Replacement for REMOVED stock. Momentum: 2W +2.5%, 1M +5.0%. Diversifies to underweight Consumer Staples sector."
-    }
-  ],
-  "removals": [
-    {
-      "remove": "OLD",
-      "replace_with": "NEW or REDISTRIBUTED",
-      "weight_redistributed_to": ["BMY +2%", "FDX +3%"],
-      "reason": "Cite HARD RULE if applicable"
-    }
-  ],
-  "sector_allocation": {"Financials": 28.0, "Industrials": 22.0, "Healthcare": 20.0},
-  "summary": "3-4 sentence executive summary. Start with regime impact, then key actions. END with: Total: 100.0%"
-}
 
-⚠️ CRITICAL VALIDATION:
-Before outputting, verify: sum of all new_weight = 100.0
-If not 100.0, ADJUST positions until it equals exactly 100.0!
 
-REPLACEMENT SELECTION CRITERIA (Priority Order):
+# =============================================================================
+# PHASE 2: APPLY HARD RULES
+# =============================================================================
 
-1. SECTOR DIVERSIFICATION (Highest Priority):
-   - If removing from overweight sector (>30%), replacement MUST be from underweight sector
-   - NEVER suggest replacement from same overweight sector
-   - Prefer sectors with <15% current weight
-
-2. QUANT SCORE:
-   - Replacement must have Score ≥ 75 (prefer Top 10)
-   - Replacement score should be HIGHER than removed stock's score
-
-3. SECTOR HEALTH:
-   - Replacement sector Health must be ≥ 3/5
-   - NEVER suggest replacement from WEAK or BLACKLISTED sector
-   - Prefer STRONG sectors (Health ≥ 4)
-
-4. MOMENTUM ALIGNMENT:
-   - Replacement should have STRONG or RECOVERING momentum (2W > 0)
-   - Avoid WEAK momentum replacements (2W < 0 AND 1M < 0)
-
-5. SENTIMENT:
-   - Prefer positive or neutral sentiment
-   - Avoid stocks with negative sentiment (< -20)
-
-6. ETF vs STOCK:
-   - If ETF total > 10%, do NOT suggest ETF as replacement
-   - Prefer individual stocks for better alpha potential
-
-REPLACEMENT REASONING FORMAT:
-"Replace [OLD] (Score: X, [Sector] at Y%) with [NEW] (Score: Z, [Sector] at W%) - diversifies from overweight [Sector], stronger momentum (2W: +A%, 1M: +B%), sector health 4/5"
-
-⚠️ CRITICAL REMINDERS - READ CAREFULLY:
-
-1. CONSERVATIVE LIMITS (ENFORCED BY POST-PROCESSING):
-   - MAX position: 25% (no stock can exceed this)
-   - MAX change: ±10% per stock per review
-   - MAX sector: 30%
-   - System will auto-cap violations, so follow these to avoid unexpected adjustments
-
-2. WEIGHT MATH:
-   - Calculate: sum of all new_weight values
-   - If sum ≠ 100.0, FIX IT before responding
-   - Example: If you REDUCE C from 17.3% to 12.3%, that's -5.0% that MUST go somewhere else
-
-3. REDISTRIBUTION:
-   - Spread freed weight across MULTIPLE positions (not all to one)
-   - Example: If freeing 15%, do +5% to 3 stocks, NOT +15% to 1 stock
-   - Prefer underweight sectors for redistribution
-
-4. REMOVE vs REDUCE:
-   - REMOVE only: Blacklisted sector, Critical news, WEAK momentum (2W<0 AND 1M<0)
-   - REDUCE for: Sector concentration, mild weakness
-   - For concentration: REDUCE proportionally, don't eliminate positions
-
-5. DATA CONSISTENCY (VERY IMPORTANT):
-   - The return_2w, return_1m, return_3m values in your output MUST match the input data
-   - Do NOT invent or change momentum numbers in your reasoning
-   - If input shows 2W: +6.7%, your output must show 2W: +6.7%, not different values
-   - hard_rule_triggered MUST match the actual data (e.g., don't say WEAK_MOMENTUM if 2W is positive)
-
-6. VALIDATION BEFORE OUTPUT:
-   - Check: No position > 25%
-   - Check: No change > ±10%
-   - Check: Total = 100%
-   - Check: All portfolio assets included (don't skip small positions like 0.7%)
-"""
-
-def validate_and_fix_weights(result, portfolio_input=None, etf_data=None):
+def phase2_apply_hard_rules(data):
     """
-    Post-process GPT output to ensure:
-    1. Total weight = 100%
-    2. No single position > 25%
-    3. No single change > 10%
-    4. No sector > 30%
-    """
-    assets = result.get('assets', [])
-    if not assets:
-        return result
+    Kural tabanlı kararlar - GPT yok, sadece mantık.
     
-    # STEP 0: Validate WEAK_MOMENTUM claims against actual data
-    print(f"   🔍 Validating momentum claims...")
+    Priority Order:
+    1. BLACKLISTED_SECTOR → REMOVE
+    2. ETF_BLACKLISTED_EXPOSURE → REMOVE
+    3. WEAK_MOMENTUM (2W<0 AND 1M<0) → REMOVE
+    4. CRITICAL_NEWS (sentiment < -50) → REMOVE
+    5. ETF_CONCENTRATION (total ETF > 10%) → REDUCE
+    6. SINGLE_ETF_LIMIT (ETF > 5%) → REDUCE
+    7. SECTOR_CONCENTRATION (sector > 30%) → REDUCE
+    8. POSITION_CONCENTRATION (position > 25%) → REDUCE
+    9. LOSING_MOMENTUM (2W<0, 1M>0) → REDUCE 20%
+    """
+    print("\n" + "=" * 60)
+    print("⚖️ PHASE 2: Applying HARD RULES")
+    print("=" * 60)
+    
+    assets = data['assets']
+    sector_weights = data['sector_weights'].copy()
+    current_etf_weight = data['current_etf_weight']
+    
+    # Track reductions needed
+    etf_excess = max(0, current_etf_weight - CONFIG['MAX_ETF_TOTAL'])
+    
+    # Process each asset
     for asset in assets:
-        symbol = asset.get('symbol', '')
-        ret_2w = asset.get('return_2w', 0) or 0
-        ret_1m = asset.get('return_1m', 0) or 0
-        ret_3m = asset.get('return_3m', 0) or 0
-        decision = asset.get('decision', '').upper()
-        hard_rule = asset.get('hard_rule_triggered', '')
+        symbol = asset['symbol']
+        decision = 'KEEP'
+        hard_rule = None
+        reduce_amount = 0
         
-        # Check if WEAK_MOMENTUM is correctly applied
-        is_actually_weak = (ret_2w < 0) and (ret_1m < 0 or ret_3m < 0)
+        # ═══════════════════════════════════════════════════════════
+        # RULE 1: Blacklisted Sector → REMOVE
+        # ═══════════════════════════════════════════════════════════
+        if asset['in_disqualified_sector']:
+            decision = 'REMOVE'
+            hard_rule = 'BLACKLISTED_SECTOR'
+            print(f"   🔴 {symbol}: REMOVE - Blacklisted sector ({asset['sector']})")
         
-        if hard_rule == 'WEAK_MOMENTUM' and not is_actually_weak:
-            print(f"      ❌ {symbol}: WEAK_MOMENTUM claim is FALSE! 2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}%")
-            # Correct the decision - should not be REMOVE for fake weak momentum
-            if decision == 'REMOVE' and ret_2w > 0 and ret_1m > 0:
-                asset['hard_rule_triggered'] = None
-                asset['decision'] = 'KEEP'
-                asset['new_weight'] = asset.get('current_weight', 0)
-                asset['weight_change'] = 0
-                asset['reasoning'] = f"CORRECTED: Original WEAK_MOMENTUM claim was invalid (2W:{ret_2w:+.1f}%, 1M:{ret_1m:+.1f}% are positive). KEEP position."
-                print(f"      ✅ {symbol}: Corrected to KEEP")
-    
-    # STEP 1: Enforce max position size (25%) and max change (10%)
-    print(f"   🔒 Checking position limits...")
-    excess_weight = 0  # Track weight that needs redistribution
-    
-    for asset in assets:
-        symbol = asset.get('symbol', '')
-        current = asset.get('current_weight', 0) or 0
-        new = asset.get('new_weight', 0) if isinstance(asset.get('new_weight'), (int, float)) else current
-        decision = asset.get('decision', '').upper()
-        
-        # Skip REMOVE positions
-        if decision == 'REMOVE':
-            continue
-        
-        original_new = new
-        
-        # Max position size: 25%
-        if new > 25:
-            print(f"      ⚠️ {symbol}: {new:.1f}% exceeds 25% max → capping to 25%")
-            excess_weight += new - 25.0
-            new = 25.0
-            asset['new_weight'] = 25.0
-            asset['weight_change'] = 25.0 - current
-        
-        # Max change: ±10%
-        change = new - current
-        if change > 10:
-            print(f"      ⚠️ {symbol}: +{change:.1f}% exceeds +10% max change → capping to +10%")
-            excess_weight += change - 10.0
-            asset['new_weight'] = round(current + 10, 1)
-            asset['weight_change'] = 10.0
-    
-    # Redistribute excess weight if any
-    if excess_weight > 0.5:
-        print(f"   📊 Redistributing {excess_weight:.1f}% excess weight...")
-        # Find eligible positions (KEEP with room to grow, under 25%)
-        eligible = [a for a in assets 
-                    if a.get('decision', '').upper() in ['KEEP', 'INCREASE']
-                    and (a.get('new_weight', 0) or 0) < 25
-                    and (a.get('new_weight', 0) or 0) > 0]
-        
-        if eligible:
-            share_each = excess_weight / len(eligible)
-            for a in eligible:
-                current_new = a.get('new_weight', 0) or 0
-                add = min(share_each, 25 - current_new, 10 - (current_new - a.get('current_weight', 0)))
-                if add > 0:
-                    a['new_weight'] = round(current_new + add, 1)
-                    a['weight_change'] = round(a['new_weight'] - a.get('current_weight', 0), 1)
-                    print(f"      {a['symbol']}: +{add:.1f}% redistributed")
-    
-    # Calculate total new_weight from assets
-    total = sum(a.get('new_weight', 0) or 0 for a in assets)
-    
-    # Add new_positions if present
-    new_positions = result.get('new_positions', [])
-    for np in new_positions:
-        total += np.get('new_weight', 0) or 0
-    
-    print(f"   📊 Weight validation: Total = {total:.1f}%")
-    
-    if abs(total - 100.0) < 0.1:
-        result['total_new_weight'] = 100.0
-        print(f"   ✅ Weight OK: {total:.1f}%")
-        # Sync missing assets first
-        if portfolio_input:
-            result = sync_missing_assets(result, portfolio_input, etf_data)
-        # Sync removals even when weight is OK
-        result = sync_removals_with_decisions(result)
-        return result
-    
-    # Need to fix
-    diff = 100.0 - total
-    print(f"   ⚠️ Weight mismatch! Missing: {diff:+.1f}%")
-    
-    if diff > 0:
-        # Under 100% - distribute to KEEP/INCREASE positions proportionally
-        eligible = [a for a in assets 
-                    if a.get('decision') in ['KEEP', 'INCREASE'] 
-                    and (a.get('new_weight', 0) or 0) > 0]
-        
-        if not eligible:
-            # Fallback: use any position with weight > 0
-            eligible = [a for a in assets if (a.get('new_weight', 0) or 0) > 0]
-        
-        if eligible:
-            # Calculate total eligible weight
-            eligible_total = sum(a.get('new_weight', 0) or 0 for a in eligible)
+        # ═══════════════════════════════════════════════════════════
+        # RULE 2: ETF Exposed to Blacklisted/Weak Sector → REMOVE
+        # ═══════════════════════════════════════════════════════════
+        elif asset['is_etf']:
+            etf_sector = asset['sector']
+            etf_sub = asset.get('sub_category', '')
             
-            print(f"   📊 Distributing {diff:.1f}% to {len(eligible)} positions")
+            if etf_sector in data['disqualified_sectors'] or etf_sub in data['disqualified_sectors']:
+                decision = 'REMOVE'
+                hard_rule = 'ETF_BLACKLISTED_SECTOR'
+                print(f"   🔴 {symbol}: REMOVE - ETF exposed to blacklisted {etf_sector}/{etf_sub}")
             
-            distributed = 0
-            for i, a in enumerate(eligible):
-                current = a.get('new_weight', 0) or 0
-                # Proportional share
-                share = (current / eligible_total) * diff if eligible_total > 0 else diff / len(eligible)
+            elif etf_sector in data['weak_sectors'] or etf_sub in data['weak_sectors']:
+                decision = 'REMOVE'
+                hard_rule = 'ETF_WEAK_SECTOR'
+                print(f"   🟠 {symbol}: REMOVE - ETF exposed to weak {etf_sector}/{etf_sub}")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 3: Weak Momentum (2W<0 AND 1M<0) → REMOVE
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['momentum'] == 'WEAK':
+            decision = 'REMOVE'
+            hard_rule = 'WEAK_MOMENTUM'
+            print(f"   🔴 {symbol}: REMOVE - WEAK momentum (2W:{asset['return_2w']:+.1f}%, 1M:{asset['return_1m']:+.1f}%)")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 4: Critical News (sentiment < -50) → REMOVE
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['sentiment'] < CONFIG['CRITICAL_SENTIMENT']:
+            decision = 'REMOVE'
+            hard_rule = 'CRITICAL_NEWS'
+            print(f"   🔴 {symbol}: REMOVE - Critical news (sentiment: {asset['sentiment']})")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 5: ETF Total Concentration > 10% → REDUCE ETFs
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['is_etf'] and etf_excess > 0:
+            reduce_amount = min(asset['current_weight'], etf_excess, CONFIG['MAX_CHANGE'])
+            if reduce_amount >= 0.5:
+                decision = 'REDUCE'
+                hard_rule = 'ETF_CONCENTRATION'
+                etf_excess -= reduce_amount
+                print(f"   🟠 {symbol}: REDUCE {reduce_amount:.1f}% - ETF total exceeds {CONFIG['MAX_ETF_TOTAL']}%")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 6: Single ETF > 5% → REDUCE
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['is_etf'] and asset['current_weight'] > CONFIG['MAX_ETF_SINGLE']:
+            reduce_amount = asset['current_weight'] - CONFIG['MAX_ETF_SINGLE']
+            decision = 'REDUCE'
+            hard_rule = 'ETF_POSITION_LIMIT'
+            print(f"   🟠 {symbol}: REDUCE {reduce_amount:.1f}% - Single ETF exceeds {CONFIG['MAX_ETF_SINGLE']}%")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 7: Sector Concentration > 30% → REDUCE
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and not asset['is_etf']:
+            sector = asset['sector']
+            sector_weight = sector_weights.get(sector, 0)
+            
+            if sector_weight > CONFIG['MAX_SECTOR']:
+                excess = sector_weight - CONFIG['MAX_SECTOR']
+                # Proportional reduction based on position size
+                asset_share = asset['current_weight'] / sector_weight
+                reduce_amount = min(excess * asset_share * 1.2, CONFIG['MAX_CHANGE'], asset['current_weight'] * 0.5)
+                reduce_amount = round(reduce_amount, 1)
                 
-                # Last one gets remainder to ensure exactly 100%
-                if i == len(eligible) - 1:
-                    share = diff - distributed
-                
-                new_weight = round(current + share, 1)
-                
-                # Update in assets list
-                for asset in assets:
-                    if asset.get('symbol') == a.get('symbol'):
-                        old_decision = asset.get('decision', 'KEEP')
-                        asset['new_weight'] = new_weight
-                        asset['weight_change'] = round(new_weight - asset.get('current_weight', 0), 1)
-                        
-                        # Update decision if significantly increased
-                        if asset['weight_change'] > 2:
-                            asset['decision'] = 'INCREASE'
-                        
-                        print(f"      {a['symbol']}: {current:.1f}% → {new_weight:.1f}% (+{share:.1f}%)")
-                        distributed += share
-                        break
-    else:
-        # Over 100% - reduce proportionally from largest positions
-        diff = abs(diff)
-        sorted_assets = sorted(assets, key=lambda x: -(x.get('new_weight', 0) or 0))
+                if reduce_amount >= 0.5:
+                    decision = 'REDUCE'
+                    hard_rule = 'SECTOR_CONCENTRATION'
+                    sector_weights[sector] -= reduce_amount
+                    print(f"   🟠 {symbol}: REDUCE {reduce_amount:.1f}% - {sector} at {sector_weight:.1f}% exceeds {CONFIG['MAX_SECTOR']}%")
         
-        distributed = 0
-        for i, a in enumerate(sorted_assets[:3]):  # Top 3 positions
-            current = a.get('new_weight', 0) or 0
-            share = min(current * 0.1, diff - distributed)  # Max 10% reduction each
-            
-            if i == 2 or distributed + share >= diff:
-                share = diff - distributed
-            
-            new_weight = round(current - share, 1)
-            
-            for asset in assets:
-                if asset.get('symbol') == a.get('symbol'):
-                    asset['new_weight'] = new_weight
-                    asset['weight_change'] = round(new_weight - asset.get('current_weight', 0), 1)
-                    print(f"      {a['symbol']}: {current:.1f}% → {new_weight:.1f}% (-{share:.1f}%)")
-                    distributed += share
-                    break
-            
-            if distributed >= diff:
-                break
-    
-    # Recalculate final total
-    new_total = sum(a.get('new_weight', 0) or 0 for a in assets)
-    for np in new_positions:
-        new_total += np.get('new_weight', 0) or 0
-    
-    result['total_new_weight'] = round(new_total, 1)
-    result['weight_adjusted'] = True
-    result['adjustment_note'] = f"Auto-adjusted {diff:+.1f}% to reach 100%"
-    
-    print(f"   ✅ Adjusted total: {result['total_new_weight']}%")
-    
-    # Final validation
-    if abs(result['total_new_weight'] - 100.0) > 0.5:
-        print(f"   ❌ WARNING: Still not 100%! Manual review needed.")
-    
-    # Sync missing assets first (GPT might forget small positions)
-    if portfolio_input:
-        result = sync_missing_assets(result, portfolio_input, etf_data)
-    
-    # Sync removals with REMOVE decisions
-    result = sync_removals_with_decisions(result)
-    
-    return result
-
-def sync_removals_with_decisions(result):
-    """
-    Ensure all REMOVE decisions appear in removals list.
-    GPT sometimes forgets to add all removals.
-    """
-    assets = result.get('assets', [])
-    removals = result.get('removals', [])
-    new_positions = result.get('new_positions', [])
-    
-    # Get existing removal symbols
-    existing_removals = set(r.get('remove', '') for r in removals)
-    
-    # Find all REMOVE decisions
-    remove_assets = [a for a in assets if a.get('decision', '').upper() == 'REMOVE']
-    
-    # Get new position symbols for replacement matching
-    new_pos_symbols = [np.get('symbol', '') for np in new_positions]
-    
-    # Add missing removals
-    for asset in remove_assets:
-        symbol = asset.get('symbol', '')
-        if symbol and symbol not in existing_removals:
-            # Determine replacement
-            replacement = asset.get('replacement')
-            replace_with = None
-            
-            if replacement:
-                replace_with = replacement.get('symbol', 'REDISTRIBUTED')
-            elif new_pos_symbols:
-                replace_with = new_pos_symbols[0]  # Use first new position
+        # ═══════════════════════════════════════════════════════════
+        # RULE 8: Position > 25% → REDUCE
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['current_weight'] > CONFIG['MAX_POSITION']:
+            reduce_amount = asset['current_weight'] - CONFIG['MAX_POSITION']
+            decision = 'REDUCE'
+            hard_rule = 'POSITION_CONCENTRATION'
+            print(f"   🟠 {symbol}: REDUCE {reduce_amount:.1f}% - Position exceeds {CONFIG['MAX_POSITION']}%")
+        
+        # ═══════════════════════════════════════════════════════════
+        # RULE 9: Losing Momentum (2W<0, 1M>0) → REDUCE 20%
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP' and asset['momentum'] == 'LOSING':
+            reduce_amount = round(asset['current_weight'] * CONFIG['LOSING_MOMENTUM_REDUCE'], 1)
+            if reduce_amount >= 0.5:
+                decision = 'REDUCE'
+                hard_rule = 'LOSING_MOMENTUM'
+                print(f"   🟡 {symbol}: REDUCE {reduce_amount:.1f}% - Losing momentum (2W:{asset['return_2w']:+.1f}%)")
+        
+        # ═══════════════════════════════════════════════════════════
+        # Mark INCREASE candidates (strong momentum + strong sector)
+        # ═══════════════════════════════════════════════════════════
+        if decision == 'KEEP':
+            if asset['momentum'] == 'STRONG' and asset['in_strong_sector']:
+                decision = 'INCREASE'
+                print(f"   🟢 {symbol}: INCREASE candidate - Strong momentum in strong sector")
+            elif asset['momentum'] == 'STRONG':
+                print(f"   ⚪ {symbol}: KEEP - Strong momentum")
             else:
-                replace_with = 'REDISTRIBUTED'
-            
-            # Create removal entry
-            new_removal = {
-                'remove': symbol,
-                'replace_with': replace_with,
-                'weight_redistributed_to': [],
-                'reason': asset.get('reasoning', 'See analysis above')
-            }
-            
-            # Find where weight was redistributed (INCREASE decisions)
-            increases = [a for a in assets if a.get('decision', '').upper() == 'INCREASE']
-            for inc in increases:
-                weight_change = inc.get('weight_change', 0)
-                if weight_change > 0:
-                    new_removal['weight_redistributed_to'].append(
-                        f"{inc.get('symbol')} +{weight_change:.1f}%"
-                    )
-            
-            # Add new positions to redistribution
-            for np in new_positions:
-                new_removal['weight_redistributed_to'].append(
-                    f"{np.get('symbol')} +{np.get('new_weight', 0):.1f}% (NEW)"
-                )
-            
-            removals.append(new_removal)
-            print(f"   📝 Added missing removal: {symbol} → {replace_with}")
-    
-    result['removals'] = removals
-    return result
-
-def sync_missing_assets(result, portfolio_input, etf_data=None):
-    """
-    Ensure all portfolio assets appear in the result.
-    GPT sometimes forgets small positions like PNC (0.7%).
-    """
-    if not portfolio_input:
-        return result
-    
-    assets = result.get('assets', [])
-    existing_symbols = set(a.get('symbol', '') for a in assets)
-    
-    # Check for missing assets
-    missing = []
-    for symbol, weight in portfolio_input.items():
-        if symbol not in existing_symbols:
-            missing.append((symbol, weight))
-    
-    if not missing:
-        return result
-    
-    print(f"   ⚠️ Found {len(missing)} missing assets: {[m[0] for m in missing]}")
-    
-    # Add missing assets with data from etf_data if available
-    for symbol, weight in missing:
-        # Try to get real data
-        data = {}
-        sector = 'Unknown'
-        name = symbol
-        score = 0
-        return_2w = 0
-        return_1m = 0
-        return_3m = 0
-        short_trend = 'N/A'
-        med_trend = 'N/A'
-        sector_health = 0
-        sector_quant = 0
+                print(f"   ⚪ {symbol}: KEEP")
         
-        if etf_data:
-            # Check stocks
-            for sec, stocks in etf_data.get('sectors', {}).items():
-                for stock in stocks:
-                    if stock.get('Symbol') == symbol:
-                        data = stock
-                        sector = sec
-                        name = stock.get('Name', symbol)
-                        score = stock.get('SCORE', 0) or 0
-                        
-                        w2 = stock.get('2W', {}) or {}
-                        m1 = stock.get('1M', {}) or {}
-                        m3 = stock.get('3M', {}) or {}
-                        
-                        return_2w = w2.get('RETURN', 0) or 0
-                        return_1m = m1.get('RETURN', 0) or 0
-                        return_3m = m3.get('RETURN', 0) or 0
-                        
-                        # Trends
-                        if return_2w > 0 and return_1m > 0:
-                            short_trend = 'STRONG'
-                        elif return_2w > 0 and return_1m < 0:
-                            short_trend = 'RECOVERING'
-                        elif return_2w < 0 and return_1m > 0:
-                            short_trend = 'LOSING'
-                        else:
-                            short_trend = 'WEAK'
-                        
-                        if return_1m > 0 and return_3m > 0:
-                            med_trend = 'UPTREND'
-                        elif return_1m < 0 and return_3m < 0:
-                            med_trend = 'DOWNTREND'
-                        else:
-                            med_trend = 'MIXED'
-                        
-                        # Sector health
-                        sector_health_data = etf_data.get('sector_health', {}).get(sec, {})
-                        sector_health = sector_health_data.get('health', 0)
-                        sector_quant = sector_health_data.get('quant_score', 0)
-                        break
-        
-        missing_asset = {
-            'symbol': symbol,
-            'name': name,
-            'sector': sector,
-            'current_weight': weight,
-            'decision': 'KEEP',
-            'new_weight': weight,
-            'weight_change': 0,
-            'score': score,
-            'asset_score': score,
-            'return_2w': return_2w,
-            'return_1m': return_1m,
-            'return_3m': return_3m,
-            'short_term_trend': short_trend,
-            'medium_term_trend': med_trend,
-            'sentiment': 0,
-            'sector_health': sector_health,
-            'sector_quant_score': sector_quant,
-            'sector_disqualified': False,
-            'in_top10': False,
-            'hard_rule_triggered': None,
-            'reasoning': f'Small position ({weight}%) maintained as KEEP. Auto-added - GPT skipped this asset.'
-        }
-        assets.append(missing_asset)
-        print(f"   📝 Added missing asset: {symbol} ({weight}%) as KEEP")
+        # Store decision
+        asset['decision'] = decision
+        asset['hard_rule'] = hard_rule
+        asset['reduce_amount'] = reduce_amount
     
-    result['assets'] = assets
-    return result
+    # Summary
+    decisions = Counter(a['decision'] for a in assets)
+    print(f"\n   📊 Decision Summary: {dict(decisions)}")
+    
+    return data
 
-def analyze_portfolio(prompt_data, client, portfolio_input=None, etf_data=None, retries=3):
-    print(f"   📝 Prompt size: {len(prompt_data)} chars")
+
+# =============================================================================
+# PHASE 3: WEIGHT CALCULATION
+# =============================================================================
+
+def phase3_calculate_weights(data):
+    """
+    Weight değişimlerini hesapla.
     
-    for attempt in range(retries):
-        try:
-            print(f"   🔄 Attempt {attempt + 1}/{retries}...")
+    Constraints:
+    - Max position: 25%
+    - Max change: ±10%
+    - Total: 100%
+    - Max sector: 30%
+    - Max ETF total: 10%
+    """
+    print("\n" + "=" * 60)
+    print("📐 PHASE 3: Weight Calculation")
+    print("=" * 60)
+    
+    assets = data['assets']
+    
+    # ─────────────────────────────────────────────────────────────
+    # STEP 1: Calculate freed weight from REMOVE and REDUCE
+    # ─────────────────────────────────────────────────────────────
+    print("\n   💰 Calculating freed weight...")
+    freed_weight = 0
+    
+    for asset in assets:
+        if asset['decision'] == 'REMOVE':
+            freed_weight += asset['current_weight']
+            asset['new_weight'] = 0
+            asset['weight_change'] = -asset['current_weight']
+            print(f"      {asset['symbol']}: REMOVE {asset['current_weight']:.1f}% → 0%")
+        
+        elif asset['decision'] == 'REDUCE':
+            reduce = min(asset['reduce_amount'], CONFIG['MAX_CHANGE'])
+            reduce = round(reduce, 1)
+            asset['new_weight'] = round(asset['current_weight'] - reduce, 1)
+            asset['weight_change'] = -reduce
+            freed_weight += reduce
+            print(f"      {asset['symbol']}: REDUCE {asset['current_weight']:.1f}% → {asset['new_weight']:.1f}% (-{reduce:.1f}%)")
+        
+        else:  # KEEP or INCREASE
+            asset['new_weight'] = asset['current_weight']
+            asset['weight_change'] = 0
+    
+    print(f"\n   💰 Total freed weight: {freed_weight:.1f}%")
+    
+    # ─────────────────────────────────────────────────────────────
+    # STEP 2: Identify eligible recipients (prefer stocks over ETFs)
+    # ─────────────────────────────────────────────────────────────
+    print("\n   🎯 Identifying eligible recipients...")
+    
+    eligible = [a for a in assets 
+                if a['decision'] in ['KEEP', 'INCREASE']
+                and not a['is_etf']  # Prefer stocks
+                and a['momentum'] in ['STRONG', 'RECOVERING']
+                and a['new_weight'] < CONFIG['MAX_POSITION']]
+    
+    # Sort by priority: STRONG > RECOVERING, Strong sector > others, higher score
+    eligible.sort(key=lambda x: (
+        x['momentum'] == 'STRONG',
+        x['in_strong_sector'],
+        x['score']
+    ), reverse=True)
+    
+    for e in eligible[:5]:
+        print(f"      {e['symbol']:6} {e['momentum']:10} | {e['sector']} | Score: {e['score']:.0f}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # STEP 3: Distribute freed weight to existing positions
+    # ─────────────────────────────────────────────────────────────
+    print("\n   📊 Distributing freed weight...")
+    remaining = freed_weight
+    
+    for asset in eligible:
+        if remaining < 0.5:
+            break
+        
+        current = asset['new_weight']
+        current_change = asset['weight_change']
+        
+        # Calculate how much we can add
+        room_position = CONFIG['MAX_POSITION'] - current
+        room_change = CONFIG['MAX_CHANGE'] - current_change
+        
+        max_add = min(remaining, room_position, room_change)
+        max_add = round(max_add, 1)
+        
+        if max_add >= 0.5:
+            asset['new_weight'] = round(current + max_add, 1)
+            asset['weight_change'] = round(asset['weight_change'] + max_add, 1)
+            asset['decision'] = 'INCREASE'
+            remaining -= max_add
+            print(f"      {asset['symbol']}: +{max_add:.1f}% → {asset['new_weight']:.1f}%")
+    
+    # ─────────────────────────────────────────────────────────────
+    # STEP 4: Check ETF allocation - can we add to ETFs?
+    # ─────────────────────────────────────────────────────────────
+    new_etf_weight = sum(a['new_weight'] for a in assets if a['is_etf'])
+    etf_room = CONFIG['MAX_ETF_TOTAL'] - new_etf_weight
+    
+    if remaining > 0.5 and etf_room > 0.5:
+        print(f"\n   📊 ETF room available: {etf_room:.1f}%")
+        
+        eligible_etfs = [a for a in assets 
+                        if a['is_etf'] 
+                        and a['decision'] in ['KEEP', 'INCREASE']
+                        and a['momentum'] in ['STRONG', 'RECOVERING']
+                        and a['new_weight'] < CONFIG['MAX_ETF_SINGLE']]
+        
+        for etf in eligible_etfs:
+            if remaining < 0.5 or etf_room < 0.5:
+                break
             
-            response = client.chat.completions.create(
-                model=MODEL,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": f"{prompt_data}\n\nReturn ONLY valid JSON, no markdown."}
-                ],
-                max_completion_tokens=16000
+            max_add = min(
+                remaining,
+                etf_room,
+                CONFIG['MAX_ETF_SINGLE'] - etf['new_weight'],
+                CONFIG['MAX_CHANGE'] - etf['weight_change']
             )
+            max_add = round(max_add, 1)
             
-            # Debug: Full response info
-            print(f"   📊 Response object: choices={len(response.choices)}")
-            if response.choices:
-                choice = response.choices[0]
-                print(f"   📊 Finish reason: {choice.finish_reason}")
-                print(f"   📊 Message role: {choice.message.role if choice.message else 'None'}")
-            
-            if response.usage:
-                print(f"   📊 Usage: prompt={response.usage.prompt_tokens}, completion={response.usage.completion_tokens}")
-            
-            content = response.choices[0].message.content
-            
-            # Debug: Yanıtı göster
-            print(f"   📥 Response length: {len(content) if content else 0}")
-            
-            if not content:
-                print("   ❌ Empty response from GPT!")
-                print(f"   📊 Full message: {response.choices[0].message}")
-                if attempt < retries - 1:
-                    import time
-                    time.sleep(3)
-                    continue
-                raise ValueError("GPT returned empty response")
-            
-            content = content.strip()
-            
-            # Debug: İlk 200 karakter
-            print(f"   📄 Response preview: {content[:200]}...")
-            
-            # Markdown temizle
-            if content.startswith("```"):
-                lines = content.split("\n")
-                lines = [l for l in lines if not l.strip().startswith("```")]
-                content = "\n".join(lines).strip()
-            
-            # JSON başlangıcını bul
-            json_start = content.find('{')
-            json_end = content.rfind('}')
-            
-            if json_start == -1 or json_end == -1:
-                print(f"   ❌ No JSON found in response!")
-                if attempt < retries - 1:
-                    import time
-                    time.sleep(2)
-                    continue
-                raise ValueError("No valid JSON in response")
-            
-            content = content[json_start:json_end+1]
-            
-            result = json.loads(content)
-            
-            # POST-PROCESSING: Validate and fix total weight
-            result = validate_and_fix_weights(result, portfolio_input=portfolio_input, etf_data=etf_data)
-            
-            return result
-            
-        except json.JSONDecodeError as e:
-            print(f"   ❌ JSON parse error: {e}")
-            if attempt < retries - 1:
-                import time
-                time.sleep(2)
-                continue
-            raise
-        except Exception as e:
-            print(f"   ❌ Error: {e}")
-            if attempt < retries - 1:
-                import time
-                time.sleep(2)
-                continue
-            raise
+            if max_add >= 0.5:
+                etf['new_weight'] = round(etf['new_weight'] + max_add, 1)
+                etf['weight_change'] = round(etf['weight_change'] + max_add, 1)
+                etf['decision'] = 'INCREASE'
+                remaining -= max_add
+                etf_room -= max_add
+                print(f"      {etf['symbol']}: +{max_add:.1f}% → {etf['new_weight']:.1f}%")
     
-    raise ValueError("All retries failed")
+    # ─────────────────────────────────────────────────────────────
+    # STEP 5: Summary
+    # ─────────────────────────────────────────────────────────────
+    total_allocated = sum(a['new_weight'] for a in assets)
+    
+    # Fix: INCREASE ile işaretlenmiş ama gerçekte artmamış olanları KEEP yap
+    for asset in assets:
+        if asset['decision'] == 'INCREASE' and asset['weight_change'] == 0:
+            asset['decision'] = 'KEEP'
+            print(f"      ℹ️ {asset['symbol']}: INCREASE → KEEP (no actual change)")
+        elif asset['decision'] == 'REDUCE' and asset['weight_change'] == 0:
+            asset['decision'] = 'KEEP'
+            print(f"      ℹ️ {asset['symbol']}: REDUCE → KEEP (no actual change)")
+    
+    # CRITICAL FIX: remaining_weight = 100% - allocated (not just freed weight)
+    remaining_for_new = round(100.0 - total_allocated, 1)
+    
+    data['remaining_weight'] = remaining_for_new
+    data['total_before_new'] = round(total_allocated, 1)
+    data['new_etf_weight'] = round(sum(a['new_weight'] for a in assets if a['is_etf']), 1)
+    
+    print(f"\n   📊 Summary:")
+    print(f"      Allocated to existing: {total_allocated:.1f}%")
+    print(f"      Remaining for new: {remaining_for_new:.1f}%")
+    print(f"      ETF weight: {data['new_etf_weight']:.1f}%")
+    
+    return data
 
-# ============================================================
-# MAIN
-# ============================================================
+
+# =============================================================================
+# PHASE 4: REPLACEMENT CANDIDATES
+# =============================================================================
+
+def phase4_find_candidates(data):
+    """
+    Kalan weight için yeni pozisyon adaylarını seç.
+    """
+    print("\n" + "=" * 60)
+    print("🔍 PHASE 4: Finding Replacement Candidates")
+    print("=" * 60)
+    
+    remaining = data['remaining_weight']
+    
+    if remaining < CONFIG['MIN_NEW_POSITION']:
+        print(f"\n   ✅ No remaining weight to allocate ({remaining:.1f}%)")
+        data['new_positions'] = []
+        return data
+    
+    print(f"\n   💰 Remaining weight to allocate: {remaining:.1f}%")
+    
+    current_symbols = set(a['symbol'] for a in data['assets'])
+    new_etf_weight = data['new_etf_weight']
+    etf_room = CONFIG['MAX_ETF_TOTAL'] - new_etf_weight
+    
+    # Calculate new sector weights
+    sector_weights = {}
+    for asset in data['assets']:
+        sec = 'ETF' if asset['is_etf'] else asset['sector']
+        sector_weights[sec] = sector_weights.get(sec, 0) + asset['new_weight']
+    
+    selected = []
+    weight_allocated = 0
+    
+    # ─────────────────────────────────────────────────────────────
+    # PRIORITY 1: Stocks from STRONGEST sectors first
+    # ─────────────────────────────────────────────────────────────
+    print("\n   🎯 Priority 1: Stocks from strongest sectors...")
+    
+    # Sort eligible sectors by health (strongest first)
+    sector_health_map = data.get('sector_health', {})
+    sorted_sectors = sorted(
+        data['eligible_sectors'],
+        key=lambda s: sector_health_map.get(s, {}).get('health', 0),
+        reverse=True  # En güçlü sektör önce
+    )
+    
+    print(f"      Sector priority: {', '.join(sorted_sectors[:5])}")
+    
+    for sector in sorted_sectors:
+        if weight_allocated >= remaining:
+            break
+        if len(selected) >= CONFIG['MAX_NEW_POSITIONS']:
+            break
+        
+        # Find best candidate from this sector
+        sector_candidates = [
+            c for c in data['stock_candidates']
+            if c['sector'] == sector and c['symbol'] not in current_symbols
+        ]
+        
+        if sector_candidates:
+            candidate = sector_candidates[0]
+            
+            sector_room = CONFIG['MAX_SECTOR'] - sector_weights.get(sector, 0)
+            alloc = min(
+                remaining - weight_allocated,
+                sector_room,
+                CONFIG['MAX_CHANGE']
+            )
+            alloc = round(alloc, 1)
+            
+            if alloc >= CONFIG['MIN_NEW_POSITION']:
+                candidate['new_weight'] = alloc
+                candidate['decision'] = 'NEW'
+                candidate['weight_change'] = alloc
+                candidate['hard_rule'] = None
+                selected.append(candidate)
+                current_symbols.add(candidate['symbol'])
+                weight_allocated += alloc
+                sector_weights[sector] = sector_weights.get(sector, 0) + alloc
+                print(f"      ✅ {candidate['symbol']} ({sector}): {alloc:.1f}% | Score: {candidate['score']:.0f}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # PRIORITY 2: ETFs if room under 10%
+    # ─────────────────────────────────────────────────────────────
+    if weight_allocated < remaining and etf_room > CONFIG['MIN_NEW_POSITION']:
+        print(f"\n   🎯 Priority 2: ETFs (room: {etf_room:.1f}%)...")
+        
+        for etf_candidate in data['etf_candidates']:
+            if weight_allocated >= remaining:
+                break
+            if etf_room < CONFIG['MIN_NEW_POSITION']:
+                break
+            if etf_candidate['symbol'] in current_symbols:
+                continue
+            if len(selected) >= CONFIG['MAX_NEW_POSITIONS']:
+                break
+            
+            alloc = min(
+                remaining - weight_allocated,
+                etf_room,
+                CONFIG['MAX_ETF_SINGLE'],
+                CONFIG['MAX_CHANGE']
+            )
+            alloc = round(alloc, 1)
+            
+            if alloc >= CONFIG['MIN_NEW_POSITION']:
+                etf_candidate['new_weight'] = alloc
+                etf_candidate['decision'] = 'NEW'
+                etf_candidate['weight_change'] = alloc
+                etf_candidate['hard_rule'] = None
+                selected.append(etf_candidate)
+                current_symbols.add(etf_candidate['symbol'])
+                weight_allocated += alloc
+                etf_room -= alloc
+                print(f"      ✅ {etf_candidate['symbol']} (ETF): {alloc:.1f}% | Score: {etf_candidate['score']:.0f}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # PRIORITY 3: More stocks if still remaining
+    # ─────────────────────────────────────────────────────────────
+    if weight_allocated < remaining:
+        print(f"\n   🎯 Priority 3: Additional stocks...")
+        
+        for candidate in data['stock_candidates']:
+            if weight_allocated >= remaining:
+                break
+            if candidate['symbol'] in current_symbols:
+                continue
+            if len(selected) >= CONFIG['MAX_NEW_POSITIONS']:
+                break
+            
+            sector = candidate['sector']
+            sector_room = CONFIG['MAX_SECTOR'] - sector_weights.get(sector, 0)
+            
+            alloc = min(
+                remaining - weight_allocated,
+                sector_room,
+                CONFIG['MAX_CHANGE'],
+                8
+            )
+            alloc = round(alloc, 1)
+            
+            if alloc >= CONFIG['MIN_NEW_POSITION']:
+                candidate['new_weight'] = alloc
+                candidate['decision'] = 'NEW'
+                candidate['weight_change'] = alloc
+                candidate['hard_rule'] = None
+                selected.append(candidate)
+                current_symbols.add(candidate['symbol'])
+                weight_allocated += alloc
+                sector_weights[sector] = sector_weights.get(sector, 0) + alloc
+                print(f"      ✅ {candidate['symbol']} ({sector}): {alloc:.1f}% | Score: {candidate['score']:.0f}")
+    
+    # ─────────────────────────────────────────────────────────────
+    # PRIORITY 4: Distribute remaining to EXISTING strong positions
+    # ─────────────────────────────────────────────────────────────
+    still_remaining = remaining - weight_allocated
+    
+    if still_remaining >= 0.5:
+        print(f"\n   🎯 Priority 4: Distribute {still_remaining:.1f}% to existing positions...")
+        
+        # Get existing KEEP/INCREASE assets with strong momentum, sorted by score
+        existing_strong = [
+            a for a in data['assets']
+            if a['decision'] in ['KEEP', 'INCREASE']
+            and a['momentum'] in ['STRONG', 'RECOVERING']
+            and not a['is_etf']  # ETF'lere değil
+            and a['new_weight'] < CONFIG['MAX_POSITION']
+        ]
+        existing_strong.sort(key=lambda x: (x.get('score', 0) or 0), reverse=True)
+        
+        for asset in existing_strong:
+            if still_remaining < 0.5:
+                break
+            
+            sector = asset['sector']
+            current_sector_weight = sector_weights.get(sector, 0)
+            
+            max_add = min(
+                still_remaining,
+                CONFIG['MAX_POSITION'] - asset['new_weight'],
+                CONFIG['MAX_SECTOR'] - current_sector_weight,
+                CONFIG['MAX_CHANGE'] - abs(asset['weight_change']),
+                5.0  # Max 5% per iteration
+            )
+            max_add = round(max_add, 1)
+            
+            if max_add >= 0.5:
+                asset['new_weight'] = round(asset['new_weight'] + max_add, 1)
+                asset['weight_change'] = round(asset['weight_change'] + max_add, 1)
+                asset['decision'] = 'INCREASE'
+                sector_weights[sector] = current_sector_weight + max_add
+                still_remaining -= max_add
+                weight_allocated += max_add
+                print(f"      ✅ {asset['symbol']}: +{max_add:.1f}% → {asset['new_weight']:.1f}%")
+    
+    # ─────────────────────────────────────────────────────────────
+    # Summary
+    # ─────────────────────────────────────────────────────────────
+    data['new_positions'] = selected
+    data['total_new_weight'] = weight_allocated
+    data['final_remaining'] = round(remaining - weight_allocated, 1)
+    
+    print(f"\n   📊 Summary:")
+    print(f"      New positions: {len(selected)}")
+    print(f"      Weight allocated: {weight_allocated:.1f}%")
+    print(f"      Still remaining: {data['final_remaining']:.1f}%")
+    
+    return data
+
+
+# =============================================================================
+# PHASE 5: GPT COMMENTARY
+# =============================================================================
+
+def phase5_get_commentary(data, client):
+    """
+    GPT'yi SADECE yorum için kullan.
+    Kararlar zaten alındı - GPT onları açıklayacak.
+    """
+    print("\n" + "=" * 60)
+    print("💬 PHASE 5: GPT Commentary")
+    print("=" * 60)
+    
+    # Build decision summary for GPT
+    decision_summary = []
+    for asset in data['assets']:
+        decision_summary.append({
+            'symbol': asset['symbol'],
+            'name': asset['name'],
+            'sector': asset['sector'],
+            'sector_health': asset.get('sector_health', 0),
+            'decision': asset['decision'],
+            'hard_rule': asset['hard_rule'],
+            'current_weight': asset['current_weight'],
+            'new_weight': asset['new_weight'],
+            'return_2w': asset['return_2w'],
+            'return_1m': asset['return_1m'],
+            'momentum': asset['momentum'],
+            'sentiment': asset['sentiment']
+        })
+    
+    for np in data.get('new_positions', []):
+        decision_summary.append({
+            'symbol': np['symbol'],
+            'name': np['name'],
+            'sector': np['sector'],
+            'sector_health': np.get('sector_health', 0),
+            'decision': 'NEW',
+            'new_weight': np['new_weight'],
+            'return_2w': np['return_2w'],
+            'return_1m': np['return_1m'],
+            'score': np['score']
+        })
+    
+    prompt = f"""You are a Senior Quantitative Strategist at a top-tier hedge fund.
+Your task is to explain portfolio rebalancing decisions with institutional-grade insight, strictly adhering to the provided data.
+
+=== OBJECTIVE ===
+Provide commentary on ALREADY EXECUTED decisions.
+Do NOT describe what happened (we can see the weight change); explain WHY it matters in the context of momentum, sector health, and risk.
+
+=== MARKET CONTEXT ===
+- Disqualified Sectors (Health ≤ 1): {data.get('disqualified_sectors', [])}
+- Weak Sectors (Health = 2): {data.get('weak_sectors', [])}
+- Strong Sectors (Health ≥ 4): {data.get('strong_sectors', [])}
+
+=== DECISIONS DATA ===
+{json.dumps(decision_summary, indent=2)}
+
+=== DECISION PRIORITY RULE (CRITICAL) ===
+For each asset, identify ONE dominant driver:
+1) Sector Health / 2) Momentum / 3) Risk Control
+Secondary metrics may be mentioned ONLY to reinforce the dominant thesis.
+Never present multiple causes as equally important.
+
+=== DEPTH REQUIREMENT (SECOND-ORDER THINKING) ===
+Always explain the second-order implication of the signal:
+- What does this suggest about capital flows or marginal buyers/sellers?
+- What risk becomes asymmetric if ignored (downside skew, crowding, correlation spike)?
+- Why does this matter NOW (timing)?
+
+=== REGIME CLASSIFICATION RULE (DETERMINISTIC) ===
+Derive market_regime using sector counts only:
+- BULL: Strong sectors ≥ 2x Disqualified
+- BEAR: Disqualified sectors ≥ 2x Strong
+- ROTATION: Strong and Weak both present, Disqualified limited
+- CAUTION: Weak dominant OR Strong ≤ Disqualified with mixed breadth
+
+Derive risk_level using sector counts only:
+- NORMAL: Strong > (Weak + Disqualified)
+- CAUTION: Weak is dominant OR Disqualified present with mixed breadth
+- HIGH_ALERT: Disqualified is dominant OR broad deterioration (Disqualified ≥ Strong)
+
+=== CRITICAL STYLE GUIDELINES ===
+1) NO ROBOTIC LANGUAGE:
+   Never use phrases like "Based on the rule," "Algorithm decided," "Triggered a constraint," or "Hard rule."
+2) DATA SYNTHESIS:
+   Combine metrics; do not list them. Every number must support a conviction statement.
+3) CONTRAST IS KEY:
+   Always contrast the asset vs its sector backdrop:
+   - Stock strong but sector weak: "alpha/divergence despite sector headwinds."
+   - Stock weak and sector weak: "broad sector weakness dragging the asset."
+4) PRECISION:
+   Always cite the specific "Before -> After" weight.
+5) SENTIMENT INSIGHT:
+   If sentiment is notable (>+20 or <-20), weave it naturally:
+   - "Bullish news flow (+28) reinforces momentum thesis."
+   - "Negative sentiment (-35) adds to downside conviction."
+6) PM VOICE:
+   Write like a portfolio manager addressing an investment committee.
+   Favor capital rotation, concentration, asymmetry, and flow language.
+
+=== SCENARIO-SPECIFIC INSTRUCTIONS ===
+- REMOVALS: Be ruthless.
+  If sector ban: "Capital reallocation from disqualified [Sector] to higher-conviction areas."
+  If momentum: "Thesis invalidated due to trend deterioration and adverse asymmetry."
+- REDUCE: Specify whether it is:
+  (a) Risk Management (concentration / exposure control) or
+  (b) Profit Taking (locking gains as momentum decelerates).
+  Mention the exact cap if provided (e.g., "Trimmed to cap single-name exposure at 25%").
+- INCREASE / NEW: Emphasize relative strength vs alternatives.
+  Cite Quant Score and short-term momentum. Mention sector tailwind if health ≥ 4.
+- KEEP: Explain the holding thesis.
+  Clarify if it is a defensive anchor or a momentum leader.
+
+=== HARD CONSTRAINTS ===
+- Do not invent metrics that are not present in DECISIONS DATA.
+- If a metric is missing, do not mention it.
+- Max 25 words per asset commentary (strict).
+- Output must be strictly valid JSON (no markdown, no filler).
+
+=== EXPECTED OUTPUT FORMAT (JSON ONLY) ===
+Return strictly valid JSON:
+{{
+  "market_regime": "BULL / BEAR / ROTATION / CAUTION",
+  "risk_level": "NORMAL / CAUTION / HIGH_ALERT",
+  "regime_analysis": "Max 2 sentences. Synthesize sector health and breadth.",
+  "executive_summary": "IC-style. Start with action, then reason, then risk implication. Include exactly 2-3 numbers.",
+  "asset_commentary": {{
+    "SYMBOL": "Institutional commentary. Must include weight Before -> After. Max 25 words."
+  }}
+}}
+"""
+    
+    try:
+        print("   🤖 Calling GPT for commentary...")
+        
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            max_completion_tokens=6000
+        )
+        
+        content = response.choices[0].message.content
+        
+        if not content:
+            raise ValueError("Empty GPT response")
+        
+        content = content.strip()
+        
+        # Clean markdown if present
+        if content.startswith("```"):
+            lines = content.split("\n")
+            lines = [l for l in lines if not l.strip().startswith("```")]
+            content = "\n".join(lines).strip()
+        
+        # Parse JSON
+        json_start = content.find('{')
+        json_end = content.rfind('}')
+        if json_start != -1 and json_end != -1:
+            content = content[json_start:json_end+1]
+        
+        commentary = json.loads(content)
+        
+        # Merge commentary into data
+        asset_comments = commentary.get('asset_commentary', {})
+        
+        for asset in data['assets']:
+            symbol = asset['symbol']
+            asset['reasoning'] = asset_comments.get(symbol, f"{asset['decision']} based on {asset['hard_rule'] or asset['momentum']} momentum.")
+        
+        for np in data.get('new_positions', []):
+            symbol = np['symbol']
+            np['reason'] = asset_comments.get(symbol, f"New position: Strong momentum, diversifies to {np['sector']}.")
+        
+        data['market_regime'] = commentary.get('market_regime', 'CAUTION')
+        data['risk_level'] = commentary.get('risk_level', 'CAUTION')
+        data['regime_analysis'] = commentary.get('regime_analysis', 'Market conditions require careful positioning.')
+        data['executive_summary'] = commentary.get('executive_summary', 'Portfolio rebalanced according to hard rules.')
+        
+        print(f"   ✅ Market Regime: {data['market_regime']}")
+        print(f"   ✅ Risk Level: {data['risk_level']}")
+        
+    except Exception as e:
+        print(f"   ⚠️ GPT error: {e}")
+        print("   ⚠️ Using default commentary...")
+        
+        # Default commentary
+        for asset in data['assets']:
+            rule = asset['hard_rule']
+            if rule:
+                asset['reasoning'] = f"{asset['decision']} due to {rule}. Momentum: 2W:{asset['return_2w']:+.1f}%, 1M:{asset['return_1m']:+.1f}%."
+            else:
+                asset['reasoning'] = f"{asset['decision']}. Momentum: {asset['momentum']} (2W:{asset['return_2w']:+.1f}%, 1M:{asset['return_1m']:+.1f}%)."
+        
+        for np in data.get('new_positions', []):
+            np['reason'] = f"New position with STRONG momentum (2W:{np['return_2w']:+.1f}%, 1M:{np['return_1m']:+.1f}%). Diversifies to {np['sector']}."
+        
+        data['market_regime'] = 'CAUTION'
+        data['risk_level'] = 'CAUTION'
+        data['regime_analysis'] = 'Market analysis unavailable.'
+        data['executive_summary'] = 'Portfolio rebalanced according to hard rules.'
+    
+    return data
+
+
+# =============================================================================
+# FINAL ASSEMBLY
+# =============================================================================
+
+def assemble_final_json(data):
+    """
+    Final JSON çıktısını oluştur.
+    """
+    print("\n" + "=" * 60)
+    print("📦 Assembling Final JSON")
+    print("=" * 60)
+    
+    # Build assets list
+    assets_output = []
+    for asset in data['assets']:
+        assets_output.append({
+            'symbol': asset['symbol'],
+            'name': asset['name'],
+            'sector': asset['sector'],
+            'sub_category': asset.get('sub_category', ''),
+            'is_etf': asset['is_etf'],
+            'current_weight': asset['current_weight'],
+            'new_weight': asset['new_weight'],
+            'weight_change': asset['weight_change'],
+            'decision': asset['decision'],
+            'hard_rule_triggered': asset.get('hard_rule'),
+            'score': asset.get('score', 0),
+            'asset_score': asset.get('score', 0),
+            'return_2w': asset['return_2w'],
+            'return_1m': asset['return_1m'],
+            'return_3m': asset['return_3m'],
+            'short_term_trend': asset['momentum'],
+            'medium_term_trend': 'UPTREND' if asset['return_1m'] > 0 and asset['return_3m'] > 0 else 'DOWNTREND' if asset['return_1m'] < 0 and asset['return_3m'] < 0 else 'MIXED',
+            'sentiment': asset['sentiment'],
+            'sector_health': asset['sector_health'],
+            'sector_quant_score': asset['sector_quant_score'],
+            'in_top10': asset.get('score', 0) >= 80,
+            'reasoning': asset.get('reasoning', '')
+        })
+    
+    # Build new positions list
+    new_positions_output = []
+    for np in data.get('new_positions', []):
+        new_positions_output.append({
+            'symbol': np['symbol'],
+            'name': np['name'],
+            'sector': np['sector'],
+            'sub_category': np.get('sub_category', ''),
+            'is_etf': np['is_etf'],
+            'current_weight': 0,
+            'new_weight': np['new_weight'],
+            'weight_change': np['new_weight'],
+            'decision': 'NEW',
+            'hard_rule_triggered': None,
+            'score': np['score'],
+            'asset_score': np['score'],
+            'return_2w': np['return_2w'],
+            'return_1m': np['return_1m'],
+            'return_3m': np['return_3m'],
+            'short_term_trend': np['momentum'],
+            'medium_term_trend': 'UPTREND' if np['return_1m'] > 0 and np['return_3m'] > 0 else 'MIXED',
+            'sector_health': np.get('sector_health', 0),
+            'sector_quant_score': np.get('sector_quant_score', 0),
+            'sentiment': 0,
+            'reasoning': np.get('reason', f"New position in {np['sector']} with score {np['score']:.0f}")
+        })
+    
+    # Build removals list
+    removals_output = []
+    for asset in data['assets']:
+        if asset['decision'] == 'REMOVE':
+            removals_output.append({
+                'remove': asset['symbol'],
+                'replace_with': 'REDISTRIBUTED',
+                'reason': asset.get('hard_rule', 'Hard rule triggered'),
+                'weight_redistributed_to': []
+            })
+    
+    # Calculate sector allocation
+    sector_before = {}
+    sector_after = {}
+    
+    for asset in data['assets']:
+        sec = 'ETF' if asset['is_etf'] else asset['sector']
+        sector_before[sec] = sector_before.get(sec, 0) + asset['current_weight']
+        sector_after[sec] = sector_after.get(sec, 0) + asset['new_weight']
+    
+    for np in data.get('new_positions', []):
+        sec = 'ETF' if np['is_etf'] else np['sector']
+        sector_after[sec] = sector_after.get(sec, 0) + np['new_weight']
+    
+    # Calculate totals
+    total = sum(a['new_weight'] for a in assets_output) + sum(p['new_weight'] for p in new_positions_output)
+    
+    # Decision counts
+    decisions = Counter(a['decision'] for a in assets_output)
+    
+    # Build final result
+    result = {
+        'review_date': datetime.now().strftime('%Y-%m-%d'),
+        'generated_at': datetime.now().isoformat(),
+        'model': MODEL,
+        'engine': 'Python-Driven v2.0',
+        
+        'market_regime': data.get('market_regime', 'CAUTION'),
+        'risk_level': data.get('risk_level', 'CAUTION'),
+        'regime_analysis': data.get('regime_analysis', ''),
+        'executive_summary': data.get('executive_summary', ''),
+        
+        'portfolio_score': 75,  # Could calculate based on weighted scores
+        
+        'disqualified_sectors': data['disqualified_sectors'],
+        'weak_sectors': data['weak_sectors'],
+        'neutral_sectors': data.get('neutral_sectors', []),
+        'strong_sectors': data['strong_sectors'],
+        
+        'hard_rules_applied': list(set(a.get('hard_rule') for a in data['assets'] if a.get('hard_rule'))),
+        'critical_alerts': [
+            f"ETF: {a['symbol']} exposed to {a.get('hard_rule', 'issue')}"
+            for a in data['assets'] 
+            if a['decision'] == 'REMOVE' and a['is_etf']
+        ] + [
+            f"STOCK: {a['symbol']} - {a.get('hard_rule', 'issue')}"
+            for a in data['assets']
+            if a['decision'] == 'REMOVE' and not a['is_etf']
+        ],
+        
+        'total_new_weight': round(total, 1),
+        'weight_changes': {
+            'reduced': round(sum(-a['weight_change'] for a in assets_output if a['weight_change'] < 0), 1),
+            'increased': round(sum(a['weight_change'] for a in assets_output if a['weight_change'] > 0), 1),
+            'new_positions': round(sum(p['new_weight'] for p in new_positions_output), 1)
+        },
+        
+        'decision_counts': {
+            'keep': decisions.get('KEEP', 0),
+            'increase': decisions.get('INCREASE', 0),
+            'reduce': decisions.get('REDUCE', 0),
+            'remove': decisions.get('REMOVE', 0),
+            'new': len(new_positions_output)
+        },
+        
+        'sector_allocation': {
+            sec: {
+                'before': round(sector_before.get(sec, 0), 1),
+                'after': round(sector_after.get(sec, 0), 1)
+            }
+            for sec in set(list(sector_before.keys()) + list(sector_after.keys()))
+        },
+        
+        'assets': assets_output,
+        'new_positions': new_positions_output,
+        'removals': removals_output
+    }
+    
+    # Verify total
+    print(f"\n   📊 Final Verification:")
+    print(f"      Total weight: {total:.1f}%")
+    print(f"      Assets: {len(assets_output)}")
+    print(f"      New positions: {len(new_positions_output)}")
+    print(f"      Decisions: {dict(decisions)}")
+    
+    if len(assets_output) == 0 and len(new_positions_output) == 0:
+        print(f"   ⚠️ WARNING: No assets in portfolio!")
+        result['total_new_weight'] = 0.0
+        return result
+    
+    if abs(total - 100) > 0.5:
+        print(f"   ⚠️ WARNING: Total is {total:.1f}%, not 100%!")
+        # Try to fix by adjusting largest position
+        all_positions = assets_output + new_positions_output
+        if total < 100 and len(all_positions) > 0:
+            diff = 100 - total
+            largest = max(all_positions, key=lambda x: x['new_weight'])
+            if largest['new_weight'] + diff <= CONFIG['MAX_POSITION']:
+                largest['new_weight'] = round(largest['new_weight'] + diff, 1)
+                largest['weight_change'] = round(largest['weight_change'] + diff, 1)
+                result['total_new_weight'] = 100.0
+                print(f"   ✅ Fixed: Added {diff:.1f}% to {largest['symbol']}")
+    
+    return result
+
+
+# =============================================================================
+# MAIN ORCHESTRATOR
+# =============================================================================
+
+def run_portfolio_review(portfolio, etf_data, news_data, client):
+    """
+    Ana orkestrasyon fonksiyonu.
+    """
+    print("\n" + "=" * 70)
+    print("🚀 WEEKLY PORTFOLIO REVIEW v2.0")
+    print("   Python-Driven Decision Engine")
+    print("=" * 70)
+    
+    # Phase 1: Data Preparation
+    data = phase1_prepare_data(portfolio, etf_data, news_data)
+    
+    # Phase 2: Apply Hard Rules
+    data = phase2_apply_hard_rules(data)
+    
+    # Phase 3: Calculate Weights
+    data = phase3_calculate_weights(data)
+    
+    # Phase 4: Find Candidates
+    data = phase4_find_candidates(data)
+    
+    # Phase 5: GPT Commentary
+    data = phase5_get_commentary(data, client)
+    
+    # Final Assembly
+    result = assemble_final_json(data)
+    
+    print("\n" + "=" * 70)
+    print("✅ PORTFOLIO REVIEW COMPLETE")
+    print("=" * 70)
+    
+    return result
+
+
+# =============================================================================
+# MAIN ENTRY POINT
+# =============================================================================
+
 def main():
-    print("=" * 60)
-    print("📊 Weekly Portfolio Review v1.2")
-    print(f"   Model: {MODEL}")
-    print("=" * 60)
+    """
+    Ana giriş noktası.
+    """
+    from openai import OpenAI
     
-    # Load portfolio from txt
-    print(f"\n📂 Loading portfolio from {PORTFOLIO_FILE}...")
-    portfolio = load_portfolio()
+    print("=" * 70)
+    print("📊 WEEKLY PORTFOLIO REVIEW v2.0")
+    print("   Python-Driven Decision Engine")
+    print("=" * 70)
     
-    if not portfolio:
-        print("❌ Portfolio boş veya yüklenemedi!")
-        return
-    
-    print(f"✅ {PORTFOLIO_FILE} | {len(portfolio)} assets | Total: {sum(portfolio.values()):.1f}%")
-    for sym, wgt in sorted(portfolio.items(), key=lambda x: -x[1]):
-        print(f"   {sym:6} {wgt:5.1f}%")
-    
-    # Load data
-    etf_data = load_json('etf_data.json')
-    news_data = load_json('news_data.json')
-    
-    if not etf_data:
-        print("❌ etf_data.json required!")
-        return
-    
-    print(f"\n✅ etf_data.json | Regime: {etf_data.get('regime', {}).get('overall', 'N/A')}")
-    if news_data:
-        print(f"✅ news_data.json | {news_data.get('news_count', 0)} news")
-    
-    # API check
-    api_key = os.getenv("OPENAI_API_KEY")
+    # Load API key
+    api_key = os.environ.get('OPENAI_API_KEY')
     if not api_key:
-        print("❌ OPENAI_API_KEY not set!")
+        api_key_file = os.path.expanduser('~/openai_api_key.txt')
+        if os.path.exists(api_key_file):
+            with open(api_key_file, 'r', encoding='utf-8-sig') as f:
+                api_key = f.read().strip()
+    
+    if not api_key:
+        print("❌ OPENAI_API_KEY not found!")
         return
     
     client = OpenAI(api_key=api_key)
-    print(f"✅ OpenAI connected")
     
-    # Build & Analyze
-    print(f"\n🤖 Analyzing...")
-    prompt = build_analysis_prompt(portfolio, etf_data, news_data)
+    # Load portfolio (supports both .txt and .json)
+    portfolio_file = 'portfolio.txt'
+    portfolio_json = 'portfolio.json'
     
-    try:
-        analysis = analyze_portfolio(prompt, client, portfolio_input=portfolio, etf_data=etf_data)
+    portfolio = {}
+    
+    # Try JSON first
+    if os.path.exists(portfolio_json):
+        print(f"\n📂 Reading {portfolio_json}...")
+        with open(portfolio_json, 'r', encoding='utf-8-sig') as f:
+            data = json.load(f)
         
-        # Add metadata
-        analysis['generated_at'] = datetime.now().isoformat()
-        analysis['model'] = MODEL
-        analysis['portfolio_input'] = portfolio
+        # Handle different JSON formats
+        if isinstance(data, dict):
+            # Format: {"AAPL": 15.0, "MSFT": 12.5}
+            for k, v in data.items():
+                if isinstance(v, (int, float)):
+                    portfolio[k.upper()] = float(v)
+                elif isinstance(v, dict) and 'weight' in v:
+                    portfolio[k.upper()] = float(v['weight'])
+        elif isinstance(data, list):
+            # Format: [{"symbol": "AAPL", "weight": 15.0}, ...]
+            for item in data:
+                if isinstance(item, dict):
+                    sym = item.get('symbol', item.get('Symbol', '')).upper()
+                    wt = item.get('weight', item.get('Weight', item.get('allocation', 0)))
+                    if sym and wt:
+                        portfolio[sym] = float(wt)
+    
+    # Try TXT if no JSON or JSON was empty
+    elif os.path.exists(portfolio_file):
+        print(f"\n📂 Reading {portfolio_file}...")
+        with open(portfolio_file, 'r', encoding='utf-8-sig') as f:
+            lines = f.readlines()
         
-        # Save
-        with open('portfolio_review.json', 'w', encoding='utf-8') as f:
-            json.dump(analysis, f, indent=2, ensure_ascii=False)
+        print(f"   Found {len(lines)} lines")
         
-        print(f"✅ Saved: portfolio_review.json")
+        # Show first few lines for debugging
+        if lines:
+            print(f"   First lines preview:")
+            for i, line in enumerate(lines[:3]):
+                print(f"      [{i+1}] '{line.strip()}'")
         
-        # Summary
-        print(f"\n{'=' * 60}")
-        decisions = {}
-        for a in analysis.get('assets', []):
-            d = a.get('decision', 'KEEP')
-            decisions[d] = decisions.get(d, 0) + 1
-        
-        for d, c in decisions.items():
-            icon = "✅" if d == "KEEP" else "❌" if d == "REMOVE" else "⚠️"
-            print(f"   {icon} {d}: {c}")
-        
-        print(f"\n{analysis.get('summary', '')}")
-        print("=" * 60)
-        
-    except Exception as e:
-        print(f"❌ Error: {e}")
-        import traceback
-        traceback.print_exc()
+        for i, line in enumerate(lines):
+            original_line = line
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            
+            # Skip header lines
+            if any(h in line.lower() for h in ['symbol', 'ticker', 'weight', 'allocation']):
+                continue
+            
+            # Try different separators: comma first (common), then tab, space, semicolon
+            parsed = False
+            for sep in [',', '\t', ';', None]:
+                if sep:
+                    parts = line.split(sep)
+                else:
+                    parts = line.split()
+                
+                if len(parts) >= 2:
+                    symbol = parts[0].strip().upper()
+                    weight_str = parts[1].strip().replace('%', '').replace(',', '.')
+                    try:
+                        weight = float(weight_str)
+                        if weight > 0:
+                            portfolio[symbol] = weight
+                            parsed = True
+                            break
+                    except ValueError:
+                        continue
+            
+            if not parsed and line:
+                print(f"   ⚠️ Could not parse line {i+1}: '{original_line.strip()}'")
+    else:
+        print(f"\n❌ No portfolio file found!")
+        print(f"   Looked for: {portfolio_file} or {portfolio_json}")
+        return
+    
+    print(f"\n📂 Loaded portfolio: {len(portfolio)} assets")
+    if portfolio:
+        for sym, wt in list(portfolio.items())[:5]:
+            print(f"      {sym}: {wt}%")
+        if len(portfolio) > 5:
+            print(f"      ... and {len(portfolio) - 5} more")
+    print(f"   Total weight: {sum(portfolio.values()):.1f}%")
+    
+    # Validate portfolio
+    if len(portfolio) == 0:
+        print(f"\n❌ ERROR: No assets loaded from {portfolio_file}!")
+        print("   Expected format: SYMBOL WEIGHT%")
+        print("   Example:")
+        print("      AAPL 15.0%")
+        print("      MSFT 12.5%")
+        print("      SPY 10.0%")
+        return
+    
+    if sum(portfolio.values()) < 50:
+        print(f"\n⚠️  WARNING: Total weight is only {sum(portfolio.values()):.1f}%")
+        print("   Expected ~100%. Check portfolio.txt format.")
+    
+    # Load ETF data
+    etf_file = 'etf_data.json'
+    if not os.path.exists(etf_file):
+        print(f"❌ {etf_file} not found!")
+        return
+    
+    with open(etf_file, 'r', encoding='utf-8-sig') as f:
+        etf_data = json.load(f)
+    
+    print(f"📂 Loaded ETF data: {len(etf_data.get('stocks', []))} stocks")
+    
+    # Load news data (optional)
+    news_data = {}
+    news_file = 'news_data.json'
+    if os.path.exists(news_file):
+        with open(news_file, 'r', encoding='utf-8-sig') as f:
+            news_data = json.load(f)
+        news_count = len(news_data.get('news', [])) if isinstance(news_data, dict) else len(news_data)
+        print(f"📂 Loaded news data: {news_count} items")
+    
+    # Run review
+    result = run_portfolio_review(portfolio, etf_data, news_data, client)
+    
+    # Save JSON result
+    output_file = 'portfolio_review.json'
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n✅ Saved: {output_file}")
+    
+    # HTML artık ayrı dosya - JSON'u fetch edecek
+    # generate_html_report kaldırıldı
+    
+    # Print summary
+    print(f"\n{'=' * 70}")
+    print("📊 SUMMARY")
+    print(f"{'=' * 70}")
+    print(f"   Market Regime: {result['market_regime']}")
+    print(f"   Risk Level: {result['risk_level']}")
+    print(f"   Total Weight: {result['total_new_weight']:.1f}%")
+    print(f"\n   Decisions:")
+    for dec, count in result['decision_counts'].items():
+        if count > 0:
+            print(f"      {dec.upper():10} {count}")
 
-if __name__ == "__main__":
+
+def generate_html_report(result, output_file):
+    """
+    Generate HTML report from review result.
+    Embeds JSON directly into HTML for local file:// compatibility.
+    """
+    print(f"\n📄 Generating HTML report...")
+    
+    # Read template
+    template_file = 'portfolio_review_template.html'
+    if os.path.exists(template_file):
+        with open(template_file, 'r', encoding='utf-8-sig') as f:
+            html = f.read()
+    else:
+        # Use minimal embedded template
+        html = get_html_template()
+    
+    # Embed JSON into HTML (replace placeholder)
+    json_str = json.dumps(result, indent=2, ensure_ascii=False)
+    
+    if '__JSON_DATA__' in html:
+        html = html.replace('__JSON_DATA__', json_str)
+    elif '{}' in html:
+        # Fallback for old template format
+        html = html.replace('{}', json_str, 1)
+    
+    # Save HTML with embedded JSON
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(html)
+    
+    print(f"✅ Saved: {output_file}")
+    print(f"📌 JSON embedded in HTML (works with file://)")
+
+
+def get_html_template():
+    """Return the embedded HTML template."""
+    return '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Portfolio Review v2.0</title>
+<style>
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a24;--border:#2a2a3a;--text:#f1f1f1;--text2:#a0a0b0;--muted:#6b7280;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--cyan:#06b6d4;--purple:#8b5cf6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:24px;background:var(--bg2);border-radius:12px;margin-bottom:20px}
+.header h1{font-size:1.5rem;color:var(--cyan)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-header{padding:14px 18px;background:var(--bg3);border-bottom:1px solid var(--border);font-weight:600}
+.card-body{padding:18px}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg3);color:var(--text2)}
+.badge{padding:4px 10px;border-radius:6px;font-size:0.75rem;font-weight:600}
+.badge-green{background:rgba(34,197,94,0.2);color:var(--green)}
+.badge-red{background:rgba(239,68,68,0.2);color:var(--red)}
+.badge-yellow{background:rgba(245,158,11,0.2);color:var(--yellow)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--bg3);padding:16px;border-radius:8px;text-align:center}
+.stat-value{font-size:1.5rem;font-weight:700;color:var(--cyan)}
+.stat-label{font-size:0.8rem;color:var(--text2)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Weekly Portfolio Review v2.0</h1>
+<p style="color:var(--text2);margin-top:8px" id="date"></p>
+</div>
+<div class="stat-grid">
+<div class="stat"><div class="stat-value" id="total">-</div><div class="stat-label">Total Weight</div></div>
+<div class="stat"><div class="stat-value" id="keep">-</div><div class="stat-label">Keep</div></div>
+<div class="stat"><div class="stat-value" style="color:var(--red)" id="remove">-</div><div class="stat-label">Remove</div></div>
+<div class="stat"><div class="stat-value" style="color:var(--yellow)" id="adjust">-</div><div class="stat-label">Adjust</div></div>
+</div>
+<div class="card">
+<div class="card-header">Portfolio Analysis</div>
+<table>
+<thead><tr><th>Asset</th><th>Sector</th><th>Momentum</th><th>Decision</th><th>Weight</th></tr></thead>
+<tbody id="table"></tbody>
+</table>
+</div>
+</div>
+<script id="reviewData" type="application/json">
+{}
+</script>
+<script>
+var R=JSON.parse(document.getElementById('reviewData').textContent||'{}');
+document.getElementById('date').textContent=R.review_date||'-';
+document.getElementById('total').textContent=(R.total_new_weight||0).toFixed(1)+'%';
+var c=R.decision_counts||{};
+document.getElementById('keep').textContent=(c.keep||0)+(c.increase||0);
+document.getElementById('remove').textContent=c.remove||0;
+document.getElementById('adjust').textContent=(c.reduce||0)+(c.new||0);
+var h='';
+(R.assets||[]).concat(R.new_positions||[]).forEach(function(a){
+var d=a.decision||'KEEP';
+var bc=d==='REMOVE'?'badge-red':d==='REDUCE'?'badge-yellow':'badge-green';
+var cw=a.current_weight||0;
+var nw=a.new_weight||cw;
+var ch=nw-cw;
+var ar=ch>0?'↑':ch<0?'↓':'→';
+h+='<tr><td><b>'+a.symbol+'</b><br><small style="color:var(--text2)">'+a.name+'</small></td>';
+h+='<td>'+a.sector+'</td>';
+h+='<td>'+a.momentum+'</td>';
+h+='<td><span class="badge '+bc+'">'+d+'</span>'+(a.hard_rule_triggered?'<br><small style="color:var(--yellow)">'+a.hard_rule_triggered+'</small>':'')+'</td>';
+h+='<td>'+cw.toFixed(1)+'% '+ar+' <b>'+nw.toFixed(1)+'%</b></td></tr>';
+});
+document.getElementById('table').innerHTML=h;
+</script>
+</body>
+</html>'''
+
+
+if __name__ == '__main__':
     main()
