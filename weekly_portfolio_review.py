@@ -277,7 +277,7 @@ def phase1_prepare_data(portfolio, etf_data, news_data):
         
         status = f"DQ: {reason}" if is_disqualified else f"Score: {quant_score}"
         mom_status = "✓" if has_momentum else "✗"
-        print(f"      {sector_name:20} Health: {health}/5, {status}, Mom:{mom_status}")
+        print(f"      {sector_name:20} Health: {health}/4, {status}, Mom:{mom_status}")
     
     # ─────────────────────────────────────────────────────────────
     # 1.2 Classify Sectors
