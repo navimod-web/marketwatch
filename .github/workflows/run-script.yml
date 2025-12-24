@@ -62,11 +62,12 @@ jobs:
           echo "📄 Preview:"
           head -50 portfolio_review.json
           
-      - name: Değişiklikleri Pushla
-        run: |
+       - name: Değişiklikleri Pushla
+         run: |
           git config user.name "Marketwatch Bot"
           git config user.email "bot@marketwatch.com"
           
           git add portfolio_review.json
           git commit -m "📊 Portfolio Review $(date +'%Y-%m-%d %H:%M')" || echo "Değişiklik yok"
+          git pull --rebase origin main || true
           git push
