@@ -45,7 +45,7 @@ jobs:
       - name: Portfolio Review Çalıştır
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: "gpt-4o-mini"  # veya gpt-5-mini
+          OPENAI_MODEL: "gpt-5-mini"  # veya gpt-5-mini
         run: python weekly_portfolio_review.py
         
       - name: Sonuçları Kontrol Et
