@@ -1,82 +1,782 @@
 {
-  "generated_at": "2025-12-28T05:27:13.246430",
-  "update_time": "2025-12-28 05:27",
+  "generated_at": "2025-12-28T14:02:58.832409",
+  "update_time": "2025-12-28 14:02",
   "stock_count": 124,
-  "news_count": 487,
-  "bullish_count": 92,
-  "bearish_count": 40,
-  "neutral_count": 355,
+  "news_count": 478,
+  "bullish_count": 95,
+  "bearish_count": 42,
+  "neutral_count": 341,
   "has_sentiment": true,
   "filter": "last 5 days",
   "sector_stats": {
     "Consumer Disc.": {
       "count": 56,
-      "bull": 5,
-      "bear": 7,
-      "neutral": 44
+      "bull": 7,
+      "bear": 9,
+      "neutral": 40
+    },
+    "Financials": {
+      "count": 83,
+      "bull": 19,
+      "bear": 1,
+      "neutral": 63
     },
     "Technology": {
-      "count": 83,
-      "bull": 16,
-      "bear": 9,
-      "neutral": 58
+      "count": 85,
+      "bull": 18,
+      "bear": 12,
+      "neutral": 55
+    },
+    "Industrials": {
+      "count": 47,
+      "bull": 11,
+      "bear": 5,
+      "neutral": 31
+    },
+    "Healthcare": {
+      "count": 63,
+      "bull": 6,
+      "bear": 2,
+      "neutral": 55
     },
     "Consumer Stpl.": {
       "count": 43,
-      "bull": 18,
+      "bull": 10,
       "bear": 4,
-      "neutral": 21
+      "neutral": 29
+    },
+    "Energy": {
+      "count": 36,
+      "bull": 13,
+      "bear": 6,
+      "neutral": 17
     },
     "Communication": {
       "count": 28,
-      "bull": 4,
-      "bear": 0,
-      "neutral": 24
-    },
-    "Healthcare": {
-      "count": 66,
-      "bull": 10,
-      "bear": 4,
-      "neutral": 52
-    },
-    "Industrials": {
-      "count": 52,
-      "bull": 8,
-      "bear": 7,
-      "neutral": 37
-    },
-    "Energy": {
-      "count": 37,
-      "bull": 8,
-      "bear": 5,
-      "neutral": 24
+      "bull": 5,
+      "bear": 1,
+      "neutral": 22
     },
     "Utilities": {
       "count": 16,
       "bull": 0,
-      "bear": 3,
-      "neutral": 13
-    },
-    "Financials": {
-      "count": 83,
-      "bull": 17,
-      "bear": 1,
-      "neutral": 65
+      "bear": 2,
+      "neutral": 14
     },
     "Materials": {
-      "count": 14,
-      "bull": 3,
+      "count": 12,
+      "bull": 1,
       "bear": 0,
       "neutral": 11
     },
     "Real Estate": {
       "count": 9,
-      "bull": 3,
+      "bull": 5,
       "bear": 0,
-      "neutral": 6
+      "neutral": 4
     }
   },
   "news": [
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc.",
+      "sector": "Consumer Disc.",
+      "industry": "Auto",
+      "title": "Elon Musk Thinks Government Healthcare Is Like 'DMV As Your Doctor' — Touts Optimus, Grok As Better Alternatives: 'Will Provide Incredible…'",
+      "publisher": "Benzinga",
+      "link": "https://finance.yahoo.com/news/elon-musk-thinks-government-healthcare-133041257.html",
+      "publish_time": "2025-12-28T13:30:41Z",
+      "time_ago": "13m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FeNfoSLR1rC9KJwZUJC53A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/1a9183ea0f889bfc1324a9e336b20030",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "F",
+      "name": "Ford Motor",
+      "sector": "Consumer Disc.",
+      "industry": "Auto",
+      "title": "What Does Ford's $19.5 Billion Bombshell Mean for Investors?",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/does-fords-19-5-billion-131300273.html",
+      "publish_time": "2025-12-28T13:13:00Z",
+      "time_ago": "31m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0RsoGOP2txbX5Ib9XjoXCA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/5dc831c91c8e1ae4ef1aa72089f5f571",
+      "type": "STORY",
+      "sentiment": -85
+    },
+    {
+      "symbol": "SCHW",
+      "name": "Charles Schwab",
+      "sector": "Financials",
+      "industry": "Brokers",
+      "title": "Should You Be Adding Charles Schwab (NYSE:SCHW) To Your Watchlist Today?",
+      "publisher": "Simply Wall St.",
+      "link": "https://finance.yahoo.com/news/adding-charles-schwab-nyse-schw-130013271.html",
+      "publish_time": "2025-12-28T13:00:13Z",
+      "time_ago": "44m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gFJAcTEmMJwNtU8K736YSQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d5299384fee6117119107ccba3304371",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "These 4 Billionaires All Have 1 Genius AI Stock in Common, and It's Set to Skyrocket in 2026 (Hint: It's Not Nvidia)",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/4-billionaires-1-genius-ai-125000457.html",
+      "publish_time": "2025-12-28T12:50:00Z",
+      "time_ago": "54m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Tu..d.Xj5zuBc766TipxEw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/a91c0a27eff60118a469d503e2522706",
+      "type": "STORY",
+      "sentiment": -5
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology",
+      "industry": "Hardware",
+      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
+      "publisher": "Investor's Business Daily",
+      "link": "",
+      "publish_time": "2025-12-28T12:33:20Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
+      "publisher": "Investor's Business Daily",
+      "link": "",
+      "publish_time": "2025-12-28T12:33:20Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
+      "publisher": "Investor's Business Daily",
+      "link": "",
+      "publish_time": "2025-12-28T12:33:20Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
+      "type": "STORY",
+      "sentiment": 20
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc.",
+      "sector": "Consumer Disc.",
+      "industry": "Auto",
+      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
+      "publisher": "Investor's Business Daily",
+      "link": "",
+      "publish_time": "2025-12-28T12:33:20Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GE",
+      "name": "GE Aerospace",
+      "sector": "Industrials",
+      "industry": "Conglomerate",
+      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
+      "publisher": "Investor's Business Daily",
+      "link": "",
+      "publish_time": "2025-12-28T12:33:20Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Stocks sit near record highs as 'Santa Claus rally' builds, 2026 approaches: What to watch this week",
+      "publisher": "Yahoo Finance",
+      "link": "https://finance.yahoo.com/news/stocks-sit-near-record-highs-as-santa-claus-rally-builds-2026-approaches-what-to-watch-this-week-123013968.html",
+      "publish_time": "2025-12-28T12:30:13Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sBNuxqUJtSnK1mVitxAvLg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/aba4e5c0-e27f-11f0-bff3-d726fa5de290",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "LLY",
+      "name": "Eli Lilly & Co.",
+      "sector": "Healthcare",
+      "industry": "Pharma",
+      "title": "Why Eli Lilly Is the Unexpected Must-Buy Dividend Powerhouse to Own in 2026",
+      "publisher": "24/7 Wall St.",
+      "link": "https://finance.yahoo.com/news/why-eli-lilly-unexpected-must-122917697.html",
+      "publish_time": "2025-12-28T12:29:17Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0FV6QtR4a8tE4nsku7kwOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/5a32698985ecaf37e276b42c39af397f",
+      "type": "STORY",
+      "sentiment": 8
+    },
+    {
+      "symbol": "BAC",
+      "name": "Bank of America",
+      "sector": "Financials",
+      "industry": "Banks",
+      "title": "Beyond Index Funds: 2 Stocks That Teach You How to Think Like a Value Investor",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/beyond-index-funds-2-stocks-122700053.html",
+      "publish_time": "2025-12-28T12:27:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9eUxxiSvXpnDAUNkFLAmTg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/b0448602e655310ba9c48d6e5fe0ea70",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "KO",
+      "name": "Coca-Cola Co.",
+      "sector": "Consumer Stpl.",
+      "industry": "Beverages",
+      "title": "Beyond Index Funds: 2 Stocks That Teach You How to Think Like a Value Investor",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/beyond-index-funds-2-stocks-122700053.html",
+      "publish_time": "2025-12-28T12:27:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9eUxxiSvXpnDAUNkFLAmTg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/b0448602e655310ba9c48d6e5fe0ea70",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "BLK",
+      "name": "BlackRock Inc.",
+      "sector": "Financials",
+      "industry": "Asset Mgmt",
+      "title": "Worried About Retirement? You're Not Alone: Nearly 50% of Americans in Peak Earning Years Worry About It Every Day",
+      "publisher": "Investopedia",
+      "link": "https://finance.yahoo.com/news/worried-retirement-youre-not-alone-121600151.html",
+      "publish_time": "2025-12-28T12:16:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/tkK7japHwg4qy_D62vjW0g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/investopedia_245/d871936c0bacf6c06368ef7b776f7756",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "TGT",
+      "name": "Target Corp.",
+      "sector": "Consumer Disc.",
+      "industry": "Retail",
+      "title": "1 Reason I'm Never Selling Target Stock",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/1-reason-im-never-selling-120500715.html",
+      "publish_time": "2025-12-28T12:05:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JYGQIe..K5XuUBoLsO2N2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8fd3f2ad2ddd7c4177bee9a176d33242",
+      "type": "STORY",
+      "sentiment": 5
+    },
+    {
+      "symbol": "OXY",
+      "name": "Occidental Petro",
+      "sector": "Energy",
+      "industry": "E&P",
+      "title": "Investing in Occidental Petroleum (NYSE:OXY) five years ago would have delivered you a 144% gain",
+      "publisher": "Simply Wall St.",
+      "link": "https://finance.yahoo.com/news/investing-occidental-petroleum-nyse-oxy-120019611.html",
+      "publish_time": "2025-12-28T12:00:19Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wQE1Wp5YMk8o757Zat4A7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b087a9ba30d62c7848187ebff370bd36",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "UNP",
+      "name": "Union Pacific",
+      "sector": "Industrials",
+      "industry": "Railroads",
+      "title": "Borderlands Mexico: TCS is betting on Monterrey as cross-border trade gets more complicated",
+      "publisher": "FreightWaves",
+      "link": "https://finance.yahoo.com/news/borderlands-mexico-tcs-betting-monterrey-120000985.html",
+      "publish_time": "2025-12-28T12:00:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/P2WIJnzA5kKveUw6oVaJ9g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/freightwaves_373/cad71ceb1815fa01cf9d0734aa7899a2",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "PYPL",
+      "name": "PayPal Holdings",
+      "sector": "Financials",
+      "industry": "Payments",
+      "title": "2 Beaten-Down Stocks That Could Make a Comeback in 2026",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/2-beaten-down-stocks-could-115000436.html",
+      "publish_time": "2025-12-28T11:50:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8E0haXr0uMfSBnvFqtmYJA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ab84b5e7ecb8d9cb778c0a7b549b8710",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "JPM",
+      "name": "JPMorgan Chase",
+      "sector": "Financials",
+      "industry": "Banks",
+      "title": "In January, Jamie Dimon Said Bitcoin Is A 'Ponzi'—But Look At JPMorgan's Crypto Moves Now",
+      "publisher": "Benzinga",
+      "link": "https://finance.yahoo.com/news/january-jamie-dimon-said-bitcoin-114621561.html",
+      "publish_time": "2025-12-28T11:46:21Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_2a5Yvv6Ye_rVNAxf1dusQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/6c737b8b38ccb4d2eb16f32cfabd1d53",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "‘Normies’ lose interest in crypto, but advocates say ‘10-year Bitcoin grind’ will pay off",
+      "publisher": "DLNews",
+      "link": "https://finance.yahoo.com/news/normies-lose-interest-crypto-advocates-111408606.html",
+      "publish_time": "2025-12-28T11:14:08Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/44EXylvxziuvMYOeeML_ng--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/dlnews_702/a83af547ffd62ccf6eef9a48e511ef83",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NOW",
+      "name": "ServiceNow Inc.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "Insiders At ServiceNow Sold US$7.2m In Stock, Alluding To Potential Weakness",
+      "publisher": "Simply Wall St.",
+      "link": "https://finance.yahoo.com/news/insiders-servicenow-sold-us-7-110017144.html",
+      "publish_time": "2025-12-28T11:00:17Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/CV_T_lw9JoXYBUju.4TeMg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/18025f19ad65d7f61b1ca86255ab2076",
+      "type": "STORY",
+      "sentiment": -20
+    },
+    {
+      "symbol": "GE",
+      "name": "GE Aerospace",
+      "sector": "Industrials",
+      "industry": "Conglomerate",
+      "title": "GE HealthCare CEO Peter Arduini is forging a new chapter for the $20 billion-a-year business while drawing on Jack Welch’s legacy",
+      "publisher": "Fortune",
+      "link": "https://finance.yahoo.com/news/ge-healthcare-ceo-peter-arduini-110000129.html",
+      "publish_time": "2025-12-28T11:00:00Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/77ZZOvOfS60WKvk5whlUOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/afc88e8b7846fd31f6cf99735867a87e",
+      "type": "STORY",
+      "sentiment": 6
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "2 Unstoppable AI Stocks That Warren Buffett and Berkshire Hathaway Own",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/2-unstoppable-ai-stocks-warren-105000389.html",
+      "publish_time": "2025-12-28T10:50:00Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/B2YzfOFHq1RsH0zFRqiMYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/b8703df8adc56f3475b4b7ab4dc49a16",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "2 Unstoppable AI Stocks That Warren Buffett and Berkshire Hathaway Own",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/2-unstoppable-ai-stocks-warren-105000389.html",
+      "publish_time": "2025-12-28T10:50:00Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/B2YzfOFHq1RsH0zFRqiMYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/b8703df8adc56f3475b4b7ab4dc49a16",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "Amazon halts plans for drone delivery in Italy",
+      "publisher": "Reuters",
+      "link": "https://finance.yahoo.com/news/amazon-halts-plans-drone-delivery-103012989.html",
+      "publish_time": "2025-12-28T10:30:12Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2skNLhgIgLmJQKDcfs794w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters-finance.com/161a221df6d38d3e754c86129d899b11",
+      "type": "STORY",
+      "sentiment": -40
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "There’s No Happy Ending for Movie Theaters, No Matter Who Wins Warner",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2025-12-28T10:30:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FhgI6LRAYEnvhTbgqorAmw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/bfd2adca9a04320d9bf40e72dc843ec4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GS",
+      "name": "Goldman Sachs",
+      "sector": "Financials",
+      "industry": "Investment Banks",
+      "title": "Dallas Is Booming—Except for Its Downtown",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2025-12-28T10:30:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gfXvC9p_Fqdau2VCe1gIRw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/48aa301226808e01ac13397e51bef5b7",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix Inc.",
+      "sector": "Communication",
+      "industry": "Streaming",
+      "title": "There’s No Happy Ending for Movie Theaters, No Matter Who Wins Warner",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2025-12-28T10:30:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FhgI6LRAYEnvhTbgqorAmw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/bfd2adca9a04320d9bf40e72dc843ec4",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "T",
+      "name": "AT&T Inc.",
+      "sector": "Communication",
+      "industry": "Telecom",
+      "title": "Dallas Is Booming—Except for Its Downtown",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2025-12-28T10:30:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gfXvC9p_Fqdau2VCe1gIRw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/48aa301226808e01ac13397e51bef5b7",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "The Best Stocks to Invest $50,000 in Right Now",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-102000582.html",
+      "publish_time": "2025-12-28T10:20:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8K5ZmalOalpPpGXk6L2Ebw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ab88b29e35024d643551e3bda5dfe105",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "The Best Stocks to Invest $50,000 in Right Now",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-102000582.html",
+      "publish_time": "2025-12-28T10:20:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8K5ZmalOalpPpGXk6L2Ebw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ab88b29e35024d643551e3bda5dfe105",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "The Best Artificial Intelligence (AI) Stocks to Buy Ahead of 2026, According to Wall Street Analysts (Hint: Not Palantir)",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-artificial-intelligence-ai-stocks-091500061.html",
+      "publish_time": "2025-12-28T09:15:00Z",
+      "time_ago": "4h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sM3n.tyEVGJmK_NbQ9B8vw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9510aff3d678814bfc3ff081f074eb18",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "sector": "Technology",
+      "industry": "Social Media",
+      "title": "The Best Artificial Intelligence (AI) Stocks to Buy Ahead of 2026, According to Wall Street Analysts (Hint: Not Palantir)",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-artificial-intelligence-ai-stocks-091500061.html",
+      "publish_time": "2025-12-28T09:15:00Z",
+      "time_ago": "4h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sM3n.tyEVGJmK_NbQ9B8vw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9510aff3d678814bfc3ff081f074eb18",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "The Best Artificial Intelligence (AI) Stocks to Buy Ahead of 2026, According to Wall Street Analysts (Hint: Not Palantir)",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-artificial-intelligence-ai-stocks-091500061.html",
+      "publish_time": "2025-12-28T09:15:00Z",
+      "time_ago": "4h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sM3n.tyEVGJmK_NbQ9B8vw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9510aff3d678814bfc3ff081f074eb18",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "The Best Artificial Intelligence (AI) Stocks to Buy Ahead of 2026, According to Wall Street Analysts (Hint: Not Palantir)",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/best-artificial-intelligence-ai-stocks-091500061.html",
+      "publish_time": "2025-12-28T09:15:00Z",
+      "time_ago": "4h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sM3n.tyEVGJmK_NbQ9B8vw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9510aff3d678814bfc3ff081f074eb18",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "UNH",
+      "name": "UnitedHealth Group",
+      "sector": "Healthcare",
+      "industry": "Insurance",
+      "title": "5 Healthcare Themes for Investors to Watch in 2026",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T08:00:00Z",
+      "time_ago": "5h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jvkFc5QGhnY09UZnhU0g6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/b2acbf03b0fb27ff4841b061b50200eb",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "LLY",
+      "name": "Eli Lilly & Co.",
+      "sector": "Healthcare",
+      "industry": "Pharma",
+      "title": "5 Healthcare Themes for Investors to Watch in 2026",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T08:00:00Z",
+      "time_ago": "5h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jvkFc5QGhnY09UZnhU0g6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/b2acbf03b0fb27ff4841b061b50200eb",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "MDT",
+      "name": "Medtronic plc",
+      "sector": "Healthcare",
+      "industry": "Devices",
+      "title": "5 Healthcare Themes for Investors to Watch in 2026",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T08:00:00Z",
+      "time_ago": "5h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jvkFc5QGhnY09UZnhU0g6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/b2acbf03b0fb27ff4841b061b50200eb",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "COST",
+      "name": "Costco Wholesale",
+      "sector": "Consumer Stpl.",
+      "industry": "Retail",
+      "title": "Costco Held Its IPO 40 Years Ago. Here's How Much $100 Invested Then Would Be Worth Today.",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/costco-held-ipo-40-years-073500798.html",
+      "publish_time": "2025-12-28T07:35:00Z",
+      "time_ago": "6h ago",
+      "thumbnail": null,
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "Oracle Under Pressure as AI Commitments Stretch the Balance Sheet",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/news/oracle-under-pressure-ai-commitments-073215323.html",
+      "publish_time": "2025-12-28T07:32:15Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ScVXvmJ463LWsyx15NUzug--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/30173640c9b0cffb6b7013930030fa3e",
+      "type": "STORY",
+      "sentiment": -40
+    },
+    {
+      "symbol": "COST",
+      "name": "Costco Wholesale",
+      "sector": "Consumer Stpl.",
+      "industry": "Retail",
+      "title": "Costco’s (COST) Global Growth Story Gains Momentum, Says Northcoast",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/news/costco-cost-global-growth-story-072416069.html",
+      "publish_time": "2025-12-28T07:24:16Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Ba.F9Z2WlXhGZBFpz9SQMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/75395fad650728e1cf54760e0e14c127",
+      "type": "STORY",
+      "sentiment": 35
+    },
+    {
+      "symbol": "TFC",
+      "name": "Truist Financial",
+      "sector": "Financials",
+      "industry": "Banks",
+      "title": "Cognex (CGNX) in Focus as Truist Maps a More Selective 2026 Industrials Outlook",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/news/cognex-cgnx-focus-truist-maps-071051557.html",
+      "publish_time": "2025-12-28T07:10:51Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Nx_61m.dt5giF7HJpM4q0w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7be242a6116f22446547a3af342da0e5",
+      "type": "STORY",
+      "sentiment": -5
+    },
+    {
+      "symbol": "DE",
+      "name": "Deere & Co.",
+      "sector": "Industrials",
+      "industry": "Machinery",
+      "title": "Cognex (CGNX) in Focus as Truist Maps a More Selective 2026 Industrials Outlook",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/news/cognex-cgnx-focus-truist-maps-071051557.html",
+      "publish_time": "2025-12-28T07:10:51Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Nx_61m.dt5giF7HJpM4q0w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7be242a6116f22446547a3af342da0e5",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "MS",
+      "name": "Morgan Stanley",
+      "sector": "Financials",
+      "industry": "Investment Banks",
+      "title": "Exxon’s CEO Is Positioning the Company to Operate Profitably for ‘Decades to Come’",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T07:00:00Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5rg68DH_1x67bgRPY3HzgQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/4a541daa1d182d7943be86f1cbc69360",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "industry": "Integrated",
+      "title": "Exxon’s CEO Is Positioning the Company to Operate Profitably for ‘Decades to Come’",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T07:00:00Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5rg68DH_1x67bgRPY3HzgQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/4a541daa1d182d7943be86f1cbc69360",
+      "type": "STORY",
+      "sentiment": 5
+    },
+    {
+      "symbol": "VZ",
+      "name": "Verizon Comm.",
+      "sector": "Communication",
+      "industry": "Telecom",
+      "title": "Looking to Supercharge Your Passive Income in 2026? These 3 Stocks Offer Yields as High as 10.3%.",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/looking-supercharge-passive-income-2026-063500011.html",
+      "publish_time": "2025-12-28T06:35:00Z",
+      "time_ago": "7h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nt15.JoJ7uKqOHvKkZ098g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4890856436a9a93e1f737fbd03506de3",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology",
+      "industry": "Hardware",
+      "title": "'We made 25 jars at a time with six pans on the go - now our business boasts a world's best marmalade'",
+      "publisher": "Yahoo Finance UK",
+      "link": "https://finance.yahoo.com/news/jam-single-preserve-marmalade-brand-060018296.html",
+      "publish_time": "2025-12-28T06:00:18Z",
+      "time_ago": "7h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ZjZg8_qcyCghN8aL9zZP9g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/870f4880-dff6-11f0-bef7-85420d4f9170",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "CMCSA",
+      "name": "Comcast Corp.",
+      "sector": "Communication",
+      "industry": "Cable",
+      "title": "Comcast Is Cheap. Investors Are Too Pessimistic on Broadband, This Analyst Says.",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T06:00:00Z",
+      "time_ago": "7h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uf1OZ4T9w2HC3qz7skI1hA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/c35fb5b002e7a83c4c54734d0a3b375a",
+      "type": "STORY",
+      "sentiment": 40
+    },
+    {
+      "symbol": "T",
+      "name": "AT&T Inc.",
+      "sector": "Communication",
+      "industry": "Telecom",
+      "title": "Comcast Is Cheap. Investors Are Too Pessimistic on Broadband, This Analyst Says.",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2025-12-28T06:00:00Z",
+      "time_ago": "7h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uf1OZ4T9w2HC3qz7skI1hA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/c35fb5b002e7a83c4c54734d0a3b375a",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "Prediction: 1 Artificial Intelligence Stock Will Lead the Next Bull Market",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/news/prediction-1-artificial-intelligence-stock-052000960.html",
+      "publish_time": "2025-12-28T05:20:00Z",
+      "time_ago": "8h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uzZfzbPusiQcVQE2uXLDsg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4d995306aae0355a307c70ceb76271df",
+      "type": "STORY",
+      "sentiment": 0
+    },
     {
       "symbol": "TSLA",
       "name": "Tesla Inc.",
@@ -86,66 +786,10 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/news/elon-musk-says-driverless-tesla-043120967.html",
       "publish_time": "2025-12-28T04:31:20Z",
-      "time_ago": "34m ago",
+      "time_ago": "9h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.fUyA1qnnFwU7kJk.fGbTA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/124d8da0d8974065ee9e2651cd9ec68d",
       "type": "STORY",
-      "sentiment": -40
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Google Rolling Out Gmail Address Change Feature: Here Is How It Works",
-      "publisher": "Benzinga",
-      "link": "https://finance.yahoo.com/news/google-rolling-gmail-address-change-033112607.html",
-      "publish_time": "2025-12-28T03:31:12Z",
-      "time_ago": "1h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Pik1B3MRd64QZRyGw5XqHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/d34f58d7ce4844b802e2b57fbf9b7ec4",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Have $2,000? 3 Artificial Intelligence (AI) Stocks to Buy and Hold for at Least a Decade.",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/2-000-3-artificial-intelligence-025000761.html",
-      "publish_time": "2025-12-28T02:50:00Z",
-      "time_ago": "2h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/HsijaUZavvp84.tLlQEF0A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/e17110c8009264a4b9dd2c2fc2d658eb",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Michael Burry Bets He Isn’t Too Early to Go Against the AI Juggernaut",
-      "publisher": "The Wall Street Journal",
-      "link": "",
-      "publish_time": "2025-12-28T02:00:00Z",
-      "time_ago": "3h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7Pi7VFmVCv1tw5GtSorX7A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/43a1b392df102512eed9c67f4419401b",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "3 Artificial Intelligence (AI) Stocks to Leave Behind in 2026",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/3-artificial-intelligence-ai-stocks-010000893.html",
-      "publish_time": "2025-12-28T01:00:00Z",
-      "time_ago": "4h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EE3BzCI1alBRyqwkDB6VYg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/0eac9b0125537834b2992e5f7ba118d9",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -60
     },
     {
       "symbol": "MSFT",
@@ -156,21 +800,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/4-stocks-hold-next-5-003300763.html",
       "publish_time": "2025-12-28T00:33:00Z",
-      "time_ago": "4h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wi4jsm08DCmjfpwi0GjPoA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3564c5bec1c24d8620d3bfcbcf960dae",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "4 Stocks to Hold for the Next 5 Years",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/4-stocks-hold-next-5-003300763.html",
-      "publish_time": "2025-12-28T00:33:00Z",
-      "time_ago": "4h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wi4jsm08DCmjfpwi0GjPoA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3564c5bec1c24d8620d3bfcbcf960dae",
       "type": "STORY",
       "sentiment": 0
@@ -184,7 +814,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-no-brainer-dividend-stocks-235000616.html",
       "publish_time": "2025-12-27T23:50:00Z",
-      "time_ago": "5h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/c2omwWfiFbEDQYqvr9mYOA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/5ad5dbd1e1f3b6fc8cf974bcb7f85c02",
       "type": "STORY",
       "sentiment": 0
@@ -198,7 +828,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-no-brainer-dividend-stocks-235000616.html",
       "publish_time": "2025-12-27T23:50:00Z",
-      "time_ago": "5h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/c2omwWfiFbEDQYqvr9mYOA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/5ad5dbd1e1f3b6fc8cf974bcb7f85c02",
       "type": "STORY",
       "sentiment": 0
@@ -212,10 +842,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/prediction-amd-stock-jump-60-233000904.html",
       "publish_time": "2025-12-27T23:30:00Z",
-      "time_ago": "5h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GZYj.LwSkNxkV_rWv1BkEA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9ba2a48290744fbc04a70c88b8a81127",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -10
     },
     {
       "symbol": "AMD",
@@ -226,10 +856,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/prediction-amd-stock-jump-60-233000904.html",
       "publish_time": "2025-12-27T23:30:00Z",
-      "time_ago": "5h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GZYj.LwSkNxkV_rWv1BkEA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/9ba2a48290744fbc04a70c88b8a81127",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 25
     },
     {
       "symbol": "NFLX",
@@ -240,7 +870,7 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/news/netflix-paramount-sparked-108-billion-223120284.html",
       "publish_time": "2025-12-27T22:31:20Z",
-      "time_ago": "6h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vFNAsRilZGffwth4d7GfWQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/ec63f8a10d2787d38d6f8087e5c4d7b1",
       "type": "STORY",
       "sentiment": 0
@@ -254,7 +884,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/beyond-meat-stage-epic-comeback-222000079.html",
       "publish_time": "2025-12-27T22:20:00Z",
-      "time_ago": "6h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/60X5zg8QO8gUxMr8hC8P9A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/61ab3d81fb831be8eceb16960ac152d4",
       "type": "STORY",
       "sentiment": 0
@@ -268,7 +898,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-drug-stocks-buy-discount-214800088.html",
       "publish_time": "2025-12-27T21:48:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FgZN6y9B63zJvC4k5wD1hQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3f646e452a0ae5c36d2d2b4dbae4beca",
       "type": "STORY",
       "sentiment": 0
@@ -282,7 +912,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-drug-stocks-buy-discount-214800088.html",
       "publish_time": "2025-12-27T21:48:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FgZN6y9B63zJvC4k5wD1hQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3f646e452a0ae5c36d2d2b4dbae4beca",
       "type": "STORY",
       "sentiment": 0
@@ -296,7 +926,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-drug-stocks-buy-discount-214800088.html",
       "publish_time": "2025-12-27T21:48:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FgZN6y9B63zJvC4k5wD1hQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3f646e452a0ae5c36d2d2b4dbae4beca",
       "type": "STORY",
       "sentiment": 0
@@ -310,22 +940,8 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-drug-stocks-buy-discount-214800088.html",
       "publish_time": "2025-12-27T21:48:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FgZN6y9B63zJvC4k5wD1hQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3f646e452a0ae5c36d2d2b4dbae4beca",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Nvidia Has Tumbled From All-Time Highs in October. Here's What's Next.",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/nvidia-tumbled-time-highs-october-212000705.html",
-      "publish_time": "2025-12-27T21:20:00Z",
-      "time_ago": "7h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/y7Bt8j2icsrppPyFQXiWaw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2fbdd7de87c73cbb2a4a78634f207d91",
       "type": "STORY",
       "sentiment": 0
     },
@@ -338,7 +954,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-dividend-stocks-double-now-210500649.html",
       "publish_time": "2025-12-27T21:05:00Z",
-      "time_ago": "8h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WyBxt2iUu1tu0m46g0p45Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/d9a747a7f0408be1ee4e8d53dc19f361",
       "type": "STORY",
       "sentiment": 0
@@ -352,10 +968,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-dividend-stocks-double-now-210500649.html",
       "publish_time": "2025-12-27T21:05:00Z",
-      "time_ago": "8h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WyBxt2iUu1tu0m46g0p45Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/d9a747a7f0408be1ee4e8d53dc19f361",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 8
     },
     {
       "symbol": "TSLA",
@@ -366,7 +982,7 @@
       "publisher": "Fortune",
       "link": "https://finance.yahoo.com/news/peter-thiel-larry-page-preparing-203808423.html",
       "publish_time": "2025-12-27T20:38:08Z",
-      "time_ago": "8h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rB8l2jGIzk0AKb18il2LqQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/9128e0e8e55130a84755c04d414861a2",
       "type": "STORY",
       "sentiment": 0
@@ -380,10 +996,10 @@
       "publisher": "GOBankingRates",
       "link": "https://finance.yahoo.com/news/walmart-starbucks-more-accepting-crypto-202205775.html",
       "publish_time": "2025-12-27T20:22:05Z",
-      "time_ago": "8h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/lEabBJTW8Se9XlvA.2OXbA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/gobankingrates_644/efd013b19aa2819c205858b995fc3264",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 30
     },
     {
       "symbol": "WMT",
@@ -394,7 +1010,7 @@
       "publisher": "GOBankingRates",
       "link": "https://finance.yahoo.com/news/walmart-starbucks-more-accepting-crypto-202205775.html",
       "publish_time": "2025-12-27T20:22:05Z",
-      "time_ago": "8h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/lEabBJTW8Se9XlvA.2OXbA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/gobankingrates_644/efd013b19aa2819c205858b995fc3264",
       "type": "STORY",
       "sentiment": 30
@@ -408,7 +1024,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/abbvie-buy-sell-hold-2026-195000326.html",
       "publish_time": "2025-12-27T19:50:00Z",
-      "time_ago": "9h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2U2Kcy3bNWW_B9DX47XGZw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4c8d12a0179d68763a7f0bf91ab16eac",
       "type": "STORY",
       "sentiment": 0
@@ -422,7 +1038,7 @@
       "publisher": "TheStreet",
       "link": "https://finance.yahoo.com/news/popular-gift-retailer-shuts-stores-194700616.html",
       "publish_time": "2025-12-27T19:47:00Z",
-      "time_ago": "9h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/l.1oL4Nj3dBLrjoTowSkQA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/52ca29982ebfb3c60545bd2b28b88cd7",
       "type": "STORY",
       "sentiment": 0
@@ -436,7 +1052,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-red-hot-growth-stocks-192000396.html",
       "publish_time": "2025-12-27T19:20:00Z",
-      "time_ago": "9h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3wKN1VHqAA.i_Meh3ZzhRw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8a27a16cc3caf51b7efe050dc433c61d",
       "type": "STORY",
       "sentiment": 0
@@ -450,7 +1066,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-185000076.html",
       "publish_time": "2025-12-27T18:50:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1d1C88COGi57e8_e5gB.fg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2546a7b36355db9aadd4d28c2e0afaff",
       "type": "STORY",
       "sentiment": 0
@@ -464,21 +1080,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-185000076.html",
       "publish_time": "2025-12-27T18:50:00Z",
-      "time_ago": "10h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1d1C88COGi57e8_e5gB.fg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2546a7b36355db9aadd4d28c2e0afaff",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "The Best Stocks to Invest $50,000 in Right Now",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-185000076.html",
-      "publish_time": "2025-12-27T18:50:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1d1C88COGi57e8_e5gB.fg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2546a7b36355db9aadd4d28c2e0afaff",
       "type": "STORY",
       "sentiment": 0
@@ -492,7 +1094,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/best-stocks-invest-50-000-185000076.html",
       "publish_time": "2025-12-27T18:50:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1d1C88COGi57e8_e5gB.fg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2546a7b36355db9aadd4d28c2e0afaff",
       "type": "STORY",
       "sentiment": 0
@@ -506,7 +1108,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/netflix-stock-buy-sell-hold-184100039.html",
       "publish_time": "2025-12-27T18:41:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OijeGgXSWACDS0wQcacrjQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/bfe8cccceaf9a0ba956f7bd7fa65eb85",
       "type": "STORY",
       "sentiment": 0
@@ -520,8 +1122,22 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/top-2-no-brainer-growth-183500302.html",
       "publish_time": "2025-12-27T18:35:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FNBTmXNekljsQs.Sh8Ughg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/b9544e5014b65f72cae3ccdf9db2648f",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GM",
+      "name": "General Motors",
+      "sector": "Consumer Disc.",
+      "industry": "Auto",
+      "title": "'Run — Run Away,' Dave Ramsey Says, As A 28-Year-Old Plans To Marry A Veterinarian Bringing $350K Debt While He Earns $135K",
+      "publisher": "Benzinga",
+      "link": "https://finance.yahoo.com/news/run-run-away-dave-ramsey-180127800.html",
+      "publish_time": "2025-12-27T18:01:27Z",
+      "time_ago": "19h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KwnOIZXg.oH.gomZvyeWYw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/e990d976bee4f96ad1980ebe07793826",
       "type": "STORY",
       "sentiment": 0
     },
@@ -534,7 +1150,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
       "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
       "type": "STORY",
       "sentiment": 0
@@ -548,7 +1164,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
       "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
       "type": "STORY",
       "sentiment": 0
@@ -562,7 +1178,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
       "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
       "type": "STORY",
       "sentiment": 0
@@ -576,50 +1192,8 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
       "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Billionaire Chase Coleman Has Formed His Own \"Magnificent Seven\" and It's Even Better Than the Original",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
-      "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "TSLA",
-      "name": "Tesla Inc.",
-      "sector": "Consumer Disc.",
-      "industry": "Auto",
-      "title": "Billionaire Chase Coleman Has Formed His Own \"Magnificent Seven\" and It's Even Better Than the Original",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/billionaire-chase-coleman-formed-own-175700216.html",
-      "publish_time": "2025-12-27T17:57:00Z",
-      "time_ago": "11h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7A4Yc5VSEvVGf4.dxSzpnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eabe09939bd0a408a13029fc96b6a565",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "TSLA",
-      "name": "Tesla Inc.",
-      "sector": "Consumer Disc.",
-      "industry": "Auto",
-      "title": "Here's Why Rivian Stock Is a Buy Before Jan. 1, 2026",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/heres-why-rivian-stock-buy-173500515.html",
-      "publish_time": "2025-12-27T17:35:00Z",
-      "time_ago": "11h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/otmuxeS5GpvC6lsd0s0Vdg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/0cae1e416f2adf93b38efede971f4a60",
       "type": "STORY",
       "sentiment": 0
     },
@@ -632,7 +1206,7 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/news/defense-stocks-booming-2-hottest-172051202.html",
       "publish_time": "2025-12-27T17:20:51Z",
-      "time_ago": "11h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MD6O5FcS6GAs19BUChXSdQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/dde95f890358f7b357c54939e83eb36c",
       "type": "STORY",
       "sentiment": 0
@@ -646,10 +1220,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/top-3-energy-stocks-buy-153600194.html",
       "publish_time": "2025-12-27T15:36:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TN7UkvzB_MU.MPvuN.ZVMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/93ee27c42a597fa636437b561768a66a",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 12
     },
     {
       "symbol": "NEE",
@@ -660,7 +1234,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/top-3-energy-stocks-buy-153600194.html",
       "publish_time": "2025-12-27T15:36:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TN7UkvzB_MU.MPvuN.ZVMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/93ee27c42a597fa636437b561768a66a",
       "type": "STORY",
       "sentiment": 0
@@ -674,10 +1248,10 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/news/3-reasons-broadcom-crashed-15-152159052.html",
       "publish_time": "2025-12-27T15:21:59Z",
-      "time_ago": "13h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/d77ta7qYLASEgf9PWur6cQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/b4cfc199a7cfb98bb33a5f667db9756d",
       "type": "STORY",
-      "sentiment": -50
+      "sentiment": -55
     },
     {
       "symbol": "LLY",
@@ -688,7 +1262,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/top-3-growth-stocks-buy-152000800.html",
       "publish_time": "2025-12-27T15:20:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uWwEIqwWJmc9fFsSFxMBzw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/db5e6e5343b2eac346652ff7da86ebf4",
       "type": "STORY",
       "sentiment": 0
@@ -702,10 +1276,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/1-reason-im-never-selling-150500607.html",
       "publish_time": "2025-12-27T15:05:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wOznfmvIx47lSww8XhspSQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/a3dd281788cb67ad36dc234a593604e1",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 20
     },
     {
       "symbol": "NVDA",
@@ -716,7 +1290,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/6-under-the-radar-stocks-to-play-the-ai-boom-in-2026-bofa-150019301.html",
       "publish_time": "2025-12-27T15:00:19Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IwVOl3IogDdZSHouVlUr.A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-10/faea6f40-a06e-11f0-bfff-6e4628767bb6",
       "type": "STORY",
       "sentiment": 0
@@ -730,7 +1304,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/6-under-the-radar-stocks-to-play-the-ai-boom-in-2026-bofa-150019301.html",
       "publish_time": "2025-12-27T15:00:19Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IwVOl3IogDdZSHouVlUr.A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-10/faea6f40-a06e-11f0-bfff-6e4628767bb6",
       "type": "STORY",
       "sentiment": 0
@@ -744,7 +1318,7 @@
       "publisher": "Bloomberg",
       "link": "https://finance.yahoo.com/news/us-lukoil-gas-station-owners-150000297.html",
       "publish_time": "2025-12-27T15:00:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Yn2ekAtKndcyRyNKwwa5Pw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/6b71e0d0-e341-11f0-95fb-ed0762d41c66",
       "type": "STORY",
       "sentiment": 0
@@ -758,7 +1332,7 @@
       "publisher": "Bloomberg",
       "link": "https://finance.yahoo.com/news/us-lukoil-gas-station-owners-150000297.html",
       "publish_time": "2025-12-27T15:00:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Yn2ekAtKndcyRyNKwwa5Pw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/6b71e0d0-e341-11f0-95fb-ed0762d41c66",
       "type": "STORY",
       "sentiment": 0
@@ -772,7 +1346,7 @@
       "publisher": "Bloomberg",
       "link": "https://finance.yahoo.com/news/us-lukoil-gas-station-owners-150000297.html",
       "publish_time": "2025-12-27T15:00:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Yn2ekAtKndcyRyNKwwa5Pw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/6b71e0d0-e341-11f0-95fb-ed0762d41c66",
       "type": "STORY",
       "sentiment": 0
@@ -786,7 +1360,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/bank-america-stock-buy-sell-145000442.html",
       "publish_time": "2025-12-27T14:50:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JHOZCKL0D_w67APrSrKo2w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/58360eb879bd2b909edd03f09a73ab6f",
       "type": "STORY",
       "sentiment": 0
@@ -800,22 +1374,8 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/news/mark-cuban-says-interesting-trump-143102250.html",
       "publish_time": "2025-12-27T14:31:02Z",
-      "time_ago": "14h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ZsZkr8edwlHr4bOX1R81tQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/41dd6dc907797e410db521bf42208874",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "MSFT",
-      "name": "Microsoft Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "I pioneered machine teaching at Microsoft. Building AI agents is like building a basketball team, not drafting a player",
-      "publisher": "Fortune",
-      "link": "https://finance.yahoo.com/news/pioneered-machine-teaching-microsoft-building-140500754.html",
-      "publish_time": "2025-12-27T14:05:00Z",
-      "time_ago": "15h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sK3iTP828s6tUyUsRAEykg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/cfe8288ab9b7821610c4331729f61f20",
       "type": "STORY",
       "sentiment": 0
     },
@@ -828,22 +1388,8 @@
       "publisher": "Fortune",
       "link": "https://finance.yahoo.com/news/pioneered-machine-teaching-microsoft-building-140500754.html",
       "publish_time": "2025-12-27T14:05:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sK3iTP828s6tUyUsRAEykg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/cfe8288ab9b7821610c4331729f61f20",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Analysis-Waymo's San Francisco outage raises doubts over robotaxi readiness during crises",
-      "publisher": "Reuters",
-      "link": "https://www.yahoo.com/news/articles/analysis-waymos-san-francisco-outage-140157889.html",
-      "publish_time": "2025-12-27T14:01:57Z",
-      "time_ago": "15h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/x5gpMkTYjLV5wu1RicQOAg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters.com/778eb6a80bbad5aa4a1c3579fb5bd476",
       "type": "STORY",
       "sentiment": 0
     },
@@ -856,10 +1402,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/weakness-abbott-laboratories-nyse-abt-140013757.html",
       "publish_time": "2025-12-27T14:00:13Z",
-      "time_ago": "15h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/tqlYWpQuQBKEgzPp5PK3QQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/9233d293790357e156ec19f81dd7a7d9",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "WMT",
@@ -870,7 +1416,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/news/2-billion-reason-buy-kroger-140002201.html",
       "publish_time": "2025-12-27T14:00:02Z",
-      "time_ago": "15h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0JVpfaaOgn5fmbbh7YOeRA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/8006783645eac908645c211fc59d1b33",
       "type": "STORY",
       "sentiment": 0
@@ -884,7 +1430,7 @@
       "publisher": "Moneywise",
       "link": "https://finance.yahoo.com/news/peter-thiel-warns-us-real-132700099.html",
       "publish_time": "2025-12-27T13:27:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mF1U8EtqWnTVPV1nY1fd2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/moneywise_ecomm_711/3e85fea8a7d21c851bdb04bec3923275",
       "type": "STORY",
       "sentiment": 0
@@ -898,50 +1444,8 @@
       "publisher": "Moneywise",
       "link": "https://finance.yahoo.com/news/peter-thiel-warns-us-real-132700099.html",
       "publish_time": "2025-12-27T13:27:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mF1U8EtqWnTVPV1nY1fd2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/moneywise_ecomm_711/3e85fea8a7d21c851bdb04bec3923275",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "2 Unbelievable Growth Stocks to Buy Before They Soar in 2026",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/2-unbelievable-growth-stocks-buy-130600168.html",
-      "publish_time": "2025-12-27T13:06:00Z",
-      "time_ago": "15h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/YtluYai0UNNqXHuy.gDFRg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/a8f1844b68271a1d45d9c4a473327b3d",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AAPL",
-      "name": "Apple Inc.",
-      "sector": "Technology",
-      "industry": "Hardware",
-      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
-      "publisher": "Investor's Business Daily",
-      "link": "",
-      "publish_time": "2025-12-27T13:02:32Z",
-      "time_ago": "16h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GE",
-      "name": "GE Aerospace",
-      "sector": "Industrials",
-      "industry": "Conglomerate",
-      "title": "Dow Jones Futures: Tesla, Nvidia Lead 5 Giants In Buy Areas; Market Strong As 2025 Wanes",
-      "publisher": "Investor's Business Daily",
-      "link": "",
-      "publish_time": "2025-12-27T13:02:32Z",
-      "time_ago": "16h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QH4_BOwTe_t9vYAUjrg5ig--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/92cfb76f98a2a709dad32fc237f9acc4",
       "type": "STORY",
       "sentiment": 0
     },
@@ -954,7 +1458,7 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/news/jpmorgan-top-3-stocks-crush-130215359.html",
       "publish_time": "2025-12-27T13:02:15Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aA.VfJmsb3Zrm9hbSQy_Nw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/97c33905cdb70e36afac0c3f7cdac59e",
       "type": "STORY",
       "sentiment": 0
@@ -968,23 +1472,9 @@
       "publisher": "Investor's Business Daily",
       "link": "",
       "publish_time": "2025-12-27T13:00:34Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/G9Z8IdPR8QSBORlgjsCJ5w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/04aa9b39f46493dbd289c01afff0831c",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "MSFT",
-      "name": "Microsoft Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "Expect a 'tremendous amount of volatility' in the AI trade in 2026",
-      "publisher": "Yahoo Finance Video",
-      "link": "https://finance.yahoo.com/video/expect-tremendous-amount-volatility-ai-130022550.html",
-      "publish_time": "2025-12-27T13:00:22Z",
-      "time_ago": "16h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O4nK0gH_2IK4A0lTS6IuMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/ff78bc40-e2a1-11f0-9f4e-3a96ad355f5d",
-      "type": "VIDEO",
       "sentiment": 0
     },
     {
@@ -996,10 +1486,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/honeywell-international-inc-nasdaq-hon-130021700.html",
       "publish_time": "2025-12-27T13:00:21Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gU.5jWXXIZOzVezJNqKtUQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e9a9f427eb76d40a540ad2f355243566",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "JPM",
@@ -1010,7 +1500,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/institutional-investors-lot-riding-jpmorgan-130013460.html",
       "publish_time": "2025-12-27T13:00:13Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/HZjQIyW.m5t9ig4UKcNbhw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1476b1d98076b29c1959b169006c1fee",
       "type": "STORY",
       "sentiment": 0
@@ -1024,10 +1514,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/prediction-artificial-intelligence-ai-stock-125000464.html",
       "publish_time": "2025-12-27T12:50:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/CLQRPYgKgI1wKs0hS7zrLw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/0bcb5bb5732b82f977b4de8acdb6a852",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 15
     },
     {
       "symbol": "IBM",
@@ -1038,7 +1528,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/why-analysts-remain-split-domo-124316317.html",
       "publish_time": "2025-12-27T12:43:16Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rkZXD3bej5ZRUJkYGPWyOQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/bcfd08ceaf78019bf49b4ecc55f49fd2",
       "type": "STORY",
       "sentiment": 0
@@ -1052,22 +1542,8 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/jonestrading-highlights-differentiated-pipeline-atai-124308963.html",
       "publish_time": "2025-12-27T12:43:08Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mxYYC2L1O1Y8XbnMiSv2dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/eadec32765d79f6cf3279c2d18e4f869",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AVGO",
-      "name": "Broadcom Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "3 Stock-Split Stocks to Buy that Could Soar As Much as 40%, 35%, and 640%, According to Wall Street",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/3-stock-split-stocks-buy-123500922.html",
-      "publish_time": "2025-12-27T12:35:00Z",
-      "time_ago": "16h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sdCpuKJb7DyGbZehLYlOlQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/494798ed4c65b7ca1b0b55947613ba7b",
       "type": "STORY",
       "sentiment": 0
     },
@@ -1080,7 +1556,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-stock-split-stocks-buy-123500922.html",
       "publish_time": "2025-12-27T12:35:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sdCpuKJb7DyGbZehLYlOlQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/494798ed4c65b7ca1b0b55947613ba7b",
       "type": "STORY",
       "sentiment": 0
@@ -1094,7 +1570,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-stock-split-stocks-buy-123500922.html",
       "publish_time": "2025-12-27T12:35:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sdCpuKJb7DyGbZehLYlOlQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/494798ed4c65b7ca1b0b55947613ba7b",
       "type": "STORY",
       "sentiment": 0
@@ -1108,7 +1584,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-dividend-stocks-double-now-120600914.html",
       "publish_time": "2025-12-27T12:06:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ER03v3vXHe9hdvqKagwdMQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/802a46b866a72fd3cd2638749bbbb8fb",
       "type": "STORY",
       "sentiment": 0
@@ -1122,10 +1598,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/texas-instruments-nasdaq-txn-seems-120020039.html",
       "publish_time": "2025-12-27T12:00:20Z",
-      "time_ago": "17h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/LhuBoIzDPefMzGr02DRW.Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/2cd8080910385a861f383635151a8615",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 8
     },
     {
       "symbol": "MS",
@@ -1136,10 +1612,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/morgan-stanley-nyse-ms-favorite-120017102.html",
       "publish_time": "2025-12-27T12:00:17Z",
-      "time_ago": "17h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/t9eP4jhDQvVGoXoJfCribQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/5316c4f52df573f008454c213aa43e08",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 6
     },
     {
       "symbol": "PFE",
@@ -1150,7 +1626,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-superb-high-yield-dividend-115000717.html",
       "publish_time": "2025-12-27T11:50:00Z",
-      "time_ago": "17h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/67GNFrr4r3hcqYzws6cO8Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3c95bc0cf7ca0bb111ca8c785f87d630",
       "type": "STORY",
       "sentiment": 0
@@ -1164,7 +1640,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/3-superb-high-yield-dividend-115000717.html",
       "publish_time": "2025-12-27T11:50:00Z",
-      "time_ago": "17h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/67GNFrr4r3hcqYzws6cO8Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3c95bc0cf7ca0bb111ca8c785f87d630",
       "type": "STORY",
       "sentiment": 0
@@ -1178,7 +1654,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-000-3-top-robotics-102000972.html",
       "publish_time": "2025-12-27T10:20:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/A0Ypt874WkGRHjB0lMFy7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c3785aa277a35102776e52168372a114",
       "type": "STORY",
       "sentiment": 0
@@ -1192,7 +1668,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/2-000-3-top-robotics-102000972.html",
       "publish_time": "2025-12-27T10:20:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/A0Ypt874WkGRHjB0lMFy7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c3785aa277a35102776e52168372a114",
       "type": "STORY",
       "sentiment": 0
@@ -1206,7 +1682,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/boeing-ba-ceo-nonsense-guy-091902356.html",
       "publish_time": "2025-12-27T09:19:02Z",
-      "time_ago": "19h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Chnjdm2dLGXUp_5E8gZk_g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/c06debe4ca1e528fa2317766d20f4d0f",
       "type": "STORY",
       "sentiment": -8
@@ -1220,22 +1696,8 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/accenture-acn-rated-outperform-mizuho-075154768.html",
       "publish_time": "2025-12-27T07:51:54Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zirOfax3k1e9du_6268gHA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/a55fe6c78a57e6a834cc34d317bd399c",
-      "type": "STORY",
-      "sentiment": 45
-    },
-    {
-      "symbol": "META",
-      "name": "Meta Platforms",
-      "sector": "Technology",
-      "industry": "Social Media",
-      "title": "Meta (META) Rated Outperform at Baird as Firm Encourages Buying the Dip",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/news/meta-meta-rated-outperform-baird-075058561.html",
-      "publish_time": "2025-12-27T07:50:58Z",
-      "time_ago": "21h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7EaTMnmKmCLmqFHCVqJeXQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/666f9d6a4c94e71c9a9541e4df322964",
       "type": "STORY",
       "sentiment": 50
     },
@@ -1248,10 +1710,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/analysts-maintain-positive-outlook-amd-074440489.html",
       "publish_time": "2025-12-27T07:44:40Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7tG0lBAYKKRrlwkKDdtS3w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/5df3c69e767d027c9d5f585f2b9df631",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 35
     },
     {
       "symbol": "ORCL",
@@ -1262,10 +1724,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/wells-fargo-remains-bullish-oracle-073334676.html",
       "publish_time": "2025-12-27T07:33:34Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TKmS.T5TFb.hwawCQYq6HQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/084445da42ce0f7bc8998354d619ef23",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 35
     },
     {
       "symbol": "AAPL",
@@ -1276,7 +1738,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/jpmorgan-confident-apple-aapl-iphone-073251972.html",
       "publish_time": "2025-12-27T07:32:51Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Kvf86T5npkvPUBlBJOVCCw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/62cb46e6eeef5e0adeaa5b81e9188f72",
       "type": "STORY",
       "sentiment": 45
@@ -1290,7 +1752,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-27T07:30:00Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OmyBUuZeWVGEYDZ7SibwKA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/e31afcf8a461031eb508fd0a4429db61",
       "type": "STORY",
       "sentiment": 0
@@ -1304,10 +1766,10 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-27T07:30:00Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OmyBUuZeWVGEYDZ7SibwKA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/e31afcf8a461031eb508fd0a4429db61",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "EOG",
@@ -1318,10 +1780,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/analyst-reduces-price-target-eog-071351003.html",
       "publish_time": "2025-12-27T07:13:51Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/lFTEsXUcwWARMjm32KFFbA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/2dee577f606a4142b6884884737cf7de",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -40
     },
     {
       "symbol": "COP",
@@ -1332,10 +1794,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/analyst-reiterates-buy-rating-conocophillips-071330907.html",
       "publish_time": "2025-12-27T07:13:30Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/39H2v1d8_j8QPGyquhhGnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/1ea3c5aefe4df3f34e5b2506810adc02",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 35
     },
     {
       "symbol": "CVX",
@@ -1346,7 +1808,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/chevron-cvx-maintains-presence-venezuela-071304568.html",
       "publish_time": "2025-12-27T07:13:04Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MQACkIvlzC1rOHX4ncTIkQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/9993985ff21c88fc97966aed5b1501d8",
       "type": "STORY",
       "sentiment": -5
@@ -1360,10 +1822,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/exxon-mobil-xom-raises-2030-071253735.html",
       "publish_time": "2025-12-27T07:12:53Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/RvRBsVTSdZfQWQTn07G2Dg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7233ebe68f9534bc1e350b5cdbfbfb77",
       "type": "STORY",
-      "sentiment": 55
+      "sentiment": 50
     },
     {
       "symbol": "V",
@@ -1374,22 +1836,8 @@
       "publisher": "99bitcoins",
       "link": "https://finance.yahoo.com/news/crypto-market-news-today-december-070217488.html",
       "publish_time": "2025-12-27T07:02:17Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/yXw5dQQzvbzHO13iV4teCA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/99bitcoins_us_315/eca6857348594bf6f51f0223e3a2f854",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "META",
-      "name": "Meta Platforms",
-      "sector": "Technology",
-      "industry": "Social Media",
-      "title": "Amazon Is Spending But Getting Results. 2026 Could Be Its Year.",
-      "publisher": "Barrons.com",
-      "link": "",
-      "publish_time": "2025-12-27T07:00:00Z",
-      "time_ago": "22h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VM8j4hJ._DGpoyl5_C6EtA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/0f1b9663b801f662093d364e682695c4",
       "type": "STORY",
       "sentiment": 0
     },
@@ -1402,10 +1850,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/wells-fargo-notes-resilient-reit-052608999.html",
       "publish_time": "2025-12-27T05:26:08Z",
-      "time_ago": "23h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Ko9KiN2Dt3B3E4RdSWVxBg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/e0618af2b1395c4412af88fcae2adeda",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 0
     },
     {
       "symbol": "JPM",
@@ -1416,7 +1864,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/realty-income-corporation-o-downgraded-051831228.html",
       "publish_time": "2025-12-27T05:18:31Z",
-      "time_ago": "23h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gIAIe2eccyikOFlYADr4fQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/04caa8cac5e9f4a148679077496305c9",
       "type": "STORY",
       "sentiment": 0
@@ -1461,7 +1909,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Ba.F9Z2WlXhGZBFpz9SQMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/75395fad650728e1cf54760e0e14c127",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -35
     },
     {
       "symbol": "ACN",
@@ -1475,7 +1923,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/R6_jyw2W0N3HRCe6NBITkg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/6a6c801ef2980509270218d45c953c39",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 40
     },
     {
       "symbol": "TJX",
@@ -1503,7 +1951,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/peRYwkYnoZYEhTUqijAgRg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/ce4c55f041d8f6b0362852b10795d2c5",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": 0
     },
     {
       "symbol": "F",
@@ -1545,7 +1993,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hQJZ.okXoXOgz20LYDoTrQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3ba65de01a2f29a7fee490bea5005b9f",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "CVX",
@@ -1560,20 +2008,6 @@
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hQJZ.okXoXOgz20LYDoTrQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3ba65de01a2f29a7fee490bea5005b9f",
       "type": "STORY",
       "sentiment": 0
-    },
-    {
-      "symbol": "AVGO",
-      "name": "Broadcom Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Broadcom’s Margin Warning Spooked Wall Street—But Cash Flow Could Still Win",
-      "publisher": "MarketBeat",
-      "link": "https://finance.yahoo.com/news/broadcom-margin-warning-spooked-wall-234500041.html",
-      "publish_time": "2025-12-26T23:45:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8MCQbD3QhEKYDhK47nSLhA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/f0a4e121597ff835465249fa9b5069b8",
-      "type": "STORY",
-      "sentiment": -45
     },
     {
       "symbol": "NFLX",
@@ -1601,7 +2035,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/moX6KI4k81rJkQW64hrQZw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/083eb51f57dad5037b90277a20d85750",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -12
     },
     {
       "symbol": "AMD",
@@ -1615,7 +2049,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/moX6KI4k81rJkQW64hrQZw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/083eb51f57dad5037b90277a20d85750",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -12
     },
     {
       "symbol": "TGT",
@@ -1671,7 +2105,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/42pZWjS9iYkwe9U3zMypmA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/1154d43aaeb65735a640003549116295",
       "type": "STORY",
-      "sentiment": -6
+      "sentiment": -10
     },
     {
       "symbol": "FCX",
@@ -1699,7 +2133,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ioqNyI9jOh7CiNNfF8upSw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/023168c7ea091c342492be3899b280af",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "JPM",
@@ -1741,7 +2175,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/b67nbJUDDAEKwSCnKpWlvQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/8270b9a158a1961d74787e9d5aa72d18",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "MCD",
@@ -1796,6 +2230,20 @@
       "publish_time": "2025-12-26T21:45:20Z",
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KemtEB6CG4krkJpa4AjedQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/mt_newswires_premium_news_706/2475a8618428bf41d7b045240805a142",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMD",
+      "name": "AMD Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Is MetaX a NVIDIA Threat—or Just Another DeepSeek Market Scare?",
+      "publisher": "MarketBeat",
+      "link": "https://finance.yahoo.com/news/metax-nvidia-threat-just-another-214500728.html",
+      "publish_time": "2025-12-26T21:45:00Z",
+      "time_ago": "1d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aG.RumJKiThnNRyY0zc5Vw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/3e008a5743139bc4e07e1841ef484e1b",
       "type": "STORY",
       "sentiment": 0
     },
@@ -1898,34 +2346,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "LLY",
-      "name": "Eli Lilly & Co.",
-      "sector": "Healthcare",
-      "industry": "Pharma",
-      "title": "Sector Update: Health Care Stocks Edge Higher Late Afternoon",
-      "publisher": "MT Newswires",
-      "link": "https://finance.yahoo.com/news/sector-health-care-stocks-edge-210646077.html",
-      "publish_time": "2025-12-26T21:06:46Z",
-      "time_ago": "1d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "TGT",
-      "name": "Target Corp.",
-      "sector": "Consumer Disc.",
-      "industry": "Retail",
-      "title": "US Equity Markets Fall as Precious Metals Hit Record Highs",
-      "publisher": "MT Newswires",
-      "link": "https://finance.yahoo.com/news/us-equity-markets-fall-precious-210418796.html",
-      "publish_time": "2025-12-26T21:04:18Z",
-      "time_ago": "1d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "GM",
       "name": "General Motors",
       "sector": "Consumer Disc.",
@@ -1940,20 +2360,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "JPM",
-      "name": "JPMorgan Chase",
-      "sector": "Financials",
-      "industry": "Banks",
-      "title": "JPMorgan Chase Hits New Highs As Nasdaq Stock Trades With Others At Peaks In Buy Zones",
-      "publisher": "Investor's Business Daily",
-      "link": "",
-      "publish_time": "2025-12-26T20:53:02Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/chdGWKqlK0QP6Dy.2cXi2A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/0c70f29090904514070303104f0395a4",
-      "type": "STORY",
-      "sentiment": 5
-    },
-    {
       "symbol": "COF",
       "name": "Capital One",
       "sector": "Financials",
@@ -1962,20 +2368,6 @@
       "publisher": "MT Newswires",
       "link": "https://finance.yahoo.com/news/sector-financial-stocks-decline-afternoon-205238398.html",
       "publish_time": "2025-12-26T20:52:38Z",
-      "time_ago": "1d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NFLX",
-      "name": "Netflix Inc.",
-      "sector": "Communication",
-      "industry": "Streaming",
-      "title": "Sector Update: Consumer Stocks Mixed in Late Afternoon Trading",
-      "publisher": "MT Newswires",
-      "link": "https://finance.yahoo.com/news/sector-consumer-stocks-mixed-afternoon-205136621.html",
-      "publish_time": "2025-12-26T20:51:36Z",
       "time_ago": "1d ago",
       "thumbnail": null,
       "type": "STORY",
@@ -2108,20 +2500,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "LLY",
-      "name": "Eli Lilly & Co.",
-      "sector": "Healthcare",
-      "industry": "Pharma",
-      "title": "Sector Update: Health Care Stocks Lower in Friday Afternoon Trading",
-      "publisher": "MT Newswires",
-      "link": "https://finance.yahoo.com/news/sector-health-care-stocks-lower-185916985.html",
-      "publish_time": "2025-12-26T18:59:16Z",
-      "time_ago": "1d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "COF",
       "name": "Capital One",
       "sector": "Financials",
@@ -2161,7 +2539,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9Yn54n4PmELyheLzWioTZg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/8e6a94b5d9a770904a6c3dec63a9ebc0",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": -2
     },
     {
       "symbol": "LMT",
@@ -2178,34 +2556,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Nvidia's Groq deal underscores how the AI chip giant uses its massive balance sheet to 'maintain dominance'",
-      "publisher": "Yahoo Finance",
-      "link": "https://finance.yahoo.com/news/nvidias-groq-deal-underscores-how-the-ai-chip-giant-uses-its-massive-balance-sheet-to-maintain-dominance-183347248.html",
-      "publish_time": "2025-12-26T18:33:47Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Nlmg7rCNVnirSc99FNkQOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/daebdc30-c6eb-11f0-bcfa-1c0233903f77",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Nvidia's Groq deal underscores how the AI chip giant uses its massive balance sheet to 'maintain dominance'",
-      "publisher": "Yahoo Finance",
-      "link": "https://finance.yahoo.com/news/nvidias-groq-deal-underscores-how-the-ai-chip-giant-uses-its-massive-balance-sheet-to-maintain-dominance-183347248.html",
-      "publish_time": "2025-12-26T18:33:47Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Nlmg7rCNVnirSc99FNkQOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/daebdc30-c6eb-11f0-bcfa-1c0233903f77",
-      "type": "STORY",
-      "sentiment": 10
-    },
-    {
       "symbol": "INTC",
       "name": "Intel Corp.",
       "sector": "Technology",
@@ -2217,7 +2567,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Nlmg7rCNVnirSc99FNkQOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/daebdc30-c6eb-11f0-bcfa-1c0233903f77",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -15
     },
     {
       "symbol": "XOM",
@@ -2259,7 +2609,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6tdsG8n99A_Qj2BXnNY8Wg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/766b3ae2d4a103bd1f14aa39e80a3179",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "BAC",
@@ -2329,7 +2679,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/caEc2eJDmAB.WlPXJQgYfw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/dlnews_702/6fb04b6f711e825a2f636b821888a16d",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 30
     },
     {
       "symbol": "MCD",
@@ -2343,7 +2693,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ZYfQVZ_hUQAvCNBCNGu4jg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/11a6ac160f53cf251887b517179de2ba",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "NKE",
@@ -2371,7 +2721,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EAUpe.Y_R1td0iZ2x_rRaw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/90c2e33bc7cfe36a73c7838d2a456f2c",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "MET",
@@ -2399,7 +2749,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DfSHSZbPb4u9KFEafCSvMQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/4e1dab354bcb9296ac8c10e086a0833a",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "T",
@@ -2483,7 +2833,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Hh2oxiNvW_ZvyOZRYtQG4g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/24257147b379778f727b630aa8e12eef",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 12
     },
     {
       "symbol": "NKE",
@@ -2525,7 +2875,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EBWY433VsGiH3gUj22W.SA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/b20234294ee14976f9231d84e03b66ed",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "WFC",
@@ -2567,7 +2917,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qAJ9.8IxPmR7pGafnWgjFA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/c8e03f2ee93b8995067b672216a11c5b",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "DIS",
@@ -2581,7 +2931,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7jZMJdSUILR33hfvJClOcw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/d1a742bab36e0d4afa440aa587803cd1",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 12
     },
     {
       "symbol": "TFC",
@@ -2608,20 +2958,6 @@
       "publish_time": "2025-12-26T17:20:00Z",
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/SprDNQjYY4jxZJQH.nNH6A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/eaf7075078b152680e79a8d94863e35a",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "COST",
-      "name": "Costco Wholesale",
-      "sector": "Consumer Stpl.",
-      "industry": "Retail",
-      "title": "Target vs. Costco: Which Discount Retail Stock Offers More Upside Now?",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/news/target-vs-costco-discount-retail-170600445.html",
-      "publish_time": "2025-12-26T17:06:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/C3nMczxcuF5qUl0eAZO6oA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9ba640bf1abb80736d625fec5c9007c7",
       "type": "STORY",
       "sentiment": 0
     },
@@ -2666,20 +3002,6 @@
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mGtA41oJWYFlxZv2.LpoYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/6d257f70b1cb312817f6235bf469a3a0",
       "type": "STORY",
       "sentiment": -45
-    },
-    {
-      "symbol": "COST",
-      "name": "Costco Wholesale",
-      "sector": "Consumer Stpl.",
-      "industry": "Retail",
-      "title": "Costco breaks 3 records that will surprise its members",
-      "publisher": "TheStreet",
-      "link": "https://finance.yahoo.com/news/costco-breaks-3-records-surprise-170300116.html",
-      "publish_time": "2025-12-26T17:03:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IlkCT7ByViVUzlVB.NO6gQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/19601555581d7716a30e29cd410f099f",
-      "type": "STORY",
-      "sentiment": 20
     },
     {
       "symbol": "IBM",
@@ -2749,7 +3071,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VHz6tdKyCDLJn_7.Xo3efw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/d66676c705d07b82ff8e9391ca2c98c5",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 0
     },
     {
       "symbol": "ORCL",
@@ -2763,7 +3085,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VHz6tdKyCDLJn_7.Xo3efw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/d66676c705d07b82ff8e9391ca2c98c5",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 0
     },
     {
       "symbol": "BA",
@@ -2777,21 +3099,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sIi84A4rjDKvFwOjD2RrLg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/47ad90c006035ae1ae183d03430206c3",
       "type": "STORY",
-      "sentiment": -55
-    },
-    {
-      "symbol": "ORCL",
-      "name": "Oracle Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "Is Oracle a Sinking Ship or a Buying Opportunity?",
-      "publisher": "24/7 Wall St.",
-      "link": "https://finance.yahoo.com/news/oracle-sinking-ship-buying-opportunity-164019499.html",
-      "publish_time": "2025-12-26T16:40:19Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/E6whT2WUwWR15dxCAutwhA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/532e6216cf4dfd46308eb454be582c98",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -45
     },
     {
       "symbol": "ADBE",
@@ -2805,7 +3113,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/J6ghjMdRIWnHPXKPSwdz3g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/28a3cdd1b9331c665d2c1dc8bb1a4ea3",
       "type": "STORY",
-      "sentiment": 30
+      "sentiment": 35
     },
     {
       "symbol": "ADBE",
@@ -2847,7 +3155,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ySzShS4Bq9uadJKr5o_PFg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/343791033106522177ca35d2a4d67ce3",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 20
     },
     {
       "symbol": "MA",
@@ -2875,7 +3183,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sIi84A4rjDKvFwOjD2RrLg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/47ad90c006035ae1ae183d03430206c3",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": 0
     },
     {
       "symbol": "MS",
@@ -2931,21 +3239,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ENALJD2tvcHz5.3ujaoW9A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/c7f2ba811bb9d55a5158aa39ddf2f725",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "ORCL",
-      "name": "Oracle Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "The best investments do this 1 thing, says Warren Buffett. Here’s why the Oracle invests in these top performers",
-      "publisher": "Moneywise",
-      "link": "https://finance.yahoo.com/news/best-investments-1-thing-says-160000485.html",
-      "publish_time": "2025-12-26T16:00:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uEtqtdK.afMXVqguCOL2XQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/moneywise_ecomm_711/501faa36117ad6b209fcc37035aed289",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": 55
     },
     {
       "symbol": "KO",
@@ -2973,7 +3267,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mGtA41oJWYFlxZv2.LpoYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/6d257f70b1cb312817f6235bf469a3a0",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -30
     },
     {
       "symbol": "IBM",
@@ -2986,20 +3280,6 @@
       "publish_time": "2025-12-26T15:55:00Z",
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/pzy6iJb7Q1TsR.9z_rTj6w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/db736fc21b8515a19bd022b45d2f0852",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "BAC",
-      "name": "Bank of America",
-      "sector": "Financials",
-      "industry": "Banks",
-      "title": "Micron and 28 Other S&P 500 Stocks Hit 52-Week Highs on Wednesday. These 12 Are Doing It Again Today.",
-      "publisher": "Barrons.com",
-      "link": "",
-      "publish_time": "2025-12-26T15:53:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/E18qRL.JYrMUeKlP7oqrdw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/5ff27da860f2200acd22afe4f9f6f779",
       "type": "STORY",
       "sentiment": 0
     },
@@ -3043,7 +3323,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KJP1H3QX2v2PbvBA.tsrTA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/fadaea695480d9d35a426a8b486ec263",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 5
     },
     {
       "symbol": "CME",
@@ -3071,7 +3351,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1oh0gSBQveNWIhz2ga44Eg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/3eae70fb5847340c2a0f55c3d646696b",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "EL",
@@ -3085,7 +3365,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7wUvWXku8Qyhyh4.kH1nNQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9a5758a6839d73f989d29f71c86550ce",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "NOW",
@@ -3169,7 +3449,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OkP2kiXdKp6flAbL4K3zGA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/4d357226c42c47b803a787eccf6e6f4e",
       "type": "STORY",
-      "sentiment": -55
+      "sentiment": -60
     },
     {
       "symbol": "GE",
@@ -3183,7 +3463,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1_jHMuW6SvnOrEW0N10GTQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/71afbbc0512eb3c471136d93f39079c9",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "CL",
@@ -3211,25 +3491,11 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0hmz5rtMYo6u4t1.12pgMg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/e01e7f1bc7b30a9bea4c2be198de1e54",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "F",
       "name": "Ford Motor",
-      "sector": "Consumer Disc.",
-      "industry": "Auto",
-      "title": "2025: The year the Big 3 backed away from EVs",
-      "publisher": "Yahoo Finance",
-      "link": "https://finance.yahoo.com/news/2025-the-year-the-big-3-backed-away-from-evs-142434253.html",
-      "publish_time": "2025-12-26T14:24:34Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QiKi1AizzP_XdpUmMIgedQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/da2c1fd0-dc4e-11f0-bedf-64a483579b11",
-      "type": "STORY",
-      "sentiment": -40
-    },
-    {
-      "symbol": "GM",
-      "name": "General Motors",
       "sector": "Consumer Disc.",
       "industry": "Auto",
       "title": "2025: The year the Big 3 backed away from EVs",
@@ -3382,20 +3648,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "XOM",
-      "name": "Exxon Mobil",
-      "sector": "Energy",
-      "industry": "Integrated",
-      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Friday as Market Reopens Following Holiday Break",
-      "publisher": "MT Newswires",
-      "link": "https://finance.yahoo.com/news/exchange-traded-funds-higher-equity-135509039.html",
-      "publish_time": "2025-12-26T13:55:09Z",
-      "time_ago": "1d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "LMT",
       "name": "Lockheed Martin",
       "sector": "Industrials",
@@ -3407,7 +3659,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/lgfmLIhE52XlTSn374Ngbg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/56f061a612ce0a77635688a23455ac49",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -12
     },
     {
       "symbol": "MRK",
@@ -3418,7 +3670,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/j-js-pipeline-progress-2025-132100132.html",
       "publish_time": "2025-12-26T13:21:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/RmgTuireSzale2jCXybO4A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/ca9d72216d7bb42fc496430c3df29b41",
       "type": "STORY",
       "sentiment": 0
@@ -3432,7 +3684,7 @@
       "publisher": "GuruFocus.com",
       "link": "https://finance.yahoo.com/news/china-sets-yuan-fixing-far-130504702.html",
       "publish_time": "2025-12-26T13:05:04Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/yDwPDmUpHWfnyRfXei5SBg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/76a1738dba3b3cb45d19c040ccdb1dd2",
       "type": "STORY",
       "sentiment": 0
@@ -3446,7 +3698,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/hologics-gyn-surgical-segment-looks-125300431.html",
       "publish_time": "2025-12-26T12:53:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VT27QYZpgF8G3bYXe5qpmg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9c1d11cd27737fac4805145de6e5eee0",
       "type": "STORY",
       "sentiment": 0
@@ -3460,10 +3712,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/3-energy-growth-stocks-buy-125300076.html",
       "publish_time": "2025-12-26T12:53:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1og48eXe7SXEk8wJk6BFUg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/70aedda113905f6ce7ce17374f908cf4",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "EL",
@@ -3474,10 +3726,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/elf-vs-el-beauty-stock-122800992.html",
       "publish_time": "2025-12-26T12:28:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0hmz5rtMYo6u4t1.12pgMg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/e01e7f1bc7b30a9bea4c2be198de1e54",
       "type": "STORY",
-      "sentiment": 2
+      "sentiment": 0
     },
     {
       "symbol": "ADBE",
@@ -3488,7 +3740,7 @@
       "publisher": "Investopedia",
       "link": "https://finance.yahoo.com/news/got-big-pile-unwanted-stuff-122112986.html",
       "publish_time": "2025-12-26T12:21:12Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6T_k8vuAAoBxaLnqSkbpnQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/investopedia_245/e2e228291698d9c64325e9b6bee6c9ab",
       "type": "STORY",
       "sentiment": 0
@@ -3502,10 +3754,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/isrgs-20-procedure-growth-normal-121700539.html",
       "publish_time": "2025-12-26T12:17:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_6FJ5JPChMYbIyR5zwbSVg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/ffe56c6b40972cd987bbb0cf256ae119",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "RTX",
@@ -3516,7 +3768,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/ba-vs-rtx-aerospace-defense-121700890.html",
       "publish_time": "2025-12-26T12:17:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/XXPUw5l.UPsNxmWiFSnlSA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/d7b37ce07edcc41e8d740075ca7f79ed",
       "type": "STORY",
       "sentiment": 0
@@ -3530,7 +3782,7 @@
       "publisher": "MarketBeat",
       "link": "https://finance.yahoo.com/news/sector-rotation-2-smart-money-121500546.html",
       "publish_time": "2025-12-26T12:15:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PqyIT1tbtUryouPB2jPu0Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/9a6dc070f63f8c2033d30619ddad7d5f",
       "type": "STORY",
       "sentiment": 0
@@ -3544,7 +3796,7 @@
       "publisher": "MarketBeat",
       "link": "https://finance.yahoo.com/news/sector-rotation-2-smart-money-121500546.html",
       "publish_time": "2025-12-26T12:15:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PqyIT1tbtUryouPB2jPu0Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/9a6dc070f63f8c2033d30619ddad7d5f",
       "type": "STORY",
       "sentiment": 0
@@ -3558,10 +3810,24 @@
       "publisher": "MarketBeat",
       "link": "https://finance.yahoo.com/news/sector-rotation-2-smart-money-121500546.html",
       "publish_time": "2025-12-26T12:15:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PqyIT1tbtUryouPB2jPu0Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/9a6dc070f63f8c2033d30619ddad7d5f",
       "type": "STORY",
       "sentiment": 0
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Intel Stock Surges 80% in 2025, but Analysts Stay Cautious",
+      "publisher": "GuruFocus.com",
+      "link": "https://finance.yahoo.com/news/intel-stock-surges-80-2025-121448905.html",
+      "publish_time": "2025-12-26T12:14:48Z",
+      "time_ago": "2d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nLg8jIzhAVJu_IAn1NxEWw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/06ee28153af34ee682f043e62519b8dd",
+      "type": "STORY",
+      "sentiment": 5
     },
     {
       "symbol": "BLK",
@@ -3572,7 +3838,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/bitcoin-positioned-outperform-market-2026-113500651.html",
       "publish_time": "2025-12-26T11:35:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rdTXJGTaamGZlYBu85nNrQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/6cb2b58fa444173edd51e01598b9a8f9",
       "type": "STORY",
       "sentiment": 0
@@ -3586,21 +3852,7 @@
       "publisher": "Yahoo Finance Video",
       "link": "https://finance.yahoo.com/video/private-credit-risks-oracles-debt-113052437.html",
       "publish_time": "2025-12-26T11:30:52Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O4I3XVydGSwvadD1pj4UrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/8a1850c0-df5c-11f0-9f33-5cd352b2a64b",
-      "type": "VIDEO",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GS",
-      "name": "Goldman Sachs",
-      "sector": "Financials",
-      "industry": "Investment Banks",
-      "title": "Private credit risks: What to make of Oracle's debt, AI trade",
-      "publisher": "Yahoo Finance Video",
-      "link": "https://finance.yahoo.com/video/private-credit-risks-oracles-debt-113052437.html",
-      "publish_time": "2025-12-26T11:30:52Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O4I3XVydGSwvadD1pj4UrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/8a1850c0-df5c-11f0-9f33-5cd352b2a64b",
       "type": "VIDEO",
       "sentiment": 0
@@ -3614,7 +3866,7 @@
       "publisher": "Yahoo Finance Video",
       "link": "https://finance.yahoo.com/video/private-credit-risks-oracles-debt-113052437.html",
       "publish_time": "2025-12-26T11:30:52Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O4I3XVydGSwvadD1pj4UrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/8a1850c0-df5c-11f0-9f33-5cd352b2a64b",
       "type": "VIDEO",
       "sentiment": 0
@@ -3628,7 +3880,7 @@
       "publisher": "Yahoo Finance Video",
       "link": "https://finance.yahoo.com/video/private-credit-risks-oracles-debt-113052437.html",
       "publish_time": "2025-12-26T11:30:52Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O4I3XVydGSwvadD1pj4UrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/8a1850c0-df5c-11f0-9f33-5cd352b2a64b",
       "type": "VIDEO",
       "sentiment": 0
@@ -3642,7 +3894,7 @@
       "publisher": "GuruFocus.com",
       "link": "https://finance.yahoo.com/news/amazon-stock-buy-ahead-2026-112924172.html",
       "publish_time": "2025-12-26T11:29:24Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/NnwbjhOpzYPVqCPugLaDQQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/2eb0f411ed6c0fd9b047234e363a9e43",
       "type": "STORY",
       "sentiment": 0
@@ -3656,7 +3908,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/news/know-ahead-abbott-laboratories-earnings-112637376.html",
       "publish_time": "2025-12-26T11:26:37Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EEVHhC2g6NRqKwSdx7NQow--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/26fcccad8a1735f3e7836064d3bb03ed",
       "type": "STORY",
       "sentiment": 0
@@ -3670,7 +3922,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/ishares-morningstar-small-cap-value-112002311.html",
       "publish_time": "2025-12-26T11:20:02Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EYRUzXGjRyiee50fz6.x3Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/737ffb82e07dc8bffb77e72d153c91f2",
       "type": "STORY",
       "sentiment": 0
@@ -3684,10 +3936,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/booking-holdings-insider-lowered-holding-110042588.html",
       "publish_time": "2025-12-26T11:00:42Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/SQUam9niyZkDWh3hKqNYXw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d0af16e5c7c63963044116144113de68",
       "type": "STORY",
-      "sentiment": -30
+      "sentiment": -25
     },
     {
       "symbol": "MCD",
@@ -3698,24 +3950,10 @@
       "publisher": "Yahoo Finance Video",
       "link": "https://finance.yahoo.com/video/fast-food-sector-analyst-shares-110028955.html",
       "publish_time": "2025-12-26T11:00:28Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8SA3Fv7GKlBXS8ZssTg6XQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-12/14c6c650-e01d-11f0-96df-c4baa3af4972",
       "type": "VIDEO",
       "sentiment": 0
-    },
-    {
-      "symbol": "NOW",
-      "name": "ServiceNow Inc.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "ServiceNow signs agreement to acquire Armis for $7.75bn",
-      "publisher": "Verdict",
-      "link": "https://finance.yahoo.com/news/servicenow-signs-agreement-acquire-armis-102248037.html",
-      "publish_time": "2025-12-26T10:22:48Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2A3OcCs6rcHHehmH9GzpoQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/verdict_626/cc5613e4051b98d7f20e3cb5f2df3882",
-      "type": "STORY",
-      "sentiment": -20
     },
     {
       "symbol": "DIS",
@@ -3726,7 +3964,7 @@
       "publisher": "GuruFocus.com",
       "link": "https://finance.yahoo.com/news/netflix-proven-winner-stock-priced-095155952.html",
       "publish_time": "2025-12-26T09:51:55Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/egaPe_mFJ88mtjIK07vTag--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/us.finance.gurufocus/0e78140e6feca5cb7aaaeff5036bfbdb",
       "type": "STORY",
       "sentiment": 0
@@ -3740,10 +3978,10 @@
       "publisher": "Pharmaceutical Technology",
       "link": "https://finance.yahoo.com/news/gilead-sciences-acquire-repare-rp-091629400.html",
       "publish_time": "2025-12-26T09:16:29Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Skd34SV_YJcEnkfUIh7hHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/pharmaceutical_technology_376/c216d93b6afbbde10914278d2679e4d5",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": -20
     },
     {
       "symbol": "EL",
@@ -3754,10 +3992,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/strong-buy-stocks-december-26th-085300850.html",
       "publish_time": "2025-12-26T08:53:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MFGvPCbM4rlJ2yLWuXGEHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/652a85ced373e6351f2b8277764c0288",
       "type": "STORY",
-      "sentiment": 4
+      "sentiment": 10
     },
     {
       "symbol": "SBUX",
@@ -3768,7 +4006,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/news/starbucks-q1-2026-earnings-expect-084225540.html",
       "publish_time": "2025-12-26T08:42:25Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zopfaqz7QKYm2zYHTcJuzQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/71238401370afedd121cd3042e4f4d47",
       "type": "STORY",
       "sentiment": 0
@@ -3782,10 +4020,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/best-income-stocks-buy-dec-081600126.html",
       "publish_time": "2025-12-26T08:16:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_88kzBIGG7vKCqDv_Tib7g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/f111fc23639399ffa7799438a837763e",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "OXY",
@@ -3796,7 +4034,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-26T08:00:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9Vz30R1EFPnghdlzRG2Rtg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/c8ccfa1f8655f1c5f7934595701dca34",
       "type": "STORY",
       "sentiment": 0
@@ -3810,7 +4048,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-26T08:00:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9Vz30R1EFPnghdlzRG2Rtg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/c8ccfa1f8655f1c5f7934595701dca34",
       "type": "STORY",
       "sentiment": 0
@@ -3824,7 +4062,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/zacks-analyst-blog-wells-fargo-072500423.html",
       "publish_time": "2025-12-26T07:25:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aB.utTVcfU6z.CUM.UO8Ww--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/eaae393aa5b2d4c0b3afb35ffb7dc1e0",
       "type": "STORY",
       "sentiment": 0
@@ -3838,22 +4076,8 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/zacks-analyst-blog-wells-fargo-072500423.html",
       "publish_time": "2025-12-26T07:25:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aB.utTVcfU6z.CUM.UO8Ww--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/eaae393aa5b2d4c0b3afb35ffb7dc1e0",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "TFC",
-      "name": "Truist Financial",
-      "sector": "Financials",
-      "industry": "Banks",
-      "title": "The Zacks Analyst Blog Truist Financial, Columbia Banking System and Columbia Banking System",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/news/zacks-analyst-blog-truist-financial-072200153.html",
-      "publish_time": "2025-12-26T07:22:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/znwQMHd1o_vuh_aZ7KlaaQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/a302f59310bd51da4bdd30fd12611e97",
       "type": "STORY",
       "sentiment": 0
     },
@@ -3953,7 +4177,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1Zyit.pa0akfWhKWcws4uw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/83e80e5e52a52b8a6e584bb2edd6a950",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 8
     },
     {
       "symbol": "COP",
@@ -3981,7 +4205,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hwJuc24XbW6.XHhMitaN7A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e0574e82615fa8a8970c3c3eb5888c6a",
       "type": "STORY",
-      "sentiment": 55
+      "sentiment": 45
     },
     {
       "symbol": "KHC",
@@ -4009,7 +4233,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mpisdmltHhXNlFujFB689g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/cdd37880e5422392a1965ca6f528c1cc",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": 0
     },
     {
       "symbol": "V",
@@ -4022,20 +4246,6 @@
       "publish_time": "2025-12-25T20:46:17Z",
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/v5nilLyMhgNh533C8yDyng--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/df3c4e49b44787b17f3ecf7cf6a52f59",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "BLK",
-      "name": "BlackRock Inc.",
-      "sector": "Financials",
-      "industry": "Asset Mgmt",
-      "title": "BlackRock shares 2026 shocking crypto outlook",
-      "publisher": "TheStreet",
-      "link": "https://finance.yahoo.com/news/blackrock-shares-2026-shocking-crypto-194629601.html",
-      "publish_time": "2025-12-25T19:46:29Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OBRvJEx2dJc6pSvwwraJSw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/46039aead781d8de152c599c07c714b8",
       "type": "STORY",
       "sentiment": 0
     },
@@ -4079,7 +4289,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/LQoLXM6iFhAJ6ED1S9dlzQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/68ddf55c507b28c1f4dab91af54463cf",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 3
     },
     {
       "symbol": "LMT",
@@ -4124,20 +4334,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "MS",
-      "name": "Morgan Stanley",
-      "sector": "Financials",
-      "industry": "Investment Banks",
-      "title": "Analysts Confident in NXP Semiconductors (NXPI) Amid Improving Outlook on Diversified Analog Semiconductor Market",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/news/analysts-confident-nxp-semiconductors-nxpi-165610552.html",
-      "publish_time": "2025-12-25T16:56:10Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/H8kpDInpLUA3iqVPGD_GnA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/64aaad5f944e251938405fe0a96f6d1a",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "NEE",
       "name": "NextEra Energy",
       "sector": "Utilities",
@@ -4176,20 +4372,6 @@
       "publish_time": "2025-12-25T14:58:00Z",
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QwIFU1eMPtlli_ZTerukYg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/eeeae44317c424bc320a28d287e63e6f",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "UNH",
-      "name": "UnitedHealth Group",
-      "sector": "Healthcare",
-      "industry": "Insurance",
-      "title": "2 Warren Buffett Stocks To Buy Hand Over Fist and 1 To Avoid",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/2-warren-buffett-stocks-buy-145600714.html",
-      "publish_time": "2025-12-25T14:56:00Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BA_ipsnupso5QPrKr.u5Ow--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8654f0398778ef1965472bc0f7b4d1c2",
       "type": "STORY",
       "sentiment": 0
     },
@@ -4261,7 +4443,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Mr_NQryVHF3IKJJww3Lkxg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c8b8327cfb7492ecc3fa3182988bf088",
       "type": "STORY",
-      "sentiment": 4
+      "sentiment": 5
     },
     {
       "symbol": "SCHW",
@@ -4272,7 +4454,7 @@
       "publisher": "Investor's Business Daily",
       "link": "",
       "publish_time": "2025-12-25T13:30:21Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wkYwBh1dudevPg_FFfeEjg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/118a472f44794f78d82f1a8a7e967e83",
       "type": "STORY",
       "sentiment": 0
@@ -4286,10 +4468,10 @@
       "publisher": "Cryptonews",
       "link": "https://finance.yahoo.com/news/crypto-derivatives-enter-institutional-era-131634910.html",
       "publish_time": "2025-12-25T13:16:34Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/u5eOVYHSSyMEq.h138lAWA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/cryptonews_us_711/324072225cd24b8f663adbcfa1d1f5fd",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "SBUX",
@@ -4300,7 +4482,7 @@
       "publisher": "TheStreet",
       "link": "https://finance.yahoo.com/news/starbucks-open-christmas-2025-130000113.html",
       "publish_time": "2025-12-25T13:00:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6VcoHh9nmwDZnRe.GbI5tQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/8fe9d1435a30f7161422e29123ea14fb",
       "type": "STORY",
       "sentiment": 0
@@ -4314,7 +4496,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/e-commerce-today-emerging-opportunities-123721538.html",
       "publish_time": "2025-12-25T12:37:21Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MGzVhOG_S8oB_qoTWj6s0w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d0bd720f24381ca758d4adc12e9dc4d5",
       "type": "STORY",
       "sentiment": 0
@@ -4328,7 +4510,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/2026-outlook-sparking-analyst-interest-123523118.html",
       "publish_time": "2025-12-25T12:35:23Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/s1dYKd3ZYisRsS7XclIMwg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/423bc452a6c68bcb513392d97baeeeb1",
       "type": "STORY",
       "sentiment": 0
@@ -4342,7 +4524,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/news/2026-outlook-sparking-analyst-interest-123523118.html",
       "publish_time": "2025-12-25T12:35:23Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/s1dYKd3ZYisRsS7XclIMwg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/423bc452a6c68bcb513392d97baeeeb1",
       "type": "STORY",
       "sentiment": 0
@@ -4356,38 +4538,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/phillips-66-insiders-added-us-120007688.html",
       "publish_time": "2025-12-25T12:00:07Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7CBixlosIcS7LBFuG2Y9Sg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/3a7514e97bfd657fa693ec721eb25f21",
       "type": "STORY",
       "sentiment": 20
-    },
-    {
-      "symbol": "T",
-      "name": "AT&T Inc.",
-      "sector": "Communication",
-      "industry": "Telecom",
-      "title": "AT&T (T): Reassessing Valuation After Recent Share Price Pullback and One-Year Total Return",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/t-t-reassessing-valuation-recent-110732127.html",
-      "publish_time": "2025-12-25T11:07:32Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/m8lQUQmjEy.WY9HSTgAXoQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/9dd5c40fb2386644045630aa9816c6f0",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "F",
-      "name": "Ford Motor",
-      "sector": "Consumer Disc.",
-      "industry": "Auto",
-      "title": "Has Ford’s 43.2% Surge in 2025 Run Ahead of Its Fundamentals?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/ford-43-2-surge-2025-110638818.html",
-      "publish_time": "2025-12-25T11:06:38Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3Ne77wyHpZ_OYjCPp4jiuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c5356b75aa30dcd8573f3446306eb40a",
-      "type": "STORY",
-      "sentiment": 0
     },
     {
       "symbol": "LOW",
@@ -4398,10 +4552,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/lowes-pro-focused-acquisitions-amid-110555831.html",
       "publish_time": "2025-12-25T11:05:55Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TSx1FV7.uuC07fy2Y3BN0w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b9ce40181c37b005da873a5a03b2b8d5",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -40
     },
     {
       "symbol": "RTX",
@@ -4412,10 +4566,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/why-rtx-rtx-5-2-110530854.html",
       "publish_time": "2025-12-25T11:05:30Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BUHu7uRCBq0T5HF87QrwXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/44f59cf0caf7002605650b387ad96f3a",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 55
     },
     {
       "symbol": "PYPL",
@@ -4426,10 +4580,10 @@
       "publisher": "Fortune",
       "link": "https://finance.yahoo.com/news/real-ai-revolution-going-information-110300670.html",
       "publish_time": "2025-12-25T11:03:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Plmqqr3HrM0TXqzjE64hew--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/bba8c9b94b56b51ba05d3f6f26f83687",
       "type": "STORY",
-      "sentiment": 2
+      "sentiment": 5
     },
     {
       "symbol": "CHTR",
@@ -4440,7 +4594,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/charter-communications-inc-nasdaq-chtr-110040705.html",
       "publish_time": "2025-12-25T11:00:40Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jtPCFEsvLbg4NUfN5u6nhg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b16307b01616abf5e1d49ec1ff18005f",
       "type": "STORY",
       "sentiment": 0
@@ -4454,10 +4608,10 @@
       "publisher": "TipRanks",
       "link": "https://finance.yahoo.com/news/accenture-acquire-cabel-industry-terms-110033768.html",
       "publish_time": "2025-12-25T11:00:33Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8HggROvCQEA6bwvf61c1gA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/tipranks_452/4d2940ac9f576a40875750e088880ce1",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -10
     },
     {
       "symbol": "VZ",
@@ -4468,10 +4622,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/t-mobile-us-still-attractive-091019025.html",
       "publish_time": "2025-12-25T09:10:19Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ikIM3choali7bGFOn30QoQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/bf6ec0dc47399350c227657e64fc8df0",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -6
     },
     {
       "symbol": "TMUS",
@@ -4482,10 +4636,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/t-mobile-us-still-attractive-091019025.html",
       "publish_time": "2025-12-25T09:10:19Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ikIM3choali7bGFOn30QoQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/bf6ec0dc47399350c227657e64fc8df0",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "TJX",
@@ -4496,7 +4650,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/news/could-tjx-reach-200-2026-090300823.html",
       "publish_time": "2025-12-25T09:03:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/t6rQHdkdMdq6mjLeunE8XA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/fd45c212e0b656a8f9fee53139448434",
       "type": "STORY",
       "sentiment": 0
@@ -4510,24 +4664,10 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-25T08:12:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zg_MoF77KxUfzS3Qht_ccA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/a765bee5e0069a8502fb7ee3fd274d75",
       "type": "STORY",
       "sentiment": 0
-    },
-    {
-      "symbol": "T",
-      "name": "AT&T Inc.",
-      "sector": "Communication",
-      "industry": "Telecom",
-      "title": "Goldman Sachs Forecasts AT&T (T) Buyback Ramp-Up Fueled by 8% Free Cash Flow Growth",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/news/goldman-sachs-forecasts-t-t-081022634.html",
-      "publish_time": "2025-12-25T08:10:22Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/AObP_9BIAh8kUO50Uz4LgA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/e127bbea2ea24c24f6e4ad4d2cb5e3ee",
-      "type": "STORY",
-      "sentiment": 45
     },
     {
       "symbol": "NEM",
@@ -4538,7 +4678,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/too-consider-newmont-173-rally-080930872.html",
       "publish_time": "2025-12-25T08:09:30Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uVUzctpLIyLVjJuJThnpLw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/789e6a5f6b6eb441f92758d9b79a8d1d",
       "type": "STORY",
       "sentiment": 0
@@ -4552,10 +4692,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/investors-may-respond-comcast-cmcsa-071147154.html",
       "publish_time": "2025-12-25T07:11:47Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KHnPJnct058LKCFEUqfcHw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/87cf26af07cbc2dde936e9c0769fddd3",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 5
     },
     {
       "symbol": "FDX",
@@ -4566,7 +4706,7 @@
       "publisher": "StockStory",
       "link": "https://finance.yahoo.com/news/5-most-interesting-analyst-questions-053118975.html",
       "publish_time": "2025-12-25T05:31:18Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DijPzyRd0ciZDFuaiSHHXw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/5daff3cc7a8ce9123c9d09de7dea7cfd",
       "type": "STORY",
       "sentiment": 0
@@ -4580,7 +4720,7 @@
       "publisher": "StockStory",
       "link": "https://finance.yahoo.com/news/5-revealing-analyst-questions-accenture-053050890.html",
       "publish_time": "2025-12-25T05:30:50Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hROx7phpykaCKDqPyyjxCg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/d23c406cde37a92a772190211e54fb72",
       "type": "STORY",
       "sentiment": 0
@@ -4594,7 +4734,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/ceo-breakup-plan-could-game-050940082.html",
       "publish_time": "2025-12-25T05:09:40Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hBm14Cv8rlIaJQhBUPkcuQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1c3298bb00f7f6e1fefadbf78d8a3631",
       "type": "STORY",
       "sentiment": 0
@@ -4608,10 +4748,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/ceo-breakup-plan-could-game-050940082.html",
       "publish_time": "2025-12-25T05:09:40Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hBm14Cv8rlIaJQhBUPkcuQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1c3298bb00f7f6e1fefadbf78d8a3631",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 40
     },
     {
       "symbol": "MA",
@@ -4639,21 +4779,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Eq89YpHD753TqNgHdLhWWg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/13084f782bf37f7c367bffc0690421cd",
       "type": "STORY",
-      "sentiment": -20
-    },
-    {
-      "symbol": "VZ",
-      "name": "Verizon Comm.",
-      "sector": "Communication",
-      "industry": "Telecom",
-      "title": "If You'd Invested $10,000 in Verizon Communications 10 Years Ago, Here's How Much You'd Have Today",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/news/youd-invested-10-000-verizon-025300368.html",
-      "publish_time": "2025-12-25T02:53:00Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wMb0Hqx6PoP8cencinud9Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/68d6328da56c82a2a8469a209a62158c",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -35
     },
     {
       "symbol": "GE",
@@ -4681,7 +4807,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/o8dms6A5tWxVSV4AwaT4IA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/7b2bd9f98ebfe6790ff5ad7b6d248a54",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 30
     },
     {
       "symbol": "DE",
@@ -4709,7 +4835,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/i0LJ0yEbycsKqU1kjwh53g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/9e8f91ef66790b2dbb6b57fd74806935",
       "type": "STORY",
-      "sentiment": 75
+      "sentiment": 50
     },
     {
       "symbol": "GE",
@@ -4779,7 +4905,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fNZOGYehJvXQf0L3V7Zs3g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e629b5955390014615f0bd890cb3e1dc",
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": -35
     },
     {
       "symbol": "LMT",
@@ -4877,7 +5003,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PzpA3zQ5.H.JCR52WP7cJw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/17a4db66bb13bdabcbf848550a6ea15a",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "MRK",
@@ -4905,7 +5031,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/v4kFsert0DI2EO2PVwipuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/5ecaf2a9bf082a5f3a554e6526b34be0",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "AMAT",
@@ -4933,7 +5059,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wQE1Wp5YMk8o757Zat4A7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b087a9ba30d62c7848187ebff370bd36",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 35
     },
     {
       "symbol": "V",
@@ -4947,7 +5073,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8qyP8dalVELeu1D1cfPUiQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/cnn_business_videos_909/577d52cb48055fc9442924149bb141e0",
       "type": "VIDEO",
-      "sentiment": 5
+      "sentiment": 3
     },
     {
       "symbol": "CVX",
@@ -5045,7 +5171,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_bxt7_jhMvK30PZ9xhJ_BQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/1b40eb5468b4169ccaae74a0c512c12d",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 25
     },
     {
       "symbol": "TJX",
@@ -5076,20 +5202,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "KO",
-      "name": "Coca-Cola Co.",
-      "sector": "Consumer Stpl.",
-      "industry": "Beverages",
-      "title": "Top Stock Reports for AbbVie, Coca-Cola & Chevron",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/news/top-stock-reports-abbvie-coca-181000803.html",
-      "publish_time": "2025-12-24T18:10:00Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/504paFCmCE4UPjnTBuMOJA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/68d0630f829e1f0c836d5ef5fd36d932",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "SLB",
       "name": "Schlumberger",
       "sector": "Energy",
@@ -5101,7 +5213,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xpbGA5eeQDQuSCudSaf1Ww--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/b9268773cbfaab254fb0da6f367ee9fe",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 45
     },
     {
       "symbol": "NEM",
@@ -5174,34 +5286,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "CMCSA",
-      "name": "Comcast Corp.",
-      "sector": "Communication",
-      "industry": "Cable",
-      "title": "Should You Sell Netflix Stock Before It Wins the Warner Bros Takeover?",
-      "publisher": "Barchart",
-      "link": "https://finance.yahoo.com/news/sell-netflix-stock-wins-warner-170412592.html",
-      "publish_time": "2025-12-24T17:04:12Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FgfYWTy.121djKi8IHXbiA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/dab6a5019d999f68d85c24ad2b767d5a",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GE",
-      "name": "GE Aerospace",
-      "sector": "Industrials",
-      "industry": "Conglomerate",
-      "title": "Aerospace Leader Howmet Poised To Hit New Buy Point",
-      "publisher": "Investor's Business Daily",
-      "link": "",
-      "publish_time": "2025-12-24T16:39:21Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xWLvElqJyKAiMbK7xk6IYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/33b073eb8d5f5adf9c98d5d1c32a543e",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "SCHW",
       "name": "Charles Schwab",
       "sector": "Financials",
@@ -5269,7 +5353,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Zm0rtCsoG3P6xbbogG2yBg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/432c82325b0a409c39f8f58f21430821",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "CCI",
@@ -5353,7 +5437,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/36EZ9JlV9g1ecYZ35UHLMQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/65410c79c0b8184da264ed17fda575ce",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "DE",
@@ -5367,7 +5451,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JGyogqjQxYrFBQBYbTgYJg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c64f5ab03fcf550302d43ce1f74af31e",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "GILD",
@@ -5381,7 +5465,7 @@
       "time_ago": "3d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": -20
     },
     {
       "symbol": "SCHW",
@@ -5395,7 +5479,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/v4kFsert0DI2EO2PVwipuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/5ecaf2a9bf082a5f3a554e6526b34be0",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "VLO",
@@ -5409,7 +5493,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Xhlfn4mpAJXpE0vIOolxTw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/f889276f4a638f3c7a79c0e3e6b768c1",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "AMAT",
@@ -5423,7 +5507,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/tzvsO_ypF28r9r7fHDBqQg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/d87cc8e5693753ce8e232e0a527e4885",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 10
     },
     {
       "symbol": "MA",
@@ -5465,7 +5549,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/f0JAPbykLEFnTDBjmcDbuw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/48b4bb7ff6905afc5bf2990765943a80",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 60
     },
     {
       "symbol": "HD",
@@ -5479,7 +5563,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/T9IoFLx.nUDVTWxje4kaEQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/0c6f98f4bf655bec3b199bc1a71b8b85",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 30
     },
     {
       "symbol": "EQIX",
@@ -5493,7 +5577,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/v4kFsert0DI2EO2PVwipuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/5ecaf2a9bf082a5f3a554e6526b34be0",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 25
     },
     {
       "symbol": "ECL",
@@ -5577,7 +5661,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/x5FMJrW4i3HU2CGCTR3w9w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/d3e6082245f05efd98282f79c39d114d",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "DUK",
@@ -5644,7 +5728,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/well-boston-scientific-placed-long-134000022.html",
       "publish_time": "2025-12-24T13:40:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VT27QYZpgF8G3bYXe5qpmg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9c1d11cd27737fac4805145de6e5eee0",
       "type": "STORY",
       "sentiment": 0
@@ -5658,10 +5742,66 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/cvs-healths-nyse-cvs-investors-130014087.html",
       "publish_time": "2025-12-24T13:00:14Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ihzyNjB8RrracJy5ghMgpQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b281afd73848ff2f053c086d0c5a15e9",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "These 6 stocks will lead the $1 trillion chip surge in 2026, BofA says",
+      "publisher": "Yahoo Finance",
+      "link": "https://finance.yahoo.com/news/these-6-stocks-will-lead-the-1-trillion-chip-surge-in-2026-bofa-says-130008431.html",
+      "publish_time": "2025-12-24T13:00:08Z",
+      "time_ago": "4d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FIsUZvf.6jguFsGpggOJgw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/e660f170-c594-11f0-b79f-c344fab0fe22",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "sector": "Technology",
+      "industry": "Social Media",
+      "title": "These 6 stocks will lead the $1 trillion chip surge in 2026, BofA says",
+      "publisher": "Yahoo Finance",
+      "link": "https://finance.yahoo.com/news/these-6-stocks-will-lead-the-1-trillion-chip-surge-in-2026-bofa-says-130008431.html",
+      "publish_time": "2025-12-24T13:00:08Z",
+      "time_ago": "4d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FIsUZvf.6jguFsGpggOJgw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/e660f170-c594-11f0-b79f-c344fab0fe22",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "These 6 stocks will lead the $1 trillion chip surge in 2026, BofA says",
+      "publisher": "Yahoo Finance",
+      "link": "https://finance.yahoo.com/news/these-6-stocks-will-lead-the-1-trillion-chip-surge-in-2026-bofa-says-130008431.html",
+      "publish_time": "2025-12-24T13:00:08Z",
+      "time_ago": "4d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FIsUZvf.6jguFsGpggOJgw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/e660f170-c594-11f0-b79f-c344fab0fe22",
+      "type": "STORY",
+      "sentiment": 25
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "These 6 stocks will lead the $1 trillion chip surge in 2026, BofA says",
+      "publisher": "Yahoo Finance",
+      "link": "https://finance.yahoo.com/news/these-6-stocks-will-lead-the-1-trillion-chip-surge-in-2026-bofa-says-130008431.html",
+      "publish_time": "2025-12-24T13:00:08Z",
+      "time_ago": "4d ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FIsUZvf.6jguFsGpggOJgw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2025-11/e660f170-c594-11f0-b79f-c344fab0fe22",
+      "type": "STORY",
+      "sentiment": 25
     },
     {
       "symbol": "CRM",
@@ -5672,10 +5812,10 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2025-12-24T13:00:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/kp4GGZMOC1cUnjLUgGRnvw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/dc743bf0a36c942d91d38b37bf9a4951",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 20
     },
     {
       "symbol": "PNC",
@@ -5686,7 +5826,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/jpmorgan-mulls-entering-crypto-trading-125700000.html",
       "publish_time": "2025-12-24T12:57:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EixCGFlddLRVcUPG7GCIlQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/f669525e63f99853aaf44cb421e89764",
       "type": "STORY",
       "sentiment": 0
@@ -5700,7 +5840,7 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/3-energy-stocks-investors-invest-125500992.html",
       "publish_time": "2025-12-24T12:55:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qSUF5d37PVGpxY8kP_2O3w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/841b616719fec3f5c7ceecd7f8917de1",
       "type": "STORY",
       "sentiment": 0
@@ -5714,10 +5854,10 @@
       "publisher": "Zacks",
       "link": "https://finance.yahoo.com/news/3-energy-stocks-investors-invest-125500992.html",
       "publish_time": "2025-12-24T12:55:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qSUF5d37PVGpxY8kP_2O3w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/841b616719fec3f5c7ceecd7f8917de1",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "MA",
@@ -5728,10 +5868,10 @@
       "publisher": "Electronic Payments",
       "link": "https://finance.yahoo.com/news/mastercard-partners-tencent-midas-digital-121402946.html",
       "publish_time": "2025-12-24T12:14:02Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ptz0JE53y883PU0rc0mGtw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/electronic_payments_938/7a7cf02d662bd3e1741171707b07d8b8",
       "type": "STORY",
-      "sentiment": 55
+      "sentiment": 45
     },
     {
       "symbol": "EOG",
@@ -5742,7 +5882,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/3-top-dividend-stocks-consider-113144533.html",
       "publish_time": "2025-12-24T11:31:44Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FjpDo9XFSGzwQ0PfsWH6gw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/81b504139a1f8533532068eb78985d92",
       "type": "STORY",
       "sentiment": 0
@@ -5756,7 +5896,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/vanguard-flips-the-script-on-6040-investment-strategy-110026190.html",
       "publish_time": "2025-12-24T11:00:26Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N4oyycQimhvK6uim29j2Dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2022-08/00abfbc0-1c3c-11ed-a7bd-874250c9d894",
       "type": "STORY",
       "sentiment": 0
@@ -5770,7 +5910,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/vanguard-flips-the-script-on-6040-investment-strategy-110026190.html",
       "publish_time": "2025-12-24T11:00:26Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N4oyycQimhvK6uim29j2Dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2022-08/00abfbc0-1c3c-11ed-a7bd-874250c9d894",
       "type": "STORY",
       "sentiment": 0
@@ -5784,7 +5924,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/vanguard-flips-the-script-on-6040-investment-strategy-110026190.html",
       "publish_time": "2025-12-24T11:00:26Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N4oyycQimhvK6uim29j2Dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2022-08/00abfbc0-1c3c-11ed-a7bd-874250c9d894",
       "type": "STORY",
       "sentiment": 0
@@ -5798,7 +5938,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/vanguard-flips-the-script-on-6040-investment-strategy-110026190.html",
       "publish_time": "2025-12-24T11:00:26Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N4oyycQimhvK6uim29j2Dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2022-08/00abfbc0-1c3c-11ed-a7bd-874250c9d894",
       "type": "STORY",
       "sentiment": 0
@@ -5812,7 +5952,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/news/vanguard-flips-the-script-on-6040-investment-strategy-110026190.html",
       "publish_time": "2025-12-24T11:00:26Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N4oyycQimhvK6uim29j2Dw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2022-08/00abfbc0-1c3c-11ed-a7bd-874250c9d894",
       "type": "STORY",
       "sentiment": 0
@@ -5826,10 +5966,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/excited-amgen-inc-nasdaq-amgn-110023824.html",
       "publish_time": "2025-12-24T11:00:23Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4JW2XbB_h.UTnRuK7GTo6Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8ab44b8ef28c7f69299492d5b9c5a46c",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "CAT",
@@ -5840,7 +5980,7 @@
       "publisher": "The Wall Street Journal",
       "link": "",
       "publish_time": "2025-12-24T10:30:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nKljMFkj0vFi9x9zGKopjQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/49e02403003c9d39c0a1f589bc7e119a",
       "type": "STORY",
       "sentiment": 0
@@ -5854,7 +5994,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/crown-castle-cci-evaluating-valuation-051047710.html",
       "publish_time": "2025-12-24T05:10:47Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/HGFLxihtM_YYgvoonH3Xug--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e110b4bc76d096c17c997c6c9e400964",
       "type": "STORY",
       "sentiment": 0
@@ -5868,10 +6008,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/news/slb-slb-long-term-aramco-050854665.html",
       "publish_time": "2025-12-24T05:08:54Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MbAegr55Oarlpf4ZPG6tXw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1a7dd77fe5361c6973015c0679777dbe",
       "type": "STORY",
-      "sentiment": 60
+      "sentiment": 50
     },
     {
       "symbol": "UPS",
@@ -5899,21 +6039,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fA.sPQyt6gg.SJqC9WsY7A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/acc4913d7d88da3fed9183a6f18dbd22",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "PYPL",
-      "name": "PayPal Holdings",
-      "sector": "Financials",
-      "industry": "Payments",
-      "title": "2 Oversold Stocks Set for a Comeback and 1 We Brush Off",
-      "publisher": "StockStory",
-      "link": "https://finance.yahoo.com/news/2-oversold-stocks-set-comeback-043423785.html",
-      "publish_time": "2025-12-24T04:34:23Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/s1Gi4KiDeG6t773ikGWI_w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/6e2814a54f1dd825f0d0d3c983fe1986",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -5
     },
     {
       "symbol": "PG",
@@ -5969,7 +6095,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gFJAcTEmMJwNtU8K736YSQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d5299384fee6117119107ccba3304371",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 7
     },
     {
       "symbol": "MO",
@@ -5983,7 +6109,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/i16ID6M03eSyJxIF1cV8kA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/558d32e86d2841d86048b3aae7e15412",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "PEP",
@@ -6011,21 +6137,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5Op3XFM3eyLX_MfvLrAaxQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b0df2a1110b34430640e65661a1ab5f9",
       "type": "STORY",
-      "sentiment": 6
-    },
-    {
-      "symbol": "SCHW",
-      "name": "Charles Schwab",
-      "sector": "Financials",
-      "industry": "Brokers",
-      "title": "Review & Preview: Next Stop? S&P 7000.",
-      "publisher": "Barrons.com",
-      "link": "",
-      "publish_time": "2025-12-24T01:29:00Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Eugzn1_7mDocWpeqoc2fFg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/12ea0f43d8f8307249a68d1cb2e0587e",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "VLO",
@@ -6039,7 +6151,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/onirgqVJDCdeXU3Q045Lvg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d3a411057b98955e763856eb6a647e44",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -5
     },
     {
       "symbol": "AIG",
@@ -6053,7 +6165,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iAznJQM5jV.txtQXTrxLCA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c211e318adee311a1304b134b8a64223",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 1
     },
     {
       "symbol": "SLB",
@@ -6081,7 +6193,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iAznJQM5jV.txtQXTrxLCA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c211e318adee311a1304b134b8a64223",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 1
     },
     {
       "symbol": "DOW",
@@ -6109,7 +6221,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9ReIhmyG0MwcdpvIBnoK2A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/tipranks_452/37ff966d05155107fc405e11c714c7b9",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 50
     },
     {
       "symbol": "MO",
@@ -6137,7 +6249,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DK8npGph96VD.rfqWGn5Tg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/e4f0c9cac9ca53a5fe87c6d6fdc6681c",
       "type": "STORY",
-      "sentiment": 25
+      "sentiment": 35
     },
     {
       "symbol": "GD",
@@ -6235,7 +6347,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/i16ID6M03eSyJxIF1cV8kA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/558d32e86d2841d86048b3aae7e15412",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "D",
@@ -6249,7 +6361,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OVG.t_7NZW7HoeuXVQhp5g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/mt_newswires_premium_news_706/51e7b6364b8733ff2108a0e3d6aa247e",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -50
     },
     {
       "symbol": "PNC",
@@ -6277,7 +6389,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mXkfq59s15Lozc6CA6iy9w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/5102c7cc524ab92392c1c3e5f0753c65",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 25
     },
     {
       "symbol": "ABT",
@@ -6291,7 +6403,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QpAlSFHnVgW5eIBlPjzfJw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/ae98f9f4477af1de31a0a61cde692d41",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 25
     },
     {
       "symbol": "LOW",
@@ -6322,20 +6434,6 @@
       "sentiment": -35
     },
     {
-      "symbol": "OXY",
-      "name": "Occidental Petro",
-      "sector": "Energy",
-      "industry": "E&P",
-      "title": "Occidental Petroleum Stock Has Tanked - But It May Hike Its Dividend - Time to Buy?",
-      "publisher": "Barchart",
-      "link": "https://finance.yahoo.com/news/occidental-petroleum-stock-tanked-may-182604035.html",
-      "publish_time": "2025-12-23T18:26:04Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Uecx_.drqaGRJF8PZJsUfA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/f615b37f1ceb741568d0397ea647a444",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "UNP",
       "name": "Union Pacific",
       "sector": "Industrials",
@@ -6347,7 +6445,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/AVLsc3QCmHHUKI0nDmsrNA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/6846143afc6296b746b6d24db28cb1cb",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "D",
@@ -6361,7 +6459,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1yljjauxIz0pD8mQAIv45w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/99df4bfdc9b5bf883742f17530182cd0",
       "type": "STORY",
-      "sentiment": -60
+      "sentiment": -75
     },
     {
       "symbol": "PG",
@@ -6375,7 +6473,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cK4GRr2fesZ0Sulz2QUHjg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/7f3667ffb0901a87f0646d99fc0299de",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 0
     },
     {
       "symbol": "CL",
@@ -6403,7 +6501,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fqISo3UjY8AlmToB0jRTag--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/47f9ce18c72a59f4e8cddbe44dd13b2e",
       "type": "STORY",
-      "sentiment": -3
+      "sentiment": 0
     },
     {
       "symbol": "CME",
@@ -6417,7 +6515,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BZAf0sGV85GAu6_Qftdt3w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/570fc40480de603363be3c3ff537cde9",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 40
     },
     {
       "symbol": "PG",
@@ -6445,27 +6543,13 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O3DqGC1mZ.o0tcGzk2fWEg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/f276330967876da67f0e039d7297f860",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 55
     },
     {
       "symbol": "DHR",
       "name": "Danaher Corp.",
       "sector": "Healthcare",
       "industry": "Equipment",
-      "title": "The Bill Gates Portfolio: 3 Of His Ancor Holdings Every Investor Should Consider",
-      "publisher": "24/7 Wall St.",
-      "link": "https://finance.yahoo.com/news/bill-gates-portfolio-3-ancor-164038207.html",
-      "publish_time": "2025-12-23T16:40:38Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KQygJT9msVEAXuTIXXs4fA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/42541a955c71258d402d35b70fbcd89f",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "DE",
-      "name": "Deere & Co.",
-      "sector": "Industrials",
-      "industry": "Machinery",
       "title": "The Bill Gates Portfolio: 3 Of His Ancor Holdings Every Investor Should Consider",
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/news/bill-gates-portfolio-3-ancor-164038207.html",
@@ -6501,7 +6585,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wxmSqWEoO7vrRtWtBtBKkQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9c71c9b0ad04f5ae602b6d8dc461755e",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "CCI",
@@ -6515,7 +6599,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jsezZBIq9Cpl_SEU3axoNw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/b722e658bf812e4a58e158c041871ac6",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 7
     },
     {
       "symbol": "GILD",
@@ -6529,7 +6613,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vJKDuI01.9w5BqFWz8iwQQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/6f5ec5179112ff02b207f8fd4685c071",
       "type": "STORY",
-      "sentiment": 25
+      "sentiment": 30
     },
     {
       "symbol": "PM",
@@ -6613,7 +6697,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Iu37D2mm3Zx1u.iQQ4MxUw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/670d1917693293f70179651625deb88f",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 5
     },
     {
       "symbol": "AIG",
@@ -6655,7 +6739,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wWH_bZ_Pg8IIFWiHu6880A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/1a018a29aef5adbf5b4319f32058e209",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 18
     },
     {
       "symbol": "INTU",
@@ -6669,7 +6753,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Iu37D2mm3Zx1u.iQQ4MxUw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/670d1917693293f70179651625deb88f",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "AMAT",
@@ -6684,216 +6768,6 @@
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/T9IoFLx.nUDVTWxje4kaEQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/0c6f98f4bf655bec3b199bc1a71b8b85",
       "type": "STORY",
       "sentiment": 0
-    },
-    {
-      "symbol": "TMO",
-      "name": "Thermo Fisher",
-      "sector": "Healthcare",
-      "industry": "Equipment",
-      "title": "Favorable Results and Improved Guidance Lifted Thermo Fisher Scientific (TMO) in Q3",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/news/favorable-results-improved-guidance-lifted-130954889.html",
-      "publish_time": "2025-12-23T13:09:54Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cR1.a2CvT6vdKzgX0QKPOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/4505f322faedfbfafb576fe4b20bd921",
-      "type": "STORY",
-      "sentiment": 80
-    },
-    {
-      "symbol": "INTU",
-      "name": "Intuit Inc.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "Parnassus Core Equity Fund Sold Intuit (INTU) After Share Price Appreciation",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/news/parnassus-core-equity-fund-sold-130814542.html",
-      "publish_time": "2025-12-23T13:08:14Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UA7qjW4aPFd7fmK_6aSJiw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/014908c92699c75defe19d3897fbc058",
-      "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "HON",
-      "name": "Honeywell Intl",
-      "sector": "Industrials",
-      "industry": "Conglomerate",
-      "title": "With 78% institutional ownership, Honeywell International Inc. (NASDAQ:HON) is a favorite amongst the big guns",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/78-institutional-ownership-honeywell-international-130016361.html",
-      "publish_time": "2025-12-23T13:00:16Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gU.5jWXXIZOzVezJNqKtUQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e9a9f427eb76d40a540ad2f355243566",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "SLB",
-      "name": "Schlumberger",
-      "sector": "Energy",
-      "industry": "Services",
-      "title": "SLB Earnings Preview: What to Expect",
-      "publisher": "Barchart",
-      "link": "https://finance.yahoo.com/news/slb-earnings-preview-expect-125327477.html",
-      "publish_time": "2025-12-23T12:53:27Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8OhBMahbztyQrDwQ9skeDw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/94d6b991d5fc816a31205cd2c6ea6312",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "MDT",
-      "name": "Medtronic plc",
-      "sector": "Healthcare",
-      "industry": "Devices",
-      "title": "2026 Rate Cuts Coming as Inflation Drops: 5 Quality Dividend Stocks to Buy Now",
-      "publisher": "24/7 Wall St.",
-      "link": "https://finance.yahoo.com/news/2026-rate-cuts-coming-inflation-124220875.html",
-      "publish_time": "2025-12-23T12:42:20Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/HXy3VY_VI7z_cMQ65JiIxQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/0bbdbea1d8f9697a81be5c106e781bbf",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "MDT",
-      "name": "Medtronic plc",
-      "sector": "Healthcare",
-      "industry": "Devices",
-      "title": "Should You Hold On To BSX Stock Despite Its Premium Valuation?",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/news/hold-bsx-stock-despite-premium-122000453.html",
-      "publish_time": "2025-12-23T12:20:00Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/VT27QYZpgF8G3bYXe5qpmg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/9c1d11cd27737fac4805145de6e5eee0",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "TXN",
-      "name": "Texas Instruments",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Texas Instruments (NASDAQ:TXN) Might Be Having Difficulty Using Its Capital Effectively",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/texas-instruments-nasdaq-txn-might-110024748.html",
-      "publish_time": "2025-12-23T11:00:24Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/LhuBoIzDPefMzGr02DRW.Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/2cd8080910385a861f383635151a8615",
-      "type": "STORY",
-      "sentiment": -25
-    },
-    {
-      "symbol": "TMO",
-      "name": "Thermo Fisher",
-      "sector": "Healthcare",
-      "industry": "Equipment",
-      "title": "Thermo Fisher Scientific Insiders Sold US$3.6m Of Shares Suggesting Hesitancy",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/thermo-fisher-scientific-insiders-sold-110009027.html",
-      "publish_time": "2025-12-23T11:00:09Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TtMoTzf8d3q9bcBGh62wvA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/bbf788be9fece7d0a8c4e3c9f7496edb",
-      "type": "STORY",
-      "sentiment": -20
-    },
-    {
-      "symbol": "CAT",
-      "name": "Caterpillar Inc.",
-      "sector": "Industrials",
-      "industry": "Machinery",
-      "title": "Wall Street Sees Cyclicals Rallying as Economic Growth Picks Up",
-      "publisher": "Bloomberg",
-      "link": "https://finance.yahoo.com/news/wall-street-sees-cyclicals-rallying-103000417.html",
-      "publish_time": "2025-12-23T10:30:00Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WI9pqYqpSEH008RI3n7RIA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/bloomberg_holding_pen_162/b7a8a22e64c443202dad3255e2706fb7",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "APD",
-      "name": "Air Products",
-      "sector": "Materials",
-      "industry": "Chemicals",
-      "title": "Does Air Products-Yara Clean Ammonia Push Reshape the Bull Case for Air Products (APD)?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/does-air-products-yara-clean-100918713.html",
-      "publish_time": "2025-12-23T10:09:18Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0WzkkG3xzmSsgl3QBa6ijw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8597d57fb23bd08928ffc52adef1ef1d",
-      "type": "STORY",
-      "sentiment": 15
-    },
-    {
-      "symbol": "EMR",
-      "name": "Emerson Electric",
-      "sector": "Industrials",
-      "industry": "Electrical",
-      "title": "Does Emerson Electric’s Automation Pivot Justify Its Strong Multi Year Share Price Rally?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/does-emerson-electric-automation-pivot-081526679.html",
-      "publish_time": "2025-12-23T08:15:26Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dWzUR73nsVWAKuwZc7JCAg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/eb03377ff039edc812f0036ab5156b47",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "HON",
-      "name": "Honeywell Intl",
-      "sector": "Industrials",
-      "industry": "Conglomerate",
-      "title": "Should Solstice’s Shift Into Mid and Small‑Cap Indexes Reshape the Core Investment Case for SOLS?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/solstice-shift-mid-small-cap-081334327.html",
-      "publish_time": "2025-12-23T08:13:34Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qHQMxDBDpVmMtdcHHiXfQg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/ef975e11af88470f7f200c4452d777bf",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "UPS",
-      "name": "United Parcel",
-      "sector": "Industrials",
-      "industry": "Logistics",
-      "title": "Does Recent Cost Restructuring Make UPS Attractive at Current 2025 Price Levels?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/does-recent-cost-restructuring-ups-081002057.html",
-      "publish_time": "2025-12-23T08:10:02Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/sRHckH8KxJAu2cnbY8fugQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/59aaa55170f2e30f60447b6371c4e730",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "UPS",
-      "name": "United Parcel",
-      "sector": "Industrials",
-      "industry": "Logistics",
-      "title": "UPS and 11 Other Stocks With Sky-High Dividends and No Clear Answers",
-      "publisher": "Barrons.com",
-      "link": "",
-      "publish_time": "2025-12-23T07:30:00Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7c7IkgMQI6cEqKDeDcddrw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/e69bea0b8cf84b0b61c1734c630efb76",
-      "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "APD",
-      "name": "Air Products",
-      "sector": "Materials",
-      "industry": "Chemicals",
-      "title": "Is Air Products a Long Term Opportunity After Recent Share Price Weakness?",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/news/air-products-long-term-opportunity-060922788.html",
-      "publish_time": "2025-12-23T06:09:22Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0WzkkG3xzmSsgl3QBa6ijw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8597d57fb23bd08928ffc52adef1ef1d",
-      "type": "STORY",
-      "sentiment": 5
     }
   ]
 }
