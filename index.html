@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TS9K7M4HJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5TS9K7M4HJ');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stock & ETF Market Barometer | Navimod</title>
+<title>ETF Market Barometer | Navimod</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -623,7 +615,7 @@ Sentiment scores are AI-generated from news headlines and may not reflect actual
 <h4>RISK SCORE <span class="score-range neg">-5 to +3</span></h4>
 <p>Measures market fear and financial stress:</p>
 <ul>
-<li><strong>VXX (Volatility):</strong> >25 = Panic (-2/-1), 20-25 = Elevated (-1/0), <15 = Calm (+1)</li>
+<li><strong>VXX (Volatility):</strong> >55 = Panic (-2/-1), 40-55 = Elevated (-1/0), <30 = Calm (+1)</li>
 <li><strong>HYG/LQD (Credit):</strong> <0.85 = Stress (-2/-1), >0.90 = Healthy (+1)</li>
 <li><strong>SPY/TLT (Stocks vs Bonds):</strong> 1W >+2% = Risk-On (+1), 1W <-2% = Risk-Off (-1)</li>
 </ul>
@@ -700,12 +692,12 @@ var GLOSS = {
   "REGIME_CAUTION": {"title": "CAUTION Regime", "desc": "Conflicting signals requiring caution. Reduce risk gradually.", "formula": "Either: (1) Positive signals + weak breadth (≤4/11), OR (2) Negative risk + strong breadth (≥7/11)", "example": "Risk +1, Cycle +1, Breadth 3/11 = CAUTION (narrow rally)"},
   "REGIME_NEUTRAL": {"title": "NEUTRAL Regime", "desc": "No clear direction. Mixed or all-neutral signals.", "formula": "Risk/Cycle conflicting (one positive, one negative), OR all signals neutral", "example": "Risk +1, Cycle -1, Breadth 5/11 = NEUTRAL (conflicting)"},
   "BREADTH": {"title": "Sector Breadth", "desc": "Market participation indicator. Score: +1 (strong), 0 (mixed), -1 (weak).", "formula": "≥7/11 positive = +1 (Strong, blocks RISK-OFF) | 5-6/11 = 0 (Mixed) | ≤4/11 = -1 (Weak, blocks RISK-ON)", "example": "8/11 = +1, 5/11 = 0, 3/11 = -1"},
-  "VXX": {"title": "VXX (Volatility Index)", "desc": "Fear gauge based on VXX ETF price level and weekly direction.", "formula": "Level >25: PANIC (↑ score -2, ↓ score -1) | Level 20-25: ELEVATED (↑ score -1, ↓ score 0) | Level 15-20: NEUTRAL (score 0) | Level <15: COMPLACENT (score +1)", "example": "High VXX = fear in market. Falling VXX = fear easing (positive)."},
+  "VXX": {"title": "VXX (Volatility Index)", "desc": "Fear gauge based on VXX ETF price level and weekly direction.", "formula": "Level >55: PANIC (↑ score -2, ↓ score -1) | Level 40-55: ELEVATED (↑ score -1, ↓ score 0) | Level 30-40: NEUTRAL (score 0) | Level <30: COMPLACENT (score +1)", "example": "High VXX = fear in market. Falling VXX = fear easing (positive)."},
   "SPY_TLT": {"title": "SPY/TLT (Stocks vs Bonds)", "desc": "Risk appetite ratio. Rising = money flowing to stocks, Falling = money flowing to bonds.", "formula": "1W Change >+2%: RISK-ON ↑ (score +1) | 1W Change <-2%: RISK-OFF ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Rising ratio = risk appetite increasing = bullish signal."},
   "HYG_LQD": {"title": "HYG/LQD (Credit Spread)", "desc": "Credit stress indicator. Low ratio = investors avoiding junk bonds = stress.", "formula": "Level <0.85: CREDIT STRESS (↓ score -2, ↑ score -1) | Level >0.90: CREDIT OK (score +1) | Level 0.85-0.90: NEUTRAL (score 0)", "example": "Low ratio with falling trend = credit stress worsening."},
   "XLY_XLP": {"title": "XLY/XLP (Consumer Cycle)", "desc": "Economic cycle indicator. Rising = consumers spending on discretionary items = expansion.", "formula": "1W Change >+1%: EXPANSION ↑ (score +1) | 1W Change <-1%: CONTRACTION ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Rising ratio = economic expansion signal."},
   "CPER_GLD": {"title": "CPER/GLD (Copper/Gold)", "desc": "Growth vs safety ratio. Rising = industrial demand (growth), Falling = flight to gold (fear).", "formula": "1W Change >+2%: REFLATION ↑ (score +1) | 1W Change <-2%: DEFLATION ↓ (score -1) | else: NEUTRAL (score 0)", "example": "Falling ratio = investors preferring gold over copper = defensive."},
-  "VXX_LEVEL": {"title": "VXX Level", "desc": "Absolute volatility level. > 25 = Panic, 20-25 = Elevated, < 20 = Calm.", "example": "30 = High fear"},
+  "VXX_LEVEL": {"title": "VXX Level", "desc": "Absolute volatility level. > 55 = Panic, 40-55 = Elevated, < 30 = Calm.", "example": "60 = High fear"},
   "GLD_SPY": {"title": "GLD/SPY (Gold vs Stocks)", "desc": "Safe haven demand. Rising = fear, Falling = risk appetite.", "example": "Rising = Flight to gold"},
   "IWM_SPY": {"title": "IWM/SPY (Small vs Large)", "desc": "Risk appetite for small caps. Rising = risk-on, Falling = flight to quality.", "example": "Rising = Small caps outperforming"},
   "ARKK_SPY": {"title": "ARKK/SPY (Speculation)", "desc": "Speculative appetite. Rising = frothy, Falling = risk aversion.", "example": "Falling = Spec unwinding"},
@@ -1278,7 +1270,7 @@ function setTop10SectorP(p) { top10SectorP = p; document.querySelectorAll('#top1
 
 // ========== RATIOS ==========
 var RATIO_REFS = {
-  "VXX_LEVEL": ">25 Panic | 20-25 Elevated | <20 Calm",
+  "VXX_LEVEL": ">55 Panic | 40-55 Elevated | <30 Calm",
   "SPY_TLT": "↑ Risk-On | ↓ Risk-Off",
   "HYG_LQD": "<0.85 Credit Stress | >0.90 Healthy",
   "GLD_SPY": "↑ Fear/Hedging | ↓ Risk Appetite",
