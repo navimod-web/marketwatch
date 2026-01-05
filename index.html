@@ -363,7 +363,8 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <th class="sortable" data-sort="SHARPE" onclick="sortBy('SHARPE', event)">Sharpe <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="SHARPE"><i class="fas fa-info"></i></button></th>
 <th class="sortable" data-sort="SORTINO" onclick="sortBy('SORTINO', event)">Sortino <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="SORTINO"><i class="fas fa-info"></i></button></th>
 <th class="sortable" data-sort="STABILITY" onclick="sortBy('STABILITY', event)">Stability <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="STABILITY"><i class="fas fa-info"></i></button></th>
-</tr></thead><tbody id="tableBody"><tr><td colspan="10" class="loading">Loading data...</td></tr></tbody></table>
+<th class="sortable" data-sort="QUANTSCORE" onclick="sortBy('QUANTSCORE', event)">QuantScore <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="QUANTSCORE"><i class="fas fa-info"></i></button></th>
+</tr></thead><tbody id="tableBody"><tr><td colspan="11" class="loading">Loading data...</td></tr></tbody></table>
 </div>
 </div>
 <div class="panel" id="panel-stocks">
@@ -385,7 +386,8 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <th class="sortable" data-sort="SHARPE" onclick="sortByStock('SHARPE', event)">Sharpe <i class="fas fa-sort sort-icon"></i></th>
 <th class="sortable" data-sort="SORTINO" onclick="sortByStock('SORTINO', event)">Sortino <i class="fas fa-sort sort-icon"></i></th>
 <th class="sortable" data-sort="STABILITY" onclick="sortByStock('STABILITY', event)">Stability <i class="fas fa-sort sort-icon"></i></th>
-</tr></thead><tbody id="stockTableBody"><tr><td colspan="10" class="loading">Loading data...</td></tr></tbody></table>
+<th class="sortable" data-sort="QUANTSCORE" onclick="sortByStock('QUANTSCORE', event)">QuantScore <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="QUANTSCORE"><i class="fas fa-info"></i></button></th>
+</tr></thead><tbody id="stockTableBody"><tr><td colspan="11" class="loading">Loading data...</td></tr></tbody></table>
 </div>
 </div>
 <div class="panel" id="panel-top10">
@@ -502,6 +504,18 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="quantCommodityList"></ul>
 </div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantBottomEtfList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantBottomStockList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-industry"></i></span>Bottom Sectors</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="quantBottomSectorList"></ul>
+</div>
 </div>
 <div class="quant-methodology">
 <h4><i class="fas fa-info-circle"></i> SCORING METHODOLOGY</h4>
@@ -526,12 +540,14 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <p style="font-size:0.7rem;color:#f59e0b;margin-top:10px;"><i class="fas fa-minus-circle"></i> Penalty: -10 pts for each period with negative return</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-exclamation-circle"></i> Overbought: -5 pts (>2σ) or -10 pts (>3σ) based on 14-day</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-snail"></i> Low Return: -10 pts if 1M &lt; 2%, -10 pts if 3M &lt; 5%</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 3M return &lt; SPY 3M return</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-arrow-trend-down"></i> Max Drawdown: -10 pts if 1M DD &gt;5%, 3M DD &gt;10%, 6M DD &gt;15%</p>
 <p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-wave-square"></i> Choppy: -20 pts each if 1M R²&lt;0.2, 3M R²&lt;0.3, 6M R²&lt;0.4</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 2W return &lt;= 0%</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Filter: Excluded if 1M return &lt; 1%</p>
 <p style="font-size:0.7rem;color:#22c55e;margin-top:4px;"><i class="fas fa-plus-circle"></i> Stock Bonus: +5 pts if sector 1M & 2W returns are positive</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 2W return &lt;= 0%</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 1M return &lt; 1%</p>
+<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 3M return &lt; SPY 3M return</p>
+<p style="font-size:0.7rem;color:#06b6d4;margin-top:10px;border-top:1px solid var(--border);padding-top:10px;"><i class="fas fa-trophy"></i> <strong>Top 10:</strong> Only qualified assets (passing all filters above)</p>
+<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-skull-crossbones"></i> <strong>Bottom 10:</strong> All assets ranked by QuantScore (no disqualification filter)</p>
 <div class="quant-disclaimer">
 <i class="fas fa-exclamation-triangle"></i>
 This is a statistical ranking based on quantitative metrics only. Not financial advice. Past performance does not guarantee future results. Always do your own research.
@@ -691,6 +707,7 @@ var GLOSS = {
   "SHARPE": {"title": "Sharpe Ratio", "desc": "Risk-adjusted return.", "example": "2.0 = Good risk/reward"},
   "SORTINO": {"title": "Sortino Ratio", "desc": "Downside risk-adjusted return.", "example": "Higher = Better"},
   "STABILITY": {"title": "Stability (Calmar)", "desc": "Return vs max drawdown.", "example": "3.0 = 3x return vs drawdown"},
+  "QUANTSCORE": {"title": "QuantScore", "desc": "Composite ranking score (0-100) based on multi-period performance metrics.", "formula": "Periods: 6M/3M/1M/2W/1W (each 20%) | Metrics: Return 40%, Sortino 20%, Calmar 20%, Trend 10%, Accel 10% | Penalties: -10 per negative period, -5/-10 overbought, -10 low return, -10 high drawdown, -20 choppy (low R²) | Filters: Excluded if 3M < SPY, 2W ≤ 0%, 1M < 1%", "example": "92.3 = Top performer with strong risk-adjusted returns across all periods"},
   "RISK_SCORE": {"title": "Risk Score", "desc": "Market fear and financial stress indicator. Range: -5 to +3.", "formula": "VXX (fear): -2 to +1 | SPY/TLT (stocks vs bonds): -1 to +1 | HYG/LQD (credit): -2 to +1", "example": "Negative = Risk stress, Positive = Risk appetite"},
   "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle indicator. Range: -2 to +2.", "formula": "XLY/XLP (consumer): -1 to +1 | CPER/GLD (industrial): -1 to +1", "example": "Positive = Expansion, Negative = Contraction"},
   "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on Risk Score, Cycle Score, and Breadth combination.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds, ROTATION = Be selective"},
@@ -759,8 +776,8 @@ async function loadData() {
   } catch (err) {
     console.error('Error loading data:', err);
     console.error('Error stack:', err.stack);
-    document.getElementById('tableBody').innerHTML = '<tr><td colspan="10">Error: ' + err.message + '</td></tr>';
-    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="10">Error: ' + err.message + '</td></tr>';
+    document.getElementById('tableBody').innerHTML = '<tr><td colspan="11">Error: ' + err.message + '</td></tr>';
+    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="11">Error: ' + err.message + '</td></tr>';
   }
 }
 
@@ -994,11 +1011,23 @@ function sortBy(col, e) {
 function renderTable() {
   var p = document.getElementById('periodFilter').value, cat = document.getElementById('catFilter').value, s = document.getElementById('searchInput').value.toLowerCase(), d = [];
   for (var i = 0; i < ETFS.length; i++) { var e = ETFS[i]; if ((cat === 'all' || e.Category === cat) && (e.Symbol.toLowerCase().indexOf(s) >= 0 || e.Name.toLowerCase().indexOf(s) >= 0)) d.push(e); }
-  d.sort(function(a, b) { if (currentSort.col === 'Symbol') return currentSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; var av = ap[currentSort.col] != null ? ap[currentSort.col] : -999, bv = bp[currentSort.col] != null ? bp[currentSort.col] : -999; return currentSort.dir === 'desc' ? bv - av : av - bv; });
+  d.sort(function(a, b) { 
+    if (currentSort.col === 'Symbol') return currentSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); 
+    if (currentSort.col === 'QUANTSCORE') {
+      var av = a.QuantScore != null ? a.QuantScore : -999;
+      var bv = b.QuantScore != null ? b.QuantScore : -999;
+      return currentSort.dir === 'desc' ? bv - av : av - bv;
+    }
+    var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; 
+    var av = ap[currentSort.col] != null ? ap[currentSort.col] : -999, bv = bp[currentSort.col] != null ? bp[currentSort.col] : -999; 
+    return currentSort.dir === 'desc' ? bv - av : av - bv; 
+  });
   var html = '';
   for (var i = 0; i < d.length; i++) { var e = d[i], x = e[p] || e['2W'] || e['1M'] || {}, c = e.Category.toLowerCase().replace('.', '');
     var ret = x.RETURN || 0, trnd = x.TREND || 0, acc = x.ACCELERATION || 0, qual = x.QUALITY || 0, shrp = x.SHARPE || 0, sort = x.SORTINO || 0, stab = x.STABILITY || 0;
-    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td></tr>';
+    var qs = e.QuantScore;
+    var qsDisplay = (qs != null && !isNaN(qs)) ? '<span class="' + (qs > 0 ? 'pos' : qs < 0 ? 'neg' : '') + '" style="font-weight:700">' + qs.toFixed(1) + '</span>' : '<span style="color:var(--muted)">-</span>';
+    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + qsDisplay + '</td></tr>';
   }
   document.getElementById('tableBody').innerHTML = html;
 }
@@ -1013,16 +1042,28 @@ function sortByStock(col, e) {
 
 function renderStockTable() {
   if (!STOCKS || STOCKS.length === 0) {
-    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="10">No stock data available</td></tr>';
+    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="11">No stock data available</td></tr>';
     return;
   }
   var p = document.getElementById('stockPeriodFilter').value, cat = document.getElementById('stockCatFilter').value, s = document.getElementById('stockSearchInput').value.toLowerCase(), d = [];
   for (var i = 0; i < STOCKS.length; i++) { var e = STOCKS[i]; if ((cat === 'all' || e.Category === cat) && (e.Symbol.toLowerCase().indexOf(s) >= 0 || e.Name.toLowerCase().indexOf(s) >= 0)) d.push(e); }
-  d.sort(function(a, b) { if (currentStockSort.col === 'Symbol') return currentStockSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; var av = ap[currentStockSort.col] != null ? ap[currentStockSort.col] : -999, bv = bp[currentStockSort.col] != null ? bp[currentStockSort.col] : -999; return currentStockSort.dir === 'desc' ? bv - av : av - bv; });
+  d.sort(function(a, b) { 
+    if (currentStockSort.col === 'Symbol') return currentStockSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); 
+    if (currentStockSort.col === 'QUANTSCORE') {
+      var av = a.QuantScore != null ? a.QuantScore : -999;
+      var bv = b.QuantScore != null ? b.QuantScore : -999;
+      return currentStockSort.dir === 'desc' ? bv - av : av - bv;
+    }
+    var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; 
+    var av = ap[currentStockSort.col] != null ? ap[currentStockSort.col] : -999, bv = bp[currentStockSort.col] != null ? bp[currentStockSort.col] : -999; 
+    return currentStockSort.dir === 'desc' ? bv - av : av - bv; 
+  });
   var html = '';
   for (var i = 0; i < d.length; i++) { var e = d[i], x = e[p] || e['2W'] || e['1M'] || {}, c = e.Category.toLowerCase().replace(/[^a-z]/g, '');
     var ret = x.RETURN || 0, trnd = x.TREND || 0, acc = x.ACCELERATION || 0, qual = x.QUALITY || 0, shrp = x.SHARPE || 0, sort = x.SORTINO || 0, stab = x.STABILITY || 0;
-    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td></tr>';
+    var qs = e.QuantScore;
+    var qsDisplay = (qs != null && !isNaN(qs)) ? '<span class="' + (qs > 0 ? 'pos' : qs < 0 ? 'neg' : '') + '" style="font-weight:700">' + qs.toFixed(1) + '</span>' : '<span style="color:var(--muted)">-</span>';
+    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + qsDisplay + '</td></tr>';
   }
   document.getElementById('stockTableBody').innerHTML = html;
 }
@@ -1152,6 +1193,34 @@ function renderQuantRankings() {
   }
   document.getElementById('quantCommodityList').innerHTML = commHtml;
   
+  // === BOTTOM 10 ETFs - Tüm ETF'lerden en düşük skorlular (diskalifiye yok) ===
+  var allEtfsWithScore = ETFS.filter(function(e) { return e.QuantScore != null; });
+  var bottom10Etfs = allEtfsWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; }).slice(0, 10);
+  var bottomEtfHtml = '';
+  for (var i = 0; i < bottom10Etfs.length; i++) {
+    var e = bottom10Etfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
+    var score = e.QuantScore != null ? e.QuantScore.toFixed(1) : '-';
+    var scoreClass = e.QuantScore < 0 ? 'neg' : (e.QuantScore < 30 ? 'neg' : '');
+    var catClass = e.Category ? e.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    bottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + e.Category + '</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
+  }
+  document.getElementById('quantBottomEtfList').innerHTML = bottomEtfHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
+  
+  // === BOTTOM 10 Stocks - Tüm hisselerden en düşük skorlular (diskalifiye yok) ===
+  var allStocksWithScore = STOCKS.filter(function(s) { return s.QuantScore != null; });
+  var bottom10Stocks = allStocksWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; }).slice(0, 10);
+  var bottomStockHtml = '';
+  for (var i = 0; i < bottom10Stocks.length; i++) {
+    var s = bottom10Stocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
+    var score = s.QuantScore != null ? s.QuantScore.toFixed(1) : '-';
+    var scoreClass = s.QuantScore < 0 ? 'neg' : (s.QuantScore < 30 ? 'neg' : '');
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    bottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
+  }
+  document.getElementById('quantBottomStockList').innerHTML = bottomStockHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
+  
   // Top 10 Sectors - Top 10 tarzı liste
   var sectorHtml = '';
   var top10Sectors = rankings.top10_sectors || [];
@@ -1173,6 +1242,27 @@ function renderQuantRankings() {
     sectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">(' + sec.StockCount + ' stocks)</span>' + scoreText + '</li>';
   }
   document.getElementById('quantSectorList').innerHTML = sectorHtml;
+  
+  // === BOTTOM Sectors - Tüm sektörler en düşükten (diskalifiye dahil, ama skor hesaplanmış) ===
+  var bottomSectorHtml = '';
+  // top10Sectors zaten tüm sektörleri içeriyor, sadece ters sırala
+  var allSectors = (rankings.top10_sectors || []).slice();
+  // Disqualified olanlar için de skor hesaplanmış mı kontrol et, yoksa en sona at
+  var sectorsWithScore = allSectors.filter(function(s) { return s.QuantScore != null; });
+  var sectorsWithoutScore = allSectors.filter(function(s) { return s.QuantScore == null; });
+  // En düşük skordan başla
+  var bottomSectors = sectorsWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; });
+  // Skorsuz olanları (DQ) en sona ekle
+  bottomSectors = bottomSectors.concat(sectorsWithoutScore);
+  
+  for (var i = 0; i < bottomSectors.length; i++) {
+    var sec = bottomSectors[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
+    var score = sec.QuantScore != null ? sec.QuantScore.toFixed(1) : 'N/A';
+    var scoreClass = sec.QuantScore != null && sec.QuantScore < 30 ? 'neg' : (sec.QuantScore == null ? 'neg' : '');
+    bottomSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.Sector + '</span><span class="top-name">(' + sec.StockCount + ' stocks)</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
+  }
+  document.getElementById('quantBottomSectorList').innerHTML = bottomSectorHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
 }
 
 // ========== TOP 10 ETFs ==========
