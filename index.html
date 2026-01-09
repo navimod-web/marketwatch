@@ -343,6 +343,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <button class="tab" onclick="showTab('briefstocks')"><i class="fas fa-file-alt"></i> Daily Brief - Stocks</button>
 <button class="tab" onclick="showTab('news')"><i class="fas fa-rss"></i> Company News</button>
 <button class="tab" onclick="showTab('quantrankings')"><i class="fas fa-crown"></i> Quant Rankings</button>
+<button class="tab" onclick="showTab('sentimentrankings')"><i class="fas fa-heart-pulse"></i> Sentiment Ranking</button>
 </div>
 <div class="panel active" id="panel-metrics">
 <div class="controls">
@@ -363,8 +364,9 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <th class="sortable" data-sort="SHARPE" onclick="sortBy('SHARPE', event)">Sharpe <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="SHARPE"><i class="fas fa-info"></i></button></th>
 <th class="sortable" data-sort="SORTINO" onclick="sortBy('SORTINO', event)">Sortino <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="SORTINO"><i class="fas fa-info"></i></button></th>
 <th class="sortable" data-sort="STABILITY" onclick="sortBy('STABILITY', event)">Stability <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="STABILITY"><i class="fas fa-info"></i></button></th>
-<th class="sortable" data-sort="QUANTSCORE" onclick="sortBy('QUANTSCORE', event)">QuantScore <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="QUANTSCORE"><i class="fas fa-info"></i></button></th>
-</tr></thead><tbody id="tableBody"><tr><td colspan="11" class="loading">Loading data...</td></tr></tbody></table>
+<th class="sortable" data-sort="MOMSCORE" onclick="sortBy('MOMSCORE', event)">Mom <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="MRSCORE" onclick="sortBy('MRSCORE', event)">MR <i class="fas fa-sort sort-icon"></i></th>
+</tr></thead><tbody id="tableBody"><tr><td colspan="12" class="loading">Loading data...</td></tr></tbody></table>
 </div>
 </div>
 <div class="panel" id="panel-stocks">
@@ -386,8 +388,9 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <th class="sortable" data-sort="SHARPE" onclick="sortByStock('SHARPE', event)">Sharpe <i class="fas fa-sort sort-icon"></i></th>
 <th class="sortable" data-sort="SORTINO" onclick="sortByStock('SORTINO', event)">Sortino <i class="fas fa-sort sort-icon"></i></th>
 <th class="sortable" data-sort="STABILITY" onclick="sortByStock('STABILITY', event)">Stability <i class="fas fa-sort sort-icon"></i></th>
-<th class="sortable" data-sort="QUANTSCORE" onclick="sortByStock('QUANTSCORE', event)">QuantScore <i class="fas fa-sort sort-icon"></i> <button class="info-btn" data-key="QUANTSCORE"><i class="fas fa-info"></i></button></th>
-</tr></thead><tbody id="stockTableBody"><tr><td colspan="11" class="loading">Loading data...</td></tr></tbody></table>
+<th class="sortable" data-sort="MOMSCORE" onclick="sortByStock('MOMSCORE', event)">Mom <i class="fas fa-sort sort-icon"></i></th>
+<th class="sortable" data-sort="MRSCORE" onclick="sortByStock('MRSCORE', event)">MR <i class="fas fa-sort sort-icon"></i></th>
+</tr></thead><tbody id="stockTableBody"><tr><td colspan="12" class="loading">Loading data...</td></tr></tbody></table>
 </div>
 </div>
 <div class="panel" id="panel-top10">
@@ -479,15 +482,219 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 </div>
 
 <div class="panel" id="panel-quantrankings">
-<div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 420px)); justify-content: start;">
+<!-- Performance Comparison Cards - 4 Ayrı Kart -->
+<div class="performance-comparison" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:20px;">
+<!-- Momentum Stocks -->
+<div class="perf-card" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#059669);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-rocket"></i></span>
+<div><h3 style="font-size:0.95rem;margin:0;color:var(--text);">MOM Stocks</h3><span style="font-size:0.65rem;color:var(--muted);">Top 10 Stocks</span></div>
+</div>
+<button onclick="showBacktestModal('momentum_stocks')" style="background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:4px 8px;cursor:pointer;color:var(--muted);font-size:0.7rem;display:flex;align-items:center;gap:4px;transition:all 0.2s;" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--green)'" onmouseout="this.style.background='var(--bg2)';this.style.color='var(--muted)'"><i class="fas fa-chart-line"></i></button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="momStockHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--green);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Hit Rate</div>
+</div>
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="momStockReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--green);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Avg Return</div>
+</div>
+</div>
+</div>
+<!-- Momentum ETFs -->
+<div class="perf-card" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#059669);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-layer-group"></i></span>
+<div><h3 style="font-size:0.95rem;margin:0;color:var(--text);">MOM ETFs</h3><span style="font-size:0.65rem;color:var(--muted);">Top 10 ETFs</span></div>
+</div>
+<button onclick="showBacktestModal('momentum_etfs')" style="background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:4px 8px;cursor:pointer;color:var(--muted);font-size:0.7rem;display:flex;align-items:center;gap:4px;transition:all 0.2s;" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--green)'" onmouseout="this.style.background='var(--bg2)';this.style.color='var(--muted)'"><i class="fas fa-chart-line"></i></button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="momEtfHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--green);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Hit Rate</div>
+</div>
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="momEtfReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--green);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Avg Return</div>
+</div>
+</div>
+</div>
+<!-- Mean Reversion Stocks -->
+<div class="perf-card" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-rotate-left"></i></span>
+<div><h3 style="font-size:0.95rem;margin:0;color:var(--text);">MR Stocks</h3><span style="font-size:0.65rem;color:var(--muted);">Top 10 Stocks</span></div>
+</div>
+<button onclick="showBacktestModal('mr_stocks')" style="background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:4px 8px;cursor:pointer;color:var(--muted);font-size:0.7rem;display:flex;align-items:center;gap:4px;transition:all 0.2s;" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--purple)'" onmouseout="this.style.background='var(--bg2)';this.style.color='var(--muted)'"><i class="fas fa-chart-line"></i></button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="mrStockHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--purple);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Hit Rate</div>
+</div>
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="mrStockReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--purple);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Avg Return</div>
+</div>
+</div>
+</div>
+<!-- Mean Reversion ETFs -->
+<div class="perf-card" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-layer-group"></i></span>
+<div><h3 style="font-size:0.95rem;margin:0;color:var(--text);">MR ETFs</h3><span style="font-size:0.65rem;color:var(--muted);">Top 10 ETFs</span></div>
+</div>
+<button onclick="showBacktestModal('mr_etfs')" style="background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:4px 8px;cursor:pointer;color:var(--muted);font-size:0.7rem;display:flex;align-items:center;gap:4px;transition:all 0.2s;" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--purple)'" onmouseout="this.style.background='var(--bg2)';this.style.color='var(--muted)'"><i class="fas fa-chart-line"></i></button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="mrEtfHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--purple);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Hit Rate</div>
+</div>
+<div style="background:var(--bg2);border-radius:6px;padding:8px;text-align:center;">
+<div id="mrEtfReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--purple);">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Avg Return</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Backtest Details Modal -->
+<div id="backtestModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:500px;width:95%;max-height:85vh;overflow-y:auto;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
+<div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+<div style="display:flex;align-items:center;gap:12px;">
+<span id="backtestModalIcon" style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:white;"></span>
+<div>
+<h3 id="backtestModalTitle" style="margin:0;font-size:1.1rem;color:var(--text);"></h3>
+<span id="backtestModalSubtitle" style="font-size:0.75rem;color:var(--muted);">4-Week Backtest</span>
+</div>
+</div>
+<button onclick="closeBacktestModal()" style="background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:4px;"><i class="fas fa-times"></i></button>
+</div>
+<div style="padding:16px 20px;">
+<!-- Summary Stats -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
+<div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;">
+<div id="modalHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Hit Rate</div>
+</div>
+<div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;">
+<div id="modalAvgReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;">--%</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Avg Return</div>
+</div>
+<div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;">
+<div id="modalTrades" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;">-</div>
+<div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;">Trades</div>
+</div>
+</div>
+<!-- Weekly Breakdown -->
+<h4 style="margin:0 0 10px;font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;"><i class="fas fa-calendar-week"></i> Weekly Performance</h4>
+<div id="weeklyBreakdown" style="display:flex;flex-direction:column;gap:6px;"></div>
+</div>
+</div>
+</div>
+
+<!-- Momentum Section -->
+<div style="margin-bottom:24px;">
+<h3 style="font-size:1rem;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><i class="fas fa-rocket"></i> MOMENTUM RANKINGS</h3>
+<div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 380px)); justify-content: start;">
 <div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-industry"></i></span>All Sectors</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantSectorList"></ul>
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-trophy"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momTopStockList"></ul>
 </div>
 <div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-building"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantStockList"></ul>
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:white"><i class="fas fa-chart-line"></i></span>Top 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momTopEtfList"></ul>
 </div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-industry"></i></span>Sectors</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momSectorList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momCommodityList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momBottomStockList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="momBottomEtfList"></ul>
+</div>
+</div>
+</div>
+
+<!-- Mean Reversion Section -->
+<div style="margin-bottom:24px;">
+<h3 style="font-size:1rem;color:var(--purple);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><i class="fas fa-rotate-left"></i> MEAN REVERSION RANKINGS</h3>
+<div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 380px)); justify-content: start;">
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-trophy"></i></span>Top 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrTopStockList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#a855f7,#9333ea);color:white"><i class="fas fa-chart-line"></i></span>Top 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrTopEtfList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-industry"></i></span>Sectors</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrSectorList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrCommodityList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrBottomStockList"></ul>
+</div>
+<div class="top-card">
+<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
+<ul class="top-list" id="mrBottomEtfList"></ul>
+</div>
+</div>
+</div>
+
+<!-- Methodology -->
+<div class="quant-methodology">
+<h4><i class="fas fa-info-circle"></i> SCORING METHODOLOGY</h4>
+<div class="methodology-grid">
+<div class="methodology-col">
+<h5 style="color:var(--green);">🚀 Momentum</h5>
+<div class="weight-item"><span>Metrics</span><span>R50/T50</span></div>
+<div class="weight-item"><span>Periods</span><span>1W=60%, 2W=30%, 1M=10%</span></div>
+<div class="weight-item"><span>Defense</span><span>VIX Spike +8%, 2d</span></div>
+</div>
+<div class="methodology-col">
+<h5 style="color:var(--purple);">↩️ Mean Reversion</h5>
+<div class="weight-item"><span>Metrics</span><span>R50/S50</span></div>
+<div class="weight-item"><span>Periods</span><span>1W=50%, 2W=25%, 1M=15%, 3M=10%</span></div>
+<div class="weight-item"><span>Sigma Filter</span><span>-1.5σ (MA10d)</span></div>
+<div class="weight-item"><span>Defense</span><span>VIX>30 OR Spike+10%</span></div>
+</div>
+</div>
+<p style="font-size:0.7rem;color:#10b981;margin-top:10px;"><i class="fas fa-filter"></i> <strong>Momentum Filters:</strong> Sector 2W, Downside Vol 20%, MA Stack (2W>1M>3M), DD 1M>3%, R²<0.2, Sigma 2σ</p>
+<p style="font-size:0.7rem;color:#8b5cf6;margin-top:4px;"><i class="fas fa-filter"></i> <strong>Mean Reversion Filters:</strong> Volatility Top 20%, Sigma -1.5σ (MA10d) → Only truly oversold</p>
+<p style="font-size:0.7rem;color:#f59e0b;margin-top:4px;"><i class="fas fa-chart-bar"></i> <strong>4W Performance:</strong> Based on last 4 completed weeks backtest (40 trades)</p>
+<div class="quant-disclaimer">
+<i class="fas fa-exclamation-triangle"></i>
+Backtested performance is not indicative of future results. These are statistical rankings based on quantitative metrics only. Not financial advice.
+</div>
+</div>
+</div>
+
+<!-- Sentiment Ranking Panel (Sadece Haber Bazlı Sentiment) -->
+<div class="panel" id="panel-sentimentrankings">
+<div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 480px)); justify-content: start;">
 <div class="top-card">
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-newspaper"></i></span>Bullish Sentiment</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="quantBullishList"></ul>
@@ -496,65 +703,9 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-newspaper"></i></span>Bearish Sentiment</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="quantBearishList"></ul>
 </div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:white"><i class="fas fa-chart-line"></i></span>Top 10 ETFs</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantEtfList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantCommodityList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantBottomEtfList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantBottomStockList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-industry"></i></span>Bottom Sectors</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="quantBottomSectorList"></ul>
-</div>
-</div>
-<div class="quant-methodology">
-<h4><i class="fas fa-info-circle"></i> SCORING METHODOLOGY</h4>
-<div class="methodology-grid">
-<div class="methodology-col">
-<h5>Period Weights</h5>
-<div class="weight-item"><span>6M</span><span>20%</span></div>
-<div class="weight-item"><span>3M</span><span>20%</span></div>
-<div class="weight-item"><span>1M</span><span>20%</span></div>
-<div class="weight-item"><span>2W</span><span>20%</span></div>
-<div class="weight-item"><span>1W</span><span>20%</span></div>
-</div>
-<div class="methodology-col">
-<h5>Metric Weights</h5>
-<div class="weight-item"><span>Return</span><span>40%</span></div>
-<div class="weight-item"><span>Sortino</span><span>20%</span></div>
-<div class="weight-item"><span>Calmar</span><span>20%</span></div>
-<div class="weight-item"><span>Trend</span><span>10%</span></div>
-<div class="weight-item"><span>Acceleration</span><span>10%</span></div>
-</div>
-</div>
-<p style="font-size:0.7rem;color:#f59e0b;margin-top:10px;"><i class="fas fa-minus-circle"></i> Penalty: -10 pts for each period with negative return</p>
-<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-exclamation-circle"></i> Overbought: -5 pts (>2σ) or -10 pts (>3σ) based on 14-day</p>
-<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-snail"></i> Low Return: -10 pts if 1M &lt; 2%, -10 pts if 3M &lt; 5%</p>
-<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-arrow-trend-down"></i> Max Drawdown: -10 pts if 1M DD &gt;5%, 3M DD &gt;10%, 6M DD &gt;15%</p>
-<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-wave-square"></i> Choppy: -20 pts each if 1M R²&lt;0.2, 3M R²&lt;0.3, 6M R²&lt;0.4</p>
-<p style="font-size:0.7rem;color:#22c55e;margin-top:4px;"><i class="fas fa-plus-circle"></i> Stock Bonus: +5 pts if sector 1M & 2W returns are positive</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 2W return &lt;= 0%</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 1M return &lt; 1%</p>
-<p style="font-size:0.7rem;color:#6b7280;margin-top:4px;"><i class="fas fa-ban"></i> Disqualified from Top 10: if 3M return &lt; SPY 3M return</p>
-<p style="font-size:0.7rem;color:#06b6d4;margin-top:10px;border-top:1px solid var(--border);padding-top:10px;"><i class="fas fa-trophy"></i> <strong>Top 10:</strong> Only qualified assets (passing all filters above)</p>
-<p style="font-size:0.7rem;color:#ef4444;margin-top:4px;"><i class="fas fa-skull-crossbones"></i> <strong>Bottom 10:</strong> All assets ranked by QuantScore (no disqualification filter)</p>
-<div class="quant-disclaimer">
-<i class="fas fa-exclamation-triangle"></i>
-This is a statistical ranking based on quantitative metrics only. Not financial advice. Past performance does not guarantee future results. Always do your own research.
-</div>
 </div>
 
-<div class="quant-methodology" style="margin-top:16px;">
+<div class="quant-methodology">
 <h4><i class="fas fa-newspaper"></i> SENTIMENT SCORING METHODOLOGY</h4>
 <div class="methodology-grid">
 <div class="methodology-col">
@@ -707,7 +858,6 @@ var GLOSS = {
   "SHARPE": {"title": "Sharpe Ratio", "desc": "Risk-adjusted return.", "example": "2.0 = Good risk/reward"},
   "SORTINO": {"title": "Sortino Ratio", "desc": "Downside risk-adjusted return.", "example": "Higher = Better"},
   "STABILITY": {"title": "Stability (Calmar)", "desc": "Return vs max drawdown.", "example": "3.0 = 3x return vs drawdown"},
-  "QUANTSCORE": {"title": "QuantScore", "desc": "Composite ranking score (0-100) based on multi-period performance metrics.", "formula": "Periods: 6M/3M/1M/2W/1W (each 20%) | Metrics: Return 40%, Sortino 20%, Calmar 20%, Trend 10%, Accel 10% | Penalties: -10 per negative period, -5/-10 overbought, -10 low return, -10 high drawdown, -20 choppy (low R²) | Filters: Excluded if 3M < SPY, 2W ≤ 0%, 1M < 1%", "example": "92.3 = Top performer with strong risk-adjusted returns across all periods"},
   "RISK_SCORE": {"title": "Risk Score", "desc": "Market fear and financial stress indicator. Range: -5 to +3.", "formula": "VXX (fear): -2 to +1 | SPY/TLT (stocks vs bonds): -1 to +1 | HYG/LQD (credit): -2 to +1", "example": "Negative = Risk stress, Positive = Risk appetite"},
   "CYCLE_SCORE": {"title": "Cycle Score", "desc": "Economic cycle indicator. Range: -2 to +2.", "formula": "XLY/XLP (consumer): -1 to +1 | CPER/GLD (industrial): -1 to +1", "example": "Positive = Expansion, Negative = Contraction"},
   "REGIME": {"title": "Market Regime", "desc": "Overall market condition based on Risk Score, Cycle Score, and Breadth combination.", "example": "RISK-ON = Favor equities, RISK-OFF = Favor bonds, ROTATION = Be selective"},
@@ -1013,9 +1163,14 @@ function renderTable() {
   for (var i = 0; i < ETFS.length; i++) { var e = ETFS[i]; if ((cat === 'all' || e.Category === cat) && (e.Symbol.toLowerCase().indexOf(s) >= 0 || e.Name.toLowerCase().indexOf(s) >= 0)) d.push(e); }
   d.sort(function(a, b) { 
     if (currentSort.col === 'Symbol') return currentSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); 
-    if (currentSort.col === 'QUANTSCORE') {
-      var av = a.QuantScore != null ? a.QuantScore : -999;
-      var bv = b.QuantScore != null ? b.QuantScore : -999;
+    if (currentSort.col === 'MOMSCORE') {
+      var av = a.MomentumScore != null ? a.MomentumScore : -999;
+      var bv = b.MomentumScore != null ? b.MomentumScore : -999;
+      return currentSort.dir === 'desc' ? bv - av : av - bv;
+    }
+    if (currentSort.col === 'MRSCORE') {
+      var av = a.MeanRevScore != null ? a.MeanRevScore : -999;
+      var bv = b.MeanRevScore != null ? b.MeanRevScore : -999;
       return currentSort.dir === 'desc' ? bv - av : av - bv;
     }
     var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; 
@@ -1025,9 +1180,11 @@ function renderTable() {
   var html = '';
   for (var i = 0; i < d.length; i++) { var e = d[i], x = e[p] || e['2W'] || e['1M'] || {}, c = e.Category.toLowerCase().replace('.', '');
     var ret = x.RETURN || 0, trnd = x.TREND || 0, acc = x.ACCELERATION || 0, qual = x.QUALITY || 0, shrp = x.SHARPE || 0, sort = x.SORTINO || 0, stab = x.STABILITY || 0;
-    var qs = e.QuantScore;
-    var qsDisplay = (qs != null && !isNaN(qs)) ? '<span class="' + (qs > 0 ? 'pos' : qs < 0 ? 'neg' : '') + '" style="font-weight:700">' + qs.toFixed(1) + '</span>' : '<span style="color:var(--muted)">-</span>';
-    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + qsDisplay + '</td></tr>';
+    var ms = e.MomentumScore;
+    var msDisplay = (ms != null && !isNaN(ms)) ? '<span class="' + (ms >= 50 ? 'pos' : 'neg') + '">' + ms.toFixed(1) + '</span>' : '<span style="color:var(--muted)">n/a</span>';
+    var mr = e.MeanRevScore;
+    var mrDisplay = (mr != null && !isNaN(mr)) ? '<span class="' + (mr >= 50 ? 'pos' : 'neg') + '">' + mr.toFixed(1) + '</span>' : '<span style="color:var(--muted)">n/a</span>';
+    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + msDisplay + '</td><td>' + mrDisplay + '</td></tr>';
   }
   document.getElementById('tableBody').innerHTML = html;
 }
@@ -1042,16 +1199,21 @@ function sortByStock(col, e) {
 
 function renderStockTable() {
   if (!STOCKS || STOCKS.length === 0) {
-    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="11">No stock data available</td></tr>';
+    document.getElementById('stockTableBody').innerHTML = '<tr><td colspan="12">No stock data available</td></tr>';
     return;
   }
   var p = document.getElementById('stockPeriodFilter').value, cat = document.getElementById('stockCatFilter').value, s = document.getElementById('stockSearchInput').value.toLowerCase(), d = [];
   for (var i = 0; i < STOCKS.length; i++) { var e = STOCKS[i]; if ((cat === 'all' || e.Category === cat) && (e.Symbol.toLowerCase().indexOf(s) >= 0 || e.Name.toLowerCase().indexOf(s) >= 0)) d.push(e); }
   d.sort(function(a, b) { 
     if (currentStockSort.col === 'Symbol') return currentStockSort.dir === 'desc' ? b.Symbol.localeCompare(a.Symbol) : a.Symbol.localeCompare(b.Symbol); 
-    if (currentStockSort.col === 'QUANTSCORE') {
-      var av = a.QuantScore != null ? a.QuantScore : -999;
-      var bv = b.QuantScore != null ? b.QuantScore : -999;
+    if (currentStockSort.col === 'MOMSCORE') {
+      var av = a.MomentumScore != null ? a.MomentumScore : -999;
+      var bv = b.MomentumScore != null ? b.MomentumScore : -999;
+      return currentStockSort.dir === 'desc' ? bv - av : av - bv;
+    }
+    if (currentStockSort.col === 'MRSCORE') {
+      var av = a.MeanRevScore != null ? a.MeanRevScore : -999;
+      var bv = b.MeanRevScore != null ? b.MeanRevScore : -999;
       return currentStockSort.dir === 'desc' ? bv - av : av - bv;
     }
     var ap = a[p] || a['2W'] || a['1M'] || {}, bp = b[p] || b['2W'] || b['1M'] || {}; 
@@ -1061,9 +1223,11 @@ function renderStockTable() {
   var html = '';
   for (var i = 0; i < d.length; i++) { var e = d[i], x = e[p] || e['2W'] || e['1M'] || {}, c = e.Category.toLowerCase().replace(/[^a-z]/g, '');
     var ret = x.RETURN || 0, trnd = x.TREND || 0, acc = x.ACCELERATION || 0, qual = x.QUALITY || 0, shrp = x.SHARPE || 0, sort = x.SORTINO || 0, stab = x.STABILITY || 0;
-    var qs = e.QuantScore;
-    var qsDisplay = (qs != null && !isNaN(qs)) ? '<span class="' + (qs > 0 ? 'pos' : qs < 0 ? 'neg' : '') + '" style="font-weight:700">' + qs.toFixed(1) + '</span>' : '<span style="color:var(--muted)">-</span>';
-    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + qsDisplay + '</td></tr>';
+    var ms = e.MomentumScore;
+    var msDisplay = (ms != null && !isNaN(ms)) ? '<span class="' + (ms >= 50 ? 'pos' : 'neg') + '">' + ms.toFixed(1) + '</span>' : '<span style="color:var(--muted)">n/a</span>';
+    var mr = e.MeanRevScore;
+    var mrDisplay = (mr != null && !isNaN(mr)) ? '<span class="' + (mr >= 50 ? 'pos' : 'neg') + '">' + mr.toFixed(1) + '</span>' : '<span style="color:var(--muted)">n/a</span>';
+    html += '<tr><td class="sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name.replace(/'/g, "\\'") + '\')">' + e.Symbol + '</td><td class="name">' + e.Name + '</td><td><span class="cat ' + c + '">' + e.Category + '</span></td><td class="' + (ret > 0 ? 'pos' : ret < 0 ? 'neg' : '') + '">' + fmt(ret) + '%</td><td class="' + (trnd > 0 ? 'pos' : trnd < 0 ? 'neg' : '') + '">' + fmt(trnd) + '%</td><td class="' + (acc > 0 ? 'pos' : acc < 0 ? 'neg' : '') + '">' + fmt(acc) + '</td><td>' + qual.toFixed(3) + '</td><td class="' + (shrp > 0 ? 'pos' : shrp < 0 ? 'neg' : '') + '">' + fmt(shrp) + '</td><td class="' + (sort > 0 ? 'pos' : sort < 0 ? 'neg' : '') + '">' + fmt(sort) + '</td><td class="' + (stab > 0 ? 'pos' : stab < 0 ? 'neg' : '') + '">' + fmt(stab) + '</td><td>' + msDisplay + '</td><td>' + mrDisplay + '</td></tr>';
   }
   document.getElementById('stockTableBody').innerHTML = html;
 }
@@ -1072,18 +1236,221 @@ function renderStockTable() {
 function renderQuantRankings() {
   var rankings = DATA.quant_rankings;
   if (!rankings) {
-    document.getElementById('quantEtfList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
-    document.getElementById('quantStockList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
-    document.getElementById('quantCommodityList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
-    document.getElementById('quantSectorList').innerHTML = '<div class="brief-loading">No ranking data available</div>';
+    console.log('No quant_rankings data');
+    return;
   }
   
-  // ========== SENTIMENT RANKINGS (from NEWS_DATA) ==========
+  // ========== PERFORMANCE CARDS - 4 Ayrı Kart ==========
+  var perf4w = rankings.performance_4w || {};
+  
+  // Helper function
+  function updatePerfCard(hitRateId, returnId, perf, color) {
+    if (!perf) return;
+    var hitEl = document.getElementById(hitRateId);
+    var retEl = document.getElementById(returnId);
+    if (hitEl) {
+      hitEl.textContent = perf.hit_rate.toFixed(1) + '%';
+      hitEl.style.color = perf.hit_rate >= 55 ? color : 'var(--rose)';
+    }
+    if (retEl) {
+      retEl.textContent = (perf.avg_return >= 0 ? '+' : '') + perf.avg_return.toFixed(2) + '%';
+      retEl.style.color = perf.avg_return >= 0 ? color : 'var(--rose)';
+    }
+  }
+  
+  // Momentum Stocks
+  updatePerfCard('momStockHitRate', 'momStockReturn', perf4w.momentum_stocks, 'var(--green)');
+  
+  // Momentum ETFs
+  updatePerfCard('momEtfHitRate', 'momEtfReturn', perf4w.momentum_etfs, 'var(--green)');
+  
+  // Mean Reversion Stocks
+  updatePerfCard('mrStockHitRate', 'mrStockReturn', perf4w.mr_stocks, 'var(--purple)');
+  
+  // Mean Reversion ETFs
+  updatePerfCard('mrEtfHitRate', 'mrEtfReturn', perf4w.mr_etfs, 'var(--purple)');
+  
+  // ========== MOMENTUM RANKINGS ==========
+  // Top 10 Stocks
+  var momTopStocks = rankings.top10_momentum_stocks || [];
+  var momTopStockHtml = '';
+  for (var i = 0; i < momTopStocks.length; i++) {
+    var s = momTopStocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = s.MomentumScore != null ? s.MomentumScore.toFixed(1) : '-';
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    momTopStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('momTopStockList').innerHTML = momTopStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Top 10 ETFs
+  var momTopEtfs = rankings.top10_momentum_etfs || [];
+  var momTopEtfHtml = '';
+  for (var i = 0; i < momTopEtfs.length; i++) {
+    var e = momTopEtfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = e.MomentumScore != null ? e.MomentumScore.toFixed(1) : '-';
+    momTopEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('momTopEtfList').innerHTML = momTopEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Bottom 10 Stocks
+  var momBottomStocks = rankings.bottom10_momentum_stocks || [];
+  var momBottomStockHtml = '';
+  for (var i = 0; i < momBottomStocks.length; i++) {
+    var s = momBottomStocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = s.MomentumScore != null ? s.MomentumScore.toFixed(1) : '-';
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    momBottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val neg">' + score + '</span></li>';
+  }
+  document.getElementById('momBottomStockList').innerHTML = momBottomStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Bottom 10 ETFs
+  var momBottomEtfs = rankings.bottom10_momentum_etfs || [];
+  var momBottomEtfHtml = '';
+  for (var i = 0; i < momBottomEtfs.length; i++) {
+    var e = momBottomEtfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = e.MomentumScore != null ? e.MomentumScore.toFixed(1) : '-';
+    momBottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val neg">' + score + '</span></li>';
+  }
+  document.getElementById('momBottomEtfList').innerHTML = momBottomEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Momentum Sectors
+  var momSectors = rankings.top10_momentum_sectors || [];
+  var momSectorHtml = '';
+  for (var i = 0; i < momSectors.length; i++) {
+    var sec = momSectors[i];
+    var rc = '';
+    var scoreText = '';
+    var nameClass = 'top-sym';
+    var countText = '(' + sec.StockCount + '/' + sec.TotalStocks + ')';
+    
+    if (sec.Disqualified) {
+      // Disqualified - kırmızı, üstü çizili
+      scoreText = '<span class="top-val neg" style="font-size:0.7rem;">DQ: ' + sec.Reason + '</span>';
+      nameClass = 'top-sym" style="opacity:0.5;text-decoration:line-through';
+    } else if (sec.AvgScore == null) {
+      // N/A - gri
+      scoreText = '<span class="top-val" style="color:var(--muted);">N/A</span>';
+      nameClass = 'top-sym" style="opacity:0.6';
+    } else {
+      // Normal skor
+      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      var scoreClass = sec.AvgScore >= 50 ? 'pos' : 'neg';
+      scoreText = '<span class="top-val ' + scoreClass + '">' + sec.AvgScore.toFixed(1) + '</span>';
+    }
+    momSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">' + countText + '</span>' + scoreText + '</li>';
+  }
+  document.getElementById('momSectorList').innerHTML = momSectorHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Momentum Commodities
+  var momComm = rankings.top10_momentum_commodities || [];
+  var momCommHtml = '';
+  for (var i = 0; i < momComm.length; i++) {
+    var c = momComm[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = c.MomentumScore != null ? c.MomentumScore.toFixed(1) : '-';
+    momCommHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + c.Symbol + '\', \'' + (c.Name || '').replace(/'/g, "\\'") + '\')">' + c.Symbol + '</span><span class="top-name">' + c.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('momCommodityList').innerHTML = momCommHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // ========== MEAN REVERSION RANKINGS ==========
+  // Top 10 Stocks
+  var mrTopStocks = rankings.top10_mr_stocks || [];
+  var mrTopStockHtml = '';
+  for (var i = 0; i < mrTopStocks.length; i++) {
+    var s = mrTopStocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = s.MeanRevScore != null ? s.MeanRevScore.toFixed(1) : '-';
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    mrTopStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('mrTopStockList').innerHTML = mrTopStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Top 10 ETFs
+  var mrTopEtfs = rankings.top10_mr_etfs || [];
+  var mrTopEtfHtml = '';
+  for (var i = 0; i < mrTopEtfs.length; i++) {
+    var e = mrTopEtfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = e.MeanRevScore != null ? e.MeanRevScore.toFixed(1) : '-';
+    mrTopEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('mrTopEtfList').innerHTML = mrTopEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Bottom 10 Stocks
+  var mrBottomStocks = rankings.bottom10_mr_stocks || [];
+  var mrBottomStockHtml = '';
+  for (var i = 0; i < mrBottomStocks.length; i++) {
+    var s = mrBottomStocks[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = s.MeanRevScore != null ? s.MeanRevScore.toFixed(1) : '-';
+    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
+    mrBottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val neg">' + score + '</span></li>';
+  }
+  document.getElementById('mrBottomStockList').innerHTML = mrBottomStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Bottom 10 ETFs
+  var mrBottomEtfs = rankings.bottom10_mr_etfs || [];
+  var mrBottomEtfHtml = '';
+  for (var i = 0; i < mrBottomEtfs.length; i++) {
+    var e = mrBottomEtfs[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = e.MeanRevScore != null ? e.MeanRevScore.toFixed(1) : '-';
+    mrBottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val neg">' + score + '</span></li>';
+  }
+  document.getElementById('mrBottomEtfList').innerHTML = mrBottomEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Mean Reversion Sectors
+  var mrSectors = rankings.top10_mr_sectors || [];
+  var mrSectorHtml = '';
+  for (var i = 0; i < mrSectors.length; i++) {
+    var sec = mrSectors[i];
+    var rc = '';
+    var scoreText = '';
+    var nameClass = 'top-sym';
+    var countText = '(' + sec.StockCount + '/' + sec.TotalStocks + ')';
+    
+    if (sec.AvgScore == null) {
+      // N/A - gri
+      scoreText = '<span class="top-val" style="color:var(--muted);">N/A</span>';
+      nameClass = 'top-sym" style="opacity:0.6';
+    } else {
+      // Normal skor
+      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+      var scoreClass = sec.AvgScore >= 50 ? 'pos' : 'neg';
+      scoreText = '<span class="top-val ' + scoreClass + '">' + sec.AvgScore.toFixed(1) + '</span>';
+    }
+    mrSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">' + countText + '</span>' + scoreText + '</li>';
+  }
+  document.getElementById('mrSectorList').innerHTML = mrSectorHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // Mean Reversion Commodities
+  var mrComm = rankings.top10_mr_commodities || [];
+  var mrCommHtml = '';
+  for (var i = 0; i < mrComm.length; i++) {
+    var c = mrComm[i];
+    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+    var score = c.MeanRevScore != null ? c.MeanRevScore.toFixed(1) : '-';
+    mrCommHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + c.Symbol + '\', \'' + (c.Name || '').replace(/'/g, "\\'") + '\')">' + c.Symbol + '</span><span class="top-name">' + c.Name + '</span><span class="top-val pos">' + score + '</span></li>';
+  }
+  document.getElementById('mrCommodityList').innerHTML = mrCommHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+  
+  // ========== SENTIMENT RANKINGS (Haber bazlı) ==========
+  renderSentimentRankings();
+}
+
+function renderSentimentRankings() {
+  var rankings = DATA.quant_rankings;
+  
+  // ========== SENTIMENT (NEWS) ==========
   var bullishList = document.getElementById('quantBullishList');
   var bearishList = document.getElementById('quantBearishList');
   
   if (NEWS_DATA && NEWS_DATA.news && NEWS_DATA.news.length > 0) {
-    // Aggregate sentiment by stock (sum all news sentiment for each stock)
+    // Aggregate sentiment by stock
     var stockSentiment = {};
     NEWS_DATA.news.forEach(function(n) {
       var sym = n.symbol;
@@ -1113,10 +1480,9 @@ function renderQuantRankings() {
       }
     });
     
-    // Convert to array
     var stockArray = Object.values(stockSentiment);
     
-    // Top 10 Bullish (by total sentiment, positive only)
+    // Top 10 Bullish
     var bullish = stockArray.filter(function(s) { return s.totalSentiment > 0; })
       .sort(function(a, b) { return b.totalSentiment - a.totalSentiment; })
       .slice(0, 10);
@@ -1132,9 +1498,9 @@ function renderQuantRankings() {
       var sectorBadge = s.sector ? '<span class="cat ' + sectorClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.sector + '</span>' : '';
       bullHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.symbol + '\', \'' + s.name.replace(/'/g, "\\'") + '\')">' + s.symbol + '</span><span class="top-name" ' + nameStyle + ' ' + nameClick + '>' + s.name + '</span>' + sectorBadge + '<span class="top-val pos">' + scoreDisplay + '</span></li>';
     }
-    bullishList.innerHTML = bullHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No bullish news</div>';
+    bullishList.innerHTML = bullHtml || '<div style="padding:20px;text-align:center;color:var(--muted);">No bullish news</div>';
     
-    // Top 10 Bearish (by total sentiment, negative only)
+    // Top 10 Bearish
     var bearish = stockArray.filter(function(s) { return s.totalSentiment < 0; })
       .sort(function(a, b) { return a.totalSentiment - b.totalSentiment; })
       .slice(0, 10);
@@ -1150,119 +1516,11 @@ function renderQuantRankings() {
       var sectorBadge = s.sector ? '<span class="cat ' + sectorClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.sector + '</span>' : '';
       bearHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.symbol + '\', \'' + s.name.replace(/'/g, "\\'") + '\')">' + s.symbol + '</span><span class="top-name" ' + nameStyle + ' ' + nameClick + '>' + s.name + '</span>' + sectorBadge + '<span class="top-val neg">' + scoreDisplay + '</span></li>';
     }
-    bearishList.innerHTML = bearHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No bearish news</div>';
+    bearishList.innerHTML = bearHtml || '<div style="padding:20px;text-align:center;color:var(--muted);">No bearish news</div>';
   } else {
-    bullishList.innerHTML = '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
-    bearishList.innerHTML = '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
+    bullishList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
+    bearishList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
   }
-  
-  if (!rankings) return;
-  
-  // Top 10 ETFs - Top 10 tarzı liste
-  var etfHtml = '';
-  var top10Etfs = rankings.top10_etfs || [];
-  for (var i = 0; i < top10Etfs.length; i++) {
-    var e = top10Etfs[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = e.QuantScore != null ? e.QuantScore.toFixed(1) : '-';
-    etfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val pos">' + score + '</span></li>';
-  }
-  document.getElementById('quantEtfList').innerHTML = etfHtml;
-  
-  // Top 10 Stocks - Top 10 tarzı liste
-  var stockHtml = '';
-  var top10Stocks = rankings.top10_stocks || [];
-  for (var i = 0; i < top10Stocks.length; i++) {
-    var s = top10Stocks[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = s.QuantScore != null ? s.QuantScore.toFixed(1) : '-';
-    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
-    stockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val pos">' + score + '</span></li>';
-  }
-  document.getElementById('quantStockList').innerHTML = stockHtml;
-  
-  // Top Commodities - Top 10 tarzı liste
-  var commHtml = '';
-  var top10Commodities = rankings.top10_commodities || [];
-  for (var i = 0; i < top10Commodities.length; i++) {
-    var c = top10Commodities[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = c.QuantScore != null ? c.QuantScore.toFixed(1) : '-';
-    var subCat = c.SubCategory || '';
-    commHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + c.Symbol + '\', \'' + c.Name + '\')">' + c.Symbol + '</span><span class="top-name">' + c.Name + '</span><span class="cat comm" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + subCat + '</span><span class="top-val pos">' + score + '</span></li>';
-  }
-  document.getElementById('quantCommodityList').innerHTML = commHtml;
-  
-  // === BOTTOM 10 ETFs - Tüm ETF'lerden en düşük skorlular (diskalifiye yok) ===
-  var allEtfsWithScore = ETFS.filter(function(e) { return e.QuantScore != null; });
-  var bottom10Etfs = allEtfsWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; }).slice(0, 10);
-  var bottomEtfHtml = '';
-  for (var i = 0; i < bottom10Etfs.length; i++) {
-    var e = bottom10Etfs[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
-    var score = e.QuantScore != null ? e.QuantScore.toFixed(1) : '-';
-    var scoreClass = e.QuantScore < 0 ? 'neg' : (e.QuantScore < 30 ? 'neg' : '');
-    var catClass = e.Category ? e.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
-    bottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + e.Name + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + e.Category + '</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
-  }
-  document.getElementById('quantBottomEtfList').innerHTML = bottomEtfHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
-  
-  // === BOTTOM 10 Stocks - Tüm hisselerden en düşük skorlular (diskalifiye yok) ===
-  var allStocksWithScore = STOCKS.filter(function(s) { return s.QuantScore != null; });
-  var bottom10Stocks = allStocksWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; }).slice(0, 10);
-  var bottomStockHtml = '';
-  for (var i = 0; i < bottom10Stocks.length; i++) {
-    var s = bottom10Stocks[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
-    var score = s.QuantScore != null ? s.QuantScore.toFixed(1) : '-';
-    var scoreClass = s.QuantScore < 0 ? 'neg' : (s.QuantScore < 30 ? 'neg' : '');
-    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
-    bottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + s.Name.replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
-  }
-  document.getElementById('quantBottomStockList').innerHTML = bottomStockHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
-  
-  // Top 10 Sectors - Top 10 tarzı liste
-  var sectorHtml = '';
-  var top10Sectors = rankings.top10_sectors || [];
-  for (var i = 0; i < top10Sectors.length; i++) {
-    var sec = top10Sectors[i];
-    var rc = '';
-    var scoreText = '';
-    var nameClass = 'top-sym';
-    
-    if (sec.Disqualified) {
-      scoreText = '<span class="top-val neg" style="font-size:0.7rem;">DQ: ' + sec.Reason + '</span>';
-      nameClass = 'top-sym" style="opacity:0.5;text-decoration:line-through';
-    } else {
-      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-      var score = sec.QuantScore != null ? sec.QuantScore.toFixed(1) : '-';
-      scoreText = '<span class="top-val pos">' + score + '</span>';
-    }
-    
-    sectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">(' + sec.StockCount + ' stocks)</span>' + scoreText + '</li>';
-  }
-  document.getElementById('quantSectorList').innerHTML = sectorHtml;
-  
-  // === BOTTOM Sectors - Tüm sektörler en düşükten (diskalifiye dahil, ama skor hesaplanmış) ===
-  var bottomSectorHtml = '';
-  // top10Sectors zaten tüm sektörleri içeriyor, sadece ters sırala
-  var allSectors = (rankings.top10_sectors || []).slice();
-  // Disqualified olanlar için de skor hesaplanmış mı kontrol et, yoksa en sona at
-  var sectorsWithScore = allSectors.filter(function(s) { return s.QuantScore != null; });
-  var sectorsWithoutScore = allSectors.filter(function(s) { return s.QuantScore == null; });
-  // En düşük skordan başla
-  var bottomSectors = sectorsWithScore.slice().sort(function(a, b) { return a.QuantScore - b.QuantScore; });
-  // Skorsuz olanları (DQ) en sona ekle
-  bottomSectors = bottomSectors.concat(sectorsWithoutScore);
-  
-  for (var i = 0; i < bottomSectors.length; i++) {
-    var sec = bottomSectors[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';  // En kötü = gold
-    var score = sec.QuantScore != null ? sec.QuantScore.toFixed(1) : 'N/A';
-    var scoreClass = sec.QuantScore != null && sec.QuantScore < 30 ? 'neg' : (sec.QuantScore == null ? 'neg' : '');
-    bottomSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym">' + sec.Sector + '</span><span class="top-name">(' + sec.StockCount + ' stocks)</span><span class="top-val ' + scoreClass + '">' + score + '</span></li>';
-  }
-  document.getElementById('quantBottomSectorList').innerHTML = bottomSectorHtml || '<div class="brief-loading" style="padding:20px;text-align:center;color:var(--muted);">No data</div>';
 }
 
 // ========== TOP 10 ETFs ==========
@@ -1910,6 +2168,200 @@ function renderBriefStocks() {
   
   container.innerHTML = html;
 }
+
+// ========== BACKTEST MODAL ==========
+function showBacktestModal(strategy) {
+  var modal = document.getElementById('backtestModal');
+  var rankings = DATA.quant_rankings || {};
+  var perf4w = rankings.performance_4w || {};
+  
+  // Strateji bilgileri
+  var configs = {
+    'momentum_stocks': {
+      color: 'var(--green)',
+      bgGradient: 'linear-gradient(135deg,#10b981,#059669)',
+      icon: 'fa-rocket',
+      title: 'Momentum Stocks',
+      subtitle: 'Top 10 Stocks • 4-Week Backtest',
+      perfKey: 'momentum_stocks'
+    },
+    'momentum_etfs': {
+      color: 'var(--green)',
+      bgGradient: 'linear-gradient(135deg,#10b981,#059669)',
+      icon: 'fa-layer-group',
+      title: 'Momentum ETFs',
+      subtitle: 'Top 10 ETFs • 4-Week Backtest',
+      perfKey: 'momentum_etfs'
+    },
+    'mr_stocks': {
+      color: 'var(--purple)',
+      bgGradient: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
+      icon: 'fa-rotate-left',
+      title: 'Mean Reversion Stocks',
+      subtitle: 'Top 10 Stocks • 4-Week Backtest',
+      perfKey: 'mr_stocks'
+    },
+    'mr_etfs': {
+      color: 'var(--purple)',
+      bgGradient: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
+      icon: 'fa-layer-group',
+      title: 'Mean Reversion ETFs',
+      subtitle: 'Top 10 ETFs • 4-Week Backtest',
+      perfKey: 'mr_etfs'
+    }
+  };
+  
+  var config = configs[strategy];
+  if (!config) {
+    alert('Unknown strategy: ' + strategy);
+    return;
+  }
+  
+  // Header güncelle
+  document.getElementById('backtestModalIcon').style.background = config.bgGradient;
+  document.getElementById('backtestModalIcon').innerHTML = '<i class="fas ' + config.icon + '"></i>';
+  document.getElementById('backtestModalTitle').textContent = config.title;
+  document.getElementById('backtestModalSubtitle').textContent = config.subtitle;
+  
+  // Veriyi al ve render et
+  var perf = perf4w[config.perfKey];
+  renderBacktestData(perf, config.color);
+  
+  // Show modal
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function renderBacktestData(perf, color) {
+  if (!perf) {
+    document.getElementById('modalHitRate').textContent = '--%';
+    document.getElementById('modalAvgReturn').textContent = '--%';
+    document.getElementById('modalTrades').textContent = '-';
+    document.getElementById('weeklyBreakdown').innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
+    return;
+  }
+  
+  // Summary stats
+  document.getElementById('modalHitRate').textContent = perf.hit_rate.toFixed(1) + '%';
+  document.getElementById('modalHitRate').style.color = perf.hit_rate >= 55 ? 'var(--green)' : 'var(--rose)';
+  
+  var avgReturnText = (perf.avg_return >= 0 ? '+' : '') + perf.avg_return.toFixed(2) + '%';
+  document.getElementById('modalAvgReturn').textContent = avgReturnText;
+  document.getElementById('modalAvgReturn').style.color = perf.avg_return >= 0 ? 'var(--green)' : 'var(--rose)';
+  
+  document.getElementById('modalTrades').textContent = perf.total_trades;
+  document.getElementById('modalTrades').style.color = color;
+  
+  // Weekly breakdown
+  var weeklyHtml = '';
+  var weeklySummary = perf.weekly_summary || [];
+  
+  // Tarih formatlama
+  function formatDateRange(entry, exit) {
+    if (!entry || !exit) return '';
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var ed = new Date(entry);
+    var xd = new Date(exit);
+    var eDay = ed.getDate();
+    var xDay = xd.getDate();
+    var eMonth = months[ed.getMonth()];
+    var xMonth = months[xd.getMonth()];
+    
+    if (eMonth === xMonth) {
+      return eMonth + ' ' + eDay + '-' + xDay;
+    } else {
+      return eMonth + ' ' + eDay + ' - ' + xMonth + ' ' + xDay;
+    }
+  }
+  
+  weeklySummary.forEach(function(week) {
+    var isDefense = week.defense;
+    var hitRate = week.hit_rate || 0;
+    var avgReturn = week.return || 0;
+    var trades = week.trades || 0;
+    var positive = week.positive || 0;
+    var dateRange = formatDateRange(week.entry_date, week.exit_date);
+    var symbols = week.symbols || [];
+    var note = week.note || '';
+    
+    // 0 trade ve defense değilse = No data
+    var isNoData = trades === 0 && !isDefense;
+    
+    var rowBg = isDefense ? 'rgba(244,63,94,0.1)' : isNoData ? 'rgba(100,100,100,0.1)' : 'var(--bg2)';
+    var rowBorder = isDefense ? '1px solid rgba(244,63,94,0.3)' : isNoData ? '1px solid rgba(100,100,100,0.3)' : '1px solid transparent';
+    
+    weeklyHtml += '<div style="background:' + rowBg + ';border:' + rowBorder + ';border-radius:8px;padding:10px;">';
+    
+    // Header row
+    weeklyHtml += '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:' + (isDefense || isNoData || symbols.length === 0 ? '0' : '8px') + ';">';
+    
+    // Date range
+    weeklyHtml += '<div style="font-weight:600;color:var(--text);font-size:0.85rem;">' + dateRange + '</div>';
+    
+    if (isDefense) {
+      weeklyHtml += '<div style="display:flex;align-items:center;gap:5px;color:#f43f5e;font-size:0.75rem;background:rgba(244,63,94,0.15);padding:4px 8px;border-radius:5px;"><i class="fas fa-shield-halved"></i> DEFENSE</div>';
+    } else if (isNoData) {
+      weeklyHtml += '<div style="display:flex;align-items:center;gap:5px;color:var(--muted);font-size:0.75rem;background:rgba(100,100,100,0.15);padding:4px 8px;border-radius:5px;"><i class="fas fa-ban"></i> No qualifying assets</div>';
+    } else {
+      // Stats
+      var hitColor = hitRate >= 55 ? 'var(--green)' : hitRate >= 45 ? 'var(--amber)' : 'var(--rose)';
+      var retColor = avgReturn >= 0 ? 'var(--green)' : 'var(--rose)';
+      var retSign = avgReturn >= 0 ? '+' : '';
+      
+      weeklyHtml += '<div style="display:flex;gap:8px;">';
+      weeklyHtml += '<div style="text-align:center;background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + hitColor + ';">' + hitRate.toFixed(0) + '%</span><span style="font-size:0.6rem;color:var(--muted);margin-left:4px;">' + positive + '/' + trades + '</span></div>';
+      weeklyHtml += '<div style="text-align:center;background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + retColor + ';">' + retSign + avgReturn.toFixed(2) + '%</span></div>';
+      weeklyHtml += '</div>';
+    }
+    
+    weeklyHtml += '</div>';
+    
+    // Symbols row - pozitif yeşil çerçeve, negatif kırmızı çerçeve
+    if (!isDefense && symbols.length > 0) {
+      weeklyHtml += '<div style="display:flex;flex-wrap:wrap;gap:4px;font-size:0.65rem;">';
+      symbols.forEach(function(symData) {
+        // symData artık {symbol, positive, return} objesi olabilir veya eski format (string)
+        var sym = typeof symData === 'string' ? symData : symData.symbol;
+        var isPositive = typeof symData === 'string' ? true : symData.positive;
+        
+        // Pozitif = yeşil çerçeve, Negatif = kırmızı çerçeve
+        var borderColor = isPositive ? 'var(--green)' : 'var(--rose)';
+        var bgColor = isPositive ? 'rgba(16,185,129,0.1)' : 'rgba(244,63,94,0.1)';
+        
+        weeklyHtml += '<span style="background:' + bgColor + ';color:' + borderColor + ';border:1px solid ' + borderColor + ';padding:2px 6px;border-radius:4px;font-family:\'JetBrains Mono\',monospace;">' + sym + '</span>';
+      });
+      weeklyHtml += '</div>';
+    }
+    
+    weeklyHtml += '</div>';
+  });
+  
+  if (weeklySummary.length === 0) {
+    weeklyHtml = '<div style="text-align:center;padding:20px;color:var(--muted);">No weekly data available</div>';
+  }
+  
+  document.getElementById('weeklyBreakdown').innerHTML = weeklyHtml;
+}
+
+function closeBacktestModal() {
+  document.getElementById('backtestModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close modal on backdrop click
+document.addEventListener('click', function(e) {
+  var modal = document.getElementById('backtestModal');
+  if (e.target === modal) {
+    closeBacktestModal();
+  }
+});
+
+// Close modal on ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeBacktestModal();
+  }
+});
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', loadData);
