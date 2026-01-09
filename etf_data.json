@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-01-09T11:03:27.373837",
-  "update_time": "2026-01-09 11:03",
+  "generated_at": "2026-01-09T13:22:51.412172",
+  "update_time": "2026-01-09 13:22",
   "etf_count": 84,
   "stock_count": 124,
   "ratio_count": 26,
   "regime": {
-    "overall": "RISK-ON",
+    "overall": "NEUTRAL",
     "riskScore": 0,
-    "cycleScore": 1,
+    "cycleScore": 0,
     "signals": {
       "BREADTH": {
         "value": "8/11 POSITIVE",
@@ -16,41 +16,41 @@
         "total": 11
       },
       "VXX": {
-        "value": "COMPLACENT",
-        "score": 1,
-        "level": 26.25,
-        "change": 0.57
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "SPY_TLT": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 7.8936,
-        "change": 0.56
+        "level": null,
+        "change": null
       },
       "HYG_LQD": {
-        "value": "CREDIT STRESS ↑",
-        "score": -1,
-        "level": 0.7342,
-        "change": 0.26
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "XLY_XLP": {
-        "value": "EXPANSION ↑",
-        "score": 1,
-        "level": 1.5671,
-        "change": 2.87
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "CPER_GLD": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 0.0867,
-        "change": -1.27
+        "level": null,
+        "change": null
       }
     },
     "breadth": {
       "positive": 8,
       "total": 11
     },
-    "note": "Broad expansion - favorable conditions"
+    "note": "No signals but broad participation"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 26.25,
-        "2W": 26.25,
-        "1M": 26.25,
-        "3M": 26.25,
-        "6M": 26.25,
-        "12M": 26.25
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.57,
-        "2W": -2.99,
-        "1M": -15.97,
-        "3M": -21.01,
-        "6M": -41.92,
-        "12M": -43.44
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -79,20 +79,20 @@
       "name": "Stocks vs Bonds",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 7.8936,
-        "2W": 7.8936,
-        "1M": 7.8936,
-        "3M": 7.8936,
-        "6M": 7.8936,
-        "12M": 7.8936
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.56,
-        "2W": 0.65,
-        "1M": 1.57,
-        "3M": 4.04,
-        "6M": 6.82,
-        "12M": 11.61
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -100,20 +100,20 @@
       "name": "Credit Spread",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.7342,
-        "2W": 0.7342,
-        "1M": 0.7342,
-        "3M": 0.7342,
-        "6M": 0.7342,
-        "12M": 0.7342
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.26,
-        "2W": 0.75,
-        "1M": 0.9,
-        "3M": 1.7,
-        "6M": -0.2,
-        "12M": -0.2
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -121,20 +121,20 @@
       "name": "Gold vs Stocks",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.5968,
-        "2W": 0.5968,
-        "1M": 0.5968,
-        "3M": 0.5968,
-        "6M": 0.5968,
-        "12M": 0.5968
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.37,
-        "2W": 0.02,
-        "1M": 4.91,
-        "3M": 9.28,
-        "6M": 19.7,
-        "12M": 41.97
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -142,20 +142,20 @@
       "name": "Small vs Large Cap",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.3746,
-        "2W": 0.3746,
-        "1M": 0.3746,
-        "3M": 0.3746,
-        "6M": 0.3746,
-        "12M": 0.3746
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.86,
-        "2W": 2.33,
-        "1M": 1.81,
-        "3M": 2.6,
-        "6M": 5.41,
-        "12M": -1.05
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -163,20 +163,20 @@
       "name": "Speculation Index",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.1168,
-        "2W": 0.1168,
-        "1M": 0.1168,
-        "3M": 0.1168,
-        "6M": 0.1168,
-        "12M": 0.1168
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.91,
-        "2W": 0.0,
-        "1M": -3.6,
-        "3M": -14.71,
-        "6M": 0.2,
-        "12M": 15.39
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -184,20 +184,20 @@
       "name": "Consumer Cycle",
       "category": "Economic Cycle",
       "values": {
-        "1W": 1.5671,
-        "2W": 1.5671,
-        "1M": 1.5671,
-        "3M": 1.5671,
-        "6M": 1.5671,
-        "12M": 1.5671
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.87,
-        "2W": -0.14,
-        "1M": 2.97,
-        "3M": 3.36,
-        "6M": 13.12,
-        "12M": 6.88
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -205,20 +205,20 @@
       "name": "Copper/Gold Ratio",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.0867,
-        "2W": 0.0867,
-        "1M": 0.0867,
-        "3M": 0.0867,
-        "6M": 0.0867,
-        "12M": 0.0867
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.27,
-        "2W": 4.44,
-        "1M": 2.88,
-        "3M": 0.05,
-        "6M": -22.33,
-        "12M": -19.09
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -226,20 +226,20 @@
       "name": "Industrial Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.2323,
-        "2W": 0.2323,
-        "1M": 0.2323,
-        "3M": 0.2323,
-        "6M": 0.2323,
-        "12M": 0.2323
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.45,
-        "2W": 1.82,
-        "1M": 3.58,
-        "3M": 1.76,
-        "6M": -3.38,
-        "12M": 3.56
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -247,20 +247,20 @@
       "name": "Retail Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.1303,
-        "2W": 0.1303,
-        "1M": 0.1303,
-        "3M": 0.1303,
-        "6M": 0.1303,
-        "12M": 0.1303
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 3.63,
-        "2W": 3.07,
-        "1M": 2.51,
-        "3M": 4.58,
-        "6M": 0.98,
-        "12M": -3.73
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -268,20 +268,20 @@
       "name": "Semis Leadership",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.4635,
-        "2W": 0.4635,
-        "1M": 0.4635,
-        "3M": 0.4635,
-        "6M": 0.4635,
-        "12M": 0.4635
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.94,
-        "2W": 4.52,
-        "1M": 1.26,
-        "3M": 7.04,
-        "6M": 17.16,
-        "12M": 20.27
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -289,20 +289,20 @@
       "name": "Energy vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.0675,
-        "2W": 0.0675,
-        "1M": 0.0675,
-        "3M": 0.0675,
-        "6M": 0.0675,
-        "12M": 0.0675
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.03,
-        "2W": 5.05,
-        "1M": 1.46,
-        "3M": 3.83,
-        "6M": -4.46,
-        "12M": -7.69
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -310,20 +310,20 @@
       "name": "Breakeven Inflation",
       "category": "Inflation",
       "values": {
-        "1W": 1.1439,
-        "2W": 1.1439,
-        "1M": 1.1439,
-        "3M": 1.1439,
-        "6M": 1.1439,
-        "12M": 1.1439
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.04,
-        "2W": 0.14,
-        "1M": -0.13,
-        "3M": -0.87,
-        "6M": -1.49,
-        "12M": -1.54
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -331,20 +331,20 @@
       "name": "Agri vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.0377,
-        "2W": 0.0377,
-        "1M": 0.0377,
-        "3M": 0.0377,
-        "6M": 0.0377,
-        "12M": 0.0377
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.82,
-        "2W": 1.53,
-        "1M": 0.82,
-        "3M": -1.27,
-        "6M": -5.96,
-        "12M": -14.19
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -352,20 +352,20 @@
       "name": "Yield Curve",
       "category": "Fed/Rates",
       "values": {
-        "1W": 1.0542,
-        "2W": 1.0542,
-        "1M": 1.0542,
-        "3M": 1.0542,
-        "6M": 1.0542,
-        "12M": 1.0542
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.37,
-        "2W": -0.93,
-        "1M": -0.8,
-        "3M": -1.96,
-        "6M": 1.66,
-        "12M": 1.07
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": 0.9081,
-        "2W": 0.9081,
-        "1M": 0.9081,
-        "3M": 0.9081,
-        "6M": 0.9081,
-        "12M": 0.9081
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.25,
-        "2W": -0.61,
-        "1M": -0.7,
-        "3M": -1.76,
-        "6M": 0.16,
-        "12M": -2.39
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -394,20 +394,20 @@
       "name": "Dollar Strength",
       "category": "Fed/Rates",
       "values": {
-        "1W": 27.27,
-        "2W": 27.27,
-        "1M": 27.27,
-        "3M": 27.27,
-        "6M": 27.27,
-        "12M": 27.27
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.59,
-        "2W": 1.19,
-        "1M": 0.15,
-        "3M": 0.61,
-        "6M": 3.61,
-        "12M": -4.4
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -415,20 +415,20 @@
       "name": "EM vs US",
       "category": "Global",
       "values": {
-        "1W": 0.0825,
-        "2W": 0.0825,
-        "1M": 0.0825,
-        "3M": 0.0825,
-        "6M": 0.0825,
-        "12M": 0.0825
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.19,
-        "2W": 4.63,
-        "1M": 4.48,
-        "3M": 3.81,
-        "6M": 7.49,
-        "12M": 17.01
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -436,20 +436,20 @@
       "name": "China vs US",
       "category": "Global",
       "values": {
-        "1W": 0.0571,
-        "2W": 0.0571,
-        "1M": 0.0571,
-        "3M": 0.0571,
-        "6M": 0.0571,
-        "12M": 0.0571
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.96,
-        "2W": 2.33,
-        "1M": 1.33,
-        "3M": -4.58,
-        "6M": -1.82,
-        "12M": 15.06
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": 0.0579,
-        "2W": 0.0579,
-        "1M": 0.0579,
-        "3M": 0.0579,
-        "6M": 0.0579,
-        "12M": 0.0579
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.38,
-        "2W": 4.67,
-        "1M": 3.45,
-        "3M": -9.39,
-        "6M": 0.28,
-        "12M": 11.17
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -478,20 +478,20 @@
       "name": "India vs EM",
       "category": "Global",
       "values": {
-        "1W": 0.9446,
-        "2W": 0.9446,
-        "1M": 0.9446,
-        "3M": 0.9446,
-        "6M": 0.9446,
-        "12M": 0.9446
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -2.63,
-        "2W": -4.82,
-        "1M": -4.67,
-        "3M": -4.9,
-        "6M": -18.11,
-        "12M": -26.11
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -499,20 +499,20 @@
       "name": "Europe vs US",
       "category": "Global",
       "values": {
-        "1W": 0.1235,
-        "2W": 0.1235,
-        "1M": 0.1235,
-        "3M": 0.1235,
-        "6M": 0.1235,
-        "12M": 0.1235
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.19,
-        "2W": 1.86,
-        "1M": 4.06,
-        "3M": 4.18,
-        "6M": -0.34,
-        "12M": 15.24
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -520,20 +520,20 @@
       "name": "Japan vs US",
       "category": "Global",
       "values": {
-        "1W": 0.1202,
-        "2W": 0.1202,
-        "1M": 0.1202,
-        "3M": 0.1202,
-        "6M": 0.1202,
-        "12M": 0.1202
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.94,
-        "2W": 2.43,
-        "1M": 1.91,
-        "3M": 2.3,
-        "6M": 6.83,
-        "12M": 8.7
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -541,20 +541,20 @@
       "name": "Tech vs Financials",
       "category": "Sector Rotation",
       "values": {
-        "1W": 2.5803,
-        "2W": 2.5803,
-        "1M": 2.5803,
-        "3M": 2.5803,
-        "6M": 2.5803,
-        "12M": 2.5803
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.78,
-        "2W": -1.71,
-        "1M": -7.3,
-        "3M": -5.37,
-        "6M": 4.79,
-        "12M": 5.8
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -562,20 +562,20 @@
       "name": "Cyclical vs Defensive",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.7774,
-        "2W": 0.7774,
-        "1M": 0.7774,
-        "3M": 0.7774,
-        "6M": 0.7774,
-        "12M": 0.7774
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.15,
-        "2W": -1.2,
-        "1M": -1.41,
-        "3M": -4.91,
-        "6M": -5.56,
-        "12M": -3.18
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -583,20 +583,20 @@
       "name": "Materials vs Staples",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.6056,
-        "2W": 0.6056,
-        "1M": 0.6056,
-        "3M": 0.6056,
-        "6M": 0.6056,
-        "12M": 0.6056
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.01,
-        "2W": 3.2,
-        "1M": 8.54,
-        "3M": 6.29,
-        "6M": 6.41,
-        "12M": 10.96
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     }
   ],
@@ -904,7 +904,7 @@
         "ACCELERATION": -2.73,
         "QUALITY": 0.9533,
         "SHARPE": 3.7,
-        "SORTINO": 8.65,
+        "SORTINO": 8.64,
         "STABILITY": 9.4
       },
       "12M": {
@@ -9937,7 +9937,7 @@
         "RETURN": 32.54,
         "TREND": 31.75,
         "ACCELERATION": 35.24,
-        "QUALITY": 0.8271,
+        "QUALITY": 0.8272,
         "SHARPE": 1.65,
         "SORTINO": 2.79,
         "STABILITY": 2.88
@@ -11463,7 +11463,7 @@
       "6M": {
         "RETURN": -7.0,
         "TREND": -17.06,
-        "ACCELERATION": 53.78,
+        "ACCELERATION": 53.77,
         "QUALITY": 0.4849,
         "SHARPE": -0.56,
         "SORTINO": -0.8,
@@ -13931,51 +13931,13 @@
     },
     "performance_4w": {
       "momentum_stocks": {
-        "hit_rate": 55.2,
-        "avg_return": 0.667,
-        "total_trades": 29,
-        "positive_trades": 16,
+        "hit_rate": 45.8,
+        "avg_return": 0.016,
+        "total_trades": 24,
+        "positive_trades": 11,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": 2.606465874081789,
-            "hit_rate": 100.0,
-            "trades": 5,
-            "positive": 5,
-            "symbols": [
-              {
-                "symbol": "UNP",
-                "positive": true,
-                "return": 2.21
-              },
-              {
-                "symbol": "TJX",
-                "positive": true,
-                "return": 1.89
-              },
-              {
-                "symbol": "DHR",
-                "positive": true,
-                "return": 0.65
-              },
-              {
-                "symbol": "JNJ",
-                "positive": true,
-                "return": 4.4
-              },
-              {
-                "symbol": "PEP",
-                "positive": true,
-                "return": 3.89
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -14134,44 +14096,22 @@
                 "return": -0.29
               }
             ]
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": [],
+            "note": "Price data unavailable"
           }
         ],
         "weekly_results": [
-          {
-            "week": "2025-W49",
-            "symbol": "UNP",
-            "score": 96.25,
-            "return": 2.2064116290468005,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "TJX",
-            "score": 66.25,
-            "return": 1.8858071058064807,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "DHR",
-            "score": 40.0,
-            "return": 0.6492643789769659,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "JNJ",
-            "score": 28.75,
-            "return": 4.401459591315038,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "PEP",
-            "score": 18.75,
-            "return": 3.889386665263661,
-            "positive": true
-          },
           {
             "week": "2025-W50",
             "symbol": "FDX",
@@ -14343,56 +14283,13 @@
         ]
       },
       "momentum_etfs": {
-        "hit_rate": 58.3,
-        "avg_return": 0.108,
-        "total_trades": 36,
-        "positive_trades": 21,
+        "hit_rate": 63.3,
+        "avg_return": 0.131,
+        "total_trades": 30,
+        "positive_trades": 19,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": -0.09295436696942032,
-            "hit_rate": 33.3,
-            "trades": 6,
-            "positive": 2,
-            "symbols": [
-              {
-                "symbol": "HYG",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "BIL",
-                "positive": true,
-                "return": 0.08
-              },
-              {
-                "symbol": "SHY",
-                "positive": true,
-                "return": 0.12
-              },
-              {
-                "symbol": "AGG",
-                "positive": false,
-                "return": -0.21
-              },
-              {
-                "symbol": "BND",
-                "positive": false,
-                "return": -0.23
-              },
-              {
-                "symbol": "GOVT",
-                "positive": false,
-                "return": -0.13
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -14581,51 +14478,22 @@
                 "return": -1.73
               }
             ]
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": [],
+            "note": "Price data unavailable"
           }
         ],
         "weekly_results": [
-          {
-            "week": "2025-W49",
-            "symbol": "HYG",
-            "score": 100.0,
-            "return": -0.18583549904631624,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "BIL",
-            "score": 76.0,
-            "return": 0.07647357243054653,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "SHY",
-            "score": 59.0,
-            "return": 0.12082693932722322,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "AGG",
-            "score": 42.0,
-            "return": -0.2099508664583305,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "BND",
-            "score": 22.0,
-            "return": -0.2290994334471108,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "GOVT",
-            "score": 1.0,
-            "return": -0.13014091462253408,
-            "positive": false
-          },
           {
             "week": "2025-W50",
             "symbol": "XSLV",
@@ -14839,83 +14707,13 @@
         ]
       },
       "momentum": {
-        "hit_rate": 56.9,
-        "avg_return": 0.359,
-        "total_trades": 65,
-        "positive_trades": 37,
+        "hit_rate": 55.6,
+        "avg_return": 0.202,
+        "total_trades": 54,
+        "positive_trades": 30,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": 1.1340548335084022,
-            "hit_rate": 63.6,
-            "trades": 11,
-            "positive": 7,
-            "stock_symbols": [
-              {
-                "symbol": "UNP",
-                "positive": true,
-                "return": 2.21
-              },
-              {
-                "symbol": "TJX",
-                "positive": true,
-                "return": 1.89
-              },
-              {
-                "symbol": "DHR",
-                "positive": true,
-                "return": 0.65
-              },
-              {
-                "symbol": "JNJ",
-                "positive": true,
-                "return": 4.4
-              },
-              {
-                "symbol": "PEP",
-                "positive": true,
-                "return": 3.89
-              }
-            ],
-            "etf_symbols": [
-              {
-                "symbol": "HYG",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "BIL",
-                "positive": true,
-                "return": 0.08
-              },
-              {
-                "symbol": "SHY",
-                "positive": true,
-                "return": 0.12
-              },
-              {
-                "symbol": "AGG",
-                "positive": false,
-                "return": -0.21
-              },
-              {
-                "symbol": "BND",
-                "positive": false,
-                "return": -0.23
-              },
-              {
-                "symbol": "GOVT",
-                "positive": false,
-                "return": -0.13
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -15230,54 +15028,29 @@
                 "return": -1.73
               }
             ]
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "stock_symbols": [],
+            "etf_symbols": []
           }
         ],
         "stock_performance": {
-          "hit_rate": 55.2,
-          "avg_return": 0.667,
-          "total_trades": 29,
-          "positive_trades": 16,
+          "hit_rate": 45.8,
+          "avg_return": 0.016,
+          "total_trades": 24,
+          "positive_trades": 11,
           "defense_weeks": 0,
           "active_weeks": 4,
           "weekly_summary": [
-            {
-              "week": "2025-W49",
-              "entry_date": "2025-12-08",
-              "exit_date": "2025-12-12",
-              "defense": false,
-              "defense_reason": null,
-              "return": 2.606465874081789,
-              "hit_rate": 100.0,
-              "trades": 5,
-              "positive": 5,
-              "symbols": [
-                {
-                  "symbol": "UNP",
-                  "positive": true,
-                  "return": 2.21
-                },
-                {
-                  "symbol": "TJX",
-                  "positive": true,
-                  "return": 1.89
-                },
-                {
-                  "symbol": "DHR",
-                  "positive": true,
-                  "return": 0.65
-                },
-                {
-                  "symbol": "JNJ",
-                  "positive": true,
-                  "return": 4.4
-                },
-                {
-                  "symbol": "PEP",
-                  "positive": true,
-                  "return": 3.89
-                }
-              ]
-            },
             {
               "week": "2025-W50",
               "entry_date": "2025-12-15",
@@ -15436,44 +15209,22 @@
                   "return": -0.29
                 }
               ]
+            },
+            {
+              "week": "2026-W1",
+              "entry_date": "2026-01-05",
+              "exit_date": "2026-01-09",
+              "defense": false,
+              "defense_reason": null,
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": [],
+              "note": "Price data unavailable"
             }
           ],
           "weekly_results": [
-            {
-              "week": "2025-W49",
-              "symbol": "UNP",
-              "score": 96.25,
-              "return": 2.2064116290468005,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "TJX",
-              "score": 66.25,
-              "return": 1.8858071058064807,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "DHR",
-              "score": 40.0,
-              "return": 0.6492643789769659,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "JNJ",
-              "score": 28.75,
-              "return": 4.401459591315038,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "PEP",
-              "score": 18.75,
-              "return": 3.889386665263661,
-              "positive": true
-            },
             {
               "week": "2025-W50",
               "symbol": "FDX",
@@ -15645,56 +15396,13 @@
           ]
         },
         "etf_performance": {
-          "hit_rate": 58.3,
-          "avg_return": 0.108,
-          "total_trades": 36,
-          "positive_trades": 21,
+          "hit_rate": 63.3,
+          "avg_return": 0.131,
+          "total_trades": 30,
+          "positive_trades": 19,
           "defense_weeks": 0,
           "active_weeks": 4,
           "weekly_summary": [
-            {
-              "week": "2025-W49",
-              "entry_date": "2025-12-08",
-              "exit_date": "2025-12-12",
-              "defense": false,
-              "defense_reason": null,
-              "return": -0.09295436696942032,
-              "hit_rate": 33.3,
-              "trades": 6,
-              "positive": 2,
-              "symbols": [
-                {
-                  "symbol": "HYG",
-                  "positive": false,
-                  "return": -0.19
-                },
-                {
-                  "symbol": "BIL",
-                  "positive": true,
-                  "return": 0.08
-                },
-                {
-                  "symbol": "SHY",
-                  "positive": true,
-                  "return": 0.12
-                },
-                {
-                  "symbol": "AGG",
-                  "positive": false,
-                  "return": -0.21
-                },
-                {
-                  "symbol": "BND",
-                  "positive": false,
-                  "return": -0.23
-                },
-                {
-                  "symbol": "GOVT",
-                  "positive": false,
-                  "return": -0.13
-                }
-              ]
-            },
             {
               "week": "2025-W50",
               "entry_date": "2025-12-15",
@@ -15883,51 +15591,22 @@
                   "return": -1.73
                 }
               ]
+            },
+            {
+              "week": "2026-W1",
+              "entry_date": "2026-01-05",
+              "exit_date": "2026-01-09",
+              "defense": false,
+              "defense_reason": null,
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": [],
+              "note": "Price data unavailable"
             }
           ],
           "weekly_results": [
-            {
-              "week": "2025-W49",
-              "symbol": "HYG",
-              "score": 100.0,
-              "return": -0.18583549904631624,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "BIL",
-              "score": 76.0,
-              "return": 0.07647357243054653,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "SHY",
-              "score": 59.0,
-              "return": 0.12082693932722322,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "AGG",
-              "score": 42.0,
-              "return": -0.2099508664583305,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "BND",
-              "score": 22.0,
-              "return": -0.2290994334471108,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "GOVT",
-              "score": 1.0,
-              "return": -0.13014091462253408,
-              "positive": false
-            },
             {
               "week": "2025-W50",
               "symbol": "XSLV",
@@ -16142,76 +15821,13 @@
         }
       },
       "mr_stocks": {
-        "hit_rate": 52.6,
-        "avg_return": 1.046,
-        "total_trades": 19,
-        "positive_trades": 10,
+        "hit_rate": 66.7,
+        "avg_return": 0.991,
+        "total_trades": 9,
+        "positive_trades": 6,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": 0.2180244293628275,
-            "hit_rate": 40.0,
-            "trades": 10,
-            "positive": 4,
-            "symbols": [
-              {
-                "symbol": "PM",
-                "positive": true,
-                "return": 4.13
-              },
-              {
-                "symbol": "PG",
-                "positive": false,
-                "return": -0.05
-              },
-              {
-                "symbol": "DUK",
-                "positive": false,
-                "return": -0.77
-              },
-              {
-                "symbol": "GILD",
-                "positive": false,
-                "return": -0.48
-              },
-              {
-                "symbol": "CME",
-                "positive": true,
-                "return": 1.59
-              },
-              {
-                "symbol": "SO",
-                "positive": false,
-                "return": -2.06
-              },
-              {
-                "symbol": "MDLZ",
-                "positive": false,
-                "return": -1.06
-              },
-              {
-                "symbol": "EXC",
-                "positive": false,
-                "return": -0.91
-              },
-              {
-                "symbol": "KHC",
-                "positive": true,
-                "return": 0.82
-              },
-              {
-                "symbol": "KO",
-                "positive": true,
-                "return": 0.97
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -16295,79 +15911,22 @@
                 "return": -0.04
               }
             ]
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": [],
+            "note": "Price data unavailable"
           }
         ],
         "weekly_results": [
-          {
-            "week": "2025-W49",
-            "symbol": "PM",
-            "score": 73.39,
-            "return": 4.12713167838914,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "PG",
-            "score": 66.96,
-            "return": -0.04898700050717242,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "DUK",
-            "score": 63.93,
-            "return": -0.7745214458871774,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "GILD",
-            "score": 57.5,
-            "return": -0.47942223754181557,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "CME",
-            "score": 52.86,
-            "return": 1.5937197762794453,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "SO",
-            "score": 52.68,
-            "return": -2.064484753068485,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "MDLZ",
-            "score": 51.96,
-            "return": -1.0618770809533773,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "EXC",
-            "score": 51.07,
-            "return": -0.9097146117216126,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "KHC",
-            "score": 50.71,
-            "return": 0.8247454141833144,
-            "positive": true
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "KO",
-            "score": 47.5,
-            "return": 0.973654554456016,
-            "positive": true
-          },
           {
             "week": "2025-W50",
             "symbol": "ISRG",
@@ -16434,46 +15993,13 @@
         ]
       },
       "mr_etfs": {
-        "hit_rate": 29.4,
-        "avg_return": -0.308,
-        "total_trades": 17,
+        "hit_rate": 38.5,
+        "avg_return": 0.036,
+        "total_trades": 13,
         "positive_trades": 5,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": -1.3766121080822562,
-            "hit_rate": 0.0,
-            "trades": 4,
-            "positive": 0,
-            "symbols": [
-              {
-                "symbol": "XLU",
-                "positive": false,
-                "return": -1.27
-              },
-              {
-                "symbol": "TLT",
-                "positive": false,
-                "return": -0.96
-              },
-              {
-                "symbol": "SOYB",
-                "positive": false,
-                "return": -2.21
-              },
-              {
-                "symbol": "WEAT",
-                "positive": false,
-                "return": -1.06
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -16577,37 +16103,22 @@
             "positive": 0,
             "symbols": [],
             "note": "No qualifying stocks"
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": [],
+            "note": "Price data unavailable"
           }
         ],
         "weekly_results": [
-          {
-            "week": "2025-W49",
-            "symbol": "XLU",
-            "score": 71.67,
-            "return": -1.2678686666515726,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "TLT",
-            "score": 60.0,
-            "return": -0.9638383607353584,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "SOYB",
-            "score": 35.0,
-            "return": -2.2145037502216525,
-            "positive": false
-          },
-          {
-            "week": "2025-W49",
-            "symbol": "WEAT",
-            "score": 33.33,
-            "return": -1.0602376547204417,
-            "positive": false
-          },
           {
             "week": "2025-W50",
             "symbol": "VXZ",
@@ -16702,98 +16213,13 @@
         ]
       },
       "mean_reversion": {
-        "hit_rate": 41.7,
-        "avg_return": 0.155,
-        "total_trades": 36,
-        "positive_trades": 15,
+        "hit_rate": 50.0,
+        "avg_return": 0.404,
+        "total_trades": 22,
+        "positive_trades": 11,
         "defense_weeks": 0,
         "active_weeks": 4,
         "weekly_summary": [
-          {
-            "week": "2025-W49",
-            "entry_date": "2025-12-08",
-            "exit_date": "2025-12-12",
-            "defense": false,
-            "defense_reason": null,
-            "return": -0.23758600990719642,
-            "hit_rate": 28.6,
-            "trades": 14,
-            "positive": 4,
-            "stock_symbols": [
-              {
-                "symbol": "PM",
-                "positive": true,
-                "return": 4.13
-              },
-              {
-                "symbol": "PG",
-                "positive": false,
-                "return": -0.05
-              },
-              {
-                "symbol": "DUK",
-                "positive": false,
-                "return": -0.77
-              },
-              {
-                "symbol": "GILD",
-                "positive": false,
-                "return": -0.48
-              },
-              {
-                "symbol": "CME",
-                "positive": true,
-                "return": 1.59
-              },
-              {
-                "symbol": "SO",
-                "positive": false,
-                "return": -2.06
-              },
-              {
-                "symbol": "MDLZ",
-                "positive": false,
-                "return": -1.06
-              },
-              {
-                "symbol": "EXC",
-                "positive": false,
-                "return": -0.91
-              },
-              {
-                "symbol": "KHC",
-                "positive": true,
-                "return": 0.82
-              },
-              {
-                "symbol": "KO",
-                "positive": true,
-                "return": 0.97
-              }
-            ],
-            "etf_symbols": [
-              {
-                "symbol": "XLU",
-                "positive": false,
-                "return": -1.27
-              },
-              {
-                "symbol": "TLT",
-                "positive": false,
-                "return": -0.96
-              },
-              {
-                "symbol": "SOYB",
-                "positive": false,
-                "return": -2.21
-              },
-              {
-                "symbol": "WEAT",
-                "positive": false,
-                "return": -1.06
-              }
-            ]
-          },
           {
             "week": "2025-W50",
             "entry_date": "2025-12-15",
@@ -16947,79 +16373,29 @@
               }
             ],
             "etf_symbols": []
+          },
+          {
+            "week": "2026-W1",
+            "entry_date": "2026-01-05",
+            "exit_date": "2026-01-09",
+            "defense": false,
+            "defense_reason": null,
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "stock_symbols": [],
+            "etf_symbols": []
           }
         ],
         "stock_performance": {
-          "hit_rate": 52.6,
-          "avg_return": 1.046,
-          "total_trades": 19,
-          "positive_trades": 10,
+          "hit_rate": 66.7,
+          "avg_return": 0.991,
+          "total_trades": 9,
+          "positive_trades": 6,
           "defense_weeks": 0,
           "active_weeks": 4,
           "weekly_summary": [
-            {
-              "week": "2025-W49",
-              "entry_date": "2025-12-08",
-              "exit_date": "2025-12-12",
-              "defense": false,
-              "defense_reason": null,
-              "return": 0.2180244293628275,
-              "hit_rate": 40.0,
-              "trades": 10,
-              "positive": 4,
-              "symbols": [
-                {
-                  "symbol": "PM",
-                  "positive": true,
-                  "return": 4.13
-                },
-                {
-                  "symbol": "PG",
-                  "positive": false,
-                  "return": -0.05
-                },
-                {
-                  "symbol": "DUK",
-                  "positive": false,
-                  "return": -0.77
-                },
-                {
-                  "symbol": "GILD",
-                  "positive": false,
-                  "return": -0.48
-                },
-                {
-                  "symbol": "CME",
-                  "positive": true,
-                  "return": 1.59
-                },
-                {
-                  "symbol": "SO",
-                  "positive": false,
-                  "return": -2.06
-                },
-                {
-                  "symbol": "MDLZ",
-                  "positive": false,
-                  "return": -1.06
-                },
-                {
-                  "symbol": "EXC",
-                  "positive": false,
-                  "return": -0.91
-                },
-                {
-                  "symbol": "KHC",
-                  "positive": true,
-                  "return": 0.82
-                },
-                {
-                  "symbol": "KO",
-                  "positive": true,
-                  "return": 0.97
-                }
-              ]
-            },
             {
               "week": "2025-W50",
               "entry_date": "2025-12-15",
@@ -17103,79 +16479,22 @@
                   "return": -0.04
                 }
               ]
+            },
+            {
+              "week": "2026-W1",
+              "entry_date": "2026-01-05",
+              "exit_date": "2026-01-09",
+              "defense": false,
+              "defense_reason": null,
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": [],
+              "note": "Price data unavailable"
             }
           ],
           "weekly_results": [
-            {
-              "week": "2025-W49",
-              "symbol": "PM",
-              "score": 73.39,
-              "return": 4.12713167838914,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "PG",
-              "score": 66.96,
-              "return": -0.04898700050717242,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "DUK",
-              "score": 63.93,
-              "return": -0.7745214458871774,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "GILD",
-              "score": 57.5,
-              "return": -0.47942223754181557,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "CME",
-              "score": 52.86,
-              "return": 1.5937197762794453,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "SO",
-              "score": 52.68,
-              "return": -2.064484753068485,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "MDLZ",
-              "score": 51.96,
-              "return": -1.0618770809533773,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "EXC",
-              "score": 51.07,
-              "return": -0.9097146117216126,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "KHC",
-              "score": 50.71,
-              "return": 0.8247454141833144,
-              "positive": true
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "KO",
-              "score": 47.5,
-              "return": 0.973654554456016,
-              "positive": true
-            },
             {
               "week": "2025-W50",
               "symbol": "ISRG",
@@ -17242,46 +16561,13 @@
           ]
         },
         "etf_performance": {
-          "hit_rate": 29.4,
-          "avg_return": -0.308,
-          "total_trades": 17,
+          "hit_rate": 38.5,
+          "avg_return": 0.036,
+          "total_trades": 13,
           "positive_trades": 5,
           "defense_weeks": 0,
           "active_weeks": 4,
           "weekly_summary": [
-            {
-              "week": "2025-W49",
-              "entry_date": "2025-12-08",
-              "exit_date": "2025-12-12",
-              "defense": false,
-              "defense_reason": null,
-              "return": -1.3766121080822562,
-              "hit_rate": 0.0,
-              "trades": 4,
-              "positive": 0,
-              "symbols": [
-                {
-                  "symbol": "XLU",
-                  "positive": false,
-                  "return": -1.27
-                },
-                {
-                  "symbol": "TLT",
-                  "positive": false,
-                  "return": -0.96
-                },
-                {
-                  "symbol": "SOYB",
-                  "positive": false,
-                  "return": -2.21
-                },
-                {
-                  "symbol": "WEAT",
-                  "positive": false,
-                  "return": -1.06
-                }
-              ]
-            },
             {
               "week": "2025-W50",
               "entry_date": "2025-12-15",
@@ -17385,37 +16671,22 @@
               "positive": 0,
               "symbols": [],
               "note": "No qualifying stocks"
+            },
+            {
+              "week": "2026-W1",
+              "entry_date": "2026-01-05",
+              "exit_date": "2026-01-09",
+              "defense": false,
+              "defense_reason": null,
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": [],
+              "note": "Price data unavailable"
             }
           ],
           "weekly_results": [
-            {
-              "week": "2025-W49",
-              "symbol": "XLU",
-              "score": 71.67,
-              "return": -1.2678686666515726,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "TLT",
-              "score": 60.0,
-              "return": -0.9638383607353584,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "SOYB",
-              "score": 35.0,
-              "return": -2.2145037502216525,
-              "positive": false
-            },
-            {
-              "week": "2025-W49",
-              "symbol": "WEAT",
-              "score": 33.33,
-              "return": -1.0602376547204417,
-              "positive": false
-            },
             {
               "week": "2025-W50",
               "symbol": "VXZ",
