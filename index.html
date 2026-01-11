@@ -343,6 +343,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <button class="tab" onclick="showTab('briefstocks')"><i class="fas fa-file-alt"></i> Daily Brief - Stocks</button>
 <button class="tab" onclick="showTab('news')"><i class="fas fa-rss"></i> Company News</button>
 <button class="tab" onclick="showTab('quantrankings')"><i class="fas fa-crown"></i> Quant Rankings</button>
+<button class="tab" onclick="showTab('sectorrankings')"><i class="fas fa-chart-pie"></i> Sector Rankings</button>
 <button class="tab" onclick="showTab('sentimentrankings')"><i class="fas fa-heart-pulse"></i> Sentiment Ranking</button>
 </div>
 <div class="panel active" id="panel-metrics">
@@ -692,6 +693,152 @@ Backtested performance is not indicative of future results. These are statistica
 </div>
 </div>
 
+<!-- Sector Rankings Panel (ML-based Sector Momentum Prediction) -->
+<div class="panel" id="panel-sectorrankings">
+<!-- Defense Status Card -->
+<div id="sectorDefenseCard" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+<div style="display:flex;align-items:center;gap:16px;">
+<div id="sectorDefenseIcon" style="width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(16,185,129,0.2);color:var(--green);box-shadow:0 0 20px rgba(16,185,129,0.3);">
+<i class="fas fa-shield-halved"></i>
+</div>
+<div>
+<h2 id="sectorDefenseMode" style="font-size:1.2rem;margin-bottom:2px;">NORMAL</h2>
+<span id="sectorDefenseAction" style="font-size:0.8rem;color:var(--muted);">Apply standard strategy</span>
+</div>
+</div>
+<div style="display:flex;gap:20px;">
+<div style="text-align:center;">
+<div id="sectorLeadingScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--cyan);">0</div>
+<div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Leading</div>
+</div>
+<div style="text-align:center;">
+<div id="sectorLaggingScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--purple);">0</div>
+<div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Lagging</div>
+</div>
+<div style="text-align:center;border-left:2px solid var(--cyan);padding-left:12px;">
+<div id="sectorTotalScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;">0</div>
+<div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Total</div>
+</div>
+</div>
+</div>
+
+<!-- Defense Signals -->
+<div id="sectorSignalsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:20px;"></div>
+
+<!-- Performance Cards -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px;">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#059669);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-bullseye"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Hit Rate</h3><span style="font-size:0.6rem;color:var(--muted);">52 Weeks</span></div>
+</div>
+<div id="sectorHitRate" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--green);text-align:center;">--%</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#06b6d4,#0891b2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-chart-line"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Total Return</h3><span style="font-size:0.6rem;color:var(--muted);">52 Weeks</span></div>
+</div>
+<div id="sectorTotalReturn" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--cyan);text-align:center;">--%</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-calendar-check"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Positive Weeks</h3><span style="font-size:0.6rem;color:var(--muted);">52 Weeks</span></div>
+</div>
+<div id="sectorPositiveWeeks" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--purple);text-align:center;">--/52</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-shield-halved"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Defense Mode</h3><span style="font-size:0.6rem;color:var(--muted);">52 Weeks</span></div>
+</div>
+<div id="sectorDefenseWeeks" style="font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;color:var(--amber);text-align:center;">CASH: 0 | HALF: 0</div>
+</div>
+</div>
+
+<!-- Prediction Date Info -->
+<div id="sectorDateInfo" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px;max-width:500px;">
+<div style="text-align:center;"><span style="font-size:0.65rem;color:var(--muted);display:block;">Score Date</span><span id="sectorScoreDate" style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--text);">--</span></div>
+<div style="text-align:center;"><span style="font-size:0.65rem;color:var(--muted);display:block;">Entry (Monday)</span><span id="sectorEntryDate" style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--green);">--</span></div>
+<div style="text-align:center;"><span style="font-size:0.65rem;color:var(--muted);display:block;">Exit (Friday)</span><span id="sectorExitDate" style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--rose);">--</span></div>
+</div>
+
+<!-- Sector Rankings Table -->
+<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;max-width:700px;">
+<div style="padding:14px 18px;background:var(--bg2);border-bottom:1px solid var(--border);">
+<h3 style="margin:0;font-size:0.9rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-chart-pie" style="color:var(--cyan);"></i> Sector Rankings - Next Week Prediction</h3>
+</div>
+<div style="overflow-x:auto;">
+<table style="width:100%;border-collapse:collapse;font-size:0.75rem;">
+<thead style="background:rgba(6,8,13,0.95);">
+<tr>
+<th style="padding:8px 10px;text-align:left;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;width:50px;">Rank</th>
+<th style="padding:8px 10px;text-align:left;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">Sector</th>
+<th style="padding:8px 10px;text-align:right;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">Prob</th>
+<th style="padding:8px 10px;text-align:right;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">1W</th>
+<th style="padding:8px 10px;text-align:right;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">2W</th>
+<th style="padding:8px 10px;text-align:right;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">1M</th>
+</tr>
+</thead>
+<tbody id="sectorRankingsBody"></tbody>
+</table>
+</div>
+</div>
+
+<!-- Weekly Performance (like Momentum Stocks) -->
+<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:16px;max-width:700px;">
+<div style="padding:14px 18px;background:var(--bg2);border-bottom:1px solid var(--border);">
+<h3 style="margin:0;font-size:0.9rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-calendar-week" style="color:var(--purple);"></i> Weekly Performance <span style="font-size:0.7rem;color:var(--muted);margin-left:8px;">Last 4 Weeks</span></h3>
+</div>
+<div id="sectorWeeklyBreakdown" style="padding:12px;display:flex;flex-direction:column;gap:10px;"></div>
+</div>
+
+<!-- Methodology -->
+<div class="quant-methodology" style="margin-top:16px;">
+<h4><i class="fas fa-brain"></i> SECTOR PREDICTION MODEL</h4>
+<div class="methodology-grid">
+<div class="methodology-col">
+<h5>🤖 ML Model</h5>
+<div class="weight-item"><span>Algorithm</span><span>XGBoost Classifier</span></div>
+<div class="weight-item"><span>Features</span><span>25 Technical Indicators</span></div>
+<div class="weight-item"><span>Training</span><span>3.5 Years of Data</span></div>
+<div class="weight-item"><span>Prediction</span><span>Weekly (Mon-Fri)</span></div>
+<div class="weight-item"><span>Target</span><span>Top 3 Sector Selection</span></div>
+</div>
+<div class="methodology-col">
+<h5>🛡️ Defense Mechanism</h5>
+<div style="font-size:0.75rem;color:var(--text);line-height:1.8;background:var(--bg);padding:12px;border-radius:8px;">
+<div style="margin-bottom:10px;">
+<strong style="color:var(--cyan);">Leading Signals (2x weight):</strong><br>
+<span style="color:var(--muted);">• VIX Momentum: Daily +8% spike = danger</span><br>
+<span style="color:var(--muted);">• VIX Term: Backwardation = panic mode</span><br>
+<span style="color:var(--muted);">• Sector Rotation: Flight to defensives</span><br>
+<span style="color:var(--muted);">• High Beta: Risky stocks collapsing</span>
+</div>
+<div style="margin-bottom:10px;">
+<strong style="color:var(--purple);">Lagging Signals (1x weight):</strong><br>
+<span style="color:var(--muted);">• VIX Level: >25 elevated, >30 panic</span><br>
+<span style="color:var(--muted);">• SPY vs MA: Below 20/50MA = downtrend</span><br>
+<span style="color:var(--muted);">• Breadth: <50% sectors positive = weak</span><br>
+<span style="color:var(--muted);">• Prev Week: <-3% return = caution</span>
+</div>
+<div>
+<strong style="color:var(--amber);">Modes:</strong><br>
+<span style="color:var(--green);">✅ NORMAL:</span> <span style="color:var(--muted);">Full position size</span><br>
+<span style="color:var(--amber);">⚠️ HALF_SIZE:</span> <span style="color:var(--muted);">50% position size</span><br>
+<span style="color:var(--rose);">🛑 CASH:</span> <span style="color:var(--muted);">Skip trading this week</span>
+</div>
+</div>
+</div>
+</div>
+<div class="quant-disclaimer">
+<i class="fas fa-exclamation-triangle"></i>
+Backtested performance is not indicative of future results. Model predictions are based on historical patterns. Not financial advice. Defense mechanism may not prevent all losses.
+</div>
+</div>
+</div>
+
 <!-- Sentiment Ranking Panel (Sadece Haber Bazlı Sentiment) -->
 <div class="panel" id="panel-sentimentrankings">
 <div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 480px)); justify-content: start;">
@@ -838,12 +985,29 @@ Sentiment scores are AI-generated from news headlines and may not reflect actual
 </div>
 </div>
 
+<!-- Sector Info Modal -->
+<div class="modal-overlay" id="sectorInfoModal">
+<div class="modal-content" style="width:480px;">
+<div class="modal-header">
+<div class="modal-title" id="sectorInfoTitle">Title</div>
+<button class="modal-close" onclick="closeSectorInfoModal()"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-desc" id="sectorInfoDesc" style="margin-bottom:16px;">Description</div>
+<div style="margin-bottom:12px;">
+<div style="font-size:0.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Levels</div>
+<div id="sectorInfoLevels"></div>
+</div>
+<div id="sectorInfoAction" style="font-size:0.8rem;color:var(--amber);background:rgba(245,158,11,0.1);padding:10px 12px;border-radius:8px;border-left:3px solid var(--amber);"></div>
+</div>
+</div>
+
 <script>
 // ========== GLOBAL STATE ==========
 var DATA = null;
 var BRIEF = null;
 var BRIEF_STOCKS = null;
 var NEWS_DATA = null;
+var SECTOR_DATA = null;
 var currentNewsSector = 'all';
 var REGIME, RATIOS, ETFS, STOCKS;
 var top10P = '1M', top10StockP = '1M', top10SectorP = '1M', ratioP = '1M';
@@ -899,11 +1063,12 @@ var GLOSS = {
 // ========== DATA LOADING ==========
 async function loadData() {
   try {
-    const [dataRes, briefRes, briefStockRes, newsRes] = await Promise.all([
+    const [dataRes, briefRes, briefStockRes, newsRes, sectorRes] = await Promise.all([
       fetch('etf_data.json'),
       fetch('brief.json').catch(() => null),
       fetch('brief_stocks.json').catch(() => null),
-      fetch('news_data.json').catch(() => null)
+      fetch('news_data.json').catch(() => null),
+      fetch('sector_rankings.json').catch(() => null)
     ]);
     
     DATA = await dataRes.json();
@@ -920,6 +1085,9 @@ async function loadData() {
     }
     if (newsRes && newsRes.ok) {
       NEWS_DATA = await newsRes.json();
+    }
+    if (sectorRes && sectorRes.ok) {
+      SECTOR_DATA = await sectorRes.json();
     }
     
     renderAll();
@@ -938,6 +1106,7 @@ function renderAll() {
   renderTable();
   renderStockTable();
   renderQuantRankings();
+  renderSectorRankings();
   renderTop10();
   renderTop10Stocks();
   renderTop10Sectors();
@@ -979,8 +1148,85 @@ function showModal(key, level, change) {
   document.getElementById('modalOverlay').classList.add('active');
 }
 function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+
+// ========== SECTOR INFO MODAL ==========
+var SECTOR_GLOSS = {
+  'vix': {
+    title: 'VIX (Volatility Index)',
+    desc: 'Market fear gauge. Measures expected 30-day volatility calculated from S&P 500 options.',
+    levels: [
+      { range: '< 15', label: 'Very Low', color: 'var(--green)', meaning: 'Extreme calm, complacency risk' },
+      { range: '15-20', label: 'Normal', color: 'var(--green)', meaning: 'Healthy market, trend following works' },
+      { range: '20-25', label: 'Elevated', color: 'var(--amber)', meaning: 'Caution, consider reducing size' },
+      { range: '25-30', label: 'High', color: 'var(--amber)', meaning: 'Volatility rising, consider hedging' },
+      { range: '> 30', label: 'Panic', color: 'var(--rose)', meaning: 'Crisis mode, go defensive' }
+    ],
+    action: 'When VIX > 25, reduce position size by half. When VIX > 30, switch to CASH mode.'
+  },
+  'spy20ma': {
+    title: 'SPY vs 20-Day Moving Average',
+    desc: 'S&P 500 position relative to its 20-day moving average. Short-term trend indicator.',
+    levels: [
+      { range: '> +2%', label: 'Strong Up', color: 'var(--green)', meaning: 'Strong uptrend confirmed' },
+      { range: '0% to +2%', label: 'Above', color: 'var(--green)', meaning: 'Positive trend intact' },
+      { range: '-2% to 0%', label: 'Below', color: 'var(--amber)', meaning: 'Weakness signal, be cautious' },
+      { range: '< -2%', label: 'Strong Down', color: 'var(--rose)', meaning: 'Downtrend, go defensive' }
+    ],
+    action: 'Reduce positions when SPY drops below 20MA. Switch to CASH when below 50MA.'
+  },
+  'breadth': {
+    title: 'Sector Breadth (Market Width)',
+    desc: 'Percentage of sectors with positive returns. Shows how broad-based the market rally is.',
+    levels: [
+      { range: '> 70%', label: 'Very Healthy', color: 'var(--green)', meaning: 'Broad-based rally, strong trend' },
+      { range: '50-70%', label: 'Healthy', color: 'var(--green)', meaning: 'Normal market conditions' },
+      { range: '30-50%', label: 'Weak', color: 'var(--amber)', meaning: 'Selective market, pick carefully' },
+      { range: '< 30%', label: 'Very Weak', color: 'var(--rose)', meaning: 'Narrow leadership, high risk' }
+    ],
+    action: 'Reduce position size when breadth < 50%. Go defensive when < 30%.'
+  },
+  'vixterm': {
+    title: 'VIX Term Structure',
+    desc: 'Relationship between short-term and long-term VIX. Shows market expectation for future volatility.',
+    levels: [
+      { range: 'Contango', label: 'Normal', color: 'var(--green)', meaning: 'Long-term VIX > Short-term. Market calm, no immediate panic expected.' },
+      { range: 'Backwardation', label: 'Danger', color: 'var(--rose)', meaning: 'Short-term VIX > Long-term. Immediate panic! Investors want protection NOW.' }
+    ],
+    action: 'Reduce positions or go CASH during backwardation. Usually seen during crisis periods.'
+  }
+};
+
+function showSectorInfo(key) {
+  var d = SECTOR_GLOSS[key];
+  if (!d) return;
+  
+  var modal = document.getElementById('sectorInfoModal');
+  document.getElementById('sectorInfoTitle').textContent = d.title;
+  document.getElementById('sectorInfoDesc').textContent = d.desc;
+  
+  // Build levels HTML
+  var levelsHtml = '';
+  d.levels.forEach(function(l) {
+    levelsHtml += '<div style="display:flex;align-items:center;gap:12px;padding:8px 10px;background:var(--bg);border-radius:6px;margin-bottom:6px;">';
+    levelsHtml += '<span style="min-width:80px;font-family:\'JetBrains Mono\',monospace;font-size:0.8rem;color:' + l.color + ';font-weight:600;">' + l.range + '</span>';
+    levelsHtml += '<span style="min-width:70px;font-size:0.75rem;padding:2px 8px;border-radius:4px;background:' + l.color + '20;color:' + l.color + ';">' + l.label + '</span>';
+    levelsHtml += '<span style="flex:1;font-size:0.75rem;color:var(--muted);">' + l.meaning + '</span>';
+    levelsHtml += '</div>';
+  });
+  document.getElementById('sectorInfoLevels').innerHTML = levelsHtml;
+  
+  document.getElementById('sectorInfoAction').innerHTML = '<i class="fas fa-bolt"></i> ' + d.action;
+  
+  modal.classList.add('active');
+}
+
+function closeSectorInfoModal() {
+  document.getElementById('sectorInfoModal').classList.remove('active');
+}
+
 document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeChartModal(); } });
+document.getElementById('sectorInfoModal').addEventListener('click', function(e) { if (e.target === this) closeSectorInfoModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeChartModal(); closeSectorInfoModal(); } });
 document.addEventListener('click', function(e) { var btn = e.target.closest('.info-btn'); if (btn) { e.preventDefault(); e.stopPropagation(); var key = btn.getAttribute('data-key'); var level = btn.getAttribute('data-level'); var change = btn.getAttribute('data-change'); if (key) showModal(key, level, change); } });
 
 // ========== CHART MODAL ==========
@@ -1440,6 +1686,246 @@ function renderQuantRankings() {
   
   // ========== SENTIMENT RANKINGS (Haber bazlı) ==========
   renderSentimentRankings();
+}
+
+// ========== SECTOR RANKINGS (ML-based Sector Momentum) ==========
+function renderSectorRankings() {
+  if (!SECTOR_DATA) {
+    console.log('No sector_rankings data');
+    return;
+  }
+  
+  var data = SECTOR_DATA;
+  var defense = data.defense || {};
+  var rankings = data.rankings || [];
+  var backtest = data.backtest || {};
+  var prediction = data.prediction || {};
+  
+  // ========== DEFENSE STATUS ==========
+  var mode = defense.mode || 'NORMAL';
+  var defenseIcon = document.getElementById('sectorDefenseIcon');
+  var defenseMode = document.getElementById('sectorDefenseMode');
+  var defenseAction = document.getElementById('sectorDefenseAction');
+  var defenseCard = document.getElementById('sectorDefenseCard');
+  
+  if (defenseIcon && defenseMode && defenseAction) {
+    defenseMode.textContent = mode;
+    defenseAction.textContent = defense.action || '';
+    
+    // Update icon and colors based on mode
+    if (mode === 'CASH') {
+      defenseIcon.style.background = 'rgba(244,63,94,0.2)';
+      defenseIcon.style.color = 'var(--rose)';
+      defenseIcon.style.boxShadow = '0 0 20px rgba(244,63,94,0.3)';
+      defenseIcon.innerHTML = '<i class="fas fa-hand"></i>';
+      defenseCard.style.borderColor = 'rgba(244,63,94,0.5)';
+    } else if (mode === 'HALF_SIZE') {
+      defenseIcon.style.background = 'rgba(245,158,11,0.2)';
+      defenseIcon.style.color = 'var(--amber)';
+      defenseIcon.style.boxShadow = '0 0 20px rgba(245,158,11,0.3)';
+      defenseIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+      defenseCard.style.borderColor = 'rgba(245,158,11,0.5)';
+    } else {
+      defenseIcon.style.background = 'rgba(16,185,129,0.2)';
+      defenseIcon.style.color = 'var(--green)';
+      defenseIcon.style.boxShadow = '0 0 20px rgba(16,185,129,0.3)';
+      defenseIcon.innerHTML = '<i class="fas fa-shield-halved"></i>';
+      defenseCard.style.borderColor = 'var(--border)';
+    }
+  }
+  
+  // Update scores
+  var leadingEl = document.getElementById('sectorLeadingScore');
+  var laggingEl = document.getElementById('sectorLaggingScore');
+  var totalEl = document.getElementById('sectorTotalScore');
+  if (leadingEl) leadingEl.textContent = defense.leading_score || 0;
+  if (laggingEl) laggingEl.textContent = defense.lagging_score || 0;
+  if (totalEl) totalEl.textContent = defense.total_score || 0;
+  
+  // ========== DEFENSE SIGNALS ==========
+  var signalsGrid = document.getElementById('sectorSignalsGrid');
+  if (signalsGrid) {
+    var signalsHtml = '';
+    var leadingSignals = defense.leading_signals || [];
+    var laggingSignals = defense.lagging_signals || [];
+    
+    leadingSignals.forEach(function(sig) {
+      var isCash = sig.includes('🔴') || sig.includes('CASH');
+      var tagClass = isCash ? 'bear' : 'neutral';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">LEADING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚡/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'WARNING') + '</span></div>';
+    });
+    
+    laggingSignals.forEach(function(sig) {
+      var isCash = sig.includes('🔴') || sig.includes('CASH');
+      var tagClass = isCash ? 'bear' : 'neutral';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">LAGGING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚪/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'CONFIRM') + '</span></div>';
+    });
+    
+    // Show indicators if no signals (with info buttons)
+    if (signalsHtml === '' && defense.indicators) {
+      var ind = defense.indicators;
+      
+      // VIX
+      var vixVal = (ind.vix || 0).toFixed(1);
+      var vixTag = ind.vix < 20 ? 'bull' : ind.vix < 30 ? 'neutral' : 'bear';
+      var vixLabel = ind.vix < 20 ? 'OK' : ind.vix < 30 ? 'ELEVATED' : 'HIGH';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX</span><button class="info-btn" onclick="showSectorInfo(\'vix\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + vixVal + '</div><span class="signal-tag ' + vixTag + '">' + vixLabel + '</span></div>';
+      
+      // SPY vs 20MA
+      var spyVal = (ind.spy_vs_20ma || 0);
+      var spyTag = spyVal >= 0 ? 'bull' : 'bear';
+      var spyLabel = spyVal >= 0 ? 'ABOVE' : 'BELOW';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">SPY vs 20MA</span><button class="info-btn" onclick="showSectorInfo(\'spy20ma\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (spyVal >= 0 ? '+' : '') + spyVal.toFixed(2) + '%</div><span class="signal-tag ' + spyTag + '">' + spyLabel + '</span></div>';
+      
+      // BREADTH
+      var breadthVal = ((ind.sector_breadth || 0) * 100).toFixed(0);
+      var breadthTag = ind.sector_breadth >= 0.5 ? 'bull' : 'neutral';
+      var breadthLabel = ind.sector_breadth >= 0.5 ? 'HEALTHY' : 'WEAK';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">BREADTH</span><button class="info-btn" onclick="showSectorInfo(\'breadth\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + breadthVal + '%</div><span class="signal-tag ' + breadthTag + '">' + breadthLabel + '</span></div>';
+      
+      // VIX TERM
+      var termVal = ind.vix_backwardation ? 'Backwardation' : 'Contango';
+      var termTag = ind.vix_backwardation ? 'bear' : 'bull';
+      var termLabel = ind.vix_backwardation ? 'FEAR' : 'CALM';
+      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX TERM</span><button class="info-btn" onclick="showSectorInfo(\'vixterm\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + termVal + '</div><span class="signal-tag ' + termTag + '">' + termLabel + '</span></div>';
+    }
+    
+    signalsGrid.innerHTML = signalsHtml;
+  }
+  
+  // ========== PERFORMANCE CARDS ==========
+  var hitRateEl = document.getElementById('sectorHitRate');
+  var totalReturnEl = document.getElementById('sectorTotalReturn');
+  var positiveWeeksEl = document.getElementById('sectorPositiveWeeks');
+  var defenseWeeksEl = document.getElementById('sectorDefenseWeeks');
+  
+  if (hitRateEl && backtest.hit_rate != null) {
+    hitRateEl.textContent = backtest.hit_rate.toFixed(1) + '%';
+    hitRateEl.style.color = backtest.hit_rate >= 55 ? 'var(--green)' : 'var(--amber)';
+  }
+  if (totalReturnEl && backtest.total_return != null) {
+    totalReturnEl.textContent = (backtest.total_return >= 0 ? '+' : '') + backtest.total_return.toFixed(1) + '%';
+    totalReturnEl.style.color = backtest.total_return >= 0 ? 'var(--cyan)' : 'var(--rose)';
+  }
+  if (positiveWeeksEl && backtest.positive_weeks != null) {
+    positiveWeeksEl.textContent = backtest.positive_weeks + '/' + (backtest.total_weeks || 52);
+  }
+  if (defenseWeeksEl && backtest.defense_stats) {
+    var ds = backtest.defense_stats;
+    defenseWeeksEl.textContent = 'CASH: ' + (ds.cash_weeks || 0) + ' | HALF: ' + (ds.halfsize_weeks || 0);
+  }
+  
+  // ========== DATE INFO ==========
+  var scoreDateEl = document.getElementById('sectorScoreDate');
+  var entryDateEl = document.getElementById('sectorEntryDate');
+  var exitDateEl = document.getElementById('sectorExitDate');
+  
+  if (scoreDateEl && prediction.score_date) scoreDateEl.textContent = prediction.score_date;
+  if (entryDateEl && prediction.entry_date) entryDateEl.textContent = prediction.entry_date;
+  if (exitDateEl && prediction.exit_date) exitDateEl.textContent = prediction.exit_date;
+  
+  // ========== RANKINGS TABLE ==========
+  var tbody = document.getElementById('sectorRankingsBody');
+  if (tbody) {
+    var html = '';
+    rankings.forEach(function(r) {
+      var isTop3 = r.is_top3;
+      var rowBg = isTop3 ? 'rgba(16,185,129,0.1)' : '';
+      var probColor = r.probability >= 0.6 ? 'var(--green)' : r.probability >= 0.5 ? 'var(--amber)' : 'var(--rose)';
+      var ret1wColor = r.return_1w >= 0 ? 'var(--green)' : 'var(--rose)';
+      var ret2wColor = (r.return_2w || 0) >= 0 ? 'var(--green)' : 'var(--rose)';
+      var ret1mColor = r.return_1m >= 0 ? 'var(--green)' : 'var(--rose)';
+      
+      html += '<tr style="background:' + rowBg + ';border-bottom:1px solid var(--border);">';
+      html += '<td style="padding:6px 8px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;font-size:0.65rem;font-weight:700;' + (isTop3 ? 'background:linear-gradient(135deg,var(--cyan),var(--purple));color:white;' : 'background:var(--bg2);color:var(--muted);') + '">' + r.rank + '</span></td>';
+      html += '<td style="padding:6px 8px;font-weight:600;font-size:0.75rem;color:' + (isTop3 ? 'var(--cyan)' : 'var(--text)') + ';">' + r.sector + (isTop3 ? ' ⭐' : '') + '</td>';
+      html += '<td style="padding:6px 8px;text-align:right;font-family:\'JetBrains Mono\',monospace;font-size:0.7rem;color:' + probColor + ';">' + (r.probability * 100).toFixed(1) + '%</td>';
+      html += '<td style="padding:6px 8px;text-align:right;font-family:\'JetBrains Mono\',monospace;font-size:0.7rem;color:' + ret1wColor + ';">' + (r.return_1w >= 0 ? '+' : '') + r.return_1w.toFixed(1) + '%</td>';
+      html += '<td style="padding:6px 8px;text-align:right;font-family:\'JetBrains Mono\',monospace;font-size:0.7rem;color:' + ret2wColor + ';">' + ((r.return_2w || 0) >= 0 ? '+' : '') + (r.return_2w || 0).toFixed(1) + '%</td>';
+      html += '<td style="padding:6px 8px;text-align:right;font-family:\'JetBrains Mono\',monospace;font-size:0.7rem;color:' + ret1mColor + ';">' + (r.return_1m >= 0 ? '+' : '') + r.return_1m.toFixed(1) + '%</td>';
+      html += '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+  
+  // ========== WEEKLY BREAKDOWN (like Momentum Stocks) ==========
+  var weeklyDiv = document.getElementById('sectorWeeklyBreakdown');
+  if (weeklyDiv && backtest.weekly_summary) {
+    var weeklyHtml = '';
+    
+    // Format date range like "Dec 8-12"
+    function formatDateRange(entry, exit) {
+      if (!entry || !exit) return entry || '';
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var ed = new Date(entry);
+      var xd = new Date(exit);
+      var eDay = ed.getDate();
+      var xDay = xd.getDate();
+      var eMonth = months[ed.getMonth()];
+      var xMonth = months[xd.getMonth()];
+      
+      if (eMonth === xMonth) {
+        return eMonth + ' ' + eDay + '-' + xDay;
+      } else {
+        return eMonth + ' ' + eDay + ' - ' + xMonth + ' ' + xDay;
+      }
+    }
+    
+    backtest.weekly_summary.forEach(function(week) {
+      var isDefense = week.defense_mode !== 'NORMAL';
+      var isCash = week.defense_mode === 'CASH';
+      var isHalf = week.defense_mode === 'HALF_SIZE';
+      var hitRate = week.hit_rate || 0;
+      var avgReturn = week.top3_return || 0;
+      var hits = week.hits || Math.round(hitRate / 33.3);
+      var trades = week.trades || 3;
+      var dateRange = formatDateRange(week.entry_date, week.exit_date);
+      
+      var rowBg = isCash ? 'rgba(244,63,94,0.1)' : isHalf ? 'rgba(245,158,11,0.1)' : 'var(--bg2)';
+      var rowBorder = isCash ? '1px solid rgba(244,63,94,0.3)' : isHalf ? '1px solid rgba(245,158,11,0.3)' : '1px solid var(--border)';
+      
+      weeklyHtml += '<div style="background:' + rowBg + ';border:' + rowBorder + ';border-radius:8px;padding:12px;">';
+      
+      // Header row with date and stats
+      weeklyHtml += '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:' + (isCash ? '0' : '10px') + ';">';
+      weeklyHtml += '<div style="font-weight:700;color:var(--text);font-size:0.9rem;">' + dateRange + '</div>';
+      
+      if (isCash) {
+        weeklyHtml += '<div style="display:flex;align-items:center;gap:5px;color:#f43f5e;font-size:0.75rem;background:rgba(244,63,94,0.15);padding:4px 10px;border-radius:5px;"><i class="fas fa-shield-halved"></i> DEFENSE</div>';
+      } else if (isHalf) {
+        weeklyHtml += '<div style="display:flex;gap:8px;align-items:center;">';
+        weeklyHtml += '<div style="display:flex;align-items:center;gap:5px;color:#f59e0b;font-size:0.7rem;background:rgba(245,158,11,0.15);padding:4px 8px;border-radius:5px;"><i class="fas fa-exclamation-triangle"></i> HALF</div>';
+        var hitColor = hitRate >= 66 ? 'var(--green)' : hitRate >= 33 ? 'var(--amber)' : 'var(--rose)';
+        var retColor = avgReturn >= 0 ? 'var(--green)' : 'var(--rose)';
+        weeklyHtml += '<div style="background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + hitColor + ';">' + hitRate.toFixed(0) + '%</span><span style="font-size:0.6rem;color:var(--muted);margin-left:4px;">' + hits + '/' + trades + '</span></div>';
+        weeklyHtml += '<div style="background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + retColor + ';">' + (avgReturn >= 0 ? '+' : '') + avgReturn.toFixed(2) + '%</span></div>';
+        weeklyHtml += '</div>';
+      } else {
+        var hitColor = hitRate >= 66 ? 'var(--green)' : hitRate >= 33 ? 'var(--amber)' : 'var(--rose)';
+        var retColor = avgReturn >= 0 ? 'var(--green)' : 'var(--rose)';
+        weeklyHtml += '<div style="display:flex;gap:8px;">';
+        weeklyHtml += '<div style="text-align:center;background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + hitColor + ';">' + hitRate.toFixed(0) + '%</span><span style="font-size:0.6rem;color:var(--muted);margin-left:4px;">' + hits + '/' + trades + '</span></div>';
+        weeklyHtml += '<div style="text-align:center;background:var(--bg3);padding:4px 10px;border-radius:5px;"><span style="font-family:\'JetBrains Mono\',monospace;font-size:0.9rem;font-weight:700;color:' + retColor + ';">' + (avgReturn >= 0 ? '+' : '') + avgReturn.toFixed(2) + '%</span></div>';
+        weeklyHtml += '</div>';
+      }
+      weeklyHtml += '</div>';
+      
+      // Top 3 sectors with colored borders
+      if (!isCash && week.top_sectors && week.top_sectors.length > 0) {
+        weeklyHtml += '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
+        week.top_sectors.forEach(function(s) {
+          var sectorRet = s.return || 0;
+          var borderColor = sectorRet >= 0 ? 'var(--green)' : 'var(--rose)';
+          var bgColor = sectorRet >= 0 ? 'rgba(16,185,129,0.1)' : 'rgba(244,63,94,0.1)';
+          weeklyHtml += '<span style="background:' + bgColor + ';color:' + borderColor + ';border:1px solid ' + borderColor + ';padding:3px 8px;border-radius:4px;font-family:\'JetBrains Mono\',monospace;font-size:0.7rem;">' + s.sector + '</span>';
+        });
+        weeklyHtml += '</div>';
+      }
+      
+      weeklyHtml += '</div>';
+    });
+    weeklyDiv.innerHTML = weeklyHtml || '<div style="text-align:center;padding:20px;color:var(--muted);">No weekly data available</div>';
+  }
 }
 
 function renderSentimentRankings() {
