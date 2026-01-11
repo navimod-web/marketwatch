@@ -616,20 +616,8 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <ul class="top-list" id="momTopEtfList"></ul>
 </div>
 <div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:white"><i class="fas fa-industry"></i></span>Sectors</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="momSectorList"></ul>
-</div>
-<div class="top-card">
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="momCommodityList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="momBottomStockList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="momBottomEtfList"></ul>
 </div>
 </div>
 </div>
@@ -647,20 +635,8 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <ul class="top-list" id="mrTopEtfList"></ul>
 </div>
 <div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white"><i class="fas fa-industry"></i></span>Sectors</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="mrSectorList"></ul>
-</div>
-<div class="top-card">
 <h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:white"><i class="fas fa-gem"></i></span>Top Commodities</span><span class="p">SCORE</span></h3>
 <ul class="top-list" id="mrCommodityList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-down"></i></span>Bottom 10 Stocks</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="mrBottomStockList"></ul>
-</div>
-<div class="top-card">
-<h3><span class="tw"><span class="metric-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);color:white"><i class="fas fa-arrow-trend-down"></i></span>Bottom 10 ETFs</span><span class="p">SCORE</span></h3>
-<ul class="top-list" id="mrBottomEtfList"></ul>
 </div>
 </div>
 </div>
@@ -1583,57 +1559,6 @@ function renderQuantRankings() {
   }
   document.getElementById('momTopEtfList').innerHTML = momTopEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
   
-  // Bottom 10 Stocks
-  var momBottomStocks = rankings.bottom10_momentum_stocks || [];
-  var momBottomStockHtml = '';
-  for (var i = 0; i < momBottomStocks.length; i++) {
-    var s = momBottomStocks[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = s.MomentumScore != null ? s.MomentumScore.toFixed(1) : '-';
-    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
-    momBottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val neg">' + score + '</span></li>';
-  }
-  document.getElementById('momBottomStockList').innerHTML = momBottomStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
-  // Bottom 10 ETFs
-  var momBottomEtfs = rankings.bottom10_momentum_etfs || [];
-  var momBottomEtfHtml = '';
-  for (var i = 0; i < momBottomEtfs.length; i++) {
-    var e = momBottomEtfs[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = e.MomentumScore != null ? e.MomentumScore.toFixed(1) : '-';
-    momBottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val neg">' + score + '</span></li>';
-  }
-  document.getElementById('momBottomEtfList').innerHTML = momBottomEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
-  // Momentum Sectors
-  var momSectors = rankings.top10_momentum_sectors || [];
-  var momSectorHtml = '';
-  for (var i = 0; i < momSectors.length; i++) {
-    var sec = momSectors[i];
-    var rc = '';
-    var scoreText = '';
-    var nameClass = 'top-sym';
-    var countText = '(' + sec.StockCount + '/' + sec.TotalStocks + ')';
-    
-    if (sec.Disqualified) {
-      // Disqualified - kırmızı, üstü çizili
-      scoreText = '<span class="top-val neg" style="font-size:0.7rem;">DQ: ' + sec.Reason + '</span>';
-      nameClass = 'top-sym" style="opacity:0.5;text-decoration:line-through';
-    } else if (sec.AvgScore == null) {
-      // N/A - gri
-      scoreText = '<span class="top-val" style="color:var(--muted);">N/A</span>';
-      nameClass = 'top-sym" style="opacity:0.6';
-    } else {
-      // Normal skor
-      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-      var scoreClass = sec.AvgScore >= 50 ? 'pos' : 'neg';
-      scoreText = '<span class="top-val ' + scoreClass + '">' + sec.AvgScore.toFixed(1) + '</span>';
-    }
-    momSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">' + countText + '</span>' + scoreText + '</li>';
-  }
-  document.getElementById('momSectorList').innerHTML = momSectorHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
   // Momentum Commodities
   var momComm = rankings.top10_momentum_commodities || [];
   var momCommHtml = '';
@@ -1668,53 +1593,6 @@ function renderQuantRankings() {
     mrTopEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val pos">' + score + '</span></li>';
   }
   document.getElementById('mrTopEtfList').innerHTML = mrTopEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
-  // Bottom 10 Stocks
-  var mrBottomStocks = rankings.bottom10_mr_stocks || [];
-  var mrBottomStockHtml = '';
-  for (var i = 0; i < mrBottomStocks.length; i++) {
-    var s = mrBottomStocks[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = s.MeanRevScore != null ? s.MeanRevScore.toFixed(1) : '-';
-    var catClass = s.Category ? s.Category.toLowerCase().replace(/[^a-z]/g, '') : '';
-    mrBottomStockHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + s.Symbol + '\', \'' + (s.Name || '').replace(/'/g, "\\'") + '\')">' + s.Symbol + '</span><span class="top-name">' + s.Name + '</span><span class="cat ' + catClass + '" style="font-size:0.65rem;padding:2px 6px;margin-right:8px;">' + s.Category + '</span><span class="top-val neg">' + score + '</span></li>';
-  }
-  document.getElementById('mrBottomStockList').innerHTML = mrBottomStockHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
-  // Bottom 10 ETFs
-  var mrBottomEtfs = rankings.bottom10_mr_etfs || [];
-  var mrBottomEtfHtml = '';
-  for (var i = 0; i < mrBottomEtfs.length; i++) {
-    var e = mrBottomEtfs[i];
-    var rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-    var score = e.MeanRevScore != null ? e.MeanRevScore.toFixed(1) : '-';
-    mrBottomEtfHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="top-sym clickable" onclick="showChart(\'' + e.Symbol + '\', \'' + (e.Name || '').replace(/'/g, "\\'") + '\')">' + e.Symbol + '</span><span class="top-name">' + e.Name + '</span><span class="top-val neg">' + score + '</span></li>';
-  }
-  document.getElementById('mrBottomEtfList').innerHTML = mrBottomEtfHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
-  
-  // Mean Reversion Sectors
-  var mrSectors = rankings.top10_mr_sectors || [];
-  var mrSectorHtml = '';
-  for (var i = 0; i < mrSectors.length; i++) {
-    var sec = mrSectors[i];
-    var rc = '';
-    var scoreText = '';
-    var nameClass = 'top-sym';
-    var countText = '(' + sec.StockCount + '/' + sec.TotalStocks + ')';
-    
-    if (sec.AvgScore == null) {
-      // N/A - gri
-      scoreText = '<span class="top-val" style="color:var(--muted);">N/A</span>';
-      nameClass = 'top-sym" style="opacity:0.6';
-    } else {
-      // Normal skor
-      rc = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
-      var scoreClass = sec.AvgScore >= 50 ? 'pos' : 'neg';
-      scoreText = '<span class="top-val ' + scoreClass + '">' + sec.AvgScore.toFixed(1) + '</span>';
-    }
-    mrSectorHtml += '<li><span class="rank ' + rc + '">' + (i + 1) + '</span><span class="' + nameClass + '">' + sec.Sector + '</span><span class="top-name">' + countText + '</span>' + scoreText + '</li>';
-  }
-  document.getElementById('mrSectorList').innerHTML = mrSectorHtml || '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-shield-halved" style="font-size:1.5rem;opacity:0.3;display:block;margin-bottom:8px;"></i>All filtered out</div>';
   
   // Mean Reversion Commodities
   var mrComm = rankings.top10_mr_commodities || [];
