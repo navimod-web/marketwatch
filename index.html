@@ -685,11 +685,11 @@ Backtested performance is not indicative of future results. These are statistica
 <div style="display:flex;gap:20px;">
 <div style="text-align:center;">
 <div id="sectorLeadingScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--cyan);">0</div>
-<div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Leading</div>
+<div id="sectorLeadingLabel" style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Leading</div>
 </div>
 <div style="text-align:center;">
 <div id="sectorLaggingScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--purple);">0</div>
-<div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Lagging</div>
+<div id="sectorLaggingLabel" style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;">Lagging</div>
 </div>
 <div style="text-align:center;border-left:2px solid var(--cyan);padding-left:12px;">
 <div id="sectorTotalScore" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;">0</div>
@@ -1655,13 +1655,27 @@ function renderSectorRankings() {
     }
   }
   
-  // Update scores
+  // Update scores with signal count
   var leadingEl = document.getElementById('sectorLeadingScore');
   var laggingEl = document.getElementById('sectorLaggingScore');
   var totalEl = document.getElementById('sectorTotalScore');
+  var leadingLabelEl = document.getElementById('sectorLeadingLabel');
+  var laggingLabelEl = document.getElementById('sectorLaggingLabel');
+  
+  var leadingSignalCount = (defense.leading_signals || []).length;
+  var laggingSignalCount = (defense.lagging_signals || []).length;
+  
   if (leadingEl) leadingEl.textContent = defense.leading_score || 0;
   if (laggingEl) laggingEl.textContent = defense.lagging_score || 0;
   if (totalEl) totalEl.textContent = defense.total_score || 0;
+  
+  // Show "LEADING (2 signals)" format when there are signals
+  if (leadingLabelEl) {
+    leadingLabelEl.textContent = leadingSignalCount > 0 ? 'Leading (' + leadingSignalCount + ' sig)' : 'Leading';
+  }
+  if (laggingLabelEl) {
+    laggingLabelEl.textContent = laggingSignalCount > 0 ? 'Lagging (' + laggingSignalCount + ' sig)' : 'Lagging';
+  }
   
   // ========== DEFENSE SIGNALS ==========
   var signalsGrid = document.getElementById('sectorSignalsGrid');
