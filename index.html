@@ -1669,73 +1669,71 @@ function renderSectorRankings() {
     var signalsHtml = '';
     var leadingSignals = defense.leading_signals || [];
     var laggingSignals = defense.lagging_signals || [];
+    var ind = defense.indicators || {};
     
-    leadingSignals.forEach(function(sig) {
-      var isCash = sig.includes('🔴') || sig.includes('CASH');
-      var tagClass = isCash ? 'bear' : 'neutral';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">LEADING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚡/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'WARNING') + '</span></div>';
-    });
-    
-    laggingSignals.forEach(function(sig) {
-      var isCash = sig.includes('🔴') || sig.includes('CASH');
-      var tagClass = isCash ? 'bear' : 'neutral';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">LAGGING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚪/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'CONFIRM') + '</span></div>';
-    });
-    
-    // Show indicators if no signals (with info buttons)
-    if (signalsHtml === '' && defense.indicators) {
-      var ind = defense.indicators;
+    // ===== ACTIVE SIGNALS (HALF_SIZE / CASH modunda gösterilir) =====
+    if (leadingSignals.length > 0 || laggingSignals.length > 0) {
+      leadingSignals.forEach(function(sig) {
+        var isCash = sig.includes('🔴') || sig.includes('CASH');
+        var tagClass = isCash ? 'bear' : 'neutral';
+        signalsHtml += '<div class="signal" style="border-left:3px solid var(--cyan);"><div class="signal-header"><span class="signal-name">LEADING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚡/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'WARNING') + '</span></div>';
+      });
       
-      // ===== LEADING SIGNALS (4) =====
-      // VIX Momentum
-      var vixMomVal = (ind.vix_1d_change || 0);
-      var vixMomTag = vixMomVal <= -5 ? 'bull' : vixMomVal >= 8 ? 'bear' : 'bull';
-      var vixMomLabel = vixMomVal >= 8 ? 'SPIKE' : vixMomVal >= 5 ? 'RISING' : 'STABLE';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX MOM</span><button class="info-btn" onclick="showSectorInfo(\'vixmom\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (vixMomVal >= 0 ? '+' : '') + vixMomVal.toFixed(1) + '%</div><span class="signal-tag ' + vixMomTag + '">' + vixMomLabel + '</span></div>';
-      
-      // VIX TERM
-      var termVal = ind.vix_backwardation ? 'Backwardation' : 'Contango';
-      var termTag = ind.vix_backwardation ? 'bear' : 'bull';
-      var termLabel = ind.vix_backwardation ? 'FEAR' : 'CALM';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX TERM</span><button class="info-btn" onclick="showSectorInfo(\'vixterm\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + termVal + '</div><span class="signal-tag ' + termTag + '">' + termLabel + '</span></div>';
-      
-      // Sector Rotation
-      var rotVal = (ind.sector_rotation || 0);
-      var rotTag = rotVal <= -3 ? 'bear' : rotVal >= 3 ? 'bull' : 'bull';
-      var rotLabel = rotVal <= -3 ? 'DEF FLIGHT' : rotVal >= 3 ? 'RISK-ON' : 'NEUTRAL';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">ROTATION</span><button class="info-btn" onclick="showSectorInfo(\'rotation\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (rotVal >= 0 ? '+' : '') + rotVal.toFixed(1) + '%</div><span class="signal-tag ' + rotTag + '">' + rotLabel + '</span></div>';
-      
-      // High Beta
-      var hbVal = (ind.highbeta_lowvol || 0);
-      var hbTag = hbVal <= -4 ? 'bear' : hbVal <= -2 ? 'neutral' : 'bull';
-      var hbLabel = hbVal <= -4 ? 'COLLAPSE' : hbVal <= -2 ? 'WEAK' : 'STABLE';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">HIGH BETA</span><button class="info-btn" onclick="showSectorInfo(\'highbeta\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (hbVal >= 0 ? '+' : '') + hbVal.toFixed(1) + '%</div><span class="signal-tag ' + hbTag + '">' + hbLabel + '</span></div>';
-      
-      // ===== LAGGING SIGNALS (4) =====
-      // VIX Level
-      var vixVal = (ind.vix || 0).toFixed(1);
-      var vixTag = ind.vix < 20 ? 'bull' : ind.vix < 30 ? 'neutral' : 'bear';
-      var vixLabel = ind.vix < 20 ? 'OK' : ind.vix < 30 ? 'ELEVATED' : 'PANIC';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX</span><button class="info-btn" onclick="showSectorInfo(\'vix\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + vixVal + '</div><span class="signal-tag ' + vixTag + '">' + vixLabel + '</span></div>';
-      
-      // SPY vs 20MA
-      var spy20Val = (ind.spy_vs_20ma || 0);
-      var spy20Tag = spy20Val >= 0 ? 'bull' : 'bear';
-      var spy20Label = spy20Val >= 0 ? 'ABOVE' : 'BELOW';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">SPY 20MA</span><button class="info-btn" onclick="showSectorInfo(\'spy20ma\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (spy20Val >= 0 ? '+' : '') + spy20Val.toFixed(2) + '%</div><span class="signal-tag ' + spy20Tag + '">' + spy20Label + '</span></div>';
-      
-      // SPY vs 50MA
-      var spy50Val = (ind.spy_vs_50ma || 0);
-      var spy50Tag = spy50Val >= 0 ? 'bull' : 'bear';
-      var spy50Label = spy50Val >= 0 ? 'ABOVE' : 'BELOW';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">SPY 50MA</span><button class="info-btn" onclick="showSectorInfo(\'spy50ma\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (spy50Val >= 0 ? '+' : '') + spy50Val.toFixed(2) + '%</div><span class="signal-tag ' + spy50Tag + '">' + spy50Label + '</span></div>';
-      
-      // BREADTH
-      var breadthVal = ((ind.sector_breadth || 0) * 100).toFixed(0);
-      var breadthTag = ind.sector_breadth >= 0.5 ? 'bull' : 'neutral';
-      var breadthLabel = ind.sector_breadth >= 0.5 ? 'HEALTHY' : 'WEAK';
-      signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">BREADTH</span><button class="info-btn" onclick="showSectorInfo(\'breadth\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + breadthVal + '%</div><span class="signal-tag ' + breadthTag + '">' + breadthLabel + '</span></div>';
+      laggingSignals.forEach(function(sig) {
+        var isCash = sig.includes('🔴') || sig.includes('CASH');
+        var tagClass = isCash ? 'bear' : 'neutral';
+        signalsHtml += '<div class="signal" style="border-left:3px solid var(--purple);"><div class="signal-header"><span class="signal-name">LAGGING</span></div><div class="signal-val">' + sig.replace(/🔴|🟡|⚪/g, '').trim() + '</div><span class="signal-tag ' + tagClass + '">' + (isCash ? 'CASH' : 'CONFIRM') + '</span></div>';
+      });
     }
+    
+    // ===== INDICATOR CARDS (Her zaman gösterilir) =====
+    // VIX Momentum (LEADING)
+    var vixMomVal = (ind.vix_1d_change || 0);
+    var vixMomTag = vixMomVal <= -5 ? 'bull' : vixMomVal >= 8 ? 'bear' : 'bull';
+    var vixMomLabel = vixMomVal >= 8 ? 'SPIKE' : vixMomVal >= 5 ? 'RISING' : 'STABLE';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX MOM</span><button class="info-btn" onclick="showSectorInfo(\'vixmom\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (vixMomVal >= 0 ? '+' : '') + vixMomVal.toFixed(1) + '%</div><span class="signal-tag ' + vixMomTag + '">' + vixMomLabel + '</span></div>';
+    
+    // VIX TERM (LEADING)
+    var termVal = ind.vix_backwardation ? 'Backwardation' : 'Contango';
+    var termTag = ind.vix_backwardation ? 'bear' : 'bull';
+    var termLabel = ind.vix_backwardation ? 'FEAR' : 'CALM';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX TERM</span><button class="info-btn" onclick="showSectorInfo(\'vixterm\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + termVal + '</div><span class="signal-tag ' + termTag + '">' + termLabel + '</span></div>';
+    
+    // Sector Rotation (LEADING)
+    var rotVal = (ind.sector_rotation || 0);
+    var rotTag = rotVal <= -3 ? 'bear' : rotVal >= 3 ? 'bull' : 'bull';
+    var rotLabel = rotVal <= -3 ? 'DEF FLIGHT' : rotVal >= 3 ? 'RISK-ON' : 'NEUTRAL';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">ROTATION</span><button class="info-btn" onclick="showSectorInfo(\'rotation\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (rotVal >= 0 ? '+' : '') + rotVal.toFixed(1) + '%</div><span class="signal-tag ' + rotTag + '">' + rotLabel + '</span></div>';
+    
+    // High Beta (LEADING)
+    var hbVal = (ind.highbeta_lowvol || 0);
+    var hbTag = hbVal <= -4 ? 'bear' : hbVal <= -2 ? 'neutral' : 'bull';
+    var hbLabel = hbVal <= -4 ? 'COLLAPSE' : hbVal <= -2 ? 'WEAK' : 'STABLE';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">HIGH BETA</span><button class="info-btn" onclick="showSectorInfo(\'highbeta\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (hbVal >= 0 ? '+' : '') + hbVal.toFixed(1) + '%</div><span class="signal-tag ' + hbTag + '">' + hbLabel + '</span></div>';
+    
+    // VIX Level (LAGGING)
+    var vixVal = (ind.vix || 0).toFixed(1);
+    var vixTag = ind.vix < 20 ? 'bull' : ind.vix < 30 ? 'neutral' : 'bear';
+    var vixLabel = ind.vix < 20 ? 'OK' : ind.vix < 30 ? 'ELEVATED' : 'PANIC';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">VIX</span><button class="info-btn" onclick="showSectorInfo(\'vix\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + vixVal + '</div><span class="signal-tag ' + vixTag + '">' + vixLabel + '</span></div>';
+    
+    // SPY vs 20MA (LAGGING)
+    var spy20Val = (ind.spy_vs_20ma || 0);
+    var spy20Tag = spy20Val >= 0 ? 'bull' : 'bear';
+    var spy20Label = spy20Val >= 0 ? 'ABOVE' : 'BELOW';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">SPY 20MA</span><button class="info-btn" onclick="showSectorInfo(\'spy20ma\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (spy20Val >= 0 ? '+' : '') + spy20Val.toFixed(2) + '%</div><span class="signal-tag ' + spy20Tag + '">' + spy20Label + '</span></div>';
+    
+    // SPY vs 50MA (LAGGING)
+    var spy50Val = (ind.spy_vs_50ma || 0);
+    var spy50Tag = spy50Val >= 0 ? 'bull' : 'bear';
+    var spy50Label = spy50Val >= 0 ? 'ABOVE' : 'BELOW';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">SPY 50MA</span><button class="info-btn" onclick="showSectorInfo(\'spy50ma\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + (spy50Val >= 0 ? '+' : '') + spy50Val.toFixed(2) + '%</div><span class="signal-tag ' + spy50Tag + '">' + spy50Label + '</span></div>';
+    
+    // BREADTH (LAGGING)
+    var breadthVal = ((ind.sector_breadth || 0) * 100).toFixed(0);
+    var breadthTag = ind.sector_breadth >= 0.5 ? 'bull' : 'neutral';
+    var breadthLabel = ind.sector_breadth >= 0.5 ? 'HEALTHY' : 'WEAK';
+    signalsHtml += '<div class="signal"><div class="signal-header"><span class="signal-name">BREADTH</span><button class="info-btn" onclick="showSectorInfo(\'breadth\')"><i class="fas fa-info"></i></button></div><div class="signal-val">' + breadthVal + '%</div><span class="signal-tag ' + breadthTag + '">' + breadthLabel + '</span></div>';
     
     signalsGrid.innerHTML = signalsHtml;
   }
