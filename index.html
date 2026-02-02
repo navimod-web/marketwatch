@@ -1193,14 +1193,14 @@ var SECTOR_GLOSS = {
     action: 'Backwardation is a LEADING signal. Reduce positions or go CASH immediately. Usually seen during crisis periods.'
   },
   'rotation': {
-    title: 'Sector Rotation (Cyclical vs Defensive)',
-    desc: 'Measures money flow between cyclical sectors (Tech, Consumer Disc, Industrials) and defensive sectors (Utilities, Healthcare, Consumer Staples).',
+    title: 'Sector Rotation (Defensive vs Cyclical)',
+    desc: 'Measures relative performance of defensive sectors (Utilities, Healthcare, Consumer Staples) vs cyclical sectors (Tech, Consumer Disc, Industrials). Positive = Defensives outperforming.',
     levels: [
-      { range: '> +3%', label: 'Risk-On', color: 'var(--green)', meaning: 'Money flowing into cyclicals, bullish' },
-      { range: '-3% to +3%', label: 'Neutral', color: 'var(--green)', meaning: 'Balanced rotation, normal market' },
-      { range: '< -3%', label: 'Defensive', color: 'var(--rose)', meaning: 'Flight to safety, reduce risk' }
+      { range: '> +3%', label: 'Defensive', color: 'var(--rose)', meaning: 'Flight to safety, smart money reducing risk' },
+      { range: '-3% to +3%', label: 'Neutral', color: 'var(--amber)', meaning: 'Balanced rotation, normal market' },
+      { range: '< -3%', label: 'Risk-On', color: 'var(--green)', meaning: 'Money flowing into cyclicals, bullish' }
     ],
-    action: 'When rotation goes strongly negative (< -3%), smart money is fleeing to safety. This is a LEADING signal.'
+    action: 'When rotation goes strongly positive (> +3%), smart money is fleeing to safety. This is a LEADING signal.'
   },
   'highbeta': {
     title: 'High Beta vs Low Volatility (SPHB/SPLV)',
