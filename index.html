@@ -2244,17 +2244,16 @@ function parseBriefContent(content) {
   var summary = null;
   
   // Format 1: ## EXECUTIVE SUMMARY ile başlayıp ## NEXT WEEK'e kadar
-  var sumMatch1 = content.match(/EXECUTIVE SUMMARY[:\s]*\n?([\s\S]*?)(?=##|NEXT WEEK|11\.|$)/i);
+  var sumMatch1 = content.match(/EXECUTIVE SUMMARY[:\s]*\n?([\s\S]*?)(?=##|NEXT WEEK|^\d+\.\s|$)/im);
   if (sumMatch1 && sumMatch1[1]) {
     summary = sumMatch1[1].trim();
     // NEXT WEEK içeriğini temizle
     summary = summary.replace(/NEXT WEEK[\s\S]*/i, '').trim();
-    summary = summary.replace(/11\.[\s\S]*/i, '').trim();
     summary = summary.replace(/Sectors to Watch[\s\S]*/i, '').trim();
   }
   
   // Eğer hala boşsa veya çok uzunsa, son 2-3 cümleyi al
-  if (!summary || summary.length < 20 || summary.length > 800) {
+  if (!summary || summary.length < 20 || summary.length > 1500) {
     var lines = content.split('\n').filter(function(l) { return l.trim().length > 30; });
     // Son birkaç satırdan executive summary bul
     for (var i = lines.length - 1; i >= 0; i--) {
@@ -2268,7 +2267,7 @@ function parseBriefContent(content) {
     }
   }
   
-  if (summary && summary.trim().length > 20 && summary.trim().length < 600) {
+  if (summary && summary.trim().length > 20 && summary.trim().length < 1200) {
     sections.summary = summary.trim().replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim();
   }
   
