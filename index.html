@@ -345,6 +345,7 @@ td{padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:0.72rem}
 <button class="tab" onclick="showTab('quantrankings')"><i class="fas fa-crown"></i> Quant Rankings</button>
 <button class="tab" onclick="showTab('sectorrankings')"><i class="fas fa-chart-pie"></i> Sector Rankings</button>
 <button class="tab" onclick="showTab('sentimentrankings')"><i class="fas fa-heart-pulse"></i> Sentiment Ranking</button>
+<button class="tab" onclick="showTab('spyforecast')"><i class="fas fa-crosshairs"></i> SPY Forecast</button>
 </div>
 <div class="panel active" id="panel-metrics">
 <div class="controls">
@@ -815,6 +816,106 @@ Backtested performance is not indicative of future results. Model predictions ar
 </div>
 </div>
 
+<!-- SPY Forecast Panel (ML-based Weekly Risk Signal) -->
+<div class="panel" id="panel-spyforecast">
+<!-- Performance Cards -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px;">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#059669);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-bullseye"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Accuracy</h3><span style="font-size:0.6rem;color:var(--muted);">52 Weeks Test</span></div>
+</div>
+<div id="spyAccuracy" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--green);text-align:center;">--%</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#06b6d4,#0891b2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-arrow-trend-up"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Long Win Rate</h3><span style="font-size:0.6rem;color:var(--muted);">LOW Risk Weeks</span></div>
+</div>
+<div id="spyLongWR" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--cyan);text-align:center;">--%</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#f43f5e,#e11d48);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-arrow-trend-down"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Short Win Rate</h3><span style="font-size:0.6rem;color:var(--muted);">HIGH Risk Weeks</span></div>
+</div>
+<div id="spyShortWR" style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--rose);text-align:center;">--%</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="width:32px;height:32px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:white;"><i class="fas fa-chart-pie"></i></span>
+<div><h3 style="font-size:0.9rem;margin:0;color:var(--text);">Signal Split</h3><span style="font-size:0.6rem;color:var(--muted);">LOW / HIGH</span></div>
+</div>
+<div id="spyWeekStats" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--purple);text-align:center;">-- / --</div>
+</div>
+</div>
+
+<!-- Weekly Results Table -->
+<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;max-width:900px;">
+<div style="padding:14px 18px;background:var(--bg2);border-bottom:1px solid var(--border);">
+<h3 style="margin:0;font-size:0.9rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-calendar-week" style="color:var(--cyan);"></i> Test Results <span id="spyTestPeriod" style="font-size:0.7rem;color:var(--muted);margin-left:8px;">52 Weeks</span></h3>
+</div>
+<div style="overflow-x:auto;max-height:600px;">
+<table style="width:100%;border-collapse:collapse;font-size:0.75rem;">
+<thead style="background:rgba(6,8,13,0.95);position:sticky;top:0;z-index:5;">
+<tr>
+<th style="padding:10px;text-align:left;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">WEEK</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">BREADTH</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">VIX</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">SPY</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">P(POS)</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">RISK SIGNAL</th>
+<th style="padding:10px;text-align:center;font-weight:600;color:var(--cyan);font-size:0.6rem;letter-spacing:0.7px;">RESULT</th>
+</tr>
+</thead>
+<tbody id="spyWeeklyBody"></tbody>
+</table>
+</div>
+</div>
+
+<!-- Model Methodology -->
+<div class="quant-methodology" style="margin-top:16px;">
+<h4><i class="fas fa-brain"></i> SPY WEEKLY RISK MODEL</h4>
+<div class="methodology-grid">
+<div class="methodology-col">
+<h5>🤖 ML Model</h5>
+<div class="weight-item"><span>Algorithm</span><span>XGBoost Classifier</span></div>
+<div class="weight-item"><span>Features</span><span>26 Technical Indicators</span></div>
+<div class="weight-item"><span>Training</span><span>4+ Years Rolling</span></div>
+<div class="weight-item"><span>Test Period</span><span>Last 52 Weeks</span></div>
+<div class="weight-item"><span>Threshold</span><span>P > 55% = LOW Risk</span></div>
+</div>
+<div class="methodology-col">
+<h5>📊 Key Features</h5>
+<div class="weight-item"><span>Market Breadth</span><span>1W, 2W, 1M %</span></div>
+<div class="weight-item"><span>VIX Indicators</span><span>Level, Change, MA</span></div>
+<div class="weight-item"><span>SPY Momentum</span><span>Returns, vs MA</span></div>
+<div class="weight-item"><span>MA Position</span><span>% Above 20/50/200</span></div>
+<div class="weight-item"><span>Sector Dispersion</span><span>Cross-sector spread</span></div>
+</div>
+<div class="methodology-col">
+<h5>📈 Signal Logic</h5>
+<div style="font-size:0.75rem;color:var(--text);line-height:1.8;background:var(--bg);padding:12px;border-radius:8px;">
+<div style="margin-bottom:8px;">
+<strong style="color:var(--green);">🟢 LOW RISK (P > 55%):</strong><br>
+<span style="color:var(--muted);">• Action: LONG SPY</span><br>
+<span style="color:var(--muted);">• Position: 100% Invested</span>
+</div>
+<div>
+<strong style="color:var(--rose);">🔴 HIGH RISK (P ≤ 55%):</strong><br>
+<span style="color:var(--muted);">• Action: SHORT or CASH</span><br>
+<span style="color:var(--muted);">• Position: 30% Long / 70% Cash</span>
+</div>
+</div>
+</div>
+</div>
+<div class="quant-disclaimer">
+<i class="fas fa-exclamation-triangle"></i>
+Past performance does not guarantee future results. This model is for informational purposes only and should not be considered investment advice.
+</div>
+</div>
+</div>
+
 <!-- Sentiment Ranking Panel (Sadece Haber Bazlı Sentiment) -->
 <div class="panel" id="panel-sentimentrankings">
 <div class="top-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 480px)); justify-content: start;">
@@ -984,6 +1085,7 @@ var BRIEF = null;
 var BRIEF_STOCKS = null;
 var NEWS_DATA = null;
 var SECTOR_DATA = null;
+var SPY_FORECAST_DATA = null;
 var currentNewsSector = 'all';
 var REGIME, RATIOS, ETFS, STOCKS;
 var top10P = '1M', top10StockP = '1M', top10SectorP = '1M', ratioP = '1M';
@@ -1039,12 +1141,13 @@ var GLOSS = {
 // ========== DATA LOADING ==========
 async function loadData() {
   try {
-    const [dataRes, briefRes, briefStockRes, newsRes, sectorRes] = await Promise.all([
+    const [dataRes, briefRes, briefStockRes, newsRes, sectorRes, spyRes] = await Promise.all([
       fetch('etf_data.json'),
       fetch('brief.json').catch(() => null),
       fetch('brief_stocks.json').catch(() => null),
       fetch('news_data.json').catch(() => null),
-      fetch('sector_rankings.json').catch(() => null)
+      fetch('sector_rankings.json').catch(() => null),
+      fetch('spy_forecast.json').catch(() => null)
     ]);
     
     DATA = await dataRes.json();
@@ -1065,6 +1168,9 @@ async function loadData() {
     if (sectorRes && sectorRes.ok) {
       SECTOR_DATA = await sectorRes.json();
     }
+    if (spyRes && spyRes.ok) {
+      SPY_FORECAST_DATA = await spyRes.json();
+    }
     
     renderAll();
   } catch (err) {
@@ -1083,6 +1189,7 @@ function renderAll() {
   renderStockTable();
   renderQuantRankings();
   renderSectorRankings();
+  renderSpyForecast();
   renderTop10();
   renderTop10Stocks();
   renderTop10Sectors();
@@ -1887,6 +1994,7 @@ function renderSectorRankings() {
   }
 }
 
+
 function renderSentimentRankings() {
   var rankings = DATA.quant_rankings;
   
@@ -1966,6 +2074,109 @@ function renderSentimentRankings() {
     bullishList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
     bearishList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-newspaper"></i><br>News data not available<br><small>Run: python generate_news.py</small></div>';
   }
+}
+
+// ========== SPY FORECAST (Simplified - Just Test Results Table) ==========
+function renderSpyForecast() {
+  if (!SPY_FORECAST_DATA) {
+    document.getElementById('spyWeeklyBody').innerHTML = '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--muted);"><i class="fas fa-chart-line"></i> SPY Forecast data not available<br><small>Run: python weekly_risk_signal_v3.py</small></td></tr>';
+    return;
+  }
+  
+  var met = SPY_FORECAST_DATA.test_metrics || {};
+  var weeks = SPY_FORECAST_DATA.weekly_data || [];
+  
+  // Performance Cards
+  var acc = met.accuracy || 0;
+  document.getElementById('spyAccuracy').textContent = (acc * 100).toFixed(1) + '%';
+  document.getElementById('spyLongWR').textContent = (met.long_win_rate || 0).toFixed(1) + '%';
+  document.getElementById('spyShortWR').textContent = (met.short_win_rate || 0).toFixed(1) + '%';
+  document.getElementById('spyWeekStats').textContent = (met.long_weeks || 0) + ' / ' + (met.short_weeks || 0);
+  
+  // Test Period info - always show "Last 10 Weeks"
+  var periodEl = document.getElementById('spyTestPeriod');
+  if (periodEl) periodEl.textContent = 'Last 10 Weeks';
+  
+  // Reverse weeks (newest first)
+  var sortedWeeks = weeks.slice().reverse();
+  
+  // Weekly Table
+  var tbody = document.getElementById('spyWeeklyBody');
+  var html = '';
+  
+  for (var i = 0; i < sortedWeeks.length; i++) {
+    var w = sortedWeeks[i];
+    var isOpen = w.status === 'OPEN';
+    var isCorrect = w.correct === 1;
+    var riskLow = w.predicted_risk === 'LOW';
+    
+    // Date formatting with YEAR
+    var entryParts = (w.entry_date || '').split('-');
+    var exitParts = (w.exit_date || '').split('-');
+    var months = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var dateStr = '';
+    if (entryParts.length === 3 && exitParts.length === 3) {
+      var eYear = entryParts[0].slice(2); // Last 2 digits of year
+      var eMonth = months[parseInt(entryParts[1])] || '';
+      var eDay = parseInt(entryParts[2]) || '';
+      var xDay = parseInt(exitParts[2]) || '';
+      dateStr = eMonth + ' ' + eDay + '-' + xDay + ', ' + eYear;
+    }
+    
+    // Row styling - highlight OPEN row
+    var rowBg = isOpen ? 'rgba(0,212,255,0.1)' : '';
+    var rowBorder = isOpen ? '2px solid var(--cyan)' : '';
+    
+    // Breadth color
+    var breadthVal = (w.breadth_1w || 0) * 100;
+    var breadthColor = breadthVal >= 60 ? 'var(--green)' : breadthVal < 45 ? 'var(--rose)' : 'var(--amber)';
+    
+    // VIX color
+    var vixVal = w.vix_level || 0;
+    var vixColor = vixVal > 25 ? 'var(--rose)' : vixVal > 20 ? 'var(--amber)' : 'var(--text)';
+    
+    // SPY Return
+    var spyVal = w.spy_return || 0;
+    var spyColor = spyVal >= 0 ? 'var(--green)' : 'var(--rose)';
+    var spySign = spyVal >= 0 ? '+' : '';
+    
+    // P(Pos)
+    var probVal = (w.predicted_prob || 0) * 100;
+    var probColor = probVal > 55 ? 'var(--green)' : 'var(--rose)';
+    
+    // Signal badge
+    var signalBadge = riskLow 
+      ? '<span style="background:rgba(16,185,129,0.15);color:var(--green);padding:3px 8px;border-radius:4px;font-size:0.7rem;font-weight:600;">LOW</span>'
+      : '<span style="background:rgba(244,63,94,0.15);color:var(--rose);padding:3px 8px;border-radius:4px;font-size:0.7rem;font-weight:600;">HIGH</span>';
+    
+    // Result badge
+    var resultHtml = '';
+    if (isOpen) {
+      resultHtml = '<span style="color:var(--cyan);font-weight:600;"><i class="fas fa-clock"></i> OPEN</span>';
+    } else if (w.trade_result === 'PENDING') {
+      resultHtml = '<span style="color:var(--amber);font-weight:600;"><i class="fas fa-hourglass-half"></i> PENDING</span>';
+    } else if (isCorrect) {
+      resultHtml = '<span style="color:var(--green);font-weight:600;"><i class="fas fa-check-circle"></i> WIN</span>';
+    } else {
+      resultHtml = '<span style="color:var(--rose);font-weight:600;"><i class="fas fa-times-circle"></i> LOSS</span>';
+    }
+    
+    html += '<tr style="background:' + rowBg + ';border-left:' + rowBorder + ';">';
+    html += '<td style="padding:10px;font-weight:600;color:var(--text);">' + dateStr + '</td>';
+    html += '<td style="padding:10px;text-align:center;"><span style="font-family:\'JetBrains Mono\',monospace;color:' + breadthColor + ';">' + breadthVal.toFixed(0) + '%</span></td>';
+    html += '<td style="padding:10px;text-align:center;"><span style="font-family:\'JetBrains Mono\',monospace;color:' + vixColor + ';">' + vixVal.toFixed(1) + '</span></td>';
+    html += '<td style="padding:10px;text-align:center;"><span style="font-family:\'JetBrains Mono\',monospace;color:' + spyColor + ';">' + spySign + spyVal.toFixed(2) + '%</span></td>';
+    html += '<td style="padding:10px;text-align:center;"><span style="font-family:\'JetBrains Mono\',monospace;color:' + probColor + ';">' + probVal.toFixed(0) + '%</span></td>';
+    html += '<td style="padding:10px;text-align:center;">' + signalBadge + '</td>';
+    html += '<td style="padding:10px;text-align:center;">' + resultHtml + '</td>';
+    html += '</tr>';
+  }
+  
+  if (sortedWeeks.length === 0) {
+    html = '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--muted);">No weekly data available</td></tr>';
+  }
+  
+  tbody.innerHTML = html;
 }
 
 // ========== TOP 10 ETFs ==========
