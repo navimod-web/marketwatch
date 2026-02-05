@@ -2136,7 +2136,7 @@ function renderSpyForecast() {
     var vixColor = vixVal > 25 ? 'var(--rose)' : vixVal > 20 ? 'var(--amber)' : 'var(--text)';
     
     // SPY Return
-    var spyVal = w.spy_return || 0;
+    var spyVal = w.trade_return || 0;
     var spyColor = spyVal >= 0 ? 'var(--green)' : 'var(--rose)';
     var spySign = spyVal >= 0 ? '+' : '';
     
