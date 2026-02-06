@@ -2150,7 +2150,7 @@ function renderSpyForecast() {
   
   // Test Period info
   var periodEl = document.getElementById('spyTestPeriod');
-  if (periodEl) periodEl.textContent = 'Last 10 Weeks';
+  if (periodEl) periodEl.textContent = 'Last 52 Weeks';
   
   // Reverse weeks (newest first)
   var sortedWeeks = weeks.slice().reverse();
@@ -2194,12 +2194,17 @@ function renderSpyForecast() {
     var spyColor = spyVal >= 0 ? 'var(--green)' : 'var(--rose)';
     var spySign = spyVal >= 0 ? '+' : '';
     
-    // Per-model vote badges
+    // Per-model vote badges with probability
     function voteBadge(pred, prob) {
       var isLong = pred === 1;
       var pStr = (prob * 100).toFixed(0);
-      if (isLong) return '<span style="background:rgba(16,185,129,0.15);color:var(--green);padding:2px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;" title="P=' + pStr + '%">L</span>';
-      else return '<span style="background:rgba(244,63,94,0.15);color:var(--rose);padding:2px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;" title="P=' + pStr + '%">S</span>';
+      var bgColor = isLong ? 'rgba(16,185,129,0.15)' : 'rgba(244,63,94,0.15)';
+      var textColor = isLong ? 'var(--green)' : 'var(--rose)';
+      var label = isLong ? 'L' : 'S';
+      return '<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">' +
+        '<span style="background:' + bgColor + ';color:' + textColor + ';padding:2px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;">' + label + '</span>' +
+        '<span style="font-family:\'JetBrains Mono\',monospace;font-size:0.55rem;color:' + textColor + ';opacity:0.7;">' + pStr + '%</span>' +
+      '</div>';
     }
     var f7Badge = voteBadge(w.pred_fwd7, w.prob_fwd7 || 0);
     var f6Badge = voteBadge(w.pred_fwd6, w.prob_fwd6 || 0);
