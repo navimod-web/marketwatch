@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector Sentiment Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2235;
+    --bg-inset: rgba(255,255,255,0.03);
+    --text-primary: #e5e7eb;
+    --text-secondary: #6b7280;
+    --text-muted: #4b5563;
+    --border: #1f2937;
+    --green: #10b981;
+    --green-dim: rgba(16,185,129,0.15);
+    --red: #ef4444;
+    --red-dim: rgba(239,68,68,0.15);
+    --yellow: #f59e0b;
+    --blue: #3b82f6;
+    --accent: #6366f1;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 1440px; margin: 0 auto; padding: 24px; }
+  
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; flex-wrap: wrap; gap: 16px;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .home-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+  }
+  .home-btn:hover {
+    background: var(--accent); color: white; border-color: var(--accent);
+    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+  }
+  .home-btn svg { width: 14px; height: 14px; }
+  .header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-meta {
+    font-size: 0.8rem; color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── View Toggle ── */
+  .view-toggle {
+    display: flex; gap: 4px; background: var(--bg-card);
+    border-radius: 10px; padding: 4px; border: 1px solid var(--border);
+  }
+  .view-btn {
+    padding: 8px 20px; border: none; border-radius: 8px;
+    background: transparent; color: var(--text-secondary);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .view-btn.active {
+    background: var(--accent); color: white;
+  }
+  .view-btn:hover:not(.active) { background: var(--bg-card-hover); }
+
+  /* ── Score Card ── */
+  .score-card {
+    background: var(--bg-card); border-radius: 16px;
+    padding: 32px; text-align: center; margin-bottom: 24px;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .score-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .big-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 4rem; font-weight: 800; line-height: 1;
+  }
+  .score-label {
+    font-size: 1rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 4px; margin-top: 8px;
+  }
+  .score-sub {
+    font-size: 0.8rem; color: var(--text-secondary); margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Gauge ── */
+  .gauge { margin: 24px auto; max-width: 500px; }
+  .gauge-bar {
+    height: 12px; border-radius: 6px;
+    background: linear-gradient(90deg, #991b1b 0%, #dc2626 20%, #f59e0b 40%, #84cc16 60%, #22c55e 80%, #15803d 100%);
+    position: relative;
+  }
+  .gauge-marker {
+    position: absolute; top: -6px; transform: translateX(-50%);
+    width: 4px; height: 24px; background: white; border-radius: 2px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+    transition: left 0.8s ease;
+  }
+  .gauge-labels {
+    display: flex; justify-content: space-between;
+    margin-top: 6px; font-size: 0.65rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Stats Row ── */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .stat-box {
+    background: var(--bg-card); border-radius: 12px;
+    padding: 16px; text-align: center;
+    border: 1px solid var(--border);
+  }
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; font-weight: 700;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px; }
+
+  /* ── Sector Nav ── */
+  .sector-nav {
+    display: flex; gap: 6px; margin-bottom: 24px;
+    overflow-x: auto; padding-bottom: 8px;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+  .nav-tab {
+    padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card); color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; white-space: nowrap; transition: all 0.2s;
+  }
+  .nav-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-tab:hover:not(.active) { background: var(--bg-card-hover); color: var(--text-primary); }
+
+  /* ── Sector Table ── */
+  .section {
+    background: var(--bg-card); border-radius: 12px;
+    padding: 20px; margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .section-title {
+    font-size: 1rem; font-weight: 700; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; color: var(--text-muted);
+    padding: 10px 8px; border-bottom: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  td {
+    padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.85rem;
+  }
+  tr.clickable { cursor: pointer; transition: background 0.15s; }
+  tr.clickable:hover { background: var(--bg-card-hover); }
+
+  /* ── Sector Detail ── */
+  .sector-detail {
+    background: var(--bg-card); border-radius: 12px;
+    padding: 24px; margin-bottom: 20px;
+    border: 1px solid var(--border);
+    display: none;
+  }
+  .sector-detail.visible { display: block; }
+  .sector-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-left: 16px; margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+  }
+  .sector-info h2 { font-size: 1.3rem; margin-bottom: 4px; }
+  .sector-full-name { color: var(--text-secondary); font-size: 0.8rem; }
+  .sector-score-big {
+    text-align: right; font-family: 'JetBrains Mono', monospace;
+  }
+  .sector-score-big .val { font-size: 2.4rem; font-weight: 800; }
+  .sector-score-big .band { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+  .sector-stats-row {
+    display: flex; gap: 16px; margin-bottom: 20px;
+    padding: 14px; background: var(--bg-inset); border-radius: 8px;
+  }
+  .mini-stat { display: flex; flex-direction: column; align-items: center; }
+  .mini-stat .num { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 700; }
+  .mini-stat .txt { font-size: 0.7rem; color: var(--text-secondary); }
+
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .news-panel {
+    background: rgba(0,0,0,0.25); border-radius: 8px; padding: 16px;
+  }
+  .news-panel.pos { border-left: 3px solid var(--green); }
+  .news-panel.neg { border-left: 3px solid var(--red); }
+  .news-panel h3 { font-size: 0.9rem; margin-bottom: 12px; }
+  .news-panel table td { font-size: 0.8rem; padding: 6px 6px; }
+  .news-panel a { color: var(--text-primary); text-decoration: none; }
+  .news-panel a:hover { text-decoration: underline; }
+
+  /* ── Trend Chart (Weekly) ── */
+  .trend-section {
+    background: var(--bg-card); border-radius: 12px;
+    padding: 20px; margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .trend-canvas-wrap {
+    position: relative; width: 100%; height: 260px;
+    margin-top: 12px;
+  }
+  .trend-canvas-wrap canvas { width: 100%; height: 100%; }
+
+  /* ── Day Selector (Weekly) ── */
+  .day-pills {
+    display: flex; gap: 6px; margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .day-pill {
+    padding: 6px 14px; border-radius: 8px; font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+  .day-pill.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .day-pill:hover:not(.active) { background: var(--bg-card-hover); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; padding: 20px;
+    font-size: 0.75rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Loading ── */
+  .loading {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 400px; flex-direction: column; gap: 16px;
+  }
+  .spinner {
+    width: 40px; height: 40px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-box {
+    background: var(--red-dim); border: 1px solid var(--red);
+    border-radius: 12px; padding: 24px; text-align: center;
+    margin: 40px auto; max-width: 600px;
+  }
+  .error-box h2 { color: var(--red); margin-bottom: 8px; }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 768px) {
+    .news-grid { grid-template-columns: 1fr; }
+    .big-score { font-size: 3rem; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .header { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="app">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div style="color:var(--text-secondary);">Loading sentiment_data.json...</div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// SECTOR SENTIMENT DASHBOARD — Dynamic JSON Reader
+// ════════════════════════════════════════════════════════════
+
+const SECTOR_ETFS = ['XLK','XLF','XLE','XLV','XLY','XLP','XLI','XLB','XLU','XLRE','XLC'];
+
+const ETF_NAMES = {
+  XLB:"Materials", XLC:"Communication Services", XLE:"Energy", XLF:"Financials",
+  XLI:"Industrials", XLK:"Technology", XLP:"Consumer Staples", XLRE:"Real Estate",
+  XLU:"Utilities", XLV:"Healthcare", XLY:"Consumer Discretionary"
+};
+
+const ETF_FULL = {
+  XLB:"Materials Select Sector SPDR Fund", XLC:"Communication Services Select Sector SPDR Fund",
+  XLE:"Energy Select Sector SPDR Fund", XLF:"Financial Select Sector SPDR Fund",
+  XLI:"Industrial Select Sector SPDR Fund", XLK:"Technology Select Sector SPDR Fund",
+  XLP:"Consumer Staples Select Sector SPDR Fund", XLRE:"Real Estate Select Sector SPDR Fund",
+  XLU:"Utilities Select Sector SPDR Fund", XLV:"Health Care Select Sector SPDR Fund",
+  XLY:"Consumer Discretionary Select Sector SPDR Fund"
+};
+
+const BANDS = [
+  {min:-100,max:-80,label:"Extreme Fear",emoji:"🔴🔴🔴",color:"#8B0000"},
+  {min:-80,max:-60,label:"Very Bearish",emoji:"🔴🔴",color:"#CC0000"},
+  {min:-60,max:-40,label:"Bearish",emoji:"🔴",color:"#FF3333"},
+  {min:-40,max:-20,label:"Weak Bearish",emoji:"🟠",color:"#FF8C00"},
+  {min:-20,max:0,label:"Slightly Bearish",emoji:"🟡",color:"#FFD700"},
+  {min:0,max:20,label:"Slightly Bullish",emoji:"🟢",color:"#90EE90"},
+  {min:20,max:40,label:"Weak Bullish",emoji:"🟢🟢",color:"#32CD32"},
+  {min:40,max:60,label:"Bullish",emoji:"🟢🟢🟢",color:"#228B22"},
+  {min:60,max:80,label:"Very Bullish",emoji:"🚀",color:"#006400"},
+  {min:80,max:101,label:"Extreme Greed",emoji:"⚠️🚀",color:"#004D00"},
+];
+
+function getBand(score) {
+  score = Math.max(-100, Math.min(100, score));
+  return BANDS.find(b => score >= b.min && score < b.max) || BANDS[5];
+}
+function scoreColor(s) { return s >= 0 ? '#10b981' : '#ef4444'; }
+function fmtScore(s) { return (s >= 0 ? '+' : '') + s.toFixed(1); }
+
+// ── State ──
+let DATA = null;
+let currentView = 'daily';   // 'daily' | 'weekly'
+let selectedDay = null;
+let selectedSector = 'all';
+
+// ════════════════════════════════════════════════════════════
+// DATA LOADING
+// ════════════════════════════════════════════════════════════
+
+async function loadData() {
+  try {
+    const resp = await fetch('sentiment_data.json?t=' + Date.now());
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    DATA = await resp.json();
+    
+    const days = Object.keys(DATA.days).sort();
+    selectedDay = days[days.length - 1]; // en son gün
+    
+    render();
+  } catch (e) {
+    document.getElementById('app').innerHTML = `
+      <div class="error-box">
+        <h2>⚠️ Data Load Failed</h2>
+        <p style="color:var(--text-secondary);">Could not find or read sentiment_data.json file.</p>
+        <p style="color:var(--text-muted);font-size:0.8rem;margin-top:12px;">${e.message}</p>
+      </div>`;
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// RENDER ENGINE
+// ════════════════════════════════════════════════════════════
+
+function render() {
+  if (!DATA) return;
+  const days = Object.keys(DATA.days).sort();
+  const today = DATA.days[selectedDay];
+  if (!today) return;
+
+  const band = getBand(today.overall_score);
+  const gaugePct = (today.overall_score + 100) / 200 * 100;
+  const dist = today.score_distribution || {};
+
+  // Weekly aggregation
+  const weekly = computeWeekly(days);
+
+  let html = `
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <a href="index.html" class="home-btn" title="Marketwatch Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </a>
+        <h1>📊 SECTOR SENTIMENT</h1>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="view-toggle">
+          <button class="view-btn ${currentView==='daily'?'active':''}" onclick="switchView('daily')">📅 Daily</button>
+          <button class="view-btn ${currentView==='weekly'?'active':''}" onclick="switchView('weekly')">📈 Weekly</button>
+        </div>
+        <div class="header-meta">${DATA.last_updated?.slice(0,16) || ''}</div>
+      </div>
+    </div>`;
+
+  if (currentView === 'daily') {
+    html += renderDaily(today, band, gaugePct, dist, days);
+  } else {
+    html += renderWeekly(weekly, days);
+  }
+
+  html += `<div class="footer">Navimod Financial Analytics Solutions • ${selectedDay} • ${today.total_articles} articles analyzed</div>`;
+  
+  document.getElementById('app').innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════════
+// DAILY VIEW
+// ════════════════════════════════════════════════════════════
+
+function renderDaily(today, band, gaugePct, dist, days) {
+  const sectors = today.sectors || {};
+  const sorted = Object.entries(sectors).sort((a,b) => b[1].avg_score - a[1].avg_score);
+
+  let html = '';
+
+  // Day pills
+  html += `<div class="day-pills">`;
+  for (const d of days) {
+    const label = d.slice(5); // "02-10"
+    const dayData = DATA.days[d];
+    const sc = dayData?.overall_score || 0;
+    html += `<div class="day-pill ${d===selectedDay?'active':''}" onclick="selectDay('${d}')" title="${fmtScore(sc)}">${label}</div>`;
+  }
+  html += `</div>`;
+
+  // Score card
+  html += `
+    <div class="score-card" style="border-bottom:4px solid ${band.color};">
+      <div class="big-score" style="color:${band.color};">${fmtScore(today.overall_score)}</div>
+      <div class="score-label" style="color:${band.color};">${band.emoji} ${band.label}</div>
+      <div class="gauge"><div class="gauge-bar"><div class="gauge-marker" style="left:${gaugePct}%;"></div></div>
+        <div class="gauge-labels"><span>-100 Fear</span><span>0</span><span>+100 Greed</span></div>
+      </div>
+      <div class="score-sub">${today.total_articles} articles • ${selectedDay}</div>
+    </div>`;
+
+  // Stats
+  const spyR = today.spy_return;
+  const spyRetHtml = spyR != null ? `<div class="stat-box"><div class="stat-value" style="color:${spyR >= 0 ? 'var(--green)' : 'var(--red)'};">${spyR >= 0 ? '+' : ''}${spyR.toFixed(2)}%</div><div class="stat-label">SPY Return</div></div>` : '';
+  html += `
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-value">${today.total_articles}</div><div class="stat-label">Total Articles</div></div>
+      <div class="stat-box"><div class="stat-value" style="color:var(--green);">${dist.positive_pct?.toFixed(0) || 0}%</div><div class="stat-label">Positive</div></div>
+      <div class="stat-box"><div class="stat-value" style="color:var(--red);">${dist.negative_pct?.toFixed(0) || 0}%</div><div class="stat-label">Negative</div></div>
+      <div class="stat-box"><div class="stat-value">${dist.mean ? fmtScore(dist.mean) : '0'}</div><div class="stat-label">Mean</div></div>
+      <div class="stat-box"><div class="stat-value">${dist.median ? fmtScore(dist.median) : '0'}</div><div class="stat-label">Median</div></div>
+      <div class="stat-box"><div class="stat-value">${dist.std?.toFixed(1) || '0'}</div><div class="stat-label">Std Dev</div></div>
+      ${spyRetHtml}
+    </div>`;
+
+  // Sector nav
+  html += `<div class="sector-nav">
+    <div class="nav-tab ${selectedSector==='all'?'active':''}" onclick="selectSector('all')">All</div>`;
+  for (const etf of SECTOR_ETFS) {
+    html += `<div class="nav-tab ${selectedSector===etf?'active':''}" onclick="selectSector('${etf}')">${etf}</div>`;
+  }
+  html += `</div>`;
+
+  // Sector summary table
+  if (selectedSector === 'all') {
+    const spyRet = today.spy_return;
+    const spyStr = spyRet != null ? `SPY: ${spyRet >= 0 ? '+' : ''}${spyRet.toFixed(2)}%` : '';
+    html += `<div class="section"><div class="section-title">🏭 Sector ETF Sentiment ${spyStr ? `<span style="margin-left:16px;font-size:0.8em;color:${spyRet >= 0 ? 'var(--green)' : 'var(--red)'}">${spyStr}</span>` : ''}</div>
+      <table><thead><tr><th>ETF</th><th>Sector</th><th>Score</th><th>Return</th><th>Band</th><th>Articles</th><th>Positive</th><th>Negative</th></tr></thead><tbody>`;
+    for (const [etf, info] of sorted) {
+      const b = getBand(info.avg_score);
+      const mr = info.market_return;
+      const mrStr = mr != null ? `${mr >= 0 ? '+' : ''}${mr.toFixed(2)}%` : '—';
+      const mrColor = mr == null ? 'var(--muted)' : mr >= 0 ? 'var(--green)' : 'var(--red)';
+      html += `<tr class="clickable" onclick="selectSector('${etf}')">
+        <td><strong>${etf}</strong></td>
+        <td>${b.emoji} ${ETF_NAMES[etf] || etf}</td>
+        <td style="color:${scoreColor(info.avg_score)};font-weight:bold;">${fmtScore(info.avg_score)}</td>
+        <td style="color:${mrColor};font-weight:bold;font-family:'JetBrains Mono',monospace;font-size:0.85em;">${mrStr}</td>
+        <td>${info.band || b.label}</td>
+        <td>${info.count || 0}</td>
+        <td style="color:var(--green);">${(info.positive_pct||0).toFixed(0)}%</td>
+        <td style="color:var(--red);">${(info.negative_pct||0).toFixed(0)}%</td>
+      </tr>`;
+    }
+    html += `</tbody></table></div>`;
+  }
+
+  // Sector details
+  for (const [etf, info] of sorted) {
+    if (selectedSector !== 'all' && selectedSector !== etf) continue;
+    html += renderSectorDetail(etf, info);
+  }
+
+  return html;
+}
+
+function renderSectorDetail(etf, info) {
+  const b = getBand(info.avg_score);
+  const color = scoreColor(info.avg_score);
+  const posCount = Math.round((info.positive_pct||0) * (info.count||0) / 100);
+  const negCount = Math.round((info.negative_pct||0) * (info.count||0) / 100);
+  const neuCount = (info.count||0) - posCount - negCount;
+
+  let posRows = '', negRows = '';
+  (info.top_positive || []).slice(0,10).forEach((a,i) => {
+    posRows += `<tr><td>${i+1}</td><td style="color:var(--green);font-weight:bold;">+${a.score}</td>
+      <td><a href="${a.link||'#'}" target="_blank">${(a.title||'').slice(0,75)}</a></td></tr>`;
+  });
+  (info.top_negative || []).slice(0,10).forEach((a,i) => {
+    negRows += `<tr><td>${i+1}</td><td style="color:var(--red);font-weight:bold;">${a.score}</td>
+      <td><a href="${a.link||'#'}" target="_blank">${(a.title||'').slice(0,75)}</a></td></tr>`;
+  });
+
+  return `
+    <div class="sector-detail visible">
+      <div class="sector-header" style="border-left-color:${color};">
+        <div class="sector-info">
+          <h2>${b.emoji} ${etf} — ${ETF_NAMES[etf]||etf}</h2>
+          <div class="sector-full-name">${ETF_FULL[etf]||''}</div>
+        </div>
+        <div class="sector-score-big">
+          <div class="val" style="color:${color};">${fmtScore(info.avg_score)}</div>
+          <div class="band" style="color:${color};">${info.band||b.label}</div>
+        </div>
+      </div>
+      <div class="sector-stats-row">
+        <div class="mini-stat"><span class="num">${info.count||0}</span><span class="txt">Articles</span></div>
+        <div class="mini-stat"><span class="num" style="color:var(--green);">${posCount}</span><span class="txt">Positive</span></div>
+        <div class="mini-stat"><span class="num" style="color:var(--red);">${negCount}</span><span class="txt">Negative</span></div>
+        <div class="mini-stat"><span class="num">${neuCount}</span><span class="txt">Neutral</span></div>
+      </div>
+      <div class="news-grid">
+        <div class="news-panel pos">
+          <h3>🟢 Top Positive News</h3>
+          <table>${posRows || '<tr><td colspan="3" style="color:var(--text-muted);">No data</td></tr>'}</table>
+        </div>
+        <div class="news-panel neg">
+          <h3>🔴 Top Negative News</h3>
+          <table>${negRows || '<tr><td colspan="3" style="color:var(--text-muted);">No data</td></tr>'}</table>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// WEEKLY VIEW
+// ════════════════════════════════════════════════════════════
+
+function computeWeekly(days) {
+  const result = { days: [], overall: [], spy_returns: [], sectors: {} };
+  for (const etf of SECTOR_ETFS) result.sectors[etf] = { scores: [], returns: [] };
+
+  for (const d of days) {
+    const dayData = DATA.days[d];
+    if (!dayData) continue;
+    result.days.push(d);
+    result.overall.push(dayData.overall_score || 0);
+    result.spy_returns.push(dayData.spy_return ?? null);
+    for (const etf of SECTOR_ETFS) {
+      result.sectors[etf].scores.push(dayData.sectors?.[etf]?.avg_score || null);
+      result.sectors[etf].returns.push(dayData.sectors?.[etf]?.market_return ?? null);
+    }
+  }
+  return result;
+}
+
+function renderWeekly(weekly, days) {
+  if (days.length < 2) {
+    return `<div class="section" style="text-align:center;padding:60px;">
+      <h2 style="color:var(--text-secondary);">📅 Weekly view requires at least 2 days of data</h2>
+      <p style="color:var(--text-muted);margin-top:8px;">Run the pipeline for a few days and trend data will appear here.</p>
+    </div>`;
+  }
+
+  const latestDay = DATA.days[days[days.length-1]];
+  const prevDay = DATA.days[days[days.length-2]];
+  const overallChange = (latestDay?.overall_score||0) - (prevDay?.overall_score||0);
+
+  // Weekly avg
+  const weekAvg = weekly.overall.reduce((a,b)=>a+b,0) / weekly.overall.length;
+  const weekBand = getBand(weekAvg);
+  const totalArticles = days.reduce((acc,d) => acc + (DATA.days[d]?.total_articles||0), 0);
+  const spyWeekReturns = weekly.spy_returns.filter(r => r != null && r !== 0);
+  const spyCumReturn = spyWeekReturns.reduce((a,b) => a+b, 0);
+
+  let html = '';
+
+  // Weekly score card
+  html += `
+    <div class="score-card" style="border-bottom:4px solid ${weekBand.color};">
+      <div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:8px;">WEEKLY AVERAGE (${days.length} days)</div>
+      <div class="big-score" style="color:${weekBand.color};">${fmtScore(weekAvg)}</div>
+      <div class="score-label" style="color:${weekBand.color};">${weekBand.emoji} ${weekBand.label}</div>
+      <div class="score-sub">
+        Last day change: <span style="color:${overallChange>=0?'var(--green)':'var(--red)'};font-weight:700;">${fmtScore(overallChange)}</span>
+        ${spyWeekReturns.length ? `• SPY week: <span style="color:${spyCumReturn>=0?'var(--green)':'var(--red)'};font-weight:700;">${spyCumReturn>=0?'+':''}${spyCumReturn.toFixed(2)}%</span>` : ''}
+        • ${totalArticles} total articles • ${days[0]} → ${days[days.length-1]}
+      </div>
+    </div>`;
+
+  // Overall trend chart
+  html += `<div class="trend-section">
+    <div class="section-title">📈 Overall Sentiment Trend</div>
+    <canvas id="trendChart" width="800" height="240"></canvas>
+  </div>`;
+
+  // Sector weekly table with sparklines
+  html += `<div class="section"><div class="section-title">🏭 Sector Weekly Summary</div>
+    <table><thead><tr><th>ETF</th><th>Sector</th><th>Last Day</th><th>Week Avg</th><th>Return</th><th>Change</th><th>Trend</th></tr></thead><tbody>`;
+
+  const sectorWeekly = [];
+  for (const etf of SECTOR_ETFS) {
+    const scores = weekly.sectors[etf].scores.filter(s => s !== null);
+    const returns = weekly.sectors[etf].returns.filter(r => r != null && r !== 0);
+    const avg = scores.length ? scores.reduce((a,b)=>a+b,0)/scores.length : 0;
+    const last = scores[scores.length-1] || 0;
+    const prev = scores.length >= 2 ? scores[scores.length-2] : last;
+    const change = last - prev;
+    const cumReturn = returns.reduce((a,b) => a+b, 0);
+    sectorWeekly.push({ etf, avg, last, change, scores, cumReturn, hasReturn: returns.length > 0 });
+  }
+  sectorWeekly.sort((a,b) => b.avg - a.avg);
+
+  for (const s of sectorWeekly) {
+    const b = getBand(s.avg);
+    const changeColor = s.change >= 0 ? 'var(--green)' : 'var(--red)';
+    const arrow = s.change >= 0 ? '▲' : '▼';
+    const spark = s.scores.map(v => v?.toFixed(0) || '-').join(' → ');
+    const retStr = s.hasReturn ? `${s.cumReturn >= 0 ? '+' : ''}${s.cumReturn.toFixed(2)}%` : '—';
+    const retColor = !s.hasReturn ? 'var(--text-secondary)' : s.cumReturn >= 0 ? 'var(--green)' : 'var(--red)';
+    html += `<tr>
+      <td><strong>${s.etf}</strong></td>
+      <td>${b.emoji} ${ETF_NAMES[s.etf]}</td>
+      <td style="color:${scoreColor(s.last)};font-weight:bold;">${fmtScore(s.last)}</td>
+      <td style="font-weight:600;">${fmtScore(s.avg)}</td>
+      <td style="color:${retColor};font-weight:bold;font-family:'JetBrains Mono',monospace;font-size:0.85em;">${retStr}</td>
+      <td style="color:${changeColor};font-weight:bold;">${arrow} ${Math.abs(s.change).toFixed(1)}</td>
+      <td style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-secondary);">${spark}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+
+  // Schedule chart draw after DOM update
+  setTimeout(() => drawTrendChart(weekly), 50);
+
+  return html;
+}
+
+// ════════════════════════════════════════════════════════════
+// TREND CHART (Canvas)
+// ════════════════════════════════════════════════════════════
+
+function drawTrendChart(weekly) {
+  const canvas = document.getElementById('trendChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  // HiDPI
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 480;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = '240px';
+  ctx.scale(2, 2);
+  const W = rect.width, H = 240;
+
+  const pad = { t: 20, r: 20, b: 40, l: 50 };
+  const plotW = W - pad.l - pad.r;
+  const plotH = H - pad.t - pad.b;
+
+  // Data range
+  const allVals = weekly.overall;
+  const minV = Math.min(-20, ...allVals);
+  const maxV = Math.max(20, ...allVals);
+  const range = maxV - minV || 1;
+
+  function xPos(i) { return pad.l + (i / (allVals.length - 1 || 1)) * plotW; }
+  function yPos(v) { return pad.t + plotH - ((v - minV) / range) * plotH; }
+
+  // Background
+  ctx.fillStyle = 'transparent';
+  ctx.fillRect(0, 0, W, H);
+
+  // Zero line
+  if (minV < 0 && maxV > 0) {
+    const y0 = yPos(0);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(pad.l, y0); ctx.lineTo(W - pad.r, y0); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#4b5563';
+    ctx.font = '10px JetBrains Mono';
+    ctx.textAlign = 'right';
+    ctx.fillText('0', pad.l - 8, y0 + 3);
+  }
+
+  // Gradient fill
+  const grad = ctx.createLinearGradient(0, pad.t, 0, pad.t + plotH);
+  grad.addColorStop(0, 'rgba(16,185,129,0.15)');
+  grad.addColorStop(0.5, 'rgba(99,102,241,0.05)');
+  grad.addColorStop(1, 'rgba(239,68,68,0.15)');
+  
+  ctx.beginPath();
+  ctx.moveTo(xPos(0), yPos(allVals[0]));
+  for (let i = 1; i < allVals.length; i++) ctx.lineTo(xPos(i), yPos(allVals[i]));
+  ctx.lineTo(xPos(allVals.length-1), pad.t + plotH);
+  ctx.lineTo(xPos(0), pad.t + plotH);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  ctx.moveTo(xPos(0), yPos(allVals[0]));
+  for (let i = 1; i < allVals.length; i++) ctx.lineTo(xPos(i), yPos(allVals[i]));
+  ctx.strokeStyle = '#6366f1';
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // Dots + labels
+  for (let i = 0; i < allVals.length; i++) {
+    const x = xPos(i), y = yPos(allVals[i]);
+    ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI*2);
+    ctx.fillStyle = allVals[i] >= 0 ? '#10b981' : '#ef4444';
+    ctx.fill();
+    ctx.strokeStyle = '#0a0e17'; ctx.lineWidth = 2; ctx.stroke();
+
+    // Score label
+    ctx.fillStyle = '#e5e7eb';
+    ctx.font = 'bold 10px JetBrains Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText(fmtScore(allVals[i]), x, y - 12);
+
+    // Date label
+    ctx.fillStyle = '#6b7280';
+    ctx.font = '9px JetBrains Mono';
+    ctx.fillText(weekly.days[i]?.slice(5) || '', x, H - pad.b + 16);
+  }
+
+  // Y axis labels
+  ctx.fillStyle = '#4b5563';
+  ctx.font = '9px JetBrains Mono';
+  ctx.textAlign = 'right';
+  const steps = 5;
+  for (let i = 0; i <= steps; i++) {
+    const v = minV + (range / steps) * i;
+    ctx.fillText(v.toFixed(0), pad.l - 8, yPos(v) + 3);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// INTERACTIONS
+// ════════════════════════════════════════════════════════════
+
+function switchView(view) {
+  currentView = view;
+  selectedSector = 'all';
+  render();
+}
+
+function selectDay(day) {
+  selectedDay = day;
+  selectedSector = 'all';
+  render();
+}
+
+function selectSector(etf) {
+  selectedSector = etf;
+  render();
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+
+loadData();
+</script>
+</body>
+</html>
