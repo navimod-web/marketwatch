@@ -55,7 +55,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
 
 /* Heatmap */
 .ov-ht{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--t3);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
-.ov-hm{display:grid;grid-template-columns:1fr 1fr 1fr 1.15fr;grid-auto-rows:min-content;gap:12px;margin-bottom:22px}
+.ov-hm{display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;grid-auto-rows:min-content;gap:12px;margin-bottom:22px}
 .ov-sc{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s}
 .ov-sc:hover{border-color:rgba(255,255,255,.12);background:var(--card2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .ov-sc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
@@ -228,6 +228,8 @@ function rOv(td,band,gp,di,days){
     }
   }
   news.sort((a,b)=>Math.abs(b.score)-Math.abs(a.score));
+  const posNews=news.filter(n=>n.score>0).sort((a,b)=>b.score-a.score);
+  const negNews=news.filter(n=>n.score<0).sort((a,b)=>a.score-b.score);
   const best=sorted[0]?sorted[0][1].avg_score:0;
   const weak=sorted.length?sorted[sorted.length-1][1].avg_score:0;
   const conf=td.avg_confidence||di.avg_confidence||0;
@@ -255,6 +257,15 @@ function rOv(td,band,gp,di,days){
 
   // Heatmap
   h+=`<div class="ov-ht anim d2">SECTOR SENTIMENT HEATMAP</div><div class="ov-hm anim d2">`;
+
+  // TOP-LEFT: Positive news panel (grid column 1, spans 2 rows)
+  h+=`<div class="ov-nc" style="border-left:3px solid var(--grn)"><div class="ov-nc-hd"><span class="ov-nc-t" style="color:var(--grn)">🟢 TOP POSITIVE</span></div>`;
+  for(const n of posNews.slice(0,5)){
+    h+=`<div class="ov-ni"><div class="ov-ni-s" style="color:var(--grn)">+${n.score}</div><div><div class="ov-ni-tx"><a href="${n.link||'#'}" target="_blank">${(n.title||'').slice(0,75)}</a></div><div class="ov-ni-tm">2hr ago</div></div></div>`;
+  }
+  if(!posNews.length) h+=`<div style="color:var(--t3);font-size:.8rem;padding:12px 0">No positive signals</div>`;
+  h+=`</div>`;
+
   const top6=sorted.slice(0,6);
   for(let i=0;i<top6.length;i++){
     const[etf,info]=top6[i];const s=info.avg_score;const cl=sc(s);
@@ -277,13 +288,6 @@ function rOv(td,band,gp,di,days){
       </div>
       <div class="ov-sc-ft2"><span>${bandLabel}</span><span>${cnt} articles</span><span>conf ${cf}</span></div>
     </div>`;
-    if(i===2){
-      h+=`<div class="ov-nc"><div class="ov-nc-hd"><span class="ov-nc-t">TOP NEWS SIGNALS</span><span style="color:var(--t3);cursor:pointer;font-size:1.2rem">···</span></div>`;
-      for(const n of news.slice(0,5)){const nc=n.score>=0?'var(--grn)':'var(--red)';
-        h+=`<div class="ov-ni"><div class="ov-ni-s" style="color:${nc}">${n.score>=0?'+':''}${n.score}</div><div><div class="ov-ni-tx"><a href="${n.link||'#'}" target="_blank">${(n.title||'').slice(0,75)}</a></div><div class="ov-ni-tm">2hr ago</div></div></div>`;
-      }
-      h+=`</div>`;
-    }
   }
   h+=`</div>`;
 
@@ -296,10 +300,12 @@ function rOv(td,band,gp,di,days){
     const it=td2[i]===sd;const bc=it?'var(--acc)':cl;const dl=td2[i].slice(5).replace('-','.');
     h+=`<div class="ov-bc"><div class="ov-bv" style="color:${cl}">${fs(s)}</div><div class="ov-br" style="height:${hp}%;background:${bc}"></div>${it?`<div class="ov-bd"><span class="ov-btoday">TODAY</span></div>`:`<div class="ov-bd">${dl}</div>`}</div>`;
   }
-  h+=`</div></div><div class="ov-pn"><div class="ov-pt">TOP NEWS SIGNALS</div>`;
-  for(const n of news.slice(0,4)){const nc=n.score>=0?'var(--grn)':'var(--red)';
-    h+=`<div class="ov-ni"><div class="ov-ni-s" style="color:${nc}">${n.score>=0?'+':''}${n.score}</div><div><div class="ov-ni-tx"><a href="${n.link||'#'}" target="_blank">${(n.title||'').slice(0,80)}</a></div><div class="ov-ni-tm">2hr ago</div></div></div>`;
+  // BOTTOM-RIGHT: Negative news panel
+  h+=`</div></div><div class="ov-pn" style="border-left:3px solid var(--red)"><div class="ov-pt" style="color:var(--red)">🔴 TOP NEGATIVE</div>`;
+  for(const n of negNews.slice(0,5)){
+    h+=`<div class="ov-ni"><div class="ov-ni-s" style="color:var(--red)">${n.score}</div><div><div class="ov-ni-tx"><a href="${n.link||'#'}" target="_blank">${(n.title||'').slice(0,80)}</a></div><div class="ov-ni-tm">2hr ago</div></div></div>`;
   }
+  if(!negNews.length) h+=`<div style="color:var(--t3);font-size:.8rem;padding:12px 0">No negative signals</div>`;
   h+=`</div></div>`;
   return h;
 }
