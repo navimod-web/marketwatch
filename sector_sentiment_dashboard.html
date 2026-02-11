@@ -502,11 +502,11 @@ function renderSectorDetail(etf, info) {
   const neuCount = (info.count||0) - posCount - negCount;
 
   let posRows = '', negRows = '';
-  (info.top_positive || []).slice(0,10).forEach((a,i) => {
+  (info.top_positive || []).filter(a => a.score > 0).slice(0,10).forEach((a,i) => {
     posRows += `<tr><td>${i+1}</td><td style="color:var(--green);font-weight:bold;">+${a.score}</td>
       <td><a href="${a.link||'#'}" target="_blank">${(a.title||'').slice(0,75)}</a></td></tr>`;
   });
-  (info.top_negative || []).slice(0,10).forEach((a,i) => {
+  (info.top_negative || []).filter(a => a.score < 0).slice(0,10).forEach((a,i) => {
     negRows += `<tr><td>${i+1}</td><td style="color:var(--red);font-weight:bold;">${a.score}</td>
       <td><a href="${a.link||'#'}" target="_blank">${(a.title||'').slice(0,75)}</a></td></tr>`;
   });
