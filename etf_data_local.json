@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-01T14:01:04.916003",
-  "update_time": "2026-03-01 14:01",
+  "generated_at": "2026-03-02T07:01:19.068681",
+  "update_time": "2026-03-02 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -6560,64 +6560,10 @@
       "Name": "Oracle Corp.",
       "Category": "Technology",
       "SubCategory": "Software",
-      "1W": {
-        "RETURN": -1.81,
-        "TREND": 114.23,
-        "ACCELERATION": -47.79,
-        "QUALITY": 0.0718,
-        "SHARPE": -1.47,
-        "SORTINO": -5.46,
-        "STABILITY": -10
-      },
-      "2W": {
-        "RETURN": -7.08,
-        "TREND": -89.32,
-        "ACCELERATION": 137.51,
-        "QUALITY": 0.5679,
-        "SHARPE": -3.35,
-        "SORTINO": -10,
-        "STABILITY": -10
-      },
-      "1M": {
-        "RETURN": -15.86,
-        "TREND": -69.43,
-        "ACCELERATION": 50.86,
-        "QUALITY": 0.2727,
-        "SHARPE": -2.98,
-        "SORTINO": -6.6,
-        "STABILITY": -9.75
-      },
-      "3M": {
-        "RETURN": -26.01,
-        "TREND": -78.51,
-        "ACCELERATION": -176.39,
-        "QUALITY": 0.7772,
-        "SHARPE": -1.91,
-        "SORTINO": -2.92,
-        "STABILITY": -2.72
-      },
-      "6M": {
-        "RETURN": -38.07,
-        "TREND": -76.15,
-        "ACCELERATION": -85.58,
-        "QUALITY": 0.8008,
-        "SHARPE": -0.97,
-        "SORTINO": -2.04,
-        "STABILITY": -1.22
-      },
-      "12M": {
-        "RETURN": -14.84,
-        "TREND": 33.04,
-        "ACCELERATION": -286.81,
-        "QUALITY": 0.1067,
-        "SHARPE": 0.03,
-        "SORTINO": 0.05,
-        "STABILITY": 0.03
-      },
       "MomentumScore": null,
-      "MomentumReason": "sector_2w_neg",
+      "MomentumReason": "insufficient_data",
       "MeanRevScore": null,
-      "MeanRevReason": "high_volatility"
+      "MeanRevReason": "insufficient_data"
     },
     {
       "Symbol": "ACN",
@@ -9177,7 +9123,7 @@
       "MomentumScore": null,
       "MomentumReason": "sector_2w_neg",
       "MeanRevScore": null,
-      "MeanRevReason": "not_oversold"
+      "MeanRevReason": "high_volatility"
     },
     {
       "Symbol": "USB",
@@ -18502,7 +18448,7 @@
         "StockCount": 0,
         "TotalStocks": 24,
         "Disqualified": true,
-        "Reason": "2W Ret -0.8%"
+        "Reason": "2W Ret -0.4%"
       }
     ],
     "top10_momentum_commodities": [
