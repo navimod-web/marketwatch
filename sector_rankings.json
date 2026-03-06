@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06 21:59",
+  "generated_at": "2026-03-06 22:53",
   "prediction": {
     "score_date": "2026-03-06",
     "entry_date": "2026-03-09",
@@ -31,14 +31,14 @@
       "sector_breadth": 0.27,
       "sector_rotation": -1.82,
       "highbeta_lowvol": -2.24,
-      "prev_week_return": -0.58
+      "prev_week_return": -1.07
     }
   },
   "rankings": [
     {
       "rank": 1,
       "sector": "Utilities",
-      "probability": 0.8463,
+      "probability": 0.8178,
       "return_1w": -1.91,
       "return_2w": 1.13,
       "return_1m": 10.19,
@@ -48,7 +48,7 @@
     {
       "rank": 2,
       "sector": "Technology",
-      "probability": 0.8053,
+      "probability": 0.7916,
       "return_1w": 1.39,
       "return_2w": 0.77,
       "return_1m": -0.78,
@@ -58,7 +58,7 @@
     {
       "rank": 3,
       "sector": "Materials",
-      "probability": 0.7783,
+      "probability": 0.7836,
       "return_1w": -6.95,
       "return_2w": -6.27,
       "return_1m": -5.43,
@@ -68,7 +68,7 @@
     {
       "rank": 4,
       "sector": "Financials",
-      "probability": 0.7332,
+      "probability": 0.6982,
       "return_1w": -2.61,
       "return_2w": -5.96,
       "return_1m": -7.55,
@@ -78,7 +78,7 @@
     {
       "rank": 5,
       "sector": "Consumer Stpl.",
-      "probability": 0.6735,
+      "probability": 0.6824,
       "return_1w": -5.56,
       "return_2w": -3.77,
       "return_1m": -2.94,
@@ -88,7 +88,7 @@
     {
       "rank": 6,
       "sector": "Consumer Disc.",
-      "probability": 0.6515,
+      "probability": 0.6792,
       "return_1w": -3.27,
       "return_2w": -3.66,
       "return_1m": -4.14,
@@ -97,18 +97,8 @@
     },
     {
       "rank": 7,
-      "sector": "Energy",
-      "probability": 0.6173,
-      "return_1w": 3.17,
-      "return_2w": 4.89,
-      "return_1m": 8.9,
-      "momentum": -1.72,
-      "is_top3": false
-    },
-    {
-      "rank": 8,
       "sector": "Communication",
-      "probability": 0.5694,
+      "probability": 0.562,
       "return_1w": 0.49,
       "return_2w": 3.63,
       "return_1m": 6.03,
@@ -116,9 +106,9 @@
       "is_top3": false
     },
     {
-      "rank": 9,
+      "rank": 8,
       "sector": "Industrials",
-      "probability": 0.4835,
+      "probability": 0.5063,
       "return_1w": -4.03,
       "return_2w": -4.43,
       "return_1m": -0.2,
@@ -126,9 +116,19 @@
       "is_top3": false
     },
     {
+      "rank": 9,
+      "sector": "Energy",
+      "probability": 0.496,
+      "return_1w": 3.17,
+      "return_2w": 4.89,
+      "return_1m": 8.9,
+      "momentum": -1.72,
+      "is_top3": false
+    },
+    {
       "rank": 10,
       "sector": "Healthcare",
-      "probability": 0.4664,
+      "probability": 0.4879,
       "return_1w": -4.24,
       "return_2w": -2.09,
       "return_1m": -0.81,
@@ -138,7 +138,7 @@
     {
       "rank": 11,
       "sector": "Real Estate",
-      "probability": 0.4467,
+      "probability": 0.4312,
       "return_1w": -2.06,
       "return_2w": -0.61,
       "return_1m": 6.53,
@@ -148,22 +148,22 @@
   ],
   "backtest": {
     "total_weeks": 52,
-    "hit_rate": 57.7,
-    "total_return": 13.62,
-    "avg_weekly_return": 0.262,
-    "positive_weeks": 33,
+    "hit_rate": 59.0,
+    "total_return": 12.5,
+    "avg_weekly_return": 0.24,
+    "positive_weeks": 34,
     "defense_stats": {
-      "cash_weeks": 3,
-      "halfsize_weeks": 2,
-      "normal_weeks": 47
+      "cash_weeks": 5,
+      "halfsize_weeks": 1,
+      "normal_weeks": 46
     },
     "weekly_summary": [
       {
         "entry_date": "2026-03-02",
         "exit_date": "2026-03-06",
-        "top3_return": -0.58,
-        "hit_rate": 66.7,
-        "hits": 2,
+        "top3_return": -1.07,
+        "hit_rate": 33.3,
+        "hits": 1,
         "trades": 3,
         "defense_mode": "NORMAL",
         "top_sectors": [
@@ -172,8 +172,8 @@
             "return": 1.08
           },
           {
-            "sector": "Energy",
-            "return": 0.18
+            "sector": "Utilities",
+            "return": -1.29
           },
           {
             "sector": "Financials",
@@ -184,16 +184,12 @@
       {
         "entry_date": "2026-02-23",
         "exit_date": "2026-02-27",
-        "top3_return": 1.82,
+        "top3_return": 2.01,
         "hit_rate": 100.0,
         "hits": 3,
         "trades": 3,
         "defense_mode": "NORMAL",
         "top_sectors": [
-          {
-            "sector": "Real Estate",
-            "return": 1.06
-          },
           {
             "sector": "Utilities",
             "return": 2.72
@@ -201,13 +197,17 @@
           {
             "sector": "Energy",
             "return": 1.68
+          },
+          {
+            "sector": "Consumer Disc.",
+            "return": 1.64
           }
         ]
       },
       {
         "entry_date": "2026-02-17",
         "exit_date": "2026-02-20",
-        "top3_return": 1.13,
+        "top3_return": 1.02,
         "hit_rate": 66.7,
         "hits": 2,
         "trades": 3,
@@ -218,12 +218,12 @@
             "return": 2.29
           },
           {
-            "sector": "Industrials",
-            "return": 1.37
-          },
-          {
             "sector": "Healthcare",
             "return": -0.28
+          },
+          {
+            "sector": "Financials",
+            "return": 1.05
           }
         ]
       },
@@ -237,12 +237,12 @@
         "defense_mode": "NORMAL",
         "top_sectors": [
           {
-            "sector": "Healthcare",
-            "return": 0.97
-          },
-          {
             "sector": "Consumer Stpl.",
             "return": 2.73
+          },
+          {
+            "sector": "Healthcare",
+            "return": 0.97
           },
           {
             "sector": "Communication",
