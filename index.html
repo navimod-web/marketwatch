@@ -1178,12 +1178,12 @@ var GLOSS = {
 async function loadData() {
   try {
     const [dataRes, briefRes, briefStockRes, newsRes, sectorRes, spyRes] = await Promise.all([
-      fetch('etf_data.json'),
-      fetch('brief.json').catch(() => null),
-      fetch('brief_stocks.json').catch(() => null),
-      fetch('news_data.json').catch(() => null),
+      fetch('etf_data_local.json'),
+      fetch('brief_local.json').catch(() => null),
+      fetch('brief_stocks_local.json').catch(() => null),
+      fetch('news_data_local.json').catch(() => null),
       fetch('sector_rankings.json').catch(() => null),
-      fetch('spy_forecast.json').catch(() => null)
+      fetch('spy_forecast_local.json').catch(() => null)
     ]);
     
     DATA = await dataRes.json();
