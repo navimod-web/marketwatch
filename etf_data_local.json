@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-06T07:01:03.401782",
-  "update_time": "2026-04-06 07:01",
+  "generated_at": "2026-04-06T13:01:20.029144",
+  "update_time": "2026-04-06 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
   "regime": {
-    "overall": "ROTATION",
-    "riskScore": -2,
-    "cycleScore": 1,
+    "overall": "NEUTRAL",
+    "riskScore": 0,
+    "cycleScore": 0,
     "signals": {
       "BREADTH": {
         "value": "9/11 POSITIVE",
@@ -18,39 +18,39 @@
       "VXX": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 34.7,
-        "change": -11.95
+        "level": null,
+        "change": null
       },
       "SPY_TLT": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 7.5565,
-        "change": 1.65
+        "level": null,
+        "change": null
       },
       "HYG_LQD": {
-        "value": "CREDIT STRESS ↓",
-        "score": -2,
-        "level": 0.7291,
-        "change": -0.25
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "XLY_XLP": {
-        "value": "EXPANSION ↑",
-        "score": 1,
-        "level": 1.3207,
-        "change": 2.2
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "CPER_GLD": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 0.08,
-        "change": -0.77
+        "level": null,
+        "change": null
       }
     },
     "breadth": {
       "positive": 9,
       "total": 11
     },
-    "note": "Healthy rotation - broad participation despite risk signals"
+    "note": "No signals but broad participation"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 34.7,
-        "2W": 34.7,
-        "1M": 34.7,
-        "3M": 34.7,
-        "6M": 34.7,
-        "12M": 34.7
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -11.95,
-        "2W": -3.53,
-        "1M": 10.62,
-        "3M": 32.95,
-        "6M": 3.77,
-        "12M": -30.72
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -79,20 +79,20 @@
       "name": "Stocks vs Bonds",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 7.5565,
-        "2W": 7.5565,
-        "1M": 7.5565,
-        "3M": 7.5565,
-        "6M": 7.5565,
-        "12M": 7.5565
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.65,
-        "2W": -0.4,
-        "1M": -1.65,
-        "3M": -4.54,
-        "6M": -0.54,
-        "12M": 18.42
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -100,20 +100,20 @@
       "name": "Credit Spread",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.7291,
-        "2W": 0.7291,
-        "1M": 0.7291,
-        "3M": 0.7291,
-        "6M": 0.7291,
-        "12M": 0.7291
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.25,
-        "2W": -0.29,
-        "1M": 0.71,
-        "3M": -0.09,
-        "6M": 1.29,
-        "12M": 2.03
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -121,20 +121,20 @@
       "name": "Gold vs Stocks",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.6548,
-        "2W": 0.6548,
-        "1M": 0.6548,
-        "3M": 0.6548,
-        "6M": 0.6548,
-        "12M": 0.6548
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.11,
-        "2W": 2.73,
-        "1M": -4.56,
-        "3M": 12.0,
-        "6M": 22.8,
-        "12M": 26.82
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -142,20 +142,20 @@
       "name": "Small vs Large Cap",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.3832,
-        "2W": 0.3832,
-        "1M": 0.3832,
-        "3M": 0.3832,
-        "6M": 0.3832,
-        "12M": 0.3832
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.06,
-        "2W": 2.6,
-        "1M": 1.58,
-        "3M": 5.12,
-        "6M": 5.02,
-        "12M": 6.66
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -163,20 +163,20 @@
       "name": "Speculation Index",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.1045,
-        "2W": 0.1045,
-        "1M": 0.1045,
-        "3M": 0.1045,
-        "6M": 0.1045,
-        "12M": 0.1045
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.56,
-        "2W": -1.95,
-        "1M": -4.0,
-        "3M": -9.05,
-        "6M": -22.03,
-        "12M": 18.71
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -184,20 +184,20 @@
       "name": "Consumer Cycle",
       "category": "Economic Cycle",
       "values": {
-        "1W": 1.3207,
-        "2W": 1.3207,
-        "1M": 1.3207,
-        "3M": 1.3207,
-        "6M": 1.3207,
-        "12M": 1.3207
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.2,
-        "2W": -0.71,
-        "1M": -3.57,
-        "3M": -13.62,
-        "6M": -14.83,
-        "12M": 3.91
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -205,20 +205,20 @@
       "name": "Copper/Gold Ratio",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.08,
-        "2W": 0.08,
-        "1M": 0.08,
-        "3M": 0.08,
-        "6M": 0.08,
-        "12M": 0.08
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.77,
-        "2W": 2.28,
-        "1M": 4.86,
-        "3M": -8.87,
-        "6M": -7.08,
-        "12M": -26.85
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -226,20 +226,20 @@
       "name": "Industrial Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.2497,
-        "2W": 0.2497,
-        "1M": 0.2497,
-        "3M": 0.2497,
-        "6M": 0.2497,
-        "12M": 0.2497
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.54,
-        "2W": 0.46,
-        "1M": -1.11,
-        "3M": 8.0,
-        "6M": 8.43,
-        "12M": 6.16
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -247,20 +247,20 @@
       "name": "Retail Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.1227,
-        "2W": 0.1227,
-        "1M": 0.1227,
-        "3M": 0.1227,
-        "6M": 0.1227,
-        "12M": 0.1227
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.01,
-        "2W": 1.43,
-        "1M": -1.25,
-        "3M": -2.44,
-        "6M": -5.5,
-        "12M": -3.33
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -268,20 +268,20 @@
       "name": "Semis Leadership",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.5178,
-        "2W": 0.5178,
-        "1M": 0.5178,
-        "3M": 0.5178,
-        "6M": 0.5178,
-        "12M": 0.5178
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.51,
-        "2W": 1.0,
-        "1M": 4.23,
-        "3M": 12.54,
-        "6M": 22.58,
-        "12M": 53.5
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -289,20 +289,20 @@
       "name": "Energy vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.0903,
-        "2W": 0.0903,
-        "1M": 0.0903,
-        "3M": 0.0903,
-        "6M": 0.0903,
-        "12M": 0.0903
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -8.43,
-        "2W": -0.56,
-        "1M": 9.39,
-        "3M": 35.72,
-        "6M": 38.01,
-        "12M": 10.57
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -310,20 +310,20 @@
       "name": "Breakeven Inflation",
       "category": "Inflation",
       "values": {
-        "1W": 1.1632,
-        "2W": 1.1632,
-        "1M": 1.1632,
-        "3M": 1.1632,
-        "6M": 1.1632,
-        "12M": 1.1632
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.01,
-        "2W": -0.2,
-        "1M": 0.6,
-        "3M": 0.77,
-        "6M": 0.1,
-        "12M": -0.48
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -331,20 +331,20 @@
       "name": "Agri vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.0414,
-        "2W": 0.0414,
-        "1M": 0.0414,
-        "3M": 0.0414,
-        "6M": 0.0414,
-        "12M": 0.0414
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -3.35,
-        "2W": 0.03,
-        "1M": 6.54,
-        "3M": 10.39,
-        "6M": 7.01,
-        "12M": -11.89
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -352,20 +352,20 @@
       "name": "Yield Curve",
       "category": "Fed/Rates",
       "values": {
-        "1W": 1.0538,
-        "2W": 1.0538,
-        "1M": 1.0538,
-        "3M": 1.0538,
-        "6M": 1.0538,
-        "12M": 1.0538
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.48,
-        "2W": 1.16,
-        "1M": -1.76,
-        "3M": 0.57,
-        "6M": -2.13,
-        "12M": -4.31
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": 0.9111,
-        "2W": 0.9111,
-        "1M": 0.9111,
-        "3M": 0.9111,
-        "6M": 0.9111,
-        "12M": 0.9111
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.71,
-        "2W": 0.78,
-        "1M": -0.9,
-        "3M": 0.75,
-        "6M": -1.4,
-        "12M": -4.43
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -394,20 +394,20 @@
       "name": "Dollar Strength",
       "category": "Fed/Rates",
       "values": {
-        "1W": 27.86,
-        "2W": 27.86,
-        "1M": 27.86,
-        "3M": 27.86,
-        "6M": 27.86,
-        "12M": 27.86
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.07,
-        "2W": 0.65,
-        "1M": 1.38,
-        "3M": 2.77,
-        "6M": 4.62,
-        "12M": 1.27
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -415,20 +415,20 @@
       "name": "EM vs US",
       "category": "Global",
       "values": {
-        "1W": 0.0863,
-        "2W": 0.0863,
-        "1M": 0.0863,
-        "3M": 0.0863,
-        "6M": 0.0863,
-        "12M": 0.0863
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.88,
-        "2W": 0.58,
-        "1M": 1.73,
-        "3M": 4.53,
-        "6M": 7.71,
-        "12M": 12.35
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -436,20 +436,20 @@
       "name": "China vs US",
       "category": "Global",
       "values": {
-        "1W": 0.0542,
-        "2W": 0.0542,
-        "1M": 0.0542,
-        "3M": 0.0542,
-        "6M": 0.0542,
-        "12M": 0.0542
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.35,
-        "2W": 0.02,
-        "1M": 3.54,
-        "3M": -7.23,
-        "6M": -12.64,
-        "12M": -12.71
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": 0.048,
-        "2W": 0.048,
-        "1M": 0.048,
-        "3M": 0.048,
-        "6M": 0.048,
-        "12M": 0.048
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -3.21,
-        "2W": -1.12,
-        "1M": -0.67,
-        "3M": -17.47,
-        "6M": -28.32,
-        "12M": -30.95
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -478,20 +478,20 @@
       "name": "India vs EM",
       "category": "Global",
       "values": {
-        "1W": 0.8244,
-        "2W": 0.8244,
-        "1M": 0.8244,
-        "3M": 0.8244,
-        "6M": 0.8244,
-        "12M": 0.8244
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.69,
-        "2W": -1.55,
-        "1M": -5.68,
-        "3M": -15.03,
-        "6M": -15.98,
-        "12M": -31.47
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -499,20 +499,20 @@
       "name": "Europe vs US",
       "category": "Global",
       "values": {
-        "1W": 0.1269,
-        "2W": 0.1269,
-        "1M": 0.1269,
-        "3M": 0.1269,
-        "6M": 0.1269,
-        "12M": 0.1269
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.27,
-        "2W": 3.94,
-        "1M": 2.09,
-        "3M": 2.72,
-        "6M": 5.84,
-        "12M": 3.47
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -520,20 +520,20 @@
       "name": "Japan vs US",
       "category": "Global",
       "values": {
-        "1W": 0.13,
-        "2W": 0.13,
-        "1M": 0.13,
-        "3M": 0.13,
-        "6M": 0.13,
-        "12M": 0.13
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.27,
-        "2W": 3.87,
-        "1M": 2.88,
-        "3M": 8.94,
-        "6M": 12.01,
-        "12M": 11.27
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -541,20 +541,20 @@
       "name": "Tech vs Financials",
       "category": "Sector Rotation",
       "values": {
-        "1W": 2.7456,
-        "2W": 2.7456,
-        "1M": 2.7456,
-        "3M": 2.7456,
-        "6M": 2.7456,
-        "12M": 2.7456
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.04,
-        "2W": -0.78,
-        "1M": -0.05,
-        "3M": 4.11,
-        "6M": 1.78,
-        "12M": 30.2
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -562,20 +562,20 @@
       "name": "Cyclical vs Defensive",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.7367,
-        "2W": 0.7367,
-        "1M": 0.7367,
-        "3M": 0.7367,
-        "6M": 0.7367,
-        "12M": 0.7367
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.14,
-        "2W": -0.84,
-        "1M": -2.92,
-        "3M": -3.41,
-        "6M": -12.26,
-        "12M": 3.55
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -583,20 +583,20 @@
       "name": "Materials vs Staples",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.6156,
-        "2W": 0.6156,
-        "1M": 0.6156,
-        "3M": 0.6156,
-        "6M": 0.6156,
-        "12M": 0.6156
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.93,
-        "2W": 6.39,
-        "1M": 3.32,
-        "3M": 3.57,
-        "6M": 6.53,
-        "12M": 14.49
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     }
   ],
@@ -848,7 +848,7 @@
         "TREND": 4.04,
         "ACCELERATION": -0.53,
         "QUALITY": 0.9987,
-        "SHARPE": 19.15,
+        "SHARPE": 19.16,
         "SORTINO": 10,
         "STABILITY": 7.88
       },
@@ -15923,18 +15923,6 @@
         "active_weeks": 1,
         "weekly_summary": [
           {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
-            "defense": true,
-            "defense_reason": "VIX Spike +10.8%",
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": []
-          },
-          {
             "week": "2026-W10",
             "entry_date": "2026-03-09",
             "exit_date": "2026-03-13",
@@ -15990,6 +15978,18 @@
                 "return": 10.03
               }
             ]
+          },
+          {
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
+            "defense": true,
+            "defense_reason": "VIX Spike +22.6%",
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": []
           }
         ],
         "weekly_results": [
@@ -16031,18 +16031,6 @@
         "defense_weeks": 3,
         "active_weeks": 1,
         "weekly_summary": [
-          {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
-            "defense": true,
-            "defense_reason": "VIX Spike +10.8%",
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": []
-          },
           {
             "week": "2026-W10",
             "entry_date": "2026-03-09",
@@ -16109,6 +16097,18 @@
                 "return": 0.87
               }
             ]
+          },
+          {
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
+            "defense": true,
+            "defense_reason": "VIX Spike +22.6%",
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": []
           }
         ],
         "weekly_results": [
@@ -16256,11 +16256,11 @@
             ]
           },
           {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
             "defense": true,
-            "defense_reason": "VIX Spike +10.8%",
+            "defense_reason": "VIX Spike +22.6%",
             "return": 0.0,
             "hit_rate": 0.0,
             "trades": 0,
@@ -16277,18 +16277,6 @@
           "defense_weeks": 3,
           "active_weeks": 1,
           "weekly_summary": [
-            {
-              "week": "2026-W9",
-              "entry_date": "2026-03-02",
-              "exit_date": "2026-03-06",
-              "defense": true,
-              "defense_reason": "VIX Spike +10.8%",
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": []
-            },
             {
               "week": "2026-W10",
               "entry_date": "2026-03-09",
@@ -16345,6 +16333,18 @@
                   "return": 10.03
                 }
               ]
+            },
+            {
+              "week": "2026-W13",
+              "entry_date": "2026-03-30",
+              "exit_date": "2026-04-02",
+              "defense": true,
+              "defense_reason": "VIX Spike +22.6%",
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": []
             }
           ],
           "weekly_results": [
@@ -16386,18 +16386,6 @@
           "defense_weeks": 3,
           "active_weeks": 1,
           "weekly_summary": [
-            {
-              "week": "2026-W9",
-              "entry_date": "2026-03-02",
-              "exit_date": "2026-03-06",
-              "defense": true,
-              "defense_reason": "VIX Spike +10.8%",
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": []
-            },
             {
               "week": "2026-W10",
               "entry_date": "2026-03-09",
@@ -16464,6 +16452,18 @@
                   "return": 0.87
                 }
               ]
+            },
+            {
+              "week": "2026-W13",
+              "entry_date": "2026-03-30",
+              "exit_date": "2026-04-02",
+              "defense": true,
+              "defense_reason": "VIX Spike +22.6%",
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": []
             }
           ],
           "weekly_results": [
@@ -16513,76 +16513,13 @@
         }
       },
       "mr_stocks": {
-        "hit_rate": 45.0,
-        "avg_return": -0.165,
-        "total_trades": 20,
-        "positive_trades": 9,
-        "defense_weeks": 2,
-        "active_weeks": 2,
+        "hit_rate": 40.0,
+        "avg_return": -0.217,
+        "total_trades": 10,
+        "positive_trades": 4,
+        "defense_weeks": 3,
+        "active_weeks": 1,
         "weekly_summary": [
-          {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
-            "defense": false,
-            "defense_reason": null,
-            "return": 0.20775189884024486,
-            "hit_rate": 50.0,
-            "trades": 10,
-            "positive": 5,
-            "symbols": [
-              {
-                "symbol": "WFC",
-                "positive": true,
-                "return": 1.6
-              },
-              {
-                "symbol": "NVDA",
-                "positive": true,
-                "return": 1.61
-              },
-              {
-                "symbol": "AXP",
-                "positive": false,
-                "return": -0.73
-              },
-              {
-                "symbol": "BAC",
-                "positive": true,
-                "return": 0.28
-              },
-              {
-                "symbol": "MET",
-                "positive": true,
-                "return": 0.36
-              },
-              {
-                "symbol": "PNC",
-                "positive": false,
-                "return": -0.73
-              },
-              {
-                "symbol": "AVGO",
-                "positive": true,
-                "return": 6.83
-              },
-              {
-                "symbol": "USB",
-                "positive": false,
-                "return": -2.39
-              },
-              {
-                "symbol": "GS",
-                "positive": false,
-                "return": -2.21
-              },
-              {
-                "symbol": "GM",
-                "positive": false,
-                "return": -2.55
-              }
-            ]
-          },
           {
             "week": "2026-W10",
             "entry_date": "2026-03-09",
@@ -16669,79 +16606,21 @@
             "trades": 0,
             "positive": 0,
             "symbols": []
+          },
+          {
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
+            "defense": true,
+            "defense_reason": "VIX 31.0 > 30.0 | VIX Spike +15.2%",
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": []
           }
         ],
         "weekly_results": [
-          {
-            "week": "2026-W9",
-            "symbol": "WFC",
-            "score": 80.68,
-            "return": 1.604544053800394,
-            "positive": true
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "NVDA",
-            "score": 70.0,
-            "return": 1.6056253548599297,
-            "positive": true
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "AXP",
-            "score": 67.5,
-            "return": -0.7255976467404168,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "BAC",
-            "score": 67.27,
-            "return": 0.27668737790995657,
-            "positive": true
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "MET",
-            "score": 62.5,
-            "return": 0.3632836905674397,
-            "positive": true
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "PNC",
-            "score": 56.14,
-            "return": -0.7272598998768309,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "AVGO",
-            "score": 49.32,
-            "return": 6.827004316904661,
-            "positive": true
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "USB",
-            "score": 42.73,
-            "return": -2.3858449452976105,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "GS",
-            "score": 35.68,
-            "return": -2.211906796409968,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "GM",
-            "score": 28.41,
-            "return": -2.549016517315106,
-            "positive": false
-          },
           {
             "week": "2026-W11",
             "symbol": "TMO",
@@ -16816,40 +16695,12 @@
       },
       "mr_etfs": {
         "hit_rate": 0.0,
-        "avg_return": -0.912,
-        "total_trades": 13,
+        "avg_return": -0.604,
+        "total_trades": 10,
         "positive_trades": 0,
-        "defense_weeks": 2,
-        "active_weeks": 2,
+        "defense_weeks": 3,
+        "active_weeks": 1,
         "weekly_summary": [
-          {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
-            "defense": false,
-            "defense_reason": null,
-            "return": -1.231070154880191,
-            "hit_rate": 0.0,
-            "trades": 3,
-            "positive": 0,
-            "symbols": [
-              {
-                "symbol": "KWEB",
-                "positive": false,
-                "return": -1.48
-              },
-              {
-                "symbol": "FXI",
-                "positive": false,
-                "return": -1.76
-              },
-              {
-                "symbol": "HYG",
-                "positive": false,
-                "return": -0.46
-              }
-            ]
-          },
           {
             "week": "2026-W10",
             "entry_date": "2026-03-09",
@@ -16936,30 +16787,21 @@
             "trades": 0,
             "positive": 0,
             "symbols": []
+          },
+          {
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
+            "defense": true,
+            "defense_reason": "VIX 31.0 > 30.0 | VIX Spike +15.2%",
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "symbols": []
           }
         ],
         "weekly_results": [
-          {
-            "week": "2026-W9",
-            "symbol": "KWEB",
-            "score": 58.75,
-            "return": -1.475714117194249,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "FXI",
-            "score": 53.75,
-            "return": -1.7553466969805753,
-            "positive": false
-          },
-          {
-            "week": "2026-W9",
-            "symbol": "HYG",
-            "score": 37.5,
-            "return": -0.4621496504657485,
-            "positive": false
-          },
           {
             "week": "2026-W11",
             "symbol": "TLT",
@@ -17033,12 +16875,12 @@
         ]
       },
       "mean_reversion": {
-        "hit_rate": 27.3,
-        "avg_return": -1.044,
-        "total_trades": 33,
-        "positive_trades": 9,
-        "defense_weeks": 2,
-        "active_weeks": 2,
+        "hit_rate": 20.0,
+        "avg_return": -1.642,
+        "total_trades": 20,
+        "positive_trades": 4,
+        "defense_weeks": 3,
+        "active_weeks": 1,
         "weekly_summary": [
           {
             "week": "2026-W10",
@@ -17182,157 +17024,27 @@
             "etf_symbols": []
           },
           {
-            "week": "2026-W9",
-            "entry_date": "2026-03-02",
-            "exit_date": "2026-03-06",
-            "defense": false,
-            "defense_reason": null,
-            "return": -0.12428395971062492,
-            "hit_rate": 38.5,
-            "trades": 13,
-            "positive": 5,
-            "stock_symbols": [
-              {
-                "symbol": "WFC",
-                "positive": true,
-                "return": 1.6
-              },
-              {
-                "symbol": "NVDA",
-                "positive": true,
-                "return": 1.61
-              },
-              {
-                "symbol": "AXP",
-                "positive": false,
-                "return": -0.73
-              },
-              {
-                "symbol": "BAC",
-                "positive": true,
-                "return": 0.28
-              },
-              {
-                "symbol": "MET",
-                "positive": true,
-                "return": 0.36
-              },
-              {
-                "symbol": "PNC",
-                "positive": false,
-                "return": -0.73
-              },
-              {
-                "symbol": "AVGO",
-                "positive": true,
-                "return": 6.83
-              },
-              {
-                "symbol": "USB",
-                "positive": false,
-                "return": -2.39
-              },
-              {
-                "symbol": "GS",
-                "positive": false,
-                "return": -2.21
-              },
-              {
-                "symbol": "GM",
-                "positive": false,
-                "return": -2.55
-              }
-            ],
-            "etf_symbols": [
-              {
-                "symbol": "KWEB",
-                "positive": false,
-                "return": -1.48
-              },
-              {
-                "symbol": "FXI",
-                "positive": false,
-                "return": -1.76
-              },
-              {
-                "symbol": "HYG",
-                "positive": false,
-                "return": -0.46
-              }
-            ]
+            "week": "2026-W13",
+            "entry_date": "2026-03-30",
+            "exit_date": "2026-04-02",
+            "defense": true,
+            "defense_reason": "VIX 31.0 > 30.0 | VIX Spike +15.2%",
+            "return": 0.0,
+            "hit_rate": 0.0,
+            "trades": 0,
+            "positive": 0,
+            "stock_symbols": [],
+            "etf_symbols": []
           }
         ],
         "stock_performance": {
-          "hit_rate": 45.0,
-          "avg_return": -0.165,
-          "total_trades": 20,
-          "positive_trades": 9,
-          "defense_weeks": 2,
-          "active_weeks": 2,
+          "hit_rate": 40.0,
+          "avg_return": -0.217,
+          "total_trades": 10,
+          "positive_trades": 4,
+          "defense_weeks": 3,
+          "active_weeks": 1,
           "weekly_summary": [
-            {
-              "week": "2026-W9",
-              "entry_date": "2026-03-02",
-              "exit_date": "2026-03-06",
-              "defense": false,
-              "defense_reason": null,
-              "return": 0.20775189884024486,
-              "hit_rate": 50.0,
-              "trades": 10,
-              "positive": 5,
-              "symbols": [
-                {
-                  "symbol": "WFC",
-                  "positive": true,
-                  "return": 1.6
-                },
-                {
-                  "symbol": "NVDA",
-                  "positive": true,
-                  "return": 1.61
-                },
-                {
-                  "symbol": "AXP",
-                  "positive": false,
-                  "return": -0.73
-                },
-                {
-                  "symbol": "BAC",
-                  "positive": true,
-                  "return": 0.28
-                },
-                {
-                  "symbol": "MET",
-                  "positive": true,
-                  "return": 0.36
-                },
-                {
-                  "symbol": "PNC",
-                  "positive": false,
-                  "return": -0.73
-                },
-                {
-                  "symbol": "AVGO",
-                  "positive": true,
-                  "return": 6.83
-                },
-                {
-                  "symbol": "USB",
-                  "positive": false,
-                  "return": -2.39
-                },
-                {
-                  "symbol": "GS",
-                  "positive": false,
-                  "return": -2.21
-                },
-                {
-                  "symbol": "GM",
-                  "positive": false,
-                  "return": -2.55
-                }
-              ]
-            },
             {
               "week": "2026-W10",
               "entry_date": "2026-03-09",
@@ -17419,79 +17131,21 @@
               "trades": 0,
               "positive": 0,
               "symbols": []
+            },
+            {
+              "week": "2026-W13",
+              "entry_date": "2026-03-30",
+              "exit_date": "2026-04-02",
+              "defense": true,
+              "defense_reason": "VIX 31.0 > 30.0 | VIX Spike +15.2%",
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": []
             }
           ],
           "weekly_results": [
-            {
-              "week": "2026-W9",
-              "symbol": "WFC",
-              "score": 80.68,
-              "return": 1.604544053800394,
-              "positive": true
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "NVDA",
-              "score": 70.0,
-              "return": 1.6056253548599297,
-              "positive": true
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "AXP",
-              "score": 67.5,
-              "return": -0.7255976467404168,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "BAC",
-              "score": 67.27,
-              "return": 0.27668737790995657,
-              "positive": true
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "MET",
-              "score": 62.5,
-              "return": 0.3632836905674397,
-              "positive": true
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "PNC",
-              "score": 56.14,
-              "return": -0.7272598998768309,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "AVGO",
-              "score": 49.32,
-              "return": 6.827004316904661,
-              "positive": true
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "USB",
-              "score": 42.73,
-              "return": -2.3858449452976105,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "GS",
-              "score": 35.68,
-              "return": -2.211906796409968,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "GM",
-              "score": 28.41,
-              "return": -2.549016517315106,
-              "positive": false
-            },
             {
               "week": "2026-W11",
               "symbol": "TMO",
@@ -17566,40 +17220,12 @@
         },
         "etf_performance": {
           "hit_rate": 0.0,
-          "avg_return": -0.912,
-          "total_trades": 13,
+          "avg_return": -0.604,
+          "total_trades": 10,
           "positive_trades": 0,
-          "defense_weeks": 2,
-          "active_weeks": 2,
+          "defense_weeks": 3,
+          "active_weeks": 1,
           "weekly_summary": [
-            {
-              "week": "2026-W9",
-              "entry_date": "2026-03-02",
-              "exit_date": "2026-03-06",
-              "defense": false,
-              "defense_reason": null,
-              "return": -1.231070154880191,
-              "hit_rate": 0.0,
-              "trades": 3,
-              "positive": 0,
-              "symbols": [
-                {
-                  "symbol": "KWEB",
-                  "positive": false,
-                  "return": -1.48
-                },
-                {
-                  "symbol": "FXI",
-                  "positive": false,
-                  "return": -1.76
-                },
-                {
-                  "symbol": "HYG",
-                  "positive": false,
-                  "return": -0.46
-                }
-              ]
-            },
             {
               "week": "2026-W10",
               "entry_date": "2026-03-09",
@@ -17686,30 +17312,21 @@
               "trades": 0,
               "positive": 0,
               "symbols": []
+            },
+            {
+              "week": "2026-W13",
+              "entry_date": "2026-03-30",
+              "exit_date": "2026-04-02",
+              "defense": true,
+              "defense_reason": "VIX 31.0 > 30.0 | VIX Spike +15.2%",
+              "return": 0.0,
+              "hit_rate": 0.0,
+              "trades": 0,
+              "positive": 0,
+              "symbols": []
             }
           ],
           "weekly_results": [
-            {
-              "week": "2026-W9",
-              "symbol": "KWEB",
-              "score": 58.75,
-              "return": -1.475714117194249,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "FXI",
-              "score": 53.75,
-              "return": -1.7553466969805753,
-              "positive": false
-            },
-            {
-              "week": "2026-W9",
-              "symbol": "HYG",
-              "score": 37.5,
-              "return": -0.4621496504657485,
-              "positive": false
-            },
             {
               "week": "2026-W11",
               "symbol": "TLT",
