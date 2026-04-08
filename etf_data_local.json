@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-07T13:01:21.287250",
-  "update_time": "2026-04-07 13:01",
+  "generated_at": "2026-04-08T07:01:17.739671",
+  "update_time": "2026-04-08 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -7840,10 +7840,64 @@
       "Name": "Eli Lilly & Co.",
       "Category": "Healthcare",
       "SubCategory": "Pharma",
+      "1W": {
+        "RETURN": 5.56,
+        "TREND": 2823.35,
+        "ACCELERATION": -949.97,
+        "QUALITY": 0.6112,
+        "SHARPE": 6.73,
+        "SORTINO": 10,
+        "STABILITY": 10
+      },
+      "2W": {
+        "RETURN": 2.25,
+        "TREND": 139.81,
+        "ACCELERATION": 375.85,
+        "QUALITY": 0.2317,
+        "SHARPE": 1.73,
+        "SORTINO": 5.93,
+        "STABILITY": 10
+      },
+      "1M": {
+        "RETURN": -5.72,
+        "TREND": -71.52,
+        "ACCELERATION": 300.6,
+        "QUALITY": 0.5404,
+        "SHARPE": -1.89,
+        "SORTINO": -2.63,
+        "STABILITY": -5.03
+      },
+      "3M": {
+        "RETURN": -14.05,
+        "TREND": -50.01,
+        "ACCELERATION": -92.15,
+        "QUALITY": 0.745,
+        "SHARPE": -1.22,
+        "SORTINO": -2.05,
+        "STABILITY": -2.51
+      },
+      "6M": {
+        "RETURN": 13.43,
+        "TREND": 29.27,
+        "ACCELERATION": -208.48,
+        "QUALITY": 0.1561,
+        "SHARPE": 0.89,
+        "SORTINO": 1.48,
+        "STABILITY": 1.51
+      },
+      "12M": {
+        "RETURN": 14.14,
+        "TREND": 49.48,
+        "ACCELERATION": 40.29,
+        "QUALITY": 0.5852,
+        "SHARPE": 0.52,
+        "SORTINO": 0.68,
+        "STABILITY": 0.74
+      },
       "MomentumScore": null,
-      "MomentumReason": "insufficient_data",
+      "MomentumReason": "ma_2w_le_1m",
       "MeanRevScore": null,
-      "MeanRevReason": "insufficient_data"
+      "MeanRevReason": "not_oversold"
     },
     {
       "Symbol": "TMO",
