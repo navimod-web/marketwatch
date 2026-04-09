@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-08T13:01:19.050942",
-  "update_time": "2026-04-08 13:01",
+  "generated_at": "2026-04-09T07:01:05.377440",
+  "update_time": "2026-04-09 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -1228,7 +1228,7 @@
         "STABILITY": 0.78
       },
       "12M": {
-        "RETURN": 3.8,
+        "RETURN": 3.79,
         "TREND": 6.91,
         "ACCELERATION": -7.37,
         "QUALITY": 0.855,
@@ -6560,10 +6560,64 @@
       "Name": "Oracle Corp.",
       "Category": "Technology",
       "SubCategory": "Software",
+      "1W": {
+        "RETURN": 3.15,
+        "TREND": 156.25,
+        "ACCELERATION": -849.97,
+        "QUALITY": 0.1078,
+        "SHARPE": 3.36,
+        "SORTINO": 10,
+        "STABILITY": 10
+      },
+      "2W": {
+        "RETURN": -7.24,
+        "TREND": -52.51,
+        "ACCELERATION": 672.24,
+        "QUALITY": 0.1175,
+        "SHARPE": -4.11,
+        "SORTINO": -8.31,
+        "STABILITY": -10
+      },
+      "1M": {
+        "RETURN": -6.4,
+        "TREND": -69.8,
+        "ACCELERATION": -60.23,
+        "QUALITY": 0.5433,
+        "SHARPE": -1.34,
+        "SORTINO": -3.55,
+        "STABILITY": -4.53
+      },
+      "3M": {
+        "RETURN": -25.46,
+        "TREND": -68.85,
+        "ACCELERATION": 229.09,
+        "QUALITY": 0.6546,
+        "SHARPE": -1.98,
+        "SORTINO": -3.8,
+        "STABILITY": -3.12
+      },
+      "6M": {
+        "RETURN": -49.75,
+        "TREND": -78.04,
+        "ACCELERATION": 97.53,
+        "QUALITY": 0.9067,
+        "SHARPE": -2.42,
+        "SORTINO": -3.8,
+        "STABILITY": -2.21
+      },
+      "12M": {
+        "RETURN": 5.39,
+        "TREND": -4.77,
+        "ACCELERATION": -330.17,
+        "QUALITY": 0.0031,
+        "SHARPE": 0.37,
+        "SORTINO": 0.73,
+        "STABILITY": 0.39
+      },
       "MomentumScore": null,
-      "MomentumReason": "insufficient_data",
+      "MomentumReason": "ma_2w_le_1m",
       "MeanRevScore": null,
-      "MeanRevReason": "insufficient_data"
+      "MeanRevReason": "high_volatility"
     },
     {
       "Symbol": "ACN",
@@ -12003,7 +12057,7 @@
       "MomentumScore": null,
       "MomentumReason": "dd_1m_high",
       "MeanRevScore": null,
-      "MeanRevReason": "high_volatility"
+      "MeanRevReason": "not_oversold"
     },
     {
       "Symbol": "PSX",
