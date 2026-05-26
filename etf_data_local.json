@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-25T13:01:32.300641",
-  "update_time": "2026-05-25 13:01",
+  "generated_at": "2026-05-26T07:01:33.909803",
+  "update_time": "2026-05-26 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -1296,7 +1296,7 @@
         "TREND": 5.13,
         "ACCELERATION": -10.42,
         "QUALITY": 0.719,
-        "SHARPE": 1.44,
+        "SHARPE": 1.45,
         "SORTINO": 2.46,
         "STABILITY": 2.07
       },
@@ -14688,10 +14688,64 @@
       "Name": "Ecolab Inc.",
       "Category": "Materials",
       "SubCategory": "Chemicals",
+      "1W": {
+        "RETURN": 2.3,
+        "TREND": 168.58,
+        "ACCELERATION": 331.5,
+        "QUALITY": 0.5118,
+        "SHARPE": 6.78,
+        "SORTINO": 0,
+        "STABILITY": 10
+      },
+      "2W": {
+        "RETURN": -0.35,
+        "TREND": -20.33,
+        "ACCELERATION": 220.69,
+        "QUALITY": 0.0922,
+        "SHARPE": -0.52,
+        "SORTINO": -1.07,
+        "STABILITY": -3.33
+      },
+      "1M": {
+        "RETURN": -6.68,
+        "TREND": -63.73,
+        "ACCELERATION": 106.94,
+        "QUALITY": 0.7798,
+        "SHARPE": -3.56,
+        "SORTINO": -4.91,
+        "STABILITY": -9.12
+      },
+      "3M": {
+        "RETURN": -16.9,
+        "TREND": -47.75,
+        "ACCELERATION": 40.7,
+        "QUALITY": 0.6813,
+        "SHARPE": -3.06,
+        "SORTINO": -4.6,
+        "STABILITY": -3.55
+      },
+      "6M": {
+        "RETURN": -2.6,
+        "TREND": -6.14,
+        "ACCELERATION": -122.4,
+        "QUALITY": 0.029,
+        "SHARPE": -0.14,
+        "SORTINO": -0.22,
+        "STABILITY": -0.15
+      },
+      "12M": {
+        "RETURN": -1.92,
+        "TREND": 1.78,
+        "ACCELERATION": -7.97,
+        "QUALITY": 0.0139,
+        "SHARPE": 0.0,
+        "SORTINO": 0.0,
+        "STABILITY": 0.0
+      },
       "MomentumScore": null,
-      "MomentumReason": "insufficient_data",
+      "MomentumReason": "sector_2w_neg",
       "MeanRevScore": null,
-      "MeanRevReason": "insufficient_data"
+      "MeanRevReason": "not_oversold"
     },
     {
       "Symbol": "DD",
@@ -19807,7 +19861,7 @@
         "StockCount": 0,
         "TotalStocks": 11,
         "Disqualified": true,
-        "Reason": "2W Ret -4.0%"
+        "Reason": "2W Ret -3.6%"
       }
     ],
     "top10_momentum_commodities": [],
