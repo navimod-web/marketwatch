@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-16T07:01:03.813289",
-  "update_time": "2026-06-16 07:01",
+  "generated_at": "2026-06-16T13:01:24.167103",
+  "update_time": "2026-06-16 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
   "regime": {
-    "overall": "RISK-ON",
-    "riskScore": 1,
+    "overall": "NEUTRAL",
+    "riskScore": 0,
     "cycleScore": 0,
     "signals": {
       "BREADTH": {
@@ -16,10 +16,10 @@
         "total": 11
       },
       "VXX": {
-        "value": "COMPLACENT",
-        "score": 1,
-        "level": 22.56,
-        "change": -10.37
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "SPY_TLT": {
         "value": "NEUTRAL",
@@ -50,7 +50,7 @@
       "positive": 10,
       "total": 11
     },
-    "note": "Risk appetite with broad participation"
+    "note": "No signals but broad participation"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 22.56,
-        "2W": 22.56,
-        "1M": 22.56,
-        "3M": 22.56,
-        "6M": 22.56,
-        "12M": 22.56
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -10.37,
-        "2W": -7.43,
-        "1M": -17.06,
-        "3M": -34.95,
-        "6M": -23.68,
-        "12M": -56.01
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -352,20 +352,20 @@
       "name": "Yield Curve",
       "category": "Fed/Rates",
       "values": {
-        "1W": 1.044,
-        "2W": 1.044,
-        "1M": 1.044,
-        "3M": 1.044,
-        "6M": 1.044,
-        "12M": 1.044
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.5,
-        "2W": -0.04,
-        "1M": 2.67,
-        "3M": -0.68,
-        "6M": -0.46,
-        "12M": 1.47
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": 0.9092,
-        "2W": 0.9092,
-        "1M": 0.9092,
-        "3M": 0.9092,
-        "6M": 0.9092,
-        "12M": 0.9092
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.17,
-        "2W": 0.04,
-        "1M": 1.76,
-        "3M": 0.27,
-        "6M": 0.47,
-        "12M": 0.67
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": 0.0358,
-        "2W": 0.0358,
-        "1M": 0.0358,
-        "3M": 0.0358,
-        "6M": 0.0358,
-        "12M": 0.0358
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -3.34,
-        "2W": -5.76,
-        "1M": -9.99,
-        "3M": -27.82,
-        "6M": -36.25,
-        "12M": -42.05
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -830,7 +830,7 @@
         "TREND": 3.59,
         "ACCELERATION": 0.07,
         "QUALITY": 0.9987,
-        "SHARPE": 18.36,
+        "SHARPE": 18.37,
         "SORTINO": 10,
         "STABILITY": 7.02
       },
