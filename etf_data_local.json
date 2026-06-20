@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-20T07:01:02.925342",
-  "update_time": "2026-06-20 07:01",
+  "generated_at": "2026-06-20T13:01:04.512017",
+  "update_time": "2026-06-20 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
   "regime": {
-    "overall": "NEUTRAL",
-    "riskScore": 0,
+    "overall": "RISK-ON",
+    "riskScore": 1,
     "cycleScore": 0,
     "signals": {
       "BREADTH": {
@@ -16,16 +16,16 @@
         "total": 11
       },
       "VXX": {
-        "value": "NEUTRAL",
-        "score": 0,
-        "level": null,
-        "change": null
+        "value": "COMPLACENT",
+        "score": 1,
+        "level": 22.8,
+        "change": -5.79
       },
       "SPY_TLT": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": null,
-        "change": null
+        "level": 8.608,
+        "change": -0.21
       },
       "HYG_LQD": {
         "value": "NEUTRAL",
@@ -42,15 +42,15 @@
       "CPER_GLD": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": null,
-        "change": null
+        "level": 0.1004,
+        "change": -1.89
       }
     },
     "breadth": {
       "positive": 6,
       "total": 11
     },
-    "note": "No clear signals"
+    "note": "Risk appetite with moderate breadth"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 22.8,
+        "2W": 22.8,
+        "1M": 22.8,
+        "3M": 22.8,
+        "6M": 22.8,
+        "12M": 22.8
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -5.79,
+        "2W": -9.56,
+        "1M": -13.01,
+        "3M": -33.59,
+        "6M": -21.22,
+        "12M": -57.35
       }
     },
     {
@@ -79,20 +79,20 @@
       "name": "Stocks vs Bonds",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 8.608,
+        "2W": 8.608,
+        "1M": 8.608,
+        "3M": 8.608,
+        "6M": 8.608,
+        "12M": 8.608
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.21,
+        "2W": -0.47,
+        "1M": -2.52,
+        "3M": 12.45,
+        "6M": 10.66,
+        "12M": 21.14
       }
     },
     {
@@ -121,20 +121,20 @@
       "name": "Gold vs Stocks",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.5184,
+        "2W": 0.5184,
+        "1M": 0.5184,
+        "3M": 0.5184,
+        "6M": 0.5184,
+        "12M": 0.5184
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.77,
+        "2W": -3.75,
+        "1M": -7.9,
+        "3M": -16.13,
+        "6M": -12.74,
+        "12M": -1.75
       }
     },
     {
@@ -142,20 +142,20 @@
       "name": "Small vs Large Cap",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.3958,
+        "2W": 0.3958,
+        "1M": 0.3958,
+        "3M": 0.3958,
+        "6M": 0.3958,
+        "12M": 0.3958
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.21,
+        "2W": 3.64,
+        "1M": 4.05,
+        "3M": 4.82,
+        "6M": 7.22,
+        "12M": 12.36
       }
     },
     {
@@ -163,20 +163,20 @@
       "name": "Speculation Index",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1074,
+        "2W": 0.1074,
+        "1M": 0.1074,
+        "3M": 0.1074,
+        "6M": 0.1074,
+        "12M": 0.1074
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 5.02,
+        "2W": 6.05,
+        "1M": 3.83,
+        "3M": -1.02,
+        "6M": -8.44,
+        "12M": -6.81
       }
     },
     {
@@ -205,20 +205,20 @@
       "name": "Copper/Gold Ratio",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1004,
+        "2W": 0.1004,
+        "1M": 0.1004,
+        "3M": 0.1004,
+        "6M": 0.1004,
+        "12M": 0.1004
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.89,
+        "2W": 4.45,
+        "1M": 8.5,
+        "3M": 20.96,
+        "6M": 20.29,
+        "12M": 2.78
       }
     },
     {
@@ -226,20 +226,20 @@
       "name": "Industrial Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.2423,
+        "2W": 0.2423,
+        "1M": 0.2423,
+        "3M": 0.2423,
+        "6M": 0.2423,
+        "12M": 0.2423
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.74,
+        "2W": 2.32,
+        "1M": 5.24,
+        "3M": -2.87,
+        "6M": 5.84,
+        "12M": 1.37
       }
     },
     {
@@ -268,20 +268,20 @@
       "name": "Semis Leadership",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.8563,
+        "2W": 0.8563,
+        "1M": 0.8563,
+        "3M": 0.8563,
+        "6M": 0.8563,
+        "12M": 0.8563
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 6.31,
+        "2W": 16.76,
+        "1M": 20.96,
+        "3M": 66.39,
+        "6M": 96.94,
+        "12M": 124.63
       }
     },
     {
@@ -289,20 +289,20 @@
       "name": "Energy vs Market",
       "category": "Inflation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.072,
+        "2W": 0.072,
+        "1M": 0.072,
+        "3M": 0.072,
+        "6M": 0.072,
+        "12M": 0.072
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -7.43,
+        "2W": -8.15,
+        "1M": -9.79,
+        "3M": -21.06,
+        "6M": 11.13,
+        "12M": -1.82
       }
     },
     {
@@ -310,20 +310,20 @@
       "name": "Breakeven Inflation",
       "category": "Inflation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.1593,
+        "2W": 1.1593,
+        "1M": 1.1593,
+        "3M": 1.1593,
+        "6M": 1.1593,
+        "12M": 1.1593
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.39,
+        "2W": -0.66,
+        "1M": -0.66,
+        "3M": 0.8,
+        "6M": 1.56,
+        "12M": 0.25
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.9194,
+        "2W": 0.9194,
+        "1M": 0.9194,
+        "3M": 0.9194,
+        "6M": 0.9194,
+        "12M": 0.9194
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.95,
+        "2W": 1.19,
+        "1M": 2.45,
+        "3M": 1.45,
+        "6M": 1.17,
+        "12M": 1.2
       }
     },
     {
@@ -415,20 +415,20 @@
       "name": "EM vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0948,
+        "2W": 0.0948,
+        "1M": 0.0948,
+        "3M": 0.0948,
+        "6M": 0.0948,
+        "12M": 0.0948
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.86,
+        "2W": 8.53,
+        "1M": 6.91,
+        "3M": 8.69,
+        "6M": 20.17,
+        "12M": 22.62
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0341,
+        "2W": 0.0341,
+        "1M": 0.0341,
+        "3M": 0.0341,
+        "6M": 0.0341,
+        "12M": 0.0341
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -7.2,
+        "2W": -8.92,
+        "1M": -11.87,
+        "3M": -29.54,
+        "6M": -39.3,
+        "12M": -43.07
       }
     },
     {
@@ -520,20 +520,20 @@
       "name": "Japan vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1289,
+        "2W": 0.1289,
+        "1M": 0.1289,
+        "3M": 0.1289,
+        "6M": 0.1289,
+        "12M": 0.1289
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.43,
+        "2W": 5.1,
+        "1M": 5.08,
+        "3M": 1.4,
+        "6M": 8.73,
+        "12M": 10.13
       }
     },
     {
@@ -541,20 +541,20 @@
       "name": "Tech vs Financials",
       "category": "Sector Rotation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.5736,
+        "2W": 3.5736,
+        "1M": 3.5736,
+        "3M": 3.5736,
+        "6M": 3.5736,
+        "12M": 3.5736
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.15,
+        "2W": 3.66,
+        "1M": 3.51,
+        "3M": 28.57,
+        "6M": 36.9,
+        "12M": 48.2
       }
     },
     {
@@ -830,7 +830,7 @@
         "TREND": 3.59,
         "ACCELERATION": 0.06,
         "QUALITY": 0.9986,
-        "SHARPE": 18.43,
+        "SHARPE": 18.42,
         "SORTINO": 10,
         "STABILITY": 7.28
       },
@@ -8726,7 +8726,7 @@
         "SORTINO": 1.83,
         "STABILITY": 1.59
       },
-      "MomentumScore": 46.67,
+      "MomentumScore": 56.67,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -9441,61 +9441,61 @@
       "Category": "Financials",
       "SubCategory": "Custody",
       "1W": {
-        "RETURN": 1.12,
-        "TREND": 30.84,
-        "ACCELERATION": 299.85,
-        "QUALITY": 0.0382,
-        "SHARPE": 2.19,
-        "SORTINO": 2.61,
+        "RETURN": 1.08,
+        "TREND": 121.94,
+        "ACCELERATION": -108.03,
+        "QUALITY": 0.3545,
+        "SHARPE": 2.44,
+        "SORTINO": 7.84,
         "STABILITY": 10
       },
       "2W": {
-        "RETURN": 3.26,
-        "TREND": 36.54,
-        "ACCELERATION": -100.4,
-        "QUALITY": 0.139,
-        "SHARPE": 3.23,
-        "SORTINO": 6.51,
-        "STABILITY": 10
+        "RETURN": -0.27,
+        "TREND": 45.53,
+        "ACCELERATION": 216.24,
+        "QUALITY": 0.1816,
+        "SHARPE": -0.18,
+        "SORTINO": -0.36,
+        "STABILITY": -1.76
       },
       "1M": {
-        "RETURN": 6.66,
-        "TREND": 99.8,
-        "ACCELERATION": -83.16,
-        "QUALITY": 0.7772,
-        "SHARPE": 3.98,
-        "SORTINO": 7.71,
+        "RETURN": 5.36,
+        "TREND": 74.51,
+        "ACCELERATION": -42.51,
+        "QUALITY": 0.7006,
+        "SHARPE": 3.02,
+        "SORTINO": 6.58,
         "STABILITY": 10
       },
       "3M": {
-        "RETURN": 24.43,
-        "TREND": 149.92,
-        "ACCELERATION": -94.48,
-        "QUALITY": 0.8569,
-        "SHARPE": 4.62,
-        "SORTINO": 9.57,
+        "RETURN": 25.5,
+        "TREND": 135.14,
+        "ACCELERATION": -78.26,
+        "QUALITY": 0.8393,
+        "SHARPE": 4.7,
+        "SORTINO": 9.76,
         "STABILITY": 10
       },
       "6M": {
-        "RETURN": 22.65,
-        "TREND": 52.25,
-        "ACCELERATION": 86.35,
-        "QUALITY": 0.6898,
-        "SHARPE": 1.91,
-        "SORTINO": 2.88,
-        "STABILITY": 4.28
+        "RETURN": 26.66,
+        "TREND": 56.84,
+        "ACCELERATION": 86.01,
+        "QUALITY": 0.7209,
+        "SHARPE": 2.2,
+        "SORTINO": 3.35,
+        "STABILITY": 4.92
       },
       "12M": {
-        "RETURN": 63.78,
-        "TREND": 50.06,
-        "ACCELERATION": -2.43,
-        "QUALITY": 0.9181,
-        "SHARPE": 2.56,
-        "SORTINO": 3.72,
-        "STABILITY": 5.07
+        "RETURN": 63.0,
+        "TREND": 49.95,
+        "ACCELERATION": 1.27,
+        "QUALITY": 0.9185,
+        "SHARPE": 2.53,
+        "SORTINO": 3.68,
+        "STABILITY": 5.02
       },
-      "MomentumScore": null,
-      "MomentumReason": "high_downside_vol",
+      "MomentumScore": 30.0,
+      "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
     },
@@ -11606,7 +11606,7 @@
         "SORTINO": 2.56,
         "STABILITY": 2.31
       },
-      "MomentumScore": 1.67,
+      "MomentumScore": 13.33,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -12950,8 +12950,8 @@
         "SORTINO": 0.89,
         "STABILITY": 0.77
       },
-      "MomentumScore": 51.67,
-      "MomentumReason": null,
+      "MomentumScore": null,
+      "MomentumReason": "high_downside_vol",
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
     },
@@ -15901,12 +15901,12 @@
     }
   ],
   "quant_rankings": {
-    "score_date": "2026-06-19",
-    "score_date_weekday": "Friday",
+    "score_date": "2026-06-18",
+    "score_date_weekday": "Thursday",
     "defense_mode": {
       "momentum": {
-        "active": false,
-        "reason": null
+        "active": true,
+        "reason": "VIX Spike +13.8%"
       },
       "mean_reversion": {
         "active": false,
@@ -15915,9 +15915,9 @@
     },
     "performance_4w": {
       "momentum_stocks": {
-        "hit_rate": 75.0,
-        "avg_return": 0.479,
-        "total_trades": 4,
+        "hit_rate": 50.0,
+        "avg_return": -0.25,
+        "total_trades": 6,
         "positive_trades": 3,
         "defense_weeks": 1,
         "active_weeks": 3,
@@ -15983,15 +15983,25 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
+            "return": -2.9156232490035516,
             "hit_rate": 0.0,
-            "trades": 0,
+            "trades": 2,
             "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "symbols": [
+              {
+                "symbol": "ABBV",
+                "positive": false,
+                "return": -4.21
+              },
+              {
+                "symbol": "BK",
+                "positive": false,
+                "return": -1.62
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16022,14 +16032,28 @@
             "score": 15.0,
             "return": 2.0834849750943185,
             "positive": true
+          },
+          {
+            "week": "2026-W24",
+            "symbol": "ABBV",
+            "score": 58.33,
+            "return": -4.207962171166346,
+            "positive": false
+          },
+          {
+            "week": "2026-W24",
+            "symbol": "BK",
+            "score": 3.33,
+            "return": -1.623284326840757,
+            "positive": false
           }
         ]
       },
       "momentum_etfs": {
-        "hit_rate": 37.5,
-        "avg_return": -0.332,
-        "total_trades": 8,
-        "positive_trades": 3,
+        "hit_rate": 36.4,
+        "avg_return": -0.574,
+        "total_trades": 11,
+        "positive_trades": 4,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16114,15 +16138,30 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "return": -0.9705220773273404,
+            "hit_rate": 33.3,
+            "trades": 3,
+            "positive": 1,
+            "symbols": [
+              {
+                "symbol": "XLV",
+                "positive": false,
+                "return": -2.8
+              },
+              {
+                "symbol": "HYG",
+                "positive": false,
+                "return": -0.16
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.05
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16181,14 +16220,35 @@
             "score": 1.43,
             "return": 0.9002520557399141,
             "positive": true
+          },
+          {
+            "week": "2026-W24",
+            "symbol": "XLV",
+            "score": 73.33,
+            "return": -2.8039897398520974,
+            "positive": false
+          },
+          {
+            "week": "2026-W24",
+            "symbol": "HYG",
+            "score": 48.33,
+            "return": -0.1622126957924075,
+            "positive": false
+          },
+          {
+            "week": "2026-W24",
+            "symbol": "BIL",
+            "score": 24.17,
+            "return": 0.05463620366248367,
+            "positive": true
           }
         ]
       },
       "momentum": {
-        "hit_rate": 50.0,
-        "avg_return": -0.246,
-        "total_trades": 12,
-        "positive_trades": 6,
+        "hit_rate": 41.2,
+        "avg_return": -0.688,
+        "total_trades": 17,
+        "positive_trades": 7,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16296,21 +16356,48 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "stock_symbols": [],
-            "etf_symbols": []
+            "return": -1.748562545997825,
+            "hit_rate": 20.0,
+            "trades": 5,
+            "positive": 1,
+            "stock_symbols": [
+              {
+                "symbol": "ABBV",
+                "positive": false,
+                "return": -4.21
+              },
+              {
+                "symbol": "BK",
+                "positive": false,
+                "return": -1.62
+              }
+            ],
+            "etf_symbols": [
+              {
+                "symbol": "XLV",
+                "positive": false,
+                "return": -2.8
+              },
+              {
+                "symbol": "HYG",
+                "positive": false,
+                "return": -0.16
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.05
+              }
+            ]
           }
         ],
         "stock_performance": {
-          "hit_rate": 75.0,
-          "avg_return": 0.479,
-          "total_trades": 4,
+          "hit_rate": 50.0,
+          "avg_return": -0.25,
+          "total_trades": 6,
           "positive_trades": 3,
           "defense_weeks": 1,
           "active_weeks": 3,
@@ -16376,15 +16463,25 @@
             {
               "week": "2026-W24",
               "entry_date": "2026-06-15",
-              "exit_date": "2026-06-19",
+              "exit_date": "2026-06-18",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
+              "return": -2.9156232490035516,
               "hit_rate": 0.0,
-              "trades": 0,
+              "trades": 2,
               "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "symbols": [
+                {
+                  "symbol": "ABBV",
+                  "positive": false,
+                  "return": -4.21
+                },
+                {
+                  "symbol": "BK",
+                  "positive": false,
+                  "return": -1.62
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -16415,14 +16512,28 @@
               "score": 15.0,
               "return": 2.0834849750943185,
               "positive": true
+            },
+            {
+              "week": "2026-W24",
+              "symbol": "ABBV",
+              "score": 58.33,
+              "return": -4.207962171166346,
+              "positive": false
+            },
+            {
+              "week": "2026-W24",
+              "symbol": "BK",
+              "score": 3.33,
+              "return": -1.623284326840757,
+              "positive": false
             }
           ]
         },
         "etf_performance": {
-          "hit_rate": 37.5,
-          "avg_return": -0.332,
-          "total_trades": 8,
-          "positive_trades": 3,
+          "hit_rate": 36.4,
+          "avg_return": -0.574,
+          "total_trades": 11,
+          "positive_trades": 4,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
@@ -16507,15 +16618,30 @@
             {
               "week": "2026-W24",
               "entry_date": "2026-06-15",
-              "exit_date": "2026-06-19",
+              "exit_date": "2026-06-18",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "return": -0.9705220773273404,
+              "hit_rate": 33.3,
+              "trades": 3,
+              "positive": 1,
+              "symbols": [
+                {
+                  "symbol": "XLV",
+                  "positive": false,
+                  "return": -2.8
+                },
+                {
+                  "symbol": "HYG",
+                  "positive": false,
+                  "return": -0.16
+                },
+                {
+                  "symbol": "BIL",
+                  "positive": true,
+                  "return": 0.05
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -16573,6 +16699,27 @@
               "symbol": "UUP",
               "score": 1.43,
               "return": 0.9002520557399141,
+              "positive": true
+            },
+            {
+              "week": "2026-W24",
+              "symbol": "XLV",
+              "score": 73.33,
+              "return": -2.8039897398520974,
+              "positive": false
+            },
+            {
+              "week": "2026-W24",
+              "symbol": "HYG",
+              "score": 48.33,
+              "return": -0.1622126957924075,
+              "positive": false
+            },
+            {
+              "week": "2026-W24",
+              "symbol": "BIL",
+              "score": 24.17,
+              "return": 0.05463620366248367,
               "positive": true
             }
           ]
@@ -16677,7 +16824,7 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
             "return": 0.0,
@@ -16835,7 +16982,7 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
             "return": 0.0,
@@ -17011,7 +17158,7 @@
           {
             "week": "2026-W24",
             "entry_date": "2026-06-15",
-            "exit_date": "2026-06-19",
+            "exit_date": "2026-06-18",
             "defense": false,
             "defense_reason": null,
             "return": 0.0,
@@ -17121,7 +17268,7 @@
             {
               "week": "2026-W24",
               "entry_date": "2026-06-15",
-              "exit_date": "2026-06-19",
+              "exit_date": "2026-06-18",
               "defense": false,
               "defense_reason": null,
               "return": 0.0,
@@ -17279,7 +17426,7 @@
             {
               "week": "2026-W24",
               "entry_date": "2026-06-15",
-              "exit_date": "2026-06-19",
+              "exit_date": "2026-06-18",
               "defense": false,
               "defense_reason": null,
               "return": 0.0,
@@ -17338,22 +17485,22 @@
         "MomentumScore": 100.0
       },
       {
-        "Symbol": "MMM",
-        "Name": "3M Company",
-        "Category": "Industrials",
-        "MomentumScore": 51.67
-      },
-      {
         "Symbol": "BAC",
         "Name": "Bank of America",
         "Category": "Financials",
-        "MomentumScore": 46.67
+        "MomentumScore": 56.67
+      },
+      {
+        "Symbol": "BK",
+        "Name": "Bank of NY Mellon",
+        "Category": "Financials",
+        "MomentumScore": 30.0
       },
       {
         "Symbol": "MNST",
         "Name": "Monster Beverage",
         "Category": "Consumer Stpl.",
-        "MomentumScore": 1.67
+        "MomentumScore": 13.33
       }
     ],
     "top10_momentum_etfs": [
@@ -17423,19 +17570,19 @@
         "Symbol": "MNST",
         "Name": "Monster Beverage",
         "Category": "Consumer Stpl.",
-        "MomentumScore": 1.67
+        "MomentumScore": 13.33
+      },
+      {
+        "Symbol": "BK",
+        "Name": "Bank of NY Mellon",
+        "Category": "Financials",
+        "MomentumScore": 30.0
       },
       {
         "Symbol": "BAC",
         "Name": "Bank of America",
         "Category": "Financials",
-        "MomentumScore": 46.67
-      },
-      {
-        "Symbol": "MMM",
-        "Name": "3M Company",
-        "Category": "Industrials",
-        "MomentumScore": 51.67
+        "MomentumScore": 56.67
       },
       {
         "Symbol": "C",
@@ -17509,23 +17656,15 @@
     "top10_momentum_sectors": [
       {
         "Sector": "Financials",
-        "AvgScore": 73.3,
-        "StockCount": 2,
+        "AvgScore": 62.2,
+        "StockCount": 3,
         "TotalStocks": 20,
         "Disqualified": false,
         "Reason": null
       },
       {
-        "Sector": "Industrials",
-        "AvgScore": 51.7,
-        "StockCount": 1,
-        "TotalStocks": 15,
-        "Disqualified": false,
-        "Reason": null
-      },
-      {
         "Sector": "Consumer Stpl.",
-        "AvgScore": 1.7,
+        "AvgScore": 13.3,
         "StockCount": 1,
         "TotalStocks": 14,
         "Disqualified": false,
@@ -17536,6 +17675,14 @@
         "AvgScore": null,
         "StockCount": 0,
         "TotalStocks": 14,
+        "Disqualified": false,
+        "Reason": null
+      },
+      {
+        "Sector": "Industrials",
+        "AvgScore": null,
+        "StockCount": 0,
+        "TotalStocks": 15,
         "Disqualified": false,
         "Reason": null
       },
