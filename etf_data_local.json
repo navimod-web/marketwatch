@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-27T07:01:03.415361",
-  "update_time": "2026-06-27 07:01",
+  "generated_at": "2026-06-27T13:01:02.701937",
+  "update_time": "2026-06-27 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -7638,7 +7638,7 @@
         "SORTINO": 1.26,
         "STABILITY": 1.44
       },
-      "MomentumScore": 68.75,
+      "MomentumScore": 72.5,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -9174,7 +9174,7 @@
         "SORTINO": 3.54,
         "STABILITY": 4.36
       },
-      "MomentumScore": 40.0,
+      "MomentumScore": 47.5,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -9441,60 +9441,60 @@
       "Category": "Financials",
       "SubCategory": "Custody",
       "1W": {
-        "RETURN": 1.08,
-        "TREND": 121.94,
-        "ACCELERATION": -108.03,
-        "QUALITY": 0.3545,
-        "SHARPE": 2.44,
-        "SORTINO": 7.84,
-        "STABILITY": 10
+        "RETURN": -0.05,
+        "TREND": -29.65,
+        "ACCELERATION": -317.05,
+        "QUALITY": 0.0532,
+        "SHARPE": 0.04,
+        "SORTINO": 0.08,
+        "STABILITY": 0.42
       },
       "2W": {
-        "RETURN": -0.27,
-        "TREND": 45.53,
-        "ACCELERATION": 216.24,
-        "QUALITY": 0.1816,
-        "SHARPE": -0.18,
-        "SORTINO": -0.36,
-        "STABILITY": -1.76
+        "RETURN": 1.03,
+        "TREND": 42.71,
+        "ACCELERATION": -182.62,
+        "QUALITY": 0.167,
+        "SHARPE": 1.15,
+        "SORTINO": 2.76,
+        "STABILITY": 10
       },
       "1M": {
-        "RETURN": 5.36,
-        "TREND": 74.51,
-        "ACCELERATION": -42.51,
-        "QUALITY": 0.7006,
-        "SHARPE": 3.02,
-        "SORTINO": 6.58,
+        "RETURN": 2.73,
+        "TREND": 57.32,
+        "ACCELERATION": 2.87,
+        "QUALITY": 0.5719,
+        "SHARPE": 1.45,
+        "SORTINO": 3.02,
         "STABILITY": 10
       },
       "3M": {
-        "RETURN": 25.5,
-        "TREND": 135.14,
-        "ACCELERATION": -78.26,
-        "QUALITY": 0.8393,
-        "SHARPE": 4.7,
-        "SORTINO": 9.76,
+        "RETURN": 23.56,
+        "TREND": 110.75,
+        "ACCELERATION": -47.42,
+        "QUALITY": 0.8185,
+        "SHARPE": 4.18,
+        "SORTINO": 8.22,
         "STABILITY": 10
       },
       "6M": {
-        "RETURN": 26.66,
-        "TREND": 56.84,
-        "ACCELERATION": 86.01,
-        "QUALITY": 0.7209,
-        "SHARPE": 2.2,
-        "SORTINO": 3.35,
-        "STABILITY": 4.92
+        "RETURN": 23.5,
+        "TREND": 60.34,
+        "ACCELERATION": 85.34,
+        "QUALITY": 0.7375,
+        "SHARPE": 1.94,
+        "SORTINO": 3.0,
+        "STABILITY": 4.43
       },
       "12M": {
-        "RETURN": 63.0,
-        "TREND": 49.95,
-        "ACCELERATION": 1.27,
-        "QUALITY": 0.9185,
-        "SHARPE": 2.53,
-        "SORTINO": 3.68,
-        "STABILITY": 5.02
+        "RETURN": 62.51,
+        "TREND": 49.88,
+        "ACCELERATION": 5.75,
+        "QUALITY": 0.9186,
+        "SHARPE": 2.52,
+        "SORTINO": 3.64,
+        "STABILITY": 4.99
       },
-      "MomentumScore": 16.25,
+      "MomentumScore": 3.75,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -14614,7 +14614,7 @@
         "SORTINO": 1.42,
         "STABILITY": 0.77
       },
-      "MomentumScore": 35.0,
+      "MomentumScore": 36.25,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -15915,9 +15915,9 @@
     },
     "performance_4w": {
       "momentum_stocks": {
-        "hit_rate": 37.5,
-        "avg_return": -0.202,
-        "total_trades": 8,
+        "hit_rate": 33.3,
+        "avg_return": -0.455,
+        "total_trades": 9,
         "positive_trades": 3,
         "defense_weeks": 1,
         "active_weeks": 3,
@@ -16006,12 +16006,17 @@
             "exit_date": "2026-06-26",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
+            "return": -1.0135842467599687,
             "hit_rate": 0.0,
-            "trades": 0,
+            "trades": 1,
             "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "symbols": [
+              {
+                "symbol": "BK",
+                "positive": false,
+                "return": -1.01
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16069,6 +16074,13 @@
             "symbol": "BK",
             "score": 3.33,
             "return": -1.623284326840757,
+            "positive": false
+          },
+          {
+            "week": "2026-W25",
+            "symbol": "BK",
+            "score": 30.0,
+            "return": -1.0135842467599687,
             "positive": false
           }
         ]
@@ -16317,9 +16329,9 @@
         ]
       },
       "momentum": {
-        "hit_rate": 34.8,
-        "avg_return": -0.755,
-        "total_trades": 23,
+        "hit_rate": 33.3,
+        "avg_return": -0.766,
+        "total_trades": 24,
         "positive_trades": 8,
         "defense_weeks": 1,
         "active_weeks": 3,
@@ -16488,18 +16500,24 @@
             "exit_date": "2026-06-26",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
+            "return": -1.0135842467599687,
             "hit_rate": 0.0,
-            "trades": 0,
+            "trades": 1,
             "positive": 0,
-            "stock_symbols": [],
+            "stock_symbols": [
+              {
+                "symbol": "BK",
+                "positive": false,
+                "return": -1.01
+              }
+            ],
             "etf_symbols": []
           }
         ],
         "stock_performance": {
-          "hit_rate": 37.5,
-          "avg_return": -0.202,
-          "total_trades": 8,
+          "hit_rate": 33.3,
+          "avg_return": -0.455,
+          "total_trades": 9,
           "positive_trades": 3,
           "defense_weeks": 1,
           "active_weeks": 3,
@@ -16588,12 +16606,17 @@
               "exit_date": "2026-06-26",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
+              "return": -1.0135842467599687,
               "hit_rate": 0.0,
-              "trades": 0,
+              "trades": 1,
               "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "symbols": [
+                {
+                  "symbol": "BK",
+                  "positive": false,
+                  "return": -1.01
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -16651,6 +16674,13 @@
               "symbol": "BK",
               "score": 3.33,
               "return": -1.623284326840757,
+              "positive": false
+            },
+            {
+              "week": "2026-W25",
+              "symbol": "BK",
+              "score": 30.0,
+              "return": -1.0135842467599687,
               "positive": false
             }
           ]
@@ -17721,25 +17751,25 @@
         "Symbol": "UNH",
         "Name": "UnitedHealth Group",
         "Category": "Healthcare",
-        "MomentumScore": 68.75
+        "MomentumScore": 72.5
       },
       {
         "Symbol": "C",
         "Name": "Citigroup Inc.",
         "Category": "Financials",
-        "MomentumScore": 40.0
+        "MomentumScore": 47.5
       },
       {
         "Symbol": "LIN",
         "Name": "Linde plc",
         "Category": "Materials",
-        "MomentumScore": 35.0
+        "MomentumScore": 36.25
       },
       {
         "Symbol": "BK",
         "Name": "Bank of NY Mellon",
         "Category": "Financials",
-        "MomentumScore": 16.25
+        "MomentumScore": 3.75
       }
     ],
     "top10_momentum_etfs": [
@@ -17791,25 +17821,25 @@
         "Symbol": "BK",
         "Name": "Bank of NY Mellon",
         "Category": "Financials",
-        "MomentumScore": 16.25
+        "MomentumScore": 3.75
       },
       {
         "Symbol": "LIN",
         "Name": "Linde plc",
         "Category": "Materials",
-        "MomentumScore": 35.0
+        "MomentumScore": 36.25
       },
       {
         "Symbol": "C",
         "Name": "Citigroup Inc.",
         "Category": "Financials",
-        "MomentumScore": 40.0
+        "MomentumScore": 47.5
       },
       {
         "Symbol": "UNH",
         "Name": "UnitedHealth Group",
         "Category": "Healthcare",
-        "MomentumScore": 68.75
+        "MomentumScore": 72.5
       },
       {
         "Symbol": "BAC",
@@ -17865,7 +17895,7 @@
     "top10_momentum_sectors": [
       {
         "Sector": "Healthcare",
-        "AvgScore": 68.8,
+        "AvgScore": 72.5,
         "StockCount": 1,
         "TotalStocks": 17,
         "Disqualified": false,
@@ -17873,7 +17903,7 @@
       },
       {
         "Sector": "Financials",
-        "AvgScore": 48.8,
+        "AvgScore": 47.1,
         "StockCount": 3,
         "TotalStocks": 20,
         "Disqualified": false,
@@ -17881,7 +17911,7 @@
       },
       {
         "Sector": "Materials",
-        "AvgScore": 35.0,
+        "AvgScore": 36.2,
         "StockCount": 1,
         "TotalStocks": 11,
         "Disqualified": false,
