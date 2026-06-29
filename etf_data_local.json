@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-28T15:31:19.985275",
-  "update_time": "2026-06-28 15:31",
+  "generated_at": "2026-06-29T07:01:27.031565",
+  "update_time": "2026-06-29 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -11219,7 +11219,7 @@
         "ACCELERATION": 51.43,
         "QUALITY": 0.5073,
         "SHARPE": 1.38,
-        "SORTINO": 1.84,
+        "SORTINO": 1.85,
         "STABILITY": 1.93
       },
       "MomentumScore": null,
@@ -12960,10 +12960,64 @@
       "Name": "FedEx Corp.",
       "Category": "Industrials",
       "SubCategory": "Logistics",
+      "1W": {
+        "RETURN": -1.98,
+        "TREND": -49.73,
+        "ACCELERATION": 371.15,
+        "QUALITY": 0.0803,
+        "SHARPE": -1.81,
+        "SORTINO": -3.01,
+        "STABILITY": -10
+      },
+      "2W": {
+        "RETURN": -5.41,
+        "TREND": -77.55,
+        "ACCELERATION": 133.72,
+        "QUALITY": 0.6438,
+        "SHARPE": -3.68,
+        "SORTINO": -5.48,
+        "STABILITY": -10
+      },
+      "1M": {
+        "RETURN": -3.64,
+        "TREND": -25.61,
+        "ACCELERATION": -91.66,
+        "QUALITY": 0.1485,
+        "SHARPE": -0.99,
+        "SORTINO": -1.58,
+        "STABILITY": -6.16
+      },
+      "3M": {
+        "RETURN": 13.51,
+        "TREND": 76.6,
+        "ACCELERATION": -6.74,
+        "QUALITY": 0.626,
+        "SHARPE": 1.52,
+        "SORTINO": 2.02,
+        "STABILITY": 5.14
+      },
+      "6M": {
+        "RETURN": 34.95,
+        "TREND": 81.91,
+        "ACCELERATION": -53.62,
+        "QUALITY": 0.725,
+        "SHARPE": 2.02,
+        "SORTINO": 2.79,
+        "STABILITY": 5.59
+      },
+      "12M": {
+        "RETURN": 81.53,
+        "TREND": 111.22,
+        "ACCELERATION": 13.63,
+        "QUALITY": 0.926,
+        "SHARPE": 2.18,
+        "SORTINO": 3.11,
+        "STABILITY": 5.48
+      },
       "MomentumScore": null,
-      "MomentumReason": "insufficient_data",
+      "MomentumReason": "ma_2w_le_1m",
       "MeanRevScore": null,
-      "MeanRevReason": "insufficient_data"
+      "MeanRevReason": "not_oversold"
     },
     {
       "Symbol": "EMR",
@@ -17417,70 +17471,70 @@
           {
             "week": "2026-W22",
             "symbol": "MDT",
-            "score": 86.03,
+            "score": 85.42,
             "return": 10.364861632515886,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "CME",
-            "score": 84.85,
+            "score": 85.0,
             "return": -5.41980369027627,
             "positive": false
           },
           {
             "week": "2026-W22",
             "symbol": "COST",
-            "score": 75.74,
+            "score": 76.39,
             "return": 1.7664916353075988,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "WMB",
-            "score": 68.68,
+            "score": 69.72,
             "return": 0.9256578981717167,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "PEP",
-            "score": 64.85,
+            "score": 65.42,
             "return": 0.5772931661925718,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "SBUX",
-            "score": 59.71,
+            "score": 61.25,
             "return": -3.0127217144759855,
             "positive": false
           },
           {
             "week": "2026-W22",
             "symbol": "PM",
-            "score": 56.03,
+            "score": 56.94,
             "return": 1.5087626272681787,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "MO",
-            "score": 51.62,
+            "score": 53.61,
             "return": 3.617054860364699,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "AIG",
-            "score": 50.29,
+            "score": 50.83,
             "return": 2.791389571943248,
             "positive": true
           },
           {
             "week": "2026-W22",
             "symbol": "JNJ",
-            "score": 41.03,
+            "score": 42.92,
             "return": 4.2876377486859685,
             "positive": true
           },
@@ -18170,70 +18224,70 @@
             {
               "week": "2026-W22",
               "symbol": "MDT",
-              "score": 86.03,
+              "score": 85.42,
               "return": 10.364861632515886,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "CME",
-              "score": 84.85,
+              "score": 85.0,
               "return": -5.41980369027627,
               "positive": false
             },
             {
               "week": "2026-W22",
               "symbol": "COST",
-              "score": 75.74,
+              "score": 76.39,
               "return": 1.7664916353075988,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "WMB",
-              "score": 68.68,
+              "score": 69.72,
               "return": 0.9256578981717167,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "PEP",
-              "score": 64.85,
+              "score": 65.42,
               "return": 0.5772931661925718,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "SBUX",
-              "score": 59.71,
+              "score": 61.25,
               "return": -3.0127217144759855,
               "positive": false
             },
             {
               "week": "2026-W22",
               "symbol": "PM",
-              "score": 56.03,
+              "score": 56.94,
               "return": 1.5087626272681787,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "MO",
-              "score": 51.62,
+              "score": 53.61,
               "return": 3.617054860364699,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "AIG",
-              "score": 50.29,
+              "score": 50.83,
               "return": 2.791389571943248,
               "positive": true
             },
             {
               "week": "2026-W22",
               "symbol": "JNJ",
-              "score": 41.03,
+              "score": 42.92,
               "return": 4.2876377486859685,
               "positive": true
             },
