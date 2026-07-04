@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-04T07:01:14.908901",
-  "update_time": "2026-07-04 07:01",
+  "generated_at": "2026-07-04T13:01:14.664363",
+  "update_time": "2026-07-04 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
   "regime": {
-    "overall": "NEUTRAL",
-    "riskScore": 0,
-    "cycleScore": 0,
+    "overall": "RISK-ON",
+    "riskScore": 1,
+    "cycleScore": 1,
     "signals": {
       "BREADTH": {
         "value": "8/11 POSITIVE",
@@ -16,41 +16,41 @@
         "total": 11
       },
       "VXX": {
-        "value": "NEUTRAL",
-        "score": 0,
-        "level": null,
-        "change": null
+        "value": "COMPLACENT",
+        "score": 1,
+        "level": 22.04,
+        "change": -6.45
       },
       "SPY_TLT": {
-        "value": "NEUTRAL",
-        "score": 0,
-        "level": null,
-        "change": null
+        "value": "RISK-ON ↑",
+        "score": 1,
+        "level": 8.7099,
+        "change": 3.99
       },
       "HYG_LQD": {
-        "value": "NEUTRAL",
-        "score": 0,
-        "level": null,
-        "change": null
+        "value": "CREDIT STRESS ↑",
+        "score": -1,
+        "level": 0.7337,
+        "change": 0.75
       },
       "XLY_XLP": {
-        "value": "NEUTRAL",
-        "score": 0,
-        "level": null,
-        "change": null
+        "value": "EXPANSION ↑",
+        "score": 1,
+        "level": 1.378,
+        "change": 2.07
       },
       "CPER_GLD": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": null,
-        "change": null
+        "level": 0.0986,
+        "change": -1.3
       }
     },
     "breadth": {
       "positive": 8,
       "total": 11
     },
-    "note": "No signals but broad participation"
+    "note": "Strong bull market - full risk appetite"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 22.04,
+        "2W": 22.04,
+        "1M": 22.04,
+        "3M": 22.04,
+        "6M": 22.04,
+        "12M": 22.04
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -6.45,
+        "2W": -3.33,
+        "1M": -9.34,
+        "3M": -34.95,
+        "6M": -15.56,
+        "12M": -53.67
       }
     },
     {
@@ -79,20 +79,20 @@
       "name": "Stocks vs Bonds",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 8.7099,
+        "2W": 8.7099,
+        "1M": 8.7099,
+        "3M": 8.7099,
+        "6M": 8.7099,
+        "12M": 8.7099
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.99,
+        "2W": 0.81,
+        "1M": -1.59,
+        "3M": 13.99,
+        "6M": 9.5,
+        "12M": 17.6
       }
     },
     {
@@ -100,20 +100,20 @@
       "name": "Credit Spread",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.7337,
+        "2W": 0.7337,
+        "1M": 0.7337,
+        "3M": 0.7337,
+        "6M": 0.7337,
+        "12M": 0.7337
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.75,
+        "2W": 0.13,
+        "1M": 0.13,
+        "3M": 0.54,
+        "6M": 0.78,
+        "12M": 0.8
       }
     },
     {
@@ -121,20 +121,20 @@
       "name": "Gold vs Stocks",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.5077,
+        "2W": 0.5077,
+        "1M": 0.5077,
+        "3M": 0.5077,
+        "6M": 0.5077,
+        "12M": 0.5077
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.94,
+        "2W": -2.07,
+        "1M": -6.36,
+        "3M": -21.97,
+        "6M": -13.37,
+        "12M": 2.24
       }
     },
     {
@@ -142,20 +142,20 @@
       "name": "Small vs Large Cap",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.3996,
+        "2W": 0.3996,
+        "1M": 0.3996,
+        "3M": 0.3996,
+        "6M": 0.3996,
+        "12M": 0.3996
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -2.85,
+        "2W": 0.94,
+        "1M": 4.74,
+        "3M": 4.31,
+        "6M": 9.59,
+        "12M": 11.93
       }
     },
     {
@@ -163,20 +163,20 @@
       "name": "Speculation Index",
       "category": "Risk-On/Off",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1091,
+        "2W": 0.1091,
+        "1M": 0.1091,
+        "3M": 0.1091,
+        "6M": 0.1091,
+        "12M": 0.1091
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.79,
+        "2W": 1.59,
+        "1M": 5.0,
+        "3M": 4.21,
+        "6M": -5.33,
+        "12M": -5.09
       }
     },
     {
@@ -184,20 +184,20 @@
       "name": "Consumer Cycle",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.378,
+        "2W": 1.378,
+        "1M": 1.378,
+        "3M": 1.378,
+        "6M": 1.378,
+        "12M": 1.378
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 2.07,
+        "2W": -2.5,
+        "1M": -3.48,
+        "3M": 3.95,
+        "6M": -10.31,
+        "12M": 0.4
       }
     },
     {
@@ -205,20 +205,20 @@
       "name": "Copper/Gold Ratio",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0986,
+        "2W": 0.0986,
+        "1M": 0.0986,
+        "3M": 0.0986,
+        "6M": 0.0986,
+        "12M": 0.0986
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.3,
+        "2W": -1.76,
+        "1M": 2.04,
+        "3M": 22.95,
+        "6M": 12.28,
+        "12M": -5.08
       }
     },
     {
@@ -226,20 +226,20 @@
       "name": "Industrial Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.2469,
+        "2W": 0.2469,
+        "1M": 0.2469,
+        "3M": 0.2469,
+        "6M": 0.2469,
+        "12M": 0.2469
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.66,
+        "2W": 2.18,
+        "1M": 6.99,
+        "3M": -1.17,
+        "6M": 6.78,
+        "12M": 3.53
       }
     },
     {
@@ -247,20 +247,20 @@
       "name": "Retail Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1182,
+        "2W": 0.1182,
+        "1M": 0.1182,
+        "3M": 0.1182,
+        "6M": 0.1182,
+        "12M": 0.1182
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -2.85,
+        "2W": 2.42,
+        "1M": 6.92,
+        "3M": -4.83,
+        "6M": -6.01,
+        "12M": -8.58
       }
     },
     {
@@ -268,20 +268,20 @@
       "name": "Semis Leadership",
       "category": "Economic Cycle",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.7604,
+        "2W": 0.7604,
+        "1M": 0.7604,
+        "3M": 0.7604,
+        "6M": 0.7604,
+        "12M": 0.7604
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -6.04,
+        "2W": -11.2,
+        "1M": -7.04,
+        "3M": 45.3,
+        "6M": 64.9,
+        "12M": 94.17
       }
     },
     {
@@ -289,20 +289,20 @@
       "name": "Energy vs Market",
       "category": "Inflation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0715,
+        "2W": 0.0715,
+        "1M": 0.0715,
+        "3M": 0.0715,
+        "6M": 0.0715,
+        "12M": 0.0715
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -3.25,
+        "2W": -0.05,
+        "1M": -7.78,
+        "3M": -20.74,
+        "6M": 7.84,
+        "12M": 4.73
       }
     },
     {
@@ -310,20 +310,20 @@
       "name": "Breakeven Inflation",
       "category": "Inflation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.151,
+        "2W": 1.151,
+        "1M": 1.151,
+        "3M": 1.151,
+        "6M": 1.151,
+        "12M": 1.151
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.35,
+        "2W": -0.08,
+        "1M": -0.8,
+        "3M": -0.46,
+        "6M": 0.53,
+        "12M": -0.57
       }
     },
     {
@@ -331,20 +331,20 @@
       "name": "Agri vs Market",
       "category": "Inflation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0359,
+        "2W": 0.0359,
+        "1M": 0.0359,
+        "3M": 0.0359,
+        "6M": 0.0359,
+        "12M": 0.0359
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -2.34,
+        "2W": 0.68,
+        "1M": 0.56,
+        "3M": -13.5,
+        "6M": -4.54,
+        "12M": -11.14
       }
     },
     {
@@ -352,20 +352,20 @@
       "name": "Yield Curve",
       "category": "Fed/Rates",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 1.0436,
+        "2W": 1.0436,
+        "1M": 1.0436,
+        "3M": 1.0436,
+        "6M": 1.0436,
+        "12M": 1.0436
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.74,
+        "2W": -1.29,
+        "1M": 0.35,
+        "3M": -0.76,
+        "6M": -0.25,
+        "12M": -0.39
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.9085,
+        "2W": 0.9085,
+        "1M": 0.9085,
+        "3M": 0.9085,
+        "6M": 0.9085,
+        "12M": 0.9085
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.13,
+        "2W": -1.14,
+        "1M": 0.15,
+        "3M": -0.3,
+        "6M": 0.54,
+        "12M": -0.45
       }
     },
     {
@@ -394,20 +394,20 @@
       "name": "Dollar Strength",
       "category": "Fed/Rates",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 28.34,
+        "2W": 28.34,
+        "1M": 28.34,
+        "3M": 28.34,
+        "6M": 28.34,
+        "12M": 28.34
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -0.42,
+        "2W": 0.14,
+        "1M": 1.72,
+        "3M": 1.83,
+        "6M": 4.54,
+        "12M": 8.63
       }
     },
     {
@@ -415,20 +415,20 @@
       "name": "EM vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0882,
+        "2W": 0.0882,
+        "1M": 0.0882,
+        "3M": 0.0882,
+        "6M": 0.0882,
+        "12M": 0.0882
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -4.29,
+        "2W": -6.95,
+        "1M": -4.59,
+        "3M": 2.05,
+        "6M": 7.14,
+        "12M": 14.08
       }
     },
     {
@@ -436,20 +436,20 @@
       "name": "China vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0428,
+        "2W": 0.0428,
+        "1M": 0.0428,
+        "3M": 0.0428,
+        "6M": 0.0428,
+        "12M": 0.0428
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.13,
+        "2W": -3.92,
+        "1M": -8.63,
+        "3M": -20.2,
+        "6M": -26.33,
+        "12M": -25.59
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.0351,
+        "2W": 0.0351,
+        "1M": 0.0351,
+        "3M": 0.0351,
+        "6M": 0.0351,
+        "12M": 0.0351
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.5,
+        "2W": 2.79,
+        "1M": -4.23,
+        "3M": -26.74,
+        "6M": -39.8,
+        "12M": -38.76
       }
     },
     {
@@ -478,20 +478,20 @@
       "name": "India vs EM",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.7543,
+        "2W": 0.7543,
+        "1M": 0.7543,
+        "3M": 0.7543,
+        "6M": 0.7543,
+        "12M": 0.7543
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 2.27,
+        "2W": 7.7,
+        "1M": 10.79,
+        "3M": -9.3,
+        "6M": -22.65,
+        "12M": -35.34
       }
     },
     {
@@ -499,20 +499,20 @@
       "name": "Europe vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.12,
+        "2W": 0.12,
+        "1M": 0.12,
+        "3M": 0.12,
+        "6M": 0.12,
+        "12M": 0.12
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.37,
+        "2W": 1.49,
+        "1M": 4.07,
+        "3M": -4.61,
+        "6M": -1.82,
+        "12M": -1.64
       }
     },
     {
@@ -520,20 +520,20 @@
       "name": "Japan vs US",
       "category": "Global",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.1251,
+        "2W": 0.1251,
+        "1M": 0.1251,
+        "3M": 0.1251,
+        "6M": 0.1251,
+        "12M": 0.1251
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -1.76,
+        "2W": -2.99,
+        "1M": 0.69,
+        "3M": -3.43,
+        "6M": 5.06,
+        "12M": 8.14
       }
     },
     {
@@ -541,20 +541,20 @@
       "name": "Tech vs Financials",
       "category": "Sector Rotation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 3.2469,
+        "2W": 3.2469,
+        "1M": 3.2469,
+        "3M": 3.2469,
+        "6M": 3.2469,
+        "12M": 3.2469
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": -3.96,
+        "2W": -9.35,
+        "1M": -16.02,
+        "3M": 18.13,
+        "6M": 22.83,
+        "12M": 33.06
       }
     },
     {
@@ -562,20 +562,20 @@
       "name": "Cyclical vs Defensive",
       "category": "Sector Rotation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.7153,
+        "2W": 0.7153,
+        "1M": 0.7153,
+        "3M": 0.7153,
+        "6M": 0.7153,
+        "12M": 0.7153
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.28,
+        "2W": -9.01,
+        "1M": -9.8,
+        "3M": -4.27,
+        "6M": -6.44,
+        "12M": -13.21
       }
     },
     {
@@ -583,20 +583,20 @@
       "name": "Materials vs Staples",
       "category": "Sector Rotation",
       "values": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.612,
+        "2W": 0.612,
+        "1M": 0.612,
+        "3M": 0.612,
+        "6M": 0.612,
+        "12M": 0.612
       },
       "changes": {
-        "1W": null,
-        "2W": null,
-        "1M": null,
-        "3M": null,
-        "6M": null,
-        "12M": null
+        "1W": 0.46,
+        "2W": -1.92,
+        "1M": -2.93,
+        "3M": 0.41,
+        "6M": 2.64,
+        "12M": 9.06
       }
     }
   ],
@@ -7638,7 +7638,7 @@
         "SORTINO": 1.14,
         "STABILITY": 1.29
       },
-      "MomentumScore": 42.0,
+      "MomentumScore": 36.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -8726,7 +8726,7 @@
         "SORTINO": 1.58,
         "STABILITY": 1.36
       },
-      "MomentumScore": 59.5,
+      "MomentumScore": 53.5,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -9441,60 +9441,60 @@
       "Category": "Financials",
       "SubCategory": "Custody",
       "1W": {
-        "RETURN": -0.05,
-        "TREND": -29.65,
-        "ACCELERATION": -317.05,
-        "QUALITY": 0.0532,
-        "SHARPE": 0.04,
-        "SORTINO": 0.08,
-        "STABILITY": 0.42
-      },
-      "2W": {
-        "RETURN": 1.03,
-        "TREND": 42.71,
-        "ACCELERATION": -182.62,
-        "QUALITY": 0.167,
-        "SHARPE": 1.15,
-        "SORTINO": 2.76,
+        "RETURN": 0.82,
+        "TREND": 101.54,
+        "ACCELERATION": 315.95,
+        "QUALITY": 0.3788,
+        "SHARPE": 3.05,
+        "SORTINO": 0,
         "STABILITY": 10
       },
+      "2W": {
+        "RETURN": 0.38,
+        "TREND": -0.2,
+        "ACCELERATION": 94.03,
+        "QUALITY": 0.0,
+        "SHARPE": 0.52,
+        "SORTINO": 1.16,
+        "STABILITY": 4.65
+      },
       "1M": {
-        "RETURN": 2.73,
-        "TREND": 57.32,
-        "ACCELERATION": 2.87,
-        "QUALITY": 0.5719,
-        "SHARPE": 1.45,
-        "SORTINO": 3.02,
+        "RETURN": 3.78,
+        "TREND": 46.02,
+        "ACCELERATION": -33.65,
+        "QUALITY": 0.4835,
+        "SHARPE": 2.07,
+        "SORTINO": 3.73,
         "STABILITY": 10
       },
       "3M": {
-        "RETURN": 23.56,
-        "TREND": 110.75,
-        "ACCELERATION": -47.42,
-        "QUALITY": 0.8185,
-        "SHARPE": 4.18,
-        "SORTINO": 8.22,
+        "RETURN": 21.68,
+        "TREND": 84.15,
+        "ACCELERATION": -13.53,
+        "QUALITY": 0.8534,
+        "SHARPE": 4.14,
+        "SORTINO": 7.6,
         "STABILITY": 10
       },
       "6M": {
-        "RETURN": 23.5,
-        "TREND": 60.34,
-        "ACCELERATION": 85.34,
-        "QUALITY": 0.7375,
-        "SHARPE": 1.94,
-        "SORTINO": 3.0,
-        "STABILITY": 4.43
+        "RETURN": 26.51,
+        "TREND": 63.55,
+        "ACCELERATION": 77.07,
+        "QUALITY": 0.7574,
+        "SHARPE": 2.15,
+        "SORTINO": 3.29,
+        "STABILITY": 4.9
       },
       "12M": {
-        "RETURN": 62.51,
-        "TREND": 49.88,
-        "ACCELERATION": 5.75,
-        "QUALITY": 0.9186,
-        "SHARPE": 2.52,
-        "SORTINO": 3.64,
-        "STABILITY": 4.99
+        "RETURN": 64.78,
+        "TREND": 49.55,
+        "ACCELERATION": 9.51,
+        "QUALITY": 0.9198,
+        "SHARPE": 2.59,
+        "SORTINO": 3.73,
+        "STABILITY": 5.13
       },
-      "MomentumScore": 1.0,
+      "MomentumScore": 46.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -11606,7 +11606,7 @@
         "SORTINO": 2.9,
         "STABILITY": 2.62
       },
-      "MomentumScore": 64.0,
+      "MomentumScore": 58.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -13782,7 +13782,7 @@
         "SORTINO": 2.52,
         "STABILITY": 3.91
       },
-      "MomentumScore": 25.5,
+      "MomentumScore": 18.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -14102,7 +14102,7 @@
         "SORTINO": 1.04,
         "STABILITY": 0.7
       },
-      "MomentumScore": 42.0,
+      "MomentumScore": 36.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -14166,7 +14166,7 @@
         "SORTINO": 2.02,
         "STABILITY": 2.61
       },
-      "MomentumScore": 24.5,
+      "MomentumScore": 17.0,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -14230,7 +14230,7 @@
         "SORTINO": 3.04,
         "STABILITY": 3.65
       },
-      "MomentumScore": 42.5,
+      "MomentumScore": 36.5,
       "MomentumReason": null,
       "MeanRevScore": null,
       "MeanRevReason": "not_oversold"
@@ -15901,8 +15901,8 @@
     }
   ],
   "quant_rankings": {
-    "score_date": "2026-07-03",
-    "score_date_weekday": "Friday",
+    "score_date": "2026-07-02",
+    "score_date_weekday": "Thursday",
     "defense_mode": {
       "momentum": {
         "active": false,
@@ -15915,10 +15915,10 @@
     },
     "performance_4w": {
       "momentum_stocks": {
-        "hit_rate": 25.0,
-        "avg_return": -0.443,
-        "total_trades": 8,
-        "positive_trades": 2,
+        "hit_rate": 30.8,
+        "avg_return": -0.48,
+        "total_trades": 13,
+        "positive_trades": 4,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16003,15 +16003,40 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "return": -0.14839835088612086,
+            "hit_rate": 40.0,
+            "trades": 5,
+            "positive": 2,
+            "symbols": [
+              {
+                "symbol": "UNH",
+                "positive": false,
+                "return": -0.27
+              },
+              {
+                "symbol": "MMM",
+                "positive": false,
+                "return": -2.3
+              },
+              {
+                "symbol": "BAC",
+                "positive": true,
+                "return": 1.68
+              },
+              {
+                "symbol": "C",
+                "positive": false,
+                "return": -1.33
+              },
+              {
+                "symbol": "BK",
+                "positive": true,
+                "return": 1.47
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16070,14 +16095,49 @@
             "score": 13.33,
             "return": 5.0463185323356585,
             "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "UNH",
+            "score": 87.5,
+            "return": -0.274309762755931,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "MMM",
+            "score": 66.25,
+            "return": -2.295843199757064,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "BAC",
+            "score": 65.0,
+            "return": 1.6793650430933393,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "C",
+            "score": 16.25,
+            "return": -1.3253470581034432,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "BK",
+            "score": 15.0,
+            "return": 1.4741432230924945,
+            "positive": true
           }
         ]
       },
       "momentum_etfs": {
-        "hit_rate": 63.6,
-        "avg_return": 0.288,
-        "total_trades": 11,
-        "positive_trades": 7,
+        "hit_rate": 58.8,
+        "avg_return": 0.35,
+        "total_trades": 17,
+        "positive_trades": 10,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16177,15 +16237,45 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "return": 0.25116733649563905,
+            "hit_rate": 50.0,
+            "trades": 6,
+            "positive": 3,
+            "symbols": [
+              {
+                "symbol": "IJJ",
+                "positive": false,
+                "return": -0.19
+              },
+              {
+                "symbol": "TLT",
+                "positive": false,
+                "return": -1.76
+              },
+              {
+                "symbol": "VTV",
+                "positive": true,
+                "return": 0.16
+              },
+              {
+                "symbol": "UUP",
+                "positive": false,
+                "return": -0.35
+              },
+              {
+                "symbol": "XLF",
+                "positive": true,
+                "return": 3.58
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.07
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16265,14 +16355,56 @@
             "score": 0.0,
             "return": 4.539149417039412,
             "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "IJJ",
+            "score": 79.0,
+            "return": -0.19042355283028778,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "TLT",
+            "score": 77.0,
+            "return": -1.7561611771172991,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "VTV",
+            "score": 61.0,
+            "return": 0.15537007496491118,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "UUP",
+            "score": 55.0,
+            "return": -0.3516187749362909,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "XLF",
+            "score": 16.0,
+            "return": 3.5754155338306504,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "BIL",
+            "score": 12.0,
+            "return": 0.07442191506215057,
+            "positive": true
           }
         ]
       },
       "momentum": {
-        "hit_rate": 47.4,
-        "avg_return": 0.219,
-        "total_trades": 19,
-        "positive_trades": 9,
+        "hit_rate": 46.7,
+        "avg_return": 0.164,
+        "total_trades": 30,
+        "positive_trades": 14,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16417,22 +16549,79 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "stock_symbols": [],
-            "etf_symbols": []
+            "return": 0.06954656950393,
+            "hit_rate": 45.5,
+            "trades": 11,
+            "positive": 5,
+            "stock_symbols": [
+              {
+                "symbol": "UNH",
+                "positive": false,
+                "return": -0.27
+              },
+              {
+                "symbol": "MMM",
+                "positive": false,
+                "return": -2.3
+              },
+              {
+                "symbol": "BAC",
+                "positive": true,
+                "return": 1.68
+              },
+              {
+                "symbol": "C",
+                "positive": false,
+                "return": -1.33
+              },
+              {
+                "symbol": "BK",
+                "positive": true,
+                "return": 1.47
+              }
+            ],
+            "etf_symbols": [
+              {
+                "symbol": "IJJ",
+                "positive": false,
+                "return": -0.19
+              },
+              {
+                "symbol": "TLT",
+                "positive": false,
+                "return": -1.76
+              },
+              {
+                "symbol": "VTV",
+                "positive": true,
+                "return": 0.16
+              },
+              {
+                "symbol": "UUP",
+                "positive": false,
+                "return": -0.35
+              },
+              {
+                "symbol": "XLF",
+                "positive": true,
+                "return": 3.58
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.07
+              }
+            ]
           }
         ],
         "stock_performance": {
-          "hit_rate": 25.0,
-          "avg_return": -0.443,
-          "total_trades": 8,
-          "positive_trades": 2,
+          "hit_rate": 30.8,
+          "avg_return": -0.48,
+          "total_trades": 13,
+          "positive_trades": 4,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
@@ -16517,15 +16706,40 @@
             {
               "week": "2026-W26",
               "entry_date": "2026-06-29",
-              "exit_date": "2026-07-03",
+              "exit_date": "2026-07-02",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "return": -0.14839835088612086,
+              "hit_rate": 40.0,
+              "trades": 5,
+              "positive": 2,
+              "symbols": [
+                {
+                  "symbol": "UNH",
+                  "positive": false,
+                  "return": -0.27
+                },
+                {
+                  "symbol": "MMM",
+                  "positive": false,
+                  "return": -2.3
+                },
+                {
+                  "symbol": "BAC",
+                  "positive": true,
+                  "return": 1.68
+                },
+                {
+                  "symbol": "C",
+                  "positive": false,
+                  "return": -1.33
+                },
+                {
+                  "symbol": "BK",
+                  "positive": true,
+                  "return": 1.47
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -16584,14 +16798,49 @@
               "score": 13.33,
               "return": 5.0463185323356585,
               "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "UNH",
+              "score": 87.5,
+              "return": -0.274309762755931,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "MMM",
+              "score": 66.25,
+              "return": -2.295843199757064,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "BAC",
+              "score": 65.0,
+              "return": 1.6793650430933393,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "C",
+              "score": 16.25,
+              "return": -1.3253470581034432,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "BK",
+              "score": 15.0,
+              "return": 1.4741432230924945,
+              "positive": true
             }
           ]
         },
         "etf_performance": {
-          "hit_rate": 63.6,
-          "avg_return": 0.288,
-          "total_trades": 11,
-          "positive_trades": 7,
+          "hit_rate": 58.8,
+          "avg_return": 0.35,
+          "total_trades": 17,
+          "positive_trades": 10,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
@@ -16691,15 +16940,45 @@
             {
               "week": "2026-W26",
               "entry_date": "2026-06-29",
-              "exit_date": "2026-07-03",
+              "exit_date": "2026-07-02",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "return": 0.25116733649563905,
+              "hit_rate": 50.0,
+              "trades": 6,
+              "positive": 3,
+              "symbols": [
+                {
+                  "symbol": "IJJ",
+                  "positive": false,
+                  "return": -0.19
+                },
+                {
+                  "symbol": "TLT",
+                  "positive": false,
+                  "return": -1.76
+                },
+                {
+                  "symbol": "VTV",
+                  "positive": true,
+                  "return": 0.16
+                },
+                {
+                  "symbol": "UUP",
+                  "positive": false,
+                  "return": -0.35
+                },
+                {
+                  "symbol": "XLF",
+                  "positive": true,
+                  "return": 3.58
+                },
+                {
+                  "symbol": "BIL",
+                  "positive": true,
+                  "return": 0.07
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -16779,15 +17058,57 @@
               "score": 0.0,
               "return": 4.539149417039412,
               "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "IJJ",
+              "score": 79.0,
+              "return": -0.19042355283028778,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "TLT",
+              "score": 77.0,
+              "return": -1.7561611771172991,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "VTV",
+              "score": 61.0,
+              "return": 0.15537007496491118,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "UUP",
+              "score": 55.0,
+              "return": -0.3516187749362909,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "XLF",
+              "score": 16.0,
+              "return": 3.5754155338306504,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "BIL",
+              "score": 12.0,
+              "return": 0.07442191506215057,
+              "positive": true
             }
           ]
         }
       },
       "mr_stocks": {
-        "hit_rate": 30.0,
-        "avg_return": -0.237,
-        "total_trades": 10,
-        "positive_trades": 3,
+        "hit_rate": 40.0,
+        "avg_return": 0.193,
+        "total_trades": 20,
+        "positive_trades": 8,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -16882,15 +17203,65 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "return": 1.7180678853013887,
+            "hit_rate": 50.0,
+            "trades": 10,
+            "positive": 5,
+            "symbols": [
+              {
+                "symbol": "CME",
+                "positive": true,
+                "return": 5.59
+              },
+              {
+                "symbol": "BLK",
+                "positive": true,
+                "return": 2.74
+              },
+              {
+                "symbol": "GOOGL",
+                "positive": true,
+                "return": 5.29
+              },
+              {
+                "symbol": "ROST",
+                "positive": true,
+                "return": 1.14
+              },
+              {
+                "symbol": "CSCO",
+                "positive": false,
+                "return": -1.99
+              },
+              {
+                "symbol": "NKE",
+                "positive": true,
+                "return": 7.17
+              },
+              {
+                "symbol": "GS",
+                "positive": false,
+                "return": -0.8
+              },
+              {
+                "symbol": "MS",
+                "positive": false,
+                "return": -0.19
+              },
+              {
+                "symbol": "TJX",
+                "positive": false,
+                "return": -0.29
+              },
+              {
+                "symbol": "MAR",
+                "positive": false,
+                "return": -1.48
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -16963,14 +17334,84 @@
             "score": 55.36,
             "return": -3.6875433114492373,
             "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "CME",
+            "score": 78.5,
+            "return": 5.592001771645672,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "BLK",
+            "score": 68.25,
+            "return": 2.736244765826612,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "GOOGL",
+            "score": 64.5,
+            "return": 5.289184038867667,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "ROST",
+            "score": 62.5,
+            "return": 1.1420663228727035,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "CSCO",
+            "score": 57.5,
+            "return": -1.9916514599660151,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "NKE",
+            "score": 57.25,
+            "return": 7.1706388106600905,
+            "positive": true
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "GS",
+            "score": 53.5,
+            "return": -0.7957657840164556,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "MS",
+            "score": 33.5,
+            "return": -0.18663236684369755,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "TJX",
+            "score": 31.25,
+            "return": -0.2908746606569146,
+            "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "MAR",
+            "score": 21.75,
+            "return": -1.4845325853757751,
+            "positive": false
           }
         ]
       },
       "mr_etfs": {
-        "hit_rate": 37.5,
-        "avg_return": -0.287,
-        "total_trades": 8,
-        "positive_trades": 3,
+        "hit_rate": 44.4,
+        "avg_return": 0.407,
+        "total_trades": 9,
+        "positive_trades": 4,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -17055,15 +17496,20 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "symbols": [],
-            "note": "Price data unavailable"
+            "return": 2.77624599197277,
+            "hit_rate": 100.0,
+            "trades": 1,
+            "positive": 1,
+            "symbols": [
+              {
+                "symbol": "BOTZ",
+                "positive": true,
+                "return": 2.78
+              }
+            ]
           }
         ],
         "weekly_results": [
@@ -17122,14 +17568,21 @@
             "score": 12.5,
             "return": -1.7988436483923453,
             "positive": false
+          },
+          {
+            "week": "2026-W26",
+            "symbol": "BOTZ",
+            "score": 50.0,
+            "return": 2.77624599197277,
+            "positive": true
           }
         ]
       },
       "mean_reversion": {
-        "hit_rate": 33.3,
-        "avg_return": -0.667,
-        "total_trades": 18,
-        "positive_trades": 6,
+        "hit_rate": 41.4,
+        "avg_return": 0.274,
+        "total_trades": 29,
+        "positive_trades": 12,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
@@ -17268,22 +17721,79 @@
           {
             "week": "2026-W26",
             "entry_date": "2026-06-29",
-            "exit_date": "2026-07-03",
+            "exit_date": "2026-07-02",
             "defense": false,
             "defense_reason": null,
-            "return": 0.0,
-            "hit_rate": 0.0,
-            "trades": 0,
-            "positive": 0,
-            "stock_symbols": [],
-            "etf_symbols": []
+            "return": 1.814265894998787,
+            "hit_rate": 54.5,
+            "trades": 11,
+            "positive": 6,
+            "stock_symbols": [
+              {
+                "symbol": "CME",
+                "positive": true,
+                "return": 5.59
+              },
+              {
+                "symbol": "BLK",
+                "positive": true,
+                "return": 2.74
+              },
+              {
+                "symbol": "GOOGL",
+                "positive": true,
+                "return": 5.29
+              },
+              {
+                "symbol": "ROST",
+                "positive": true,
+                "return": 1.14
+              },
+              {
+                "symbol": "CSCO",
+                "positive": false,
+                "return": -1.99
+              },
+              {
+                "symbol": "NKE",
+                "positive": true,
+                "return": 7.17
+              },
+              {
+                "symbol": "GS",
+                "positive": false,
+                "return": -0.8
+              },
+              {
+                "symbol": "MS",
+                "positive": false,
+                "return": -0.19
+              },
+              {
+                "symbol": "TJX",
+                "positive": false,
+                "return": -0.29
+              },
+              {
+                "symbol": "MAR",
+                "positive": false,
+                "return": -1.48
+              }
+            ],
+            "etf_symbols": [
+              {
+                "symbol": "BOTZ",
+                "positive": true,
+                "return": 2.78
+              }
+            ]
           }
         ],
         "stock_performance": {
-          "hit_rate": 30.0,
-          "avg_return": -0.237,
-          "total_trades": 10,
-          "positive_trades": 3,
+          "hit_rate": 40.0,
+          "avg_return": 0.193,
+          "total_trades": 20,
+          "positive_trades": 8,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
@@ -17378,15 +17888,65 @@
             {
               "week": "2026-W26",
               "entry_date": "2026-06-29",
-              "exit_date": "2026-07-03",
+              "exit_date": "2026-07-02",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "return": 1.7180678853013887,
+              "hit_rate": 50.0,
+              "trades": 10,
+              "positive": 5,
+              "symbols": [
+                {
+                  "symbol": "CME",
+                  "positive": true,
+                  "return": 5.59
+                },
+                {
+                  "symbol": "BLK",
+                  "positive": true,
+                  "return": 2.74
+                },
+                {
+                  "symbol": "GOOGL",
+                  "positive": true,
+                  "return": 5.29
+                },
+                {
+                  "symbol": "ROST",
+                  "positive": true,
+                  "return": 1.14
+                },
+                {
+                  "symbol": "CSCO",
+                  "positive": false,
+                  "return": -1.99
+                },
+                {
+                  "symbol": "NKE",
+                  "positive": true,
+                  "return": 7.17
+                },
+                {
+                  "symbol": "GS",
+                  "positive": false,
+                  "return": -0.8
+                },
+                {
+                  "symbol": "MS",
+                  "positive": false,
+                  "return": -0.19
+                },
+                {
+                  "symbol": "TJX",
+                  "positive": false,
+                  "return": -0.29
+                },
+                {
+                  "symbol": "MAR",
+                  "positive": false,
+                  "return": -1.48
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -17459,14 +18019,84 @@
               "score": 55.36,
               "return": -3.6875433114492373,
               "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "CME",
+              "score": 78.5,
+              "return": 5.592001771645672,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "BLK",
+              "score": 68.25,
+              "return": 2.736244765826612,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "GOOGL",
+              "score": 64.5,
+              "return": 5.289184038867667,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "ROST",
+              "score": 62.5,
+              "return": 1.1420663228727035,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "CSCO",
+              "score": 57.5,
+              "return": -1.9916514599660151,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "NKE",
+              "score": 57.25,
+              "return": 7.1706388106600905,
+              "positive": true
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "GS",
+              "score": 53.5,
+              "return": -0.7957657840164556,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "MS",
+              "score": 33.5,
+              "return": -0.18663236684369755,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "TJX",
+              "score": 31.25,
+              "return": -0.2908746606569146,
+              "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "MAR",
+              "score": 21.75,
+              "return": -1.4845325853757751,
+              "positive": false
             }
           ]
         },
         "etf_performance": {
-          "hit_rate": 37.5,
-          "avg_return": -0.287,
-          "total_trades": 8,
-          "positive_trades": 3,
+          "hit_rate": 44.4,
+          "avg_return": 0.407,
+          "total_trades": 9,
+          "positive_trades": 4,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
@@ -17551,15 +18181,20 @@
             {
               "week": "2026-W26",
               "entry_date": "2026-06-29",
-              "exit_date": "2026-07-03",
+              "exit_date": "2026-07-02",
               "defense": false,
               "defense_reason": null,
-              "return": 0.0,
-              "hit_rate": 0.0,
-              "trades": 0,
-              "positive": 0,
-              "symbols": [],
-              "note": "Price data unavailable"
+              "return": 2.77624599197277,
+              "hit_rate": 100.0,
+              "trades": 1,
+              "positive": 1,
+              "symbols": [
+                {
+                  "symbol": "BOTZ",
+                  "positive": true,
+                  "return": 2.78
+                }
+              ]
             }
           ],
           "weekly_results": [
@@ -17618,6 +18253,13 @@
               "score": 12.5,
               "return": -1.7988436483923453,
               "positive": false
+            },
+            {
+              "week": "2026-W26",
+              "symbol": "BOTZ",
+              "score": 50.0,
+              "return": 2.77624599197277,
+              "positive": true
             }
           ]
         }
@@ -17646,43 +18288,43 @@
         "Symbol": "MNST",
         "Name": "Monster Beverage",
         "Category": "Consumer Stpl.",
-        "MomentumScore": 64.0
+        "MomentumScore": 58.0
       },
       {
         "Symbol": "BAC",
         "Name": "Bank of America",
         "Category": "Financials",
-        "MomentumScore": 59.5
+        "MomentumScore": 53.5
+      },
+      {
+        "Symbol": "BK",
+        "Name": "Bank of NY Mellon",
+        "Category": "Financials",
+        "MomentumScore": 46.0
       },
       {
         "Symbol": "AEP",
         "Name": "American Electric",
         "Category": "Utilities",
-        "MomentumScore": 42.5
+        "MomentumScore": 36.5
       },
       {
         "Symbol": "UNH",
         "Name": "UnitedHealth Group",
         "Category": "Healthcare",
-        "MomentumScore": 42.0
+        "MomentumScore": 36.0
       },
       {
         "Symbol": "SO",
         "Name": "Southern Co.",
         "Category": "Utilities",
-        "MomentumScore": 42.0
+        "MomentumScore": 36.0
       },
       {
         "Symbol": "EA",
         "Name": "Electronic Arts",
         "Category": "Communication",
-        "MomentumScore": 25.5
-      },
-      {
-        "Symbol": "D",
-        "Name": "Dominion Energy",
-        "Category": "Utilities",
-        "MomentumScore": 24.5
+        "MomentumScore": 18.0
       }
     ],
     "top10_momentum_etfs": [
@@ -17749,52 +18391,52 @@
     ],
     "bottom10_momentum_stocks": [
       {
-        "Symbol": "BK",
-        "Name": "Bank of NY Mellon",
-        "Category": "Financials",
-        "MomentumScore": 1.0
-      },
-      {
         "Symbol": "D",
         "Name": "Dominion Energy",
         "Category": "Utilities",
-        "MomentumScore": 24.5
+        "MomentumScore": 17.0
       },
       {
         "Symbol": "EA",
         "Name": "Electronic Arts",
         "Category": "Communication",
-        "MomentumScore": 25.5
+        "MomentumScore": 18.0
       },
       {
         "Symbol": "UNH",
         "Name": "UnitedHealth Group",
         "Category": "Healthcare",
-        "MomentumScore": 42.0
+        "MomentumScore": 36.0
       },
       {
         "Symbol": "SO",
         "Name": "Southern Co.",
         "Category": "Utilities",
-        "MomentumScore": 42.0
+        "MomentumScore": 36.0
       },
       {
         "Symbol": "AEP",
         "Name": "American Electric",
         "Category": "Utilities",
-        "MomentumScore": 42.5
+        "MomentumScore": 36.5
+      },
+      {
+        "Symbol": "BK",
+        "Name": "Bank of NY Mellon",
+        "Category": "Financials",
+        "MomentumScore": 46.0
       },
       {
         "Symbol": "BAC",
         "Name": "Bank of America",
         "Category": "Financials",
-        "MomentumScore": 59.5
+        "MomentumScore": 53.5
       },
       {
         "Symbol": "MNST",
         "Name": "Monster Beverage",
         "Category": "Consumer Stpl.",
-        "MomentumScore": 64.0
+        "MomentumScore": 58.0
       },
       {
         "Symbol": "AXP",
@@ -17874,7 +18516,7 @@
     "top10_momentum_sectors": [
       {
         "Sector": "Consumer Stpl.",
-        "AvgScore": 72.0,
+        "AvgScore": 69.0,
         "StockCount": 2,
         "TotalStocks": 14,
         "Disqualified": false,
@@ -17882,7 +18524,7 @@
       },
       {
         "Sector": "Financials",
-        "AvgScore": 57.4,
+        "AvgScore": 67.1,
         "StockCount": 4,
         "TotalStocks": 20,
         "Disqualified": false,
@@ -17890,7 +18532,7 @@
       },
       {
         "Sector": "Healthcare",
-        "AvgScore": 42.0,
+        "AvgScore": 36.0,
         "StockCount": 1,
         "TotalStocks": 17,
         "Disqualified": false,
@@ -17898,7 +18540,7 @@
       },
       {
         "Sector": "Utilities",
-        "AvgScore": 36.3,
+        "AvgScore": 29.8,
         "StockCount": 3,
         "TotalStocks": 10,
         "Disqualified": false,
@@ -17906,7 +18548,7 @@
       },
       {
         "Sector": "Communication",
-        "AvgScore": 25.5,
+        "AvgScore": 18.0,
         "StockCount": 1,
         "TotalStocks": 10,
         "Disqualified": false,
