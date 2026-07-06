@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-05T15:01:10.433055",
-  "update_time": "2026-07-05 15:01",
+  "generated_at": "2026-07-06T07:01:17.940776",
+  "update_time": "2026-07-06 07:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -1340,7 +1340,7 @@
       "3M": {
         "RETURN": 1.42,
         "TREND": 0.95,
-        "ACCELERATION": -3.26,
+        "ACCELERATION": -3.27,
         "QUALITY": 0.0426,
         "SHARPE": 1.38,
         "SORTINO": 2.22,
@@ -10675,40 +10675,40 @@
         "STABILITY": -4.47
       },
       "1M": {
-        "RETURN": 2.42,
-        "TREND": 379.02,
-        "ACCELERATION": -190.55,
-        "QUALITY": 0.5232,
-        "SHARPE": 0.78,
-        "SORTINO": 1.72,
-        "STABILITY": 5.13
+        "RETURN": 1.89,
+        "TREND": 371.67,
+        "ACCELERATION": -184.62,
+        "QUALITY": 0.5158,
+        "SHARPE": 0.67,
+        "SORTINO": 1.51,
+        "STABILITY": 4.4
       },
       "3M": {
-        "RETURN": 5.59,
-        "TREND": 83.22,
-        "ACCELERATION": 238.27,
-        "QUALITY": 0.3904,
-        "SHARPE": 0.68,
-        "SORTINO": 1.59,
-        "STABILITY": 2.44
+        "RETURN": 5.05,
+        "TREND": 78.35,
+        "ACCELERATION": 232.75,
+        "QUALITY": 0.3754,
+        "SHARPE": 0.64,
+        "SORTINO": 1.51,
+        "STABILITY": 2.29
       },
       "6M": {
-        "RETURN": 6.29,
-        "TREND": -10.84,
-        "ACCELERATION": 89.8,
-        "QUALITY": 0.0451,
-        "SHARPE": 0.49,
-        "SORTINO": 1.11,
-        "STABILITY": 0.94
+        "RETURN": 5.74,
+        "TREND": -11.59,
+        "ACCELERATION": 87.1,
+        "QUALITY": 0.0528,
+        "SHARPE": 0.47,
+        "SORTINO": 1.07,
+        "STABILITY": 0.91
       },
       "12M": {
-        "RETURN": -4.36,
-        "TREND": -15.48,
-        "ACCELERATION": 45.74,
-        "QUALITY": 0.2485,
-        "SHARPE": 0.13,
-        "SORTINO": 0.25,
-        "STABILITY": 0.2
+        "RETURN": -4.85,
+        "TREND": -15.68,
+        "ACCELERATION": 44.89,
+        "QUALITY": 0.256,
+        "SHARPE": 0.12,
+        "SORTINO": 0.23,
+        "STABILITY": 0.18
       },
       "MomentumScore": null,
       "MomentumReason": "sector_2w_neg",
@@ -11891,40 +11891,40 @@
         "STABILITY": -10
       },
       "1M": {
-        "RETURN": -19.79,
-        "TREND": -96.41,
-        "ACCELERATION": -81.04,
-        "QUALITY": 0.9033,
-        "SHARPE": -6.79,
-        "SORTINO": -8.48,
+        "RETURN": -20.21,
+        "TREND": -96.47,
+        "ACCELERATION": -75.05,
+        "QUALITY": 0.9064,
+        "SHARPE": -7.02,
+        "SORTINO": -8.69,
         "STABILITY": -10
       },
       "3M": {
-        "RETURN": -9.32,
-        "TREND": -19.15,
-        "ACCELERATION": -296.2,
-        "QUALITY": 0.054,
-        "SHARPE": -1.05,
-        "SORTINO": -1.41,
-        "STABILITY": -1.52
+        "RETURN": -9.79,
+        "TREND": -21.32,
+        "ACCELERATION": -301.78,
+        "QUALITY": 0.0666,
+        "SHARPE": -1.12,
+        "SORTINO": -1.5,
+        "STABILITY": -1.62
       },
       "6M": {
-        "RETURN": 18.38,
-        "TREND": 42.04,
-        "ACCELERATION": -74.17,
-        "QUALITY": 0.3422,
-        "SHARPE": 1.07,
-        "SORTINO": 1.61,
-        "STABILITY": 1.84
+        "RETURN": 17.76,
+        "TREND": 40.82,
+        "ACCELERATION": -76.89,
+        "QUALITY": 0.3264,
+        "SHARPE": 1.04,
+        "SORTINO": 1.57,
+        "STABILITY": 1.79
       },
       "12M": {
-        "RETURN": 31.71,
-        "TREND": 87.16,
-        "ACCELERATION": 12.8,
-        "QUALITY": 0.8313,
-        "SHARPE": 0.98,
-        "SORTINO": 1.53,
-        "STABILITY": 1.5
+        "RETURN": 31.03,
+        "TREND": 86.72,
+        "ACCELERATION": 11.94,
+        "QUALITY": 0.8285,
+        "SHARPE": 0.96,
+        "SORTINO": 1.5,
+        "STABILITY": 1.47
       },
       "MomentumScore": null,
       "MomentumReason": "ma_2w_le_1m",
@@ -15915,13 +15915,46 @@
     },
     "performance_4w": {
       "momentum_stocks": {
-        "hit_rate": 30.8,
-        "avg_return": -0.48,
-        "total_trades": 13,
-        "positive_trades": 4,
+        "hit_rate": 41.7,
+        "avg_return": 0.036,
+        "total_trades": 12,
+        "positive_trades": 5,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": 1.9145294512729922,
+            "hit_rate": 75.0,
+            "trades": 4,
+            "positive": 3,
+            "symbols": [
+              {
+                "symbol": "AAPL",
+                "positive": false,
+                "return": -0.74
+              },
+              {
+                "symbol": "BK",
+                "positive": true,
+                "return": 2.73
+              },
+              {
+                "symbol": "MET",
+                "positive": true,
+                "return": 3.58
+              },
+              {
+                "symbol": "PLD",
+                "positive": true,
+                "return": 2.08
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -15999,47 +16032,37 @@
                 "return": 5.05
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": -0.14839835088612086,
-            "hit_rate": 40.0,
-            "trades": 5,
-            "positive": 2,
-            "symbols": [
-              {
-                "symbol": "UNH",
-                "positive": false,
-                "return": -0.27
-              },
-              {
-                "symbol": "MMM",
-                "positive": false,
-                "return": -2.3
-              },
-              {
-                "symbol": "BAC",
-                "positive": true,
-                "return": 1.68
-              },
-              {
-                "symbol": "C",
-                "positive": false,
-                "return": -1.33
-              },
-              {
-                "symbol": "BK",
-                "positive": true,
-                "return": 1.47
-              }
-            ]
           }
         ],
         "weekly_results": [
+          {
+            "week": "2026-W22",
+            "symbol": "AAPL",
+            "score": 100.0,
+            "return": -0.7395951648124677,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "BK",
+            "score": 58.33,
+            "return": 2.7344827700095387,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "MET",
+            "score": 26.67,
+            "return": 3.579745224800579,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "PLD",
+            "score": 15.0,
+            "return": 2.0834849750943185,
+            "positive": true
+          },
           {
             "week": "2026-W24",
             "symbol": "MMM",
@@ -16095,52 +16118,70 @@
             "score": 13.33,
             "return": 5.0463185323356585,
             "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "UNH",
-            "score": 87.5,
-            "return": -0.274309762755931,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "MMM",
-            "score": 66.25,
-            "return": -2.295843199757064,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "BAC",
-            "score": 65.0,
-            "return": 1.6793650430933393,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "C",
-            "score": 16.25,
-            "return": -1.3253470581034432,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "BK",
-            "score": 15.0,
-            "return": 1.4741432230924945,
-            "positive": true
           }
         ]
       },
       "momentum_etfs": {
-        "hit_rate": 58.8,
-        "avg_return": 0.35,
-        "total_trades": 17,
+        "hit_rate": 52.6,
+        "avg_return": -0.044,
+        "total_trades": 19,
         "positive_trades": 10,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": -1.3268771071839602,
+            "hit_rate": 37.5,
+            "trades": 8,
+            "positive": 3,
+            "symbols": [
+              {
+                "symbol": "QQQ",
+                "positive": false,
+                "return": -4.34
+              },
+              {
+                "symbol": "LCTU",
+                "positive": false,
+                "return": -2.08
+              },
+              {
+                "symbol": "OEF",
+                "positive": false,
+                "return": -3.24
+              },
+              {
+                "symbol": "SPY",
+                "positive": false,
+                "return": -2.36
+              },
+              {
+                "symbol": "VTV",
+                "positive": true,
+                "return": 0.54
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.05
+              },
+              {
+                "symbol": "IVE",
+                "positive": false,
+                "return": -0.09
+              },
+              {
+                "symbol": "UUP",
+                "positive": true,
+                "return": 0.9
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -16233,52 +16274,65 @@
                 "return": 4.54
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": 0.25116733649563905,
-            "hit_rate": 50.0,
-            "trades": 6,
-            "positive": 3,
-            "symbols": [
-              {
-                "symbol": "IJJ",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "TLT",
-                "positive": false,
-                "return": -1.76
-              },
-              {
-                "symbol": "VTV",
-                "positive": true,
-                "return": 0.16
-              },
-              {
-                "symbol": "UUP",
-                "positive": false,
-                "return": -0.35
-              },
-              {
-                "symbol": "XLF",
-                "positive": true,
-                "return": 3.58
-              },
-              {
-                "symbol": "BIL",
-                "positive": true,
-                "return": 0.07
-              }
-            ]
           }
         ],
         "weekly_results": [
+          {
+            "week": "2026-W22",
+            "symbol": "QQQ",
+            "score": 100.0,
+            "return": -4.338980529125647,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "LCTU",
+            "score": 74.29,
+            "return": -2.077695987796091,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "OEF",
+            "score": 72.86,
+            "return": -3.2430805401853724,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "SPY",
+            "score": 58.57,
+            "return": -2.35781336405132,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "VTV",
+            "score": 51.43,
+            "return": 0.5358264105078225,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "BIL",
+            "score": 21.43,
+            "return": 0.05469258714103642,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "IVE",
+            "score": 20.0,
+            "return": -0.08821748970202492,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "UUP",
+            "score": 1.43,
+            "return": 0.9002520557399141,
+            "positive": true
+          },
           {
             "week": "2026-W24",
             "symbol": "IJS",
@@ -16355,59 +16409,92 @@
             "score": 0.0,
             "return": 4.539149417039412,
             "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "IJJ",
-            "score": 79.0,
-            "return": -0.19042355283028778,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "TLT",
-            "score": 77.0,
-            "return": -1.7561611771172991,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "VTV",
-            "score": 61.0,
-            "return": 0.15537007496491118,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "UUP",
-            "score": 55.0,
-            "return": -0.3516187749362909,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "XLF",
-            "score": 16.0,
-            "return": 3.5754155338306504,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "BIL",
-            "score": 12.0,
-            "return": 0.07442191506215057,
-            "positive": true
           }
         ]
       },
       "momentum": {
-        "hit_rate": 46.7,
-        "avg_return": 0.164,
-        "total_trades": 30,
-        "positive_trades": 14,
+        "hit_rate": 48.4,
+        "avg_return": 0.039,
+        "total_trades": 31,
+        "positive_trades": 15,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": -0.24640825436497607,
+            "hit_rate": 50.0,
+            "trades": 12,
+            "positive": 6,
+            "stock_symbols": [
+              {
+                "symbol": "AAPL",
+                "positive": false,
+                "return": -0.74
+              },
+              {
+                "symbol": "BK",
+                "positive": true,
+                "return": 2.73
+              },
+              {
+                "symbol": "MET",
+                "positive": true,
+                "return": 3.58
+              },
+              {
+                "symbol": "PLD",
+                "positive": true,
+                "return": 2.08
+              }
+            ],
+            "etf_symbols": [
+              {
+                "symbol": "QQQ",
+                "positive": false,
+                "return": -4.34
+              },
+              {
+                "symbol": "LCTU",
+                "positive": false,
+                "return": -2.08
+              },
+              {
+                "symbol": "OEF",
+                "positive": false,
+                "return": -3.24
+              },
+              {
+                "symbol": "SPY",
+                "positive": false,
+                "return": -2.36
+              },
+              {
+                "symbol": "VTV",
+                "positive": true,
+                "return": 0.54
+              },
+              {
+                "symbol": "BIL",
+                "positive": true,
+                "return": 0.05
+              },
+              {
+                "symbol": "IVE",
+                "positive": false,
+                "return": -0.09
+              },
+              {
+                "symbol": "UUP",
+                "positive": true,
+                "return": 0.9
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -16545,86 +16632,49 @@
                 "return": 4.54
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": 0.06954656950393,
-            "hit_rate": 45.5,
-            "trades": 11,
-            "positive": 5,
-            "stock_symbols": [
-              {
-                "symbol": "UNH",
-                "positive": false,
-                "return": -0.27
-              },
-              {
-                "symbol": "MMM",
-                "positive": false,
-                "return": -2.3
-              },
-              {
-                "symbol": "BAC",
-                "positive": true,
-                "return": 1.68
-              },
-              {
-                "symbol": "C",
-                "positive": false,
-                "return": -1.33
-              },
-              {
-                "symbol": "BK",
-                "positive": true,
-                "return": 1.47
-              }
-            ],
-            "etf_symbols": [
-              {
-                "symbol": "IJJ",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "TLT",
-                "positive": false,
-                "return": -1.76
-              },
-              {
-                "symbol": "VTV",
-                "positive": true,
-                "return": 0.16
-              },
-              {
-                "symbol": "UUP",
-                "positive": false,
-                "return": -0.35
-              },
-              {
-                "symbol": "XLF",
-                "positive": true,
-                "return": 3.58
-              },
-              {
-                "symbol": "BIL",
-                "positive": true,
-                "return": 0.07
-              }
-            ]
           }
         ],
         "stock_performance": {
-          "hit_rate": 30.8,
-          "avg_return": -0.48,
-          "total_trades": 13,
-          "positive_trades": 4,
+          "hit_rate": 41.7,
+          "avg_return": 0.036,
+          "total_trades": 12,
+          "positive_trades": 5,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
+            {
+              "week": "2026-W22",
+              "entry_date": "2026-06-01",
+              "exit_date": "2026-06-05",
+              "defense": false,
+              "defense_reason": null,
+              "return": 1.9145294512729922,
+              "hit_rate": 75.0,
+              "trades": 4,
+              "positive": 3,
+              "symbols": [
+                {
+                  "symbol": "AAPL",
+                  "positive": false,
+                  "return": -0.74
+                },
+                {
+                  "symbol": "BK",
+                  "positive": true,
+                  "return": 2.73
+                },
+                {
+                  "symbol": "MET",
+                  "positive": true,
+                  "return": 3.58
+                },
+                {
+                  "symbol": "PLD",
+                  "positive": true,
+                  "return": 2.08
+                }
+              ]
+            },
             {
               "week": "2026-W23",
               "entry_date": "2026-06-08",
@@ -16702,47 +16752,37 @@
                   "return": 5.05
                 }
               ]
-            },
-            {
-              "week": "2026-W26",
-              "entry_date": "2026-06-29",
-              "exit_date": "2026-07-02",
-              "defense": false,
-              "defense_reason": null,
-              "return": -0.14839835088612086,
-              "hit_rate": 40.0,
-              "trades": 5,
-              "positive": 2,
-              "symbols": [
-                {
-                  "symbol": "UNH",
-                  "positive": false,
-                  "return": -0.27
-                },
-                {
-                  "symbol": "MMM",
-                  "positive": false,
-                  "return": -2.3
-                },
-                {
-                  "symbol": "BAC",
-                  "positive": true,
-                  "return": 1.68
-                },
-                {
-                  "symbol": "C",
-                  "positive": false,
-                  "return": -1.33
-                },
-                {
-                  "symbol": "BK",
-                  "positive": true,
-                  "return": 1.47
-                }
-              ]
             }
           ],
           "weekly_results": [
+            {
+              "week": "2026-W22",
+              "symbol": "AAPL",
+              "score": 100.0,
+              "return": -0.7395951648124677,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "BK",
+              "score": 58.33,
+              "return": 2.7344827700095387,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "MET",
+              "score": 26.67,
+              "return": 3.579745224800579,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "PLD",
+              "score": 15.0,
+              "return": 2.0834849750943185,
+              "positive": true
+            },
             {
               "week": "2026-W24",
               "symbol": "MMM",
@@ -16798,52 +16838,70 @@
               "score": 13.33,
               "return": 5.0463185323356585,
               "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "UNH",
-              "score": 87.5,
-              "return": -0.274309762755931,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "MMM",
-              "score": 66.25,
-              "return": -2.295843199757064,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "BAC",
-              "score": 65.0,
-              "return": 1.6793650430933393,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "C",
-              "score": 16.25,
-              "return": -1.3253470581034432,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "BK",
-              "score": 15.0,
-              "return": 1.4741432230924945,
-              "positive": true
             }
           ]
         },
         "etf_performance": {
-          "hit_rate": 58.8,
-          "avg_return": 0.35,
-          "total_trades": 17,
+          "hit_rate": 52.6,
+          "avg_return": -0.044,
+          "total_trades": 19,
           "positive_trades": 10,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
+            {
+              "week": "2026-W22",
+              "entry_date": "2026-06-01",
+              "exit_date": "2026-06-05",
+              "defense": false,
+              "defense_reason": null,
+              "return": -1.3268771071839602,
+              "hit_rate": 37.5,
+              "trades": 8,
+              "positive": 3,
+              "symbols": [
+                {
+                  "symbol": "QQQ",
+                  "positive": false,
+                  "return": -4.34
+                },
+                {
+                  "symbol": "LCTU",
+                  "positive": false,
+                  "return": -2.08
+                },
+                {
+                  "symbol": "OEF",
+                  "positive": false,
+                  "return": -3.24
+                },
+                {
+                  "symbol": "SPY",
+                  "positive": false,
+                  "return": -2.36
+                },
+                {
+                  "symbol": "VTV",
+                  "positive": true,
+                  "return": 0.54
+                },
+                {
+                  "symbol": "BIL",
+                  "positive": true,
+                  "return": 0.05
+                },
+                {
+                  "symbol": "IVE",
+                  "positive": false,
+                  "return": -0.09
+                },
+                {
+                  "symbol": "UUP",
+                  "positive": true,
+                  "return": 0.9
+                }
+              ]
+            },
             {
               "week": "2026-W23",
               "entry_date": "2026-06-08",
@@ -16936,52 +16994,65 @@
                   "return": 4.54
                 }
               ]
-            },
-            {
-              "week": "2026-W26",
-              "entry_date": "2026-06-29",
-              "exit_date": "2026-07-02",
-              "defense": false,
-              "defense_reason": null,
-              "return": 0.25116733649563905,
-              "hit_rate": 50.0,
-              "trades": 6,
-              "positive": 3,
-              "symbols": [
-                {
-                  "symbol": "IJJ",
-                  "positive": false,
-                  "return": -0.19
-                },
-                {
-                  "symbol": "TLT",
-                  "positive": false,
-                  "return": -1.76
-                },
-                {
-                  "symbol": "VTV",
-                  "positive": true,
-                  "return": 0.16
-                },
-                {
-                  "symbol": "UUP",
-                  "positive": false,
-                  "return": -0.35
-                },
-                {
-                  "symbol": "XLF",
-                  "positive": true,
-                  "return": 3.58
-                },
-                {
-                  "symbol": "BIL",
-                  "positive": true,
-                  "return": 0.07
-                }
-              ]
             }
           ],
           "weekly_results": [
+            {
+              "week": "2026-W22",
+              "symbol": "QQQ",
+              "score": 100.0,
+              "return": -4.338980529125647,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "LCTU",
+              "score": 74.29,
+              "return": -2.077695987796091,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "OEF",
+              "score": 72.86,
+              "return": -3.2430805401853724,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "SPY",
+              "score": 58.57,
+              "return": -2.35781336405132,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "VTV",
+              "score": 51.43,
+              "return": 0.5358264105078225,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "BIL",
+              "score": 21.43,
+              "return": 0.05469258714103642,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "IVE",
+              "score": 20.0,
+              "return": -0.08821748970202492,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "UUP",
+              "score": 1.43,
+              "return": 0.9002520557399141,
+              "positive": true
+            },
             {
               "week": "2026-W24",
               "symbol": "IJS",
@@ -17058,60 +17129,81 @@
               "score": 0.0,
               "return": 4.539149417039412,
               "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "IJJ",
-              "score": 79.0,
-              "return": -0.19042355283028778,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "TLT",
-              "score": 77.0,
-              "return": -1.7561611771172991,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "VTV",
-              "score": 61.0,
-              "return": 0.15537007496491118,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "UUP",
-              "score": 55.0,
-              "return": -0.3516187749362909,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "XLF",
-              "score": 16.0,
-              "return": 3.5754155338306504,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "BIL",
-              "score": 12.0,
-              "return": 0.07442191506215057,
-              "positive": true
             }
           ]
         }
       },
       "mr_stocks": {
-        "hit_rate": 40.0,
-        "avg_return": 0.193,
+        "hit_rate": 55.0,
+        "avg_return": 0.199,
         "total_trades": 20,
-        "positive_trades": 8,
+        "positive_trades": 11,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": 1.7406623735697615,
+            "hit_rate": 80.0,
+            "trades": 10,
+            "positive": 8,
+            "symbols": [
+              {
+                "symbol": "MDT",
+                "positive": true,
+                "return": 10.36
+              },
+              {
+                "symbol": "CME",
+                "positive": false,
+                "return": -5.42
+              },
+              {
+                "symbol": "COST",
+                "positive": true,
+                "return": 1.77
+              },
+              {
+                "symbol": "WMB",
+                "positive": true,
+                "return": 0.93
+              },
+              {
+                "symbol": "PEP",
+                "positive": true,
+                "return": 0.58
+              },
+              {
+                "symbol": "SBUX",
+                "positive": false,
+                "return": -3.01
+              },
+              {
+                "symbol": "PM",
+                "positive": true,
+                "return": 1.51
+              },
+              {
+                "symbol": "MO",
+                "positive": true,
+                "return": 3.62
+              },
+              {
+                "symbol": "AIG",
+                "positive": true,
+                "return": 2.79
+              },
+              {
+                "symbol": "JNJ",
+                "positive": true,
+                "return": 4.29
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -17199,72 +17291,79 @@
                 "return": -3.69
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": 1.7180678853013887,
-            "hit_rate": 50.0,
-            "trades": 10,
-            "positive": 5,
-            "symbols": [
-              {
-                "symbol": "CME",
-                "positive": true,
-                "return": 5.59
-              },
-              {
-                "symbol": "BLK",
-                "positive": true,
-                "return": 2.74
-              },
-              {
-                "symbol": "GOOGL",
-                "positive": true,
-                "return": 5.29
-              },
-              {
-                "symbol": "ROST",
-                "positive": true,
-                "return": 1.14
-              },
-              {
-                "symbol": "CSCO",
-                "positive": false,
-                "return": -1.99
-              },
-              {
-                "symbol": "NKE",
-                "positive": true,
-                "return": 7.17
-              },
-              {
-                "symbol": "GS",
-                "positive": false,
-                "return": -0.8
-              },
-              {
-                "symbol": "MS",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "TJX",
-                "positive": false,
-                "return": -0.29
-              },
-              {
-                "symbol": "MAR",
-                "positive": false,
-                "return": -1.48
-              }
-            ]
           }
         ],
         "weekly_results": [
+          {
+            "week": "2026-W22",
+            "symbol": "MDT",
+            "score": 85.42,
+            "return": 10.364861632515886,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "CME",
+            "score": 85.0,
+            "return": -5.41980369027627,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "COST",
+            "score": 76.39,
+            "return": 1.7664916353075988,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "WMB",
+            "score": 69.72,
+            "return": 0.9256578981717167,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "PEP",
+            "score": 65.42,
+            "return": 0.5772931661925718,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "SBUX",
+            "score": 61.25,
+            "return": -3.0127217144759855,
+            "positive": false
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "PM",
+            "score": 56.94,
+            "return": 1.5087626272681787,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "MO",
+            "score": 53.61,
+            "return": 3.617054860364699,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "AIG",
+            "score": 50.83,
+            "return": 2.791389571943248,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "JNJ",
+            "score": 42.92,
+            "return": 4.2876377486859685,
+            "positive": true
+          },
           {
             "week": "2026-W25",
             "symbol": "CME",
@@ -17334,87 +17433,55 @@
             "score": 55.36,
             "return": -3.6875433114492373,
             "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "CME",
-            "score": 78.5,
-            "return": 5.592001771645672,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "BLK",
-            "score": 68.25,
-            "return": 2.736244765826612,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "GOOGL",
-            "score": 64.5,
-            "return": 5.289184038867667,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "ROST",
-            "score": 62.5,
-            "return": 1.1420663228727035,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "CSCO",
-            "score": 57.5,
-            "return": -1.9916514599660151,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "NKE",
-            "score": 57.25,
-            "return": 7.1706388106600905,
-            "positive": true
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "GS",
-            "score": 53.5,
-            "return": -0.7957657840164556,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "MS",
-            "score": 33.5,
-            "return": -0.18663236684369755,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "TJX",
-            "score": 31.25,
-            "return": -0.2908746606569146,
-            "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "MAR",
-            "score": 21.75,
-            "return": -1.4845325853757751,
-            "positive": false
           }
         ]
       },
       "mr_etfs": {
-        "hit_rate": 44.4,
-        "avg_return": 0.407,
-        "total_trades": 9,
-        "positive_trades": 4,
+        "hit_rate": 53.8,
+        "avg_return": 0.029,
+        "total_trades": 13,
+        "positive_trades": 7,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": 1.2605202709168628,
+            "hit_rate": 80.0,
+            "trades": 5,
+            "positive": 4,
+            "symbols": [
+              {
+                "symbol": "VXX",
+                "positive": true,
+                "return": 3.28
+              },
+              {
+                "symbol": "VXZ",
+                "positive": true,
+                "return": 1.5
+              },
+              {
+                "symbol": "XLE",
+                "positive": true,
+                "return": 1.12
+              },
+              {
+                "symbol": "XLP",
+                "positive": true,
+                "return": 1.13
+              },
+              {
+                "symbol": "MOO",
+                "positive": false,
+                "return": -0.72
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -17492,27 +17559,44 @@
                 "return": -1.8
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": 2.77624599197277,
-            "hit_rate": 100.0,
-            "trades": 1,
-            "positive": 1,
-            "symbols": [
-              {
-                "symbol": "BOTZ",
-                "positive": true,
-                "return": 2.78
-              }
-            ]
           }
         ],
         "weekly_results": [
+          {
+            "week": "2026-W22",
+            "symbol": "VXX",
+            "score": 97.5,
+            "return": 3.2773422452329948,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "VXZ",
+            "score": 56.88,
+            "return": 1.495884898855948,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "XLE",
+            "score": 56.25,
+            "return": 1.1222118338817255,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "XLP",
+            "score": 23.12,
+            "return": 1.1271316932831565,
+            "positive": true
+          },
+          {
+            "week": "2026-W22",
+            "symbol": "MOO",
+            "score": 16.25,
+            "return": -0.7199693166695109,
+            "positive": false
+          },
           {
             "week": "2026-W24",
             "symbol": "CANE",
@@ -17568,24 +17652,107 @@
             "score": 12.5,
             "return": -1.7988436483923453,
             "positive": false
-          },
-          {
-            "week": "2026-W26",
-            "symbol": "BOTZ",
-            "score": 50.0,
-            "return": 2.77624599197277,
-            "positive": true
           }
         ]
       },
       "mean_reversion": {
-        "hit_rate": 41.4,
-        "avg_return": 0.274,
-        "total_trades": 29,
-        "positive_trades": 12,
+        "hit_rate": 54.5,
+        "avg_return": 0.355,
+        "total_trades": 33,
+        "positive_trades": 18,
         "defense_weeks": 1,
         "active_weeks": 3,
         "weekly_summary": [
+          {
+            "week": "2026-W22",
+            "entry_date": "2026-06-01",
+            "exit_date": "2026-06-05",
+            "defense": false,
+            "defense_reason": null,
+            "return": 1.5806150060187953,
+            "hit_rate": 80.0,
+            "trades": 15,
+            "positive": 12,
+            "stock_symbols": [
+              {
+                "symbol": "MDT",
+                "positive": true,
+                "return": 10.36
+              },
+              {
+                "symbol": "CME",
+                "positive": false,
+                "return": -5.42
+              },
+              {
+                "symbol": "COST",
+                "positive": true,
+                "return": 1.77
+              },
+              {
+                "symbol": "WMB",
+                "positive": true,
+                "return": 0.93
+              },
+              {
+                "symbol": "PEP",
+                "positive": true,
+                "return": 0.58
+              },
+              {
+                "symbol": "SBUX",
+                "positive": false,
+                "return": -3.01
+              },
+              {
+                "symbol": "PM",
+                "positive": true,
+                "return": 1.51
+              },
+              {
+                "symbol": "MO",
+                "positive": true,
+                "return": 3.62
+              },
+              {
+                "symbol": "AIG",
+                "positive": true,
+                "return": 2.79
+              },
+              {
+                "symbol": "JNJ",
+                "positive": true,
+                "return": 4.29
+              }
+            ],
+            "etf_symbols": [
+              {
+                "symbol": "VXX",
+                "positive": true,
+                "return": 3.28
+              },
+              {
+                "symbol": "VXZ",
+                "positive": true,
+                "return": 1.5
+              },
+              {
+                "symbol": "XLE",
+                "positive": true,
+                "return": 1.12
+              },
+              {
+                "symbol": "XLP",
+                "positive": true,
+                "return": 1.13
+              },
+              {
+                "symbol": "MOO",
+                "positive": false,
+                "return": -0.72
+              }
+            ]
+          },
           {
             "week": "2026-W23",
             "entry_date": "2026-06-08",
@@ -17717,86 +17884,79 @@
                 "return": -1.8
               }
             ]
-          },
-          {
-            "week": "2026-W26",
-            "entry_date": "2026-06-29",
-            "exit_date": "2026-07-02",
-            "defense": false,
-            "defense_reason": null,
-            "return": 1.814265894998787,
-            "hit_rate": 54.5,
-            "trades": 11,
-            "positive": 6,
-            "stock_symbols": [
-              {
-                "symbol": "CME",
-                "positive": true,
-                "return": 5.59
-              },
-              {
-                "symbol": "BLK",
-                "positive": true,
-                "return": 2.74
-              },
-              {
-                "symbol": "GOOGL",
-                "positive": true,
-                "return": 5.29
-              },
-              {
-                "symbol": "ROST",
-                "positive": true,
-                "return": 1.14
-              },
-              {
-                "symbol": "CSCO",
-                "positive": false,
-                "return": -1.99
-              },
-              {
-                "symbol": "NKE",
-                "positive": true,
-                "return": 7.17
-              },
-              {
-                "symbol": "GS",
-                "positive": false,
-                "return": -0.8
-              },
-              {
-                "symbol": "MS",
-                "positive": false,
-                "return": -0.19
-              },
-              {
-                "symbol": "TJX",
-                "positive": false,
-                "return": -0.29
-              },
-              {
-                "symbol": "MAR",
-                "positive": false,
-                "return": -1.48
-              }
-            ],
-            "etf_symbols": [
-              {
-                "symbol": "BOTZ",
-                "positive": true,
-                "return": 2.78
-              }
-            ]
           }
         ],
         "stock_performance": {
-          "hit_rate": 40.0,
-          "avg_return": 0.193,
+          "hit_rate": 55.0,
+          "avg_return": 0.199,
           "total_trades": 20,
-          "positive_trades": 8,
+          "positive_trades": 11,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
+            {
+              "week": "2026-W22",
+              "entry_date": "2026-06-01",
+              "exit_date": "2026-06-05",
+              "defense": false,
+              "defense_reason": null,
+              "return": 1.7406623735697615,
+              "hit_rate": 80.0,
+              "trades": 10,
+              "positive": 8,
+              "symbols": [
+                {
+                  "symbol": "MDT",
+                  "positive": true,
+                  "return": 10.36
+                },
+                {
+                  "symbol": "CME",
+                  "positive": false,
+                  "return": -5.42
+                },
+                {
+                  "symbol": "COST",
+                  "positive": true,
+                  "return": 1.77
+                },
+                {
+                  "symbol": "WMB",
+                  "positive": true,
+                  "return": 0.93
+                },
+                {
+                  "symbol": "PEP",
+                  "positive": true,
+                  "return": 0.58
+                },
+                {
+                  "symbol": "SBUX",
+                  "positive": false,
+                  "return": -3.01
+                },
+                {
+                  "symbol": "PM",
+                  "positive": true,
+                  "return": 1.51
+                },
+                {
+                  "symbol": "MO",
+                  "positive": true,
+                  "return": 3.62
+                },
+                {
+                  "symbol": "AIG",
+                  "positive": true,
+                  "return": 2.79
+                },
+                {
+                  "symbol": "JNJ",
+                  "positive": true,
+                  "return": 4.29
+                }
+              ]
+            },
             {
               "week": "2026-W23",
               "entry_date": "2026-06-08",
@@ -17884,72 +18044,79 @@
                   "return": -3.69
                 }
               ]
-            },
-            {
-              "week": "2026-W26",
-              "entry_date": "2026-06-29",
-              "exit_date": "2026-07-02",
-              "defense": false,
-              "defense_reason": null,
-              "return": 1.7180678853013887,
-              "hit_rate": 50.0,
-              "trades": 10,
-              "positive": 5,
-              "symbols": [
-                {
-                  "symbol": "CME",
-                  "positive": true,
-                  "return": 5.59
-                },
-                {
-                  "symbol": "BLK",
-                  "positive": true,
-                  "return": 2.74
-                },
-                {
-                  "symbol": "GOOGL",
-                  "positive": true,
-                  "return": 5.29
-                },
-                {
-                  "symbol": "ROST",
-                  "positive": true,
-                  "return": 1.14
-                },
-                {
-                  "symbol": "CSCO",
-                  "positive": false,
-                  "return": -1.99
-                },
-                {
-                  "symbol": "NKE",
-                  "positive": true,
-                  "return": 7.17
-                },
-                {
-                  "symbol": "GS",
-                  "positive": false,
-                  "return": -0.8
-                },
-                {
-                  "symbol": "MS",
-                  "positive": false,
-                  "return": -0.19
-                },
-                {
-                  "symbol": "TJX",
-                  "positive": false,
-                  "return": -0.29
-                },
-                {
-                  "symbol": "MAR",
-                  "positive": false,
-                  "return": -1.48
-                }
-              ]
             }
           ],
           "weekly_results": [
+            {
+              "week": "2026-W22",
+              "symbol": "MDT",
+              "score": 85.42,
+              "return": 10.364861632515886,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "CME",
+              "score": 85.0,
+              "return": -5.41980369027627,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "COST",
+              "score": 76.39,
+              "return": 1.7664916353075988,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "WMB",
+              "score": 69.72,
+              "return": 0.9256578981717167,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "PEP",
+              "score": 65.42,
+              "return": 0.5772931661925718,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "SBUX",
+              "score": 61.25,
+              "return": -3.0127217144759855,
+              "positive": false
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "PM",
+              "score": 56.94,
+              "return": 1.5087626272681787,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "MO",
+              "score": 53.61,
+              "return": 3.617054860364699,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "AIG",
+              "score": 50.83,
+              "return": 2.791389571943248,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "JNJ",
+              "score": 42.92,
+              "return": 4.2876377486859685,
+              "positive": true
+            },
             {
               "week": "2026-W25",
               "symbol": "CME",
@@ -18019,87 +18186,55 @@
               "score": 55.36,
               "return": -3.6875433114492373,
               "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "CME",
-              "score": 78.5,
-              "return": 5.592001771645672,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "BLK",
-              "score": 68.25,
-              "return": 2.736244765826612,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "GOOGL",
-              "score": 64.5,
-              "return": 5.289184038867667,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "ROST",
-              "score": 62.5,
-              "return": 1.1420663228727035,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "CSCO",
-              "score": 57.5,
-              "return": -1.9916514599660151,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "NKE",
-              "score": 57.25,
-              "return": 7.1706388106600905,
-              "positive": true
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "GS",
-              "score": 53.5,
-              "return": -0.7957657840164556,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "MS",
-              "score": 33.5,
-              "return": -0.18663236684369755,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "TJX",
-              "score": 31.25,
-              "return": -0.2908746606569146,
-              "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "MAR",
-              "score": 21.75,
-              "return": -1.4845325853757751,
-              "positive": false
             }
           ]
         },
         "etf_performance": {
-          "hit_rate": 44.4,
-          "avg_return": 0.407,
-          "total_trades": 9,
-          "positive_trades": 4,
+          "hit_rate": 53.8,
+          "avg_return": 0.029,
+          "total_trades": 13,
+          "positive_trades": 7,
           "defense_weeks": 1,
           "active_weeks": 3,
           "weekly_summary": [
+            {
+              "week": "2026-W22",
+              "entry_date": "2026-06-01",
+              "exit_date": "2026-06-05",
+              "defense": false,
+              "defense_reason": null,
+              "return": 1.2605202709168628,
+              "hit_rate": 80.0,
+              "trades": 5,
+              "positive": 4,
+              "symbols": [
+                {
+                  "symbol": "VXX",
+                  "positive": true,
+                  "return": 3.28
+                },
+                {
+                  "symbol": "VXZ",
+                  "positive": true,
+                  "return": 1.5
+                },
+                {
+                  "symbol": "XLE",
+                  "positive": true,
+                  "return": 1.12
+                },
+                {
+                  "symbol": "XLP",
+                  "positive": true,
+                  "return": 1.13
+                },
+                {
+                  "symbol": "MOO",
+                  "positive": false,
+                  "return": -0.72
+                }
+              ]
+            },
             {
               "week": "2026-W23",
               "entry_date": "2026-06-08",
@@ -18177,27 +18312,44 @@
                   "return": -1.8
                 }
               ]
-            },
-            {
-              "week": "2026-W26",
-              "entry_date": "2026-06-29",
-              "exit_date": "2026-07-02",
-              "defense": false,
-              "defense_reason": null,
-              "return": 2.77624599197277,
-              "hit_rate": 100.0,
-              "trades": 1,
-              "positive": 1,
-              "symbols": [
-                {
-                  "symbol": "BOTZ",
-                  "positive": true,
-                  "return": 2.78
-                }
-              ]
             }
           ],
           "weekly_results": [
+            {
+              "week": "2026-W22",
+              "symbol": "VXX",
+              "score": 97.5,
+              "return": 3.2773422452329948,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "VXZ",
+              "score": 56.88,
+              "return": 1.495884898855948,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "XLE",
+              "score": 56.25,
+              "return": 1.1222118338817255,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "XLP",
+              "score": 23.12,
+              "return": 1.1271316932831565,
+              "positive": true
+            },
+            {
+              "week": "2026-W22",
+              "symbol": "MOO",
+              "score": 16.25,
+              "return": -0.7199693166695109,
+              "positive": false
+            },
             {
               "week": "2026-W24",
               "symbol": "CANE",
@@ -18253,13 +18405,6 @@
               "score": 12.5,
               "return": -1.7988436483923453,
               "positive": false
-            },
-            {
-              "week": "2026-W26",
-              "symbol": "BOTZ",
-              "score": 50.0,
-              "return": 2.77624599197277,
-              "positive": true
             }
           ]
         }
