@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-06T13:03:49.551153",
-  "update_time": "2026-08-06 13:03",
+  "generated_at": "2026-08-06T15:03:08.973548",
+  "update_time": "2026-08-06 15:03",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
@@ -10,9 +10,9 @@
     "cycleScore": 0,
     "signals": {
       "BREADTH": {
-        "value": "5/11 POSITIVE",
+        "value": "6/11 POSITIVE",
         "score": 0,
-        "positive": 5,
+        "positive": 6,
         "total": 11
       },
       "VXX": {
@@ -47,7 +47,7 @@
       }
     },
     "breadth": {
-      "positive": 5,
+      "positive": 6,
       "total": 11
     },
     "note": "No clear signals"
@@ -13418,64 +13418,10 @@
       "Name": "AT&T Inc.",
       "Category": "Communication",
       "SubCategory": "Telecom",
-      "1W": {
-        "RETURN": -3.68,
-        "TREND": -66.25,
-        "ACCELERATION": 82.18,
-        "QUALITY": 0.3578,
-        "SHARPE": -6.9,
-        "SORTINO": -10,
-        "STABILITY": -10
-      },
-      "2W": {
-        "RETURN": 0.09,
-        "TREND": -29.06,
-        "ACCELERATION": -606.43,
-        "QUALITY": 0.0327,
-        "SHARPE": 0.23,
-        "SORTINO": 0.44,
-        "STABILITY": 1.32
-      },
-      "1M": {
-        "RETURN": 10.8,
-        "TREND": 525.04,
-        "ACCELERATION": -209.56,
-        "QUALITY": 0.742,
-        "SHARPE": 4.11,
-        "SORTINO": 7.61,
-        "STABILITY": 10
-      },
-      "3M": {
-        "RETURN": -9.77,
-        "TREND": -35.93,
-        "ACCELERATION": 207.31,
-        "QUALITY": 0.2683,
-        "SHARPE": -1.17,
-        "SORTINO": -1.76,
-        "STABILITY": -1.83
-      },
-      "6M": {
-        "RETURN": -11.99,
-        "TREND": -42.95,
-        "ACCELERATION": -18.71,
-        "QUALITY": 0.7465,
-        "SHARPE": -0.77,
-        "SORTINO": -1.15,
-        "STABILITY": -0.75
-      },
-      "12M": {
-        "RETURN": -12.76,
-        "TREND": -13.25,
-        "ACCELERATION": -15.13,
-        "QUALITY": 0.2482,
-        "SHARPE": -0.43,
-        "SORTINO": -0.64,
-        "STABILITY": -0.37
-      },
       "MomentumScore": null,
-      "MomentumReason": "ma_1m_le_3m",
+      "MomentumReason": "insufficient_data",
       "MeanRevScore": null,
-      "MeanRevReason": "not_oversold"
+      "MeanRevReason": "insufficient_data"
     },
     {
       "Symbol": "VZ",
