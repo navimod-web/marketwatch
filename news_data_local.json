@@ -1,25 +1,67 @@
 {
-  "generated_at": "2026-09-07T07:22:46.405363",
-  "update_time": "2026-09-07 07:22",
+  "generated_at": "2026-09-07T13:23:22.470350",
+  "update_time": "2026-09-07 13:23",
   "stock_count": 155,
-  "news_count": 659,
-  "bullish_count": 132,
-  "bearish_count": 88,
-  "neutral_count": 439,
+  "news_count": 657,
+  "bullish_count": 139,
+  "bearish_count": 68,
+  "neutral_count": 450,
   "has_sentiment": true,
   "filter": "last 5 days",
   "sector_stats": {
+    "Financials": {
+      "count": 85,
+      "bull": 13,
+      "bear": 10,
+      "neutral": 62
+    },
     "Technology": {
       "count": 120,
-      "bull": 20,
-      "bear": 23,
+      "bull": 25,
+      "bear": 18,
       "neutral": 77
+    },
+    "Real Estate": {
+      "count": 36,
+      "bull": 7,
+      "bear": 5,
+      "neutral": 24
     },
     "Consumer Disc.": {
       "count": 65,
-      "bull": 15,
-      "bear": 12,
-      "neutral": 38
+      "bull": 17,
+      "bear": 11,
+      "neutral": 37
+    },
+    "Consumer Stpl.": {
+      "count": 57,
+      "bull": 19,
+      "bear": 6,
+      "neutral": 32
+    },
+    "Healthcare": {
+      "count": 82,
+      "bull": 17,
+      "bear": 7,
+      "neutral": 58
+    },
+    "Communication": {
+      "count": 41,
+      "bull": 3,
+      "bear": 2,
+      "neutral": 36
+    },
+    "Energy": {
+      "count": 46,
+      "bull": 13,
+      "bear": 0,
+      "neutral": 33
+    },
+    "Materials": {
+      "count": 22,
+      "bull": 5,
+      "bear": 2,
+      "neutral": 15
     },
     "Utilities": {
       "count": 34,
@@ -27,56 +69,476 @@
       "bear": 1,
       "neutral": 28
     },
-    "Communication": {
-      "count": 41,
-      "bull": 5,
-      "bear": 2,
-      "neutral": 34
-    },
     "Industrials": {
       "count": 69,
-      "bull": 17,
-      "bear": 9,
-      "neutral": 43
-    },
-    "Financials": {
-      "count": 86,
-      "bull": 11,
-      "bear": 12,
-      "neutral": 63
-    },
-    "Consumer Stpl.": {
-      "count": 57,
-      "bull": 19,
-      "bear": 10,
-      "neutral": 28
-    },
-    "Healthcare": {
-      "count": 83,
-      "bull": 18,
-      "bear": 12,
-      "neutral": 53
-    },
-    "Real Estate": {
-      "count": 36,
-      "bull": 11,
-      "bear": 3,
-      "neutral": 22
-    },
-    "Energy": {
-      "count": 46,
-      "bull": 7,
-      "bear": 2,
-      "neutral": 37
-    },
-    "Materials": {
-      "count": 22,
-      "bull": 4,
-      "bear": 2,
-      "neutral": 16
+      "bull": 15,
+      "bear": 6,
+      "neutral": 48
     }
   },
   "news": [
+    {
+      "symbol": "GS",
+      "name": "Goldman Sachs",
+      "sector": "Financials",
+      "industry": "Investment Banks",
+      "title": "Best CD rates today, Monday, September 7, 2026: Lock in up to 4.35% APY",
+      "publisher": "Yahoo Personal Finance",
+      "link": "https://finance.yahoo.com/personal-finance/banking/article/best-cd-rates-today-monday-september-7-2026-lock-in-up-to-435-apy-100000332.html",
+      "publish_time": "2026-09-07T10:00:00Z",
+      "time_ago": "1m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QN21MWABvQhaUvYlUKVy_Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2024-07/c47b17e1-4f64-11ef-bcf5-d7c22925c744",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Nscale Pre-IPO $3.5B Targets NYSE as Compute Landlord Thesis Reaches Public Markets",
+      "publisher": "Forkast News",
+      "link": "https://finance.yahoo.com/technology/articles/nscale-pre-ipo-3-5b-095028651.html",
+      "publish_time": "2026-09-07T09:50:28Z",
+      "time_ago": "10m ago",
+      "thumbnail": null,
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "How Much Would You Need in Realty Income (O) Stock to Collect $500 a Month in Dividends?",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/real-estate/articles/much-realty-income-o-stock-094000379.html",
+      "publish_time": "2026-09-07T09:40:00Z",
+      "time_ago": "21m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Q1DODNlt31lawHKR8mt4vg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/6e150194aa2ec06d495d8c8a84e675d3.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "O",
+      "name": "Realty Income",
+      "sector": "Real Estate",
+      "industry": "REITs",
+      "title": "How Much Would You Need in Realty Income (O) Stock to Collect $500 a Month in Dividends?",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/real-estate/articles/much-realty-income-o-stock-094000379.html",
+      "publish_time": "2026-09-07T09:40:00Z",
+      "time_ago": "22m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Q1DODNlt31lawHKR8mt4vg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/6e150194aa2ec06d495d8c8a84e675d3.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Where Will Tesla Be in 5 Years?",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/where-tesla-5-years-093500501.html",
+      "publish_time": "2026-09-07T09:35:00Z",
+      "time_ago": "26m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UDEdSFh.ZsRsqHnSvGqb_Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/42b1a2f888a3718787735cbf7be71cc4.png",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc.",
+      "sector": "Consumer Disc.",
+      "industry": "Auto",
+      "title": "Where Will Tesla Be in 5 Years?",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/where-tesla-5-years-093500501.html",
+      "publish_time": "2026-09-07T09:35:00Z",
+      "time_ago": "26m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UDEdSFh.ZsRsqHnSvGqb_Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/42b1a2f888a3718787735cbf7be71cc4.png",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "MDLZ",
+      "name": "Mondelez Intl",
+      "sector": "Consumer Stpl.",
+      "industry": "Food",
+      "title": "Mondelēz shifts European biscuit packaging from plastic trays to paper",
+      "publisher": "Packaging Gateway",
+      "link": "https://finance.yahoo.com/technology/articles/mondel-z-shifts-european-biscuit-092823332.html",
+      "publish_time": "2026-09-07T09:28:23Z",
+      "time_ago": "33m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/pwh9AohcLRQuc1YKALy81A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/packaging_gateway_559/2407680a5d1fb87cb5c893974e9d3adc.png",
+      "type": "STORY",
+      "sentiment": 5
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "A Once-in-a-Decade Opportunity: 1 Magnificent S&P 500 Stock Down 41% to Buy Right Now",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/once-decade-opportunity-1-magnificent-092500840.html",
+      "publish_time": "2026-09-07T09:25:00Z",
+      "time_ago": "36m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vMQkdLKxWeCwRpAl8G8o7g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/0d67d4d487d1e6dbd9d65710760eb1d8.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NVS",
+      "name": "Novartis AG",
+      "sector": "Healthcare",
+      "industry": "Pharma",
+      "title": "European shares dip as higher oil prices weigh; Novartis slips",
+      "publisher": "Reuters",
+      "link": "https://finance.yahoo.com/economy/policy/articles/european-shares-dip-higher-oil-092137478.html",
+      "publish_time": "2026-09-07T09:21:37Z",
+      "time_ago": "40m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5giBu03wrLLcEzMGubLsbg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters.com/e71105a3f4a37ee5521c481c471b944e.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "VZ",
+      "name": "Verizon Comm.",
+      "sector": "Communication",
+      "industry": "Telecom",
+      "title": "There Are Only a Handful of S&P 500 Stocks That Yield Over 5%. Here's My Top Pick to Buy in September.",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/only-handful-p-500-stocks-091000843.html",
+      "publish_time": "2026-09-07T09:10:00Z",
+      "time_ago": "52m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zOx4.mC0fmU74h0EhEKaYQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ded0271375f2e72ae7a46cb46257fe6d.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "Billionaire Bill Ackman Sells Alphabet Stock and Buys a Mega-Cap Stock Down 42% From Its High",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-sells-alphabet-090801136.html",
+      "publish_time": "2026-09-07T09:08:01Z",
+      "time_ago": "53m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5bbzEdQ1LddfObv8MBqxSA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c645caa76cb67475f69b25e6c50fc029.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix Inc.",
+      "sector": "Communication",
+      "industry": "Streaming",
+      "title": "Billionaire Bill Ackman Sells Alphabet Stock and Buys a Mega-Cap Stock Down 42% From Its High",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-sells-alphabet-090801136.html",
+      "publish_time": "2026-09-07T09:08:01Z",
+      "time_ago": "54m ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5bbzEdQ1LddfObv8MBqxSA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c645caa76cb67475f69b25e6c50fc029.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "Amazon made fast delivery the norm. Now rivals want in",
+      "publisher": "Quartz",
+      "link": "https://finance.yahoo.com/small-business/articles/amazon-made-fast-delivery-norm-090000308.html",
+      "publish_time": "2026-09-07T09:00:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xCO5_kWc6D8yQDKqvvVmMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/quartz_855/2705d04b9265f6149fdde910cd01887e.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "WMT",
+      "name": "Walmart Inc.",
+      "sector": "Consumer Stpl.",
+      "industry": "Retail",
+      "title": "Amazon made fast delivery the norm. Now rivals want in",
+      "publisher": "Quartz",
+      "link": "https://finance.yahoo.com/small-business/articles/amazon-made-fast-delivery-norm-090000308.html",
+      "publish_time": "2026-09-07T09:00:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xCO5_kWc6D8yQDKqvvVmMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/quartz_855/2705d04b9265f6149fdde910cd01887e.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "ASML",
+      "name": "ASML Holding",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "European Chip Stocks Rise, Buoyed By Asian Peers",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2026-09-07T08:50:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8FSdswt4pir2EAQYTFEAzA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/7b2c285183be07ca3c4e8242b25a59a8.png",
+      "type": "STORY",
+      "sentiment": 6
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "Oracle Is Putting HPE Juniper Gear Into Its AI Data Centers. Is HPE Finally Getting Paid for the GPU Networking Bottleneck?",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-putting-hpe-juniper-gear-083309249.html",
+      "publish_time": "2026-09-07T08:33:09Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8.PdC56XPpbAYzAdgdezUw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/c8252dd063dc21b13f84caa1d4298a95.jpg",
+      "type": "STORY",
+      "sentiment": 20
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "SpaceX Stock Is Down 34% From Its High. History Suggests a $10,000 Investment Will Be Worth This Much by Mid-2027.",
+      "publisher": "Motley Fool",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-down-34-high-083300167.html",
+      "publish_time": "2026-09-07T08:33:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rTxDQSVWGuuAv_bKRI_bJA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/53812b0dc4a4250f54ca916823aa5c29.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "Hut 8 Corp. (HUT)’s AI Pivot Gets a Major Boost From the $35 Billion Anthropic Deal",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/technology/ai/articles/hut-8-corp-hut-ai-083054752.html",
+      "publish_time": "2026-09-07T08:30:54Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cikydOL.Pw53dHUaPFY8Xg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7603b96f6cb075f07e395db2680f78ac.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "industry": "Integrated",
+      "title": "TotalEnergies Cuts Papua LNG Cost to $14 Billion, Exxon to Become Operator",
+      "publisher": "Oilprice.com",
+      "link": "https://finance.yahoo.com/energy/articles/totalenergies-cuts-papua-lng-cost-083000825.html",
+      "publish_time": "2026-09-07T08:30:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ZNsAfS.xbBNqc8QMVxihXQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/oilprice.com/442d6b39acb94cfd297cc0456d789c47.jpg",
+      "type": "STORY",
+      "sentiment": 50
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "AMD and Intel Soared as Nvidia Lagged: Has the AI Trade Changed?",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/amd-intel-soared-nvidia-lagged-082539405.html",
+      "publish_time": "2026-09-07T08:25:39Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DoZ.O1frGCf3cX6.a8Xh_g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/14df65c4b85fef1d5d09fc3a24de4db8.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMD",
+      "name": "AMD Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "AMD and Intel Soared as Nvidia Lagged: Has the AI Trade Changed?",
+      "publisher": "Insider Monkey",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/amd-intel-soared-nvidia-lagged-082539405.html",
+      "publish_time": "2026-09-07T08:25:39Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DoZ.O1frGCf3cX6.a8Xh_g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/14df65c4b85fef1d5d09fc3a24de4db8.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "industry": "Integrated",
+      "title": "Santos Boosts Papua LNG Stake as ExxonMobil Takes Operatorship",
+      "publisher": "Oilprice.com",
+      "link": "https://finance.yahoo.com/energy/articles/santos-boosts-papua-lng-stake-082000701.html",
+      "publish_time": "2026-09-07T08:20:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Is_qhCwb2bZaWpHAsyQA7g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/oilprice.com/e159f8b5601743bad049e77f1feaa7ad.jpg",
+      "type": "STORY",
+      "sentiment": 45
+    },
+    {
+      "symbol": "FCX",
+      "name": "Freeport-McMoRan",
+      "sector": "Materials",
+      "industry": "Mining",
+      "title": "Copper Rises on Supply Concerns Despite Rate-Hike Bets",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2026-09-07T08:19:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8FSdswt4pir2EAQYTFEAzA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/7b2c285183be07ca3c4e8242b25a59a8.png",
+      "type": "STORY",
+      "sentiment": 40
+    },
+    {
+      "symbol": "NVS",
+      "name": "Novartis AG",
+      "sector": "Healthcare",
+      "industry": "Pharma",
+      "title": "Novartis Shares Fall After Heart Drug Misses Target in Late-Stage Trial",
+      "publisher": "The Wall Street Journal",
+      "link": "",
+      "publish_time": "2026-09-07T08:14:00Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BMmSxSccHAmyI2iWdP8dPQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/40854c20c93044f8095d6e5bd10bcedc.jpg",
+      "type": "STORY",
+      "sentiment": -80
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corp.",
+      "sector": "Technology",
+      "industry": "Software",
+      "title": "Microsoft and Schneider Electric bet big on the gulf",
+      "publisher": "CNN Business",
+      "link": "https://finance.yahoo.com/video/microsoft-schneider-electric-bet-big-080746813.html",
+      "publish_time": "2026-09-07T08:07:46Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Ak8zQaEtIw8tvljRpquidQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/cnn_business_videos_909/7ed1971cebb3717b2267bc6dbd94f3cf.png",
+      "type": "VIDEO",
+      "sentiment": 35
+    },
+    {
+      "symbol": "GS",
+      "name": "Goldman Sachs",
+      "sector": "Financials",
+      "industry": "Investment Banks",
+      "title": "Morgan Stanley, Goldman near top roles on Anthropic’s $2tn IPO – report",
+      "publisher": "Private Banker International",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-goldman-near-top-080558953.html",
+      "publish_time": "2026-09-07T08:05:58Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jPVpALpaq.wrizfCvc_F5g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/private_banker_international_938/c57471c69350e070bd7c3d9b4e6d83bd.jpg",
+      "type": "STORY",
+      "sentiment": 45
+    },
+    {
+      "symbol": "MS",
+      "name": "Morgan Stanley",
+      "sector": "Financials",
+      "industry": "Investment Banks",
+      "title": "Morgan Stanley, Goldman near top roles on Anthropic’s $2tn IPO – report",
+      "publisher": "Private Banker International",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-goldman-near-top-080558953.html",
+      "publish_time": "2026-09-07T08:05:58Z",
+      "time_ago": "1h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jPVpALpaq.wrizfCvc_F5g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/private_banker_international_938/c57471c69350e070bd7c3d9b4e6d83bd.jpg",
+      "type": "STORY",
+      "sentiment": 45
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Trump Again Touts Intel Stock Gains in AI Image, Claims He Made ‘Hundreds of Billions'",
+      "publisher": "BeInCrypto",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/trump-again-touts-intel-stock-070603662.html",
+      "publish_time": "2026-09-07T07:06:03Z",
+      "time_ago": "2h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/oPJnhhs8ImbFc_0KZ1yA2A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/cefaccc22418d1038c78a59b735843f3.png",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "BAC",
+      "name": "Bank of America",
+      "sector": "Financials",
+      "industry": "Banks",
+      "title": "Gen Z and Millennials Had a Big Summer of Sports Betting",
+      "publisher": "Barrons.com",
+      "link": "",
+      "publish_time": "2026-09-07T07:00:00Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/C1xqJWk5r06J66v6gcpQJQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/4e192c3db00961ee2de4dc41ff6dd940.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Technology",
+      "industry": "Internet",
+      "title": "Amazon, Meta Are Now Serious Competition to Uncle Sam: Big Tech's AI Debt Boom 'Driving' Treasury Yields Higher, Says Market Commentator",
+      "publisher": "Benzinga",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-meta-now-serious-competition-065654674.html",
+      "publish_time": "2026-09-07T06:56:54Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jEEsxArJRb1iPMuWhmYzUQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/8973596fdb470e420a998d63503a0a3b.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "Amazon, Meta Are Now Serious Competition to Uncle Sam: Big Tech's AI Debt Boom 'Driving' Treasury Yields Higher, Says Market Commentator",
+      "publisher": "Benzinga",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-meta-now-serious-competition-065654674.html",
+      "publish_time": "2026-09-07T06:56:54Z",
+      "time_ago": "3h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jEEsxArJRb1iPMuWhmYzUQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/8973596fdb470e420a998d63503a0a3b.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology",
+      "industry": "Hardware",
+      "title": "Huawei, Xiaomi to Debut New Top Phones on Eve of Foldable iPhone",
+      "publisher": "Bloomberg",
+      "link": "https://finance.yahoo.com/technology/articles/huawei-xiaomi-debut-top-phones-044245046.html",
+      "publish_time": "2026-09-07T04:42:45Z",
+      "time_ago": "5h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JlMz9KEi_aLsNz6FY3DKiQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/bloomberg_holding_pen_162/86cf5fa6fdfcf8c469ebaef0f1ca3511.jpg",
+      "type": "STORY",
+      "sentiment": -20
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corp.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "title": "Bloom Energy Up 52% Since Pelosi's Bottom Buy: What Does She Know?",
+      "publisher": "BeInCrypto",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bloom-energy-52-since-pelosis-041200307.html",
+      "publish_time": "2026-09-07T04:12:00Z",
+      "time_ago": "5h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jYpgKlXZdB8qjEa8hUXV4g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/35988ae8cbc31e6f09b1aa3265662fd1.jpg",
+      "type": "STORY",
+      "sentiment": 0
+    },
     {
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
@@ -86,10 +548,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/pentagon-doubled-down-anthropic-blacklist-034421098.html",
       "publish_time": "2026-09-07T03:44:21Z",
-      "time_ago": "16m ago",
+      "time_ago": "6h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iU6msOI_apE0MYPrYQOXbQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7f9ef0ed464138faad1e79d4686d9f99.jpg",
       "type": "STORY",
-      "sentiment": -15
+      "sentiment": 0
     },
     {
       "symbol": "AMZN",
@@ -100,24 +562,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/pentagon-doubled-down-anthropic-blacklist-034421098.html",
       "publish_time": "2026-09-07T03:44:21Z",
-      "time_ago": "17m ago",
+      "time_ago": "6h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iU6msOI_apE0MYPrYQOXbQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7f9ef0ed464138faad1e79d4686d9f99.jpg",
       "type": "STORY",
-      "sentiment": -15
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Nvidia’s $99 Billion Portfolio Is Turning Intel and CoreWeave Into an AI Stress Test",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-99-billion-portfolio-turning-034218904.html",
-      "publish_time": "2026-09-07T03:42:18Z",
-      "time_ago": "18m ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cGnZFMkjKjAP.WwrgEJB_g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/07c0b7e7d56cc1de166e2a28043049b3.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -20
     },
     {
       "symbol": "INTC",
@@ -128,24 +576,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-99-billion-portfolio-turning-034218904.html",
       "publish_time": "2026-09-07T03:42:18Z",
-      "time_ago": "18m ago",
+      "time_ago": "6h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cGnZFMkjKjAP.WwrgEJB_g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/07c0b7e7d56cc1de166e2a28043049b3.jpg",
       "type": "STORY",
-      "sentiment": -45
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "History Says What Nvidia's Last Big Acquisition Became. Hugging Face Will Cost Nearly Twice as Much.",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/technology/ai/articles/history-says-nvidias-last-big-033801868.html",
-      "publish_time": "2026-09-07T03:38:01Z",
-      "time_ago": "23m ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JaVBuCxGLBEABbe.7ye7YA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/af9ae741675255ef44cefe28756b1ace.png",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -20
     },
     {
       "symbol": "CRM",
@@ -156,10 +590,24 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/docusign-opening-ai-tools-every-033727068.html",
       "publish_time": "2026-09-07T03:37:27Z",
-      "time_ago": "23m ago",
+      "time_ago": "6h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qj9.yQtzcZeT8GMDRWSvJQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/d12046a151aba367b8bd278f9b603cb8.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -10
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com",
+      "sector": "Consumer Disc.",
+      "industry": "E-Commerce",
+      "title": "Five Dead After Amazon Cargo Plane Crashes at Miami Airport",
+      "publisher": "WSJ",
+      "link": "https://finance.yahoo.com/video/five-dead-amazon-cargo-plane-032900020.html",
+      "publish_time": "2026-09-07T03:29:00Z",
+      "time_ago": "6h ago",
+      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ITWPf1L9TMl2baJZNySrtw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wall_street_journal_733/b13107b57a51fe98c235f9d45dcc182d.jpg",
+      "type": "VIDEO",
+      "sentiment": -15
     },
     {
       "symbol": "AAPL",
@@ -170,36 +618,8 @@
       "publisher": "Investor's Business Daily",
       "link": "",
       "publish_time": "2026-09-07T03:06:47Z",
-      "time_ago": "54m ago",
+      "time_ago": "6h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8YDOZp3ggP14hOWPB6BDPw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/a0daf3d8e4f114a8bc2e54db7749c2c3.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Dow Jones Futures Fall With Iran, Apple, Inflation In Focus; Nvidia, Micron, Sandisk Flash Buy Signals",
-      "publisher": "Investor's Business Daily",
-      "link": "",
-      "publish_time": "2026-09-07T03:06:47Z",
-      "time_ago": "54m ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8YDOZp3ggP14hOWPB6BDPw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/a0daf3d8e4f114a8bc2e54db7749c2c3.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Prediction: Data Center Passes 70% of AMD's Revenue in 2027, Before the Helios Ramp Is Finished",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-data-center-passes-70-024601235.html",
-      "publish_time": "2026-09-07T02:46:01Z",
-      "time_ago": "1h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1I090Sr1L3GpEwvyxSYA.w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/488f76759fabe673ec997a9f0b95fd36.jpg",
       "type": "STORY",
       "sentiment": 0
     },
@@ -212,24 +632,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-data-center-passes-70-024601235.html",
       "publish_time": "2026-09-07T02:46:01Z",
-      "time_ago": "1h ago",
+      "time_ago": "7h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1I090Sr1L3GpEwvyxSYA.w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/488f76759fabe673ec997a9f0b95fd36.jpg",
       "type": "STORY",
-      "sentiment": 45
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Prime Air Boeing 767 Crashes While Landing at Miami Airport, Killing 5: Amazon Says 'Heartbroken' by Accident",
-      "publisher": "Benzinga",
-      "link": "https://www.yahoo.com/news/us/articles/prime-air-boeing-767-crashes-023931161.html",
-      "publish_time": "2026-09-07T02:39:31Z",
-      "time_ago": "1h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fIl6o3AxtU5w7nTtr0Lhqg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Benzinga/ceddcc60b56b11344158bc323fe9cba8.jpg",
-      "type": "STORY",
-      "sentiment": -30
+      "sentiment": 35
     },
     {
       "symbol": "CEG",
@@ -240,7 +646,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nuclear-stock-face-off-constellation-022200012.html",
       "publish_time": "2026-09-07T02:22:00Z",
-      "time_ago": "1h ago",
+      "time_ago": "7h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Px3YlSPY7ZxRkY3.eDQ2rA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2f8f943406f254897267cf3b30b9dfd4.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -254,7 +660,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nuclear-stock-face-off-constellation-022200012.html",
       "publish_time": "2026-09-07T02:22:00Z",
-      "time_ago": "1h ago",
+      "time_ago": "7h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Px3YlSPY7ZxRkY3.eDQ2rA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2f8f943406f254897267cf3b30b9dfd4.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -268,10 +674,10 @@
       "publisher": "Reuters",
       "link": "https://finance.yahoo.com/technology/articles/google-backed-indian-space-startup-013250812.html",
       "publish_time": "2026-09-07T01:32:50Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mm5DVxVrqCW4GeC4YcKsog--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters.com/c1089f9af8a7a57780a1f61f5528075f.jpg",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 0
     },
     {
       "symbol": "PLTR",
@@ -282,7 +688,7 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/technology/ai/articles/palantir-alex-karp-real-ai-013013347.html",
       "publish_time": "2026-09-07T01:30:13Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uubzrSlmISCH6v7La3OgEQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/1fc06e840dbac0fe94631faf029c1ebd.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -296,10 +702,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/cathie-woods-2-biggest-positions-012401868.html",
       "publish_time": "2026-09-07T01:24:01Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/kmj_8VO6c8ubIo.AoOwDPA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/f8989f9c99cb76ec08463dfca812b126.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "DIS",
@@ -310,10 +716,10 @@
       "publisher": "TheStreet",
       "link": "https://finance.yahoo.com/media-advertising/articles/disney-shuts-down-online-store-011700706.html",
       "publish_time": "2026-09-07T01:17:00Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/LezgyvYC448bo2f7udVuLw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/e5d04b8ce8ee61894438b50c56c033c8.jpg",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -35
     },
     {
       "symbol": "META",
@@ -324,10 +730,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/media-advertising/articles/meta-18-billion-teen-safety-011613870.html",
       "publish_time": "2026-09-07T01:16:13Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Hc_OhzxmnmICj_8pqwgndA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3bb8ee25366b0d99cae297f8032c1254.jpg",
       "type": "STORY",
-      "sentiment": -30
+      "sentiment": 0
     },
     {
       "symbol": "TSLA",
@@ -338,10 +744,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/tesla-tsla-rolls-safety-numbers-011246433.html",
       "publish_time": "2026-09-07T01:12:46Z",
-      "time_ago": "2h ago",
+      "time_ago": "8h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/RQo27kDrGNsK_uwWji4biA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/1277c6032fd09b727a10249a170024cf.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 15
     },
     {
       "symbol": "F",
@@ -352,10 +758,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/ford-f-third-recall-week-005311235.html",
       "publish_time": "2026-09-07T00:53:11Z",
-      "time_ago": "3h ago",
+      "time_ago": "9h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UoUv1iVVzoWYfxwRlV.UuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/23215d62ff4228ce4857c4762da6f13e.jpg",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -55
     },
     {
       "symbol": "MSFT",
@@ -366,7 +772,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/articles/microsoft-msft-outlook-openai-chatgpt-002934990.html",
       "publish_time": "2026-09-07T00:29:34Z",
-      "time_ago": "3h ago",
+      "time_ago": "9h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mt_e6td8u1xETtaT1khYHA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/ae3cb2a93ad8e5ddf6f94148e71f74b9.jpg",
       "type": "STORY",
       "sentiment": -20
@@ -380,7 +786,7 @@
       "publisher": "Bloomberg",
       "link": "https://finance.yahoo.com/video/japans-president-eyes-expansion-asia-000744890.html",
       "publish_time": "2026-09-07T00:07:44Z",
-      "time_ago": "3h ago",
+      "time_ago": "9h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mARI3asIJ0cZL5xhcFugQw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/bloomberg_markets_video_2/7348cbec8191cabe6876d769e0efbabd.jpg",
       "type": "VIDEO",
       "sentiment": 0
@@ -394,7 +800,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/general-motors-gm-commits-over-235735367.html",
       "publish_time": "2026-09-06T23:57:35Z",
-      "time_ago": "4h ago",
+      "time_ago": "10h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/J8B8J3pIjicTKNcI.sX3tA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/34b4b8d4409653974620fa77016700fa.jpg",
       "type": "STORY",
       "sentiment": 55
@@ -408,10 +814,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/united-airlines-ual-sitting-hundreds-234400437.html",
       "publish_time": "2026-09-06T23:44:00Z",
-      "time_ago": "4h ago",
+      "time_ago": "10h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/eu0uCBaIpIJkPiAxf.UWfA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/ef6c17d4ac1945460649787055a06701.jpg",
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": 0
     },
     {
       "symbol": "MA",
@@ -422,7 +828,7 @@
       "publisher": "Forkast News",
       "link": "https://finance.yahoo.com/markets/crypto/articles/fintech-integration-wave-neobanks-connecting-231920640.html",
       "publish_time": "2026-09-06T23:19:20Z",
-      "time_ago": "4h ago",
+      "time_ago": "10h ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -436,7 +842,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/solstice-sols-element-solutions-esi-230510085.html",
       "publish_time": "2026-09-06T23:05:10Z",
-      "time_ago": "4h ago",
+      "time_ago": "10h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iBEWSXnNBasMijiQ9QEG5w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/941de4217f3cf6e97cc00fa66eff3939.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -450,7 +856,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/economy/policy/articles/retailers-handling-tariff-refunds-very-225628436.html",
       "publish_time": "2026-09-06T22:56:28Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ypMoGy2wRqb3UzdkUQqUMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/572eff25f62bb4543c0e05d4966360af.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -464,7 +870,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/economy/policy/articles/retailers-handling-tariff-refunds-very-225628436.html",
       "publish_time": "2026-09-06T22:56:28Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ypMoGy2wRqb3UzdkUQqUMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/572eff25f62bb4543c0e05d4966360af.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -478,7 +884,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/economy/policy/articles/retailers-handling-tariff-refunds-very-225628436.html",
       "publish_time": "2026-09-06T22:56:28Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ypMoGy2wRqb3UzdkUQqUMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/572eff25f62bb4543c0e05d4966360af.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -492,10 +898,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/media-advertising/articles/apple-aapl-raises-apple-tv-224834727.html",
       "publish_time": "2026-09-06T22:48:34Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/guI8jCREpGNRSpogsdXpuQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/410ac07c4c90786d8592963501a2ed84.jpg",
       "type": "STORY",
-      "sentiment": 12
+      "sentiment": 20
     },
     {
       "symbol": "GS",
@@ -506,24 +912,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/goldman-sachs-gs-partner-ai-224114353.html",
       "publish_time": "2026-09-06T22:41:14Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uIEsoQA3jegzxMTiVJM.TQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/71989542b1f6aeabd94286d52a52bb12.jpg",
       "type": "STORY",
-      "sentiment": -3
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Amazon Cargo Plane Overshoots Runway in Miami, Killing Five People",
-      "publisher": "The Wall Street Journal",
-      "link": "",
-      "publish_time": "2026-09-06T22:37:00Z",
-      "time_ago": "5h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/LteuilqqKBMhi4UHAtCXGA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/c79c6e213593b59b4ee6b65ebd272623.jpg",
-      "type": "STORY",
-      "sentiment": -30
+      "sentiment": -5
     },
     {
       "symbol": "AAPL",
@@ -534,38 +926,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-first-ever-ahead-223147950.html",
       "publish_time": "2026-09-06T22:31:47Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/z4Iyq08VJzxIXtHXG9fIkg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/aa94e059977d3251b8b0630718e013fc.jpg",
       "type": "STORY",
-      "sentiment": -8
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Nvidia (NVDA)’s First-Ever Year-Ahead Forecast Puts It on a Path to Pass Apple and Alphabet",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-first-ever-ahead-223147950.html",
-      "publish_time": "2026-09-06T22:31:47Z",
-      "time_ago": "5h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/z4Iyq08VJzxIXtHXG9fIkg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/aa94e059977d3251b8b0630718e013fc.jpg",
-      "type": "STORY",
-      "sentiment": -10
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Nvidia (NVDA)’s First-Ever Year-Ahead Forecast Puts It on a Path to Pass Apple and Alphabet",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-first-ever-ahead-223147950.html",
-      "publish_time": "2026-09-06T22:31:47Z",
-      "time_ago": "5h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/z4Iyq08VJzxIXtHXG9fIkg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/aa94e059977d3251b8b0630718e013fc.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -20
     },
     {
       "symbol": "INTC",
@@ -576,10 +940,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/technology/ai/articles/did-nvidia-just-checkmate-amd-223001761.html",
       "publish_time": "2026-09-06T22:30:01Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dfy.mSISjHWurC7w2zMBOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/91ea6f8de39ea5c81849e9d28fb46a57.jpg",
       "type": "STORY",
-      "sentiment": -60
+      "sentiment": -40
     },
     {
       "symbol": "AMD",
@@ -590,10 +954,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/technology/ai/articles/did-nvidia-just-checkmate-amd-223001761.html",
       "publish_time": "2026-09-06T22:30:01Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dfy.mSISjHWurC7w2zMBOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/91ea6f8de39ea5c81849e9d28fb46a57.jpg",
       "type": "STORY",
-      "sentiment": -60
+      "sentiment": -40
     },
     {
       "symbol": "AAPL",
@@ -604,10 +968,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/articles/apple-aapl-sets-iphone-launch-221225248.html",
       "publish_time": "2026-09-06T22:12:25Z",
-      "time_ago": "5h ago",
+      "time_ago": "11h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/guI8jCREpGNRSpogsdXpuQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/410ac07c4c90786d8592963501a2ed84.jpg",
       "type": "STORY",
-      "sentiment": 30
+      "sentiment": 20
     },
     {
       "symbol": "LLY",
@@ -618,10 +982,10 @@
       "publisher": "Investing.com",
       "link": "https://finance.yahoo.com/healthcare/articles/eli-lilly-100b-incretin-opportunity-214922159.html",
       "publish_time": "2026-09-06T21:49:22Z",
-      "time_ago": "6h ago",
+      "time_ago": "12h ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 50
     },
     {
       "symbol": "TSLA",
@@ -632,38 +996,10 @@
       "publisher": "Investing.com",
       "link": "https://finance.yahoo.com/technology/ai/articles/goldman-sees-cybercab-giving-tesla-214658906.html",
       "publish_time": "2026-09-06T21:46:58Z",
-      "time_ago": "6h ago",
+      "time_ago": "12h ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": 40
-    },
-    {
-      "symbol": "AMZN",
-      "name": "Amazon.com",
-      "sector": "Consumer Disc.",
-      "industry": "E-Commerce",
-      "title": "Anthropic Has Committed More Than $100 Billion to AWS, and Its Prospectus Could Reveal More Details About This Contract",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/technology/ai/articles/anthropic-committed-more-100-billion-214301635.html",
-      "publish_time": "2026-09-06T21:43:01Z",
-      "time_ago": "6h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jiIspmePCY8PDZxPYIEjsQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/be884358a0e0b57354195b5735bee8c6.jpg",
-      "type": "STORY",
-      "sentiment": 65
-    },
-    {
-      "symbol": "AAPL",
-      "name": "Apple Inc.",
-      "sector": "Technology",
-      "industry": "Hardware",
-      "title": "Phil Schiller’s App Store exit reportedly driven by wariness over future plans",
-      "publisher": "TechCrunch",
-      "link": "https://finance.yahoo.com/technology/articles/phil-schiller-app-store-exit-214106418.html",
-      "publish_time": "2026-09-06T21:41:06Z",
-      "time_ago": "6h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/HIyyxAEkNv4wrq7zBJPOAw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/techcrunch_finance_785/e52bab79780f508df007e0b168d6914f.jpg",
-      "type": "STORY",
-      "sentiment": -30
+      "sentiment": 35
     },
     {
       "symbol": "META",
@@ -674,10 +1010,10 @@
       "publisher": "Benzinga",
       "link": "https://www.yahoo.com/news/world/articles/norway-skeptical-smart-spectacles-leader-213019935.html",
       "publish_time": "2026-09-06T21:30:19Z",
-      "time_ago": "6h ago",
+      "time_ago": "12h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/kmILPO.7YFz9qTMOTjFdWQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/a80ac245160b54e134414d6bfbeb97e4.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "SPG",
@@ -688,7 +1024,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-simon-property-210609770.html",
       "publish_time": "2026-09-06T21:06:09Z",
-      "time_ago": "6h ago",
+      "time_ago": "12h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cZIJooQeHk5HyuKXyVkPbQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1c30b95c7804cfedc0d7ad7ae7374952.jpg",
       "type": "STORY",
       "sentiment": 35
@@ -702,7 +1038,7 @@
       "publisher": "Oilprice.com",
       "link": "https://finance.yahoo.com/energy/articles/oil-majors-seek-bigger-bargaining-210000743.html",
       "publish_time": "2026-09-06T21:00:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1AorcJwsdSrvqNDUNziwuQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/oilprice.com/de685387fb39cd44d53d56b53919d15e.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -716,24 +1052,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/salesforce-crm-ai-numbers-just-205654689.html",
       "publish_time": "2026-09-06T20:56:54Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5ZIV8p8cfmTwjuwuEvN9RQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/057172d1bddd5e7eaee5fc08e2756794.jpg",
       "type": "STORY",
-      "sentiment": 50
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Musk Moves Up SpaceX (SPCX)’s Orbital Data Center Timeline, Again",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/technology/ai/articles/musk-moves-spacex-spcx-orbital-204103387.html",
-      "publish_time": "2026-09-06T20:41:03Z",
-      "time_ago": "7h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IjeohM04DlvclJfAIx6eDg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/4bec5467a132f11be1a3d0068a9fff58.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": 45
     },
     {
       "symbol": "WMB",
@@ -744,7 +1066,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/energy/articles/ultra-high-yield-energy-transfer-203500019.html",
       "publish_time": "2026-09-06T20:35:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/pFuLqHwCOq2kpPUMGrR8Lw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4ead0b39dd2e5b9db25dfe91c1e733b7.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -758,7 +1080,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/crypto/articles/blackrock-blk-quietly-turning-bitcoin-203223849.html",
       "publish_time": "2026-09-06T20:32:23Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_kmOloUYm5TgJSbXv0e9.w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/5c392e5eac3809bf6dec0dc40e35ff41.jpg",
       "type": "STORY",
       "sentiment": 35
@@ -772,10 +1094,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/meet-dirt-cheap-6-4-202500180.html",
       "publish_time": "2026-09-06T20:25:00Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/YpmNSMj6uOpxpq8vimLkHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/3697048f1ddf4144f93b673271a24925.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 5
     },
     {
       "symbol": "NFLX",
@@ -786,10 +1108,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/media-advertising/articles/netflix-raised-u-k-prices-202301507.html",
       "publish_time": "2026-09-06T20:23:01Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PL4zGvYejEchH4DFEqqoQw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/a4215d4b530c4bbd4a277dd8e58d8e9f.jpg",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 40
     },
     {
       "symbol": "MSFT",
@@ -800,21 +1122,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-prove-doesn-t-202105317.html",
       "publish_time": "2026-09-06T20:21:05Z",
-      "time_ago": "7h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/noSbuNZjvACAX4fQQ4D2ag--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/a079136e941b43293f25b66228839740.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "sector": "Technology",
-      "industry": "Internet",
-      "title": "Can Nvidia (NVDA) Prove it Doesn’t Live or Die by a Handful of Hyperscalers?",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-prove-doesn-t-202105317.html",
-      "publish_time": "2026-09-06T20:21:05Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/noSbuNZjvACAX4fQQ4D2ag--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/a079136e941b43293f25b66228839740.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -828,7 +1136,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-nvda-prove-doesn-t-202105317.html",
       "publish_time": "2026-09-06T20:21:05Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/noSbuNZjvACAX4fQQ4D2ag--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/a079136e941b43293f25b66228839740.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -842,7 +1150,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/media-advertising/articles/paramount-psky-ceo-cleared-68-200541330.html",
       "publish_time": "2026-09-06T20:05:41Z",
-      "time_ago": "7h ago",
+      "time_ago": "13h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2aYGH4TBSzhiAiJkbD1LEQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/ef0e05db694d7e1ed9165cff4a503e81.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -856,7 +1164,7 @@
       "publisher": "Investing.com",
       "link": "https://www.yahoo.com/news/weather-news/articles/boeing-767-cargo-plane-bearing-195644607.html",
       "publish_time": "2026-09-06T19:56:44Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -870,7 +1178,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/forget-spacex-spcx-stock-195300290.html",
       "publish_time": "2026-09-06T19:53:00Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Twkm6qXn4COJtgBGbBo6WA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/fff85f19b9beca2998a9ea9373597d2b.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -884,7 +1192,7 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/inheritance-went-backward-gave-mom-194151215.html",
       "publish_time": "2026-09-06T19:41:51Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a7HiU9Oc6LVN6FpvRq.2hg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/6590bd68a0417d881fdef2d3d414dfde.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -898,7 +1206,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/energy/articles/chevron-stayed-venezuela-20-years-193501941.html",
       "publish_time": "2026-09-06T19:35:01Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QBK5Rbq4QcCTjfVK1f2J7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/90ad7cd94e523b84bd5b80cd7d85471d.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -912,10 +1220,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/energy/articles/chevron-stayed-venezuela-20-years-193501941.html",
       "publish_time": "2026-09-06T19:35:01Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QBK5Rbq4QcCTjfVK1f2J7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/90ad7cd94e523b84bd5b80cd7d85471d.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "COP",
@@ -926,10 +1234,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/energy/articles/chevron-stayed-venezuela-20-years-193501941.html",
       "publish_time": "2026-09-06T19:35:01Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QBK5Rbq4QcCTjfVK1f2J7Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/90ad7cd94e523b84bd5b80cd7d85471d.jpg",
       "type": "STORY",
-      "sentiment": 9
+      "sentiment": 0
     },
     {
       "symbol": "IBM",
@@ -940,7 +1248,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-vs-ibm-comparing-193216269.html",
       "publish_time": "2026-09-06T19:32:16Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QF2w8jRdXzsViZKFjya27w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/63b22c9f2ec2991a6eb9acebe5474769.png",
       "type": "STORY",
       "sentiment": 0
@@ -954,7 +1262,7 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/markets/stocks/articles/three-credits-biggest-names-talks-193034091.html",
       "publish_time": "2026-09-06T19:30:34Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/bJEqwFCDhN3r4GPuH83v6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/4e18e4ffcfed5a6d9a4bb8282425a988.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -968,24 +1276,10 @@
       "publisher": "TheStreet",
       "link": "https://finance.yahoo.com/technology/ai/articles/adobe-ends-18-era-ai-191300355.html",
       "publish_time": "2026-09-06T19:13:00Z",
-      "time_ago": "8h ago",
+      "time_ago": "14h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/bgydiF8YkEekWiQ44lbo2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/ca49cb59bcc73412afe7c985bc3142ca.jpg",
       "type": "STORY",
       "sentiment": -45
-    },
-    {
-      "symbol": "TSLA",
-      "name": "Tesla Inc.",
-      "sector": "Consumer Disc.",
-      "industry": "Auto",
-      "title": "Cathie Wood's Ark Has Delivered Just a 13.8% Annualized Return Since 2014, Roughly Matching the S&P 500. Should You Trust Her Bold Predictions for 2030?",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/cathie-woods-ark-delivered-just-185000237.html",
-      "publish_time": "2026-09-06T18:50:00Z",
-      "time_ago": "9h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/s1A9yIVSl_2i4RUFm0NB_w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eef6877d2109c99db4a80739e7354e65.jpg",
-      "type": "STORY",
-      "sentiment": 0
     },
     {
       "symbol": "EQIX",
@@ -996,10 +1290,10 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/technology/ai/articles/equinix-doubling-down-ai-data-183002468.html",
       "publish_time": "2026-09-06T18:30:02Z",
-      "time_ago": "9h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zx606vaszG408EKEZOUgrQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/747b7ea97e5bae66ddea29b74b837c0f.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 8
     },
     {
       "symbol": "MCD",
@@ -1010,10 +1304,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/mcdonalds-mcd-exit-90-restaurant-181105022.html",
       "publish_time": "2026-09-06T18:11:05Z",
-      "time_ago": "9h ago",
+      "time_ago": "15h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7VwQKLWaLoguhtBEUIleOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/cb935338a5e7d6a1f431952e62b24cf8.jpg",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -15
     },
     {
       "symbol": "ADBE",
@@ -1024,7 +1318,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2026-09-06T18:00:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DfcNFipvML2_Bq4rL1t4tw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/7db2b6f25a01944147a348761480a3c5.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1038,7 +1332,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2026-09-06T18:00:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DfcNFipvML2_Bq4rL1t4tw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/7db2b6f25a01944147a348761480a3c5.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1052,7 +1346,7 @@
       "publisher": "BeInCrypto",
       "link": "https://finance.yahoo.com/markets/stocks/articles/mcdonald-india-drama-erupts-while-175220642.html",
       "publish_time": "2026-09-06T17:52:20Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BqdxOZ.m4pFjjx7yVgwWVQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/9be05675a34d4ce620876405aba4ba33.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1066,10 +1360,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-near-high-while-biggest-173401947.html",
       "publish_time": "2026-09-06T17:34:01Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Vf_WTdzJaqxb5Cv1VgWFFg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/6f3c158702c1b32ef996d95204c67e17.png",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 7
     },
     {
       "symbol": "AMD",
@@ -1080,7 +1374,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-near-high-while-biggest-173401947.html",
       "publish_time": "2026-09-06T17:34:01Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Vf_WTdzJaqxb5Cv1VgWFFg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/6f3c158702c1b32ef996d95204c67e17.png",
       "type": "STORY",
       "sentiment": 0
@@ -1094,10 +1388,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/2-superior-growth-stocks-buy-172000494.html",
       "publish_time": "2026-09-06T17:20:00Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ZL1ZCtikBhKcVAJHABHLLQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2a80f55e8f62b5e1465b8f67174f1a70.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "TTWO",
@@ -1108,10 +1402,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/two-interactive-software-ttwo-could-170555171.html",
       "publish_time": "2026-09-06T17:05:55Z",
-      "time_ago": "10h ago",
+      "time_ago": "16h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4URSdzbev9caDoK.vSXVlw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/f03d17bfb9bd39baa89c6655dcfb03d3.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "ADBE",
@@ -1122,7 +1416,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/markets/articles/short-trading-week-cpi-other-170003351.html",
       "publish_time": "2026-09-06T17:00:03Z",
-      "time_ago": "11h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WbTrTh15_AK82A8YygQw9A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/a3f8b7b175c2147da9ed22b631b9dee3.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1136,7 +1430,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/markets/articles/short-trading-week-cpi-other-170003351.html",
       "publish_time": "2026-09-06T17:00:03Z",
-      "time_ago": "11h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WbTrTh15_AK82A8YygQw9A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/a3f8b7b175c2147da9ed22b631b9dee3.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1150,10 +1444,10 @@
       "publisher": "TechCrunch",
       "link": "https://finance.yahoo.com/technology/articles/travis-kalanick-atoms-might-getting-164500551.html",
       "publish_time": "2026-09-06T16:45:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7P8bvo8LmrDkPL_7NKJIBA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/techcrunch_finance_785/5b0772d8bb3eb8f907688e4cafd93299.jpg",
       "type": "STORY",
-      "sentiment": -7
+      "sentiment": 0
     },
     {
       "symbol": "NKE",
@@ -1164,7 +1458,7 @@
       "publisher": "Investing.com",
       "link": "https://finance.yahoo.com/markets/stocks/articles/lululemon-founder-chip-wilson-reportedly-162550205.html",
       "publish_time": "2026-09-06T16:25:50Z",
-      "time_ago": "11h ago",
+      "time_ago": "17h ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -1178,10 +1472,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/forget-magnificent-seven-payments-stock-161500009.html",
       "publish_time": "2026-09-06T16:15:00Z",
-      "time_ago": "11h ago",
+      "time_ago": "17h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DbYioaLL_a_4yGZpFaAjCw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8c3c1aa9fb9f2cc96dea804452ff4dbe.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "F",
@@ -1192,10 +1486,10 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musks-tesla-cybertruck-ford-160016241.html",
       "publish_time": "2026-09-06T16:00:16Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/V.8ez9BLJ_UF8RKfOQKbpw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/af2b80893e0d8c67fbf3e85e7566f9d2.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 35
     },
     {
       "symbol": "F",
@@ -1206,7 +1500,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/where-ford-5-years-155000658.html",
       "publish_time": "2026-09-06T15:50:00Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.brx6r5KgczXBJBmUOCVYg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2c1f0d065e05b57243e342b7619430b4.png",
       "type": "STORY",
       "sentiment": 0
@@ -1220,7 +1514,7 @@
       "publisher": "Investor's Business Daily",
       "link": "",
       "publish_time": "2026-09-06T15:39:40Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8.l_l4A9eb5M69S3O_QeaA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/13b388f277db5f2bc809009e097fe4f3.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1234,7 +1528,7 @@
       "publisher": "Investor's Business Daily",
       "link": "",
       "publish_time": "2026-09-06T15:39:40Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8.l_l4A9eb5M69S3O_QeaA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/13b388f277db5f2bc809009e097fe4f3.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1248,7 +1542,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-buy-sell-hold-153500978.html",
       "publish_time": "2026-09-06T15:35:00Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5Db2F6WofX2XbF9puzLi9g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/26eee7f99f2e878623f086322a651c0d.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1262,7 +1556,7 @@
       "publisher": "Forkast News",
       "link": "https://finance.yahoo.com/technology/ai/articles/first-dedicated-agentic-commerce-summit-153354520.html",
       "publish_time": "2026-09-06T15:33:54Z",
-      "time_ago": "12h ago",
+      "time_ago": "18h ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -1276,7 +1570,7 @@
       "publisher": "Moneywise",
       "link": "https://finance.yahoo.com/markets/articles/heres-stark-reality-1-5-144500049.html",
       "publish_time": "2026-09-06T14:45:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/eASEzsl42GPGDluOiNFa7g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/moneywise_ecomm_711/066e32d207ad7e7f32354078c5524974.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1290,22 +1584,8 @@
       "publisher": "TheStreet",
       "link": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-sends-strong-warning-143700436.html",
       "publish_time": "2026-09-06T14:37:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JxsWf5f6RQviIYfVNJzXfw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/70d0036647642b3e973fea3e13ddd2f2.jpg",
-      "type": "STORY",
-      "sentiment": -45
-    },
-    {
-      "symbol": "INTC",
-      "name": "Intel Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "China Is Still Chasing Nvidia’s 3-Year-Old Chip — While Nvidia Has Moved Generations Ahead",
-      "publisher": "24/7 Wall St.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/china-still-chasing-nvidia-3-143511624.html",
-      "publish_time": "2026-09-06T14:35:11Z",
-      "time_ago": "13h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7X5sMjIm9E9U6hnP1BH_cA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/5cbc7671c272b64c5a3b9ee75c194127",
       "type": "STORY",
       "sentiment": -40
     },
@@ -1318,10 +1598,10 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/china-still-chasing-nvidia-3-143511624.html",
       "publish_time": "2026-09-06T14:35:11Z",
-      "time_ago": "13h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7X5sMjIm9E9U6hnP1BH_cA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/5cbc7671c272b64c5a3b9ee75c194127",
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": -20
     },
     {
       "symbol": "PEP",
@@ -1332,10 +1612,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/pepsico-hasnt-cheap-relative-free-142000560.html",
       "publish_time": "2026-09-06T14:20:00Z",
-      "time_ago": "13h ago",
+      "time_ago": "19h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Bz57MqWhH0J8wrVAlFkwWQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/552006ff5df61ae64de3b6bdf313ae10.jpg",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 9
     },
     {
       "symbol": "UBER",
@@ -1346,7 +1626,7 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/small-business/articles/everyone-says-trades-good-money-140008447.html",
       "publish_time": "2026-09-06T14:00:08Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6xDiPe50tqMQy413HKIclw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/b6880c1340cfaf34b04cc7bdd95b0bbd.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1360,7 +1640,7 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-disney-hit-130-date-133044829.html",
       "publish_time": "2026-09-06T13:30:44Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GDUbxul5PlZ1M6eCBUwQ7A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/392538504e827d1d075f46e8c059121c.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1374,7 +1654,7 @@
       "publisher": "Benzinga",
       "link": "https://finance.yahoo.com/technology/articles/elon-musk-cheers-heart-aerospace-133013855.html",
       "publish_time": "2026-09-06T13:30:13Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/F.K5ZOSe6WDoas9I2mQjKg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/bd426a2a8fdb924adb773a0a60825bb5.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1388,7 +1668,7 @@
       "publisher": "24/7 Wall St.",
       "link": "https://finance.yahoo.com/economy/policy/articles/top-white-house-economist-points-132738390.html",
       "publish_time": "2026-09-06T13:27:38Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/NGvRSGd7.iedPkWCZUIqnQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/f85095f37348c9d7df3a12a9d5949cff.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1402,7 +1682,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/markets/article/why-nvidia-wants-hugging-face-to-keep-helping-its-rivals-chart-of-the-day-132655037.html",
       "publish_time": "2026-09-06T13:26:55Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Unx8.4k8t4avUCCHwJQblA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/2026-09/dbc99108-21c9-4d57-a000-92e7f0dab4af",
       "type": "STORY",
       "sentiment": 0
@@ -1416,7 +1696,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/bwx-technologies-already-builds-reactors-132500675.html",
       "publish_time": "2026-09-06T13:25:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mm2e0J9lGSP8NSHvo7kRHg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2d339585427fa1323645b89711c98e36.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1430,7 +1710,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/bwx-technologies-already-builds-reactors-132500675.html",
       "publish_time": "2026-09-06T13:25:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mm2e0J9lGSP8NSHvo7kRHg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2d339585427fa1323645b89711c98e36.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1444,7 +1724,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/buy-snowflake-stock-recent-surge-130500643.html",
       "publish_time": "2026-09-06T13:05:00Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2Oltn5wLTAbcaYzlJSxPLQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/836d53cbcee4fd9bf67b4eace5056817.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1458,10 +1738,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/healthcare/articles/does-pepsico-pep-fresh-foods-130457300.html",
       "publish_time": "2026-09-06T13:04:57Z",
-      "time_ago": "14h ago",
+      "time_ago": "20h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Iju6atwLHjSiuAKZEDf6vg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dfb582f83ef6da8b99867b5e4797b0c9.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 3
     },
     {
       "symbol": "ADBE",
@@ -1472,7 +1752,7 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/technology/ai/articles/dear-adobe-stock-fans-mark-130002907.html",
       "publish_time": "2026-09-06T13:00:02Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5etf3mMEkGL6Acb61NJzSQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/218d1eb678443b48222d7ef3ca6a3e80.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1486,40 +1766,12 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/where-shopify-stock-5-years-124201391.html",
       "publish_time": "2026-09-06T12:42:01Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xknY_VL3n9xpoxf0TInScw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/bbfad045f665116e66a228c91268ed6c.jpg",
       "type": "STORY",
       "sentiment": 0
     },
     {
-      "symbol": "MSFT",
-      "name": "Microsoft Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "The Agent Production Gap: When 171% ROI Isn’t Enough to Ship",
-      "publisher": "Forkast News",
-      "link": "https://finance.yahoo.com/technology/ai/articles/agent-production-gap-171-roi-123605791.html",
-      "publish_time": "2026-09-06T12:36:05Z",
-      "time_ago": "15h ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GS",
-      "name": "Goldman Sachs",
-      "sector": "Financials",
-      "industry": "Investment Banks",
-      "title": "The U.S. Just Added 162,000 Jobs. So Why Are Americans Still Feeling Broke?",
-      "publisher": "24/7 Wall St.",
-      "link": "https://finance.yahoo.com/economy/articles/u-just-added-162-000-123559005.html",
-      "publish_time": "2026-09-06T12:35:59Z",
-      "time_ago": "15h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/umWsOM.NPL9epcz2zNDnmw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/3c901b2aae7aac32b8b86e35ff53dba6.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "AVGO",
       "name": "Broadcom Inc.",
       "sector": "Technology",
@@ -1528,7 +1780,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/markets/article/these-ai-numbers-are-getting-crazy-123000121.html",
       "publish_time": "2026-09-06T12:30:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/e36Poat5c08xBAIhfOadzg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/2026-09/d869c33b-f4be-4379-a36d-4566d945c729",
       "type": "STORY",
       "sentiment": 0
@@ -1542,7 +1794,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/markets/article/these-ai-numbers-are-getting-crazy-123000121.html",
       "publish_time": "2026-09-06T12:30:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/e36Poat5c08xBAIhfOadzg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/2026-09/d869c33b-f4be-4379-a36d-4566d945c729",
       "type": "STORY",
       "sentiment": 0
@@ -1556,24 +1808,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-2-top-growth-stocks-121016991.html",
       "publish_time": "2026-09-06T12:10:16Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hifRkM3LjCyDHzZ832UxAQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dfc5c49a1ab838a9c236bef742ffecf1.jpg",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "ORCL",
-      "name": "Oracle Corp.",
-      "sector": "Technology",
-      "industry": "Software",
-      "title": "Broadcom And 2 Top Growth Stocks To Watch",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-2-top-growth-stocks-121016991.html",
-      "publish_time": "2026-09-06T12:10:16Z",
-      "time_ago": "15h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hifRkM3LjCyDHzZ832UxAQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dfc5c49a1ab838a9c236bef742ffecf1.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "CVS",
@@ -1584,10 +1822,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/cvs-health-cvs-stock-looks-120859939.html",
       "publish_time": "2026-09-06T12:08:59Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.0jZUWxyCbG9KrVDbyTIkQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b281afd73848ff2f053c086d0c5a15e9.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "FCX",
@@ -1598,10 +1836,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/commodities/articles/copper-just-soared-time-high-120500291.html",
       "publish_time": "2026-09-06T12:05:00Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/R2fxadsGvmUjvUIsr8.fgA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/d527e819a597df1dc996d901478829ea.png",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 45
     },
     {
       "symbol": "ORCL",
@@ -1612,7 +1850,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/economy/article/inflation-data-oracle-earnings-and-an-energy-supply-crunch-what-to-watch-this-week-120429533.html",
       "publish_time": "2026-09-06T12:04:29Z",
-      "time_ago": "15h ago",
+      "time_ago": "21h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nbn47HmQRXcDnZsoB1_rLA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/user-uploaded/808ec4ab-2d63-4ba2-b912-ec126aa70427_cfc81d2fd66ce33aec67f7d8cd411c300cacb630bfcda88a7ffc0cd12018af51.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1626,10 +1864,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/pepsi-dirt-cheap-4-2-115500475.html",
       "publish_time": "2026-09-06T11:55:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/On8ux5E2mggdMbjnoT9WzA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/1d5f2e1e0fa292346df6cb817a5b7207.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 0
     },
     {
       "symbol": "PEP",
@@ -1640,7 +1878,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/pepsi-dirt-cheap-4-2-115500475.html",
       "publish_time": "2026-09-06T11:55:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/On8ux5E2mggdMbjnoT9WzA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/1d5f2e1e0fa292346df6cb817a5b7207.jpg",
       "type": "STORY",
       "sentiment": -3
@@ -1654,7 +1892,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/visa-vs-american-express-financial-114400597.html",
       "publish_time": "2026-09-06T11:44:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8R33djIVe4.C2ZePEPwfXQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4255f4a9062a022cc0fb182e81d50f5a.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1668,7 +1906,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/visa-vs-american-express-financial-114400597.html",
       "publish_time": "2026-09-06T11:44:00Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8R33djIVe4.C2ZePEPwfXQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4255f4a9062a022cc0fb182e81d50f5a.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1682,10 +1920,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-palo-alto-networks-stock-112012453.html",
       "publish_time": "2026-09-06T11:20:12Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4vZysXrNOsGxclvSPt8I5w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/4d505483ca61af49dda9a2a061eaaa51.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -40
     },
     {
       "symbol": "PANW",
@@ -1696,7 +1934,7 @@
       "publisher": "BeInCrypto",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-index-111450130.html",
       "publish_time": "2026-09-06T11:14:50Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/oBPNEQSd6s.wwh_q1eThXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/7dd52e52ca37217c61ae434802cde791.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1710,10 +1948,10 @@
       "publisher": "BeInCrypto",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-index-111450130.html",
       "publish_time": "2026-09-06T11:14:50Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/oBPNEQSd6s.wwh_q1eThXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/7dd52e52ca37217c61ae434802cde791.jpg",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -10
     },
     {
       "symbol": "CL",
@@ -1724,7 +1962,7 @@
       "publisher": "BeInCrypto",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-index-111450130.html",
       "publish_time": "2026-09-06T11:14:50Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/oBPNEQSd6s.wwh_q1eThXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/7dd52e52ca37217c61ae434802cde791.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1738,7 +1976,7 @@
       "publisher": "BeInCrypto",
       "link": "https://finance.yahoo.com/markets/stocks/articles/nike-exits-p-100-index-111450130.html",
       "publish_time": "2026-09-06T11:14:50Z",
-      "time_ago": "16h ago",
+      "time_ago": "22h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/oBPNEQSd6s.wwh_q1eThXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/beincrypto_us_662/7dd52e52ca37217c61ae434802cde791.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1752,7 +1990,7 @@
       "publisher": "Fortune",
       "link": "https://finance.yahoo.com/technology/articles/jamie-dimon-t-ceo-says-105900885.html",
       "publish_time": "2026-09-06T10:59:00Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QqvIXGLAZqTvyCTnSa3Bdw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/fortune_175/bd641a346fd78cbe8837aaf0e5606bd6.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1766,10 +2004,10 @@
       "publisher": "Barchart",
       "link": "https://finance.yahoo.com/markets/stocks/articles/costco-reports-double-digit-growth-105141423.html",
       "publish_time": "2026-09-06T10:51:41Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fd0n9Y4NfKwJDXjcPHN50w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/b13efc5f7beffd1e0b8a8dfd184a00c9.jpg",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 45
     },
     {
       "symbol": "AVGO",
@@ -1780,10 +2018,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-hugging-face-deal-hedge-105111039.html",
       "publish_time": "2026-09-06T10:51:11Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.7PxzRY7L2pLksljvDsiVQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/9834718d7d0cbbd4b2c8aaaf19326622.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -12
     },
     {
       "symbol": "BMY",
@@ -1794,7 +2032,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/healthcare/articles/wall-street-money-leaving-just-104402645.html",
       "publish_time": "2026-09-06T10:44:02Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/r1kZgtRhOhAlXE44xahBXw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/ae720029044799bb901b1adb9384a358.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1808,7 +2046,7 @@
       "publisher": "Investing.com",
       "link": "https://finance.yahoo.com/markets/stocks/articles/street-calls-week-103002133.html",
       "publish_time": "2026-09-06T10:30:02Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -1822,10 +2060,10 @@
       "publisher": "Money Digest",
       "link": "https://finance.yahoo.com/markets/stocks/articles/mcdonalds-once-owned-90-popular-103000301.html",
       "publish_time": "2026-09-06T10:30:00Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MtYhbgDJv8nTG_0cRNc7fQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/money_digest_articles_438/3e808080da8304988239d2aa6a5b494a.jpg",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -15
     },
     {
       "symbol": "META",
@@ -1836,22 +2074,8 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/own-both-oracle-nuscale-different-101200827.html",
       "publish_time": "2026-09-06T10:12:00Z",
-      "time_ago": "17h ago",
+      "time_ago": "23h ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3czDHGI0BfUZ0OmkiIwLIw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ef9d43eb9d9e21de9ce66b0e9def3796.png",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "GS",
-      "name": "Goldman Sachs",
-      "sector": "Financials",
-      "industry": "Investment Banks",
-      "title": "Best CD rates today, Sunday, September 6, 2026: Lock in up to 4.35% APY",
-      "publisher": "Yahoo Personal Finance",
-      "link": "https://finance.yahoo.com/personal-finance/banking/article/best-cd-rates-today-sunday-september-6-2026-lock-in-up-to-435-apy-100000219.html",
-      "publish_time": "2026-09-06T10:00:00Z",
-      "time_ago": "18h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UMC6Hf.cXN5bVpk85oSKsg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2024-07/c47b17e0-4f64-11ef-afb3-0ed5867646a0",
       "type": "STORY",
       "sentiment": 0
     },
@@ -1864,10 +2088,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/target-stock-165-heres-why-094000576.html",
       "publish_time": "2026-09-06T09:40:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IdMENZhOohhbAtIfLd56Pw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/de3a3f08e2d90bc87260d4121777418b.png",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": -15
     },
     {
       "symbol": "BLK",
@@ -1878,10 +2102,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/etf-inflows-set-record-july-093500703.html",
       "publish_time": "2026-09-06T09:35:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/TlAbiNqlPM2uvqz_Hsknxw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/8fb60040cf9e681078c15c2e36a80477.jpg",
       "type": "STORY",
-      "sentiment": 12
+      "sentiment": 5
     },
     {
       "symbol": "F",
@@ -1892,7 +2116,7 @@
       "publisher": "The Wall Street Journal",
       "link": "",
       "publish_time": "2026-09-06T09:30:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/2jcKnKEoSRR.9kSeAa6j6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/b3b791c7528ff343bf416095840e1feb.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1906,7 +2130,7 @@
       "publisher": "Moneywise",
       "link": "https://finance.yahoo.com/small-business/articles/45-parents-debt-disney-trips-093000989.html",
       "publish_time": "2026-09-06T09:30:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1.iHyMIFGWU.K60f47eNaQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/moneywise_327/28506b6d80b0dd8c6e951f7499f2ef28.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1920,10 +2144,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/pepsico-loses-30-u-treasury-092500094.html",
       "publish_time": "2026-09-06T09:25:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/tQcmZFV6wE325xCohr8E1Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/12fc0ef0a01714965c82c8c0ab1863b0.png",
       "type": "STORY",
-      "sentiment": 4
+      "sentiment": 2
     },
     {
       "symbol": "LLY",
@@ -1934,10 +2158,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/heres-why-billionaires-stanley-druckenmiller-091100451.html",
       "publish_time": "2026-09-06T09:11:00Z",
-      "time_ago": "18h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IbnhzmP9aZZb2Mgz5gJm4Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/d29e28134f8d94fd7f54d173df0c59be.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "CL",
@@ -1948,7 +2172,7 @@
       "publisher": "Investing.com",
       "link": "https://finance.yahoo.com/energy/articles/opec-set-hold-oil-output-084731318.html",
       "publish_time": "2026-09-06T08:47:31Z",
-      "time_ago": "19h ago",
+      "time_ago": "1d ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -1962,7 +2186,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/home-depot-just-reported-earnings-082500178.html",
       "publish_time": "2026-09-06T08:25:00Z",
-      "time_ago": "19h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DOcuXb60nDHt35ncnVMrGQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/21eaf985982766778c1638bb2864741d.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -1976,10 +2200,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/mcdonalds-raised-dividend-every-since-081500009.html",
       "publish_time": "2026-09-06T08:15:00Z",
-      "time_ago": "19h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/fJJlcorCVHNzWXPT6ReUQg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/eaa24616cea734887f5e9c841873d802.jpg",
       "type": "STORY",
-      "sentiment": 25
+      "sentiment": 7
     },
     {
       "symbol": "O",
@@ -1990,10 +2214,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/real-estate/articles/realty-income-o-loan-changes-081040075.html",
       "publish_time": "2026-09-06T08:10:40Z",
-      "time_ago": "19h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/i4YSrbbNAj2x2QVVCx2xhw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/f0f2a9b9af546a7340946e669c0ff786.jpg",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -15
     },
     {
       "symbol": "CL",
@@ -2004,7 +2228,7 @@
       "publisher": "Investing.com",
       "link": "https://www.yahoo.com/news/us/articles/u-iran-tanker-war-escalates-063225148.html",
       "publish_time": "2026-09-06T06:32:25Z",
-      "time_ago": "21h ago",
+      "time_ago": "1d ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -2018,7 +2242,7 @@
       "publisher": "Barrons.com",
       "link": "",
       "publish_time": "2026-09-06T06:00:00Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Qxgcai7wu2__2EMlKA8JJg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/e0dd6ead7d55ebb9f8eb15093dd1246c.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -2032,7 +2256,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/p-500s-yield-historic-lows-052000625.html",
       "publish_time": "2026-09-06T05:20:00Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aYMX4tdUK8EJ4X90GoN42w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/054b7aac44842c71d02eba2249a8870a.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -2046,7 +2270,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/p-500s-yield-historic-lows-052000625.html",
       "publish_time": "2026-09-06T05:20:00Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aYMX4tdUK8EJ4X90GoN42w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/054b7aac44842c71d02eba2249a8870a.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -2060,7 +2284,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/p-500s-yield-historic-lows-052000625.html",
       "publish_time": "2026-09-06T05:20:00Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aYMX4tdUK8EJ4X90GoN42w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/054b7aac44842c71d02eba2249a8870a.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -2074,24 +2298,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/warner-bros-discovery-wbd-expands-050657331.html",
       "publish_time": "2026-09-06T05:06:57Z",
-      "time_ago": "22h ago",
+      "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/40taa5kCANxRHr6.sn5n2A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/abe6319362eec70b59e31eb3eb696286.jpg",
       "type": "STORY",
-      "sentiment": 15
-    },
-    {
-      "symbol": "INTC",
-      "name": "Intel Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Intel (INTC) Enters Trusted AI Standards as Enterprise Infrastructure Role Grows",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/technology/ai/articles/intel-intc-enters-trusted-ai-041832719.html",
-      "publish_time": "2026-09-06T04:18:32Z",
-      "time_ago": "23h ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dgeJ83NDVZnoB9OxT9zBHA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c6a7ec75e35ec3575683f5d897862705.jpg",
-      "type": "STORY",
-      "sentiment": 40
+      "sentiment": 0
     },
     {
       "symbol": "PLTR",
@@ -2105,7 +2315,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/129H0ntuNDh6cwsWIg3A3Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/ab5ca7ad256e0c9c3d3ebc15b026951c.jpg",
       "type": "STORY",
-      "sentiment": -50
+      "sentiment": -45
     },
     {
       "symbol": "JPM",
@@ -2147,21 +2357,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DiO0HLx65XFTd5UKebyIpA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/ebecd7f5f46982453b5f96faa9e992b3.jpg",
       "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "INTC",
-      "name": "Intel Corp.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "Intel’s AI Tailwinds Are Real. Mizuho Cut the Target Anyway.",
-      "publisher": "Insider Monkey",
-      "link": "https://finance.yahoo.com/technology/ai/articles/intel-ai-tailwinds-real-mizuho-225825483.html",
-      "publish_time": "2026-09-05T22:58:25Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BhvxunncVzVl4BIZ1Bwvcg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/cbd5cf86279bcf55ec663a65392976c2.jpg",
-      "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "JPM",
@@ -2189,21 +2385,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uo3wm_iXdc5lN_tIdk.cdg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/b4670a94aa4b95538913e3e0d1edc46f.jpg",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "AMD",
-      "name": "AMD Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "AMD Committed Up to $5 Billion to Anthropic, and Anthropic's IPO Prospectus Is Reportedly Days Away",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/technology/ai/articles/amd-committed-5-billion-anthropic-220301412.html",
-      "publish_time": "2026-09-05T22:03:01Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.Lqhgqu3u7Qzl0Jfr_IK1g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/e2bba76e64c48d2ee1afb32939355756.jpg",
-      "type": "STORY",
-      "sentiment": 50
+      "sentiment": -20
     },
     {
       "symbol": "T",
@@ -2245,7 +2427,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xC8uaHzvFdA3e3ZeAdq9lg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/1bdf3b8efdbfb53ead8a4a1364ad6e57.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "PEP",
@@ -2287,7 +2469,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dCv8iCgFQRi9YMUqYbzVkA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/fb00dd67d093de63ff903897b1c2a47e.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "CRM",
@@ -2315,7 +2497,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/82XfaG72TmQ8WCTMNdVl3Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/570fc40480de603363be3c3ff537cde9.jpg",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": -8
     },
     {
       "symbol": "BAC",
@@ -2357,7 +2539,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4FPI0ocnOCHFGA4ASJNF5g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/27541eefd488dc70784ec43e83cdcb4d.jpg",
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": -45
     },
     {
       "symbol": "PLTR",
@@ -2371,7 +2553,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GPWopoFekEfw2LKiJEwh1g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/df4b73b911e0bdb53cb26c5cad04a925.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 10
     },
     {
       "symbol": "VLO",
@@ -2399,7 +2581,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/82XfaG72TmQ8WCTMNdVl3Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/570fc40480de603363be3c3ff537cde9.jpg",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": -12
     },
     {
       "symbol": "CVX",
@@ -2441,7 +2623,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jCEGI4_.5RWhDVYS2WzQYA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/2c6a4beb70a94d148634584ea8e4cae8.jpg",
       "type": "STORY",
-      "sentiment": -15
+      "sentiment": 0
     },
     {
       "symbol": "ASML",
@@ -2483,7 +2665,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.85CW.4jG9o8f1PxiU.lfA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/04fa3ad5da96418a6614fef94d5b3a77.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "C",
@@ -2511,7 +2693,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/pYZL7STOkUMqhhCUYsYSdg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/88c2685383099feb946a31ff17628e6c.jpg",
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 30
     },
     {
       "symbol": "AVGO",
@@ -2539,7 +2721,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/g5IMDmCS33Xb30qxyPQgOQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/31affc9ed8e3e27868a825e7b6668c9a.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "LRCX",
@@ -2553,7 +2735,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IgmR9LOWLWE3pgO7YpZFGA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/43fb7a3cc803e4b72c713e3ce6039cb5.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 25
     },
     {
       "symbol": "COST",
@@ -2567,7 +2749,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PffNfGxHo6oGDn6VAwWGWw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/c393f69f6934b18be8155a6d184fea2b.jpg",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -15
     },
     {
       "symbol": "XOM",
@@ -2595,7 +2777,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.z1xu6mtha2FX85vAaFkjw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/e053ab4dac38ef4f4eaeea59b5e971e8.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "CME",
@@ -2609,7 +2791,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/82XfaG72TmQ8WCTMNdVl3Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/570fc40480de603363be3c3ff537cde9.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 35
     },
     {
       "symbol": "C",
@@ -2623,7 +2805,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jZp6MnmeEUiw8pSaZG8b7g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e0574e82615fa8a8970c3c3eb5888c6a.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 50
     },
     {
       "symbol": "BA",
@@ -2637,7 +2819,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jMOs9r1ejTKTSl4KU6hrPg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/ad32e889e163b3a7c5fc1c720624cf38.jpg",
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 15
     },
     {
       "symbol": "AMGN",
@@ -2721,7 +2903,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a59IfJfKKClO2i.iZfvCHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 6
     },
     {
       "symbol": "WMT",
@@ -2777,7 +2959,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nAy_SUozOWKw9KB7BOvDTA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/daf65838c43a5f741cfcb69a241116c2.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 45
     },
     {
       "symbol": "CVS",
@@ -2791,7 +2973,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.0jZUWxyCbG9KrVDbyTIkQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b281afd73848ff2f053c086d0c5a15e9.jpg",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 8
     },
     {
       "symbol": "VZ",
@@ -2889,7 +3071,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MnpuPrYil5r9LTJlo.WqPw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/f084f84cce3a195b53ef8d12f94b6408.png",
       "type": "STORY",
-      "sentiment": 2
+      "sentiment": 0
     },
     {
       "symbol": "NFLX",
@@ -2959,7 +3141,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/SQko3NZGiMWBgqqvnP5zaQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/8994264420577fade49a846982b7a7d5.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "JNJ",
@@ -3001,7 +3183,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QrRHiKfc_OPRwfpR7RB9ng--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/8170a19f35f141f5cf2615133462fac0.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "COST",
@@ -3015,7 +3197,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/93rmnIIRkQXVChRwzDsNww--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/842fa88481e0ce8132e32054b216f32e.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "KHC",
@@ -3085,7 +3267,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/QQN2u8S09kj1SAH3k5eXJA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/1c6add4792d6a20d6719cad2d99254a3.png",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 6
     },
     {
       "symbol": "CVX",
@@ -3099,7 +3281,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9LfiE_0NKldim_WlNDj9uw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/e9538e6feada04076c138810d3ff746b.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 3
     },
     {
       "symbol": "MAR",
@@ -3113,7 +3295,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/PZrtddGL78KaiHmK6_GU3A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/32436c150c64bbec3ac8fefae7987cdf.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 10
     },
     {
       "symbol": "KHC",
@@ -3141,7 +3323,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4lJxiATP6CRYc94JWhZtrg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/biopharma_dive_768/61fb37207bbdf6c1421d4e526964872d",
       "type": "STORY",
-      "sentiment": -60
+      "sentiment": -55
     },
     {
       "symbol": "CRM",
@@ -3197,7 +3379,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hwTvaFGKTeKwciE6MJjJGQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/003a1dff5ee28add11835fae7cf51bb7.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": -4
     },
     {
       "symbol": "COF",
@@ -3239,7 +3421,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/q8kbo1x1sIm3Da.DF96PIw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/ibd.com/fbbebe27a7a70e57c0b03539cb48612e.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 5
     },
     {
       "symbol": "WELL",
@@ -3270,20 +3452,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "O",
-      "name": "Realty Income",
-      "sector": "Real Estate",
-      "industry": "REITs",
-      "title": "Realty Income Is Paying More Dividends Than Ever Before and Yields 5.3%. Here's Why Its High-Yield Monthly Payout Is as Safe as It Gets.",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/real-estate/articles/realty-income-paying-more-dividends-114000316.html",
-      "publish_time": "2026-09-05T11:40:00Z",
-      "time_ago": "1d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/t_l82jX5N6hR11gHyiEu3w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/add17a0f30dda3e7c5f17ada8b4cb62e.jpg",
-      "type": "STORY",
-      "sentiment": 5
-    },
-    {
       "symbol": "PG",
       "name": "Procter & Gamble",
       "sector": "Consumer Stpl.",
@@ -3309,7 +3477,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a59IfJfKKClO2i.iZfvCHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
       "type": "STORY",
-      "sentiment": -6
+      "sentiment": -5
     },
     {
       "symbol": "WMB",
@@ -3337,7 +3505,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rSBTygoca5KPbNgcvv7KKQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/fea73d9c579c9c3e17ad19b3ebe1b73c.jpg",
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 12
     },
     {
       "symbol": "CRM",
@@ -3421,7 +3589,7 @@
       "time_ago": "1d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a59IfJfKKClO2i.iZfvCHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "PYPL",
@@ -3446,10 +3614,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/forget-high-yield-traps-coca-093500664.html",
       "publish_time": "2026-09-05T09:35:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IYxcBIcFKVDmWpQF9zNyaA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/30b1a51a4c6cd20743b0fef691bd919e.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 7
     },
     {
       "symbol": "WMB",
@@ -3460,10 +3628,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/energy/articles/williams-companies-wmb-seals-momentum-090738518.html",
       "publish_time": "2026-09-05T09:07:38Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mbw5GaMXDp.hgntQELVgyw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/79984fc0f619df1b2a167ad7fe340ecb.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "T",
@@ -3474,7 +3642,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/tutor-perini-tpc-stock-trades-090707601.html",
       "publish_time": "2026-09-05T09:07:07Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6KcHAVoRqbStjPOSd1n3nA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e18325c660d04f2fe88569956b7babe1.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3488,7 +3656,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-dividend-stocks-buy-hold-090400707.html",
       "publish_time": "2026-09-05T09:04:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KFTF8Rvtg_BGWaNJCbZsqQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/f95e59a4a0f1463ec9bed995cee283d4.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3502,10 +3670,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/costco-grown-membership-no-matter-085000772.html",
       "publish_time": "2026-09-05T08:50:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/h0kMt4FP.C08yKJIMgYVTg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/f14eab697d065f04a8400fbcf4ab5a85.jpg",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 8
     },
     {
       "symbol": "MAR",
@@ -3516,10 +3684,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/marriott-international-mar-tests-tech-081332974.html",
       "publish_time": "2026-09-05T08:13:32Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zZvE_9VPnYRXJdi0H38Mzw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/708bed8b45156083857700659b364ee4.jpg",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "HD",
@@ -3530,7 +3698,7 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-unstoppable-dow-stocks-buy-080500367.html",
       "publish_time": "2026-09-05T08:05:00Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dYU3YhbpnzsX5i2kUCLvyw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/84f049c1746183a2aa97280564b57d5b.jpg",
       "type": "STORY",
       "sentiment": 5
@@ -3544,10 +3712,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/ceo-brian-niccol-just-announced-070501651.html",
       "publish_time": "2026-09-05T07:05:01Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9MB95frhAFOsVGYAoYuJ9w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/a2f876439ca77c1a288ba84540daf1c2.png",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 35
     },
     {
       "symbol": "LRCX",
@@ -3558,7 +3726,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/technology/ai/articles/lam-research-legal-chief-sold-062159762.html",
       "publish_time": "2026-09-05T06:21:59Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zCzet_KBrmNfedIbfjW9mg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/71211da031f80acee19bd7526e4ccf64.jpg",
       "type": "STORY",
       "sentiment": -5
@@ -3572,7 +3740,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-2-other-undervalued-stocks-061453375.html",
       "publish_time": "2026-09-05T06:14:53Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hifRkM3LjCyDHzZ832UxAQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dfc5c49a1ab838a9c236bef742ffecf1.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3586,10 +3754,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/american-express-q2-revenue-miss-061241642.html",
       "publish_time": "2026-09-05T06:12:41Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GjQQ8ACmUxsJsqPIb9c6aA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8193af22f70f1bfb89ee43d45c2523be.jpg",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -50
     },
     {
       "symbol": "MA",
@@ -3600,7 +3768,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/american-express-q2-revenue-miss-061241642.html",
       "publish_time": "2026-09-05T06:12:41Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GjQQ8ACmUxsJsqPIb9c6aA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8193af22f70f1bfb89ee43d45c2523be.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3614,7 +3782,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/american-express-q2-revenue-miss-061241642.html",
       "publish_time": "2026-09-05T06:12:41Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/GjQQ8ACmUxsJsqPIb9c6aA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/8193af22f70f1bfb89ee43d45c2523be.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3628,10 +3796,10 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/vistra-ceo-bought-1-17-054858384.html",
       "publish_time": "2026-09-05T05:48:58Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/XH5af5a.i7DWy_vtQEkM1Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/871d66a617353ed69a67653358ebd301.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 25
     },
     {
       "symbol": "BA",
@@ -3642,7 +3810,7 @@
       "publisher": "Investing.com",
       "link": "https://www.yahoo.com/news/politics/articles/white-house-reviewed-potential-replacements-054023976.html",
       "publish_time": "2026-09-05T05:40:23Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -3656,7 +3824,7 @@
       "publisher": "Investing.com",
       "link": "https://www.yahoo.com/news/politics/articles/white-house-reviewed-potential-replacements-054023976.html",
       "publish_time": "2026-09-05T05:40:23Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
       "sentiment": 0
@@ -3670,10 +3838,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/general-dynamics-gd-stock-may-050733081.html",
       "publish_time": "2026-09-05T05:07:33Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/o63inrqOrktrZsU5BNGzyg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/7b2bd9f98ebfe6790ff5ad7b6d248a54.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "JPM",
@@ -3684,7 +3852,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/weg-bovespa-wege3-stock-sees-050656334.html",
       "publish_time": "2026-09-05T05:06:56Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dTGkim4zwEgukSc.n.0Akw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/16016486ecb815bcffeea7a1908fff4e.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3698,7 +3866,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/top-3-defense-stocks-watch-041857821.html",
       "publish_time": "2026-09-05T04:18:57Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uhurn1sNv0KZ16scfZYAaA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/bf593c94f2f4259e0d09b4bd2709420d.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -3712,10 +3880,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-looks-reasonable-041718507.html",
       "publish_time": "2026-09-05T04:17:18Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aTiNbrY9BjIHVhzEV4J0TQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/18025f19ad65d7f61b1ca86255ab2076.jpg",
       "type": "STORY",
-      "sentiment": -2
+      "sentiment": 0
     },
     {
       "symbol": "LMT",
@@ -3726,10 +3894,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/lockheed-martin-lmt-stock-still-041623805.html",
       "publish_time": "2026-09-05T04:16:23Z",
-      "time_ago": "1d ago",
+      "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ef6l5bTEJAynsBuQ3Y2bcw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dcd3745eb2e54ae18bd56bddc7cd0ccc.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 20
     },
     {
       "symbol": "HON",
@@ -3743,7 +3911,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IANuTOaeIBoALqvtDllvyg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/5e3950f3c8591c8e58eefdbe21c152fe.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 45
     },
     {
       "symbol": "CSCO",
@@ -3785,7 +3953,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hwTvaFGKTeKwciE6MJjJGQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/003a1dff5ee28add11835fae7cf51bb7.jpg",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 3
     },
     {
       "symbol": "PANW",
@@ -3841,7 +4009,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ef6l5bTEJAynsBuQ3Y2bcw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/dcd3745eb2e54ae18bd56bddc7cd0ccc.jpg",
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 30
     },
     {
       "symbol": "BLK",
@@ -3883,7 +4051,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ReVIZ0F93PVvdPGW2I3DXw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/38d7b04dfc4441f0eb14e27d34bdb760.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 40
     },
     {
       "symbol": "WELL",
@@ -3897,7 +4065,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xGLjcbaJDQFcn7efdpzlHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/df26b9293f8567d26c1aec36ab8f7b2b.jpg",
       "type": "STORY",
-      "sentiment": -8
+      "sentiment": -5
     },
     {
       "symbol": "TGT",
@@ -3925,7 +4093,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xv7hO76Zdzwu_JDtWx0XaQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/7ce90ecfe8e63bee8c1e524512f22da7.jpg",
       "type": "STORY",
-      "sentiment": -75
+      "sentiment": -60
     },
     {
       "symbol": "PANW",
@@ -3953,21 +4121,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/1FOf_fQFnE4KizAAOdDYtg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/9efbfcb932e294fa328b1e5f65049a07.jpg",
       "type": "STORY",
-      "sentiment": -35
-    },
-    {
-      "symbol": "WMT",
-      "name": "Walmart Inc.",
-      "sector": "Consumer Stpl.",
-      "industry": "Retail",
-      "title": "He Doesn't Want a Data Center 400 Yards From His Home, but One Is Coming Anyway. Dave Ramsey Says, 'The Drama Is Always Worse Than The Reality'",
-      "publisher": "Benzinga",
-      "link": "https://finance.yahoo.com/real-estate/articles/doesnt-want-data-center-400-230007673.html",
-      "publish_time": "2026-09-04T23:00:07Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vLw6KLNIoe2lEwAq6toh2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/benzinga_79/8e6f5d7c635dce052b45e2a91e63b508.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -30
     },
     {
       "symbol": "TJX",
@@ -3995,7 +4149,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a59IfJfKKClO2i.iZfvCHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 20
     },
     {
       "symbol": "HON",
@@ -4026,20 +4180,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "NVS",
-      "name": "Novartis AG",
-      "sector": "Healthcare",
-      "industry": "Pharma",
-      "title": "NVS, IONS, AMGN Stocks Drop After-Hours — What’s Driving The Selloff?",
-      "publisher": "Stocktwits",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvs-ions-amgn-stocks-drop-225225314.html",
-      "publish_time": "2026-09-04T22:52:25Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.SuXS3EBbgYByVc2C6KeAw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stocktwits_383/7dfdfb916842f257083dae6e5361c6f8.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "ASML",
       "name": "ASML Holding",
       "sector": "Technology",
@@ -4051,7 +4191,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5y7SDOc0rqI4Kh4uzFVxQw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/89eb7f4b9aab4ea79ad3ee98b7c3a0b8.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 8
     },
     {
       "symbol": "MS",
@@ -4107,7 +4247,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/I7dM6FuYwJtf1JhUachMzQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/87cf26af07cbc2dde936e9c0769fddd3.jpg",
       "type": "STORY",
-      "sentiment": 12
+      "sentiment": 0
     },
     {
       "symbol": "MS",
@@ -4121,7 +4261,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DT9L1i7xlDuxoud21HqxAA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/b3eef9973a4b25febeec0d69d8c18731.jpg",
       "type": "STORY",
-      "sentiment": 2
+      "sentiment": 0
     },
     {
       "symbol": "TJX",
@@ -4135,7 +4275,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DT9L1i7xlDuxoud21HqxAA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/thestreet_881/b3eef9973a4b25febeec0d69d8c18731.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 50
     },
     {
       "symbol": "ROST",
@@ -4205,21 +4345,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/RBbaawSTbMgLm3sNvMJXCA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/2a50596f066181e48e4ae0ad6be00462.jpg",
       "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "NVS",
-      "name": "Novartis AG",
-      "sector": "Healthcare",
-      "industry": "Pharma",
-      "title": "Novartis Says Pelacarsen Heart Disease Drug Missed Primary Endpoint",
-      "publisher": "The Wall Street Journal",
-      "link": "",
-      "publish_time": "2026-09-04T21:46:00Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BMmSxSccHAmyI2iWdP8dPQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/40854c20c93044f8095d6e5bd10bcedc.jpg",
-      "type": "STORY",
-      "sentiment": -80
+      "sentiment": -20
     },
     {
       "symbol": "MA",
@@ -4261,7 +4387,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dHjy5Qaq81cnXT8UQAkIkw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/ace7df31c7fcb10255abe7c990ea373a.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -5
     },
     {
       "symbol": "T",
@@ -4289,7 +4415,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Ihc1v.__i43y_JFMSjBVLA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/b369e357aa3d42cc28ac674490d4ae83.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": -20
     },
     {
       "symbol": "TXN",
@@ -4359,7 +4485,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O2pVbE85AVOsydiEyQcEVA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1c3298bb00f7f6e1fefadbf78d8a3631.jpg",
       "type": "STORY",
-      "sentiment": -50
+      "sentiment": -55
     },
     {
       "symbol": "HD",
@@ -4387,7 +4513,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Cio_pK5FQG6hI.9.53ECAw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/faf8a0c6bfeef3257266f056aa5e762a.jpg",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -25
     },
     {
       "symbol": "SHW",
@@ -4415,7 +4541,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uelH08_GPSADEl5rzKRKwA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/10c2890c16ecee8e2a801b3a46ab1981.jpg",
       "type": "STORY",
-      "sentiment": 18
+      "sentiment": 40
     },
     {
       "symbol": "BAC",
@@ -4471,7 +4597,7 @@
       "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": 30
+      "sentiment": 45
     },
     {
       "symbol": "C",
@@ -4527,7 +4653,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jPdKD0sodvgRmJsbZxaI0A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/fd156da8db6a19c898c6286988db868f.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "BA",
@@ -4555,7 +4681,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/f7ZZYVxOcPwTntlvXCMgXA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1a7dd77fe5361c6973015c0679777dbe.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 30
     },
     {
       "symbol": "GE",
@@ -4569,7 +4695,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ECKjgRrDteD0TvBtGRKgRw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b565e2d3fdcb5a581a5c8f029c97a384.jpg",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 35
     },
     {
       "symbol": "SBUX",
@@ -4583,7 +4709,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KTL3Y3uGCSlKx2VCxKK6sA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/0e7bd54c1332a34f72a24505fcbc3093.jpg",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -15
     },
     {
       "symbol": "NEE",
@@ -4639,7 +4765,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FoOYehxVTP52_uZkVw658g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/user-uploaded/73bbbde2-2169-4c76-824c-9f2214afa033_c8f4099d714074c16437e561f0ca6b3fa5243ef873e7a67509b03243d47b2cce.jpg",
       "type": "VIDEO",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "BAC",
@@ -4653,21 +4779,7 @@
       "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "XOM",
-      "name": "Exxon Mobil",
-      "sector": "Energy",
-      "industry": "Integrated",
-      "title": "Exxon Falls While Diesel Margins Explode to $108",
-      "publisher": "GuruFocus.com",
-      "link": "https://finance.yahoo.com/energy/articles/exxon-falls-while-diesel-margins-192742941.html",
-      "publish_time": "2026-09-04T19:27:42Z",
-      "time_ago": "2d ago",
-      "thumbnail": null,
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": -15
     },
     {
       "symbol": "BLK",
@@ -4695,7 +4807,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UhF5RjG94EYFBwSWvTqvhA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/b2f9c7cb89d5cc4e471bfce65db4b79d.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 5
     },
     {
       "symbol": "DLR",
@@ -4709,7 +4821,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/UhF5RjG94EYFBwSWvTqvhA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/b2f9c7cb89d5cc4e471bfce65db4b79d.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "PYPL",
@@ -4751,21 +4863,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zT3dMfyP4Jwl4DPbkT6T8A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/53d74f26714ec6a8aea44a4e0b4716a0.jpg",
       "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "BAC",
-      "name": "Bank of America",
-      "sector": "Financials",
-      "industry": "Banks",
-      "title": "Hormel Foods (HRL) Stock Sees Fair Value Edges Lower After Measured Analyst Revisions",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/hormel-foods-hrl-stock-sees-190907929.html",
-      "publish_time": "2026-09-04T19:09:07Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/BHkQkLzuPUgK6oLvQYfhjg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1755b5a339fe0d610102dcc34fddba34.jpg",
-      "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "CAT",
@@ -4849,7 +4947,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rd9jAJh7XtkstoPjl5Gt8Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/53de89f4a3cd58c1706b78260ece5406.jpg",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": -15
     },
     {
       "symbol": "ASML",
@@ -4877,7 +4975,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/V4YgE2u3aAW6QWFPyS8wxw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/Barrons.com/f0c480491888ba7d653cc05b444a4509.jpg",
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -15
     },
     {
       "symbol": "JNJ",
@@ -4964,20 +5062,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "MS",
-      "name": "Morgan Stanley",
-      "sector": "Financials",
-      "industry": "Investment Banks",
-      "title": "Bapcor (ASX:BAP) Shares See Fair Value Lift As Analysts Reassess Key Assumptions",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/bapcor-asx-bap-shares-see-181602950.html",
-      "publish_time": "2026-09-04T18:16:02Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nN7QywgfxNsxgVj60JSFWg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/618e6fc7283f3230bbd917de1ca111f2.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "WFC",
       "name": "Wells Fargo",
       "sector": "Financials",
@@ -5003,7 +5087,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IH9OQ.rovzL.rNxekfV2tw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c0a07467822d37be44bca4e1fd1f1cc8.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 10
     },
     {
       "symbol": "MO",
@@ -5017,7 +5101,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/B079j1VIfUseY.dogS2mRQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/558d32e86d2841d86048b3aae7e15412.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 12
     },
     {
       "symbol": "MAR",
@@ -5031,7 +5115,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zZvE_9VPnYRXJdi0H38Mzw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/708bed8b45156083857700659b364ee4.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 30
     },
     {
       "symbol": "QCOM",
@@ -5045,7 +5129,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/OCCRoGT3_IogM_yx6lTLCQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d41c32d3c0fd3f81547cc0d2991903f5.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 40
     },
     {
       "symbol": "PG",
@@ -5087,7 +5171,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/02I8ti1eb2SDr9WJBooDiQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/026a08802cd984229bb03e0aefeb2972.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 35
     },
     {
       "symbol": "NEE",
@@ -5188,20 +5272,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "NFLX",
-      "name": "Netflix Inc.",
-      "sector": "Communication",
-      "industry": "Streaming",
-      "title": "Walt Disney vs. Netflix: Which Media Stock Is a Better Buy in 2026?",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/media-advertising/articles/walt-disney-vs-netflix-media-174002325.html",
-      "publish_time": "2026-09-04T17:40:02Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JbzsRE7aghzGMbKiw.r3Xg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/464e1ae7311cbacdad796d04904b9f4e.png",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "V",
       "name": "Visa Inc.",
       "sector": "Financials",
@@ -5255,7 +5325,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DNVaz5Rz_wBZ6ecgPRWgPQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/81affd71630ba53e0d4e3fd0d3341494.jpg",
       "type": "STORY",
-      "sentiment": -8
+      "sentiment": -5
     },
     {
       "symbol": "KHC",
@@ -5325,7 +5395,7 @@
       "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": 55
+      "sentiment": 50
     },
     {
       "symbol": "UNH",
@@ -5353,7 +5423,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/iAf1hR63aPyl4H0sf.NShQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/d7ea461ebd942c5c61a3f68254dc45cf.jpg",
       "type": "STORY",
-      "sentiment": 10
+      "sentiment": 50
     },
     {
       "symbol": "GILD",
@@ -5367,7 +5437,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vfMIKtbL4H8rQQ4bnPEOOg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/34a971ca153ed4a9b10f7d789bca1b9d.jpg",
       "type": "STORY",
-      "sentiment": 60
+      "sentiment": 75
     },
     {
       "symbol": "KHC",
@@ -5381,7 +5451,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/O2pVbE85AVOsydiEyQcEVA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/1c3298bb00f7f6e1fefadbf78d8a3631.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 45
     },
     {
       "symbol": "MAR",
@@ -5395,7 +5465,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/zZvE_9VPnYRXJdi0H38Mzw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/708bed8b45156083857700659b364ee4.jpg",
       "type": "STORY",
-      "sentiment": 7
+      "sentiment": 30
     },
     {
       "symbol": "AIG",
@@ -5423,7 +5493,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DbePtxZxYguV3P9nhaCIOg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/investopedia_245/84316ae8e701473e1b79ad8e7cd4e5dc.jpg",
       "type": "STORY",
-      "sentiment": 4
+      "sentiment": 0
     },
     {
       "symbol": "PYPL",
@@ -5591,7 +5661,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/T2mJqBmNaniwDgEZy1GN1w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/3f10397eae45c0ca8ef001ba41f76c6a.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 8
     },
     {
       "symbol": "SBUX",
@@ -5675,7 +5745,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/qmYof_RQ7bjzQd7g2swdkw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/51e557354b24b248245adac46ac0da45.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 50
     },
     {
       "symbol": "HON",
@@ -5899,7 +5969,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3OSRI.im8oXIld6XNiJncg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/4d58843d812aaad1f116a601fa4b94ab.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 45
     },
     {
       "symbol": "SO",
@@ -5913,7 +5983,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/EhoLbzYIPZHeFMV7XR.1Iw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/d15130425b806b509938ee3278c36175.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 45
     },
     {
       "symbol": "SCHW",
@@ -5997,7 +6067,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/URDtz_ZnPi938JkuONDBnQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/c2f5df76edbb6c0274cc5c6bf2345150.jpg",
       "type": "STORY",
-      "sentiment": -25
+      "sentiment": -30
     },
     {
       "symbol": "ISRG",
@@ -6039,7 +6109,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/YtRiqD4KcT5dN_BhD5nAjg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/997678efdeb49ef45a8e04b5fc88d714.jpg",
       "type": "STORY",
-      "sentiment": 15
+      "sentiment": 8
     },
     {
       "symbol": "TXN",
@@ -6151,7 +6221,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/rf_X2Qjn_Yoa4HWnM86MuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/09a6291295dbc47c79b1cd2321eb37e4.jpg",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 0
     },
     {
       "symbol": "MDT",
@@ -6207,7 +6277,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MuCNsJ94z9_Fi.j8gDRe4w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/3fa11a8c96eccbbf37febbcb6031dd4c.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "ETN",
@@ -6235,7 +6305,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5TnEaAKpLeJyd94vh8Jejw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/d43cb7b76527c97c59494165d3dffeae.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "MPC",
@@ -6277,7 +6347,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7b8U_tmtM2JohkQIgqPfVA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/618bd0d9abeeadf457f073b01236724b.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 40
     },
     {
       "symbol": "IBM",
@@ -6319,7 +6389,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/k.S.N_Kp3muzpK0uEjpF6Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/b4802547354c3806e98e5631b7820da6.jpg",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": 6
     },
     {
       "symbol": "LRCX",
@@ -6361,7 +6431,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/wCjbBWpvPVV5Vz3oS12dJw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/2638bb9ca9243dcf2c614c6dc11f41a1.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "VZ",
@@ -6416,20 +6486,6 @@
       "publish_time": "2026-09-04T13:52:00Z",
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vq20HeQMTQUiQwed4fklAA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/6da59b7a3ad589575ea44daaa8dca5c8.jpg",
-      "type": "STORY",
-      "sentiment": -5
-    },
-    {
-      "symbol": "XOM",
-      "name": "Exxon Mobil",
-      "sector": "Energy",
-      "industry": "Integrated",
-      "title": "Can ExxonMobil Benefit From the Current Energy Market Tightness?",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/energy/articles/exxonmobil-benefit-current-energy-market-134600503.html",
-      "publish_time": "2026-09-04T13:46:00Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/R4hE5gD8RgvdzHZW0yLqHw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/b81ac34444d94825c1ca7ea33d2f8831.jpg",
       "type": "STORY",
       "sentiment": 0
     },
@@ -6501,7 +6557,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/yQHf_1jZRVW9RIO_nq50RQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/f5ba577f64c7045938c3ac07be36c2e1.jpg",
       "type": "STORY",
-      "sentiment": -50
+      "sentiment": 0
     },
     {
       "symbol": "NEM",
@@ -6515,7 +6571,7 @@
       "time_ago": "2d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": -20
+      "sentiment": -25
     },
     {
       "symbol": "EL",
@@ -6557,7 +6613,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mZBm4uQCLMr2.7PjjHNedA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/768fd8130fee7a20c9eaf2ea78de06d7.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 8
     },
     {
       "symbol": "UNP",
@@ -6571,7 +6627,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xHaXUmO6Wp329flvOd3POg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/freightwaves_373/067fa4ee2bcd76d38161107d284b9f06.jpg",
       "type": "STORY",
-      "sentiment": -30
+      "sentiment": -40
     },
     {
       "symbol": "TMO",
@@ -6669,7 +6725,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FpZsR8uFtKY5hp1p51gGMQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/f889276f4a638f3c7a79c0e3e6b768c1.jpg",
       "type": "STORY",
-      "sentiment": 8
+      "sentiment": 20
     },
     {
       "symbol": "NEE",
@@ -6767,7 +6823,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/cl1En4Wk1cqpZDK8KF_zxw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/1cedae4be42bd340c6a533729e5ae9ef.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "OXY",
@@ -6823,7 +6879,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9hJ9ekejJThoN6icRAnFmQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/872cd783308525cdd0e49500eb81174e.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 3
     },
     {
       "symbol": "CAT",
@@ -6837,7 +6893,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/jHQoD0UmdEel9T9Ud5TuMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/construction_dive_964/5bc3b7290fb2e071b45a3e56b7e2735b",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 35
     },
     {
       "symbol": "MDLZ",
@@ -6851,7 +6907,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/c2yyOCluugM57PXqwFg92A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/adc10074e97cbbc4bddd1f4b13dbed94.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "APD",
@@ -6949,7 +7005,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/xMGwPIRUyiqhuamvz3wW.w--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/be7f3d29acd66970e10b0516778a64f7.jpg",
       "type": "STORY",
-      "sentiment": 3
+      "sentiment": 0
     },
     {
       "symbol": "UNP",
@@ -6991,7 +7047,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0QgVHWyfV6wq8.Nvqj7s2Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/biopharma_dive_768/851fb4e7ea2ff8b4c9e496b74f98f8d5",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": 0
     },
     {
       "symbol": "CVS",
@@ -7075,7 +7131,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/vC5RhjxhVCEzLBc_5RmLSg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/d97b4747f14d4c4a564f3f82699974e2.jpg",
       "type": "STORY",
-      "sentiment": 35
+      "sentiment": 45
     },
     {
       "symbol": "XEL",
@@ -7187,7 +7243,7 @@
       "time_ago": "2d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/aTs3IzdNqNb3XqRe0ouzvg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/4a343feb930e345f0a2818548b17fe4f.jpg",
       "type": "STORY",
-      "sentiment": 12
+      "sentiment": 35
     },
     {
       "symbol": "CMCSA",
@@ -7226,10 +7282,10 @@
       "publisher": "Marketing Brew",
       "link": "https://finance.yahoo.com/media-advertising/articles/mondel-z-scaling-sports-marketing-100000206.html",
       "publish_time": "2026-09-04T10:00:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/KNcxx_aEyv194D_pvjzKbw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/morning_brew_515/186ee8b8ebd88d54f61a6b2cc5b220f1.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 7
     },
     {
       "symbol": "TJX",
@@ -7240,10 +7296,10 @@
       "publisher": "Motley Fool",
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-tjx-companies-stock-got-093113063.html",
       "publish_time": "2026-09-04T09:31:13Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9TnooLAGmUr9jh8A6k5.lw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/f00b1e3c992bb5768bb1da8431ca98cc.jpg",
       "type": "STORY",
-      "sentiment": -35
+      "sentiment": -45
     },
     {
       "symbol": "CHTR",
@@ -7254,7 +7310,7 @@
       "publisher": "CFO.com",
       "link": "https://finance.yahoo.com/markets/stocks/articles/cfos-move-week-ending-sept-093100311.html",
       "publish_time": "2026-09-04T09:31:00Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IgTHRZGi5Tcr1Ugzb0ThlQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/cfo_com_600/6cca43aebbf1f739413fd03ac1e82541",
       "type": "STORY",
       "sentiment": 0
@@ -7268,7 +7324,7 @@
       "publisher": "Insider Monkey",
       "link": "https://finance.yahoo.com/markets/stocks/articles/ooma-ooma-rides-phone-line-092556028.html",
       "publish_time": "2026-09-04T09:25:56Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/DGsAVCxbpiC99G7Mmf7YOg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/44b18991244fd142f63658835eed83f9.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -7282,7 +7338,7 @@
       "publisher": "Pharma Voice",
       "link": "https://finance.yahoo.com/healthcare/articles/gilead-growing-hiv-franchise-cell-091058988.html",
       "publish_time": "2026-09-04T09:10:58Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/U9b7wPJMcUR0Dfb3kvv09g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/pharma_voice_330/f0ba0b8730fad187223d496b39c87e8b",
       "type": "STORY",
       "sentiment": 0
@@ -7296,7 +7352,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/eaton-etn-stock-gets-fair-090720840.html",
       "publish_time": "2026-09-04T09:07:20Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7b8U_tmtM2JohkQIgqPfVA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/618bd0d9abeeadf457f073b01236724b.jpg",
       "type": "STORY",
       "sentiment": 45
@@ -7310,7 +7366,7 @@
       "publisher": "StockStory",
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-market-beating-stocks-exciting-090210144.html",
       "publish_time": "2026-09-04T09:02:10Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hFdAkLQQjgMImmIL_n1O.A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/4c0ead7e167fcdf3fa6709c5d748c19b.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -7324,7 +7380,7 @@
       "publisher": "NBC News",
       "link": "https://finance.yahoo.com/economy/articles/august-jobs-report-could-show-090000596.html",
       "publish_time": "2026-09-04T09:00:40Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/T8xjDlBewVQQWUXLGOuK3A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/nbc_news_122/1b875189cc1c96d166fd94195fba8d0d.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -7338,10 +7394,10 @@
       "publisher": "Power Technology",
       "link": "https://finance.yahoo.com/energy/articles/nextera-dominion-66-8bn-merger-084716932.html",
       "publish_time": "2026-09-04T08:47:16Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3uGwJxAJ.B7HUowrDsKbwg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/power_technology_866/f2c6bca2a3faa85bad1d4f0f0d1dde78.jpg",
       "type": "STORY",
-      "sentiment": -15
+      "sentiment": -8
     },
     {
       "symbol": "D",
@@ -7352,10 +7408,10 @@
       "publisher": "Power Technology",
       "link": "https://finance.yahoo.com/energy/articles/nextera-dominion-66-8bn-merger-084716932.html",
       "publish_time": "2026-09-04T08:47:16Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/3uGwJxAJ.B7HUowrDsKbwg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/power_technology_866/f2c6bca2a3faa85bad1d4f0f0d1dde78.jpg",
       "type": "STORY",
-      "sentiment": 80
+      "sentiment": 90
     },
     {
       "symbol": "ETN",
@@ -7366,10 +7422,10 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/technology/ai/articles/eaton-etn-commits-242-million-082140539.html",
       "publish_time": "2026-09-04T08:21:40Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/7b8U_tmtM2JohkQIgqPfVA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/618bd0d9abeeadf457f073b01236724b.jpg",
       "type": "STORY",
-      "sentiment": 40
+      "sentiment": 50
     },
     {
       "symbol": "TFC",
@@ -7380,7 +7436,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/gitlab-gtlb-stock-sees-fair-081911238.html",
       "publish_time": "2026-09-04T08:19:11Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Npo6PyG59vU32pz5CnuVOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/36ca5b522ba2e0a30acf16e5282f313b.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -7394,22 +7450,8 @@
       "publisher": "StockStory",
       "link": "https://finance.yahoo.com/markets/stocks/articles/1-profitable-stock-impressive-fundamentals-074409476.html",
       "publish_time": "2026-09-04T07:44:09Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/eJRpZaOJSndo.2iIr0LwtA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/5b358cf42f0e5faeea342836f886679d.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "ASML",
-      "name": "ASML Holding",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "title": "European Indexes Edge Higher in Early Trade",
-      "publisher": "The Wall Street Journal",
-      "link": "",
-      "publish_time": "2026-09-04T07:34:00Z",
-      "time_ago": "2d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/8FSdswt4pir2EAQYTFEAzA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/7b2c285183be07ca3c4e8242b25a59a8.png",
       "type": "STORY",
       "sentiment": 0
     },
@@ -7422,7 +7464,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/digitalocean-holdings-docn-fell-truist-070939040.html",
       "publish_time": "2026-09-04T07:09:39Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/JzXBx3VM6bpqgMy7FOXHUw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/0fe4d5d105492213ce106a92b49639d4.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -7436,7 +7478,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/american-tower-amt-stock-may-061948930.html",
       "publish_time": "2026-09-04T06:19:48Z",
-      "time_ago": "2d ago",
+      "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/IH9OQ.rovzL.rNxekfV2tw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/c0a07467822d37be44bca4e1fd1f1cc8.jpg",
       "type": "STORY",
       "sentiment": 40
@@ -7509,7 +7551,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/mZ4TZS1eE_bhutDYzXQwlA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/b9ce40181c37b005da873a5a03b2b8d5.jpg",
       "type": "STORY",
-      "sentiment": 25
+      "sentiment": 5
     },
     {
       "symbol": "DD",
@@ -7579,7 +7621,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/N3pT54wvcpXXvW3nIjZERw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e3984aabc512bf84f3b7f3c0af116fa5.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 1
     },
     {
       "symbol": "MPC",
@@ -7694,20 +7736,6 @@
       "sentiment": 0
     },
     {
-      "symbol": "FCX",
-      "name": "Freeport-McMoRan",
-      "sector": "Materials",
-      "industry": "Mining",
-      "title": "Freeport-McMoRan (FCX) Stock Falls Amid Market Uptick: What Investors Need to Know",
-      "publisher": "Zacks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/freeport-mcmoran-fcx-stock-falls-214503902.html",
-      "publish_time": "2026-09-03T21:45:03Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/uLwFfsOxH4UrCqFaB1Fzuw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/45c083e4721b0d0d1f6e431ec0bb5cc1.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
       "symbol": "SHOP",
       "name": "Shopify Inc.",
       "sector": "Technology",
@@ -7747,7 +7775,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/j95Xt5frvGF5PMaXDx2l2g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/41e2b1a1a7a56c6738857499fdb333b2.jpg",
       "type": "STORY",
-      "sentiment": 12
+      "sentiment": 5
     },
     {
       "symbol": "UNP",
@@ -7761,7 +7789,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hGKlD8fTNg_VTqy9v4kbCg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/6846143afc6296b746b6d24db28cb1cb.jpg",
       "type": "STORY",
-      "sentiment": -30
+      "sentiment": -35
     },
     {
       "symbol": "CMCSA",
@@ -7803,7 +7831,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/FWedEB5uKS5hXxfCjEqXuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/819c7c9a1e17ab2ee1c33e599bcc2465.jpg",
       "type": "STORY",
-      "sentiment": -8
+      "sentiment": -6
     },
     {
       "symbol": "FDX",
@@ -7817,7 +7845,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/j95Xt5frvGF5PMaXDx2l2g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/41e2b1a1a7a56c6738857499fdb333b2.jpg",
       "type": "STORY",
-      "sentiment": -45
+      "sentiment": -40
     },
     {
       "symbol": "DE",
@@ -7831,7 +7859,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ha3p0wlZUJKYQnYI2cv7qQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/42f35b0343bede403bdd9f0bb4c5f2fe.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 40
     },
     {
       "symbol": "MNST",
@@ -7844,20 +7872,6 @@
       "publish_time": "2026-09-03T19:24:29Z",
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/5zbM3RTB4Df5M4TUbm_oOw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/5b77503f45976bc0e1d61b0506dbc448.jpg",
-      "type": "STORY",
-      "sentiment": 0
-    },
-    {
-      "symbol": "VZ",
-      "name": "Verizon Comm.",
-      "sector": "Communication",
-      "industry": "Telecom",
-      "title": "VZ Keeps Climbing. Should You Climb On?",
-      "publisher": "Trefis",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/vz-keeps-climbing-climb-190246541.html",
-      "publish_time": "2026-09-03T19:02:46Z",
-      "time_ago": "3d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/w9LZxaoQCa7NqwuVQtKXEw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/b06b683d5d2915a4494ac5d31c8a87d6.jpg",
       "type": "STORY",
       "sentiment": 0
     },
@@ -7901,7 +7915,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/F6sxWxj.EXsxiRMkLhi3CA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/7d3c640f8d7538ac0560d3a309a29d6f.jpg",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 35
     },
     {
       "symbol": "DE",
@@ -7971,7 +7985,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/a59IfJfKKClO2i.iZfvCHQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/3fe61364b95991c98978f250ba7bea2c.png",
       "type": "STORY",
-      "sentiment": -6
+      "sentiment": -20
     },
     {
       "symbol": "SYK",
@@ -7985,7 +7999,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Hfu2H.8RyYcI.dZ5dLoLSg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/3ecb7b8f4826ee26a884371aa5efe958.jpg",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 55
     },
     {
       "symbol": "UPS",
@@ -8153,7 +8167,7 @@
       "time_ago": "3d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": 9
+      "sentiment": 20
     },
     {
       "symbol": "UPS",
@@ -8307,7 +8321,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6fwHz2I.XAdlsvUZiAXgVQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/d87cc8e5693753ce8e232e0a527e4885.jpg",
       "type": "STORY",
-      "sentiment": 6
+      "sentiment": 7
     },
     {
       "symbol": "MET",
@@ -8335,7 +8349,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/4LBiCKq5gwWGKfWSFNPVbg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/4de858d44070a1d168359ecccfcc604b.jpg",
       "type": "STORY",
-      "sentiment": 30
+      "sentiment": 10
     },
     {
       "symbol": "PNC",
@@ -8363,7 +8377,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/dLx6TOFpD9O6dgexPFIjyg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/c2128adda632f0b18a566d8f572d34fb.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 6
     },
     {
       "symbol": "EL",
@@ -8377,7 +8391,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/83YAcVn8uGAgUtAOjpmlZg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wwd_409/c174d21f90ea5513a94d51b0eb6c49ef.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 3
     },
     {
       "symbol": "SHOP",
@@ -8475,7 +8489,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9hJ9ekejJThoN6icRAnFmQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/872cd783308525cdd0e49500eb81174e.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "TMO",
@@ -8545,7 +8559,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/A4s_EpWjgNqVceQzqyHNcQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/marketbeat_955/1e1948151e6e95ab4f891db19b87b9a7.png",
       "type": "STORY",
-      "sentiment": 20
+      "sentiment": 15
     },
     {
       "symbol": "UNP",
@@ -8573,7 +8587,7 @@
       "time_ago": "3d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/hTH7bi3jbeiESN0hXWIIHw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/barchart_com_477/c4e489e7e21200ec381d8bc5a7860b78.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "AMT",
@@ -8598,7 +8612,7 @@
       "publisher": "Yahoo Finance",
       "link": "https://finance.yahoo.com/economy/article/layoff-plans-trended-down-in-august-and-fewer-companies-are-blaming-ai-093000703.html",
       "publish_time": "2026-09-03T09:30:00Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/9mVZnv3QMsm9E8t2UTr4jw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://d29szjachogqwa.cloudfront.net/images/2026-09/1028188f-b302-445c-b447-a4c1c983c4b6",
       "type": "STORY",
       "sentiment": 0
@@ -8612,10 +8626,10 @@
       "publisher": "StockStory",
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-industrials-stocks-risky-081518379.html",
       "publish_time": "2026-09-03T08:15:18Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gqWwFUiBSn33Vh6QarKNrA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/f308fc302a1addf9a02e4420807d232d.jpg",
       "type": "STORY",
-      "sentiment": -15
+      "sentiment": 0
     },
     {
       "symbol": "DHR",
@@ -8626,7 +8640,7 @@
       "publisher": "Simply Wall St.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/danaher-dhr-stock-trades-near-061652826.html",
       "publish_time": "2026-09-03T06:16:52Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/K7tjwwT6ok3xvCA_N0R3dg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/cd882777b6cc15b2360b466e842457e4.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -8640,7 +8654,7 @@
       "publisher": "Stocktwits",
       "link": "https://finance.yahoo.com/markets/stocks/articles/ttwo-stock-slides-correction-territory-060518274.html",
       "publish_time": "2026-09-03T06:05:18Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0Ky5xRzUInjLZXaVaQJ6bw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stocktwits_383/d9480474620939ac84efd6f35ed55b13.jpg",
       "type": "STORY",
       "sentiment": -45
@@ -8654,7 +8668,7 @@
       "publisher": "Stocktwits",
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-did-pfe-gtlb-cop-045158542.html",
       "publish_time": "2026-09-03T04:51:58Z",
-      "time_ago": "3d ago",
+      "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/6_2Gjb48gMojFNz_u5zfMw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stocktwits_383/f47a92effe138e038e7117b03443855c.jpg",
       "type": "STORY",
       "sentiment": 0
@@ -8671,7 +8685,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/0UwyfDmERPYF8ol7Mvml0A--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/a5dae7b716070fdc459c6e5f871f28a9.jpg",
       "type": "STORY",
-      "sentiment": 50
+      "sentiment": 40
     },
     {
       "symbol": "WBD",
@@ -8741,7 +8755,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/MzMacusoCCfBbfRaweCWdg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/freightwaves_373/42bec0b38568f4561235f2957e237275.jpg",
       "type": "STORY",
-      "sentiment": -50
+      "sentiment": -55
     },
     {
       "symbol": "AIG",
@@ -8769,7 +8783,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/gBQ8xJWqllTVWJRygTdN3g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/8442d24e11d454aa89061259a9714d43.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -25
     },
     {
       "symbol": "DOW",
@@ -8811,7 +8825,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/RpOy.iNQSUoWwXf7YU4v6g--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/737ffb82e07dc8bffb77e72d153c91f2.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": -25
     },
     {
       "symbol": "ABT",
@@ -8853,7 +8867,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/ql4CdP5e9aQ9CqJuGung8Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/41bdd0c670f621394929d5266c5d6c72.jpg",
       "type": "STORY",
-      "sentiment": -10
+      "sentiment": 0
     },
     {
       "symbol": "COF",
@@ -8881,7 +8895,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WB5Tt7X5Wmx3Gu.jAWQoXQ--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/trefis_142/74f1d690cd42e176bfd25c37f45f409a.jpg",
       "type": "STORY",
-      "sentiment": -5
+      "sentiment": 0
     },
     {
       "symbol": "RCL",
@@ -8923,7 +8937,7 @@
       "time_ago": "4d ago",
       "thumbnail": null,
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": 0
     },
     {
       "symbol": "MMM",
@@ -8965,7 +8979,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/pN0CWJxqJbJEGwJsEx9ATA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/b551e99d884c84c5a8974a13e8c4b947.jpg",
       "type": "STORY",
-      "sentiment": 55
+      "sentiment": 60
     },
     {
       "symbol": "TMO",
@@ -9035,7 +9049,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/WW.4E6MbCCm4sbsYWidsuA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/24_7_wall_st__718/79e3b97de8193d271c59593e6dde4367.jpg",
       "type": "STORY",
-      "sentiment": 0
+      "sentiment": 5
     },
     {
       "symbol": "OXY",
@@ -9091,7 +9105,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/nv05FTcqS86N3IxzqLePxg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/0c6f98f4bf655bec3b199bc1a71b8b85.jpg",
       "type": "STORY",
-      "sentiment": 5
+      "sentiment": 0
     },
     {
       "symbol": "PPG",
@@ -9217,7 +9231,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/c_DBY18mC2OHQyIZ.iadYg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/59aaa55170f2e30f60447b6371c4e730.jpg",
       "type": "STORY",
-      "sentiment": 45
+      "sentiment": 40
     },
     {
       "symbol": "PSX",
@@ -9245,7 +9259,7 @@
       "time_ago": "4d ago",
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_A5FCBfXLLbobD0opkIufw--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/wsj.com/864eb2ce664a61b9bedbf0fb2b20db15.jpg",
       "type": "STORY",
-      "sentiment": -40
+      "sentiment": 0
     },
     {
       "symbol": "RCL",
@@ -9260,48 +9274,6 @@
       "thumbnail": "https://s.yimg.com/uu/api/res/1.2/_M70DQQ.71eAy0BMVsSCMA--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/stockstory_922/79d645ef95293d3246bf63f3e4927aa5.jpg",
       "type": "STORY",
       "sentiment": 0
-    },
-    {
-      "symbol": "MDLZ",
-      "name": "Mondelez Intl",
-      "sector": "Consumer Stpl.",
-      "industry": "Food",
-      "title": "Mondelēz, PepsiCo and pladis join forces for circular packaging trial",
-      "publisher": "Packaging Gateway",
-      "link": "https://finance.yahoo.com/technology/articles/mondel-z-pepsico-pladis-join-094609073.html",
-      "publish_time": "2026-09-02T09:46:09Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/.k7LICsARfnccg3hbQOA.Q--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/packaging_gateway_559/0551820711be86a433b31503eedd139a.jpg",
-      "type": "STORY",
-      "sentiment": 20
-    },
-    {
-      "symbol": "ISRG",
-      "name": "Intuitive Surgical",
-      "sector": "Healthcare",
-      "industry": "Devices",
-      "title": "Intuitive Surgical's Worst Stretch in Years Isn't Scaring Wall Street -- Here's What Analysts Are Focused On Instead",
-      "publisher": "Motley Fool",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/intuitive-surgicals-worst-stretch-years-081800284.html",
-      "publish_time": "2026-09-02T08:18:00Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/Rps3oLCVZrj7G0Wl.b_VJg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/motleyfool.com/c63085d61905eaf17e208c89f9b32c72.jpg",
-      "type": "STORY",
-      "sentiment": -3
-    },
-    {
-      "symbol": "USB",
-      "name": "U.S. Bancorp",
-      "sector": "Financials",
-      "industry": "Banks",
-      "title": "U.S. Bancorp (USB) Stock May Be 40% Undervalued On Business Banking Expansion",
-      "publisher": "Simply Wall St.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/u-bancorp-usb-stock-may-061311928.html",
-      "publish_time": "2026-09-02T06:13:11Z",
-      "time_ago": "4d ago",
-      "thumbnail": "https://s.yimg.com/uu/api/res/1.2/umsh2XG9Sugj.Y.1udIWpg--~B/Zmk9c3RyaW07aD0xMjg7dz0xNzA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/simply_wall_st__316/e6246c67b538e7c60523d298fe1f5c65.jpg",
-      "type": "STORY",
-      "sentiment": 38
     }
   ]
 }
