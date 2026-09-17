@@ -1,8 +1,8 @@
 {
-  "update_time": "2026-09-17 01:04",
+  "update_time": "2026-09-18 00:04",
   "current_signal": {
-    "date": "2026-09-17",
-    "predicted_prob": 0.8546247482299805,
+    "date": "2026-09-18",
+    "predicted_prob": 0.7559962868690491,
     "predicted_risk": "LOW",
     "action": "LONG",
     "position": "100% Long",
@@ -10,24 +10,24 @@
     "n_long": 3,
     "consensus": "ALL_LONG",
     "signal_tier": "STRONG_LONG",
-    "prob_fwd7": 0.8947547078132629,
-    "prob_fwd6": 0.7716854214668274,
-    "prob_baseline": 0.8974339962005615,
+    "prob_fwd7": 0.7900673747062683,
+    "prob_fwd6": 0.6567171216011047,
+    "prob_baseline": 0.821204423904419,
     "pred_fwd7": 1,
     "pred_fwd6": 1,
     "pred_baseline": 1
   },
   "current_market": {
-    "breadth_1w": 0.3902439024390244,
-    "breadth_2w": 0.2032520325203252,
-    "breadth_1m": 0.3333333333333333,
+    "breadth_1w": 0.35772357723577236,
+    "breadth_2w": 0.18699186991869918,
+    "breadth_1m": 0.2926829268292683,
     "tier": "WEAK",
-    "vix_level": 17.709999084472656,
-    "vix_change_1w": -0.7287055325298053,
-    "spy_return_1w": -0.49879645984343135,
-    "pct_above_ma20": 0.22764227642276422,
-    "pct_above_ma50": 0.4146341463414634,
-    "pct_above_ma200": 0.6341463414634146
+    "vix_level": 15.4399995803833,
+    "vix_change_1w": -2.525256113329255,
+    "spy_return_1w": -0.2211205811920025,
+    "pct_above_ma20": 0.2764227642276423,
+    "pct_above_ma50": 0.4065040650406504,
+    "pct_above_ma200": 0.6504065040650406
   },
   "test_metrics": {
     "accuracy": 0.5294117647058824,
@@ -1229,12 +1229,12 @@
     },
     {
       "entry_date": "2026-09-14",
-      "exit_date": "2026-09-16",
+      "exit_date": "2026-09-17",
       "breadth_1w": 0.2926829268292683,
       "tier": "WEAK",
       "vix_level": 15.84000015258789,
-      "trade_return": -0.6521755213479863,
-      "target": 0,
+      "trade_return": 0.4743050837862306,
+      "target": 1,
       "prob_fwd7": 0.9163015484809875,
       "prob_fwd6": 0.8355991244316101,
       "prob_baseline": 0.4090891480445862,
@@ -1246,7 +1246,7 @@
       "predicted_prob": 0.7203299403190613,
       "predicted_risk": "LOW",
       "predicted_signal": 1,
-      "correct": 0,
+      "correct": 1,
       "trade_result": "PENDING",
       "status": "OPEN"
     }
