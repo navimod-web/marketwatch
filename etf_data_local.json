@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-21T07:01:40.789985",
-  "update_time": "2026-09-21 07:01",
+  "generated_at": "2026-09-21T13:01:32.225836",
+  "update_time": "2026-09-21 13:01",
   "etf_count": 84,
   "stock_count": 155,
   "ratio_count": 26,
   "regime": {
-    "overall": "CAUTION",
-    "riskScore": -1,
-    "cycleScore": 1,
+    "overall": "NEUTRAL",
+    "riskScore": 0,
+    "cycleScore": 0,
     "signals": {
       "BREADTH": {
         "value": "2/11 POSITIVE",
@@ -16,41 +16,41 @@
         "total": 11
       },
       "VXX": {
-        "value": "COMPLACENT",
-        "score": 1,
-        "level": 17.76,
-        "change": -2.58
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "SPY_TLT": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 9.3746,
-        "change": -0.04
+        "level": null,
+        "change": null
       },
       "HYG_LQD": {
-        "value": "CREDIT STRESS ↓",
-        "score": -2,
-        "level": 0.75,
-        "change": -0.38
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       },
       "XLY_XLP": {
         "value": "NEUTRAL",
         "score": 0,
-        "level": 1.3409,
-        "change": 0.31
+        "level": null,
+        "change": null
       },
       "CPER_GLD": {
-        "value": "REFLATION ↑",
-        "score": 1,
-        "level": 0.1003,
-        "change": 2.97
+        "value": "NEUTRAL",
+        "score": 0,
+        "level": null,
+        "change": null
       }
     },
     "breadth": {
       "positive": 2,
       "total": 11
     },
-    "note": "Rotation attempt but narrow - be very selective"
+    "note": "No signals - narrow participation"
   },
   "ratios": [
     {
@@ -58,20 +58,20 @@
       "name": "Fear Index (VIX)",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 17.76,
-        "2W": 17.76,
-        "1M": 17.76,
-        "3M": 17.76,
-        "6M": 17.76,
-        "12M": 17.76
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -2.58,
+        "1W": null,
         "2W": null,
-        "1M": -6.28,
-        "3M": -25.6,
-        "6M": -49.27,
-        "12M": -47.46
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -79,20 +79,20 @@
       "name": "Stocks vs Bonds",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 9.3746,
-        "2W": 9.3746,
-        "1M": 9.3746,
-        "3M": 9.3746,
-        "6M": 9.3746,
-        "12M": 9.3746
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.04,
+        "1W": null,
         "2W": null,
-        "1M": 0.32,
-        "3M": 9.17,
-        "6M": 21.23,
-        "12M": 20.52
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -100,20 +100,20 @@
       "name": "Credit Spread",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.75,
-        "2W": 0.75,
-        "1M": 0.75,
-        "3M": 0.75,
-        "6M": 0.75,
-        "12M": 0.75
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.38,
+        "1W": null,
         "2W": null,
-        "1M": -0.08,
-        "3M": 2.57,
-        "6M": 3.29,
-        "12M": 4.2
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -121,20 +121,20 @@
       "name": "Gold vs Stocks",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.5267,
-        "2W": 0.5267,
-        "1M": 0.5267,
-        "3M": 0.5267,
-        "6M": 0.5267,
-        "12M": 0.5267
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.76,
+        "1W": null,
         "2W": null,
-        "1M": -4.98,
-        "3M": 2.14,
-        "6M": -15.3,
-        "12M": 0.7
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -142,20 +142,20 @@
       "name": "Small vs Large Cap",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.373,
-        "2W": 0.373,
-        "1M": 0.373,
-        "3M": 0.373,
-        "6M": 0.373,
-        "12M": 0.373
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.42,
+        "1W": null,
         "2W": null,
-        "1M": -4.77,
-        "3M": -7.34,
-        "6M": -2.08,
-        "12M": 1.71
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -163,20 +163,20 @@
       "name": "Speculation Index",
       "category": "Risk-On/Off",
       "values": {
-        "1W": 0.1158,
-        "2W": 0.1158,
-        "1M": 0.1158,
-        "3M": 0.1158,
-        "6M": 0.1158,
-        "12M": 0.1158
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 3.77,
+        "1W": null,
         "2W": null,
-        "1M": 2.63,
-        "3M": 10.54,
-        "6M": 9.1,
-        "12M": -9.77
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -184,20 +184,20 @@
       "name": "Consumer Cycle",
       "category": "Economic Cycle",
       "values": {
-        "1W": 1.3409,
-        "2W": 1.3409,
-        "1M": 1.3409,
-        "3M": 1.3409,
-        "6M": 1.3409,
-        "12M": 1.3409
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.31,
+        "1W": null,
         "2W": null,
-        "1M": -2.3,
-        "3M": -1.32,
-        "6M": -1.32,
-        "12M": -14.21
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -205,20 +205,20 @@
       "name": "Copper/Gold Ratio",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.1003,
-        "2W": 0.1003,
-        "1M": 0.1003,
-        "3M": 0.1003,
-        "6M": 0.1003,
-        "12M": 0.1003
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 2.97,
+        "1W": null,
         "2W": null,
-        "1M": 6.16,
-        "3M": 1.39,
-        "6M": 21.52,
-        "12M": 20.9
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -226,20 +226,20 @@
       "name": "Industrial Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.2229,
-        "2W": 0.2229,
-        "1M": 0.2229,
-        "3M": 0.2229,
-        "6M": 0.2229,
-        "12M": 0.2229
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.46,
+        "1W": null,
         "2W": null,
-        "1M": -5.56,
-        "3M": -8.46,
-        "6M": -11.47,
-        "12M": -3.07
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -247,20 +247,20 @@
       "name": "Retail Strength",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.1077,
-        "2W": 0.1077,
-        "1M": 0.1077,
-        "3M": 0.1077,
-        "6M": 0.1077,
-        "12M": 0.1077
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -4.42,
+        "1W": null,
         "2W": null,
-        "1M": -6.21,
-        "3M": -8.13,
-        "6M": -11.6,
-        "12M": -17.47
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -268,20 +268,20 @@
       "name": "Semis Leadership",
       "category": "Economic Cycle",
       "values": {
-        "1W": 0.6999,
-        "2W": 0.6999,
-        "1M": 0.6999,
-        "3M": 0.6999,
-        "6M": 0.6999,
-        "12M": 0.6999
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 6.86,
+        "1W": null,
         "2W": null,
-        "1M": 2.86,
-        "3M": -15.07,
-        "6M": 33.52,
-        "12M": 71.66
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -289,20 +289,20 @@
       "name": "Energy vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.0844,
-        "2W": 0.0844,
-        "1M": 0.0844,
-        "3M": 0.0844,
-        "6M": 0.0844,
-        "12M": 0.0844
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.69,
+        "1W": null,
         "2W": null,
-        "1M": 1.34,
-        "3M": 13.45,
-        "6M": -9.16,
-        "12M": 29.92
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -310,20 +310,20 @@
       "name": "Breakeven Inflation",
       "category": "Inflation",
       "values": {
-        "1W": 1.1594,
-        "2W": 1.1594,
-        "1M": 1.1594,
-        "3M": 1.1594,
-        "6M": 1.1594,
-        "12M": 1.1594
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.38,
+        "1W": null,
         "2W": null,
-        "1M": 0.09,
-        "3M": 0.88,
-        "6M": 1.48,
-        "12M": 1.19
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -331,20 +331,20 @@
       "name": "Agri vs Market",
       "category": "Inflation",
       "values": {
-        "1W": 0.037,
-        "2W": 0.037,
-        "1M": 0.037,
-        "3M": 0.037,
-        "6M": 0.037,
-        "12M": 0.037
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -3.14,
+        "1W": null,
         "2W": null,
-        "1M": -0.32,
-        "3M": 1.67,
-        "6M": -10.68,
-        "12M": -5.92
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -352,20 +352,20 @@
       "name": "Yield Curve",
       "category": "Fed/Rates",
       "values": {
-        "1W": 1.0001,
-        "2W": 1.0001,
-        "1M": 1.0001,
-        "3M": 1.0001,
-        "6M": 1.0001,
-        "12M": 1.0001
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.52,
+        "1W": null,
         "2W": null,
-        "1M": 0.04,
-        "3M": -4.65,
-        "6M": -3.78,
-        "12M": -5.67
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -373,20 +373,20 @@
       "name": "Duration Preference",
       "category": "Fed/Rates",
       "values": {
-        "1W": 0.8948,
-        "2W": 0.8948,
-        "1M": 0.8948,
-        "3M": 0.8948,
-        "6M": 0.8948,
-        "12M": 0.8948
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.54,
+        "1W": null,
         "2W": null,
-        "1M": 1.25,
-        "3M": -2.18,
-        "6M": -1.03,
-        "12M": -2.1
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -394,20 +394,20 @@
       "name": "Dollar Strength",
       "category": "Fed/Rates",
       "values": {
-        "1W": 28.39,
-        "2W": 28.39,
-        "1M": 28.39,
-        "3M": 28.39,
-        "6M": 28.39,
-        "12M": 28.39
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.78,
+        "1W": null,
         "2W": null,
-        "1M": 1.76,
-        "3M": -0.21,
-        "6M": 2.68,
-        "12M": 7.43
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -415,20 +415,20 @@
       "name": "EM vs US",
       "category": "Global",
       "values": {
-        "1W": 0.088,
-        "2W": 0.088,
-        "1M": 0.088,
-        "3M": 0.088,
-        "6M": 0.088,
-        "12M": 0.088
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 1.22,
+        "1W": null,
         "2W": null,
-        "1M": 0.15,
-        "3M": -4.13,
-        "6M": 1.71,
-        "12M": 11.12
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -436,20 +436,20 @@
       "name": "China vs US",
       "category": "Global",
       "values": {
-        "1W": 0.0451,
-        "2W": 0.0451,
-        "1M": 0.0451,
-        "3M": 0.0451,
-        "6M": 0.0451,
-        "12M": 0.0451
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.84,
+        "1W": null,
         "2W": null,
-        "1M": -4.03,
-        "3M": 0.43,
-        "6M": -16.52,
-        "12M": -25.53
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -457,20 +457,20 @@
       "name": "China Tech vs US Tech",
       "category": "Global",
       "values": {
-        "1W": 0.0344,
-        "2W": 0.0344,
-        "1M": 0.0344,
-        "3M": 0.0344,
-        "6M": 0.0344,
-        "12M": 0.0344
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.3,
+        "1W": null,
         "2W": null,
-        "1M": -7.9,
-        "3M": 0.29,
-        "6M": -29.01,
-        "12M": -47.13
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -478,20 +478,20 @@
       "name": "India vs EM",
       "category": "Global",
       "values": {
-        "1W": 0.7164,
-        "2W": 0.7164,
-        "1M": 0.7164,
-        "3M": 0.7164,
-        "6M": 0.7164,
-        "12M": 0.7164
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -2.38,
+        "1W": null,
         "2W": null,
-        "1M": -3.13,
-        "3M": -1.94,
-        "6M": -13.17,
-        "12M": -30.04
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -499,20 +499,20 @@
       "name": "Europe vs US",
       "category": "Global",
       "values": {
-        "1W": 0.1158,
-        "2W": 0.1158,
-        "1M": 0.1158,
-        "3M": 0.1158,
-        "6M": 0.1158,
-        "12M": 0.1158
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.25,
+        "1W": null,
         "2W": null,
-        "1M": -4.36,
-        "3M": -2.53,
-        "6M": -5.09,
-        "12M": -0.91
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -520,20 +520,20 @@
       "name": "Japan vs US",
       "category": "Global",
       "values": {
-        "1W": 0.1273,
-        "2W": 0.1273,
-        "1M": 0.1273,
-        "3M": 0.1273,
-        "6M": 0.1273,
-        "12M": 0.1273
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -0.95,
+        "1W": null,
         "2W": null,
-        "1M": 2.2,
-        "3M": 0.47,
-        "6M": -0.08,
-        "12M": 7.85
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -541,20 +541,20 @@
       "name": "Tech vs Financials",
       "category": "Sector Rotation",
       "values": {
-        "1W": 3.3942,
-        "2W": 3.3942,
-        "1M": 3.3942,
-        "3M": 3.3942,
-        "6M": 3.3942,
-        "12M": 3.3942
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 5.04,
+        "1W": null,
         "2W": null,
-        "1M": 6.43,
-        "3M": -0.71,
-        "6M": 22.57,
-        "12M": 28.63
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -562,20 +562,20 @@
       "name": "Cyclical vs Defensive",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.6594,
-        "2W": 0.6594,
-        "1M": 0.6594,
-        "3M": 0.6594,
-        "6M": 0.6594,
-        "12M": 0.6594
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": -1.99,
+        "1W": null,
         "2W": null,
-        "1M": -2.44,
-        "3M": -11.8,
-        "6M": -13.17,
-        "12M": -25.49
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     },
     {
@@ -583,20 +583,20 @@
       "name": "Materials vs Staples",
       "category": "Sector Rotation",
       "values": {
-        "1W": 0.6037,
-        "2W": 0.6037,
-        "1M": 0.6037,
-        "3M": 0.6037,
-        "6M": 0.6037,
-        "12M": 0.6037
+        "1W": null,
+        "2W": null,
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       },
       "changes": {
-        "1W": 0.95,
+        "1W": null,
         "2W": null,
-        "1M": -3.03,
-        "3M": -0.64,
-        "6M": 0.75,
-        "12M": 3.42
+        "1M": null,
+        "3M": null,
+        "6M": null,
+        "12M": null
       }
     }
   ],
